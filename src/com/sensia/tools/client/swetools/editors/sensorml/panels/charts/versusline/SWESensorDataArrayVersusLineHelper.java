@@ -54,12 +54,12 @@ public class SWESensorDataArrayVersusLineHelper {
 			for (String block : blocks) {
 				String[] token = block.split(tokenSeparator);
 				if (token != null && token.length == 2) {
-					valuesArr[pos][0] = Double.parseDouble(token[1]);
-					valuesArr[pos][1] = Double.parseDouble(token[0]);
+					valuesArr[pos][0] = Double.parseDouble(token[0]);
+					valuesArr[pos][1] = Double.parseDouble(token[1]);
 				} 
 				pos++;
 			}
-			chart = new VersusLineChart(label2+" vs. "+label1, Utils.getUOMSymbol(uom2),Utils.getUOMSymbol(uom1), valuesArr);
+			chart = new VersusLineChart(label1+" vs. "+label2, Utils.getUOMSymbol(uom1),Utils.getUOMSymbol(uom2), valuesArr);
 		}
 		return chart;
 	}

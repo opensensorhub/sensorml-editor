@@ -20,6 +20,7 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 	protected VerticalPanel multiLinesPanel;
 	protected HorizontalPanel linePanel;
 	protected Panel labelPanel;
+	protected Panel labelAndDefPanel;
 	protected HTML dotSeparatorLabel;
 	protected Panel optPanel;
 	protected Panel iconPanel;
@@ -35,6 +36,7 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 	public SensorGenericLineWidget(String name, TAG_DEF def, TAG_TYPE type) {
 		super(name, def, type);
 		linePanel = new HorizontalPanel();
+		labelAndDefPanel = new HorizontalPanel();
 		labelPanel = new HorizontalPanel();
 		dotSeparatorLabel = new HTML(getDotsLine());
 		optPanel = new HorizontalPanel();
@@ -46,8 +48,14 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		advancedPanel.addStyleName("rng-advanced-button");
 		advancedPanel.setTitle("Edit");
 		
-		labelPanel.addStyleName("line-generic-label-panel");
+		
+		labelAndDefPanel.add(labelPanel);
+		labelAndDefPanel.add(defPanel);
+		
+		labelAndDefPanel.addStyleName("line-generic-label-panel");
 		defPanel.addStyleName("def-generic-label-panel");
+		
+		
 		
 		FocusPanel wrapper = new FocusPanel();
 		wrapper.add(advancedPanel);
@@ -73,8 +81,9 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		});
 		
 		//order elements
-		linePanel.add(defPanel);
-		linePanel.add(labelPanel);
+		linePanel.add(labelAndDefPanel);
+		//linePanel.add(labelPanel);
+		//linePanel.add(defPanel);
 		linePanel.add(dotSeparatorLabel);
 		linePanel.add(optPanel);
 		linePanel.add(iconPanel);
