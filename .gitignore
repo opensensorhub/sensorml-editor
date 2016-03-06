@@ -1,3 +1,5 @@
-war
 dist
 gwt-unitCache
+.settings
+.classpath
+.project
