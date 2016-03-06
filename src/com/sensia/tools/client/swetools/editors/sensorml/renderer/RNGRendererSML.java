@@ -26,6 +26,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.Sen
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.gml.GMLSensorWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLContactWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLKeywordsWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLLinkWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLSensorAttributeWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLSensorSpatialFrame;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SensorSectionWidget;
@@ -98,6 +99,7 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		renderElements.put("IdentifierList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL);
 		renderElements.put("ClassifierList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL);
 		renderElements.put("ParameterList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL);
+		renderElements.put("ConnectionList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL);
 		renderElements.put("CharacteristicList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL);
 		renderElements.put("CapabilityList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL);
 		renderElements.put("ContactList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL);
@@ -216,6 +218,8 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 			}  else {
 				if(eltName.equals("contact")) {
 					pushAndVisitChildren(new SMLContactWidget(), elt.getChildren());
+				} else if(eltName.equals("Link")) {
+					pushAndVisitChildren(new SMLLinkWidget(), elt.getChildren());
 				} else if(eltName.equals("SpatialFrame")) {
 					pushAndVisitChildren(new SMLSensorSpatialFrame(), elt.getChildren());
 				} else if(nsUri.equals(GML_NS_1) || nsUri.equals(GML_NS_2)) {
