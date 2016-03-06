@@ -27,7 +27,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class SensorMLOntology {
 
-	private static final String ONTOLOGY_URL = "ontologies/ont.swe";
+	private static final String ONTOLOGY_URL = "http://sensorml.com/ont?form=rdf&uri=http://sensorml.com/ont/swe/property";
 	private ListDataProvider<Property> dataProvider;
 	private List<Property> originalData;
 	private List<Property> filteredData;
