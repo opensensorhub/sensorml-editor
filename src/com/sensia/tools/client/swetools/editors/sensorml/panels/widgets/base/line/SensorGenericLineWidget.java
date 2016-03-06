@@ -6,6 +6,7 @@ import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
@@ -20,7 +21,6 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 	protected VerticalPanel multiLinesPanel;
 	protected HorizontalPanel linePanel;
 	protected Panel labelPanel;
-	protected Panel labelAndDefPanel;
 	protected HTML dotSeparatorLabel;
 	protected Panel optPanel;
 	protected Panel iconPanel;
@@ -36,7 +36,7 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 	public SensorGenericLineWidget(String name, TAG_DEF def, TAG_TYPE type) {
 		super(name, def, type);
 		linePanel = new HorizontalPanel();
-		labelAndDefPanel = new HorizontalPanel();
+		HorizontalPanel labelAndDefPanel = new HorizontalPanel();
 		labelPanel = new HorizontalPanel();
 		dotSeparatorLabel = new HTML(getDotsLine());
 		optPanel = new HorizontalPanel();
@@ -52,8 +52,11 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		labelAndDefPanel.add(labelPanel);
 		labelAndDefPanel.add(defPanel);
 		
-		labelAndDefPanel.addStyleName("line-generic-label-panel");
-		defPanel.addStyleName("def-generic-label-panel");
+		SimplePanel labelAndDefPanelForCorrectDots = new SimplePanel();
+		labelAndDefPanelForCorrectDots.add(labelAndDefPanel);
+		
+		labelAndDefPanelForCorrectDots.addStyleName("line-generic-label-panel");
+		//defPanel.addStyleName("def-generic-label-panel");
 		
 		
 		
@@ -81,9 +84,7 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		});
 		
 		//order elements
-		linePanel.add(labelAndDefPanel);
-		//linePanel.add(labelPanel);
-		//linePanel.add(defPanel);
+		linePanel.add(labelAndDefPanelForCorrectDots);
 		linePanel.add(dotSeparatorLabel);
 		linePanel.add(optPanel);
 		linePanel.add(iconPanel);
