@@ -92,6 +92,9 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		
 		multiLinesPanel.add(linePanel);
 		activeMode(getMode());
+		
+		//hide dots until optPanel is added
+		dotSeparatorLabel.setVisible(false);
 	}
 
 	@Override
@@ -125,6 +128,7 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 					titleValueWidget = widget.getParent();
 				}
 			}
+			dotSeparatorLabel.setVisible(true);
 		} else if (widget.getType() == TAG_TYPE.ELEMENT && widget.getName().equals("label")) {
 			labelPanel.clear();
 			labelPanel.add(widget.getPanel());
@@ -179,6 +183,7 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 						isDefinitionProvided = true;
 					}
 				}
+				dotSeparatorLabel.setVisible(true);
 			}
 			return widget.appendTo() == APPENDER.HORIZONTAL_STRICT;
 		} else if(widget.appendTo() == APPENDER.VERTICAL || widget.appendTo() == APPENDER.VERTICAL_STRICT) {
