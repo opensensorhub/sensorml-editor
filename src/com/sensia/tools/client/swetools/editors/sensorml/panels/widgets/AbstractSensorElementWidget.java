@@ -338,6 +338,22 @@ public abstract class AbstractSensorElementWidget implements ISensorWidget{
 		return foundWidget;
 	}
 	
+	public static ISensorWidget findWidget(ISensorWidget widget, String name, TAG_TYPE type) {
+		ISensorWidget foundWidget = null;
+		if(widget.getName().equals(name) && widget.getType() == type) {
+			foundWidget =  widget;
+		} else {
+			for(ISensorWidget w : widget.getElements()) {
+				foundWidget = findWidget(w, name, type);
+				if(foundWidget != null) {
+					break;
+				}
+			}
+		}
+		
+		return foundWidget;
+	}
+	
 	//BFS
 	public static ISensorWidget findParent(ISensorWidget widget, String name, TAG_DEF def,TAG_TYPE type) {
 		ISensorWidget foundWidget = null;

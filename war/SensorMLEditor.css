@@ -360,6 +360,10 @@ td div.document-title {
 	width : 225px;
 }
 
+.def-generic-label-panel {
+	width : 35px;
+}
+
 table.swe-generic-vertical-panel {
 	padding : 0 0 10 15 !important;
 	border-spacing: 10px !important;

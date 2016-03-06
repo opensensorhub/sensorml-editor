@@ -28,6 +28,7 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 	protected HorizontalPanel advancedPanel;
 	
 	private boolean isLabelProvided = false;
+	private boolean isDefinitionProvided = false;
 	
 	private ISensorWidget titleValueWidget;
 	private boolean hasTitle = false;
@@ -40,11 +41,13 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		multiLinesPanel = new VerticalPanel();
 		advancedPanel = new HorizontalPanel();
 		iconPanel = new HorizontalPanel();
-		
+		//for generic ones
+		defPanel = new HorizontalPanel();
 		advancedPanel.addStyleName("rng-advanced-button");
 		advancedPanel.setTitle("Edit");
 		
 		labelPanel.addStyleName("line-generic-label-panel");
+		defPanel.addStyleName("def-generic-label-panel");
 		
 		FocusPanel wrapper = new FocusPanel();
 		wrapper.add(advancedPanel);
@@ -69,12 +72,9 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		  }
 		});
 		
-		//for generic ones
-		defPanel = new HorizontalPanel();
-		
 		//order elements
-		linePanel.add(labelPanel);
 		linePanel.add(defPanel);
+		linePanel.add(labelPanel);
 		linePanel.add(dotSeparatorLabel);
 		linePanel.add(optPanel);
 		linePanel.add(iconPanel);
@@ -101,6 +101,7 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		//handle generic panel like identifier
 		else if(widget.getType() == TAG_TYPE.ATTRIBUTE && widget.getName().equals("definition")){
 			defPanel.add(widget.getPanel());
+			isDefinitionProvided = true;
 		} else if(widget.isIcon()) {
 			iconPanel.add(widget.getPanel());
 		} 
@@ -155,10 +156,19 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 			} //handle generic panel like identifier
 			else if(widget.getType() == TAG_TYPE.ATTRIBUTE && widget.getName().equals("definition")){
 				defPanel.add(widget.getPanel());
+				isDefinitionProvided = true;
 			} else if(widget.isIcon()) {
 				iconPanel.add(widget.getPanel());
 			} else {
 				optPanel.add(widget.getPanel());
+				if(!isDefinitionProvided) {
+					//look for the first def label
+					ISensorWidget defWidget = findWidget(widget, "definition", TAG_TYPE.ATTRIBUTE);
+					if(defWidget != null) {
+						defPanel.add(defWidget.getPanel());
+						isDefinitionProvided = true;
+					}
+				}
 			}
 			return widget.appendTo() == APPENDER.HORIZONTAL_STRICT;
 		} else if(widget.appendTo() == APPENDER.VERTICAL || widget.appendTo() == APPENDER.VERTICAL_STRICT) {
