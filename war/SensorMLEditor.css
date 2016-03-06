@@ -326,9 +326,10 @@ table.sub-address-panel {
 	margin-left : -15px;
 }
 
-/*Center the Specification name */
+/*left justify the Specification name */
 td div.document-title {
-	text-align:center;
+	text-align:left;
+	margin-top:35px;
 }
 
 .document-title {
