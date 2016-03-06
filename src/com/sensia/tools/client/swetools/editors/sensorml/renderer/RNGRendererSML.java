@@ -127,6 +127,7 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		skipList.add("contactInfo");
 		skipList.add("Security");
 		skipList.add("PhysicalComponent");
+		skipList.add("AggregateProcess");
 		skipList.add("SimpleProcess");
 		skipList.add("PhysicalSystem");
 		skipList.add("Term");
