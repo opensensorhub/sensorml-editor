@@ -43,6 +43,7 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 			
 			final Button validateButton = new Button("Validate");
 			final Button closeButton = new Button("Close");
+			final Button saveButton = new Button("Save");
 			
 			//init file upload panel
 			final FileUploadPanel fileUploadPanel = new FileUploadPanel();
@@ -53,7 +54,7 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 			schemaLabel.setVisible(false);
 			fileUploadPanel.getPanel().setVisible(false);
 			
-			final DialogBox dialogBox = Utils.createCustomDialogBox(panel, "Sensor ML document",validateButton,closeButton,schemaLabel,fileUploadPanel.getPanel());
+			final DialogBox dialogBox = Utils.createCustomDialogBox(panel, "Sensor ML document",validateButton,closeButton,schemaLabel,fileUploadPanel.getPanel(),saveButton);
 			
 			closeButton.addClickHandler(new ClickHandler() {
 				
@@ -70,7 +71,19 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 					validate(xml,fileUploadPanel.getContents());
 				}
 			});
+			
+			saveButton.addClickHandler(new ClickHandler() {
+				
+				@Override
+				public void onClick(ClickEvent event) {
+					save(xml);
+				}
+			});
 		}
+	}
+	
+	private void save(String xmlData) {
+		saveFromJs(xmlData);
 	}
 	
 	private void validate(String xmlData,String xmlSchema) {
@@ -91,5 +104,10 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 		//and call function
 		var result = $wnd.validateXML(Module);
 		
+	}-*/;
+	
+	private native void saveFromJs(String xmlData) /*-{
+		var blob = new Blob([xmlData], {type: "text/xml;charset=utf-8"});
+		$wnd.saveAs(blob, "test.xml");
 	}-*/;
 }
