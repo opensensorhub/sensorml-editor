@@ -53,6 +53,7 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 
 	private Map<String,String> renderSectionsList = new HashMap<String,String>();
 	private Map<String,RENDER_ELEMENT_TYPE> renderElements= new HashMap<String,RENDER_ELEMENT_TYPE>();
+	private Set<String> rootSectionsList = new HashSet<String>();
 	
 	private Set<String> skipList = new HashSet<String>();
 	
@@ -70,6 +71,8 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		GENERIC_HORIZONTAL,
 		GENERIC_VERTICAL
 	}
+	
+	private boolean isNewRoot = false;
 	
 	public RNGRendererSML() {
 		//render section names
@@ -125,20 +128,25 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		
 		//skip list
 		skipList.add("Component");
-		skipList.add("ProcessModel");
+		//skipList.add("ProcessModel");
 		skipList.add("Document");
 		skipList.add("contactInfo");
 		skipList.add("Security");
-		skipList.add("PhysicalComponent");
-		skipList.add("AggregateProcess");
-		skipList.add("SimpleProcess");
-		skipList.add("PhysicalSystem");
+		//skipList.add("PhysicalComponent");
+		//skipList.add("AggregateProcess");
+		//skipList.add("SimpleProcess");
+		//skipList.add("PhysicalSystem");
 		skipList.add("Term");
 		skipList.add("keywords");
 		skipList.add("data");
 		skipList.add("NormalizedCurve");
 		skipList.add("function");
 		
+		rootSectionsList.add("PhysicalSystem");
+		rootSectionsList.add("ProcessModel");
+		rootSectionsList.add("AggregateProcess");
+		rootSectionsList.add("SimpleProcess");
+		rootSectionsList.add("PhysicalComponent");
 		
 		//skip contact elements tags
 		skipList.add("CI_ResponsibleParty");
@@ -169,7 +177,17 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		}
 		
 		//if element is a section
-		if(getStackSize() == 1) {
+		if(getStackSize() > 2 && rootSectionsList.contains(eltName)) {
+			isNewRoot = true;
+			pushAndVisitChildren(new SensorSectionsWidget(),elt.getChildren());
+			return;
+		} else if(rootSectionsList.contains(eltName)) {
+			visitChildren(elt.getChildren());
+			return;
+		}
+		
+		if(getStackSize() == 1 || isNewRoot) {
+			isNewRoot = false;
 			ISensorWidget widget = null;
 			if(eltName.equals("name") || eltName.equals("identifier") || eltName.equals("description")) {
 				widget =  new GMLSensorWidget(elt);
