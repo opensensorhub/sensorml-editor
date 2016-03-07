@@ -23,6 +23,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorW
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_DEF;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_TYPE;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorGenericHorizontalContainerWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorGenericXLinkWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.gml.GMLSensorWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLContactWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLKeywordsWidget;
@@ -96,6 +97,7 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		renderSectionsList.put("components", "Components");
 		renderSectionsList.put("position", "Position");
 		renderSectionsList.put("boundedBy", "Bounded By");
+		renderSectionsList.put("history", "History");
 		
 		//render default defined list elements
 		renderElements.put("OutputList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL);
@@ -111,6 +113,7 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		renderElements.put("ComponentList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL);
 		renderElements.put("ConnectionList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL);
 		renderElements.put("ContactList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL);
+		renderElements.put("EventList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL);
 		
 		//render default defined elements
 		renderElements.put("input",RENDER_ELEMENT_TYPE.LINE);
@@ -125,9 +128,10 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		renderElements.put("axis", RENDER_ELEMENT_TYPE.LINE);
 		renderElements.put("origin", RENDER_ELEMENT_TYPE.LINE);
 		renderElements.put("ObservableProperty", RENDER_ELEMENT_TYPE.LINE);
+		renderElements.put("Event", RENDER_ELEMENT_TYPE.LINE);
 		
 		//skip list
-		skipList.add("Component");
+		skipList.add("event");
 		//skipList.add("ProcessModel");
 		skipList.add("Document");
 		skipList.add("contactInfo");
@@ -222,7 +226,9 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 				ns = TAG_DEF.GCO;
 			}
 			
-			if(renderElements.containsKey(eltName)) { 
+			if(elt.getChildAttribute("href") != null) {
+				pushAndVisitChildren(new SensorGenericXLinkWidget(eltName,ns), elt.getChildren());
+			} else if(renderElements.containsKey(eltName)) { 
 				RENDER_ELEMENT_TYPE type = renderElements.get(eltName);
 				
 				ISensorWidget widget = null;

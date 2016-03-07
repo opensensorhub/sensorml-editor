@@ -49,7 +49,7 @@ public class RNGRendererSWE extends RNGRenderer implements RNGTagVisitor {
 
 	@Override
 	public void visit(RNGElement elt) {
-		 if(elt.getName().equals("Quantity")){
+		 if(elt.getName().equals("Quantity") || elt.getName().equals("Time")){
 			pushAndVisitChildren(new SWESensorQuantityWidget(), elt.getChildren());
 		} else if(elt.getName().equals("QuantityRange")){
 			pushAndVisitChildren(new SWESensorQuantityRangeWidget(), elt.getChildren());
