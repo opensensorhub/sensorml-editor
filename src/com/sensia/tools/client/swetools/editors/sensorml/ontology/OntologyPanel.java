@@ -12,15 +12,18 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
+import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.RdfPropertyReader;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.SensorMLPropertyOntology;
 
 public class OntologyPanel {
 	public VerticalPanel ontologyPanel;
 	private static List<String> sources = new ArrayList<String>();
 	private SensorMLPropertyOntology sensorMLOntology;
+	//private RdfPropertyReader rdfPropertyReader;
 	
 	static {
-		sources.add("SensorML");
+		sources.add("SensorML Property");
+		sources.add("MMI MVCO");
 	}
 	
 	public OntologyPanel(){
@@ -36,8 +39,10 @@ public class OntologyPanel {
 		final TextBox searchBox = new TextBox();
 		
 		//default use SensorML ontology
-		sensorMLOntology = new SensorMLPropertyOntology();
+		//rdfPropertyReader = new RdfPropertyReader();
+		//Panel resultTablePanel = rdfPropertyReader.createTable();
 		
+		sensorMLOntology = new SensorMLPropertyOntology();
 		Panel resultTablePanel = sensorMLOntology.createTable();
 		
 		final HorizontalPanel hPanel = new HorizontalPanel();

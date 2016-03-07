@@ -49,9 +49,9 @@ public class CenterPanel extends Composite implements IParsingObserver{
 	private static Map<String,String> profiles = new HashMap<String,String>();
 	
 	static {
-		profiles.put("Gamma2070","rng1.0/profiles/CSM/gamma2070.rng");
-		profiles.put("Anemometer","rng1.0/profiles/CSM/anemometer.rng");
-		profiles.put("Thermometer","rng1.0/profiles/CSM/thermometer-minimal-view.rng");
+		profiles.put("Gamma2070","sensormleditor/rng1.0/profiles/CSM/gamma2070.rng");
+		profiles.put("Anemometer","sensormleditor/rng1.0/profiles/CSM/anemometer.rng");
+		profiles.put("Thermometer","sensormleditor/rng1.0/profiles/CSM/thermometer-minimal-view.rng");
 		
 	}
 	
