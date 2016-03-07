@@ -92,6 +92,7 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		renderSectionsList.put("connections", "Connections");
 		renderSectionsList.put("components", "Components");
 		renderSectionsList.put("position", "Position");
+		renderSectionsList.put("boundedBy", "Bounded By");
 		
 		//render default defined list elements
 		renderElements.put("OutputList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL);
