@@ -1,5 +1,6 @@
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.line;
 
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.FocusPanel;
@@ -99,6 +100,11 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
+		if(widget instanceof SensorGenericLineWidget) {
+			for(ISensorWidget child : widget.getElements()) {
+				addSensorWidget(child);
+			}
+		}
 		if(widget.appendTo() == APPENDER.OVERRIDE_LINE) {
 			multiLinesPanel.clear();
 			multiLinesPanel.add(widget.getPanel());
@@ -129,11 +135,15 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 				}
 			}
 			dotSeparatorLabel.setVisible(true);
+		} else if( widget.getType() == TAG_TYPE.ELEMENT && widget.getName().equals("description")) {
+			optPanel.add(widget.getPanel());
+			dotSeparatorLabel.setVisible(true);
 		} else if (widget.getType() == TAG_TYPE.ELEMENT && widget.getName().equals("label")) {
 			labelPanel.clear();
 			labelPanel.add(widget.getPanel());
 			isLabelProvided=true;
 			hasTitle = true;
+			optPanel.clear();
 		} else {
 			//looking for label
 			//prior display for label if exists
