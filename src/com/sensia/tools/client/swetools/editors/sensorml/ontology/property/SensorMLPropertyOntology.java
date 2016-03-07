@@ -27,7 +27,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.ontology.TableRes;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.BoyerMoore;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
-public class SensorMLPropertyOntology {
+public class SensorMLPropertyOntology implements IOntologyPropertyReader{
 
 	private ListDataProvider<Property> dataProvider;
 	private List<Property> originalData;
@@ -47,7 +47,7 @@ public class SensorMLPropertyOntology {
 		filteredData = new ArrayList<Property>();
 	}
 	
-	public void loadOntology() {
+	public void loadOntology(String url) {
 		ILoadFiledCallback cb = new ILoadFiledCallback() {
 			@Override
 			public void onLoad(String content) {
@@ -57,7 +57,7 @@ public class SensorMLPropertyOntology {
 			}
 		};
 		
-		Utils.getFile(SensorConstants.ONTOLOGY_SENSORML_SWE_PROPERTY_URL, cb);
+		Utils.getFile(url, cb);
 	}
 	
 	public void setFilter(final String pattern) {

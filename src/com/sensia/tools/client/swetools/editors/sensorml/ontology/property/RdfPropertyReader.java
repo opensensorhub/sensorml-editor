@@ -30,7 +30,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.ontology.TableRes;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.BoyerMoore;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
-public class RdfPropertyReader {
+public class RdfPropertyReader implements IOntologyPropertyReader{
 
 	private ListDataProvider<Property> dataProvider;
 	private List<Property> originalData;
@@ -47,6 +47,11 @@ public class RdfPropertyReader {
 	private Map<String,Integer> classColDefMap;
 	
 	public RdfPropertyReader() {
+		init();
+	}
+	
+	private void init() {
+		//init global values
 		originalData = new ArrayList<Property>();
 		dataProvider = new ListDataProvider<Property>();
 		filteredData = new ArrayList<Property>();
@@ -54,6 +59,10 @@ public class RdfPropertyReader {
 	}
 	
 	public void loadOntology(String url) {
+		if(table != null) {
+			init();
+		}
+		
 		ILoadFiledCallback cb = new ILoadFiledCallback() {
 			@Override
 			public void onLoad(String content) {
@@ -61,7 +70,6 @@ public class RdfPropertyReader {
 				parseOntology(ontologyRoot.getDocumentElement());
 				//update table
 				updateTable();
-				dataProvider.setList(originalData);
 			}
 		};
 		
@@ -127,7 +135,13 @@ public class RdfPropertyReader {
 	private void updateTable() {
 		if(table == null) {
 			createTable();
+		} else {
+			int nbColumn = table.getColumnCount();
+			for(int i=0;i< nbColumn;i++) {
+				table.removeColumn(i);
+			}
 		}
+		
 		Set<String> colNames = classColDefMap.keySet();
 		
 		for(final String colName : colNames) {
@@ -139,8 +153,25 @@ public class RdfPropertyReader {
 				}
 			};
 			column.setSortable(false);
-			table.addColumn(column,colName);
+
+			SafeHtmlHeader colHeader = new SafeHtmlHeader(new SafeHtml() {
+
+				@Override
+				public String asString() {
+					  return "<p style=\"text-align:center;\">"+colName+"</p>"; 
+				} 
+
+		    }); 
+			colHeader.setHeaderStyleNames("data-table-header");
+			
+			table.addColumn(column,colHeader);
 		}
+		
+		table.setRowCount(originalData.size());
+	    table.setRowData(originalData);
+	    
+	    dataProvider.setList(originalData);
+	    dataProvider.refresh();
 	}
 	
 	public Panel createTable() {
@@ -167,6 +198,7 @@ public class RdfPropertyReader {
 		      }
 		    });
 		}
+		
 		ScrollPanel sPanel = new ScrollPanel();
 		sPanel.setStyleName("ontology-table-panel");
 		sPanel.add(table);
@@ -174,6 +206,8 @@ public class RdfPropertyReader {
 	}
 	
 	private void parseOntology(Element element){
+		String className = "Property";
+		classColDefMap.put("Definition ref", 0);
 		NodeList children = element.getChildNodes();
 		for (int i = 0; i < children.getLength(); i++) {
 			Node node = children.item(i);
@@ -182,15 +216,26 @@ public class RdfPropertyReader {
 				
 				String nodeName = getRealName(elt.getNodeName());
 				
-				if(nodeName.equals("Property")){
-					Property property = new Property();
-					property.properties = new ArrayList<String>(100);
+				if(nodeName.equals(className)){
+					Property property = new Property(classColDefMap.size());
 					
 					parseProperty(property,elt);
 					originalData.add(property);
 					
 				} else if(nodeName.equals("DatatypeProperty")){
 					parseDatatypeProperty(elt);
+				} else if (nodeName.equals("Class")) {
+					//should get the label
+					for(int j=0;j < node.getChildNodes().getLength();j++) {
+						Node childClassNode = node.getChildNodes().item(j);
+						if(childClassNode.getNodeType() == Node.ELEMENT_NODE) {
+							Element child = (Element) childClassNode;
+							String classChildNodeName = getRealName(child.getNodeName());
+							if(classChildNodeName.equals("label")) {
+								className = childClassNode.getChildNodes().item(0).getNodeValue();
+							}
+						}
+					}
 				} else {
 					parseOntology((Element) node);
 				}
@@ -205,7 +250,10 @@ public class RdfPropertyReader {
 			String nodeName = getRealName(node.getNodeName());
 
 			if(nodeName.equals("label")) {
-				classColDefMap.put(getRealName(node.getChildNodes().item(0).getNodeValue()),classColDefMap.size()+1);
+				//classColDefMap.put(getRealName(node.getChildNodes().item(0).getNodeValue()),classColDefMap.size()+1);
+				String colValue = node.getChildNodes().item(0).getNodeValue();
+				int index = classColDefMap.size();
+				classColDefMap.put(colValue,index);
 				break;
 			}
 		}
@@ -219,7 +267,7 @@ public class RdfPropertyReader {
 			for (int j = 0; j < attributes.getLength(); j++) {
 				Node attr = attributes.item(j);
 				if(attr.getNodeName().equals("rdf:about")) {
-					property.properties.add(attr.getNodeValue());
+					property.properties.set(0, attr.getNodeValue());
 				}
 			}
 		}
@@ -228,7 +276,7 @@ public class RdfPropertyReader {
 		for (int i = 0; i < children.getLength(); i++) {
 			Node node = children.item(i);
 			if(node.getNodeType() == Node.ELEMENT_NODE) {
-				String nodeName = getRealName(node.getNodeName());
+				String nodeName = node.getNodeName();
 				
 				if(classColDefMap.containsKey(nodeName) &&  node.getChildNodes().getLength() > 0) {
 					int key = classColDefMap.get(nodeName);

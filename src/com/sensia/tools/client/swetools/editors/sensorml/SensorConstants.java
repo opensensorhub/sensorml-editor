@@ -6,5 +6,5 @@ public class SensorConstants {
 	
 	public static final String ONTOLOGY_SENSORML_SWE_PROPERTY_URL = "http://sensorml.com/ont?form=rdf&uri=http://sensorml.com/ont/swe/property";
 	
-	public static final String ONTOLOGY_MMI_MVCO_PROPERTY_URL = "mmi.mvco.ont";
+	public static final String ONTOLOGY_MMI_MVCO_PROPERTY_URL = "sensormleditor/ontologies/mmi.mvco.ont";
 }
