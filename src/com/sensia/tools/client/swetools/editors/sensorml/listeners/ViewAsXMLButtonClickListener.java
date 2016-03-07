@@ -54,7 +54,7 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 			schemaLabel.setVisible(false);
 			fileUploadPanel.getPanel().setVisible(false);
 			
-			final DialogBox dialogBox = Utils.createCustomDialogBox(panel, "Sensor ML document",validateButton,closeButton,schemaLabel,fileUploadPanel.getPanel(),saveButton);
+			final DialogBox dialogBox = Utils.createCustomDialogBox(panel, "Sensor ML document",validateButton,saveButton,closeButton,schemaLabel,fileUploadPanel.getPanel());
 			
 			closeButton.addClickHandler(new ClickHandler() {
 				
@@ -108,6 +108,6 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 	
 	private native void saveFromJs(String xmlData) /*-{
 		var blob = new Blob([xmlData], {type: "text/xml;charset=utf-8"});
-		$wnd.saveAs(blob, "test.xml");
+		$wnd.saveAs(blob, "SensorML_XML_result_document.xml");
 	}-*/;
 }

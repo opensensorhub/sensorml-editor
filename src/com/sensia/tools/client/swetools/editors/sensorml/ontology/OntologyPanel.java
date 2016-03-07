@@ -12,11 +12,12 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
+import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.SensorMLPropertyOntology;
 
 public class OntologyPanel {
 	public VerticalPanel ontologyPanel;
 	private static List<String> sources = new ArrayList<String>();
-	private SensorMLOntology sensorMLOntology;
+	private SensorMLPropertyOntology sensorMLOntology;
 	
 	static {
 		sources.add("SensorML");
@@ -35,7 +36,7 @@ public class OntologyPanel {
 		final TextBox searchBox = new TextBox();
 		
 		//default use SensorML ontology
-		sensorMLOntology = new SensorMLOntology();
+		sensorMLOntology = new SensorMLPropertyOntology();
 		
 		Panel resultTablePanel = sensorMLOntology.createTable();
 		
