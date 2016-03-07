@@ -22,6 +22,7 @@ public class SensorGenericXLinkWidget extends AbstractSensorElementWidget{
 		//build xlink:href givent an element
 		anchorHref = new Anchor();
 		container.add(anchorHref);
+		anchorHref.setText(getName());
 	}
 
 	@Override
@@ -44,7 +45,6 @@ public class SensorGenericXLinkWidget extends AbstractSensorElementWidget{
 			anchorHref.setText(widget.getValue("title"));
 		} else if (widget.getName().equals("href")) {
 			anchorHref.setHref(widget.getValue("href"));
-			anchorHref.setName("link");
 		} else {
 			container.add(widget.getPanel());
 		}
