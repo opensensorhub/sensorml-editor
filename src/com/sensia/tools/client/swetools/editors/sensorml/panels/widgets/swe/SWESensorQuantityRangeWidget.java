@@ -13,16 +13,21 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorW
 
 public class SWESensorQuantityRangeWidget extends AbstractSensorElementWidget{
 
-	private HorizontalPanel minPanel;
-	private HorizontalPanel maxPanel;
-	private HorizontalPanel container;
-	private HorizontalPanel defPanel;
-	private HorizontalPanel uomPanel;
+	protected HorizontalPanel minPanel;
+	protected HorizontalPanel maxPanel;
+	protected HorizontalPanel container;
+	protected HorizontalPanel defPanel;
+	protected HorizontalPanel uomPanel;
 	
-	private ISensorWidget rangeValueWidget;
+	protected ISensorWidget rangeValueWidget;
 	
 	public SWESensorQuantityRangeWidget() {
-		super("QuantityRange",TAG_DEF.SWE,TAG_TYPE.ELEMENT);
+		this("QuantityRange");
+		
+	}
+
+	public SWESensorQuantityRangeWidget(final String name) {
+		super(name,TAG_DEF.SWE,TAG_TYPE.ELEMENT);
 		
 		container = new HorizontalPanel();
 		defPanel = new HorizontalPanel();
@@ -41,9 +46,8 @@ public class SWESensorQuantityRangeWidget extends AbstractSensorElementWidget{
 		container.add(maxPanel);
 		container.add(uomPanel);
 		container.add(defPanel);
-		
 	}
-
+	
 	@Override
 	public Panel getPanel() {
 		return container;
@@ -82,7 +86,8 @@ public class SWESensorQuantityRangeWidget extends AbstractSensorElementWidget{
 				maxPanel.add(widget.getElements().get(1).getPanel());
 			}
 		} else {
-			uomPanel.add(widget.getPanel());
+			//TODO: to check why?
+			//uomPanel.add(widget.getPanel());
 		}
 		
 		//add advanced panel

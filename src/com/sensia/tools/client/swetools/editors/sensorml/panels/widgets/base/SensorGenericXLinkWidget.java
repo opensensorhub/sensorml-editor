@@ -22,7 +22,8 @@ public class SensorGenericXLinkWidget extends AbstractSensorElementWidget{
 		//build xlink:href givent an element
 		anchorHref = new Anchor();
 		container.add(anchorHref);
-		anchorHref.setText(getName());
+		anchorHref.setText("("+toNiceLabel(getName())+")");
+		anchorHref.addStyleName("xlink");
 	}
 
 	@Override

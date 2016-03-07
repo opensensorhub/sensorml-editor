@@ -3,10 +3,10 @@ package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 
-public class SWESensorTimeWidget extends SWESensorQuantityWidget{
+public class SWESensorTimeRangeWidget extends SWESensorQuantityRangeWidget{
 
-	public SWESensorTimeWidget() {
-		super("Time");
+	public SWESensorTimeRangeWidget() {
+		super("TimeRange");
 	}
 	
 	@Override
@@ -19,6 +19,6 @@ public class SWESensorTimeWidget extends SWESensorQuantityWidget{
 	
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
-		return new SWESensorTimeWidget();
+		return new SWESensorTimeRangeWidget();
 	}
 }
