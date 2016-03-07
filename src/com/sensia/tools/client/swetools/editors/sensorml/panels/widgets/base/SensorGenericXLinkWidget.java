@@ -41,7 +41,7 @@ public class SensorGenericXLinkWidget extends AbstractSensorElementWidget{
 		if(widget.getName().equals("name")) {
 			anchorHref.setText(widget.getValue("name"));
 		} else if(widget.getName().equals("title")) {
-			anchorHref.setText(widget.getValue("name"));
+			anchorHref.setText(widget.getValue("title"));
 		} else if (widget.getName().equals("href")) {
 			anchorHref.setHref(widget.getValue("href"));
 			anchorHref.setName("link");
