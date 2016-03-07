@@ -34,7 +34,7 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 	
 	@Override
 	protected void addSensorWidget(final ISensorWidget widget) {
-		if(getName().equals("definition") && widget.getType() == TAG_TYPE.VALUE) {
+		if((getName().equals("definition") || getName().equals("referenceFrame")) && widget.getType() == TAG_TYPE.VALUE) {
 			defImage = new Image(GWT.getModuleBaseURL()+"images/icon_info.png");
 			defImage.setTitle(widget.getName());
 			defImage.addClickHandler(new ClickHandler() {
@@ -54,7 +54,7 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 	
 	@Override
 	public void getAdvancedPanel(Panel container) {
-		if(getName().equals("definition")) {
+		if(getName().equals("definition") || getName().equals("referenceFrame")) {
 			HorizontalPanel hPanel = new HorizontalPanel();
 			HTML hlabel = new HTML(getName());
 			hlabel.setWidth("100px");
@@ -63,7 +63,7 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 			final TextBox valueBox = new TextBox();
 			//subtract from icon size (16px) and icon style (margin-left:15px)
 			valueBox.setWidth("469px");
-			valueBox.setText(this.getValue("definition"));
+			valueBox.setText(this.getValue(getName()));
 			
 			hPanel.add(valueBox);
 			
@@ -126,6 +126,6 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 	
 	@Override
 	public APPENDER appendTo() {
-		return (getName().equals("definition")) ? APPENDER.HORIZONTAL:APPENDER.NONE;
+		return (getName().equals("definition") || getName().equals("referenceFrame")) ? APPENDER.HORIZONTAL:APPENDER.NONE;
 	}
 }

@@ -12,14 +12,18 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorW
 
 public class SWESensorQuantityWidget extends AbstractSensorElementWidget{
 
-	private HorizontalPanel quantityPanel;
-	private HorizontalPanel container;
-	private HorizontalPanel defPanel;
-	private HorizontalPanel uomPanel;
-	private HorizontalPanel constraintPanel;
+	protected HorizontalPanel quantityPanel;
+	protected HorizontalPanel container;
+	protected HorizontalPanel defPanel;
+	protected HorizontalPanel uomPanel;
+	protected HorizontalPanel constraintPanel;
 	
 	public SWESensorQuantityWidget() {
-		super("Quantity",TAG_DEF.SWE,TAG_TYPE.ELEMENT);
+		this("Quantity");
+	}
+
+	public SWESensorQuantityWidget(String name) {
+		super(name,TAG_DEF.SWE,TAG_TYPE.ELEMENT);
 		
 		container = new HorizontalPanel();
 		defPanel = new HorizontalPanel();
@@ -38,9 +42,8 @@ public class SWESensorQuantityWidget extends AbstractSensorElementWidget{
 		container.add(constraintPanel);
 		container.add(uomPanel);
 		container.add(defPanel);
-		
 	}
-
+	
 	@Override
 	public Panel getPanel() {
 		return container;
@@ -52,7 +55,7 @@ public class SWESensorQuantityWidget extends AbstractSensorElementWidget{
 
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
-		if(widget.getType() == TAG_TYPE.ATTRIBUTE && widget.getName().equals("definition")){
+		if(widget.getType() == TAG_TYPE.ATTRIBUTE && (widget.getName().equals("definition") || widget.getName().equals("referenceFrame"))){
 			defPanel.add(widget.getPanel());
 		} else if(widget.getType() == TAG_TYPE.ELEMENT && widget.getName().equals("uom")){
 			uomPanel.add(widget.getPanel());

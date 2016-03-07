@@ -22,6 +22,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWES
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorDataRecordWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorQuantityRangeWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorQuantityWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorTimeWidget;
 
 /**
  * <p>
@@ -49,8 +50,10 @@ public class RNGRendererSWE extends RNGRenderer implements RNGTagVisitor {
 
 	@Override
 	public void visit(RNGElement elt) {
-		 if(elt.getName().equals("Quantity") || elt.getName().equals("Time")){
+		 if(elt.getName().equals("Quantity")){
 			pushAndVisitChildren(new SWESensorQuantityWidget(), elt.getChildren());
+		} else if(elt.getName().equals("Time")){ 
+			pushAndVisitChildren(new SWESensorTimeWidget(), elt.getChildren());
 		} else if(elt.getName().equals("QuantityRange")){
 			pushAndVisitChildren(new SWESensorQuantityRangeWidget(), elt.getChildren());
 		} else if(elt.getName().equals("Category")){
