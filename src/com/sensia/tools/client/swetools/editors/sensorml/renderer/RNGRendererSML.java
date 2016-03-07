@@ -264,7 +264,8 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 
 	@Override
 	public void visit(RNGAttribute att) {
-		if(att.getName().equals("referenceFrame") || att.getName().equals("definition") || att.getName().equals("name")) {
+		if(att.getName().equals("referenceFrame") || att.getName().equals("definition") || att.getName().equals("name")
+				|| att.getName().equals("role")) {
 			pushAndVisitChildren(new SMLSensorAttributeWidget(att), att.getChildren());
 		} else {
 			super.visit(att);

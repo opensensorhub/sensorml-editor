@@ -1,5 +1,8 @@
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -24,6 +27,14 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 	private Image defImage;
 	private RNGAttribute attribute;
 	
+	private static Set<String> acceptingTagNames = new HashSet<String>();
+	
+	static {
+		acceptingTagNames.add("definition");
+		acceptingTagNames.add("referenceFrame");
+		acceptingTagNames.add("role");
+	}
+	
 	public SMLSensorAttributeWidget(RNGAttribute attribute) {
 		super(attribute.getName(),TAG_DEF.SML,TAG_TYPE.ATTRIBUTE);
 		
@@ -34,7 +45,7 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 	
 	@Override
 	protected void addSensorWidget(final ISensorWidget widget) {
-		if((getName().equals("definition") || getName().equals("referenceFrame")) && widget.getType() == TAG_TYPE.VALUE) {
+		if(acceptingTagNames.contains(getName()) && widget.getType() == TAG_TYPE.VALUE) {
 			defImage = new Image(GWT.getModuleBaseURL()+"images/icon_info.png");
 			defImage.setTitle(widget.getName());
 			defImage.addClickHandler(new ClickHandler() {
@@ -54,7 +65,7 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 	
 	@Override
 	public void getAdvancedPanel(Panel container) {
-		if(getName().equals("definition") || getName().equals("referenceFrame")) {
+		if(acceptingTagNames.contains(getName())) {
 			HorizontalPanel hPanel = new HorizontalPanel();
 			HTML hlabel = new HTML(getName());
 			hlabel.setWidth("100px");
@@ -126,6 +137,6 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 	
 	@Override
 	public APPENDER appendTo() {
-		return (getName().equals("definition") || getName().equals("referenceFrame")) ? APPENDER.HORIZONTAL:APPENDER.NONE;
+		return (acceptingTagNames.contains(getName())) ? APPENDER.HORIZONTAL:APPENDER.NONE;
 	}
 }
