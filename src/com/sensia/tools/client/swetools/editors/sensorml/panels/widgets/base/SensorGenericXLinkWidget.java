@@ -15,6 +15,8 @@ public class SensorGenericXLinkWidget extends AbstractSensorElementWidget{
 	private Panel container;
 	private Anchor anchorHref;
 	
+	private boolean isTitleProvided = false;
+	
 	public SensorGenericXLinkWidget(String name, TAG_DEF def) {
 		super(name, def, TAG_TYPE.ELEMENT);
 		container = new HorizontalPanel();
@@ -41,9 +43,12 @@ public class SensorGenericXLinkWidget extends AbstractSensorElementWidget{
 	protected void addSensorWidget(ISensorWidget widget) {
 		//TODO: handle TITLE/LABEL/NAME
 		if(widget.getName().equals("name")) {
-			anchorHref.setText(widget.getValue("name"));
+			if(!isTitleProvided) {
+				anchorHref.setText(widget.getValue("name"));
+			}
 		} else if(widget.getName().equals("title")) {
 			anchorHref.setText(widget.getValue("title"));
+			isTitleProvided = true;
 		} else if (widget.getName().equals("href")) {
 			anchorHref.setHref(widget.getValue("href"));
 		} else {
