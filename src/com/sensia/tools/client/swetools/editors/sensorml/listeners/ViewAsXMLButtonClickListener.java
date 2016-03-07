@@ -38,7 +38,7 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 	        Label labelXml = new HTML("<pre>" + xmlText + "</pre>", false);
 			
 	        ScrollPanel panel = new ScrollPanel(labelXml);
-			panel.setHeight("768px");
+			panel.setHeight("550px");
 			panel.setWidth("1024px");
 			
 			final Button validateButton = new Button("Validate");
@@ -47,6 +47,11 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 			//init file upload panel
 			final FileUploadPanel fileUploadPanel = new FileUploadPanel();
 			final HTML schemaLabel = new HTML("<b>Schema:</b>");
+			
+			//TODO: functionality disabled for now
+			validateButton.setVisible(false);
+			schemaLabel.setVisible(false);
+			fileUploadPanel.getPanel().setVisible(false);
 			
 			final DialogBox dialogBox = Utils.createCustomDialogBox(panel, "Sensor ML document",validateButton,closeButton,schemaLabel,fileUploadPanel.getPanel());
 			
