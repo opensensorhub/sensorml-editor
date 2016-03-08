@@ -142,7 +142,6 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		//skip list
 		skipList.add("event");
 		//skipList.add("ProcessModel");
-		skipList.add("Document");
 		skipList.add("contactInfo");
 		skipList.add("Security");
 		//skipList.add("PhysicalComponent");
@@ -264,7 +263,7 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 			}  else {
 				if(eltName.equals("contact")) {
 					pushAndVisitChildren(new SMLContactWidget(), elt.getChildren());
-				} else if(eltName.equals("document")) {
+				} else if(eltName.equals("document") || eltName.equals("Document")) {
 					pushAndVisitChildren(new SMLDocumentWidget(), elt.getChildren());
 				} else if(eltName.equals("Link")) {
 					pushAndVisitChildren(new SMLLinkWidget(), elt.getChildren());
