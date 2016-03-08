@@ -4,6 +4,7 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
+import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE;
@@ -16,6 +17,8 @@ public class SMLKeywordsWidget extends AbstractSensorElementWidget {
 	private HTML codeSpace;
 	private HTML keywords;
 	private HTML separator;
+	
+	private Panel editPanel;
 	
 	public SMLKeywordsWidget() {
 		super("KeywordList", TAG_DEF.SML, TAG_TYPE.ELEMENT);
@@ -30,7 +33,21 @@ public class SMLKeywordsWidget extends AbstractSensorElementWidget {
 		container.add(separator);
 		container.add(keywords);
 		
+		editPanel = getEditPanel(new IButtonCallback() {
+			
+			@Override
+			public void onClick() {
+				keywords.setHTML("");
+				for(ISensorWidget child : SMLKeywordsWidget.this.getElements()) {
+					addSensorWidget(child);
+				}
+			}
+		});
+		
+		container.add(editPanel);
 		codeSpace.setVisible(false);
+		
+		activeMode(getMode());
 	}
 
 	@Override
@@ -40,7 +57,7 @@ public class SMLKeywordsWidget extends AbstractSensorElementWidget {
 
 	@Override
 	protected void activeMode(MODE mode) {
-		
+		editPanel.setVisible(getMode() == MODE.EDIT);
 	}
 
 	@Override

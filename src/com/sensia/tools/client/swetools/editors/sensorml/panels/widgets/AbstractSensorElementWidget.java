@@ -7,6 +7,7 @@ import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.DialogBox;
+import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
@@ -399,13 +400,35 @@ public abstract class AbstractSensorElementWidget implements ISensorWidget{
 		}
 	}
 	
-	protected Panel getEditPanel(String label) {
-		HorizontalPanel hPanel = new HorizontalPanel();
-		Label hlabel = new Label(label);
-		hlabel.setWidth("100px");
-		hPanel.add(hlabel);
-		hPanel.add(new HTML("&nbsp;:&nbsp;"));
-		return hPanel;
+	protected Panel getEditPanel(final IButtonCallback callback) {
+		HorizontalPanel advancedPanel = new HorizontalPanel();
+		advancedPanel.addStyleName("rng-advanced-button");
+		advancedPanel.setTitle("Edit " + getName());
+
+		FocusPanel wrapper = new FocusPanel();
+		wrapper.add(advancedPanel);
+		wrapper.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				VerticalPanel container = new VerticalPanel();
+				container.addStyleName("advanced-panel");
+				getAdvancedPanel(container);
+				if (container != null) {
+					displayEditPanel(container, "Edit " + getName(),
+							new IButtonCallback() {
+								@Override
+								public void onClick() {
+									refresh();
+									if (callback != null) {
+										callback.onClick();
+									}
+								}
+							});
+				}
+			}
+		});
+
+		return wrapper;
 	}
 	
 	public void refresh() {

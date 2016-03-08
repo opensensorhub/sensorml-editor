@@ -27,7 +27,7 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 	protected Panel iconPanel;
 	protected Panel defPanel;
 	
-	protected HorizontalPanel advancedPanel;
+	protected Panel advancedPanel;
 	
 	private boolean isLabelProvided = false;
 	private boolean isDefinitionProvided = false;
@@ -42,13 +42,9 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		dotSeparatorLabel = new HTML(getDotsLine());
 		optPanel = new HorizontalPanel();
 		multiLinesPanel = new VerticalPanel();
-		advancedPanel = new HorizontalPanel();
 		iconPanel = new HorizontalPanel();
 		//for generic ones
 		defPanel = new HorizontalPanel();
-		advancedPanel.addStyleName("rng-advanced-button");
-		advancedPanel.setTitle("Edit");
-		
 		
 		labelAndDefPanel.add(labelPanel);
 		labelAndDefPanel.add(defPanel);
@@ -60,28 +56,15 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		//defPanel.addStyleName("def-generic-label-panel");
 		
 		
-		
-		FocusPanel wrapper = new FocusPanel();
-		wrapper.add(advancedPanel);
-		wrapper.addClickHandler(new ClickHandler() {
-		  @Override
-		  public void onClick(ClickEvent event) {
-			  VerticalPanel container = new VerticalPanel();
-			  container.addStyleName("advanced-panel");
-			  getAdvancedPanel(container);
-			  if(container != null) {
-				  displayEditPanel(container,"Edit",new IButtonCallback() {
-						@Override
-						public void onClick() {
-							refresh();
-							if(titleValueWidget != null) {
-								labelPanel.clear();
-								labelPanel.add(new HTML(splitAndCapitalize(titleValueWidget.getName())));
-							}
-						}
-					});
-			  }
-		  }
+		advancedPanel = getEditPanel(new IButtonCallback() {
+			
+			@Override
+			public void onClick() {
+				if(titleValueWidget != null) {
+					labelPanel.clear();
+					labelPanel.add(new HTML(splitAndCapitalize(titleValueWidget.getName())));
+				}
+			}
 		});
 		
 		//order elements
@@ -89,7 +72,7 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		linePanel.add(dotSeparatorLabel);
 		linePanel.add(optPanel);
 		linePanel.add(iconPanel);
-		linePanel.add(wrapper);
+		linePanel.add(advancedPanel);
 		
 		multiLinesPanel.add(linePanel);
 		activeMode(getMode());
