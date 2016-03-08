@@ -26,6 +26,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.Sen
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorGenericXLinkWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.gml.GMLSensorWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLContactWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLDocumentWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLKeywordsWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLLinkWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLSensorAttributeWidget;
@@ -160,6 +161,10 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		skipList.add("CI_Telephone");
 		skipList.add("address");
 		skipList.add("CI_Address");
+		
+		//skip documents tags
+		skipList.add("CI_OnlineResource");
+		skipList.add("linkage");
 	}
 
 	@Override
@@ -243,6 +248,8 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 			}  else {
 				if(eltName.equals("contact")) {
 					pushAndVisitChildren(new SMLContactWidget(), elt.getChildren());
+				} else if(eltName.equals("document")) {
+					pushAndVisitChildren(new SMLDocumentWidget(), elt.getChildren());
 				} else if(eltName.equals("Link")) {
 					pushAndVisitChildren(new SMLLinkWidget(), elt.getChildren());
 				} else if(eltName.equals("SpatialFrame")) {
@@ -265,7 +272,7 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 	@Override
 	public void visit(RNGAttribute att) {
 		if(att.getName().equals("referenceFrame") || att.getName().equals("definition") || att.getName().equals("name")
-				|| att.getName().equals("role")) {
+				|| att.getName().equals("role") ||  att.getName().equals("arcrole")) {
 			pushAndVisitChildren(new SMLSensorAttributeWidget(att), att.getChildren());
 		} else {
 			super.visit(att);

@@ -33,6 +33,7 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 		acceptingTagNames.add("definition");
 		acceptingTagNames.add("referenceFrame");
 		acceptingTagNames.add("role");
+		acceptingTagNames.add("arcrole");
 	}
 	
 	public SMLSensorAttributeWidget(RNGAttribute attribute) {
@@ -56,7 +57,7 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 				}
 			});
 			
-			defImage.addStyleName("graphic-icon");
+			defImage.addStyleName("def-icon");
 			container.add(defImage);
 		} else {
 			super.addSensorWidget(widget);
