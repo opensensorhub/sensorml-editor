@@ -29,6 +29,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorW
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorGenericHorizontalContainerWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorGenericXLinkWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.gml.GMLSensorWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLComponentWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLContactWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLDocumentWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLKeywordsWidget;
@@ -83,7 +84,7 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 	public RNGRendererSML() {
 		//render section names
 		renderSectionsList.put("identification","Identification");
-		renderSectionsList.put("typeOf","Link to Base");
+		renderSectionsList.put("typeOf","Type of");
 		renderSectionsList.put("characteristics","Characteristics");
 		renderSectionsList.put("capabilities","Capabilities");
 		renderSectionsList.put("outputs", "Outputs");
@@ -246,9 +247,9 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 				ns = TAG_DEF.GCO;
 			}
 			
-			if(elt.getChildAttribute("href") != null) {
+			/*if(elt.getChildAttribute("href") != null) {
 				pushAndVisitChildren(new SensorGenericXLinkWidget(eltName,ns), elt.getChildren());
-			} else if(renderElements.containsKey(eltName)) { 
+			} else*/ if(renderElements.containsKey(eltName)) { 
 				RENDER_ELEMENT_TYPE type = renderElements.get(eltName);
 				
 				ISensorWidget widget = null;
@@ -269,6 +270,8 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 					pushAndVisitChildren(new SMLLinkWidget(), elt.getChildren());
 				} else if(eltName.equals("SpatialFrame")) {
 					pushAndVisitChildren(new SMLSensorSpatialFrame(), elt.getChildren());
+				} else if(eltName.equals("component")) {
+					pushAndVisitChildren(new SMLComponentWidget(), elt.getChildren());
 				} else if(nsUri.equals(GML_NS_1) || nsUri.equals(GML_NS_2)) {
 					pushAndVisitChildren(new SensorGenericHorizontalContainerWidget(elt.getName(), TAG_DEF.GML, TAG_TYPE.ELEMENT), elt.getChildren());
 				} else if (nsUri.equals(SML_NS_1) || nsUri.equals(SML_NS_2)) {
@@ -286,9 +289,26 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 
 	@Override
 	public void visit(RNGAttribute att) {
+		//get ns
+		TAG_DEF ns = TAG_DEF.RNG;
+		String nsUri = att.getNamespace();
+		if (nsUri.equals(SML_NS_1) || nsUri.equals(SML_NS_2)) {
+			ns = TAG_DEF.SML;
+		} else if (nsUri.equals(SWE_NS_1) || nsUri.equals(SWE_NS_2)) {
+			ns = TAG_DEF.SWE;
+		} else if (nsUri.equals(GML_NS_1) || nsUri.equals(GML_NS_2)) {
+			ns = TAG_DEF.GML;
+		} else if(nsUri.equals(GMD)) {
+			ns = TAG_DEF.GMD;
+		} else if(nsUri.equals(GCO)) {
+			ns = TAG_DEF.GCO;
+		}
+		
 		if(att.getName().equals("referenceFrame") || att.getName().equals("definition") || att.getName().equals("name")
 				|| att.getName().equals("role") ||  att.getName().equals("arcrole")) {
 			pushAndVisitChildren(new SMLSensorAttributeWidget(att), att.getChildren());
+		} else if(att.getName().equals("href")) {
+			pushAndVisitChildren(new SensorGenericXLinkWidget(att.getName(),ns), att.getChildren());
 		} else {
 			super.visit(att);
 		}

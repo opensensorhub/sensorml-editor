@@ -1,5 +1,6 @@
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -18,7 +19,7 @@ public class SensorGenericXLinkWidget extends AbstractSensorElementWidget{
 	private boolean isTitleProvided = false;
 	
 	public SensorGenericXLinkWidget(String name, TAG_DEF def) {
-		super(name, def, TAG_TYPE.ELEMENT);
+		super(name, def, TAG_TYPE.ATTRIBUTE);
 		container = new HorizontalPanel();
 		
 		//build xlink:href givent an element
@@ -50,7 +51,7 @@ public class SensorGenericXLinkWidget extends AbstractSensorElementWidget{
 			anchorHref.setText(widget.getValue("title"));
 			isTitleProvided = true;
 		} else if (widget.getName().equals("href")) {
-			anchorHref.setHref(widget.getValue("href"));
+				anchorHref.setHref(widget.getValue("href"));
 		} else {
 			container.add(widget.getPanel());
 		}

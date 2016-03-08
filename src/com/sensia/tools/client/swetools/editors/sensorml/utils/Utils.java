@@ -8,6 +8,8 @@ import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
+import com.google.gwt.http.client.UrlBuilder;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -185,5 +187,11 @@ public class Utils {
 	    } catch (RequestException e) {
 	        GWT.log( "failed file reading", e );
 	    }
+	}
+	
+	public static String getCurrentURL(String value) {
+		UrlBuilder builder = Window.Location.createUrlBuilder();
+		builder.setParameter("url", value);
+		return builder.buildString();
 	}
 }

@@ -82,6 +82,7 @@ public class CenterPanel extends Composite implements IParsingObserver{
 			//do not display the edit/view options
 			smlEditorProcessor.setMode(MODE.VIEW);
 			smlEditorProcessor.parse(passedFile);
+			
 		}
 		
 		dynamicCenterPanel = new VerticalPanel();

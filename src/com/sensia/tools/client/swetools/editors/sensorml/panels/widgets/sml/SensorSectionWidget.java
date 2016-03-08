@@ -16,6 +16,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorW
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_DEF;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_TYPE;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class SensorSectionWidget extends AbstractSensorElementWidget{
 
@@ -103,7 +104,7 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 				panel.addStyleName("swe-generic-vertical-panel");
 				contentPanel.add(panel);
 			}
-		} else if(getName().equals("Link to Base")) {
+		} else if(getName().equals("Type of")) {
 			if(widget.getType() == TAG_TYPE.ATTRIBUTE) {
 				if(widget.getName().equals("title")) {
 					linkName = widget.getValue("title");
@@ -119,8 +120,7 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 				contentPanel.add(vPanel);
 			} else {
 				//generate client link url
-				String url = Window.Location.getHref()+"?url="+href;
-				anchor.setHref(url);
+				anchor.setHref(Utils.getCurrentURL(href));
 				anchor.setText(linkName);
 			}
 			

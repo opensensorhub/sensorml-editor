@@ -26,7 +26,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorW
  */
 public class SWESensorPositionByDataRecord extends AbstractSensorElementWidget{
 
-	private Panel container;
+	protected Panel container;
 	
 	public SWESensorPositionByDataRecord() {
 		super("position",TAG_DEF.SWE,TAG_TYPE.ELEMENT);
@@ -85,10 +85,11 @@ public class SWESensorPositionByDataRecord extends AbstractSensorElementWidget{
 		//---- Position panel part
 		Panel vPanel = new VerticalPanel();
 		List<ISensorWidget> fields = AbstractSensorElementWidget.findWidgets(widget, "field", TAG_DEF.SWE, TAG_TYPE.ELEMENT);
-		for(ISensorWidget field : fields) {
-			vPanel.add(buildSection(field));
+		if(fields != null) {
+			for(ISensorWidget field : fields) {
+				vPanel.add(buildSection(field));
+			}
 		}
-		
 		container.add(vPanel);
 	}
 

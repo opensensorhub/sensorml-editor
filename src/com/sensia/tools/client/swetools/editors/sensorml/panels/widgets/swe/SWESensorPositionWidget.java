@@ -1,5 +1,6 @@
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
@@ -20,7 +21,11 @@ public class SWESensorPositionWidget extends AbstractSensorElementWidget{
 
 	@Override
 	public Panel getPanel() {
-		return sensorPositionPanel.getPanel();
+		if(sensorPositionPanel != null) {
+			return sensorPositionPanel.getPanel();
+		} else {
+			return container;
+		}
 	}
 
 	@Override
@@ -45,6 +50,12 @@ public class SWESensorPositionWidget extends AbstractSensorElementWidget{
 		
 		if(sensorPositionPanel != null) {
 			sensorPositionPanel.addElement(widget);
+		}
+		
+		if(sensorPositionPanel == null) {
+			GWT.log("unsuported Position, take a default container");
+			
+			container.add(widget.getPanel());
 		}
 	}
 
