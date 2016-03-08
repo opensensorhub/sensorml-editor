@@ -29,11 +29,12 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 	
 	protected Panel advancedPanel;
 	
-	private boolean isLabelProvided = false;
-	private boolean isDefinitionProvided = false;
+	protected boolean isLabelProvided = false;
+	protected boolean isDefinitionProvided = false;
 	
-	private ISensorWidget titleValueWidget;
-	private boolean hasTitle = false;
+	protected ISensorWidget titleValueWidget;
+	protected boolean hasTitle = false;
+	
 	public SensorGenericLineWidget(String name, TAG_DEF def, TAG_TYPE type) {
 		super(name, def, type);
 		linePanel = new HorizontalPanel();

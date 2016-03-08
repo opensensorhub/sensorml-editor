@@ -10,14 +10,18 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.renderer;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGGrammar;
+import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_DEF;
@@ -99,6 +103,8 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		renderSectionsList.put("position", "Position");
 		renderSectionsList.put("boundedBy", "Bounded By");
 		renderSectionsList.put("history", "History");
+		renderSectionsList.put("position", "Position");
+		renderSectionsList.put("configuration", "Configuration");
 		
 		//render default defined list elements
 		renderElements.put("OutputList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL);
@@ -115,6 +121,7 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		renderElements.put("ConnectionList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL);
 		renderElements.put("ContactList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL);
 		renderElements.put("EventList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL);
+		renderElements.put("Settings", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL);
 		
 		//render default defined elements
 		renderElements.put("input",RENDER_ELEMENT_TYPE.LINE);
@@ -195,14 +202,15 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 			return;
 		}
 		
-		if(getStackSize() == 1 || isNewRoot) {
-			isNewRoot = false;
+		if(getStackSize() == 1 || isNewRoot) {isNewRoot = false;
+			List<RNGTag> children = elt.getChildren();
+			
 			ISensorWidget widget = null;
 			if(eltName.equals("name") || eltName.equals("identifier") || eltName.equals("description")) {
 				widget =  new GMLSensorWidget(elt);
 			} else if(eltName.equals("KeywordList")) {
 				widget = new SMLKeywordsWidget();	
-			} else{
+			} else {
 				//it is a non pre-defined section
 				//add default name
 				String sectionName = "No Supported Name";
@@ -213,8 +221,15 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 					sectionName = renderSectionsList.get(eltName);
 				} 
 				widget = new SensorSectionWidget(sectionName);
+				
+				ISensorWidget existingTagSection = getWidget(eltName);
+				if(existingTagSection != null) {
+					List<RNGTag> revisitedNodes = new ArrayList<RNGTag>();
+					revisitedNodes.add(elt);
+					children = revisitedNodes;
+				}
 			}
-			pushAndVisitChildren(widget,elt.getChildren());
+			pushAndVisitChildren(widget,children);
 		} else {
 			//get ns
 			TAG_DEF ns = TAG_DEF.RNG;

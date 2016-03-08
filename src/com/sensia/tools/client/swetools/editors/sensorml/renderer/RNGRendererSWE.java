@@ -12,11 +12,13 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer;
 
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_DEF;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_TYPE;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorGenericHorizontalContainerWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorCategoryWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorCondtionWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorPositionWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorCurveWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorDataArrayWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorDataRecordWidget;
@@ -24,6 +26,8 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWES
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorQuantityWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorTimeRangeWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorTimeWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorVectorWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.SWESensorCoordinateWidget;
 
 /**
  * <p>
@@ -51,28 +55,43 @@ public class RNGRendererSWE extends RNGRenderer implements RNGTagVisitor {
 
 	@Override
 	public void visit(RNGElement elt) {
-		 if(elt.getName().equals("Quantity")){
-			pushAndVisitChildren(new SWESensorQuantityWidget(), elt.getChildren());
-		} else if(elt.getName().equals("Time")){ 
-			pushAndVisitChildren(new SWESensorTimeWidget(), elt.getChildren());
-		} else if(elt.getName().equals("QuantityRange")){
-			pushAndVisitChildren(new SWESensorQuantityRangeWidget(), elt.getChildren());
-		} else if(elt.getName().equals("TimeRange")){
-			pushAndVisitChildren(new SWESensorTimeRangeWidget(), elt.getChildren());
-		} else if(elt.getName().equals("Category")){
-			pushAndVisitChildren(new SWESensorCategoryWidget(), elt.getChildren());
-		} else if(elt.getName().equals("DataArray")){
-			pushAndVisitChildren(new SWESensorDataArrayWidget(), elt.getChildren());
-		} else if(elt.getName().equals("Curve")){
-			pushAndVisitChildren(new SWESensorCurveWidget(), elt.getChildren());
-		} else if(elt.getName().equals("DataRecord")){
-			pushAndVisitChildren(new SWESensorDataRecordWidget(), elt.getChildren());
-		} else if(elt.getName().equals("condition")){
-			pushAndVisitChildren(new SWESensorCondtionWidget(), elt.getChildren());
+		final ISensorWidget widget = getWidget(elt.getName());
+		if(widget != null) {
+			pushAndVisitChildren(widget, elt.getChildren());
 		} else if(elt.getNamespace().equals(SWE_NS_1) || elt.getNamespace().equals(SWE_NS_2)) {
 			pushAndVisitChildren(new SensorGenericHorizontalContainerWidget(elt.getName(), TAG_DEF.SWE, TAG_TYPE.ELEMENT), elt.getChildren());
 		} else {
 			super.visit(elt);
+		}
+	}
+	
+	protected ISensorWidget getWidget(final String name) {
+		 if(name.equals("Quantity")){
+			return new SWESensorQuantityWidget();
+		} else if(name.equals("Vector")){
+			return new SWESensorVectorWidget();
+		} else if(name.equals("coordinate")){
+			return new SWESensorCoordinateWidget();
+		} else if(name.equals("Time")){ 
+			return new SWESensorTimeWidget();
+		} else if(name.equals("QuantityRange")){
+			return new SWESensorQuantityRangeWidget();
+		} else if(name.equals("TimeRange")){
+			return new SWESensorTimeRangeWidget();
+		} else if(name.equals("Category")){
+			return new SWESensorCategoryWidget();
+		} else if(name.equals("DataArray")){
+			return new SWESensorDataArrayWidget();
+		} else if(name.equals("Curve")){
+			return new SWESensorCurveWidget();
+		} else if(name.equals("DataRecord")){
+			return new SWESensorDataRecordWidget();
+		} else if(name.equals("condition")){
+			return new SWESensorCondtionWidget();
+		} else if(name.equals("position")){
+			return new SWESensorPositionWidget();
+		}else {
+			return super.getWidget(name);
 		}
 	}
 }

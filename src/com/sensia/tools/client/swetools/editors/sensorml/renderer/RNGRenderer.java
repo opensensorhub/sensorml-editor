@@ -265,4 +265,8 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	protected ISensorWidget renderLineWidget(String name, TAG_DEF def, TAG_TYPE type) {
 		return new SensorGenericLineWidget(name, def, type);
 	}
+	
+	protected ISensorWidget getWidget(final String name) {
+		return null;
+	}
 }

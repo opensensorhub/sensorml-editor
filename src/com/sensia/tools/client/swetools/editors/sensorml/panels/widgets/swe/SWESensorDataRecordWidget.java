@@ -58,7 +58,7 @@ public class SWESensorDataRecordWidget extends AbstractSensorElementWidget{
 			hasLabel = true;
 		} else if(widget.getName().equals("definition") && widget.getType() == TAG_TYPE.ATTRIBUTE) { 
 			defPanel.add(widget.getPanel());
-		} else if(widget.getName().equals("field")){
+		} else if(widget.getName().equals("field") || widget.getName().equals("coordinate")){
 			//container.add(widget.getPanel());
 			//find every fields and display it
 			List<ISensorWidget> children = widget.getElements();

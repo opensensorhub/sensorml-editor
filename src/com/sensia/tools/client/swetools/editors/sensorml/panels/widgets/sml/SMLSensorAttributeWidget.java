@@ -26,14 +26,17 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 
 	private Image defImage;
 	private RNGAttribute attribute;
+	private HTML httpUrlParenthesis;
 	
-	private static Set<String> acceptingTagNames = new HashSet<String>();
+	private static Set<String> acceptingTagNamesForDefIcon = new HashSet<String>();
+	private static Set<String> acceptingTagNamesForParenthesis = new HashSet<String>();
 	
 	static {
-		acceptingTagNames.add("definition");
-		acceptingTagNames.add("referenceFrame");
-		acceptingTagNames.add("role");
-		acceptingTagNames.add("arcrole");
+		acceptingTagNamesForDefIcon.add("definition");
+		acceptingTagNamesForDefIcon.add("role");
+		acceptingTagNamesForDefIcon.add("arcrole");
+		
+		acceptingTagNamesForParenthesis.add("referenceFrame");
 	}
 	
 	public SMLSensorAttributeWidget(RNGAttribute attribute) {
@@ -46,7 +49,7 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 	
 	@Override
 	protected void addSensorWidget(final ISensorWidget widget) {
-		if(acceptingTagNames.contains(getName()) && widget.getType() == TAG_TYPE.VALUE) {
+		if(acceptingTagNamesForDefIcon.contains(getName()) && widget.getType() == TAG_TYPE.VALUE) {
 			defImage = new Image(GWT.getModuleBaseURL()+"images/icon_info.png");
 			defImage.setTitle(widget.getName());
 			defImage.addClickHandler(new ClickHandler() {
@@ -59,6 +62,10 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 			
 			defImage.addStyleName("def-icon");
 			container.add(defImage);
+		} else if(acceptingTagNamesForParenthesis.contains(getName()) && widget.getType() == TAG_TYPE.VALUE) {
+			httpUrlParenthesis  = new HTML("("+widget.getName()+")");
+			httpUrlParenthesis.addStyleName("def-icon");
+			container.add(httpUrlParenthesis);
 		} else {
 			super.addSensorWidget(widget);
 		}
@@ -66,7 +73,7 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 	
 	@Override
 	public void getAdvancedPanel(Panel container) {
-		if(acceptingTagNames.contains(getName())) {
+		if(acceptingTagNamesForDefIcon.contains(getName())) {
 			HorizontalPanel hPanel = new HorizontalPanel();
 			HTML hlabel = new HTML(getName());
 			hlabel.setWidth("100px");
@@ -133,11 +140,13 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 		RNGValue rngValue = attribute.getChildValue();
 		if(defImage != null) {
 			defImage.setTitle(rngValue.getText());
+		} else if(httpUrlParenthesis != null) {
+			httpUrlParenthesis.setText("("+rngValue.getText()+")");
 		}
 	}
 	
 	@Override
 	public APPENDER appendTo() {
-		return (acceptingTagNames.contains(getName())) ? APPENDER.HORIZONTAL:APPENDER.NONE;
+		return (acceptingTagNamesForDefIcon.contains(getName()) || acceptingTagNamesForParenthesis.contains(getName())) ? APPENDER.HORIZONTAL:APPENDER.NONE;
 	}
 }

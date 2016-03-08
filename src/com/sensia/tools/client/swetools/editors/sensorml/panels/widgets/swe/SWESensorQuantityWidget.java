@@ -38,10 +38,10 @@ public class SWESensorQuantityWidget extends AbstractSensorElementWidget{
 		quantityPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
 		constraintPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
 		
+		container.add(defPanel);
 		container.add(quantityPanel);
 		container.add(constraintPanel);
 		container.add(uomPanel);
-		container.add(defPanel);
 	}
 	
 	@Override
@@ -64,7 +64,7 @@ public class SWESensorQuantityWidget extends AbstractSensorElementWidget{
 		} else if(widget.getType() == TAG_TYPE.ELEMENT && widget.getName().equals("constraint")){
 			constraintPanel.add(widget.getPanel());
 		}else {
-			uomPanel.add(widget.getPanel());
+			//uomPanel.add(widget.getPanel());
 		}
 	}
 
