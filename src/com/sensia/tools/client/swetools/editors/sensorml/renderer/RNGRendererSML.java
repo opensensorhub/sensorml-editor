@@ -159,6 +159,7 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		rootSectionsList.add("AggregateProcess");
 		rootSectionsList.add("SimpleProcess");
 		rootSectionsList.add("PhysicalComponent");
+		rootSectionsList.add("Component");
 		
 		//skip contact elements tags
 		skipList.add("CI_ResponsibleParty");
