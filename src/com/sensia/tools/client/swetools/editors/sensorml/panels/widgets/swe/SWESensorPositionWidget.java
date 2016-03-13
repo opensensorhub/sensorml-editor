@@ -5,10 +5,10 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.APPENDER;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.ISensorPositionPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.SWESensorPositionByDataRecord;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.SWESensorPositionByVector;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.SWESensorPositionByDataRecordWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.SWESensorPositionByDescriptionWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.SWESensorPositionByVectorWidget;
 
 public class SWESensorPositionWidget extends AbstractSensorElementWidget{
 
@@ -30,11 +30,6 @@ public class SWESensorPositionWidget extends AbstractSensorElementWidget{
 	}
 
 	@Override
-	protected void activeMode(MODE mode) {
-		
-	}
-
-	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
 		//container.add(widget.getPanel());
 		//We have to handle many cases:
@@ -46,9 +41,11 @@ public class SWESensorPositionWidget extends AbstractSensorElementWidget{
 		//Position by Process (sml:SimpleProcess or sml:AggregateProcess or sml:PhysicalComponent or sml:PhysicalSystem)
 		
 		if(widget.getName().equals("DataRecord")) {
-			sensorPositionPanel = new SWESensorPositionByDataRecord();
+			sensorPositionPanel = new SWESensorPositionByDataRecordWidget();
 		} else if(widget.getName().equals("Vector")) {
-			sensorPositionPanel = new SWESensorPositionByVector();
+			sensorPositionPanel = new SWESensorPositionByVectorWidget();
+		} else if(widget.getName().equals("Text")) {
+			sensorPositionPanel = new SWESensorPositionByDescriptionWidget();
 		}
 		
 		if(sensorPositionPanel != null) {
@@ -71,5 +68,12 @@ public class SWESensorPositionWidget extends AbstractSensorElementWidget{
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
 		return new SWESensorPositionWidget();
+	}
+	
+	@Override
+	protected void activeMode(MODE mode) {
+		if(sensorPositionPanel != null) {
+			sensorPositionPanel.switchMode(mode);
+		}
 	}
 }

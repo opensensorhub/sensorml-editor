@@ -28,7 +28,7 @@ xsi:schemaLocation="http://www.opengis.net/sensorml/2.0 http://schemas.opengis.n
    <!-- ================================================= -->
    <sml:position>
        <swe:Text>
-           <swe:value>on the exhaust line after the catalytic converter</swe:value>
+           <swe:value>located on the exhaust line after the catalytic converter</swe:value>
        </swe:Text>
    </sml:position>
 </sml:PhysicalComponent>
