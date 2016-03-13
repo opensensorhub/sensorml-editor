@@ -42,7 +42,6 @@ public class SensorGenericXLinkWidget extends AbstractSensorElementWidget{
 
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
-		//TODO: handle TITLE/LABEL/NAME
 		if(widget.getName().equals("name")) {
 			if(!isTitleProvided) {
 				anchorHref.setText(widget.getValue("name"));
@@ -51,7 +50,7 @@ public class SensorGenericXLinkWidget extends AbstractSensorElementWidget{
 			anchorHref.setText(widget.getValue("title"));
 			isTitleProvided = true;
 		} else if (widget.getName().equals("href")) {
-				anchorHref.setHref(widget.getValue("href"));
+			anchorHref.setHref(widget.getValue("href"));
 		} else {
 			container.add(widget.getPanel());
 		}

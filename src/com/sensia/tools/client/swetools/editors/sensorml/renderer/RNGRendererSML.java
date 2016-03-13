@@ -247,9 +247,7 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 				ns = TAG_DEF.GCO;
 			}
 			
-			/*if(elt.getChildAttribute("href") != null) {
-				pushAndVisitChildren(new SensorGenericXLinkWidget(eltName,ns), elt.getChildren());
-			} else*/ if(renderElements.containsKey(eltName)) { 
+			if(renderElements.containsKey(eltName)) { 
 				RENDER_ELEMENT_TYPE type = renderElements.get(eltName);
 				
 				ISensorWidget widget = null;
@@ -272,6 +270,8 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 					pushAndVisitChildren(new SMLSensorSpatialFrame(), elt.getChildren());
 				} else if(eltName.equals("component")) {
 					pushAndVisitChildren(new SMLComponentWidget(), elt.getChildren());
+				} else if(elt.getChildAttribute("href") != null) {
+					pushAndVisitChildren(new SensorGenericXLinkWidget(eltName,ns), elt.getChildren());
 				} else if(nsUri.equals(GML_NS_1) || nsUri.equals(GML_NS_2)) {
 					pushAndVisitChildren(new SensorGenericHorizontalContainerWidget(elt.getName(), TAG_DEF.GML, TAG_TYPE.ELEMENT), elt.getChildren());
 				} else if (nsUri.equals(SML_NS_1) || nsUri.equals(SML_NS_2)) {
