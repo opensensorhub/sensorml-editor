@@ -98,8 +98,26 @@ public abstract class AbstractSensorElementWidget implements ISensorWidget{
 		return values;
 	}
 	
+	/**
+	 * @deprecated Use {@link #getValue(String,boolean)} instead
+	 */
 	public String getValue(String parentName) {
-		return findRecursiveValue(this,parentName);
+		return getValue(parentName, true);
+	}
+
+	public String getValue(String parentName, boolean recursive) {
+		if(recursive) {
+			return findRecursiveValue(this,parentName);
+		} else {
+			String value = null;
+			for(ISensorWidget w : getElements()) {
+				if(w.getName().equals(parentName) && w.getType() == TAG_TYPE.ATTRIBUTE) {
+					//an attribute contains only one value tag and nothing else
+					value = w.getElements().get(0).getName();
+				}
+			}
+			return value;
+		}
 	}
 	
 	private String findRecursiveValue(ISensorWidget widget,String parentName) {

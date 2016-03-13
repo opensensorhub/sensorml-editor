@@ -72,7 +72,7 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 			
 			//TODO:May be handled by a separator ISensorWidget?
 			if(widget.getType() == TAG_TYPE.ATTRIBUTE && widget.getName().equals("name")) {
-				valueHeader += " ("+toNiceLabel(widget.getValue(widget.getName()))+")";
+				valueHeader += " ("+toNiceLabel(widget.getValue(widget.getName(), true))+")";
 				currentHeader.setText(valueHeader);
 			} else if(widget.getName().equals("CharacteristicList") || widget.getName().equals("CapabilityList")) {
 				//looking for definition and label
@@ -90,7 +90,7 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 						child.getPanel().addStyleName("icon-def-section-header");
 						hidePanel.setHeader(headerPanel);
 					} else if(child.getType() == TAG_TYPE.ELEMENT && child.getName().equals("label")) {
-						valueHeader += " ("+toNiceLabel(child.getValue(child.getName()))+")";
+						valueHeader += " ("+toNiceLabel(child.getValue(child.getName(), true))+")";
 						currentHeader.setText(valueHeader);
 						child.getPanel().removeFromParent();
 						break;
@@ -107,9 +107,9 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 		} else if(getName().equals("Type of")) {
 			if(widget.getType() == TAG_TYPE.ATTRIBUTE) {
 				if(widget.getName().equals("title")) {
-					linkName = widget.getValue("title");
+					linkName = widget.getValue("title", true);
 				} else if(widget.getName().equals("href")) {
-					href = widget.getValue("href");
+					href = widget.getValue("href", true);
 				}
 			}
 			if(getElements().isEmpty()) {

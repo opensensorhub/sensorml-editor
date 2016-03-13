@@ -68,7 +68,7 @@ public class SWESensorQuantityRangeWidget extends AbstractSensorElementWidget{
 			if(widget.getElements().size() >= 1) {
 				//FIXME:
 				//Hack to get the both values of min max given <swe:value>-0.5 0.5</swe:value>
-				String value = widget.getValue("value");
+				String value = widget.getValue("value", true);
 				if(value != null) {
 					String [] split = value.split(" ");
 					if(split != null && split.length == 2) {
@@ -110,7 +110,7 @@ public class SWESensorQuantityRangeWidget extends AbstractSensorElementWidget{
 		//FIXME : should be driven by the RNG profile
 		//update value by splitting min/max
 		if(rangeValueWidget != null) {
-			String value = rangeValueWidget.getValue("value");
+			String value = rangeValueWidget.getValue("value", true);
 			String [] split = value.split(" ");
 			if(split.length == 2) {
 				minPanel.clear();

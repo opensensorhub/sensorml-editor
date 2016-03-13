@@ -8,6 +8,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorW
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.APPENDER;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.ISensorPositionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.SWESensorPositionByDataRecord;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.SWESensorPositionByVector;
 
 public class SWESensorPositionWidget extends AbstractSensorElementWidget{
 
@@ -46,6 +47,8 @@ public class SWESensorPositionWidget extends AbstractSensorElementWidget{
 		
 		if(widget.getName().equals("DataRecord")) {
 			sensorPositionPanel = new SWESensorPositionByDataRecord();
+		} else if(widget.getName().equals("Vector")) {
+			sensorPositionPanel = new SWESensorPositionByVector();
 		}
 		
 		if(sensorPositionPanel != null) {
@@ -54,7 +57,6 @@ public class SWESensorPositionWidget extends AbstractSensorElementWidget{
 		
 		if(sensorPositionPanel == null) {
 			GWT.log("unsuported Position, take a default container");
-			
 			container.add(widget.getPanel());
 		}
 	}

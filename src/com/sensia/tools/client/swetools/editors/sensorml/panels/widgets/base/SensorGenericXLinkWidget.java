@@ -44,13 +44,13 @@ public class SensorGenericXLinkWidget extends AbstractSensorElementWidget{
 	protected void addSensorWidget(ISensorWidget widget) {
 		if(widget.getName().equals("name")) {
 			if(!isTitleProvided) {
-				anchorHref.setText(widget.getValue("name"));
+				anchorHref.setText(widget.getValue("name", true));
 			}
 		} else if(widget.getName().equals("title")) {
-			anchorHref.setText(widget.getValue("title"));
+			anchorHref.setText(widget.getValue("title", true));
 			isTitleProvided = true;
 		} else if (widget.getName().equals("href")) {
-			anchorHref.setHref(widget.getValue("href"));
+			anchorHref.setHref(widget.getValue("href", true));
 		} else {
 			container.add(widget.getPanel());
 		}

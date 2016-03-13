@@ -36,12 +36,12 @@ public class SMLComponentWidget extends AbstractSensorElementWidget{
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
 		if(widget.getType() == TAG_TYPE.ATTRIBUTE && widget.getName().equals("name") && !isTitleProvided) {
-			anchorHref.setText(widget.getValue("name"));
+			anchorHref.setText(widget.getValue("name", true));
 		} else if(widget.getType() == TAG_TYPE.ATTRIBUTE && widget.getName().equals("title")) {
-			anchorHref.setText(widget.getValue("title"));
+			anchorHref.setText(widget.getValue("title", true));
 			isTitleProvided = true;
 		} else if(widget.getType() == TAG_TYPE.ATTRIBUTE && widget.getName().equals("href")) {
-			anchorHref.setHref(Utils.getCurrentURL(widget.getValue("href")));
+			anchorHref.setHref(Utils.getCurrentURL(widget.getValue("href", true)));
 		} else {
 			container.add(widget.getPanel());
 		}

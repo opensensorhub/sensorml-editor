@@ -64,9 +64,9 @@ public class SMLKeywordsWidget extends AbstractSensorElementWidget {
 	protected void addSensorWidget(ISensorWidget widget) {
 		if(widget.getType() == TAG_TYPE.ELEMENT && widget.getName().equals("codeSpace")) {
 			codeSpace.setVisible(true);
-			codeSpace.setHTML("("+widget.getValue("href")+")");
+			codeSpace.setHTML("("+widget.getValue("href", true)+")");
 		} else if(widget.getName().equals("keyword")) {
-			keywords.setHTML(keywords.getHTML()+"&nbsp;&nbsp;"+widget.getValue("keyword"));
+			keywords.setHTML(keywords.getHTML()+"&nbsp;&nbsp;"+widget.getValue("keyword", true));
 		}
 	}
 

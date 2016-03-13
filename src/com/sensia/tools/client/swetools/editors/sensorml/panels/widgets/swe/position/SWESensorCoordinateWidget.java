@@ -52,7 +52,7 @@ public class SWESensorCoordinateWidget extends SensorGenericLineWidget{
 			if(!isLabelProvided) {
 				//get the associated value
 				titleValueWidget = widget.getElements().get(0);
-				labelPanel.add(new HTML(getMappedName(widget.getValue("name")+"")));
+				labelPanel.add(new HTML(getMappedName(widget.getValue("name", true)+"")));
 				hasTitle = true;
 			}
 		} else {

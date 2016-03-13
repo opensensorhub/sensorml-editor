@@ -31,7 +31,7 @@ public class SMLSensorSpatialFrame extends SensorGenericVerticalContainerWidget{
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
 		if(widget.getType() == TAG_TYPE.ATTRIBUTE && widget.getName().equals("id")) {
-			id = widget.getValue("id");
+			id = widget.getValue("id", true);
 			labelPanel.add(new HTML("&nbsp;("+id+")"));
 		} else if(widget.getDef() == TAG_DEF.SWE) {
 			if(widget.getName().equals("label")) {

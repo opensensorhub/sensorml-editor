@@ -290,10 +290,10 @@ public class SWESensorDataArrayWidget extends AbstractSensorElementWidget {
 		String concatenedAxisNames = "";
 		for(ISensorWidget field : fields) {
 			//prior label
-			String label = field.getValue("label");
+			String label = field.getValue("label", true);
 			if(label == null) {
 				//if no label, takes the attribute name
-				label = toNiceLabel(field.getValue("name"));
+				label = toNiceLabel(field.getValue("name", true));
 			}
 			concatenedAxisNames +=  label + VS;
 		}

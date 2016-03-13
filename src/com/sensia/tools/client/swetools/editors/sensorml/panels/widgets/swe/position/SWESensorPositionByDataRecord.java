@@ -9,6 +9,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.APPENDER;
 
 /**
  * Position : Location (EPSG/0/4326 http://www.opengis.net/def/crs/EPSG/0/4326): 47.8 88.56 [mapIcon] 
@@ -27,6 +28,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorW
 public class SWESensorPositionByDataRecord extends AbstractSensorElementWidget{
 
 	protected Panel container;
+	protected HTML locationHtmlLabel;
 	
 	public SWESensorPositionByDataRecord() {
 		super("position",TAG_DEF.SWE,TAG_TYPE.ELEMENT);
@@ -38,40 +40,22 @@ public class SWESensorPositionByDataRecord extends AbstractSensorElementWidget{
 		return container;
 	}
 
-	private Panel buildSection(ISensorWidget field) {
-		//the result panel which contains title + inner content
-		Panel vLocationResultPanel = new VerticalPanel();
-		
-		//build title
-		//Build: Position : Location (EPSG/0/4326 http://www.opengis.net/def/crs/EPSG/0/4326): 47.8 88.56 [mapIcon] 
-		//String locationLabel = toNiceLabel(field.getValue("name"));
-		String locationLabel = toNiceLabel(field.getValue("name"));
-		String referenceFrame = field.getValue("referenceFrame");
-		if(referenceFrame != null) {
-			locationLabel+= " ("+referenceFrame+")";
-		}
-		locationLabel += ":";
-		
-		HTML locationHtmlLabel = new HTML(locationLabel);
-		
+	protected Panel buildCoordinatesPanel(ISensorWidget widget) {
 		//build inner content
-		List<ISensorWidget> coordinates = findWidgets(field, "coordinate", TAG_DEF.SWE, TAG_TYPE.ELEMENT);
+		List<ISensorWidget> coordinates = findWidgets(widget, "coordinate", TAG_DEF.SWE, TAG_TYPE.ELEMENT);
 		
 		Panel vInnerPanel = new VerticalPanel();
 		for(ISensorWidget coordinate : coordinates) {
-			String value = coordinate.getValue("value");
+			String value = coordinate.getValue("value", true);
 			locationHtmlLabel.setHTML(locationHtmlLabel.getHTML()+SensorConstants.HTML_SPACE+SensorConstants.HTML_SPACE+value+SensorConstants.HTML_SPACE);
 			vInnerPanel.add(coordinate.getPanel());
 		}
 		
 		//add styles
 		vInnerPanel.addStyleName("swe-dataRecord-vertical-panel");
-		locationHtmlLabel.addStyleName("font-bold");
 		
 		//add to result panel
-		vLocationResultPanel.add(locationHtmlLabel);
-		vLocationResultPanel.add(vInnerPanel);
-		return vLocationResultPanel;
+		return vInnerPanel;
 	}
 
 	@Override
@@ -86,15 +70,67 @@ public class SWESensorPositionByDataRecord extends AbstractSensorElementWidget{
 		Panel vPanel = new VerticalPanel();
 		List<ISensorWidget> fields = AbstractSensorElementWidget.findWidgets(widget, "field", TAG_DEF.SWE, TAG_TYPE.ELEMENT);
 		if(fields != null) {
-			for(ISensorWidget field : fields) {
-				vPanel.add(buildSection(field));
+			//the result panel which contains title + inner content
+			for(final ISensorWidget field : fields) {
+				vPanel.add(buildLabel(field,true));
+				vPanel.add(buildCoordinatesPanel(field));
 			}
 		}
 		container.add(vPanel);
 	}
 
+	protected Panel buildLabel(final ISensorWidget widget,boolean recursiveName) {
+		//build title
+		//Build: Position : Location (EPSG/0/4326 http://www.opengis.net/def/crs/EPSG/0/4326): 47.8 88.56 [mapIcon] 
+		//String locationLabel = toNiceLabel(field.getValue("name"));
+		
+		String locationLabel = "Location";
+		String referenceFrame = "";
+		
+		//name of field
+		String name = widget.getValue("name", recursiveName);
+		
+		//referenceFrame from Vector
+		String refFrame = widget.getValue("referenceFrame", true);
+		
+		if(name != null && !name.trim().isEmpty()) {
+			locationLabel = toNiceLabel(name);
+		}
+		
+		if(refFrame != null) {
+			referenceFrame = refFrame;
+		}
+		
+		if(referenceFrame != null && !referenceFrame.isEmpty()) {
+			locationLabel+= " ("+referenceFrame+")";
+		}
+		locationLabel += ":";
+		
+		locationHtmlLabel = new HTML(locationLabel);
+		
+		//concatenate label and definition if it exists
+		Panel hPanel = new HorizontalPanel();
+		hPanel.add(locationHtmlLabel);
+		
+		for(ISensorWidget child : widget.getElements()) {
+			if(child.getName().equals("definition")) {
+				hPanel.add(child.getPanel());
+				break;
+			}
+		}
+		
+		//add styles
+		locationHtmlLabel.addStyleName("font-bold");
+		
+		return hPanel;
+	}
+	
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
 		return new SWESensorPositionByDataRecord();
+	}
+	
+	public APPENDER appendTo() {
+		return APPENDER.OVERRIDE_LINE;
 	}
 }

@@ -64,11 +64,11 @@ public class SensorSectionsWidget extends AbstractSensorElementWidget{
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
 		if(widget.getName().equals("name")){
-			namePanel.setHTML("<h2>"+widget.getValue("name")+"</h2>");
+			namePanel.setHTML("<h2>"+widget.getValue("name", true)+"</h2>");
 		} else if(widget.getName().equals("description")) {
 			descriptionPanel.add(widget.getPanel());
 		} else if (widget.getName().equals("identifier")) {
-			HTML identifier = new HTML("UniqueID: "+widget.getValue("identifier"));
+			HTML identifier = new HTML("UniqueID: "+widget.getValue("identifier", true));
 			identifierPanel.add(identifier);
 		} else if (widget.getName().equals("KeywordList")) {
 			keywordPanel.add(widget.getPanel());

@@ -62,7 +62,12 @@ public interface ISensorWidget {
 	
 	List<String> getValues(String parentName);
 	
+	/**
+	 * @deprecated Use {@link #getValue(String,boolean)} instead
+	 */
 	String getValue(String parentName);
+
+	String getValue(String parentName, boolean recursive);
 	
 	void setValues(String elementName,List<String> values);
 	

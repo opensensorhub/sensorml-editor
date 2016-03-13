@@ -82,7 +82,7 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 			final TextBox valueBox = new TextBox();
 			//subtract from icon size (16px) and icon style (margin-left:15px)
 			valueBox.setWidth("469px");
-			valueBox.setText(this.getValue(getName()));
+			valueBox.setText(this.getValue(getName(), true));
 			
 			hPanel.add(valueBox);
 			

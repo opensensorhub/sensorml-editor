@@ -54,24 +54,24 @@ public class SMLDocumentWidget extends AbstractSensorElementWidget{
 	protected void addSensorWidget(ISensorWidget widget) {
 		//extraPanel.add(widget.getPanel());
 		if(widget.getName().equals("URL")) {
-			linkage.setHref(widget.getValue("URL"));
+			linkage.setHref(widget.getValue("URL", true));
 		} else if(widget.getName().equals("description")) {
 			//try CharacterString
-			String value = widget.getValue("CharacterString");
+			String value = widget.getValue("CharacterString", true);
 			if(value == null || value.isEmpty()){
-				value = widget.getValue("description");
+				value = widget.getValue("description", true);
 			}
 			descriptionPanel.add(new HTML(value));
 		} else if(widget.getName().equals("name")) {
-			String value = widget.getValue("CharacterString");
+			String value = widget.getValue("CharacterString", true);
 			if(value == null || value.isEmpty()){
-				value = widget.getValue("name");
+				value = widget.getValue("name", true);
 			}
 			linkage.setText(value);
 			
 		}  else if(widget.getName().equals("onlineResource")) {
 			//get href
-			String href = widget.getValue("href");
+			String href = widget.getValue("href", true);
 			if(href != null) {
 				linkage.setHref(href);
 			}

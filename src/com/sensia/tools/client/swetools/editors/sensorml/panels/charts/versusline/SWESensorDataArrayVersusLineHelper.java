@@ -13,14 +13,14 @@ public class SWESensorDataArrayVersusLineHelper {
 	public static ISensorChart create1LineVersusChart(AbstractSensorElementWidget root,ISensorWidget data1,
 			ISensorWidget data2) {
 		
-		String values = root.getValue("values");
+		String values = root.getValue("values", true);
 		if(values != null) {
 			values = values.replaceAll("\n", "").replaceAll("\\s+", " ").trim();
 		}
 		
-		String tokenSeparator = root.getValue("tokenSeparator");
-		String blockSeparator = root.getValue("blockSeparator");
-		String decimalSeparator = root.getValue("decimalSeparator");
+		String tokenSeparator = root.getValue("tokenSeparator", true);
+		String blockSeparator = root.getValue("blockSeparator", true);
+		String decimalSeparator = root.getValue("decimalSeparator", true);
 		
 		//handle data 1
 		ISensorWidget quantity = AbstractSensorElementWidget.findWidget(data1, "Quantity", TAG_DEF.SWE, TAG_TYPE.ELEMENT);
@@ -30,7 +30,7 @@ public class SWESensorDataArrayVersusLineHelper {
 		
 		//if label does not exist, takes name instead
 		if(label1 == null) {
-			label1 = AbstractSensorElementWidget.toNiceLabel(data1.getValue("name"));
+			label1 = AbstractSensorElementWidget.toNiceLabel(data1.getValue("name", true));
 		}
 		
 		//handle data 2
@@ -42,7 +42,7 @@ public class SWESensorDataArrayVersusLineHelper {
 		
 		//if label does not exist, takes name instead
 		if(label2 == null) {
-			label2 = AbstractSensorElementWidget.toNiceLabel(data2.getValue("name"));
+			label2 = AbstractSensorElementWidget.toNiceLabel(data2.getValue("name", true));
 		}
 				
 		String[] blocks = values.split(blockSeparator);
@@ -90,9 +90,9 @@ public class SWESensorDataArrayVersusLineHelper {
 		String label = "No supported label";
 		
 		if(quantity != null) {
-			label = quantity.getValue("label");
+			label = quantity.getValue("label", true);
 			if(label == null) {
-				label = quantity.getValue("name");
+				label = quantity.getValue("name", true);
 			}
 		}
 		
@@ -105,7 +105,7 @@ public class SWESensorDataArrayVersusLineHelper {
 		if(quantity != null) {
 			ISensorWidget uom = AbstractSensorElementWidget.findWidget(quantity, "uom", TAG_DEF.SWE, TAG_TYPE.ELEMENT);
 			if(uom != null) {
-				String uomValue = uom.getValue("code");
+				String uomValue = uom.getValue("code", true);
 				if(uomValue != null) {
 					uomStr = uomValue;
 				}
