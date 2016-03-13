@@ -72,8 +72,7 @@ xsi:schemaLocation="http://www.opengis.net/sensorml/2.0 http://schemas.opengis.n
             </swe:DataRecord>          
          </swe:elementType>
          <swe:encoding>
-            <swe:TextEncoding blockSeparator="
-" tokenSeparator=","/>
+            <swe:TextEncoding tokenSeparator="," blockSeparator="&#x20;"/>
          </swe:encoding>
          <swe:values>
             2011-03-01T04:20:00Z,25.72,-61.75
