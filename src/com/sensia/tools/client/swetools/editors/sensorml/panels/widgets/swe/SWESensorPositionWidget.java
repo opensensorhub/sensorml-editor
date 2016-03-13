@@ -5,9 +5,9 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.SWESensorPositionByDataRecordWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.SWESensorPositionByDescriptionWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.SWESensorPositionByPointWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.SWESensorPositionByVectorWidget;
 
 public class SWESensorPositionWidget extends AbstractSensorElementWidget{
@@ -46,6 +46,8 @@ public class SWESensorPositionWidget extends AbstractSensorElementWidget{
 			sensorPositionPanel = new SWESensorPositionByVectorWidget();
 		} else if(widget.getName().equals("Text")) {
 			sensorPositionPanel = new SWESensorPositionByDescriptionWidget();
+		} else if(widget.getName().equals("Point")) {
+			sensorPositionPanel = new SWESensorPositionByPointWidget();
 		}
 		
 		if(sensorPositionPanel != null) {
