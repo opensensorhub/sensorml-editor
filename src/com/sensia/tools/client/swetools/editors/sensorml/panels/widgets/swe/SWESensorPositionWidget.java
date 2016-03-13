@@ -62,6 +62,13 @@ public class SWESensorPositionWidget extends AbstractSensorElementWidget{
 	}
 
 	@Override
+	public void refresh () {
+		if(sensorPositionPanel != null) {
+			sensorPositionPanel.refresh();
+		}
+	}
+	
+	@Override
 	protected AbstractSensorElementWidget newInstance() {
 		return new SWESensorPositionWidget();
 	}

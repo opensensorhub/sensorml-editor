@@ -436,7 +436,8 @@ public abstract class AbstractSensorElementWidget implements ISensorWidget{
 							new IButtonCallback() {
 								@Override
 								public void onClick() {
-									refresh();
+									refreshChildren(getElements());
+									refreshParents(getParent());
 									if (callback != null) {
 										callback.onClick();
 									}
@@ -450,20 +451,20 @@ public abstract class AbstractSensorElementWidget implements ISensorWidget{
 	}
 	
 	public void refresh() {
-		//parentRefresh();
-		childRefresh();
+		
 	}
-
 	
-	protected void childRefresh() {
-		for(ISensorWidget child : getElements()) {
+	public void refreshChildren(List<ISensorWidget> children) {
+		for(ISensorWidget child : children) {
+			refreshChildren(child.getElements());
 			child.refresh();
 		}
 	}
-	
-	protected void parentRefresh() {
-		if(getParent() != null) {
-			getParent().refresh();
+
+	public void refreshParents(ISensorWidget parent) {
+		if(parent != null) {
+			parent.refresh();
+			refreshParents(parent.getParent());
 		}
 	}
 	

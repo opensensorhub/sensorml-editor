@@ -2,6 +2,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.pos
 
 import java.util.List;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
@@ -123,6 +124,14 @@ public class SWESensorPositionByDataRecord extends AbstractSensorElementWidget{
 		locationHtmlLabel.addStyleName("font-bold");
 		
 		return hPanel;
+	}
+	
+	@Override
+	public void refresh() {
+		container.clear();
+		for(ISensorWidget child : getElements()) {
+			addSensorWidget(child);
+		}
 	}
 	
 	@Override

@@ -258,6 +258,7 @@ public class SWESensorDataArrayWidget extends AbstractSensorElementWidget {
 		}
 	}
 
+	@Override
 	public void refresh() {
 		super.refresh();
 		for(final ISensorWidget child : getElements()) {
