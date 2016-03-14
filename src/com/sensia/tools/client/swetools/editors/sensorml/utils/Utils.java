@@ -163,7 +163,9 @@ public class Utils {
 	private static final String OHM = "\u2126";
 	
 	public static String getUOMSymbol(String uom) {
-		if(uom.equals("cel")) {
+		if(uom.equals("deg")) {
+			return DEGREE;
+		} else if(uom.equals("cel")) {
 			return DEGREE+"C";
 		} else if(uom.equals("kohm")) {
 			return "k"+OHM;

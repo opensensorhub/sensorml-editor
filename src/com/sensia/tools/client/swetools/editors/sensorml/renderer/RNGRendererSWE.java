@@ -20,7 +20,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWES
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorCondtionWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorPositionWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorCurveWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorDataArrayWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.dataarray.SWESensorDataArrayWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorDataRecordWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorQuantityRangeWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorQuantityWidget;

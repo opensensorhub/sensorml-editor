@@ -198,7 +198,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorW
 }*/
 /**
  * The DataArray is represented as a part of a line such as : 
- * @author nevro
+ * @author mathieu dhainaut
  *
  */
 public class SWESensorDataArrayWidget extends AbstractSensorElementWidget {

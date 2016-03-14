@@ -39,14 +39,4 @@ public class BoyerMoore {
         }
         return -1;
     }
-    
-    public static void main(String[] args) {
-		String text = "Lorem ipsum dolor sit amet";
-		String pattern = "ipsum";
-		BoyerMoore bm = new BoyerMoore(pattern);
-		
-		int first_occur_position = bm.search(text.getBytes(),0);
-		System.out.println("The text '" + pattern + "' is first found after the " 
-                                    + first_occur_position + " position.");
-	}
 }

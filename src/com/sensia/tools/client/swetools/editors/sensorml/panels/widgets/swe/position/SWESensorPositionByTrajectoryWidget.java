@@ -6,17 +6,29 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorDataArrayWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.dataarray.SWESensorDataArrayWidget;
 
 public class SWESensorPositionByTrajectoryWidget extends AbstractSensorElementWidget{
 
 	private Panel container;
+	private SWESensorDataArrayWidget dataArrayWidget;
+	private Panel editPanel;
+	private Panel dataArrayPanel;
 	
 	public SWESensorPositionByTrajectoryWidget() {
 		super("position",TAG_DEF.SWE,TAG_TYPE.ELEMENT);
 		
 		container= new HorizontalPanel();
 		container.add(new Label("Trajectory: "));
+		
+		dataArrayPanel = new SimplePanel();
+		
+		container.add(dataArrayPanel);
+		
+		editPanel = getEditPanel(null);
+		container.add(editPanel);
+		
+		activeMode(getMode());
 	}
 
 	@Override
@@ -26,15 +38,21 @@ public class SWESensorPositionByTrajectoryWidget extends AbstractSensorElementWi
 
 	@Override
 	protected void activeMode(MODE mode) {
-		// TODO Auto-generated method stub
-		
+		if(dataArrayWidget!= null) {
+			dataArrayWidget.switchMode(mode);
+		}
 	}
 
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
-		ISensorWidget dataArrayWidget = new SWESensorDataArrayWidget();
-		dataArrayWidget.addElement(widget);
-		container.add(dataArrayWidget.getPanel());
+		dataArrayWidget = new SWESensorDataArrayWidget();
+		dataArrayWidget.setDisplayGraph(false);
+		dataArrayWidget.setDisplayTitle(false);
+		
+		for(ISensorWidget child : widget.getElements()) {
+			dataArrayWidget.addElement(child);
+		}
+		dataArrayPanel.add(dataArrayWidget.getPanel());
 	}
 
 	@Override
