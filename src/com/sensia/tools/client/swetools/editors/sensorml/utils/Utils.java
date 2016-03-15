@@ -14,6 +14,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
@@ -123,7 +124,11 @@ public class Utils {
 		main.add(panel);
 		main.add(buttons);
 		
-		dialogBox.add(main);
+		ScrollPanel sPanel = new ScrollPanel();
+		sPanel.setStyleName("edit-table-panel");
+		sPanel.add(main);
+		
+		dialogBox.add(sPanel);
 		dialogBox.center();
          
 		return dialogBox;

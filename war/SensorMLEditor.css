@@ -391,7 +391,12 @@ table.swe-dataRecord-nolabel-vertical-panel {
 }
 
 .ontology-table-panel {
-	height:450px;	
+	height:475px;	
+	width: 800px;
+}
+
+.edit-table-panel {
+	height:550px;	
 	width: 800px;
 }
 
