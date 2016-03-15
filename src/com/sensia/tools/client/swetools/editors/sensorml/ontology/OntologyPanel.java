@@ -16,15 +16,17 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
+import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.ILoadOntologyCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.IOntologyPropertyReader;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.RdfPropertyReader;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.SensorMLPropertyOntology;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.dataarray.GenericTable;
 
 public class OntologyPanel {
 	
 	public VerticalPanel ontologyPanel;
 	private static Map<String,String> sources = new HashMap<String,String>();
-	private IOntologyPropertyReader rdfPropertyReader;
+	private GenericTable ontologyTable;
 	
 	static {
 		sources.put("SensorML Property",SensorConstants.ONTOLOGY_SENSORML_SWE_PROPERTY_URL);
@@ -41,29 +43,35 @@ public class OntologyPanel {
 		}
 		sourcesBox.setStyleName("ontology-sourcesBox");
 		
-		final TextBox searchBox = new TextBox();
-		
 		//default use SensorML ontology
 		//rdfPropertyReader = new RdfPropertyReader();
 		//Panel resultTablePanel = rdfPropertyReader.createTable();
 		
-		rdfPropertyReader = new SensorMLPropertyOntology();
-		Panel resultTablePanel = rdfPropertyReader.createTable();
+		ontologyTable = new GenericTable();
+		ontologyTable.setEditable(false);
+		
+		Panel panelTable = ontologyTable.createTable();
+		
+		IOntologyPropertyReader rdfPropertyReader = new SensorMLPropertyOntology();
 		
 		final HorizontalPanel hPanel = new HorizontalPanel();
 		hPanel.add(new HTML("Source :"+SensorConstants.HTML_SPACE+SensorConstants.HTML_SPACE));
 		hPanel.add(sourcesBox);
-		hPanel.add(new HTML("Search :"+SensorConstants.HTML_SPACE+SensorConstants.HTML_SPACE));
-		hPanel.add(searchBox);
 		
 		final VerticalPanel vPanel = new VerticalPanel();
 		vPanel.add(hPanel);
-		vPanel.add(resultTablePanel);
+		vPanel.add(panelTable);
 		
 		ontologyPanel.add(vPanel);
 		
 		//load ontology 
-		rdfPropertyReader.loadOntology(sources.get(sourcesBox.getSelectedValue()));
+		rdfPropertyReader.loadOntology(sources.get(sourcesBox.getSelectedValue()),new ILoadOntologyCallback() {
+			
+			@Override
+			public void onLoad(List<String> headers, Object[][] data) {
+				ontologyTable.poupulateTable(headers, data);
+			}
+		});
 		
 		sourcesBox.addChangeHandler(new ChangeHandler() {
 			
@@ -72,7 +80,7 @@ public class OntologyPanel {
 				//rdfPropertyReader.loadOntology(sources.get(sourcesBox.getSelectedValue()));
 				String source = sourcesBox.getSelectedValue();
 				
-				Panel resultTablePanel =null;
+				IOntologyPropertyReader rdfPropertyReader;
 				
 				if(source.equals("SensorML Property")) {
 					rdfPropertyReader = new SensorMLPropertyOntology();
@@ -80,35 +88,34 @@ public class OntologyPanel {
 					rdfPropertyReader = new RdfPropertyReader();
 				}
 				
-				resultTablePanel = rdfPropertyReader.createTable();
+				ontologyTable = new GenericTable();
+				ontologyTable.setEditable(false);
+				
+				Panel panelTable = ontologyTable.createTable();
 				
 				vPanel.clear();
 				vPanel.add(hPanel);
-				vPanel.add(resultTablePanel);
+				vPanel.add(panelTable);
 				
-				rdfPropertyReader.loadOntology(sources.get(sourcesBox.getSelectedValue()));
+				rdfPropertyReader.loadOntology(sources.get(sourcesBox.getSelectedValue()),new ILoadOntologyCallback() {
+					
+					@Override
+					public void onLoad(List<String> headers, Object[][] data) {
+						ontologyTable.poupulateTable(headers, data);
+					}
+				});
 				
-			}
-		});
-		
-		//add key listener on searchBox
-		searchBox.addKeyUpHandler(new KeyUpHandler() {
-			
-			@Override
-			public void onKeyUp(KeyUpEvent event) {
-				rdfPropertyReader.setFilter(searchBox.getText());
 			}
 		});
 	}
 	
 	public String getSelectedValue() {
-		return rdfPropertyReader.getSelectedValue();
+		return ontologyTable.getSelectedValue();
 	}
 	
 	public Panel getPanel() {
 		return ontologyPanel;
 	}
-	
 	
 	//ALGO PART
 }

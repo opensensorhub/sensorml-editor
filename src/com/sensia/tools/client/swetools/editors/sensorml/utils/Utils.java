@@ -17,7 +17,7 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
-import com.sensia.tools.client.swetools.editors.sensorml.listeners.ILoadFiledCallback;
+import com.sensia.tools.client.swetools.editors.sensorml.listeners.ILoadFileCallback;
 
 public class Utils {
 
@@ -174,7 +174,7 @@ public class Utils {
 		}
 	}
 	
-	public static void getFile(String url, final ILoadFiledCallback callback) {
+	public static void getFile(String url, final ILoadFileCallback callback) {
 		RequestBuilder requestBuilder = new RequestBuilder( RequestBuilder.GET, url );
 	    try {
 	        requestBuilder.sendRequest( null, new RequestCallback(){

@@ -20,10 +20,10 @@ public class SensorValueWidget extends AbstractSensorElementWidget{
 		
 		this.rngValue = rngValue;
 		container = new HorizontalPanel();
-		container.add(new HTML(value.trim()));
+		container.add(new HTML(value));
 		
 		valueBox = new TextBox();
-		valueBox.setText(value.replaceAll("\\s+", " ").trim());
+		valueBox.setText(value.replaceAll("\\s+", " "));
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class SensorValueWidget extends AbstractSensorElementWidget{
 	@Override
 	public void getAdvancedPanel(Panel container) {
 		HorizontalPanel hPanel = new HorizontalPanel();
-		HTML hlabel = new HTML(getParent().getName().trim());
+		HTML hlabel = new HTML(getParent().getName());
 		hlabel.setWidth("100px");
 		hPanel.add(hlabel);
 		
@@ -72,16 +72,16 @@ public class SensorValueWidget extends AbstractSensorElementWidget{
 	public void refresh() {
 		String value = valueBox.getText();
 		container.clear();
-		container.add(new HTML(value.trim()));
-		setName(value.trim());
-		this.rngValue.setText(value.trim());
+		container.add(new HTML(value));
+		setName(value);
+		this.rngValue.setText(value);
 	}
 	
 	private void setValue(String value) {
 		container.clear();
-		container.add(new HTML(value.trim()));
-		setName(value.trim());
-		valueBox.setText(value.replaceAll("\\s+", " ").trim());
-		this.rngValue.setText(value.trim());
+		container.add(new HTML(value));
+		setName(value);
+		valueBox.setText(value.replaceAll("\\s+", " "));
+		this.rngValue.setText(value);
 	}
 }

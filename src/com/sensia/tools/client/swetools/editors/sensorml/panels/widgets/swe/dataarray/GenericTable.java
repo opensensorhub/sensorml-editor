@@ -300,7 +300,11 @@ public class GenericTable extends Composite{
 		for(int i=0;i < values.length;i++){
 			final Property property = new Property(values[0].length);
 			for(int j=0;j < values[i].length;j++) {
-				property.properties.set(j,values[i][j].toString());
+				if(values[i][j] != null) {
+					property.properties.set(j,values[i][j].toString());
+				} else {
+					property.properties.set(j,"");
+				}
 			}
 			properties.add(property);
 		}

@@ -22,230 +22,60 @@ import com.google.gwt.xml.client.Node;
 import com.google.gwt.xml.client.NodeList;
 import com.google.gwt.xml.client.XMLParser;
 import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
-import com.sensia.tools.client.swetools.editors.sensorml.listeners.ILoadFiledCallback;
+import com.sensia.tools.client.swetools.editors.sensorml.listeners.ILoadFileCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.TableRes;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.BoyerMoore;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class SensorMLPropertyOntology implements IOntologyPropertyReader{
 
-	private ListDataProvider<Property> dataProvider;
 	private List<Property> originalData;
-	private List<Property> filteredData;
-	private int lentghPattern = 0;
-	
-	private CellTable.Resources tableRes = GWT.create(TableRes.class);
-	
-	@UiField(provided=true)
-	private CellTable<Property> table;
-	
-	private Property selectedProperty;
 	
 	public SensorMLPropertyOntology() {
 		originalData = new ArrayList<Property>();
-		dataProvider = new ListDataProvider<Property>();
-		filteredData = new ArrayList<Property>();
 	}
 	
-	public void loadOntology(String url) {
-		ILoadFiledCallback cb = new ILoadFiledCallback() {
+	public void loadOntology(String url,final ILoadOntologyCallback callback) {
+		originalData.clear();
+		
+		ILoadFileCallback cb = new ILoadFileCallback() {
 			@Override
 			public void onLoad(String content) {
 				Document ontologyRoot = XMLParser.parse(content);
 				parseOntology(ontologyRoot.getDocumentElement());
-				dataProvider.setList(originalData);
+				
+				callback.onLoad(getHeaders(), getValuesFromData());
 			}
 		};
 		
 		Utils.getFile(url, cb);
 	}
 	
-	public void setFilter(final String pattern) {
-		if(pattern.isEmpty()) {
-			if(lentghPattern > 0) {
-				//restore original
-				dataProvider.setList(originalData);
-			} 
-			lentghPattern = 0;
-			//otherwise no filter is needed
-		} else {
-			//use boyer Moore String matching algorithm to match corresponding pattern
-			BoyerMoore bm = new BoyerMoore(pattern);
-			List<Property> newFilteredList = null;
-			if(filteredData.isEmpty()) {
-				newFilteredList = filterPattern(bm, originalData);
-			} else {
-				//get filter direction
-				if(pattern.length() > lentghPattern) {
-					lentghPattern = pattern.length();
-					//up
-					newFilteredList = filterPattern(bm, filteredData);
-				} else {
-					//down
-					lentghPattern = pattern.length();
-					newFilteredList = filterPattern(bm, originalData);
-				}
-			}
-			filteredData = newFilteredList;
-			dataProvider.setList(filteredData);
-		}
+	private List<String> getHeaders() {
+		List<String> headers = new ArrayList<String>();
+		headers.add("Title");
+		headers.add("Definition URL");
+		headers.add("Definition");
+		headers.add("Creator");
+		headers.add("PreLabel");
+		return headers;
 	}
 	
-	private List<Property>  filterPattern(final BoyerMoore bm, final List<Property> inputList) {
-		List<Property> newFilteredList = new ArrayList<SensorMLPropertyOntology.Property>();
-		for(final Property property : inputList) {
-			//check defUrl
-			
-			if((bm.search(property.getDefUrl().getBytes(), 0) > 1) || 
-			   (bm.search(property.getDef().getBytes(), 0) > 1) ||
-			   (bm.search(property.getCreator().getBytes(), 0) > 1) ||
-			   	(bm.search(property.getPreLabel().getBytes(), 0) > 1) ||
-			   (bm.search(property.getTitle().getBytes(), 0) > 1)) {
-					
-				newFilteredList.add(property);
-			} 
+	private Object[][] getValuesFromData() {
+		int colNumber = (!originalData.isEmpty())? 5 : 0;
+		
+		Object [][] values = new Object[originalData.size()] [colNumber];
+		
+		int i=0;
+		for(Property p : originalData) {
+			values[i][0] = p.getTitle();
+			values[i][1] = p.getDefUrl();
+			values[i][2] = p.getDef();
+			values[i][3] = p.getCreator();
+			values[i][4] = p.getPreLabel();
+			i++;
 		}
-		return newFilteredList;
-	}
-	
-	public String getSelectedValue() {
-		String value = null;
-		if(selectedProperty != null) {
-			value = selectedProperty.getDefUrl();
-		}
-		return value;
-	}
-	
-	public Panel createTable() {
-		if(table == null) {
-			table  = new CellTable<Property>(10,tableRes);
-			table.setStyleName("ontology-table-result");
-			
-			//define URL column
-			final Column<Property, String> urlColumn = new Column<Property, String>(new TextCell()) {
-	
-				@Override
-				public String getValue(Property object) {
-					return object.getDefUrl();
-				}
-			};
-			urlColumn.setSortable(false);
-			
-			SafeHtmlHeader urlLabelHeader = new SafeHtmlHeader(new SafeHtml() {
-	
-				@Override
-				public String asString() {
-					  return "<p style=\"text-align:center;\">URL</p>"; 
-				} 
-	
-		    });
-			
-			//define definition column
-			final Column<Property, String> defColumn = new Column<Property, String>(new TextCell()) {
-	
-				@Override
-				public String getValue(Property object) {
-					return object.getDef();
-				}
-			};
-			defColumn.setSortable(false);
-			
-			SafeHtmlHeader defLabelHeader = new SafeHtmlHeader(new SafeHtml() {
-	
-				@Override
-				public String asString() {
-					  return "<p style=\"text-align:center;\">Definition</p>"; 
-				} 
-	
-		    });
-			
-			//define preLabel column
-			final Column<Property, String> preLabelColumn = new Column<Property, String>(new TextCell()) {
-	
-				@Override
-				public String getValue(Property object) {
-					return object.getPreLabel();
-				}
-			};
-			preLabelColumn.setSortable(false);
-			
-			SafeHtmlHeader preLabelLabelHeader = new SafeHtmlHeader(new SafeHtml() {
-	
-				@Override
-				public String asString() {
-					  return "<p style=\"text-align:center;\">Pre Label</p>"; 
-				} 
-	
-		    });
-				
-			//define creator column
-			final Column<Property, String> creatorColumn = new Column<Property, String>(new TextCell()) {
-	
-				@Override
-				public String getValue(Property object) {
-					return object.getCreator();
-				}
-			};
-			creatorColumn.setSortable(false);
-			
-			SafeHtmlHeader creatorLabelHeader = new SafeHtmlHeader(new SafeHtml() {
-	
-				@Override
-				public String asString() {
-					  return "<p style=\"text-align:center;\">Creator</p>"; 
-				} 
-	
-		    });
-			
-			//define creator column
-			final Column<Property, String> titleColumn = new Column<Property, String>(new TextCell()) {
-	
-				@Override
-				public String getValue(Property object) {
-					return object.getTitle();
-				}
-			};
-			titleColumn.setSortable(false);
-			
-			SafeHtmlHeader titleLabelHeader = new SafeHtmlHeader(new SafeHtml() {
-	
-				@Override
-				public String asString() {
-					  return "<p style=\"text-align:center;\">Title</p>"; 
-				} 
-	
-		    });
-			
-			//add columns to table
-			table.addColumn(urlColumn,urlLabelHeader);
-			table.addColumn(defColumn,defLabelHeader);
-			table.addColumn(preLabelColumn,preLabelLabelHeader);
-			table.addColumn(creatorColumn,creatorLabelHeader);
-			table.addColumn(titleColumn,titleLabelHeader);
-			
-			dataProvider.addDataDisplay(table);
-			
-			table.setSkipRowHoverCheck(true);
-		    table.setSkipRowHoverFloatElementCheck(true);
-			table.setSkipRowHoverStyleUpdate(true);
-			table.setVisibleRange(0, 100000);
-			
-			// Add a selection model to handle user selection.
-		    final SingleSelectionModel<Property> selectionModel = new SingleSelectionModel<Property>();
-		    table.setSelectionModel(selectionModel);
-		    selectionModel.addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
-		      public void onSelectionChange(SelectionChangeEvent event) {
-		    	  Property selected = selectionModel.getSelectedObject();
-			      if (selected != null) {
-			    	  selectedProperty = selected;
-			      }
-		      }
-		    });
-		}
-		ScrollPanel sPanel = new ScrollPanel();
-		sPanel.setStyleName("ontology-table-panel");
-		sPanel.add(table);
-		return sPanel;
+		return values;
 	}
 	
 	private void parseOntology(Element element){

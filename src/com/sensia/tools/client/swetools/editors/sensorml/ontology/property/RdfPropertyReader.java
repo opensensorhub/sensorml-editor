@@ -4,47 +4,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.TreeMap;
 
-import com.google.gwt.cell.client.TextCell;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.safehtml.shared.SafeHtml;
-import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.cellview.client.CellTable;
-import com.google.gwt.user.cellview.client.Column;
-import com.google.gwt.user.cellview.client.SafeHtmlHeader;
-import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.ScrollPanel;
-import com.google.gwt.view.client.ListDataProvider;
-import com.google.gwt.view.client.SelectionChangeEvent;
-import com.google.gwt.view.client.SingleSelectionModel;
 import com.google.gwt.xml.client.Document;
 import com.google.gwt.xml.client.Element;
 import com.google.gwt.xml.client.NamedNodeMap;
 import com.google.gwt.xml.client.Node;
 import com.google.gwt.xml.client.NodeList;
 import com.google.gwt.xml.client.XMLParser;
-import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
-import com.sensia.tools.client.swetools.editors.sensorml.listeners.ILoadFiledCallback;
-import com.sensia.tools.client.swetools.editors.sensorml.ontology.TableRes;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.BoyerMoore;
+import com.sensia.tools.client.swetools.editors.sensorml.listeners.ILoadFileCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class RdfPropertyReader implements IOntologyPropertyReader{
 
-	private ListDataProvider<Property> dataProvider;
-	private List<Property> originalData;
-	private List<Property> filteredData;
-	private int lentghPattern = 0;
-	
-	private CellTable.Resources tableRes = GWT.create(TableRes.class);
-	
-	@UiField(provided=true)
-	private CellTable<Property> table;
-	
-	private Property selectedProperty;
-	
 	private Map<String,Integer> classColDefMap;
+	private List<Property> originalData;
 	
 	public RdfPropertyReader() {
 		init();
@@ -52,162 +26,51 @@ public class RdfPropertyReader implements IOntologyPropertyReader{
 	
 	private void init() {
 		//init global values
+		classColDefMap = new TreeMap<String,Integer>();
 		originalData = new ArrayList<Property>();
-		dataProvider = new ListDataProvider<Property>();
-		filteredData = new ArrayList<Property>();
-		classColDefMap = new HashMap<String,Integer>();
 	}
 	
-	public void loadOntology(String url) {
-		if(table != null) {
-			init();
-		}
+	public void loadOntology(String url,final ILoadOntologyCallback callback) {
+		classColDefMap.clear();
+		originalData.clear();
 		
-		ILoadFiledCallback cb = new ILoadFiledCallback() {
+		classColDefMap.put("Definition ref", 0);
+		ILoadFileCallback cb = new ILoadFileCallback() {
 			@Override
 			public void onLoad(String content) {
 				Document ontologyRoot = XMLParser.parse(content);
 				parseOntology(ontologyRoot.getDocumentElement());
-				//update table
-				updateTable();
+				
+				
+				callback.onLoad(getHeadersFromClassDef(), getValuesFromData());
 			}
 		};
 		
 		Utils.getFile(url, cb);
 	}
 	
-	public void setFilter(final String pattern) {
-		if(pattern.isEmpty()) {
-			if(lentghPattern > 0) {
-				//restore original
-				dataProvider.setList(originalData);
-			} 
-			lentghPattern = 0;
-			//otherwise no filter is needed
-		} else {
-			//use boyer Moore String matching algorithm to match corresponding pattern
-			BoyerMoore bm = new BoyerMoore(pattern);
-			List<Property> newFilteredList = null;
-			if(filteredData.isEmpty()) {
-				newFilteredList = filterPattern(bm, originalData);
-			} else {
-				//get filter direction
-				if(pattern.length() > lentghPattern) {
-					lentghPattern = pattern.length();
-					//up
-					newFilteredList = filterPattern(bm, filteredData);
-				} else {
-					//down
-					lentghPattern = pattern.length();
-					newFilteredList = filterPattern(bm, originalData);
-				}
+	private List<String> getHeadersFromClassDef() {
+		return new ArrayList<String>(classColDefMap.keySet());
+	}
+	
+	private Object[][] getValuesFromData() {
+		int colNumber = (!originalData.isEmpty())? originalData.get(0).properties.size() : 0;
+		
+		Object [][] values = new Object[originalData.size()] [colNumber];
+		
+		int i=0;
+		for(Property p : originalData) {
+			for(int j =0;j < p.properties.size();j++) {
+				values[i][j] = p.properties.get(j);
 			}
-			filteredData = newFilteredList;
-			dataProvider.setList(filteredData);
+			i++;
 		}
-	}
-	
-	private List<Property>  filterPattern(final BoyerMoore bm, final List<Property> inputList) {
-		List<Property> newFilteredList = new ArrayList<Property>();
-		for(final Property property : inputList) {
-			//check defUrl
-			for(String currentProperty : property.properties) {
-				if((bm.search(currentProperty.getBytes(), 0) > 1)) {
-					newFilteredList.add(property);
-					break;
-				}
-			}
-		}
-		return newFilteredList;
-	}
-	
-	public String getSelectedValue() {
-		String value = null;
-		if(selectedProperty != null) {
-			//find def property
-			//we supposed that it exists at least one
-			value = selectedProperty.properties.get(0);
-			
-		}
-		return value;
-	}
-	
-	private void updateTable() {
-		if(table == null) {
-			createTable();
-		} else {
-			int nbColumn = table.getColumnCount();
-			for(int i=0;i< nbColumn;i++) {
-				table.removeColumn(i);
-			}
-		}
-		
-		Set<String> colNames = classColDefMap.keySet();
-		
-		for(final String colName : colNames) {
-			final Column<Property, String> column = new Column<Property, String>(new TextCell()) {
-				
-				@Override
-				public String getValue(Property object) {
-					return object.properties.get(classColDefMap.get(colName));
-				}
-			};
-			column.setSortable(false);
-
-			SafeHtmlHeader colHeader = new SafeHtmlHeader(new SafeHtml() {
-
-				@Override
-				public String asString() {
-					  return "<p style=\"text-align:center;\">"+colName+"</p>"; 
-				} 
-
-		    }); 
-			colHeader.setHeaderStyleNames("data-table-header");
-			
-			table.addColumn(column,colHeader);
-		}
-		
-		table.setRowCount(originalData.size());
-	    table.setRowData(originalData);
-	    
-	    dataProvider.setList(originalData);
-	    dataProvider.refresh();
-	}
-	
-	public Panel createTable() {
-		if(table == null) {
-			table  = new CellTable<Property>(10,tableRes);
-			table.setStyleName("ontology-table-result");
-			
-			dataProvider.addDataDisplay(table);
-			
-			table.setSkipRowHoverCheck(true);
-		    table.setSkipRowHoverFloatElementCheck(true);
-			table.setSkipRowHoverStyleUpdate(true);
-			table.setVisibleRange(0, 100000);
-			
-			// Add a selection model to handle user selection.
-		    final SingleSelectionModel<Property> selectionModel = new SingleSelectionModel<Property>();
-		    table.setSelectionModel(selectionModel);
-		    selectionModel.addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
-		      public void onSelectionChange(SelectionChangeEvent event) {
-		    	  Property selected = selectionModel.getSelectedObject();
-			      if (selected != null) {
-			    	  selectedProperty = selected;
-			      }
-		      }
-		    });
-		}
-		
-		ScrollPanel sPanel = new ScrollPanel();
-		sPanel.setStyleName("ontology-table-panel");
-		sPanel.add(table);
-		return sPanel;
+		return values;
 	}
 	
 	private void parseOntology(Element element){
 		String className = "Property";
-		classColDefMap.put("Definition ref", 0);
+		
 		NodeList children = element.getChildNodes();
 		for (int i = 0; i < children.getLength(); i++) {
 			Node node = children.item(i);
