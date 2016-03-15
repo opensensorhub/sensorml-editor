@@ -6,6 +6,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
+import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 
@@ -25,7 +26,17 @@ public class SMLDocumentWidget extends AbstractSensorElementWidget{
 		extraPanel = new HorizontalPanel();
 		descriptionPanel = new SimplePanel();
 		
-		editPanel = getEditPanel(null);
+		editPanel = getEditPanel(new IButtonCallback() {
+			
+			@Override
+			public void onClick() {
+				descriptionPanel.clear();
+				for(ISensorWidget child : getElements()) {
+					addSensorWidget(child);
+				}
+				
+			}
+		});
 		
 		container.add(linkage);
 		container.add(new HTML(SensorConstants.HTML_SPACE));
@@ -75,6 +86,8 @@ public class SMLDocumentWidget extends AbstractSensorElementWidget{
 			if(href != null) {
 				linkage.setHref(href);
 			}
+		} else {
+			extraPanel.add(widget.getPanel());
 		}
 	}
 

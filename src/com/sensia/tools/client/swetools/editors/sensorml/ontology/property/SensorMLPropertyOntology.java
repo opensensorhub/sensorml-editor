@@ -53,8 +53,8 @@ public class SensorMLPropertyOntology implements IOntologyPropertyReader{
 	
 	private List<String> getHeaders() {
 		List<String> headers = new ArrayList<String>();
-		headers.add("Title");
 		headers.add("Definition URL");
+		headers.add("Title");
 		headers.add("Definition");
 		headers.add("Creator");
 		headers.add("PreLabel");
@@ -68,8 +68,8 @@ public class SensorMLPropertyOntology implements IOntologyPropertyReader{
 		
 		int i=0;
 		for(Property p : originalData) {
-			values[i][0] = p.getTitle();
-			values[i][1] = p.getDefUrl();
+			values[i][0] = p.getDefUrl();
+			values[i][1] = p.getTitle();
 			values[i][2] = p.getDef();
 			values[i][3] = p.getCreator();
 			values[i][4] = p.getPreLabel();

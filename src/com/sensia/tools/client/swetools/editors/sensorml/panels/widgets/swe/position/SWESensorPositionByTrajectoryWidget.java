@@ -6,6 +6,7 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.dataarray.SWESensorDataArrayWidget;
 
 public class SWESensorPositionByTrajectoryWidget extends AbstractSensorElementWidget{
@@ -41,6 +42,7 @@ public class SWESensorPositionByTrajectoryWidget extends AbstractSensorElementWi
 		if(dataArrayWidget!= null) {
 			dataArrayWidget.switchMode(mode);
 		}
+		editPanel.setVisible(getMode() == MODE.EDIT);
 	}
 
 	@Override

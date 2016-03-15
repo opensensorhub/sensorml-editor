@@ -70,18 +70,21 @@ public class CenterPanel extends Composite implements IParsingObserver{
 		
 		String passedFile = com.google.gwt.user.client.Window.Location.getParameter("url");
 		
-		if(passedFile == null) {
+		
 			HorizontalPanel panel = new HorizontalPanel();
 			panel.add(viewXmlPanel);
 			panel.add(profilePanel);
 			panel.add(viewAsXML);
 			
 			verticalPanel.add(panel);
-		} else {
+		
+		if(passedFile != null) {
 			//load the file given the url passed as parameter
 			//do not display the edit/view options
 			smlEditorProcessor.setMode(MODE.VIEW);
 			smlEditorProcessor.parse(passedFile);
+			
+			edit.setVisible(true);
 			
 		}
 		
