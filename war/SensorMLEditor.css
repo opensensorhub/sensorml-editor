@@ -405,7 +405,7 @@ table.swe-dataRecord-nolabel-vertical-panel {
 	width: 790px;
 	margin-top:10px;
 	margin-left:10px;
-}]
+}
 .ontology-icon {
 	margin-left: 15px;	
 }
@@ -438,4 +438,8 @@ table.swe-dataRecord-nolabel-vertical-panel {
 .def-icon {
 	margin-left:10px;
 	margin-right:10px;
+}
+
+.map-icon {
+	margin-left:10px;
 }

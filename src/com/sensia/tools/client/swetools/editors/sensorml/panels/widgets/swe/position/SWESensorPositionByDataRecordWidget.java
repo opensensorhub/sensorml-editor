@@ -3,14 +3,21 @@ package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.pos
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.cellview.client.SimplePager;
+import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.APPENDER;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.map.SensorMapWidget;
 
 /**
  * Position : Location (EPSG/0/4326 http://www.opengis.net/def/crs/EPSG/0/4326): 47.8 88.56 [mapIcon] 
@@ -30,12 +37,34 @@ public class SWESensorPositionByDataRecordWidget extends AbstractSensorElementWi
 
 	protected Panel container;
 	protected HTML locationHtmlLabel;
+	protected Panel contentPanel;
 	
 	public SWESensorPositionByDataRecordWidget() {
 		super("position",TAG_DEF.SWE,TAG_TYPE.ELEMENT);
 		container = new HorizontalPanel();
+		contentPanel = new HorizontalPanel();
+		
+		container.add(contentPanel);
 	}
 
+	protected Panel buildMapIconPanel(double lat,double lon) {
+		SimplePanel mapIconPanel = new SimplePanel();
+		Image mapImage = new Image(GWT.getModuleBaseURL()+"images/maps-icon.png");
+		mapImage.setTitle("Map");
+		
+		FocusPanel mapImageWrapper = new FocusPanel(mapImage);
+		
+		//add icons
+		mapImageWrapper.addStyleName("map-icon");
+		
+		//add listeners
+		mapImageWrapper.addClickHandler(new MapIconImageWrapperHandler(lat,lon));
+		
+		mapIconPanel.add(mapImageWrapper);
+		
+		return mapIconPanel;
+	}
+	
 	@Override
 	public Panel getPanel() {
 		return container;
@@ -77,7 +106,7 @@ public class SWESensorPositionByDataRecordWidget extends AbstractSensorElementWi
 				vPanel.add(buildCoordinatesPanel(field));
 			}
 		}
-		container.add(vPanel);
+		contentPanel.add(vPanel);
 	}
 
 	protected Panel buildLabel(final ISensorWidget widget,final String defaultLabel, boolean recursiveName) {
@@ -141,5 +170,22 @@ public class SWESensorPositionByDataRecordWidget extends AbstractSensorElementWi
 	
 	public APPENDER appendTo() {
 		return APPENDER.OVERRIDE_LINE;
+	}
+	
+	public class MapIconImageWrapperHandler implements ClickHandler{
+
+		private double lat;
+		private double lon;
+		
+		public MapIconImageWrapperHandler(double lat,double lon) {
+			this.lat = lat;
+			this.lon = lon;
+		}
+		
+		@Override
+		public void onClick(ClickEvent event) {
+			SensorMapWidget mapWidget = new SensorMapWidget();
+			displayEditPanel(mapWidget.getMapPanel(lat,lon), "Position", null);
+		}
 	}
 }

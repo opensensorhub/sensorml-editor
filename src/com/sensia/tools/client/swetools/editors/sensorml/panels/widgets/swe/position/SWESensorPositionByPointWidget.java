@@ -16,6 +16,12 @@ public class SWESensorPositionByPointWidget extends SWESensorPositionByDataRecor
 	protected void addSensorWidget(ISensorWidget widget) {
 		
 		container.add(buildLabel(widget,"Point",false));
+		
+		String value = widget.getValue("coordinates",true);
+		String[]split = value.split(" ");
+		
+		container.add(buildMapIconPanel(Double.parseDouble(split[0]),Double.parseDouble(split[1])));
+		
 		buildCoordinatesPanel(widget);
 		editPanel = getEditPanel(new IButtonCallback() {
 			

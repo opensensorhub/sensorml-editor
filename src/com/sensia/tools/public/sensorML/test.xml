@@ -115,4 +115,84 @@
          </swe:values>
       </swe:DataArray>  
    </sml:position>
+   
+   <sml:position>
+       <swe:Text>
+           <swe:value>located on the exhaust line after the catalytic converter</swe:value>
+       </swe:Text>
+   </sml:position>
+   
+   <sml:position>
+      <!-- EPSG 4326 is for latitude-longitude, in that order -->
+      <gml:Point gml:id="stationLocation" srsName="http://www.opengis.net/def/crs/EPSG/0/4326">
+         <gml:coordinates>47.8 88.56</gml:coordinates>
+      </gml:Point>
+   </sml:position>
+   
+   <sml:position>
+      <swe:DataRecord>
+         <swe:field name="location">
+            <swe:Vector
+                definition="http://sensorml.com/ont/swe/property/SensorLocation"
+                referenceFrame="http://www.opengis.net/def/crs/EPSG/6.7/4979"
+                localFrame="#SENSOR_FRAME">
+               <swe:coordinate name="Lat">
+                  <swe:Quantity definition="http://sensorml.com/ont/swe/property/Latitude" axisID="Lat">
+                     <swe:uom code="deg"/>
+                     <swe:value>47.8</swe:value>
+                  </swe:Quantity>
+               </swe:coordinate>
+               <swe:coordinate name="Lon">
+                  <swe:Quantity definition="http://sensorml.com/ont/swe/property/Longitude" axisID="Long">
+                     <swe:uom code="deg"/>
+                     <swe:value>2.3</swe:value>
+                  </swe:Quantity>
+               </swe:coordinate>
+               <swe:coordinate name="Alt">
+                  <swe:Quantity definition="http://sensorml.com/ont/swe/property/Altitude" axisID="Alt">
+                     <swe:uom code="m"/>
+                     <swe:value>40.8</swe:value>
+                  </swe:Quantity>
+               </swe:coordinate>
+            </swe:Vector>
+         </swe:field>
+         <swe:field name="orientation">
+            <swe:Vector
+                definition="http://sensorml.com/ont/swe/property/SensorOrientation"
+                referenceFrame="http://www.opengis.net/def/crs/NED"
+                localFrame="#SENSOR_FRAME">
+               <swe:coordinate name="TrueHeading">
+                  <swe:Quantity definition="http://sensorml.com/ont/swe/property/TrueHeading" axisID="Z">
+                     <swe:uom code="deg"/>
+                     <swe:value>-6.8</swe:value>
+                  </swe:Quantity>
+               </swe:coordinate>
+               <swe:coordinate name="Pitch">
+                  <swe:Quantity definition="http://sensorml.com/ont/swe/property/Pitch" axisID="Y">
+                     <swe:uom code="deg"/>
+                     <swe:value>0.3</swe:value>
+                  </swe:Quantity>
+               </swe:coordinate>
+            </swe:Vector>
+         </swe:field>
+      </swe:DataRecord>
+   </sml:position>
+   
+   <sml:position>
+      <swe:Vector definition="http://sensorml.com/ont/swe/property/SensorLocation"
+               referenceFrame="http://www.opengis.net/def/crs/EPSG/6.7/4326">
+         <swe:coordinate name="Lat">
+            <swe:Quantity definition="http://sensorml.com/ont/swe/property/Latitude" axisID="Lat">
+               <swe:uom code="deg"/>
+               <swe:value>47.8</swe:value>
+            </swe:Quantity>
+         </swe:coordinate>
+         <swe:coordinate name="Lon">
+            <swe:Quantity definition="http://sensorml.com/ont/swe/property/Longitude" axisID="Long">
+               <swe:uom code="deg"/>
+               <swe:value>2.3</swe:value>
+            </swe:Quantity>
+         </swe:coordinate>
+      </swe:Vector>
+   </sml:position>
 </sml:PhysicalSystem>
