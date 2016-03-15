@@ -3,7 +3,6 @@ package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.dat
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gwt.user.client.ui.HTML;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_DEF;

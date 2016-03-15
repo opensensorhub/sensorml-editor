@@ -56,7 +56,6 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		labelAndDefPanelForCorrectDots.addStyleName("line-generic-label-panel");
 		//defPanel.addStyleName("def-generic-label-panel");
 		
-		
 		advancedPanel = getEditPanel(new IButtonCallback() {
 			
 			@Override
@@ -64,6 +63,9 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 				if(titleValueWidget != null) {
 					labelPanel.clear();
 					labelPanel.add(new HTML(splitAndCapitalize(titleValueWidget.getName())));
+					
+					refreshChildren(getElements());
+					refreshParents(getParent());
 				}
 			}
 		});

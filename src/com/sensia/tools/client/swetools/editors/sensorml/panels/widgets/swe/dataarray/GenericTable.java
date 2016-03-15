@@ -1,10 +1,7 @@
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.dataarray;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import com.google.gwt.cell.client.ButtonCell;
 import com.google.gwt.cell.client.FieldUpdater;
@@ -17,7 +14,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.SafeHtmlHeader;
-import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
@@ -30,11 +26,8 @@ import com.google.gwt.view.client.SingleSelectionModel;
 import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.TableRes;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.Property;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.charts.table.XYCoordinatesModel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.BoyerMoore;
 
-public class GenericTable extends Composite{
+public class GenericTable{
 
 	private ListDataProvider<Property> dataProvider;
 	
@@ -67,11 +60,6 @@ public class GenericTable extends Composite{
 		init();
 		this.originalData = getPropertiesFromValues(values);
 		
-		final Map<String,Integer> classColDefMap = new HashMap<String,Integer>();
-		for(int i=0; i < headers.size();i++) {
-			classColDefMap.put(headers.get(i), i);
-		}
-		
 		if(table == null) {
 			createTable();
 		} else {
@@ -81,14 +69,15 @@ public class GenericTable extends Composite{
 			}
 		}
 		
-		Set<String> colNames = classColDefMap.keySet();
+		int position = 0;
 		
-		for(final String colName : colNames) {
+		for(final String colName : headers) {
+			final int currentPosition = position;
 			final Column<Property, String> column = new Column<Property, String>(new TextCell()) {
 				
 				@Override
 				public String getValue(Property object) {
-					return object.properties.get(classColDefMap.get(colName));
+					return object.properties.get(currentPosition);
 				}
 			};
 			column.setSortable(false);
@@ -104,6 +93,7 @@ public class GenericTable extends Composite{
 			colHeader.setHeaderStyleNames("data-table-header");
 			
 			table.addColumn(column,colHeader);
+			position++;
 		}
 		
 		//add extra column if editable

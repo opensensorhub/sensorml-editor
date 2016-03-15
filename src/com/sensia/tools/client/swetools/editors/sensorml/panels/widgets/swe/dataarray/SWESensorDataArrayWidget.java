@@ -26,10 +26,20 @@ public class SWESensorDataArrayWidget extends AbstractSensorElementWidget{
 	
 	private boolean isInit = false;
 	
+	private Panel defPanel;
+	private Panel titlePanel;
+	private Panel iconPanel;
+	
 	public SWESensorDataArrayWidget() {
 		super("DataArray", TAG_DEF.SWE, TAG_TYPE.ELEMENT);
-		
+		defPanel = new HorizontalPanel();
+		titlePanel = new HorizontalPanel();
+		iconPanel = new HorizontalPanel();
 		container = new HorizontalPanel();
+		
+		container.add(titlePanel);
+		container.add(iconPanel);
+		container.add(defPanel);
 	}
 
 	@Override
@@ -64,8 +74,19 @@ public class SWESensorDataArrayWidget extends AbstractSensorElementWidget{
 	}
 
 	@Override
-	protected void addSensorWidget(final ISensorWidget widget) {
+	public void refresh() {
+		titlePanel.clear();
 		
+		if(displayTitle) {
+			buildTitle();
+		}
+	}
+	
+	@Override
+	protected void addSensorWidget(final ISensorWidget widget) {
+		if(widget.getType() == TAG_TYPE.ATTRIBUTE && widget.getName().equals("definition")){
+			defPanel.add(widget.getPanel());
+		}
 	}
 
 	@Override
@@ -80,7 +101,7 @@ public class SWESensorDataArrayWidget extends AbstractSensorElementWidget{
 	
 	private void buildTitle() {
 		final String title = SWESensorDataArrayHelper.getTitle(getFields());
-		container.add(new HTML(title));
+		titlePanel.add(new HTML(title));
 	}
 	
 	private void buildGraph() {
@@ -92,9 +113,9 @@ public class SWESensorDataArrayWidget extends AbstractSensorElementWidget{
 		graphicImageWrapper.addStyleName("graphic-icon");
 		
 		//add listeners
-		//graphicImageWrapper.addClickHandler(new GraphicImageWrapperHandler());
+		graphicImageWrapper.addClickHandler(new GraphicImageWrapperHandler());
 				
-		container.add(graphicImageWrapper);
+		iconPanel.add(graphicImageWrapper);
 	}
 	
 	private void buildTable() {
@@ -108,7 +129,7 @@ public class SWESensorDataArrayWidget extends AbstractSensorElementWidget{
 		//add listeners
 		tableImageWrapper.addClickHandler(new TableImageWrapperHandler());
 		
-		container.add(tableImageWrapper);
+		iconPanel.add(tableImageWrapper);
 	}
 	
 	public boolean isDisplayTable() {
@@ -135,6 +156,38 @@ public class SWESensorDataArrayWidget extends AbstractSensorElementWidget{
 		this.displayTitle = displayTitle;
 	}
 	
+	private class GraphicImageWrapperHandler implements ClickHandler{
+
+		@Override
+		public void onClick(ClickEvent event) {
+			String valuesStr = getValues();
+			String blockSeparator = getBlockSeparator();
+			String tokenSeparator = getTokenSeparator();
+			int elementCount = getElementCount();
+			
+			//compute nbSeries (excluding X AXIS)
+			final List<String> blocks = Arrays.asList(valuesStr.split(blockSeparator));
+			
+			final Object[][] values = SWESensorDataArrayHelper.getValues(blocks, tokenSeparator, elementCount);
+			
+			List<String> axis    = SWESensorDataArrayHelper.getTableHeaders(getFields());
+			
+			String title = SWESensorDataArrayHelper.getTitle(getFields());
+			
+			if(blocks.size() != elementCount) {
+				Window.alert("DataArray: The number of fields is not corresponding to the elementCount");
+			} else {
+				final GenericCurveChart chart = new GenericCurveChart();
+				
+				Panel chartPanel = chart.createChart(title);
+				
+				chart.poupulateTable(title, axis, values);
+				
+				displayEditPanel(chartPanel,"View DataArray values as Chart",null);
+			}
+		}
+		
+	}
 	
 	private class TableImageWrapperHandler implements ClickHandler{
 
@@ -178,7 +231,7 @@ public class SWESensorDataArrayWidget extends AbstractSensorElementWidget{
 						}
 					};
 				}
-				displayEditPanel(tablePanel,"Edit DataArray",saveCB);
+				displayEditPanel(tablePanel,"View DataArray values as Table",saveCB);
 			}
 		}
 	}
