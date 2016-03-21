@@ -18,6 +18,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.map.SensorMapWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.map.geojson.GeoJsonBuilder;
 
 public abstract class AbstractSWESensorPositionByWidget extends AbstractSensorElementWidget{
 
@@ -171,8 +172,22 @@ public abstract class AbstractSWESensorPositionByWidget extends AbstractSensorEl
 			//is a point (Point/Vector/DataRecord)
 			if(c != null && c.coordinates.size() == 1) {
 				Coordinate point = c.coordinates.get(0);
-				displayEditPanel(mapWidget.getMapPanel(point.lat,point.lon,c.epsgCode), "Position", null);
-			} 
+				String geoJson = GeoJsonBuilder.buildPointGeoJSon(point.lat,point.lon,c.epsgCode);
+				Panel mapPanel = mapWidget.getMapPanelWithPoint(point.lat,point.lon,c.epsgCode);
+				//Panel mapPanel = mapWidget.getMapPanel(geoJson);
+				
+				displayEditPanel(mapPanel, "Position", null);
+			} else {
+				//build coordinates
+				double [][] points = new double[c.coordinates.size()][2];
+				int i=0;
+				for(Coordinate coordinate : c.coordinates) {
+					points[i][0] = coordinate.lat;
+					points[i][1] = coordinate.lon;
+					i++;
+				}
+				displayEditPanel(mapWidget.getMapPanelWithTrajectory(points,c.epsgCode), "Position", null);
+			}
 		}
 	}
 	

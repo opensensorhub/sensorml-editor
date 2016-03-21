@@ -160,21 +160,14 @@ public class SWESensorDataArrayWidget extends AbstractSensorElementWidget{
 
 		@Override
 		public void onClick(ClickEvent event) {
-			String valuesStr = getValues();
-			String blockSeparator = getBlockSeparator();
-			String tokenSeparator = getTokenSeparator();
-			int elementCount = getElementCount();
 			
-			//compute nbSeries (excluding X AXIS)
-			final List<String> blocks = Arrays.asList(valuesStr.split(blockSeparator));
-			
-			final Object[][] values = SWESensorDataArrayHelper.getValues(blocks, tokenSeparator, elementCount);
+			final Object[][] values = getObjectValues();
 			
 			List<String> axis    = SWESensorDataArrayHelper.getTableHeaders(getFields());
 			
 			String title = SWESensorDataArrayHelper.getTitle(getFields());
 			
-			if(blocks.size() != elementCount) {
+			if(values.length != getElementCount()) {
 				Window.alert("DataArray: The number of fields is not corresponding to the elementCount");
 			} else {
 				final GenericCurveChart chart = new GenericCurveChart();
@@ -194,19 +187,11 @@ public class SWESensorDataArrayWidget extends AbstractSensorElementWidget{
 		
 		@Override
 		public void onClick(ClickEvent event) {
-			String valuesStr = getValues();
-			String blockSeparator = getBlockSeparator();
-			String tokenSeparator = getTokenSeparator();
-			int elementCount = getElementCount();
 			
-			//compute nbSeries (excluding X AXIS)
-			final List<String> blocks = Arrays.asList(valuesStr.split(blockSeparator));
+			final Object[][] values = getObjectValues();
+			List<String> headers    = getHeaders();
 			
-			final Object[][] values = SWESensorDataArrayHelper.getValues(blocks, tokenSeparator, elementCount);
-			
-			List<String> headers    = SWESensorDataArrayHelper.getTableHeaders(getFields());
-			
-			if(blocks.size() != elementCount) {
+			if(values.length != getElementCount()) {
 				Window.alert("DataArray: The number of fields is not corresponding to the elementCount");
 			} else {
 				final GenericTable table = new GenericTable();
@@ -269,7 +254,7 @@ public class SWESensorDataArrayWidget extends AbstractSensorElementWidget{
 		}
 	}
 	
-	private String getBlockSeparator() {
+	public String getBlockSeparator() {
 		String result = "";
 		for(final ISensorWidget child : getElements()) {
 			if(child.getName().equals("encoding")) {
@@ -280,7 +265,7 @@ public class SWESensorDataArrayWidget extends AbstractSensorElementWidget{
 		return result;
 	}
 	
-	private String getTokenSeparator() {
+	public String getTokenSeparator() {
 		String result = "";
 		for(final ISensorWidget child : getElements()) {
 			if(child.getName().equals("encoding")) {
@@ -291,7 +276,7 @@ public class SWESensorDataArrayWidget extends AbstractSensorElementWidget{
 		return result;
 	}
 	
-	private String getValues() {
+	public String getValues() {
 		String valuesStr = "";
 		for(final ISensorWidget child : getElements()) {
 			 if(child.getName().equals("values")) {
@@ -305,7 +290,7 @@ public class SWESensorDataArrayWidget extends AbstractSensorElementWidget{
 		return valuesStr;
 	}
 	
-	private int getElementCount() {
+	public int getElementCount() {
 		int elementCount = 0;
 		for(final ISensorWidget child : getElements()) {
 			if(child.getName().equals("elementCount")) {
@@ -316,7 +301,7 @@ public class SWESensorDataArrayWidget extends AbstractSensorElementWidget{
 		return elementCount;
 	}
 	
-	private List<ISensorWidget> getFields() {
+	public List<ISensorWidget> getFields() {
 		List<ISensorWidget> fields = null;
 		for(final ISensorWidget child : getElements()) {
 			 if(child.getName().equals("elementType")) {
@@ -327,5 +312,20 @@ public class SWESensorDataArrayWidget extends AbstractSensorElementWidget{
 		return fields;
 	}
 	
+	public List<String> getHeaders() {
+		return SWESensorDataArrayHelper.getTableHeaders(getFields());
+	}
+	
+	public Object[][] getObjectValues() {
+		String valuesStr = getValues();
+		String blockSeparator = getBlockSeparator();
+		String tokenSeparator = getTokenSeparator();
+		int elementCount = getElementCount();
+		
+		//compute nbSeries (excluding X AXIS)
+		final List<String> blocks = Arrays.asList(valuesStr.split(blockSeparator));
+		
+		return SWESensorDataArrayHelper.getValues(blocks, tokenSeparator, elementCount);
+	}
 	
 }

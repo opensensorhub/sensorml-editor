@@ -163,6 +163,21 @@ public final class SWESensorDataArrayHelper {
 		return concatenedAxisNames;
 	}
 	
+	public static List<String> getTitles(final List<ISensorWidget> fields) {
+		List<String> titles = new ArrayList<String>();
+		
+		for(ISensorWidget field : fields) {
+			//prior label
+			String labelField = field.getValue("label", true);
+			if(labelField == null) {
+				//if no label, takes the attribute name
+				labelField = field.getValue("name", true);
+			}
+			titles.add(labelField);
+		}
+		
+		return titles;
+	}
 	/**
 	 * Get the values as a list of Object.
 	 * @param blocks
