@@ -5,7 +5,7 @@ import com.google.gwt.user.client.ui.Panel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 
-public class SWESensorPositionByDescriptionWidget extends SWESensorPositionByDataRecordWidget{
+public class SWESensorPositionByDescriptionWidget extends AbstractSWESensorPositionByWidget{
 
 	private Panel editPanel;
 	

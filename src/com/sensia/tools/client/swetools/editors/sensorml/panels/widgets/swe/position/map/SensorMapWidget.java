@@ -16,10 +16,7 @@ import com.google.gwt.user.client.ui.SimplePanel;
 
 public class SensorMapWidget {
 
-	private static final Projection DEFAULT_PROJECTION = new Projection(
-	            "EPSG:4326");
-	
-	public Panel getMapPanel(double lat,double lon) {
+	public Panel getMapPanel(double lat,double lon,String epsgCode) {
 		SimplePanel mapContainer = new SimplePanel();
 		
 		MapOptions defaultMapOptions = new MapOptions();
@@ -35,7 +32,7 @@ public class SensorMapWidget {
         mapWidget.getMap().addLayer(osmCycle);
 
         LonLat lonLat = new LonLat(lon, lat);
-        lonLat.transform("EPSG:4326", mapWidget.getMap().getProjection()); //transform lonlat (provided in EPSG:4326) to OSM coordinate system (the map projection)
+        lonLat.transform("EPSG:"+epsgCode, mapWidget.getMap().getProjection()); //transform lonlat (provided in EPSG:4326) to OSM coordinate system (the map projection)
         mapWidget.getMap().setCenter(lonLat, 12);
 
         final Vector vectorLayer = new Vector("Vectorlayer");

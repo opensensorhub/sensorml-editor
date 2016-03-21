@@ -10,7 +10,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorW
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.dataarray.SWESensorDataArrayWidget;
 
-public class SWESensorPositionByTrajectoryWidget extends AbstractSensorElementWidget{
+public class SWESensorPositionByTrajectoryWidget extends AbstractSWESensorPositionByWidget{
 
 	private Panel container;
 	private SWESensorDataArrayWidget dataArrayWidget;
@@ -18,8 +18,7 @@ public class SWESensorPositionByTrajectoryWidget extends AbstractSensorElementWi
 	private Panel dataArrayPanel;
 	
 	public SWESensorPositionByTrajectoryWidget() {
-		super("position",TAG_DEF.SWE,TAG_TYPE.ELEMENT);
-		
+		super();
 		container= new HorizontalPanel();
 		container.add(new Label("Trajectory: "));
 		
@@ -57,8 +56,8 @@ public class SWESensorPositionByTrajectoryWidget extends AbstractSensorElementWi
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
 		dataArrayWidget = new SWESensorDataArrayWidget();
-		//dataArrayWidget.setDisplayGraph(false);
-		//dataArrayWidget.setDisplayTitle(false);
+		dataArrayWidget.setDisplayGraph(false);
+		dataArrayWidget.setDisplayTitle(false);
 		
 		for(ISensorWidget child : widget.getElements()) {
 			dataArrayWidget.addElement(child);

@@ -124,7 +124,7 @@
    
    <sml:position>
       <!-- EPSG 4326 is for latitude-longitude, in that order -->
-      <gml:Point gml:id="stationLocation" srsName="http://www.opengis.net/def/crs/EPSG/0/4326">
+      <gml:Point gml:id="stationLocation" srsName="http://www.opengis.net/def/crs/EPSG/0/4326" definition="http://sensorml.com/ont/swe/property/SensorLocation">
          <gml:coordinates>47.8 88.56</gml:coordinates>
       </gml:Point>
    </sml:position>
