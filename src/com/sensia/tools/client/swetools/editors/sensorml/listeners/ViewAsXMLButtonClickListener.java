@@ -1,10 +1,13 @@
 package com.sensia.tools.client.swetools.editors.sensorml.listeners;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
+import com.google.gwt.user.client.ui.FileUpload;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ScrollPanel;
@@ -44,6 +47,7 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 			final Button validateButton = new Button("Validate");
 			final Button closeButton = new Button("Close");
 			final Button saveButton = new Button("Save");
+			final FileUploadPanel saveFile = new FileUploadPanel();
 			
 			//init file upload panel
 			final FileUploadPanel fileUploadPanel = new FileUploadPanel();
@@ -72,14 +76,28 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 				}
 			});
 			
+			
 			saveButton.addClickHandler(new ClickHandler() {
 				
 				@Override
 				public void onClick(ClickEvent event) {
-					save(xml);
+					//save(xml);
+					saveFile.onBrowseValidate(new IButtonCallback() {
+						
+						@Override
+						public void onClick() {
+							saveAs(saveFile.getFileName(),xml);
+						}
+					});
+					saveAs(saveFile.getFileName(),xml);
+					//saveFile.click();
 				}
 			});
 		}
+	}
+	
+	private void saveAs(String path,String xmlData) {
+		save(xmlData);
 	}
 	
 	private void save(String xmlData) {

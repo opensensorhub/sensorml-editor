@@ -12,7 +12,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorW
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_DEF;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_TYPE;
 
-public class SWESensorDataRecordWidget extends AbstractSensorElementWidget{
+public class SWESensorEventWidget extends AbstractSensorElementWidget{
 
 	private Panel container;
 	private Panel linePanel;
@@ -22,8 +22,8 @@ public class SWESensorDataRecordWidget extends AbstractSensorElementWidget{
 	private Panel innerContainer;
 	
 	private boolean hasLabel= false;
-	public SWESensorDataRecordWidget() {
-		super("DataRecord", TAG_DEF.SWE, TAG_TYPE.ELEMENT);
+	public SWESensorEventWidget() {
+		super("Event", TAG_DEF.SWE, TAG_TYPE.ELEMENT);
 		container = new VerticalPanel();
 		linePanel = new HorizontalPanel();
 		defPanel = new HorizontalPanel();
@@ -58,7 +58,7 @@ public class SWESensorDataRecordWidget extends AbstractSensorElementWidget{
 			hasLabel = true;
 		} else if(widget.getName().equals("definition") && widget.getType() == TAG_TYPE.ATTRIBUTE) { 
 			defPanel.add(widget.getPanel());
-		} else if(widget.getName().equals("field") || widget.getName().equals("coordinate") || widget.getName().equals("time")){
+		} else if(widget.getName().equals("field") || widget.getName().equals("coordinate")){
 			//container.add(widget.getPanel());
 			//find every fields and display it
 			List<ISensorWidget> children = widget.getElements();
@@ -97,7 +97,7 @@ public class SWESensorDataRecordWidget extends AbstractSensorElementWidget{
 
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
-		return new SWESensorDataRecordWidget();
+		return new SWESensorEventWidget();
 	}
 	
 	public APPENDER appendTo() {

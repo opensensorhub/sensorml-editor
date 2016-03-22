@@ -84,7 +84,7 @@ public class RNGRendererSWE extends RNGRenderer implements RNGTagVisitor {
 			return new SWESensorDataArrayWidget();
 		} else if(name.equals("Curve")){
 			return new SWESensorCurveWidget();
-		} else if(name.equals("DataRecord")){
+		} else if(name.equals("DataRecord") || name.equals("Event")){
 			return new SWESensorDataRecordWidget();
 		} else if(name.equals("condition")){
 			return new SWESensorCondtionWidget();

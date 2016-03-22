@@ -9,13 +9,17 @@
  ******************************* END LICENSE BLOCK ***************************/
 package com.sensia.tools.client.swetools.editors.sensorml.panels.source;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FileUpload;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
+import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 
 /**
  * The Class FileUploadPanel. Most of the reading is from
@@ -47,6 +51,8 @@ public class FileUploadPanel {
 	/** The file contents. */
 	private String contents="";
 	
+	private FileUpload upload;
+	
 	/**
 	 * Instantiates a new file upload panel.
 	 */
@@ -70,7 +76,7 @@ public class FileUploadPanel {
 	 */
 	// original createUploadBox
 	private Widget createUploadBox() {
-		final FileUpload upload = new FileUpload();
+		upload = new FileUpload();
 		upload.setStyleName("file-upload");
 		upload.addChangeHandler(new ChangeHandler() {
 			@Override
@@ -82,6 +88,18 @@ public class FileUploadPanel {
 		return upload;
 	}
 
+	public void click() {
+		upload.click();
+	}
+	
+	public void onBrowseValidate(IButtonCallback callback) {
+		upload.addChangeHandler(new ChangeHandler() {
+			@Override
+			public void onChange(ChangeEvent event) {
+				GWT.log(upload.getFilename());
+			}
+		});
+	}
 	/**
 	 * the FileReader api is asynchronous - we don't get the full contents of
 	 * the file right away, but need to wait until the onloadend callback is

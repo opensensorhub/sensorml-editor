@@ -41,6 +41,17 @@ public class SensorGenericXLinkWidget extends AbstractSensorElementWidget{
 	}
 
 	@Override
+	public void refresh() {
+		anchorHref.setText("("+toNiceLabel(getName())+")");
+		container.clear();
+		container.add(anchorHref);
+		for(ISensorWidget child : getElements()) {
+			addSensorWidget(child);
+		}
+		
+	}
+	
+	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
 		if(widget.getName().equals("name")) {
 			if(!isTitleProvided) {
