@@ -79,8 +79,6 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		GENERIC_VERTICAL
 	}
 	
-	private boolean isNewRoot = false;
-	
 	public RNGRendererSML() {
 		//render section names
 		renderSectionsList.put("identification","Identification");
@@ -101,6 +99,7 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		renderSectionsList.put("documentation", "Documentation");
 		renderSectionsList.put("connections", "Connections");
 		renderSectionsList.put("components", "Components");
+		renderSectionsList.put("component", "Component");
 		renderSectionsList.put("position", "Position");
 		renderSectionsList.put("boundedBy", "Bounded By");
 		renderSectionsList.put("history", "History");
@@ -175,6 +174,8 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		skipList.add("linkage");
 	}
 
+	public int rootMinLevel = 1;
+	
 	@Override
 	public void visit(RNGGrammar grammar) { 
 		//create top root element
@@ -187,66 +188,60 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		String eltName = elt.getName();
 		String nsUri = elt.getNamespace();
 
+		//get ns
+		TAG_DEF ns = TAG_DEF.RNG;
+		
+		if (nsUri.equals(SML_NS_1) || nsUri.equals(SML_NS_2)) {
+			ns = TAG_DEF.SML;
+		} else if (nsUri.equals(SWE_NS_1) || nsUri.equals(SWE_NS_2)) {
+			ns = TAG_DEF.SWE;
+		} else if (nsUri.equals(GML_NS_1) || nsUri.equals(GML_NS_2)) {
+			ns = TAG_DEF.GML;
+		} else if(nsUri.equals(GMD)) {
+			ns = TAG_DEF.GMD;
+		} else if(nsUri.equals(GCO)) {
+			ns = TAG_DEF.GCO;
+		}
+		
 		//skip the element and visit children
 		if(skipList.contains(eltName)) {
 			visitChildren(elt.getChildren());
 			return;
 		}
 		
+		if(elt.getChildAttribute("href") != null) {
+			if(elt.getName().equals("component")) {
+				pushAndVisitChildren(new SMLComponentWidget(), elt.getChildren());
+			} else {
+				pushAndVisitChildren(new SensorGenericXLinkWidget(eltName,ns), elt.getChildren());
+			}
+			return;
+		}
+		
 		//if element is a section
 		if(getStackSize() > 2 && rootSectionsList.contains(eltName)) {
-			isNewRoot = true;
-			pushAndVisitChildren(new SensorSectionsWidget(),elt.getChildren());
+			int oldRootValue = rootMinLevel;
+			rootMinLevel = getStackSize()+1;
+			SensorSectionsWidget sensorSections = new SensorSectionsWidget();
+			sensorSections.setInnerSections(true);
+			pushAndVisitChildren(sensorSections,elt.getChildren());
+			rootMinLevel = oldRootValue;
 			return;
 		} else if(rootSectionsList.contains(eltName)) {
 			visitChildren(elt.getChildren());
 			return;
 		}
 		
-		if(getStackSize() == 1 || isNewRoot) {isNewRoot = false;
-			List<RNGTag> children = elt.getChildren();
-			
-			ISensorWidget widget = null;
-			if(eltName.equals("name") || eltName.equals("identifier") || eltName.equals("description")) {
-				widget =  new GMLSensorWidget(elt);
-			} else if(eltName.equals("KeywordList")) {
-				widget = new SMLKeywordsWidget();	
-			} else {
-				//it is a non pre-defined section
-				//add default name
-				String sectionName = "No Supported Name";
-				
-				if(renderSectionsList.containsKey(eltName)) {
-					//for custom is to get section name from attribute->value children
-					//lets the renderer find them and add to the section
-					sectionName = renderSectionsList.get(eltName);
-				} 
-				widget = new SensorSectionWidget(sectionName);
-				
-				ISensorWidget existingTagSection = getWidget(eltName);
-				if(existingTagSection != null) {
-					List<RNGTag> revisitedNodes = new ArrayList<RNGTag>();
-					revisitedNodes.add(elt);
-					children = revisitedNodes;
-				}
-			}
-			pushAndVisitChildren(widget,children);
+		//special case of component
+		//TODO:
+		boolean isNewSectionForComponent = false;
+		if(eltName.equalsIgnoreCase("component")) {
+			isNewSectionForComponent = true;
+		}
+		
+		if(getStackSize() == rootMinLevel || isNewSectionForComponent) {
+			processSection(elt, eltName);
 		} else {
-			//get ns
-			TAG_DEF ns = TAG_DEF.RNG;
-			
-			if (nsUri.equals(SML_NS_1) || nsUri.equals(SML_NS_2)) {
-				ns = TAG_DEF.SML;
-			} else if (nsUri.equals(SWE_NS_1) || nsUri.equals(SWE_NS_2)) {
-				ns = TAG_DEF.SWE;
-			} else if (nsUri.equals(GML_NS_1) || nsUri.equals(GML_NS_2)) {
-				ns = TAG_DEF.GML;
-			} else if(nsUri.equals(GMD)) {
-				ns = TAG_DEF.GMD;
-			} else if(nsUri.equals(GCO)) {
-				ns = TAG_DEF.GCO;
-			}
-			
 			if(renderElements.containsKey(eltName)) { 
 				RENDER_ELEMENT_TYPE type = renderElements.get(eltName);
 				
@@ -268,11 +263,11 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 					pushAndVisitChildren(new SMLLinkWidget(), elt.getChildren());
 				} else if(eltName.equals("SpatialFrame")) {
 					pushAndVisitChildren(new SMLSensorSpatialFrame(), elt.getChildren());
-				} else if(eltName.equals("component")) {
+				} /*else if(eltName.equals("component")) {
 					pushAndVisitChildren(new SMLComponentWidget(), elt.getChildren());
 				} else if(elt.getChildAttribute("href") != null) {
 					pushAndVisitChildren(new SensorGenericXLinkWidget(eltName,ns), elt.getChildren());
-				} else if(nsUri.equals(GML_NS_1) || nsUri.equals(GML_NS_2)) {
+				}*/ else if(nsUri.equals(GML_NS_1) || nsUri.equals(GML_NS_2)) {
 					pushAndVisitChildren(new SensorGenericHorizontalContainerWidget(elt.getName(), TAG_DEF.GML, TAG_TYPE.ELEMENT), elt.getChildren());
 				} else if (nsUri.equals(SML_NS_1) || nsUri.equals(SML_NS_2)) {
 					pushAndVisitChildren(new SensorGenericHorizontalContainerWidget(elt.getName(), TAG_DEF.SML, TAG_TYPE.ELEMENT), elt.getChildren());
@@ -312,5 +307,35 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		} else {
 			super.visit(att);
 		}
+	}
+	
+	protected void processSection(RNGElement elt, String eltName) {
+		List<RNGTag> children = elt.getChildren();
+		
+		ISensorWidget widget = null;
+		if(eltName.equals("name") || eltName.equals("identifier") || eltName.equals("description")) {
+			widget =  new GMLSensorWidget(elt);
+		} else if(eltName.equals("KeywordList")) {
+			widget = new SMLKeywordsWidget();	
+		} else {
+			//it is a non pre-defined section
+			//add default name
+			String sectionName = "No Supported Name";
+			
+			if(renderSectionsList.containsKey(eltName)) {
+				//for custom is to get section name from attribute->value children
+				//lets the renderer find them and add to the section
+				sectionName = renderSectionsList.get(eltName);
+			} 
+			widget = new SensorSectionWidget(sectionName);
+			
+			ISensorWidget existingTagSection = getWidget(eltName);
+			if(existingTagSection != null) {
+				List<RNGTag> revisitedNodes = new ArrayList<RNGTag>();
+				revisitedNodes.add(elt);
+				children = revisitedNodes;
+			}
+		}
+		pushAndVisitChildren(widget,children);
 	}
 }

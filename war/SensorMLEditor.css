@@ -275,13 +275,13 @@ table.gwt-DisclosurePanel-open>tbody>tr>td> a.header {
 	background-image: none ;
 }
 
-.gwt-DisclosurePanel-open .swe-property-panel a.header {
+/*.gwt-DisclosurePanel-open .swe-property-panel a.header {
   background-image: url(sensormleditor/images/show_section.png) !important;;
 }
 
 .gwt-DisclosurePanel-closed .swe-property-panel a.header {
   background-image: url(sensormleditor/images/show_section.png) !important;;
-}
+}*/
 
 /* Center the definition image */
 .sml-attribute-definition {
@@ -334,6 +334,27 @@ td div.document-title {
 
 .document-title {
 	padding : 20 0 0 0;
+}
+
+td div.document-title-inner {
+	text-align:left;
+	margin-top:2px;
+}
+
+.document-title-inner {
+	padding : 5 0 0 0;
+}
+
+.sections-line-title-separator-inner {
+	margin-top:-25px;
+}
+
+.sections-line-description-separator-inner {
+	margin-top:-12px;
+}
+
+.sections-description-inner {
+	margin-top:-20px;
 }
 
 .icon-def-section-header {
