@@ -129,4 +129,26 @@ public class SWESensorPositionByTrajectoryWidget extends AbstractSWESensorPositi
 		return new SWESensorPositionByTrajectoryWidget();
 	}
 
+	@Override
+	protected void updateValues(Coordinates coordinates) {
+		/*List<String> headers = dataArrayWidget.getHeaders();
+		
+		int indexLat=0;
+		int indexLon = 0;
+		
+		int i=0;
+		for(String header : headers) {
+			if(header.toLowerCase().contains("lat")) {
+				indexLat=i;
+			} else if(header.toLowerCase().contains("lon")) {
+				indexLon=i;
+			}
+			i++;
+		}
+		
+		for(Coordinate coordinate : coordinates.coordinates) {
+			
+		}*/
+	}
+
 }

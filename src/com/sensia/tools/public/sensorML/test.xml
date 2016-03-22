@@ -24,14 +24,148 @@
       </sml:KeywordList>
    </sml:keywords>
 
-   <sml:output name="Pressure_QC_ChainOutputs">
-        <swe:DataRecord>
-            <swe:label>Pressure QC Output</swe:label>
-            <swe:field name="dataGapFlag">
-                <swe:Category definition="http://mmisw.org/ont/mvco/qcflag/dataGapFlag">
-                    <swe:codeSpace xlink:href="http://mmisw.org/ont/mvco/flag"/>
-                </swe:Category>
-            </swe:field>
-        </swe:DataRecord>
-    </sml:output>
+ <sml:position>
+      <swe:DataRecord>
+         <swe:field name="location">
+            <swe:Vector
+               definition="http://sensorml.com/ont/swe/property/SensorLocation"
+               referenceFrame="http://www.opengis.net/def/crs/EPSG/6.7/4979"
+               localFrame="#SENSOR_FRAME">
+               <swe:coordinate name="Lat">
+                  <swe:Quantity definition="http://sensorml.com/ont/swe/property/Latitude" axisID="Lat">
+                     <swe:uom code="deg"/>
+                     <swe:value>41.3366</swe:value>
+                  </swe:Quantity>
+               </swe:coordinate>
+               <swe:coordinate name="Lon">
+                  <swe:Quantity definition="http://sensorml.com/ont/swe/property/Longitude" axisID="Long">
+                     <swe:uom code="deg"/>
+                     <swe:value>-70.5564</swe:value>
+                  </swe:Quantity>
+               </swe:coordinate>
+               <swe:coordinate name="Alt">
+                  <swe:Quantity definition="http://sensorml.com/ont/swe/property/Altitude" axisID="Alt">
+                     <swe:uom code="m"/>
+                     <swe:value>0</swe:value>
+                  </swe:Quantity>
+               </swe:coordinate>
+            </swe:Vector>
+         </swe:field>
+         <swe:field name="orientation">
+            <swe:Vector
+               definition="http://sensorml.com/ont/swe/property/SensorOrientation"
+               referenceFrame="http://www.opengis.net/def/crs/NED"
+               localFrame="#SENSOR_FRAME">
+               <swe:coordinate name="trueHeading">
+                  <swe:Quantity definition="http://sensorml.com/ont/swe/property/TrueHeading" axisID="Z">
+                     <swe:label>True Heading</swe:label>
+                     <swe:uom code="deg"/>
+                     <swe:value>244</swe:value>
+                  </swe:Quantity>
+               </swe:coordinate>
+            </swe:Vector>
+         </swe:field>
+      </swe:DataRecord>
+   </sml:position>
+   
+   <sml:inputs>
+        <sml:InputList>
+            <sml:input name="pixelGridCoordinates">
+                <swe:Vector referenceFrame="urn:ogc:def:crs:CSM:pixelGridCRS">
+                    <swe:coordinate name="r">
+                        <swe:Quantity definition="http://sensorml.com/ont/swe/property/ImageRowPosition">
+                            <swe:label>Row Position</swe:label>
+                            <swe:uom xlink:href="http://www.opengis.net/def/unit/OGC/0/pixel"/>
+                        </swe:Quantity>
+                    </swe:coordinate>
+                    <swe:coordinate name="c">
+                        <swe:Quantity definition="http://sensorml.com/ont/swe/property/ImageColumnPosition">
+                            <swe:label>Column Position</swe:label>
+                            <swe:uom xlink:href="http://sensorml.com/ont/swe/property/pixel"/>
+                        </swe:Quantity>
+                    </swe:coordinate>
+                </swe:Vector>
+            </sml:input>
+        </sml:InputList>
+    </sml:inputs>
+    
+   <sml:position>
+      <!-- EPSG 4326 is for latitude-longitude, in that order -->
+      <gml:Point gml:id="stationLocation" srsName="http://www.opengis.net/def/crs/EPSG/0/4326">
+         <gml:coordinates>47.8 88.56</gml:coordinates>
+      </gml:Point>
+   </sml:position>
+   
+   <sml:position>
+      <swe:Vector definition="http://sensorml.com/ont/swe/property/SensorLocation"
+               referenceFrame="http://www.opengis.net/def/crs/EPSG/6.7/4326">
+         <swe:coordinate name="Lat">
+            <swe:Quantity definition="http://sensorml.com/ont/swe/property/Latitude" axisID="Lat">
+               <swe:uom code="deg"/>
+               <swe:value>47.8</swe:value>
+            </swe:Quantity>
+         </swe:coordinate>
+         <swe:coordinate name="Lon">
+            <swe:Quantity definition="http://sensorml.com/ont/swe/property/Longitude" axisID="Long">
+               <swe:uom code="deg"/>
+               <swe:value>2.3</swe:value>
+            </swe:Quantity>
+         </swe:coordinate>
+      </swe:Vector>
+   </sml:position>
+   
+   <sml:position>
+      <swe:DataArray definition="http://sensorml.com/ont/swe/property/Trajectory">
+         <swe:elementCount>
+            <swe:Count>
+               <swe:value>10</swe:value>
+            </swe:Count>
+         </swe:elementCount>
+         <swe:elementType name="trajectory">
+            <swe:DataRecord definition="http://sensorml.com/ont/swe/property/TrajectoryPositions">
+               <swe:field name="samplingTime">
+                  <swe:Time definition="http://sensorml.com/ont/swe/property/SamplingTime"> 
+                     <swe:label>Sampling Time</swe:label> 
+                     <swe:uom xlink:href="http://www.opengis.net/def/uom/ISO-8601/0/Gregorian"/>
+                  </swe:Time>   
+               </swe:field>
+               <swe:field name="location">
+                  <swe:Vector
+                     definition="http://sensorml.com/ont/swe/property/location"
+                     referenceFrame="http://www.opengis.net/def/crs/EPSG/6.7/4326"
+                     localFrame="#SENSOR_CRS">
+                     <swe:label>Platform Location</swe:label> 
+                     <swe:coordinate name="Lat">
+                        <swe:Quantity definition="http://sensorml.com/ont/swe/property/Latitude"
+                            axisID="Lat">
+                           <swe:uom code="deg"/>
+                        </swe:Quantity>
+                     </swe:coordinate>
+                     <swe:coordinate name="Lon">
+                        <swe:Quantity definition="http://sensorml.com/ont/swe/property/Longitude"
+                            axisID="Long">
+                           <swe:uom code="deg"/>
+                        </swe:Quantity>
+                     </swe:coordinate>
+                  </swe:Vector>           
+               </swe:field>
+            </swe:DataRecord>          
+         </swe:elementType>
+         <swe:encoding>
+            <swe:TextEncoding tokenSeparator="," blockSeparator="&#x20;"/>
+         </swe:encoding>
+         <swe:values>
+            2011-03-01T04:20:00Z,25.72,-61.75
+            2011-03-14T13:10:00Z,25.49,-61.70
+            2011-03-21T18:43:00Z,25.35,-61.63
+            2011-03-30T05:13:00Z,24.87,-61.43
+            2011-04-08T01:45:00Z,24.86,-61.42
+            2011-04-12T08:34:00Z,24.32,-61.67
+            2011-04-15T09:12:00Z,24.54,-61.53
+            2011-04-21T03:21:00Z,24.53,-61.68
+            2011-04-27T04:34:00Z,24.32,-61.76
+            2011-05-01T12:01:00Z,24.28,-61.56 
+         </swe:values>
+      </swe:DataArray>   
+   </sml:position>
 </sml:PhysicalSystem>

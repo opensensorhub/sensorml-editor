@@ -29,5 +29,11 @@ public class SWESensorPositionByDescriptionWidget extends AbstractSWESensorPosit
 	protected AbstractSensorElementWidget newInstance() {
 		return new SWESensorPositionByDescriptionWidget();
 	}
+
+	@Override
+	protected void updateValues(Coordinates coordinates) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

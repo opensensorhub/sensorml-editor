@@ -6,6 +6,7 @@ import java.util.List;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.geolocation.client.Position.Coordinates;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.HTML;
@@ -15,8 +16,11 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
+import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.map.SensorMapLineStringWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.map.SensorMapPointWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.map.SensorMapWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.map.geojson.GeoJsonBuilder;
 
@@ -166,18 +170,33 @@ public abstract class AbstractSWESensorPositionByWidget extends AbstractSensorEl
 
 		@Override
 		public void onClick(ClickEvent event) {
-			SensorMapWidget mapWidget = new SensorMapWidget();
-			Coordinates c = getCoordinates();
+			final Coordinates c = getCoordinates();
 			
 			//is a point (Point/Vector/DataRecord)
 			if(c != null && c.coordinates.size() == 1) {
 				Coordinate point = c.coordinates.get(0);
 				String geoJson = GeoJsonBuilder.buildPointGeoJSon(point.lat,point.lon,c.epsgCode);
-				Panel mapPanel = mapWidget.getMapPanelWithPoint(point.lat,point.lon,c.epsgCode);
+				//Panel mapPanel = mapWidget.getMapPanelWithPoint(point.lat,point.lon,c.epsgCode,getMode() == MODE.EDIT);
 				//Panel mapPanel = mapWidget.getMapPanel(geoJson);
-				
-				displayEditPanel(mapPanel, "Position", null);
+				final SensorMapPointWidget mapWidget = new SensorMapPointWidget(point.lat,point.lon,c.epsgCode,getMode() == MODE.EDIT);
+				displayEditPanel(mapWidget.getPanel(), "Position", new IButtonCallback() {
+					
+					@Override
+					public void onClick() {
+						c.coordinates.clear();
+						double [] latLon = mapWidget.getLatLon();
+						Coordinate coordinate = new Coordinate();
+						coordinate.lat = latLon[0];
+						coordinate.lon = latLon[1];
+						
+						c.coordinates.add(coordinate);
+						updateValues(c);
+						
+						refresh();
+					}
+				});
 			} else {
+				//SensorMapWidget mapWidget = new SensorMapWidget();
 				//build coordinates
 				double [][] points = new double[c.coordinates.size()][2];
 				int i=0;
@@ -186,7 +205,50 @@ public abstract class AbstractSWESensorPositionByWidget extends AbstractSensorEl
 					points[i][1] = coordinate.lon;
 					i++;
 				}
-				displayEditPanel(mapWidget.getMapPanelWithTrajectory(points,c.epsgCode), "Position", null);
+				final SensorMapLineStringWidget mapWidget = new SensorMapLineStringWidget(points,c.epsgCode,getMode() == MODE.EDIT);
+				displayEditPanel(mapWidget.getPanel(), "Position", new IButtonCallback() {
+					
+					@Override
+					public void onClick() {
+						c.coordinates.clear();
+						double [][] latLonCoordinates = mapWidget.getLatLonCoordinates();
+						
+						for(int i =0;i < latLonCoordinates.length;i++) {
+							Coordinate coordinate = new Coordinate();
+							coordinate.lat = latLonCoordinates[i][0];
+							coordinate.lon = latLonCoordinates[i][1];
+							c.coordinates.add(coordinate);
+						}
+						updateValues(c);
+						refresh();
+					}
+				});
+			}
+		}
+	}
+	
+	protected void updateValues(Coordinates coordinates) {
+		if(getElements().size() > 0) {
+			final ISensorWidget widget = getElements().get(0);
+			List<ISensorWidget> coordinatesWidget = findWidgets(widget, "coordinate", TAG_DEF.SWE, TAG_TYPE.ELEMENT);
+			
+			if(coordinatesWidget != null) {
+				Coordinate newCoordinate = coordinates.coordinates.get(0);
+				double lat = ((int)(newCoordinate.lat*100000))/(double)100000;
+				double lon = ((int)(newCoordinate.lon*100000))/(double)100000;
+				
+				for(final ISensorWidget coordinate : coordinatesWidget) {
+					String name = coordinate.getValue("name",false);
+					
+					if(name != null) {
+						if(name.equals("Lat")) {
+							coordinate.setValue("value", lat+"");
+						} else if(name.equals("Lon")) {
+							coordinate.setValue("value", lon+"");
+						}
+					}
+					//TODO: handle UOM
+				}
 			}
 		}
 	}
@@ -200,5 +262,13 @@ public abstract class AbstractSWESensorPositionByWidget extends AbstractSensorEl
 	protected class Coordinate {
 		public double lat;
 		public double lon;
+	}
+	
+	@Override
+	public void refresh() {
+		container.clear();
+		for(ISensorWidget child : getElements()) {
+			addSensorWidget(child);
+		}
 	}
 }

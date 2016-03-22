@@ -1,19 +1,24 @@
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.map;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.Polygon;
 
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.MapOptions;
 import org.gwtopenmaps.openlayers.client.MapWidget;
-import org.gwtopenmaps.openlayers.client.Projection;
+import org.gwtopenmaps.openlayers.client.Pixel;
 import org.gwtopenmaps.openlayers.client.Style;
+import org.gwtopenmaps.openlayers.client.control.DragFeature;
+import org.gwtopenmaps.openlayers.client.control.DragFeature.DragFeatureListener;
+import org.gwtopenmaps.openlayers.client.control.DragFeatureOptions;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
+import org.gwtopenmaps.openlayers.client.control.ModifyFeature;
+import org.gwtopenmaps.openlayers.client.event.VectorFeatureModifiedListener;
+import org.gwtopenmaps.openlayers.client.event.VectorFeatureModifiedListener.FeatureModifiedEvent;
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 import org.gwtopenmaps.openlayers.client.format.GeoJSON;
 import org.gwtopenmaps.openlayers.client.geometry.LineString;
+import org.gwtopenmaps.openlayers.client.geometry.LinearRing;
 import org.gwtopenmaps.openlayers.client.geometry.Point;
-import org.gwtopenmaps.openlayers.client.layer.JsonLayerCreator;
 import org.gwtopenmaps.openlayers.client.layer.OSM;
 import org.gwtopenmaps.openlayers.client.layer.Vector;
 
@@ -23,7 +28,7 @@ import com.google.gwt.user.client.ui.SimplePanel;
 
 public class SensorMapWidget {
 
-	public Panel getMapPanelWithPoint(double lat,double lon,String epsgCode) {
+	public Panel getMapPanelWithPoint(double lat,double lon,String epsgCode, boolean drag) {
 		SimplePanel mapContainer = new SimplePanel();
 		
 		MapOptions defaultMapOptions = new MapOptions();
@@ -61,10 +66,24 @@ public class SensorMapWidget {
 
         mapContainer.add(mapWidget);
         
+        if(drag) {
+        	 DragFeatureOptions dragFeatureOptions = new DragFeatureOptions();
+             dragFeatureOptions.onComplete(new DragFeatureListener() {
+            	 
+                 public void onDragEvent(VectorFeature vectorFeature,
+                         Pixel pixel) {
+                 	//do callback
+                 }
+              });
+             
+             DragFeature dragFeature = new DragFeature(vectorLayer, dragFeatureOptions);
+        	mapWidget.getMap().addControl(dragFeature);
+        	dragFeature.activate();
+        } 
 		return mapContainer;
 	}
 	
-	public Panel getMapPanelWithTrajectory(double [][] latLonCoordinates ,String epsgCode) {
+	public Panel getMapPanelWithTrajectory(double [][] latLonCoordinates ,String epsgCode,boolean modify) {
 		SimplePanel mapContainer = new SimplePanel();
 		
 		MapOptions defaultMapOptions = new MapOptions();
@@ -107,6 +126,22 @@ public class SensorMapWidget {
         
         mapContainer.add(mapWidget);
         
+        if(modify) {
+        	ModifyFeature modifyFeature = new ModifyFeature(vectorLayer);
+        	mapWidget.getMap().addControl(modifyFeature);
+        	modifyFeature.activate();
+        	
+        	vectorLayer
+    		.addVectorFeatureModifiedListener(new VectorFeatureModifiedListener() {
+
+    		    public void onFeatureModified(
+    			    FeatureModifiedEvent eventObject) {
+    		    	
+    		    	//TODO callback
+    		    }
+    		});
+        } 
+        
 		return mapContainer;
 	}
 	
@@ -145,4 +180,24 @@ public class SensorMapWidget {
         
 		return mapContainer;
 	}
+	
+	private static DragFeature createDragFeature(Vector layer) {
+        DragFeatureOptions dragFeatureOptions = new DragFeatureOptions();
+        dragFeatureOptions.onDrag(createDragFeatureListener("onDrag"));
+        dragFeatureOptions.onStart(createDragFeatureListener("onStart"));
+        dragFeatureOptions.onComplete(createDragFeatureListener("onComplete"));
+ 
+        return new DragFeature(layer, dragFeatureOptions);
+    }
+ 
+    private static DragFeatureListener createDragFeatureListener(final String type) {
+        return new DragFeatureListener() {
+ 
+            public void onDragEvent(VectorFeature vectorFeature,
+                    Pixel pixel) {
+            	//do callback
+            	GWT.log(vectorFeature.getCenterLonLat().lat()+","+vectorFeature.getCenterLonLat().lat());
+            }
+        };
+    }
 }

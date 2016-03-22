@@ -67,6 +67,6 @@ public class SWESensorCoordinateWidget extends SensorGenericLineWidget{
 	
 	@Override
 	public APPENDER appendTo() {
-		return APPENDER.OVERRIDE_LINE;
+		return APPENDER.HORIZONTAL;
 	}
 }

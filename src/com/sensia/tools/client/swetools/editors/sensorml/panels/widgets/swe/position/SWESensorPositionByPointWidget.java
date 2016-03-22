@@ -132,4 +132,17 @@ public class SWESensorPositionByPointWidget extends AbstractSWESensorPositionByW
 		}
 		return coordinates;
 	}
+
+	@Override
+	protected void updateValues(Coordinates coordinates) {
+		// TODO Auto-generated method stub
+		if(getElements().size() > 0) {
+			ISensorWidget pointWidget = getElements().get(0);
+			Coordinate coordinate = coordinates.coordinates.get(0);
+			
+			double lat = ((int)(coordinate.lat*100000))/(double)100000;
+			double lon = ((int)(coordinate.lon*100000))/(double)100000;
+			pointWidget.setValue("coordinates", lat+" "+lon);
+		}
+	}
 }
