@@ -26,7 +26,7 @@ public class SMLComponentWidget extends AbstractSensorElementWidget{
 		extrasPanel = new HorizontalPanel();
 		
 		anchorHref = new Anchor();
-		
+		anchorHref.setTarget("_blank");
 		container.add(anchorHref);
 		container.add(extrasPanel);
 		

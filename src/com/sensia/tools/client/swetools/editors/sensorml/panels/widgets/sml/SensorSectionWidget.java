@@ -124,6 +124,7 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 				anchor.setText(linkName);
 			}
 			
+			anchor.setTarget("_blank");
 		} else if(widget.getType() == TAG_TYPE.ATTRIBUTE) {
 			//get header from child value
 			if(!widget.getElements().isEmpty()) {

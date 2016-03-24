@@ -49,6 +49,7 @@ public class SMLDocumentWidget extends AbstractSensorElementWidget{
 		
 		//default name
 		linkage.setText("Link");
+		linkage.setTarget("_blank");
 	}
 
 	@Override
