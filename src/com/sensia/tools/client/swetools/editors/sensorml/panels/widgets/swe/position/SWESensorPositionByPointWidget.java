@@ -94,7 +94,6 @@ public class SWESensorPositionByPointWidget extends AbstractSWESensorPositionByW
 	
 	@Override
 	protected void activeMode(MODE mode) {
-		editPanel.setVisible(getMode() == MODE.EDIT);
 	}
 	
 	@Override

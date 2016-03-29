@@ -24,6 +24,7 @@ import com.sensia.relaxNG.RNGRef;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGTagList;
 import com.sensia.relaxNG.RNGZeroOrMore;
+import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -175,6 +176,7 @@ public abstract class AbstractSensorElementWidget implements ISensorWidget{
 		for(int i=0;i < NORMALIZE_DOT_SEPARATOR_SIZE;i++) {
 			newValue += ".";
 		}
+		newValue +=SensorConstants.HTML_SPACE+SensorConstants.HTML_SPACE+SensorConstants.HTML_SPACE+SensorConstants.HTML_SPACE;
 		return newValue;
 	}
 
@@ -183,6 +185,7 @@ public abstract class AbstractSensorElementWidget implements ISensorWidget{
 		for(int i=0;i < nb;i++) {
 			newValue += ".";
 		}
+		newValue +=" ";
 		return newValue;
 	}
 	
@@ -432,6 +435,7 @@ public abstract class AbstractSensorElementWidget implements ISensorWidget{
 				container.addStyleName("advanced-panel");
 				getAdvancedPanel(container);
 				if (container != null) {
+					if(getMode() == MODE.EDIT) {
 					displayEditPanel(container, "Edit " + getName(),
 							new IButtonCallback() {
 								@Override
@@ -443,6 +447,9 @@ public abstract class AbstractSensorElementWidget implements ISensorWidget{
 									}
 								}
 							});
+					} else {
+						displayEditPanel(container, "View " + getName(),null);
+					}
 				}
 			}
 		});

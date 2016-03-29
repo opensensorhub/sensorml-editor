@@ -831,20 +831,24 @@
    <!--============        Type Of parent            ============-->
    <!--==========================================================-->
    
-   <sml:typeOf xlink:title="urn:teledyne_rdi:adcp_1200"
+   <sml:typeOf xlink:title="urn:teledyne_rdi:workhorse_1200"
       xlink:href="http://www.sensorml.com/2.0/mvco/sensor/RDI_Workhorse_1200.xml"/>
-   
+
 
    <!--==========================================================-->
-   <!--============        System Parameters         ============-->
+   <!--============        ConfigurationSystem Parameters         ============-->
    <!--==========================================================-->
    
    <sml:configuration>
       <sml:Settings>
+         
          <sml:setValue ref="parameters/dopplerParameters/reportingFrequency"> 20 </sml:setValue>
          <sml:setValue ref="parameters/dopplerParameters/samplingFrequency"> 2 </sml:setValue>
          <sml:setValue ref="parameters/dopplerParameters/distanceToFirstBin"> 122 </sml:setValue>
-         <sml:setValue ref="parameters/dopplerParameters/oingInterval"> 0.5 </sml:setValue>
+         <sml:setValue ref="parameters/dopplerParameters/pingInterval"> 0.5 </sml:setValue>
+         
+         <sml:setMode ref="modes/depthOption">depthOption_200m</sml:setMode>
+         
       </sml:Settings>
    </sml:configuration>   
 

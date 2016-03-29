@@ -95,7 +95,6 @@ public class SWESensorPositionByTrajectoryWidget extends AbstractSWESensorPositi
 		if(dataArrayWidget!= null) {
 			dataArrayWidget.switchMode(mode);
 		}
-		editPanel.setVisible(getMode() == MODE.EDIT);
 	}
 
 	@Override

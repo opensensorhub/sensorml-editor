@@ -19,6 +19,7 @@ import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.OntologyPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorAttributeWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -111,6 +112,7 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 			});
 			
 			hPanel.add(ontologyImage);
+			valueBox.setEnabled(getMode() == MODE.EDIT);
 			
 			container.add(hPanel);
 		} else {

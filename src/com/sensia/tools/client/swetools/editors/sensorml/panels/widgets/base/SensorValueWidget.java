@@ -64,7 +64,7 @@ public class SensorValueWidget extends AbstractSensorElementWidget{
 		valueBox.setWidth("500px");
 		
 		hPanel.add(valueBox);
-		
+		valueBox.setEnabled(getMode() == MODE.EDIT);
 		container.add(hPanel);
 	}
 	

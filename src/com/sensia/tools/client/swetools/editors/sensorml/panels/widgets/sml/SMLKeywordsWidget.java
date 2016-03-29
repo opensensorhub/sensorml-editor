@@ -57,7 +57,6 @@ public class SMLKeywordsWidget extends AbstractSensorElementWidget {
 
 	@Override
 	protected void activeMode(MODE mode) {
-		editPanel.setVisible(getMode() == MODE.EDIT);
 	}
 
 	@Override

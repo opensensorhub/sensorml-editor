@@ -1,9 +1,5 @@
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.line;
 
-import com.google.gwt.core.shared.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
@@ -12,10 +8,6 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.APPENDER;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_DEF;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_TYPE;
 
 public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 	
@@ -209,6 +201,5 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 
 	@Override
 	protected void activeMode(MODE mode) {
-		advancedPanel.setVisible(getMode() == MODE.EDIT);
 	}
 }
