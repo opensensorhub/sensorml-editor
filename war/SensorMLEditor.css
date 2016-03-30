@@ -138,10 +138,12 @@ html>body .gwt-DecoratedTabBar {
 }
 	
 .gwt-disclosurepanel .content {
-  border-left: 0px;
+  border-left: 29px !important;
   padding: 0px;
   margin-left: 0px;
   margin-top: 5px;
+  border-left: 2px solid #e7e7e7 !important;
+  
 }
 
 .gwt-TextBox {
@@ -241,6 +243,36 @@ html>body .gwt-DecoratedTabBar {
 
 .swe-property-panel {
 	margin-left:35px !important;
+}
+
+.sml-mode-panel {
+	margin-left:-30px;
+	border-left:none !important;
+	margin-bottom:15px;
+}
+
+.sml-mode-inner-panel {
+	margin-left:35px !important;
+	border-left:none !important;
+	margin-bottom:15px;
+	margin-top: -6px !important;
+}
+
+.gwt-DisclosurePanel .content .sml-mode-inner-panel{
+	border-left:none !important;
+}
+
+.gwt-DisclosurePanel .content .sml-mode-panel{
+	border-left:none !important;
+}
+
+.sml-mode-title {
+  font-weight:bold;
+  margin-right: 10px;
+}
+
+.sml-mode-panel {
+	
 }
 
 .swe-object-type {
@@ -378,6 +410,10 @@ td div.document-title-inner {
 	border-spacing: 10px;
 }
 
+.sml-mode-vertical-panel {
+	padding : 5 0 5 10;
+}
+
 .line-generic-label-panel {
 	width : 225px;
 }
@@ -393,6 +429,11 @@ table.swe-generic-vertical-panel {
 }
 
 table.swe-dataRecord-nolabel-vertical-panel {
+	border-spacing: 10px !important;
+	margin-left:-10px;
+}
+
+table.sml-mode-nolabel-vertical-panel {
 	border-spacing: 10px !important;
 	margin-left:-10px;
 }
