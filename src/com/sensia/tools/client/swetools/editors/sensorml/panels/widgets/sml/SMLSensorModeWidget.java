@@ -35,6 +35,8 @@ public class SMLSensorModeWidget extends AbstractSensorElementWidget{
         contentPanel.addStyleName("sml-mode-inner-panel");
         
         currentHeader = hidePanel.getHeaderTextAccessor();
+        
+        hidePanel.getHeader().addStyleName("sml-mode-title");
 	}
 
 	@Override
