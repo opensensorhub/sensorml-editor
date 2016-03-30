@@ -32,10 +32,13 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 	private String href="";
 	private Anchor anchor;
 	
-	public SensorSectionWidget(String name) {
+	private String niceName;
+	
+	public SensorSectionWidget(String name,String niceName) {
 		super(name,TAG_DEF.SML ,TAG_TYPE.ELEMENT);
+		this.niceName = niceName;
 		
-		hidePanel = new DisclosurePanel(name);
+		hidePanel = new DisclosurePanel(niceName);
         hidePanel.setAnimationEnabled(true);
         hidePanel.setOpen(true);
         hidePanel.addStyleName(CSS_CLASS);
@@ -60,7 +63,7 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
-		if(getName().equals("Characteristics") || getName().equals("Capabilities")) {
+		if(getName().equals("characteristics") || getName().equals("capabilities")) {
 			
 			// 3 cases:
 			// 1) it's the name attribute
@@ -104,7 +107,7 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 				panel.addStyleName("swe-generic-vertical-panel");
 				contentPanel.add(panel);
 			}
-		} else if(getName().equals("Type of")) {
+		} else if(getName().equals("typeOf")) {
 			if(widget.getType() == TAG_TYPE.ATTRIBUTE) {
 				if(widget.getName().equals("title")) {
 					linkName = widget.getValue("title", true);
@@ -148,6 +151,6 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
-		return new SensorSectionWidget(getName());
+		return new SensorSectionWidget(getName(),niceName);
 	}
 }

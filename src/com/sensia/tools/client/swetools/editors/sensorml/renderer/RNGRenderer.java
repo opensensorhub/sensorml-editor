@@ -91,10 +91,6 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 		return stack.pop();
 	}
 	
-	public ISensorWidget getRoot() {
-		return stack.peek();
-	}
-	
 	protected int getStackSize() {
 		return stack.size();
 	}
@@ -268,5 +264,13 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	
 	protected ISensorWidget getWidget(final String name) {
 		return null;
+	}
+	
+	public ISensorWidget getRoot() {
+		ISensorWidget root = null;
+		if(!stack.isEmpty()) {
+			root = stack.get(0);
+		} 
+		return root;
 	}
 }
