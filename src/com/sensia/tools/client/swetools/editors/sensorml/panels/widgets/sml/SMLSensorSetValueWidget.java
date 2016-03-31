@@ -6,7 +6,9 @@ import java.util.List;
 
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
+import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ICallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
@@ -18,6 +20,8 @@ public class SMLSensorSetValueWidget extends AbstractSensorElementWidget{
 	private NameRefResolver resolver;
 	
 	private HTML label;
+	private Panel valuePanel;
+	private Panel uomPanel;
 	private ISensorWidget root;
 	
 	public SMLSensorSetValueWidget(ISensorWidget root) {
@@ -25,8 +29,14 @@ public class SMLSensorSetValueWidget extends AbstractSensorElementWidget{
 	
 		this.root = root;
 		label = new HTML("");
+		valuePanel = new HorizontalPanel();
+		uomPanel = new HorizontalPanel();
 		container = new HorizontalPanel();
 		container.add(label);
+		container.add(new HTML(SensorConstants.HTML_SPACE+SensorConstants.HTML_SPACE));
+		container.add(valuePanel);
+		container.add(new HTML(SensorConstants.HTML_SPACE+SensorConstants.HTML_SPACE));
+		container.add(uomPanel);
 		resolver = new NameRefResolver();
 		resolver.build(root);
 	}
@@ -52,13 +62,14 @@ public class SMLSensorSetValueWidget extends AbstractSensorElementWidget{
 			resolver.resolvePath(this, pathList, new ICallback<String>() {
 				
 				@Override
-				public void callback(String result) {
-					// TODO Auto-generated method stub
+				public void callback(String...result) {
+					label.setText(result[0]);
+					uomPanel.add(new Label(result[1]));
 					
 				}
 			});
-		} else {
-			container.add(widget.getPanel());
+		} else if(widget.getType() == TAG_TYPE.VALUE){
+			valuePanel.add(widget.getPanel());
 		}
 		
 	}

@@ -98,12 +98,15 @@ public final class NameRefResolver {
 						} else {
 							//find label
 							RNGTag t = results.get(0);
-							List<String> labelPath = new ArrayList<String>();
+							List<String> dataPath = new ArrayList<String>();
 							
-							labelPath.add("label");
-							results = findTags(t,labelPath);
+							dataPath.add("label");
+							results = findTags(t,dataPath);
 							
 							String label = null;
+							String uom   = "";
+							
+							//find label
 							if(results.isEmpty()) {
 								//no label, takes the name attribute instead
 								RNGAttribute nameAtt = ((RNGTagList) t).getChildAttribute("name");
@@ -112,7 +115,19 @@ public final class NameRefResolver {
 								RNGElement tagElt = (RNGElement) results.get(0);
 								label = tagElt.getChildValue().getText();
 							}
-							callback.callback(label);
+							
+							//find uom
+							dataPath.clear();
+							dataPath.add("code");
+							results = findTags(t,dataPath);
+							if(!results.isEmpty()) {
+								if(results.get(0) instanceof RNGAttribute) {
+									RNGAttribute tagElt = (RNGAttribute) results.get(0);
+									uom = tagElt.getChildValue().getText();
+								}
+							} 
+							
+							callback.callback(label,uom);
 						}
 					}
 				}
@@ -147,7 +162,12 @@ public final class NameRefResolver {
 					} 
 				}
 			}
-		} 
+		} else if(tag instanceof RNGAttribute) {
+			RNGAttribute rootAtt= (RNGAttribute) tag;
+			if(rootAtt.getName().equals(name)) {
+				idx++;
+			}
+		}
 		//we have found the element
 		if(idx == path.size()) {
 			results.add(tag);

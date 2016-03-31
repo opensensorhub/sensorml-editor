@@ -272,6 +272,8 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 					pushAndVisitChildren(new SMLSensorModeChoiceWidget(), elt.getChildren());
 				} else if(eltName.equals("Mode")) {
 					pushAndVisitChildren(new SMLSensorModeWidget(), elt.getChildren());
+				} else if(eltName.equals("setValue") || eltName.equals("setMode")) {
+					pushAndVisitChildren(new SMLSensorSetValueWidget(getRoot()), elt.getChildren());
 				} else if(nsUri.equals(GML_NS_1) || nsUri.equals(GML_NS_2)) {
 					pushAndVisitChildren(new SensorGenericHorizontalContainerWidget(elt.getName(), TAG_DEF.GML, TAG_TYPE.ELEMENT), elt.getChildren());
 				} else if (nsUri.equals(SML_NS_1) || nsUri.equals(SML_NS_2)) {
@@ -309,9 +311,9 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 			pushAndVisitChildren(new SMLSensorAttributeWidget(att), att.getChildren());
 		} else if(att.getName().equals("href")) {
 			pushAndVisitChildren(new SensorGenericXLinkWidget(att.getName(),ns), att.getChildren());
-		} else if(att.getName().equals("ref")) {
+		} /*else if(att.getName().equals("ref")) {
 			pushAndVisitChildren(new SensorAttributeRefWidget(getRoot()), att.getChildren());
-		} else {
+		}*/ else {
 			super.visit(att);
 		}
 	}

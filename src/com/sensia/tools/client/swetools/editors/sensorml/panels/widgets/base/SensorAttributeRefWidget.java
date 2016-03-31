@@ -51,8 +51,8 @@ public class SensorAttributeRefWidget extends AbstractSensorElementWidget{
 			resolver.resolvePath(this, pathList, new ICallback<String>() {
 				
 				@Override
-				public void callback(String result) {
-					label.setText(result);
+				public void callback(String...result) {
+					label.setText(result[0]);
 				}
 			});
 		}
