@@ -84,7 +84,7 @@ public class SensorMapLineStringWidget {
         
         container.add(mapWidget);
         
-        if(drag) {
+        /*if(drag) {
         	ModifyFeature modifyFeature = new ModifyFeature(vectorLayer);
         	mapWidget.getMap().addControl(modifyFeature);
         	modifyFeature.activate();
@@ -96,7 +96,7 @@ public class SensorMapLineStringWidget {
     		    	//TODO callback
     		    }
     		});
-        } 
+        }*/ 
 	}
 	
 	public Panel getPanel() {
