@@ -8,6 +8,7 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
+import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ICallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
@@ -23,11 +24,13 @@ public class SMLSensorSetValueWidget extends AbstractSensorElementWidget{
 	private Panel valuePanel;
 	private Panel uomPanel;
 	private ISensorWidget root;
+	private RNGGrammar grammar;
 	
-	public SMLSensorSetValueWidget(ISensorWidget root) {
+	public SMLSensorSetValueWidget(ISensorWidget root,final RNGGrammar grammar) {
 		super("setValue",TAG_DEF.SML,TAG_TYPE.ELEMENT);
 	
 		this.root = root;
+		this.grammar = grammar;
 		label = new HTML("");
 		valuePanel = new HorizontalPanel();
 		uomPanel = new HorizontalPanel();
@@ -38,7 +41,7 @@ public class SMLSensorSetValueWidget extends AbstractSensorElementWidget{
 		container.add(new HTML(SensorConstants.HTML_SPACE+SensorConstants.HTML_SPACE));
 		container.add(uomPanel);
 		resolver = new NameRefResolver();
-		resolver.build(root);
+		resolver.build(root,grammar);
 	}
 
 	@Override
@@ -76,7 +79,7 @@ public class SMLSensorSetValueWidget extends AbstractSensorElementWidget{
 
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
-		return new SMLSensorSetValueWidget(root);
+		return new SMLSensorSetValueWidget(root,grammar);
 	}
 
 }

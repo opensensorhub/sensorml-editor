@@ -74,6 +74,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.xsd
 public abstract class RNGRenderer implements RNGTagVisitor {
 	
 	private Stack<ISensorWidget> stack;
+	private RNGGrammar grammar;
 	
 	public RNGRenderer() {
 		stack = new Stack<ISensorWidget>();
@@ -100,6 +101,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 		if (grammar.getStartPattern() == null) {
 			throw new IllegalStateException("Grammar has no 'start' pattern and cannot be used to create a new instance");
 		}
+		this.grammar = grammar;
 		grammar.getStartPattern().accept(this);
 	}
 
@@ -272,5 +274,9 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 			root = stack.get(0);
 		} 
 		return root;
+	}
+	
+	public RNGGrammar getGrammar() {
+		return  grammar;
 	}
 }

@@ -7,6 +7,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.APPENDER;
@@ -31,7 +32,7 @@ public class SMLSensorEventWidget extends AbstractSensorElementWidget{
 		
 		container.add(labelPanel);
 		container.add(defPanel);
-		container.add(new HTML("-->"));
+		container.add(new HTML("-->"+SensorConstants.HTML_SPACE));
 		container.add(timePanel);
 	}
 

@@ -270,7 +270,7 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 				} else if(eltName.equals("Mode")) {
 					pushAndVisitChildren(new SMLSensorModeWidget(), elt.getChildren());
 				} else if(eltName.equals("setValue") || eltName.equals("setMode")) {
-					pushAndVisitChildren(new SMLSensorSetValueWidget(getRoot()), elt.getChildren());
+					pushAndVisitChildren(new SMLSensorSetValueWidget(getRoot(),getGrammar()), elt.getChildren());
 				} else if(eltName.equals("Event")) {
 					pushAndVisitChildren(new SMLSensorEventWidget(), elt.getChildren());
 				} else if(nsUri.equals(GML_NS_1) || nsUri.equals(GML_NS_2)) {

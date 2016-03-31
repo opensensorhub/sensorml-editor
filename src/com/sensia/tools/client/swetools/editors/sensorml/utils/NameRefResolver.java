@@ -55,12 +55,14 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.xsd
 public final class NameRefResolver {
 
 	private String remoteFile;
+	private RNGGrammar currentGrammar;
 	
 	public NameRefResolver() {}
 	
-	public void build(ISensorWidget currentWidget) {
+	public void build(ISensorWidget currentWidget,final RNGGrammar grammar) {
 		//first get the root node to find the typeof tag
 		ISensorWidget root = currentWidget;
+		this.currentGrammar = grammar;
 		
 		while(root.getParent() != null) {
 			root = root.getParent();
@@ -71,72 +73,75 @@ public final class NameRefResolver {
 		if(typeOfWidget != null) {
 			//get href
 			remoteFile = typeOfWidget.getValue("href", true);
+		} 
+	}
+	
+	public void resolvePath(ISensorWidget currentWidget, final List<String> path,final ICallback<String> callback) {
+		if(path != null && path.size() > 0 && path.get(0).equals("this")) {
+			List<String> newPath = new ArrayList<String>(path.subList(1, path.size()));
+			proceedSearch(newPath,currentGrammar,callback);
+		} else  if(remoteFile != null){
+			//download and transform the XML document into a RNG profile
+			final XMLSensorMLParser parser = new XMLSensorMLParser();
+			
+			parser.parse(remoteFile, new RNGParserCallback() {
+				
+				@Override
+				public void onParseDone(final RNGGrammar grammar) {
+					proceedSearch(path,grammar,callback);
+				}
+			});
 		} else {
 			Window.alert("No TypeOf tag has been found to resolve the path");
 		}
 	}
 	
-	public void resolvePath(ISensorWidget currentWidget, final List<String> path,final ICallback<String> callback) {
-		if(remoteFile != null) {
-			//download and transform the XML document into a RNG profile
-			final XMLSensorMLParser parser = new XMLSensorMLParser();
-			parser.parse(remoteFile, new RNGParserCallback() {
+	private void proceedSearch(List<String> path, RNGGrammar grammar, ICallback<String> callback) {
+		if(path != null && path.size() > 0) {
+			RNGGroup rootGrammar = grammar.getStartPattern();
+			
+			List<RNGTag> results = findTags(rootGrammar,path); 
+			
+			if(results.isEmpty()) {
+				Window.alert("No path "+path.toString()+"has been resolved into the remote file "+remoteFile);
+			} else if(results.size() > 1) {
+				Window.alert("Many matches for the path "+path.toString()+"has been resolved into the remote file "+remoteFile);
+			} else {
+				//find label
+				RNGTag t = results.get(0);
+				List<String> dataPath = new ArrayList<String>();
 				
-				@Override
-				public void onParseDone(final RNGGrammar grammar) {
-					//PathResolverVisitor visitor = new PathResolverVisitor(path);
-					//visitor.visit(grammar);
-					if(path != null && path.size() > 0) {
-						RNGGroup rootGrammar = grammar.getStartPattern();
-						
-						List<RNGTag> results = findTags(rootGrammar,path); 
-						
-						if(results.isEmpty()) {
-							Window.alert("No path "+path.toString()+"has been resolved into the remote file "+remoteFile);
-						} else if(results.size() > 1) {
-							Window.alert("Many matches for the path "+path.toString()+"has been resolved into the remote file "+remoteFile);
-						} else {
-							//find label
-							RNGTag t = results.get(0);
-							List<String> dataPath = new ArrayList<String>();
-							
-							dataPath.add("label");
-							results = findTags(t,dataPath);
-							
-							String label = null;
-							String uom   = "";
-							
-							//find label
-							if(results.isEmpty()) {
-								//no label, takes the name attribute instead
-								RNGAttribute nameAtt = ((RNGTagList) t).getChildAttribute("name");
-								label = AbstractSensorElementWidget.toNiceLabel(nameAtt.getChildValue().getText());
-							} else {
-								RNGElement tagElt = (RNGElement) results.get(0);
-								label = tagElt.getChildValue().getText();
-							}
-							
-							//find uom
-							dataPath.clear();
-							dataPath.add("code");
-							results = findTags(t,dataPath);
-							if(!results.isEmpty()) {
-								if(results.get(0) instanceof RNGAttribute) {
-									RNGAttribute tagElt = (RNGAttribute) results.get(0);
-									uom = tagElt.getChildValue().getText();
-								}
-							} 
-							
-							callback.callback(label,uom);
-						}
-					}
+				dataPath.add("label");
+				results = findTags(t,dataPath);
+				
+				String label = null;
+				String uom   = "";
+				
+				//find label
+				if(results.isEmpty()) {
+					//no label, takes the name attribute instead
+					RNGAttribute nameAtt = ((RNGTagList) t).getChildAttribute("name");
+					label = AbstractSensorElementWidget.toNiceLabel(nameAtt.getChildValue().getText());
+				} else {
+					RNGElement tagElt = (RNGElement) results.get(0);
+					label = tagElt.getChildValue().getText();
 				}
-			});
-		} else {
-			Window.alert("No href attribute is associated to the typeOf element to resolve the path : "+path);
+				
+				//find uom
+				dataPath.clear();
+				dataPath.add("code");
+				results = findTags(t,dataPath);
+				if(!results.isEmpty()) {
+					if(results.get(0) instanceof RNGAttribute) {
+						RNGAttribute tagElt = (RNGAttribute) results.get(0);
+						uom = tagElt.getChildValue().getText();
+					}
+				} 
+				
+				callback.callback(label,uom);
+			}
 		}
 	}
-	
 	private List<RNGTag> findTags(RNGTag root, List<String> path) {
 		List<RNGTag> results = new ArrayList<RNGTag>();
 		findRecursiveTags(root, path, 0, results);

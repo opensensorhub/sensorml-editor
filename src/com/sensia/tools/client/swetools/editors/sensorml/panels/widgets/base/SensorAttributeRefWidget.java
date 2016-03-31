@@ -6,6 +6,7 @@ import java.util.List;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
+import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ICallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
@@ -17,17 +18,19 @@ public class SensorAttributeRefWidget extends AbstractSensorElementWidget{
 	private HTML label;
 	private NameRefResolver resolver;
 	private ISensorWidget root;
+	private RNGGrammar grammar;
 	
-	public SensorAttributeRefWidget(ISensorWidget root) {
+	public SensorAttributeRefWidget(ISensorWidget root,RNGGrammar grammar) {
 		super("ref", TAG_DEF.RNG, TAG_TYPE.ATTRIBUTE);
 		container = new HorizontalPanel();
 		this.root = root;
+		this.grammar= grammar;
 		
 		label = new HTML();
 		container.add(label);
 		
 		resolver = new NameRefResolver();
-		resolver.build(root);
+		resolver.build(root,grammar);
 	}
 
 	@Override
@@ -60,7 +63,7 @@ public class SensorAttributeRefWidget extends AbstractSensorElementWidget{
 
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
-		return new SensorAttributeRefWidget(root);
+		return new SensorAttributeRefWidget(root,grammar);
 	}
 
 }
