@@ -23,6 +23,7 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 
@@ -32,6 +33,8 @@ public class SensorMapPointWidget {
 	private double lon;
 	private String epsgCode;
 	private boolean drag;
+	
+	private double trueHeading;
 	
 	private Panel container;
 	private MapWidget mapWidget;
@@ -45,10 +48,21 @@ public class SensorMapPointWidget {
 		init();
 	}
 	
+	public SensorMapPointWidget(double lat,double lon,double trueHeading,String epsgCode, boolean drag) {
+		this.lat = lat;
+		this.lon = lon;
+		this.epsgCode = epsgCode;
+		this.drag = drag;
+		this.trueHeading = trueHeading;
+		
+		init();
+	}
+	
 	private void init() {
 		container = new SimplePanel();
 		
 		MapOptions defaultMapOptions = new MapOptions();
+		defaultMapOptions.setNumZoomLevels(22);
         mapWidget = new MapWidget("500px", "500px", defaultMapOptions);
 
         //Create some Google Layers
@@ -80,18 +94,19 @@ public class SensorMapPointWidget {
         
         LonLat lonLat = new LonLat(lon, lat);
         lonLat.transform("EPSG:"+epsgCode, mapWidget.getMap().getProjection()); //transform lonlat (provided in EPSG:4326) to OSM coordinate system (the map projection)
-        mapWidget.getMap().setCenter(lonLat, 6);
+        mapWidget.getMap().setCenter(lonLat, 10);
 
         final Vector vectorLayer = new Vector("Vectorlayer");
 
         Point point = new Point(lonLat.lon(), lonLat.lat());
 
         Style pointStyle = new Style();
-        pointStyle.setExternalGraphic("https://maps.google.com/mapfiles/ms/icons/blue-dot.png");
-        pointStyle.setGraphicSize(32, 37);
+        pointStyle.setExternalGraphic(GWT.getModuleBaseURL()+"images/arrow-direction.png");
+        pointStyle.setGraphicSize(28, 33);
         pointStyle.setGraphicOffset(-16, -37); //anchor on bottom center
         pointStyle.setFillOpacity(1.0);
-
+        pointStyle.setRotation(""+trueHeading);
+        
         VectorFeature pointFeature = new VectorFeature(point, pointStyle);
 
         vectorLayer.addFeature(pointFeature);

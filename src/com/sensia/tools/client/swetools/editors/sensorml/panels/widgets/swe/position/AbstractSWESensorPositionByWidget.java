@@ -128,6 +128,7 @@ public abstract class AbstractSWESensorPositionByWidget extends AbstractSensorEl
 			
 			String lat = null;
 			String lon = null;
+			String trueHeading = "0";
 			
 			if(coordinatesWidget != null) {
 				for(final ISensorWidget coordinate : coordinatesWidget) {
@@ -139,6 +140,8 @@ public abstract class AbstractSWESensorPositionByWidget extends AbstractSensorEl
 							lat = value;
 						} else if(name.equals("Lon")) {
 							lon = value;
+						} else if(name.equals("TrueHeading")){
+							trueHeading = value;
 						}
 					}
 					//TODO: handle UOM
@@ -159,6 +162,7 @@ public abstract class AbstractSWESensorPositionByWidget extends AbstractSensorEl
 				Coordinate point = new Coordinate();
 				point.lat = Double.parseDouble(lat);
 				point.lon = Double.parseDouble(lon);
+				point.trueHeading = Double.parseDouble(trueHeading);
 				
 				coordinates.coordinates.add(point);
 			}
@@ -175,10 +179,7 @@ public abstract class AbstractSWESensorPositionByWidget extends AbstractSensorEl
 			//is a point (Point/Vector/DataRecord)
 			if(c != null && c.coordinates.size() == 1) {
 				Coordinate point = c.coordinates.get(0);
-				String geoJson = GeoJsonBuilder.buildPointGeoJSon(point.lat,point.lon,c.epsgCode);
-				//Panel mapPanel = mapWidget.getMapPanelWithPoint(point.lat,point.lon,c.epsgCode,getMode() == MODE.EDIT);
-				//Panel mapPanel = mapWidget.getMapPanel(geoJson);
-				final SensorMapPointWidget mapWidget = new SensorMapPointWidget(point.lat,point.lon,c.epsgCode,getMode() == MODE.EDIT);
+				final SensorMapPointWidget mapWidget = new SensorMapPointWidget(point.lat,point.lon,point.trueHeading,c.epsgCode,getMode() == MODE.EDIT);
 				displayEditPanel(mapWidget.getPanel(), "Position", new IButtonCallback() {
 					
 					@Override
@@ -262,6 +263,7 @@ public abstract class AbstractSWESensorPositionByWidget extends AbstractSensorEl
 	protected class Coordinate {
 		public double lat;
 		public double lon;
+		public double trueHeading=0;
 	}
 	
 	@Override

@@ -35,13 +35,6 @@ public class SWESensorCoordinateWidget extends SensorGenericLineWidget{
 	
 	public SWESensorCoordinateWidget() {
 		super("coordinate", TAG_DEF.SWE, TAG_TYPE.ELEMENT);
-		
-		/*container = new HorizontalPanel();
-		contentPanel = new HorizontalPanel();
-		namePanel = new HorizontalPanel();
-		
-		container.add(namePanel);
-		container.add(contentPanel);*/
 	}
 
 
