@@ -36,6 +36,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLD
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLKeywordsWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLLinkWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLSensorAttributeWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLSensorEventWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLSensorModeChoiceWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLSensorModeWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.SMLSensorSetValueWidget;
@@ -142,23 +143,19 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		renderElements.put("axis", RENDER_ELEMENT_TYPE.LINE);
 		renderElements.put("origin", RENDER_ELEMENT_TYPE.LINE);
 		renderElements.put("ObservableProperty", RENDER_ELEMENT_TYPE.LINE);
-		renderElements.put("Event", RENDER_ELEMENT_TYPE.LINE);
 		
 		//skip list
 		skipList.add("event");
-		//skipList.add("ProcessModel");
 		skipList.add("contactInfo");
 		skipList.add("Security");
-		//skipList.add("PhysicalComponent");
-		//skipList.add("AggregateProcess");
-		//skipList.add("SimpleProcess");
-		//skipList.add("PhysicalSystem");
 		skipList.add("Term");
 		skipList.add("keywords");
 		skipList.add("data");
 		skipList.add("NormalizedCurve");
 		skipList.add("function");
 		skipList.add("mode");
+		skipList.add("TimeInstant");
+		skipList.add("time");
 		
 		rootSectionsList.add("PhysicalSystem");
 		rootSectionsList.add("ProcessModel");
@@ -274,6 +271,8 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 					pushAndVisitChildren(new SMLSensorModeWidget(), elt.getChildren());
 				} else if(eltName.equals("setValue") || eltName.equals("setMode")) {
 					pushAndVisitChildren(new SMLSensorSetValueWidget(getRoot()), elt.getChildren());
+				} else if(eltName.equals("Event")) {
+					pushAndVisitChildren(new SMLSensorEventWidget(), elt.getChildren());
 				} else if(nsUri.equals(GML_NS_1) || nsUri.equals(GML_NS_2)) {
 					pushAndVisitChildren(new SensorGenericHorizontalContainerWidget(elt.getName(), TAG_DEF.GML, TAG_TYPE.ELEMENT), elt.getChildren());
 				} else if (nsUri.equals(SML_NS_1) || nsUri.equals(SML_NS_2)) {
