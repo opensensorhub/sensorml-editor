@@ -1,8 +1,10 @@
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe;
 
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
+import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.APPENDER;
@@ -18,6 +20,8 @@ public class SWESensorQuantityWidget extends AbstractSensorElementWidget{
 	protected HorizontalPanel uomPanel;
 	protected HorizontalPanel constraintPanel;
 	
+	protected boolean hasConstraints=false;
+	
 	public SWESensorQuantityWidget() {
 		this("Quantity");
 	}
@@ -26,6 +30,11 @@ public class SWESensorQuantityWidget extends AbstractSensorElementWidget{
 		super(name,TAG_DEF.SWE,TAG_TYPE.ELEMENT);
 		
 		container = new HorizontalPanel();
+		init();
+	}
+	
+	private void init() {
+		hasConstraints = false;
 		defPanel = new HorizontalPanel();
 		quantityPanel = new HorizontalPanel();
 		uomPanel = new HorizontalPanel();
@@ -61,13 +70,25 @@ public class SWESensorQuantityWidget extends AbstractSensorElementWidget{
 			uomPanel.add(widget.getPanel());
 		} else if(widget.getType() == TAG_TYPE.ELEMENT && widget.getName().equals("value")){
 			quantityPanel.add(widget.getPanel());
+			if(hasConstraints) {
+				quantityPanel.add(new HTML("in"+SensorConstants.HTML_SPACE));
+			}
 		} else if(widget.getType() == TAG_TYPE.ELEMENT && widget.getName().equals("constraint")){
+			hasConstraints = true;
 			constraintPanel.add(widget.getPanel());
-		}else {
-			//uomPanel.add(widget.getPanel());
 		}
 	}
 
+	@Override
+	public void refresh() {
+		super.refresh();
+		container.clear();
+		init();
+		for(ISensorWidget child : getElements()) {
+			addSensorWidget(child);
+		}
+	}
+	
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
 		return new SWESensorQuantityWidget();

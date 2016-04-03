@@ -513,7 +513,6 @@
       <sml:ParameterList>
          <sml:parameter name="dopplerParameters">
             <swe:DataRecord>
-
                <swe:field name="operationalDepth">
                   <swe:Quantity definition="http://mmisw.org/ont/trdi/glossary/depthRating">
                      <swe:label>Depth Operation Rating</swe:label>
@@ -647,20 +646,25 @@
 
                <swe:field name="communicationsType">
                   <swe:Category>
-                     <swe:constraint>
-                        <swe:AllowedTokens>
-                           <swe:value>RS232</swe:value>
-                           <swe:value>RS422</swe:value>
-                        </swe:AllowedTokens>
-                     </swe:constraint>
+                  <swe:constraint>
+                    <swe:AllowedTokens>
+                       <swe:value>RS232</swe:value>
+                       <swe:value>RS422</swe:value>
+                    </swe:AllowedTokens>
+                  </swe:constraint>
                   </swe:Category>
                </swe:field>
 
                <swe:field name="communicationBaudRate">
-                  <swe:QuantityRange definition="http://sensorml.com/ont/swe/property/baudRate">
-                     <swe:uom code="bd"/>
-                     <swe:value>1200 115200</swe:value>
-                  </swe:QuantityRange>
+                <swe:QuantityRange definition="http://sensorml.com/ont/swe/property/baudRate">
+                   <swe:uom code="bd"/>
+                   <swe:constraint>
+                      <swe:AllowedValues>
+                         <swe:interval>100 200000</swe:interval>
+                      </swe:AllowedValues>
+                   </swe:constraint>
+                   <swe:value>1200 115200</swe:value>
+                </swe:QuantityRange>
                </swe:field>
 
             </swe:DataRecord>

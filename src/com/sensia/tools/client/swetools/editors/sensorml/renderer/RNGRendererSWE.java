@@ -21,6 +21,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWES
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorPositionWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorCurveWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.dataarray.SWESensorDataArrayWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorAllowedValuesWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorDataRecordWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorQuantityRangeWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorQuantityWidget;
@@ -66,7 +67,7 @@ public class RNGRendererSWE extends RNGRenderer implements RNGTagVisitor {
 	}
 	
 	protected ISensorWidget getWidget(final String name) {
-		 if(name.equals("Quantity")){
+		 if(name.equals("Quantity") || name.equals("Count")){
 			return new SWESensorQuantityWidget();
 		} else if(name.equals("Vector")){
 			return new SWESensorVectorWidget();
@@ -90,7 +91,9 @@ public class RNGRendererSWE extends RNGRenderer implements RNGTagVisitor {
 			return new SWESensorCondtionWidget();
 		} else if(name.equals("position")){
 			return new SWESensorPositionWidget();
-		}else {
+		}else if(name.equals("AllowedValues") || name.equals("AllowedTokens")){
+			return new SWESensorAllowedValuesWidget();
+		} else {
 			return super.getWidget(name);
 		}
 	}
