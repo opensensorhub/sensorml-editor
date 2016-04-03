@@ -94,6 +94,8 @@ public class SWESensorQuantityRangeWidget extends AbstractSensorElementWidget{
 		for(ISensorWidget child : getElements()) {
 			addSensorWidget(child);
 		}
+		
+		refreshParents(getParent());
 	}
 	
 	@Override

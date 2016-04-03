@@ -21,20 +21,28 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 	
 	protected Panel advancedPanel;
 	
-	protected boolean isLabelProvided = false;
-	protected boolean isDefinitionProvided = false;
+	protected boolean isLabelProvided;
+	protected boolean isDefinitionProvided;
 	
 	protected ISensorWidget titleValueWidget;
-	protected boolean hasTitle = false;
+	protected boolean hasTitle;
 	
 	public SensorGenericLineWidget(String name, TAG_DEF def, TAG_TYPE type) {
 		super(name, def, type);
+		multiLinesPanel = new VerticalPanel();
+		init();
+	}
+
+	private void init() {
+		isLabelProvided = false;
+		isDefinitionProvided = false;
+		hasTitle = false;
+		
 		linePanel = new HorizontalPanel();
 		HorizontalPanel labelAndDefPanel = new HorizontalPanel();
 		labelPanel = new HorizontalPanel();
 		dotSeparatorLabel = new HTML(getDotsLine());
 		optPanel = new HorizontalPanel();
-		multiLinesPanel = new VerticalPanel();
 		iconPanel = new HorizontalPanel();
 		//for generic ones
 		defPanel = new HorizontalPanel();
@@ -75,7 +83,7 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		//hide dots until optPanel is added
 		dotSeparatorLabel.setVisible(false);
 	}
-
+	
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
 		if(widget instanceof SensorGenericLineWidget) {
@@ -199,6 +207,16 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		return multiLinesPanel;
 	}
 
+	@Override
+	public void refresh(){
+		super.refresh();
+		getPanel().clear();
+		init();
+		
+		for(ISensorWidget child : getElements()) {
+			addSensorWidget(child);
+		}
+	}
 	@Override
 	protected void activeMode(MODE mode) {
 	}
