@@ -1,5 +1,6 @@
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.line;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
@@ -33,16 +34,16 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		init();
 	}
 
-	private void init() {
+	public void init() {
 		isLabelProvided = false;
 		isDefinitionProvided = false;
 		hasTitle = false;
-		
 		linePanel = new HorizontalPanel();
 		HorizontalPanel labelAndDefPanel = new HorizontalPanel();
 		labelPanel = new HorizontalPanel();
 		dotSeparatorLabel = new HTML(getDotsLine());
 		optPanel = new HorizontalPanel();
+		
 		iconPanel = new HorizontalPanel();
 		//for generic ones
 		defPanel = new HorizontalPanel();
@@ -83,7 +84,6 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		//hide dots until optPanel is added
 		dotSeparatorLabel.setVisible(false);
 	}
-	
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
 		if(widget instanceof SensorGenericLineWidget) {
@@ -105,6 +105,10 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		} 
 		//handle generic panel like identifier
 		else if(widget.getType() == TAG_TYPE.ATTRIBUTE && widget.getName().equals("definition")){
+			if(widget.getPanel().isAttached()){
+				widget.getPanel().getParent().removeFromParent();
+				widget.getPanel().removeFromParent();
+			}
 			defPanel.add(widget.getPanel());
 			isDefinitionProvided = true;
 		} else if(widget.isIcon()) {
@@ -207,16 +211,6 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		return multiLinesPanel;
 	}
 
-	@Override
-	public void refresh(){
-		super.refresh();
-		getPanel().clear();
-		init();
-		
-		for(ISensorWidget child : getElements()) {
-			addSensorWidget(child);
-		}
-	}
 	@Override
 	protected void activeMode(MODE mode) {
 	}

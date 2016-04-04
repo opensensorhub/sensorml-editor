@@ -7,6 +7,7 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.Mapping;
 
 
 public class SensorValueWidget extends AbstractSensorElementWidget{
@@ -57,7 +58,8 @@ public class SensorValueWidget extends AbstractSensorElementWidget{
 	@Override
 	public void getAdvancedPanel(Panel container) {
 		HorizontalPanel hPanel = new HorizontalPanel();
-		HTML hlabel = new HTML(getParent().getName());
+		
+		HTML hlabel = new HTML(Mapping.getCorrespondingValue(getParent().getName()));
 		hlabel.setWidth("100px");
 		hPanel.add(hlabel);
 		

@@ -81,11 +81,21 @@ public class SWESensorQuantityWidget extends AbstractSensorElementWidget{
 
 	@Override
 	public void refresh() {
-		super.refresh();
-		container.clear();
-		init();
 		for(ISensorWidget child : getElements()) {
-			addSensorWidget(child);
+	 		if(child.getType() == TAG_TYPE.ELEMENT && child.getName().equals("uom")){
+	 			uomPanel.clear();
+				uomPanel.add(child.getPanel());
+			} else if(child.getType() == TAG_TYPE.ELEMENT && child.getName().equals("value")){
+				quantityPanel.clear();
+				quantityPanel.add(child.getPanel());
+				if(hasConstraints) {
+					quantityPanel.add(new HTML("in"+SensorConstants.HTML_SPACE));
+				}
+			} else if(child.getType() == TAG_TYPE.ELEMENT && child.getName().equals("constraint")){
+				hasConstraints = true;
+				constraintPanel.clear();
+				constraintPanel.add(child.getPanel());
+			}
 		}
 	}
 	

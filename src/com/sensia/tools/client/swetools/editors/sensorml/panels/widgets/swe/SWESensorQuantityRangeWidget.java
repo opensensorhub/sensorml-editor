@@ -88,14 +88,26 @@ public class SWESensorQuantityRangeWidget extends AbstractSensorElementWidget{
 
 	@Override
 	public void refresh() {
-		super.refresh();
-		container.clear();
-		init();
 		for(ISensorWidget child : getElements()) {
-			addSensorWidget(child);
+			if(child.getType() == TAG_TYPE.ELEMENT && child.getName().equals("uom")){
+				uomPanel.clear();
+				uomPanel.add(new HTML(SensorConstants.HTML_SPACE));
+				uomPanel.add(child.getPanel());
+			} else if(child.getName().equals("value") && child.getType() == TAG_TYPE.ELEMENT && child.getDef() == TAG_DEF.SWE){
+				valuePanel.clear();
+				String interval = child.getElements().get(0).getName();
+				String [] spaceSplit = interval.split(" ");
+				HTML values = new HTML(spaceSplit[0]+" to "+spaceSplit[1]);
+				valuePanel.add(values);
+				if(hasConstraints) {
+					valuePanel.add(new HTML(SensorConstants.HTML_SPACE+"in"+SensorConstants.HTML_SPACE));
+				}
+			} else if(child.getType() == TAG_TYPE.ELEMENT && child.getName().equals("constraint")){
+				constraintPanel.clear();
+				hasConstraints = true;
+				constraintPanel.add(child.getPanel());
+			}
 		}
-		
-		refreshParents(getParent());
 	}
 	
 	@Override
