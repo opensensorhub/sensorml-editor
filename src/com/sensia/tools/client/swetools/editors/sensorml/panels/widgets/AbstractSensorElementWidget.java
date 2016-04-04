@@ -457,6 +457,42 @@ public abstract class AbstractSensorElementWidget implements ISensorWidget{
 		return wrapper;
 	}
 	
+	protected Panel getEditPanel(final IButtonCallback callback,final ISensorWidget widget) {
+		HorizontalPanel advancedPanel = new HorizontalPanel();
+		advancedPanel.addStyleName("rng-advanced-button");
+		advancedPanel.setTitle("Edit " + getName());
+
+		FocusPanel wrapper = new FocusPanel();
+		wrapper.add(advancedPanel);
+		wrapper.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				VerticalPanel container = new VerticalPanel();
+				container.addStyleName("advanced-panel");
+				getAdvancedPanel(container,widget);
+				if (container != null) {
+					if(getMode() == MODE.EDIT) {
+					displayEditPanel(container, "Edit " + getName(),
+							new IButtonCallback() {
+								@Override
+								public void onClick() {
+									refreshChildren(widget.getElements());
+									refreshParents(widget.getParent());
+									if (callback != null) {
+										callback.onClick();
+									}
+								}
+							});
+					} else {
+						displayEditPanel(container, "View " + getName(),null);
+					}
+				}
+			}
+		});
+
+		return wrapper;
+	}
+	
 	public void refresh() {
 		
 	}
@@ -486,6 +522,12 @@ public abstract class AbstractSensorElementWidget implements ISensorWidget{
 	
 	public void getAdvancedPanel(Panel container) {
 		for(ISensorWidget child : getElements()) {
+			child.getAdvancedPanel(container);
+		}
+	}
+	
+	public void getAdvancedPanel(Panel container,ISensorWidget widget) {
+		for(ISensorWidget child : widget.getElements()) {
 			child.getAdvancedPanel(container);
 		}
 	}
