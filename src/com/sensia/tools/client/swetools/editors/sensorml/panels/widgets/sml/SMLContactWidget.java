@@ -5,6 +5,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE;
@@ -32,7 +33,10 @@ public class SMLContactWidget extends AbstractSensorElementWidget{
 	public SMLContactWidget() {
 		super("contact", TAG_DEF.SML,TAG_TYPE.ELEMENT);
 		container = new VerticalPanel();
-		
+		init();
+	}
+
+	private void init() {
 		organisationPanel = new SimplePanel();
 		voicePanel = new SimplePanel();
 		
@@ -56,11 +60,24 @@ public class SMLContactWidget extends AbstractSensorElementWidget{
 		addressPanel.add(countryPanel);
 		addressPanel.add(electronicMailAddressPanel);
 		
-		container.add(organisationPanel);
+		HorizontalPanel hPanel = new HorizontalPanel();
+		hPanel.add(organisationPanel);
+		
+		Panel advancedPanel = getEditPanel(new IButtonCallback() {
+			@Override
+			public void onClick() {
+				refreshChildren(getElements());
+				refreshParents(getParent());
+			}
+		});
+		
+		hPanel.add(advancedPanel);
+		
+		container.add(hPanel);
 		container.add(addressPanel);
 		container.add(voicePanel);
 	}
-
+	
 	@Override
 	public Panel getPanel() {
 		return container;
