@@ -1,10 +1,12 @@
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.APPENDER;
@@ -18,7 +20,6 @@ public class SWESensorDataRecordWidget extends AbstractSensorElementWidget{
 	private Panel linePanel;
 	private Panel labelPanel;
 	private Panel defPanel;
-	
 	private Panel innerContainer;
 	
 	private boolean hasLabel= false;
@@ -36,6 +37,7 @@ public class SWESensorDataRecordWidget extends AbstractSensorElementWidget{
 		container.add(linePanel);
 		container.add(innerContainer);
 		
+		linePanel.setVisible(false);
 		//innerContainer.addStyleName("swe-dataRecord-vertical-panel");
 	}
 
@@ -55,9 +57,24 @@ public class SWESensorDataRecordWidget extends AbstractSensorElementWidget{
 				widget.getElements().get(0).getPanel().addStyleName("font-bold");
 			}
 			labelPanel.add(widget.getPanel());
+			List<String> advancedTags = new ArrayList<String>();
+			advancedTags.add("label");
+			advancedTags.add("name");
+			advancedTags.add("definition");
+			
+			Panel advancedPanel = getSimpleEditPanel(new IButtonCallback() {
+				@Override
+				public void onClick() {
+					refreshChildren(getElements());
+					refreshParents(getParent());
+				}
+			},advancedTags);
+			linePanel.add(advancedPanel);
+			linePanel.setVisible(true);
 			hasLabel = true;
 		} else if(widget.getName().equals("definition") && widget.getType() == TAG_TYPE.ATTRIBUTE) { 
 			defPanel.add(widget.getPanel());
+			linePanel.setVisible(true);
 		} else if(widget.getName().equals("field") || widget.getName().equals("coordinate") || widget.getName().equals("time")){
 			//container.add(widget.getPanel());
 			//find every fields and display it

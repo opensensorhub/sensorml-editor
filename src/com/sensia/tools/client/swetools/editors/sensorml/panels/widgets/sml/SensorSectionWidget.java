@@ -54,7 +54,6 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
         contentPanel.addStyleName("swe-property-panel");
         
         currentHeader = hidePanel.getHeaderTextAccessor();
-		
 	}
 
 	@Override

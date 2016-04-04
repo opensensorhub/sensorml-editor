@@ -457,6 +457,63 @@ public abstract class AbstractSensorElementWidget implements ISensorWidget{
 		return wrapper;
 	}
 	
+	protected ISensorWidget getValue(ISensorWidget root) {
+		ISensorWidget foundWidget = null;
+		if(root.getType() == TAG_TYPE.VALUE) {
+			foundWidget =  root;
+		} else {
+			for(ISensorWidget w : root.getElements()) {
+				foundWidget = getValue(w);
+				if(foundWidget != null) {
+					break;
+				}
+			}
+		}
+		
+		return foundWidget;
+	}
+	
+	protected Panel getSimpleEditPanel(final IButtonCallback callback,final List<String> advancedTags) {
+		HorizontalPanel advancedPanel = new HorizontalPanel();
+		advancedPanel.addStyleName("rng-advanced-button");
+		advancedPanel.setTitle("Edit " + getName());
+
+		FocusPanel wrapper = new FocusPanel();
+		wrapper.add(advancedPanel);
+		wrapper.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				VerticalPanel container = new VerticalPanel();
+				container.addStyleName("advanced-panel");
+				for(ISensorWidget child : getElements()) {
+					if(advancedTags.contains(child.getName())) {
+						child.getAdvancedPanel(container);
+					}
+				}
+
+				if (container != null) {
+					if(getMode() == MODE.EDIT) {
+					displayEditPanel(container, "Edit " + getName(),
+							new IButtonCallback() {
+								@Override
+								public void onClick() {
+									refreshChildren(getElements());
+									refreshParents(getParent());
+									if (callback != null) {
+										callback.onClick();
+									}
+								}
+							});
+					} else {
+						displayEditPanel(container, "View " + getName(),null);
+					}
+				}
+			}
+		});
+
+		return wrapper;
+	}
+	
 	protected Panel getEditPanel(final IButtonCallback callback,final ISensorWidget widget) {
 		HorizontalPanel advancedPanel = new HorizontalPanel();
 		advancedPanel.addStyleName("rng-advanced-button");
