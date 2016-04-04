@@ -643,7 +643,6 @@
 
          <sml:parameter name="CommunicationsParameters">
             <swe:DataRecord>
-
                <swe:field name="communicationsType">
                   <swe:Category>
                   <swe:constraint>

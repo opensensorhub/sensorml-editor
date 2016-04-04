@@ -1,9 +1,13 @@
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE;
@@ -13,10 +17,14 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorW
 public class SensorSectionsWidget extends AbstractSensorElementWidget{
 
 	private VerticalPanel container;
-	private HTML namePanel;
+	private HTML titlePanel;
 	private HorizontalPanel descriptionPanel;
 	private HorizontalPanel identifierPanel;
 	private HorizontalPanel keywordPanel;
+	
+	private HorizontalPanel lineDescriptionPanel;
+	private HorizontalPanel lineIdentifierPanel;
+	private HorizontalPanel lineTitlePanel;
 	
 	private Panel endPanel;
 	private Panel startPanel;
@@ -36,14 +44,88 @@ public class SensorSectionsWidget extends AbstractSensorElementWidget{
 		container = new VerticalPanel();
 		container.setWidth("1024px");
 		container.setSpacing(5);
-		namePanel = new HTML();
-		namePanel.addStyleName("document-title");
+		titlePanel = new HTML();
+		titlePanel.addStyleName("document-title");
 		
 		descriptionPanel = new HorizontalPanel();
 		identifierPanel  = new HorizontalPanel();
 		keywordPanel  = new HorizontalPanel();
 		
-		container.add(namePanel);
+		//add edit mode
+		lineDescriptionPanel = new HorizontalPanel();
+		lineIdentifierPanel = new HorizontalPanel();
+		lineTitlePanel = new HorizontalPanel();
+		
+		lineIdentifierPanel.add(identifierPanel);
+		lineDescriptionPanel.add(descriptionPanel);
+		
+		//add edit mode identifier
+		List<String> advancedTags = new ArrayList<String>();
+		advancedTags.add("identifier");
+		
+		Panel advancedPanel = getSimpleEditPanel(new IButtonCallback() {
+			@Override
+			public void onClick() {
+				refreshChildren(getElements());
+				refreshParents(getParent());
+				for(ISensorWidget child : getElements()) {
+					if (child.getName().equals("identifier")) {
+						identifierPanel.clear();
+						HTML identifier = new HTML(child.getValue("codeSpace", true)+": "+child.getValue("identifier", true));
+						identifierPanel.add(identifier);
+						break;
+					}
+				}
+			}
+		},advancedTags);
+		lineIdentifierPanel.add(advancedPanel);
+		
+		//add edit mode description
+		advancedTags = new ArrayList<String>();
+		advancedTags.add("description");
+		
+		advancedPanel = getSimpleEditPanel(new IButtonCallback() {
+			@Override
+			public void onClick() {
+				refreshChildren(getElements());
+				refreshParents(getParent());
+			}
+		},advancedTags);
+		lineDescriptionPanel.add(advancedPanel);
+		
+		//add title
+		lineTitlePanel.add(titlePanel);
+		//add edit mode identifier
+		advancedTags = new ArrayList<String>();
+		advancedTags.add("name");
+		advancedTags.add("id");
+		
+		advancedPanel = getSimpleEditPanel(new IButtonCallback() {
+			@Override
+			public void onClick() {
+				refreshChildren(getElements());
+				refreshParents(getParent());
+				for(ISensorWidget child : getElements()) {
+					if(child.getName().equals("name")){
+						String value = child.getValue("name", true);
+						if(value != null && !value.isEmpty()) {
+							titlePanel.setHTML(titleHeadingStartTag+value+titleHeadingEndTag);
+						}
+					} if (child.getName().equals("id") && child.getType() == TAG_TYPE.ATTRIBUTE) {
+						if(!child.getElements().isEmpty()) {
+							//the first one should be a value widget
+							String value = child.getElements().get(0).getName();
+							titlePanel.setHTML(titleHeadingStartTag+value+titleHeadingEndTag);
+						}
+					}
+				}
+			}
+		},advancedTags);
+		advancedPanel.addStyleName("advanced-title-panel");
+		
+		lineTitlePanel.add(advancedPanel);
+				
+		container.add(lineTitlePanel);
 		
 		//draw horizontal line
 		lineTitle = new HTML("<hr  style=\"width:100%;\" />");
@@ -51,8 +133,8 @@ public class SensorSectionsWidget extends AbstractSensorElementWidget{
 		
 		descIdKeywordPanel = new VerticalPanel();
 		
-		descIdKeywordPanel.add(identifierPanel);
-		descIdKeywordPanel.add(descriptionPanel);
+		descIdKeywordPanel.add(lineIdentifierPanel);
+		descIdKeywordPanel.add(lineDescriptionPanel);
 		descIdKeywordPanel.add(keywordPanel);
 		
 		container.add(descIdKeywordPanel);
@@ -82,18 +164,18 @@ public class SensorSectionsWidget extends AbstractSensorElementWidget{
 		if(widget.getName().equals("name")){
 			String value = widget.getValue("name", true);
 			if(value != null && !value.isEmpty()) {
-				namePanel.setHTML(titleHeadingStartTag+value+titleHeadingEndTag);
+				titlePanel.setHTML(titleHeadingStartTag+value+titleHeadingEndTag);
 			}
 		} else if(widget.getName().equals("description")) {
 			descriptionPanel.add(widget.getPanel());
 		} else if (widget.getName().equals("identifier")) {
-			HTML identifier = new HTML("UniqueID: "+widget.getValue("identifier", true));
+			HTML identifier = new HTML(widget.getValue("codeSpace", true)+": "+widget.getValue("identifier", true));
 			identifierPanel.add(identifier);
 		} else if (widget.getName().equals("id") && widget.getType() == TAG_TYPE.ATTRIBUTE) {
 			if(!widget.getElements().isEmpty()) {
 				//the first one should be a value widget
 				String value = widget.getElements().get(0).getName();
-				namePanel.setHTML(titleHeadingStartTag+value+titleHeadingEndTag);
+				titlePanel.setHTML(titleHeadingStartTag+value+titleHeadingEndTag);
 			}
 		} else if (widget.getName().equals("KeywordList")) {
 			keywordPanel.add(widget.getPanel());
@@ -119,16 +201,16 @@ public class SensorSectionsWidget extends AbstractSensorElementWidget{
 		if(isInnerSection) {
 			titleHeadingStartTag = "<h4>";
 			titleHeadingEndTag = "</h4>";
-			namePanel.removeStyleName("document-title");
-			namePanel.addStyleName("document-title-inner");
+			titlePanel.removeStyleName("document-title");
+			titlePanel.addStyleName("document-title-inner");
 			lineTitle.addStyleName("sections-line-title-separator-inner");
 			lineDescription.addStyleName("sections-line-description-separator-inner");
 			descIdKeywordPanel.addStyleName("sections-description-inner");
 		} else {
 			titleHeadingStartTag = "<h2>";
 			titleHeadingEndTag = "</h2>";
-			namePanel.removeStyleName("document-title-inner");
-			namePanel.addStyleName("document-title");
+			titlePanel.removeStyleName("document-title-inner");
+			titlePanel.addStyleName("document-title");
 			lineTitle.removeStyleName("sections-line-title-separator-inner");
 			lineDescription.removeStyleName("sections-line-description-separator-inner");
 			descIdKeywordPanel.removeStyleName("sections-description-inner");

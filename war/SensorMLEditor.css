@@ -508,3 +508,7 @@ table.sml-mode-nolabel-vertical-panel {
 .constraint-values {
 	font-style: italic;
 }
+
+.advanced-title-panel {
+	margin-top:25px;
+}
