@@ -1,2 +1,2 @@
 # sensorml-editor
-This SensorML editor is used by OSH but can also be used as a standalone web editor
+This SensorML viewer/editor is used by OSH but can also be used as a standalone web editor.
