@@ -38,14 +38,27 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.source.UrlSource
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE;
 
+/**
+ * This class is in charge of creating the main Panel. The top elements will 
+ * manage the file loading while the center panel display the content of the 
+ * transformed XML file into a HTML pretty view.
+ * @author Mathieu Dhainaut
+ *
+ */
 public class CenterPanel extends Composite implements IParsingObserver{
 	private static final long serialVersionUID = -7684111574093800909L;
 
+	//the panel in charge of displaying the HTML content
 	private VerticalPanel dynamicCenterPanel;
-	private CheckBox edit;
+	
+	//the checkbox to switch between view and edit mode
+	private CheckBox editCheckbox;
 	private ISensorWidget root;
+	
+	//the processor in charge of parsing and create the RNG profile
 	private RNGProcessorSML smlEditorProcessor;
 	
+	//the default RNG profiles ready to be displayed
 	private static Map<String,String> profiles = new HashMap<String,String>();
 	
 	static {
@@ -68,15 +81,14 @@ public class CenterPanel extends Composite implements IParsingObserver{
 		Button viewAsXML = new Button("View as XML");
 		viewAsXML.addClickHandler(new ViewAsXMLButtonClickListener(sgmlEditorProcessor));
 		
+		//Get the url parameter to load the document where this one is under the form : ?url=DocumentPath
 		String passedFile = com.google.gwt.user.client.Window.Location.getParameter("url");
+		HorizontalPanel panel = new HorizontalPanel();
+		panel.add(viewXmlPanel);
+		panel.add(profilePanel);
+		panel.add(viewAsXML);
 		
-		
-			HorizontalPanel panel = new HorizontalPanel();
-			panel.add(viewXmlPanel);
-			panel.add(profilePanel);
-			panel.add(viewAsXML);
-			
-			verticalPanel.add(panel);
+		verticalPanel.add(panel);
 		
 		if(passedFile != null) {
 			//load the file given the url passed as parameter
@@ -84,7 +96,7 @@ public class CenterPanel extends Composite implements IParsingObserver{
 			smlEditorProcessor.setMode(MODE.VIEW);
 			smlEditorProcessor.parse(passedFile);
 			
-			edit.setVisible(true);
+			editCheckbox.setVisible(true);
 			
 		}
 		
@@ -94,6 +106,7 @@ public class CenterPanel extends Composite implements IParsingObserver{
 		
 	}
 
+	// Get the top elements panel for the XML part
 	private Panel getXMLViewPanel() {
 		final HorizontalPanel panel = new HorizontalPanel();
 		panel.setSpacing(20);
@@ -114,10 +127,10 @@ public class CenterPanel extends Composite implements IParsingObserver{
 		final SimplePanel fromPanel = new SimplePanel();
 		
 		//init file upload panel
-		final ISourcePanel fileUploadPanel = new LocalFileSourcePanel(smlEditorProcessor, edit);
+		final ISourcePanel fileUploadPanel = new LocalFileSourcePanel(smlEditorProcessor, editCheckbox);
 		
 		//init url load
-		final ISourcePanel urlDownloadPanel = new UrlSourcePanel(smlEditorProcessor, edit);
+		final ISourcePanel urlDownloadPanel = new UrlSourcePanel(smlEditorProcessor, editCheckbox);
 		
 		//add to xml panel
 		panel.add(title);
@@ -183,22 +196,23 @@ public class CenterPanel extends Composite implements IParsingObserver{
 		
 		HTML titleProfile = new HTML("<b>Profiles:</b>");
 		
+		//button to load the selected profile
 		Button load = new Button("Apply");
-		edit = new CheckBox("Edit");
+		editCheckbox = new CheckBox("Edit");
 		
 		panel.add(titleProfile);
 		panel.add(profileListBox);
 		panel.add(load);
-		panel.add(edit);
+		panel.add(editCheckbox);
 		
-		edit.setVisible(false);
+		editCheckbox.setVisible(false);
 		
-		edit.addClickHandler(new ClickHandler() {
+		editCheckbox.addClickHandler(new ClickHandler() {
 			
 			@Override
 			public void onClick(ClickEvent event) {
 				if(root != null){
-					MODE mode = (edit.isChecked()) ? MODE.EDIT : MODE.VIEW;
+					MODE mode = (editCheckbox.isChecked()) ? MODE.EDIT : MODE.VIEW;
 					root.switchMode(mode);
 				}
 			}

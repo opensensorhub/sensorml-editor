@@ -149,12 +149,6 @@ public abstract class AbstractSensorElementWidget implements ISensorWidget{
 		}
 	}
 	
-	public void setValues(String parentName, List<String> values) {
-		for(ISensorWidget w : getElements()) {
-			w.setValues(parentName, values);
-		}
-	}
-	
 	/**
 	 * 
 	 */

@@ -8,7 +8,6 @@ import com.google.gwt.user.client.ui.Widget;
 import com.sensia.gwt.relaxNG.RNGParser;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.CenterPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.NavigationPanel;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -29,17 +28,16 @@ public class SensorMLEditor implements EntryPoint {
 		}
 	}
 	
-	private Widget navigationPanel;
 	private Widget centerPanel;
 	
 	public SensorMLEditor() {
+		//init a processor to handle the parsing of a document
 		RNGProcessorSML sgmlEditorProcessor = new RNGProcessorSML();
 		initPanels(sgmlEditorProcessor);
 	}
 
 	private void initPanels(final RNGProcessorSML sgmlEditorProcessor) {
 		initCenterPanel(sgmlEditorProcessor);
-		initNavigationPanel(sgmlEditorProcessor);
 	}
 	
 	public void open(Panel parent) {
@@ -67,8 +65,4 @@ public class SensorMLEditor implements EntryPoint {
 	private void initCenterPanel(final RNGProcessorSML sgmlEditorProcessor) {
 		centerPanel = new CenterPanel(sgmlEditorProcessor);
 	}
-	
-	private void initNavigationPanel(final RNGProcessorSML sgmlEditorProcessor) {
-		navigationPanel = new NavigationPanel(sgmlEditorProcessor);
-	}
-	}
+}
