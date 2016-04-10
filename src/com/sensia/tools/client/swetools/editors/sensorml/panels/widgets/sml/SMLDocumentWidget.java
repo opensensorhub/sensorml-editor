@@ -1,3 +1,13 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml;
 
 import com.google.gwt.user.client.ui.Anchor;
@@ -10,14 +20,29 @@ import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallba
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 
+/**
+ * The Class SMLDocumentWidget is corresponding to the <sml:document> element.
+ */
 public class SMLDocumentWidget extends AbstractSensorElementWidget{
 
+	/** The container. */
 	private Panel container;
+	
+	/** The linkage. */
 	private Anchor linkage;
+	
+	/** The description panel. */
 	private Panel descriptionPanel;
+	
+	/** The extra panel. */
 	private Panel extraPanel;
+	
+	/** The edit panel. */
 	private Panel editPanel;
 	
+	/**
+	 * Instantiates a new SML document widget.
+	 */
 	public SMLDocumentWidget() {
 		super("document", TAG_DEF.SML, TAG_TYPE.ELEMENT);
 		
@@ -26,6 +51,7 @@ public class SMLDocumentWidget extends AbstractSensorElementWidget{
 		extraPanel = new HorizontalPanel();
 		descriptionPanel = new SimplePanel();
 		
+		//adds advanced panel
 		editPanel = getEditPanel(new IButtonCallback() {
 			
 			@Override
@@ -37,30 +63,46 @@ public class SMLDocumentWidget extends AbstractSensorElementWidget{
 				
 			}
 		});
-		
+
+		//adds link
 		container.add(linkage);
+		//adds spaces
 		container.add(new HTML(SensorConstants.HTML_SPACE));
 		container.add(new HTML(SensorConstants.HTML_SPACE));
+		
+		//adds description
 		container.add(descriptionPanel);
+		//adds extra stuff
 		container.add(extraPanel);
+		//adds advanced panel
 		container.add(editPanel);
 		
 		activeMode(getMode());
 		
 		//default name
 		linkage.setText("Link");
+		//opens in a new tab
 		linkage.setTarget("_blank");
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget#getPanel()
+	 */
 	@Override
 	public Panel getPanel() {
 		return container;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#activeMode(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE)
+	 */
 	@Override
 	protected void activeMode(MODE mode) {
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#addSensorWidget(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget)
+	 */
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
 		//extraPanel.add(widget.getPanel());
@@ -91,6 +133,9 @@ public class SMLDocumentWidget extends AbstractSensorElementWidget{
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#newInstance()
+	 */
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
 		return new SMLDocumentWidget();

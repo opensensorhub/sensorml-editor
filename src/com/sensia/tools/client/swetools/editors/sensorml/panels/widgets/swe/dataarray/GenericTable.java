@@ -1,3 +1,13 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.dataarray;
 
 import java.util.ArrayList;
@@ -27,28 +37,46 @@ import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.TableRes;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.Property;
 
+/**
+ * The Class GenericTable allows to create generic table from any Property objects.
+ */
 public class GenericTable{
 
+	/** The data provider. */
 	private ListDataProvider<Property> dataProvider;
 	
+	/** The table res. */
 	private CellTable.Resources tableRes = GWT.create(TableRes.class);
 	
+	/** The table. */
 	@UiField(provided=true)
 	private CellTable<Property> table;
 	
+	/** The selected property. */
 	private Property selectedProperty;
 	
+	/** The original data. */
 	private List<Property> originalData;
+	
+	/** The filtered data. */
 	private List<Property> filteredData;
 	
+	/** The lentgh pattern. */
 	private int lentghPattern = 0;
 	
+	/** The is editable. */
 	private boolean isEditable = false;
 	
+	/**
+	 * Instantiates a new generic table.
+	 */
 	public GenericTable() {
 		init();
 	}
 	
+	/**
+	 * Inits the.
+	 */
 	private void init() {
 		//init global values
 		dataProvider = new ListDataProvider<Property>();
@@ -56,21 +84,31 @@ public class GenericTable{
 		filteredData = new ArrayList<Property>();
 	}
 	
+	/**
+	 * Populates the table.
+	 *
+	 * @param headers the headers to display
+	 * @param values the values to set
+	 */
 	public void poupulateTable(final List<String> headers,final Object[][] values) {
+		//clears/creates the list
 		init();
 		this.originalData = getPropertiesFromValues(values);
 		
 		if(table == null) {
+			//creates the table object
 			createTable();
 		} else {
+			//remove every columns
 			int nbColumn = table.getColumnCount();
 			for(int i=0;i< nbColumn;i++) {
 				table.removeColumn(i);
 			}
 		}
 		
-		int position = 0;
 		
+		int position = 0;
+		//add every column based on header list
 		for(final String colName : headers) {
 			final int currentPosition = position;
 			final Column<Property, String> column = new Column<Property, String>(new TextCell()) {
@@ -109,6 +147,7 @@ public class GenericTable{
 			
 			removeColumn.setSortable(false);
 			
+			//updates when the user remove a row
 			removeColumn.setFieldUpdater(new FieldUpdater<Property, String>() {
 
 				  @Override
@@ -142,6 +181,11 @@ public class GenericTable{
 	}
 	
 	
+	/**
+	 * Creates the table.
+	 *
+	 * @return the panel
+	 */
 	public Panel createTable() {
 		if(table == null) {
 			table  = new CellTable<Property>(10,tableRes);
@@ -193,6 +237,11 @@ public class GenericTable{
 		return vPanel;
 	}
 	
+	/**
+	 * Sets the filter.
+	 *
+	 * @param pattern the new filter
+	 */
 	public void setFilter(final String pattern) {
 		if(pattern.isEmpty()) {
 			if(lentghPattern > 0) {
@@ -240,6 +289,9 @@ public class GenericTable{
 		}
 	}
 	
+	/**
+	 * Deselect.
+	 */
 	private void deselect() {
 		if(selectedProperty != null) {
 			table.getSelectionModel().setSelected(selectedProperty, false);
@@ -258,6 +310,13 @@ public class GenericTable{
 		}
 	}
 	
+	/**
+	 * Filter pattern.
+	 *
+	 * @param filterText the filter text
+	 * @param inputList the input list
+	 * @return the list
+	 */
 	private List<Property>  filterPattern(final String filterText, final List<Property> inputList) {
 		List<Property> newFilteredList = new ArrayList<Property>();
 		for(final Property property : inputList) {
@@ -273,6 +332,11 @@ public class GenericTable{
 		return newFilteredList;
 	}
 	
+	/**
+	 * Gets the selected value.
+	 *
+	 * @return the selected value
+	 */
 	public String getSelectedValue() {
 		String value = null;
 		if(selectedProperty != null) {
@@ -284,6 +348,12 @@ public class GenericTable{
 		return value;
 	}
 	
+	/**
+	 * Gets the properties from values.
+	 *
+	 * @param values the values
+	 * @return the properties from values
+	 */
 	private List<Property> getPropertiesFromValues(final Object[][] values ) {
 		final List<Property> properties = new ArrayList<Property>();
 		
@@ -301,6 +371,11 @@ public class GenericTable{
 		return properties;
 	}
 
+	/**
+	 * Gets the values.
+	 *
+	 * @return the values
+	 */
 	public Object[][] getValues() {
 		int colNumber = (!originalData.isEmpty())? originalData.get(0).properties.size() : 0;
 		
@@ -316,6 +391,11 @@ public class GenericTable{
 		return values;
 	}
 	
+	/**
+	 * Gets the removes the row label header.
+	 *
+	 * @return the removes the row label header
+	 */
 	private SafeHtmlHeader getRemoveRowLabelHeader() {
 		SafeHtmlHeader removeRowLabelHeader = new SafeHtmlHeader(new SafeHtml() {
 
@@ -329,6 +409,11 @@ public class GenericTable{
 		return removeRowLabelHeader;
 	}
 	
+	/**
+	 * Sets the editable.
+	 *
+	 * @param isEditable the new editable
+	 */
 	public void setEditable(boolean isEditable) {
 		this.isEditable = isEditable;
 	}

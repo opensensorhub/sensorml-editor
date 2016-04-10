@@ -1,3 +1,13 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position;
 
 import java.util.List;
@@ -14,13 +24,26 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorW
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.dataarray.SWESensorDataArrayWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.AbstractSWESensorPositionByWidget.Coordinates;
 
+/**
+ * The Class SWESensorPositionByTrajectoryWidget.
+ */
 public class SWESensorPositionByTrajectoryWidget extends AbstractSWESensorPositionByWidget{
 
+	/** The container. */
 	private Panel container;
+	
+	/** The data array widget. */
 	private SWESensorDataArrayWidget dataArrayWidget;
+	
+	/** The edit panel. */
 	private Panel editPanel;
+	
+	/** The data array panel. */
 	private Panel dataArrayPanel;
 	
+	/**
+	 * Instantiates a new SWE sensor position by trajectory widget.
+	 */
 	public SWESensorPositionByTrajectoryWidget() {
 		super();
 		container= new HorizontalPanel();
@@ -44,15 +67,22 @@ public class SWESensorPositionByTrajectoryWidget extends AbstractSWESensorPositi
 		activeMode(getMode());
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.AbstractSWESensorPositionByWidget#getPanel()
+	 */
 	@Override
 	public Panel getPanel() {
 		return container;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.AbstractSWESensorPositionByWidget#getCoordinates()
+	 */
 	@Override
 	public Coordinates getCoordinates() {
 		Coordinates coordinates = new Coordinates();
 		
+		//build data array object from String values
 		Object[][] values = dataArrayWidget.getObjectValues();
 		List<String> headers = dataArrayWidget.getHeaders();
 		
@@ -90,6 +120,9 @@ public class SWESensorPositionByTrajectoryWidget extends AbstractSWESensorPositi
 		return coordinates;
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#activeMode(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE)
+	 */
 	@Override
 	protected void activeMode(MODE mode) {
 		if(dataArrayWidget!= null) {
@@ -97,6 +130,9 @@ public class SWESensorPositionByTrajectoryWidget extends AbstractSWESensorPositi
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#addSensorWidget(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget)
+	 */
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
 		dataArrayWidget = new SWESensorDataArrayWidget();
@@ -115,6 +151,9 @@ public class SWESensorPositionByTrajectoryWidget extends AbstractSWESensorPositi
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.AbstractSWESensorPositionByWidget#refresh()
+	 */
 	@Override
 	public void refresh() {
 		dataArrayPanel.clear();
@@ -123,11 +162,17 @@ public class SWESensorPositionByTrajectoryWidget extends AbstractSWESensorPositi
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#newInstance()
+	 */
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
 		return new SWESensorPositionByTrajectoryWidget();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.AbstractSWESensorPositionByWidget#updateValues(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.AbstractSWESensorPositionByWidget.Coordinates)
+	 */
 	@Override
 	protected void updateValues(Coordinates coordinates) {
 		/*List<String> headers = dataArrayWidget.getHeaders();

@@ -1,11 +1,19 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.map;
 
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.MapOptions;
 import org.gwtopenmaps.openlayers.client.MapWidget;
-import org.gwtopenmaps.openlayers.client.OpenLayers;
 import org.gwtopenmaps.openlayers.client.Pixel;
-import org.gwtopenmaps.openlayers.client.Projection;
 import org.gwtopenmaps.openlayers.client.Style;
 import org.gwtopenmaps.openlayers.client.control.DragFeature;
 import org.gwtopenmaps.openlayers.client.control.DragFeature.DragFeatureListener;
@@ -16,29 +24,46 @@ import org.gwtopenmaps.openlayers.client.geometry.Point;
 import org.gwtopenmaps.openlayers.client.layer.GoogleV3;
 import org.gwtopenmaps.openlayers.client.layer.GoogleV3MapType;
 import org.gwtopenmaps.openlayers.client.layer.GoogleV3Options;
-import org.gwtopenmaps.openlayers.client.layer.OSM;
-import org.gwtopenmaps.openlayers.client.layer.TransitionEffect;
 import org.gwtopenmaps.openlayers.client.layer.Vector;
-import org.gwtopenmaps.openlayers.client.layer.WMS;
-import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
-import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 
+/**
+ * The Class SensorMapPointWidget is responsible of creating a map displaying a single point.
+ */
 public class SensorMapPointWidget {
 
+	/** The lat. */
 	private double lat;
+	
+	/** The lon. */
 	private double lon;
+	
+	/** The epsg code. */
 	private String epsgCode;
+	
+	/** The drag. */
 	private boolean drag;
 	
+	/** The true heading. */
 	private double trueHeading;
 	
+	/** The container. */
 	private Panel container;
+	
+	/** The map widget. */
 	private MapWidget mapWidget;
 	
+	/**
+	 * Instantiates a new sensor map point widget.
+	 *
+	 * @param lat the lat
+	 * @param lon the lon
+	 * @param epsgCode the epsg code
+	 * @param drag the drag
+	 */
 	public SensorMapPointWidget(double lat,double lon,String epsgCode, boolean drag) {
 		this.lat = lat;
 		this.lon = lon;
@@ -48,6 +73,15 @@ public class SensorMapPointWidget {
 		init();
 	}
 	
+	/**
+	 * Instantiates a new sensor map point widget.
+	 *
+	 * @param lat the lat
+	 * @param lon the lon
+	 * @param trueHeading the true heading
+	 * @param epsgCode the epsg code
+	 * @param drag the drag
+	 */
 	public SensorMapPointWidget(double lat,double lon,double trueHeading,String epsgCode, boolean drag) {
 		this.lat = lat;
 		this.lon = lon;
@@ -58,6 +92,9 @@ public class SensorMapPointWidget {
 		init();
 	}
 	
+	/**
+	 * Inits the.
+	 */
 	private void init() {
 		container = new SimplePanel();
 		
@@ -116,6 +153,7 @@ public class SensorMapPointWidget {
 
         container.add(mapWidget);
         
+        //edit mode
         if(drag) {
         	 DragFeatureOptions dragFeatureOptions = new DragFeatureOptions();
              dragFeatureOptions.onComplete(new DragFeatureListener() {
@@ -134,10 +172,20 @@ public class SensorMapPointWidget {
         } 
 	}
 	
+	/**
+	 * Gets the panel.
+	 *
+	 * @return the panel
+	 */
 	public Panel getPanel() {
 		return container;
 	}
 	
+	/**
+	 * Gets the lat lon.
+	 *
+	 * @return the lat lon
+	 */
 	public double[] getLatLon() {
 		LonLat lonLat = new LonLat(lon, lat);
 		lonLat.transform( mapWidget.getMap().getProjection(),"EPSG:"+epsgCode); 

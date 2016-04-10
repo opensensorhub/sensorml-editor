@@ -18,7 +18,6 @@ import com.google.gwt.user.client.ui.Panel;
  * This interface represents a single Node of the Sensor Widget Tree.
  * A node is defined by a definition and a type. Some methods are defined 
  * to get and change the value of the element or one of the sub element.
- * @author Mathieu Dhainaut
  *
  */
 public interface ISensorWidget {
@@ -141,14 +140,6 @@ public interface ISensorWidget {
 	 * @param parent The parent of the widget.
 	 */
 	void setParent(ISensorWidget parent);
-	
-	/**
-	 * Gets the list of the values of the widget. The values are got from the parent element name
-	 * and the TAG_TYPE VALUE.
-	 * @param parentName the parent element name to match the wanted node.
-	 * @return the list of text value.
-	 */
-	List<String> getValues(String parentName);
 	
 	/**
 	 * @deprecated Use {@link #getValue(String,boolean)} instead

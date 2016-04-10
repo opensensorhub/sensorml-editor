@@ -1,3 +1,13 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe;
 
 import com.google.gwt.user.client.ui.HTML;
@@ -12,20 +22,41 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorW
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_DEF;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_TYPE;
 
+/**
+ * The Class SWESensorQuantityWidget is corresponding to <swe:Quantity> element.
+ */
 public class SWESensorQuantityWidget extends AbstractSensorElementWidget{
 
+	/** The quantity panel. */
 	protected HorizontalPanel quantityPanel;
+	
+	/** The container. */
 	protected HorizontalPanel container;
+	
+	/** The def panel. */
 	protected HorizontalPanel defPanel;
+	
+	/** The uom panel. */
 	protected HorizontalPanel uomPanel;
+	
+	/** The constraint panel. */
 	protected HorizontalPanel constraintPanel;
 	
+	/** The has constraints. */
 	protected boolean hasConstraints=false;
 	
+	/**
+	 * Instantiates a new SWE sensor quantity widget.
+	 */
 	public SWESensorQuantityWidget() {
 		this("Quantity");
 	}
 
+	/**
+	 * Instantiates a new SWE sensor quantity widget.
+	 *
+	 * @param name the name
+	 */
 	public SWESensorQuantityWidget(String name) {
 		super(name,TAG_DEF.SWE,TAG_TYPE.ELEMENT);
 		
@@ -33,13 +64,15 @@ public class SWESensorQuantityWidget extends AbstractSensorElementWidget{
 		init();
 	}
 	
+	/**
+	 * Inits the.
+	 */
 	private void init() {
 		hasConstraints = false;
 		defPanel = new HorizontalPanel();
 		quantityPanel = new HorizontalPanel();
 		uomPanel = new HorizontalPanel();
 		constraintPanel = new HorizontalPanel();
-		//advancedPanel = new HorizontalPanel();
 		
 		container.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
 		defPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
@@ -53,15 +86,24 @@ public class SWESensorQuantityWidget extends AbstractSensorElementWidget{
 		container.add(uomPanel);
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget#getPanel()
+	 */
 	@Override
 	public Panel getPanel() {
 		return container;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#activeMode(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE)
+	 */
 	@Override
 	protected void activeMode(MODE mode) {
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#addSensorWidget(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget)
+	 */
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
 		if(widget.getType() == TAG_TYPE.ATTRIBUTE && (widget.getName().equals("definition") || widget.getName().equals("referenceFrame"))){
@@ -79,8 +121,12 @@ public class SWESensorQuantityWidget extends AbstractSensorElementWidget{
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#refresh()
+	 */
 	@Override
 	public void refresh() {
+		//reset values
 		for(ISensorWidget child : getElements()) {
 	 		if(child.getType() == TAG_TYPE.ELEMENT && child.getName().equals("uom")){
 	 			uomPanel.clear();
@@ -99,11 +145,17 @@ public class SWESensorQuantityWidget extends AbstractSensorElementWidget{
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#newInstance()
+	 */
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
 		return new SWESensorQuantityWidget();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#appendTo()
+	 */
 	@Override
 	public APPENDER appendTo() {
 		return APPENDER.HORIZONTAL;

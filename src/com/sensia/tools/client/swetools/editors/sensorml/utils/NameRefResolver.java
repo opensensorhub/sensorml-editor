@@ -1,3 +1,13 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.tools.client.swetools.editors.sensorml.utils;
 
 import java.util.ArrayList;
@@ -52,13 +62,29 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.xsd
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.xsd.SensorXSDIntegerWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.xsd.SensorXSDStringWidget;
 
+/**
+ * The Class NameRefResolver resolves a path from a grammar.
+ */
 public final class NameRefResolver {
 
+	/** The remote file. */
 	private String remoteFile;
+	
+	/** The current grammar. */
 	private RNGGrammar currentGrammar;
 	
+	/**
+	 * Instantiates a new name ref resolver.
+	 */
 	public NameRefResolver() {}
 	
+	/**
+	 * Build the instance by getting the typeof element. Once the typeOf
+	 * element found, the method will get the href attribute to load the content.
+	 *
+	 * @param currentWidget the current widget
+	 * @param grammar the grammar
+	 */
 	public void build(ISensorWidget currentWidget,final RNGGrammar grammar) {
 		//first get the root node to find the typeof tag
 		ISensorWidget root = currentWidget;
@@ -76,6 +102,14 @@ public final class NameRefResolver {
 		} 
 	}
 	
+	/**
+	 * Resolve the path. The path can be resolved from a remote file or from the current instance.
+	 * It will compare the first part of the path and check if "this" is found.
+	 *
+	 * @param currentWidget the current widget
+	 * @param path the path
+	 * @param callback the callback
+	 */
 	public void resolvePath(ISensorWidget currentWidget, final List<String> path,final ICallback<String> callback) {
 		if(path != null && path.size() > 0 && path.get(0).equals("this")) {
 			List<String> newPath = new ArrayList<String>(path.subList(1, path.size()));
@@ -96,6 +130,13 @@ public final class NameRefResolver {
 		}
 	}
 	
+	/**
+	 * Proceed search.
+	 *
+	 * @param path the path
+	 * @param grammar the grammar
+	 * @param callback the callback
+	 */
 	private void proceedSearch(List<String> path, RNGGrammar grammar, ICallback<String> callback) {
 		if(path != null && path.size() > 0) {
 			RNGGroup rootGrammar = grammar.getStartPattern();
@@ -142,12 +183,28 @@ public final class NameRefResolver {
 			}
 		}
 	}
+	
+	/**
+	 * Find tags.
+	 *
+	 * @param root the root
+	 * @param path the path
+	 * @return the list
+	 */
 	private List<RNGTag> findTags(RNGTag root, List<String> path) {
 		List<RNGTag> results = new ArrayList<RNGTag>();
 		findRecursiveTags(root, path, 0, results);
 		return results;
 	}
 	
+	/**
+	 * Find recursive tags.
+	 *
+	 * @param tag the tag
+	 * @param path the path
+	 * @param index the index
+	 * @param results the results
+	 */
 	private void findRecursiveTags(RNGTag tag, List<String> path,int index, List<RNGTag> results) {
 		int idx = index;
 		String name = path.get(index);

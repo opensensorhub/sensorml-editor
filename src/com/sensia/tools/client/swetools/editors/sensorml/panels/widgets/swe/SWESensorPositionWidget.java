@@ -1,3 +1,13 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe;
 
 import com.google.gwt.core.client.GWT;
@@ -11,16 +21,28 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.posi
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.SWESensorPositionByTrajectoryWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.SWESensorPositionByVectorWidget;
 
+/**
+ * The Class SWESensorPositionWidget is corresponding to <swe:position>.
+ */
 public class SWESensorPositionWidget extends AbstractSensorElementWidget{
 
+	/** The sensor position panel. */
 	private ISensorWidget sensorPositionPanel;
 	
+	/** The container. */
 	private Panel container;
+	
+	/**
+	 * Instantiates a new SWE sensor position widget.
+	 */
 	public SWESensorPositionWidget() {
 		super("position", TAG_DEF.SWE, TAG_TYPE.ELEMENT);
 		container = new HorizontalPanel();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget#getPanel()
+	 */
 	@Override
 	public Panel getPanel() {
 		if(sensorPositionPanel != null) {
@@ -30,6 +52,9 @@ public class SWESensorPositionWidget extends AbstractSensorElementWidget{
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#addSensorWidget(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget)
+	 */
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
 		//container.add(widget.getPanel());
@@ -63,6 +88,9 @@ public class SWESensorPositionWidget extends AbstractSensorElementWidget{
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#refresh()
+	 */
 	@Override
 	public void refresh () {
 		if(sensorPositionPanel != null) {
@@ -70,11 +98,17 @@ public class SWESensorPositionWidget extends AbstractSensorElementWidget{
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#newInstance()
+	 */
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
 		return new SWESensorPositionWidget();
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#activeMode(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE)
+	 */
 	@Override
 	protected void activeMode(MODE mode) {
 		if(sensorPositionPanel != null) {

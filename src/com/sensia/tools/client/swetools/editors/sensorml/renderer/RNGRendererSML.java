@@ -48,42 +48,69 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml.Sens
  * <p>
  * <b>Title:</b> RNGRenderer
  * </p>
- *
+ * 
  * <p>
  * <b>Description:</b><br/>
  * Renders content of an RNG grammar using GWT widgets
  * </p>
- *
+ * 
  * <p>
  * Copyright (c) 2011
- * </p>
- * 
+ * </p>.
+ *
  * @author Alexandre Robin
  * @date Aug 27, 2011
  */
 public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 
+	/** The render sections list. */
 	private Map<String,String> renderSectionsList = new HashMap<String,String>();
+	
+	/** The render elements. */
 	private Map<String,RENDER_ELEMENT_TYPE> renderElements= new HashMap<String,RENDER_ELEMENT_TYPE>();
+	
+	/** The root sections list. */
 	private Set<String> rootSectionsList = new HashSet<String>();
 	
+	/** The skip list. */
 	private Set<String> skipList = new HashSet<String>();
 	
+	/** The Constant SML_NS_1. */
 	protected final static String SML_NS_1 = "http://www.opengis.net/sensorML/1.0.1";
+	
+	/** The Constant SML_NS_2. */
 	protected final static String SML_NS_2 = "http://www.opengis.net/sensorML/2.0";
 	
+	/** The Constant GML_NS_1. */
 	protected final static String GML_NS_1 = "http://www.opengis.net/gml";
+	
+	/** The Constant GML_NS_2. */
 	protected final static String GML_NS_2 = "http://www.opengis.net/gml/3.2";
 	
+	/** The Constant GMD. */
 	protected final static String GMD = "http://www.isotc211.org/2005/gmd";
+	
+	/** The Constant GCO. */
 	protected final static String GCO = "http://www.isotc211.org/2005/gco";
 	
+	/**
+	 * The Enum RENDER_ELEMENT_TYPE.
+	 */
 	enum RENDER_ELEMENT_TYPE {
+		
+		/** The line. */
 		LINE,
+		
+		/** The generic horizontal. */
 		GENERIC_HORIZONTAL,
+		
+		/** The generic vertical. */
 		GENERIC_VERTICAL
 	}
 	
+	/**
+	 * Instantiates a new RNG renderer sml.
+	 */
 	public RNGRendererSML() {
 		//render section names
 		renderSectionsList.put("identification","Identification");
@@ -178,8 +205,12 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		skipList.add("linkage");
 	}
 
+	/** The root min level. */
 	public int rootMinLevel = 1;
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRenderer#visit(com.sensia.relaxNG.RNGGrammar)
+	 */
 	@Override
 	public void visit(RNGGrammar grammar) { 
 		//create top root element
@@ -187,12 +218,15 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		super.visit(grammar);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRendererSWE#visit(com.sensia.relaxNG.RNGElement)
+	 */
 	@Override
 	public void visit(RNGElement elt) {
 		String eltName = elt.getName();
 		String nsUri = elt.getNamespace();
 
-		//get ns
+		//get Name Space
 		TAG_DEF ns = TAG_DEF.RNG;
 		
 		if (nsUri.equals(SML_NS_1) || nsUri.equals(SML_NS_2)) {
@@ -288,6 +322,9 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRenderer#visit(com.sensia.relaxNG.RNGAttribute)
+	 */
 	@Override
 	public void visit(RNGAttribute att) {
 		//get ns
@@ -317,6 +354,12 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		}
 	}
 	
+	/**
+	 * Process section.
+	 *
+	 * @param elt the elt
+	 * @param eltName the elt name
+	 */
 	protected void processSection(RNGElement elt, String eltName) {
 		List<RNGTag> children = elt.getChildren();
 		

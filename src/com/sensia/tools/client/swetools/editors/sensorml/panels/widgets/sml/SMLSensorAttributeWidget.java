@@ -1,3 +1,13 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml;
 
 import java.util.HashSet;
@@ -19,17 +29,27 @@ import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.OntologyPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorAttributeWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
+/**
+ * The Class SMLSensorAttributeWidget is corresponding to any <sml ..> attribute elements.
+ */
 public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 
+	/** The def image. */
 	private Image defImage;
+	
+	/** The attribute. */
 	private RNGAttribute attribute;
+	
+	/** The http url parenthesis. */
 	private HTML httpUrlParenthesis;
 	
+	/** The accepting tag names for def icon. */
 	private static Set<String> acceptingTagNamesForDefIcon = new HashSet<String>();
+	
+	/** The accepting tag names for parenthesis. */
 	private static Set<String> acceptingTagNamesForParenthesis = new HashSet<String>();
 	
 	static {
@@ -40,6 +60,11 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 		acceptingTagNamesForParenthesis.add("referenceFrame");
 	}
 	
+	/**
+	 * Instantiates a new SML sensor attribute widget.
+	 *
+	 * @param attribute the attribute
+	 */
 	public SMLSensorAttributeWidget(RNGAttribute attribute) {
 		super(attribute.getName(),TAG_DEF.SML,TAG_TYPE.ATTRIBUTE);
 		
@@ -48,11 +73,17 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 		container.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorGenericHorizontalContainerWidget#addSensorWidget(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget)
+	 */
 	@Override
 	protected void addSensorWidget(final ISensorWidget widget) {
+		//if name is identified as an icon
 		if(acceptingTagNamesForDefIcon.contains(getName()) && widget.getType() == TAG_TYPE.VALUE) {
 			defImage = new Image(GWT.getModuleBaseURL()+"images/icon_info.png");
 			defImage.setTitle(widget.getName());
+			
+			//open a new Window pointing to the name href given by the attribute name
 			defImage.addClickHandler(new ClickHandler() {
 				
 				@Override
@@ -64,6 +95,7 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 			defImage.addStyleName("def-icon");
 			container.add(defImage);
 		} else if(acceptingTagNamesForParenthesis.contains(getName()) && widget.getType() == TAG_TYPE.VALUE) {
+			//if name is identified to be into parenthesis
 			httpUrlParenthesis  = new HTML("("+widget.getName()+")");
 			httpUrlParenthesis.addStyleName("def-icon");
 			container.add(httpUrlParenthesis);
@@ -72,8 +104,13 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#getAdvancedPanel(com.google.gwt.user.client.ui.Panel)
+	 */
 	@Override
 	public void getAdvancedPanel(Panel container) {
+		//add advanced panel
+		//if name is identified as an icon
 		if(acceptingTagNamesForDefIcon.contains(getName())) {
 			HorizontalPanel hPanel = new HorizontalPanel();
 			HTML hlabel = new HTML(getName());
@@ -87,10 +124,12 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 			
 			hPanel.add(valueBox);
 			
+			//creates an ontology icon
 			Image ontologyImage = new Image(GWT.getModuleBaseURL()+"images/ontology.png");
 			ontologyImage.setTitle("Ontology");
 			ontologyImage.setStyleName("ontology-icon");
 			
+			//adds ontology handler and open a new Ontology Window
 			ontologyImage.addClickHandler(new ClickHandler() {
 				
 				@Override
@@ -120,6 +159,9 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#setValue(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public void setValue(String elementName,String value) {
 		if(getName().equals(elementName)) {
@@ -136,6 +178,9 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#refresh()
+	 */
 	@Override
 	public void refresh() {
 		super.refresh();
@@ -147,6 +192,9 @@ public class SMLSensorAttributeWidget extends SensorAttributeWidget{
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#appendTo()
+	 */
 	@Override
 	public APPENDER appendTo() {
 		return (acceptingTagNamesForDefIcon.contains(getName()) || acceptingTagNamesForParenthesis.contains(getName())) ? APPENDER.HORIZONTAL:APPENDER.NONE;

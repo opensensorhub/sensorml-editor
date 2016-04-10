@@ -1,3 +1,13 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position;
 
 import java.util.ArrayList;
@@ -6,7 +16,6 @@ import java.util.List;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.geolocation.client.Position.Coordinates;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.HTML;
@@ -21,18 +30,30 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.Abstract
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.map.SensorMapLineStringWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.map.SensorMapPointWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.map.SensorMapWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.map.geojson.GeoJsonBuilder;
 
+/**
+ * The Class AbstractSWESensorPositionByWidget is corresponding to the <swe:position> element.
+ */
 public abstract class AbstractSWESensorPositionByWidget extends AbstractSensorElementWidget{
 
+	/** The container. */
 	protected Panel container;
 	
+	/**
+	 * Instantiates a new abstract swe sensor position by widget.
+	 */
 	protected AbstractSWESensorPositionByWidget() {
 		super("position",TAG_DEF.SWE,TAG_TYPE.ELEMENT);
 		container = new HorizontalPanel();
 	}
 
+	/**
+	 * Builds the coordinates panel.
+	 *
+	 * @param widget the widget
+	 * @param locationHtmlLabel the location html label
+	 * @return the panel
+	 */
 	protected Panel buildCoordinatesPanel(ISensorWidget widget,HTML locationHtmlLabel) {
 		//build inner content
 		List<ISensorWidget> coordinates = findWidgets(widget, "coordinate", TAG_DEF.SWE, TAG_TYPE.ELEMENT);
@@ -51,6 +72,15 @@ public abstract class AbstractSWESensorPositionByWidget extends AbstractSensorEl
 		return vInnerPanel;
 	}
 	
+	/**
+	 * Builds the label.
+	 *
+	 * @param widget the widget
+	 * @param defaultLabel the default label
+	 * @param recursiveName the recursive name
+	 * @param locationHtmlLabel the location html label
+	 * @return the panel
+	 */
 	protected Panel buildLabel(final ISensorWidget widget,final String defaultLabel, boolean recursiveName,HTML locationHtmlLabel) {
 		//build title
 		//Build: Position : Location (EPSG/0/4326 http://www.opengis.net/def/crs/EPSG/0/4326): 47.8 88.56 [mapIcon] 
@@ -96,6 +126,11 @@ public abstract class AbstractSWESensorPositionByWidget extends AbstractSensorEl
 		return hPanel;
 	}
 	
+	/**
+	 * Builds the map icon panel.
+	 *
+	 * @return the panel
+	 */
 	protected Panel buildMapIconPanel() {
 		SimplePanel mapIconPanel = new SimplePanel();
 		Image mapImage = new Image(GWT.getModuleBaseURL()+"images/maps-icon.png");
@@ -114,11 +149,19 @@ public abstract class AbstractSWESensorPositionByWidget extends AbstractSensorEl
 		return mapIconPanel;
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget#getPanel()
+	 */
 	@Override
 	public Panel getPanel() {
 		return container;
 	}
 	
+	/**
+	 * Gets the coordinates.
+	 *
+	 * @return the coordinates
+	 */
 	public Coordinates getCoordinates() {
 		Coordinates coordinates = new Coordinates();
 		//get Lat, Lon coordinates
@@ -170,8 +213,14 @@ public abstract class AbstractSWESensorPositionByWidget extends AbstractSensorEl
 		return coordinates;
 	}
 	
+	/**
+	 * The Class MapIconImageWrapperHandler.
+	 */
 	public class MapIconImageWrapperHandler implements ClickHandler{
 
+		/* (non-Javadoc)
+		 * @see com.google.gwt.event.dom.client.ClickHandler#onClick(com.google.gwt.event.dom.client.ClickEvent)
+		 */
 		@Override
 		public void onClick(ClickEvent event) {
 			final Coordinates c = getCoordinates();
@@ -207,6 +256,8 @@ public abstract class AbstractSWESensorPositionByWidget extends AbstractSensorEl
 					i++;
 				}
 				final SensorMapLineStringWidget mapWidget = new SensorMapLineStringWidget(points,c.epsgCode,getMode() == MODE.EDIT);
+				
+				//on edit mode, display the map
 				displayEditPanel(mapWidget.getPanel(), "Position", new IButtonCallback() {
 					
 					@Override
@@ -228,6 +279,11 @@ public abstract class AbstractSWESensorPositionByWidget extends AbstractSensorEl
 		}
 	}
 	
+	/**
+	 * Update values.
+	 *
+	 * @param coordinates the coordinates
+	 */
 	protected void updateValues(Coordinates coordinates) {
 		if(getElements().size() > 0) {
 			final ISensorWidget widget = getElements().get(0);
@@ -235,6 +291,7 @@ public abstract class AbstractSWESensorPositionByWidget extends AbstractSensorEl
 			
 			if(coordinatesWidget != null) {
 				Coordinate newCoordinate = coordinates.coordinates.get(0);
+				//truncates the precision
 				double lat = ((int)(newCoordinate.lat*100000))/(double)100000;
 				double lon = ((int)(newCoordinate.lon*100000))/(double)100000;
 				
@@ -254,20 +311,40 @@ public abstract class AbstractSWESensorPositionByWidget extends AbstractSensorEl
 		}
 	}
 	
+	/**
+	 * The Class Coordinates.
+	 */
 	protected class Coordinates {
+		
+		/** The epsg code. */
 		public String epsgCode;
+		
+		/** The coordinates. */
 		public List<Coordinate> coordinates= new ArrayList<AbstractSWESensorPositionByWidget.Coordinate>();
 	}
 	
 	
+	/**
+	 * The Class Coordinate.
+	 */
 	protected class Coordinate {
+		
+		/** The lat. */
 		public double lat;
+		
+		/** The lon. */
 		public double lon;
+		
+		/** The true heading. */
 		public double trueHeading=0;
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#refresh()
+	 */
 	@Override
 	public void refresh() {
+		//on refresh, clears the panel and adds every elements again
 		container.clear();
 		for(ISensorWidget child : getElements()) {
 			addSensorWidget(child);

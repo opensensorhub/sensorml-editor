@@ -1,20 +1,38 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml;
 
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_DEF;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_TYPE;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorGenericVerticalContainerWidget;
 
+/**
+ * The Class SMLSensorSpatialFrame is corresponding to <sml:SpatialFrame> element.
+ */
 public class SMLSensorSpatialFrame extends SensorGenericVerticalContainerWidget{
 
+	/** The label panel. */
 	private HorizontalPanel labelPanel;
+	
+	/** The description panel. */
 	private HorizontalPanel descriptionPanel;
 	
+	/** The id. */
 	private String id = "";
 	
+	/**
+	 * Instantiates a new SML sensor spatial frame.
+	 */
 	public SMLSensorSpatialFrame() {
 		super("SpatialFrame", TAG_DEF.SML, TAG_TYPE.ELEMENT);
 		
@@ -28,6 +46,9 @@ public class SMLSensorSpatialFrame extends SensorGenericVerticalContainerWidget{
 		container.add(descriptionPanel);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorGenericVerticalContainerWidget#addSensorWidget(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget)
+	 */
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
 		if(widget.getType() == TAG_TYPE.ATTRIBUTE && widget.getName().equals("id")) {
@@ -50,6 +71,9 @@ public class SMLSensorSpatialFrame extends SensorGenericVerticalContainerWidget{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorGenericVerticalContainerWidget#newInstance()
+	 */
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
 		return new SMLSensorSpatialFrame();

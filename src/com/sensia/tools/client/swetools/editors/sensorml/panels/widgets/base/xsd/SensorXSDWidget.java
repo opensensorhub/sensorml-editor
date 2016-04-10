@@ -1,3 +1,13 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.xsd;
 
 import com.google.gwt.event.dom.client.ChangeEvent;
@@ -21,11 +31,24 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorW
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_DEF;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_TYPE;
 
+/**
+ * The Class SensorXSDWidget.
+ */
 public abstract class SensorXSDWidget extends AbstractSensorElementWidget{
 
+	/** The text box. */
 	protected TextBoxBase textBox;
+	
+	/** The container. */
 	private HorizontalPanel container;
 	
+	/**
+	 * Instantiates a new sensor xsd widget.
+	 *
+	 * @param data the data
+	 * @param length the length
+	 * @param allowedChars the allowed chars
+	 */
 	protected SensorXSDWidget(final RNGData<?> data,final int length,final String allowedChars) {
 		super(data.getStringValue(), TAG_DEF.RNG,TAG_TYPE.DATA);
 		
@@ -124,16 +147,25 @@ public abstract class SensorXSDWidget extends AbstractSensorElementWidget{
         //container.setSpacing(10);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#addSensorWidget(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget)
+	 */
 	protected void addSensorWidget(ISensorWidget widget){
 		container.add(widget.getPanel());
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget#getPanel()
+	 */
 	@Override
 	public Panel getPanel() {
 		return container;
 	}
 
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#activeMode(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE)
+	 */
 	protected void activeMode(MODE mode) {
 		if(mode == MODE.EDIT){
 			 ((TextBox)textBox).setEnabled(true);
@@ -142,6 +174,9 @@ public abstract class SensorXSDWidget extends AbstractSensorElementWidget{
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#setValue(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public void setValue(String elementName, String value) {
 		if(elementName.equals(getParent().getName())) {

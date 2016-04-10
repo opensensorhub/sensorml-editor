@@ -17,7 +17,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorW
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_TYPE;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorGenericHorizontalContainerWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorCategoryWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorCondtionWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorConditionWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorPositionWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorCurveWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.dataarray.SWESensorDataArrayWidget;
@@ -34,26 +34,36 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.posi
  * <p>
  * <b>Title:</b> RNGRenderer
  * </p>
- *
+ * 
  * <p>
  * <b>Description:</b><br/>
  * Renders content of an RNG grammar describing SWE Common data components using
  * GWT widgets
  * </p>
- *
+ * 
  * <p>
  * Copyright (c) 2011
- * </p>
- * 
+ * </p>.
+ *
  * @author Alexandre Robin
  * @date Aug 27, 2011
  */
 public class RNGRendererSWE extends RNGRenderer implements RNGTagVisitor {
+	
+	/** The Constant SWE_NS_1. */
 	protected final static String SWE_NS_1 = "http://www.opengis.net/swe/1.0.1";
+	
+	/** The Constant SWE_NS_2. */
 	protected final static String SWE_NS_2 = "http://www.opengis.net/swe/2.0";
 
+	/**
+	 * Instantiates a new RNG renderer swe.
+	 */
 	public RNGRendererSWE() {}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRenderer#visit(com.sensia.relaxNG.RNGElement)
+	 */
 	@Override
 	public void visit(RNGElement elt) {
 		final ISensorWidget widget = getWidget(elt.getName());
@@ -66,6 +76,9 @@ public class RNGRendererSWE extends RNGRenderer implements RNGTagVisitor {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRenderer#getWidget(java.lang.String)
+	 */
 	protected ISensorWidget getWidget(final String name) {
 		 if(name.equals("Quantity") || name.equals("Count")){
 			return new SWESensorQuantityWidget();
@@ -88,7 +101,7 @@ public class RNGRendererSWE extends RNGRenderer implements RNGTagVisitor {
 		} else if(name.equals("DataRecord")){
 			return new SWESensorDataRecordWidget();
 		} else if(name.equals("condition")){
-			return new SWESensorCondtionWidget();
+			return new SWESensorConditionWidget();
 		} else if(name.equals("position")){
 			return new SWESensorPositionWidget();
 		}else if(name.equals("AllowedValues") || name.equals("AllowedTokens")){

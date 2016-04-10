@@ -207,6 +207,7 @@ public class CenterPanel extends Composite implements IParsingObserver{
 		
 		editCheckbox.setVisible(false);
 		
+		//after clicking on the checkbox, the mode is sent to the tree hierarchy starting from the Root element
 		editCheckbox.addClickHandler(new ClickHandler() {
 			
 			@Override
@@ -220,7 +221,6 @@ public class CenterPanel extends Composite implements IParsingObserver{
 		
 		load.addClickHandler(new LoadProfileButtonClickListener(profileListBox,profiles, smlEditorProcessor));
 		
-		
 		return panel;
 	}
 	/*
@@ -229,6 +229,7 @@ public class CenterPanel extends Composite implements IParsingObserver{
 	 */
 	@Override
 	public void parseDone(final ISensorWidget topElement) {
+		//One the parsing done, the viewer is reset and displays the new content
 		dynamicCenterPanel.clear();
 		dynamicCenterPanel.add(topElement.getPanel());
 		root = topElement;

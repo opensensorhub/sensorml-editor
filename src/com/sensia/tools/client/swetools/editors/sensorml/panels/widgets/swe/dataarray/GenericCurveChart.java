@@ -1,3 +1,13 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.dataarray;
 
 import java.util.List;
@@ -17,19 +27,36 @@ import org.moxieapps.gwt.highcharts.client.plotOptions.SeriesPlotOptions;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.ScrollPanel;
 
+/**
+ * The Class GenericCurveChart.
+ */
 public class GenericCurveChart{
 	
+	/** The chart. */
 	private Chart chart;
 	
+	/**
+	 * Instantiates a new generic curve chart.
+	 */
 	public GenericCurveChart() {
 		init();
 	}
 	
+	/**
+	 * Inits the.
+	 */
 	private void init() {
 		
 	}
 	
-	public void poupulateTable(final String title,final List<String> axis,final Object[][] values) {
+	/**
+	 * Populate table.
+	 *
+	 * @param title the title
+	 * @param axis the axis
+	 * @param values the values
+	 */
+	public void populateTable(final String title,final List<String> axis,final Object[][] values) {
 		init();
 		if(chart == null) {
 			createChart(title);
@@ -43,6 +70,7 @@ public class GenericCurveChart{
 			xValues[i] = values[i][0].toString();
 		}
 		
+		//set X title axis
 		chart.getXAxis() 
         	.setCategories(xValues)
         	.setAxisTitle(
@@ -52,14 +80,14 @@ public class GenericCurveChart{
 			       .setMargin(20)
 			 );
 		
-		//create series
+		//creates series
 		for(int i=1;i < values[0].length;i++) {
 			Number [] axeValues = new Number[values.length];
 			for(int j=0;j < values.length;j++) {
 				axeValues[j] = Double.parseDouble(values[j][i].toString());
 			}
-			//add series
-			//handle Series
+			//adds series
+			//handles Series
 			String serieTitle = axis.get(i);
 			chart.addSeries(chart.createSeries()  
 		        .setName(serieTitle)
@@ -73,11 +101,19 @@ public class GenericCurveChart{
 		    );  
 		}
 		
-		chart.getYAxis().setAxisTitleText(""); 
+		//removes Y axis title
+		chart.getYAxis().setAxisTitleText("");
+		//displays grid
 		chart.getYAxis().setGridLineWidth(1);
 		chart.getXAxis().setGridLineWidth(1);
 	}
 	
+	/**
+	 * Creates the chart.
+	 *
+	 * @param title the title
+	 * @return the panel
+	 */
 	public Panel createChart(final String title) {
 		chart = new Chart()  
         .setType(Series.Type.LINE)  
@@ -97,6 +133,7 @@ public class GenericCurveChart{
 		Credits credits = new Credits();
 		credits.setText("");
 		
+		//set credits
 		chart.setCredits(credits);
 		
 		chart.setLegend(new Legend()  

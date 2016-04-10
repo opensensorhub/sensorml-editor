@@ -1,8 +1,17 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml;
 
 import java.util.List;
 
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -14,37 +23,59 @@ import com.google.gwt.user.client.ui.Widget;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_DEF;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_TYPE;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
+/**
+ * The Class SensorSectionWidget is corresponding to a root section.
+ */
 public class SensorSectionWidget extends AbstractSensorElementWidget{
 
+	/** The Constant CSS_CLASS. */
 	private static final String CSS_CLASS = "swe-section-panel";
+	
+	/** The hide panel. */
 	private DisclosurePanel hidePanel;
+	
+	/** The content panel. */
 	private VerticalPanel contentPanel;
+	
+	/** The container. */
 	private Panel container;
 	
+	/** The current header. */
 	private HasText currentHeader;
 	
+	/** The link name. */
 	//for href section Link to Base
 	private String linkName="";
+	
+	/** The href. */
 	private String href="";
+	
+	/** The anchor. */
 	private Anchor anchor;
 	
+	/** The nice name. */
 	private String niceName;
 	
+	/**
+	 * Instantiates a new sensor section widget.
+	 *
+	 * @param name the name
+	 * @param niceName the nice name
+	 */
 	public SensorSectionWidget(String name,String niceName) {
 		super(name,TAG_DEF.SML ,TAG_TYPE.ELEMENT);
 		this.niceName = niceName;
 		
+		//add disclosure panel
 		hidePanel = new DisclosurePanel(niceName);
         hidePanel.setAnimationEnabled(true);
         hidePanel.setOpen(true);
         hidePanel.addStyleName(CSS_CLASS);
         hidePanel.getHeader().addStyleName("swe-section-title");
         
+        //add vertical panel as a content of the disclosure panel
         contentPanel = new VerticalPanel();	
         hidePanel.setContent(contentPanel);
         
@@ -56,13 +87,20 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
         currentHeader = hidePanel.getHeaderTextAccessor();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget#getPanel()
+	 */
 	@Override
 	public Panel getPanel() {
 		return container;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#addSensorWidget(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget)
+	 */
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
+		//handle special cases
 		if(getName().equals("characteristics") || getName().equals("capabilities")) {
 			handleCharacteristic(widget);
 		} else if(getName().equals("typeOf")) {
@@ -76,6 +114,11 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 		}
 	}
 
+	/**
+	 * Handle characteristic.
+	 *
+	 * @param widget the widget
+	 */
 	private void handleCharacteristic(ISensorWidget widget) {
 		// 3 cases:
 		// 1) it's the name attribute
@@ -121,6 +164,11 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 		}
 	}
 
+	/**
+	 * Handle type of.
+	 *
+	 * @param widget the widget
+	 */
 	private void handleTypeOf(ISensorWidget widget) {
 		if(widget.getType() == TAG_TYPE.ATTRIBUTE) {
 			if(widget.getName().equals("title")) {
@@ -141,6 +189,7 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 				vPanel.addStyleName("swe-generic-vertical-panel");
 				contentPanel.add(vPanel);
 				
+				//add advanced panel for typeOf element
 				Panel advancedPanel = getEditPanel(new IButtonCallback() {
 					@Override
 					public void onClick() {
@@ -170,6 +219,11 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 		anchor.setTarget("_blank");
 	}
 	
+	/**
+	 * Handle attribute.
+	 *
+	 * @param widget the widget
+	 */
 	private void handleAttribute(ISensorWidget widget) {
 		//get header from child value
 		if(!widget.getElements().isEmpty()) {
@@ -180,12 +234,18 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#activeMode(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE)
+	 */
 	@Override
 	protected void activeMode(MODE mode) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#newInstance()
+	 */
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
 		return new SensorSectionWidget(getName(),niceName);

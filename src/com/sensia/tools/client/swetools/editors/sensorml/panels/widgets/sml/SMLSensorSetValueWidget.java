@@ -1,6 +1,15 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,17 +25,38 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.Abstract
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.NameRefResolver;
 
+/**
+ * The Class SMLSensorSetValueWidget is corresponding to <sml:setValue> element.
+ */
 public class SMLSensorSetValueWidget extends AbstractSensorElementWidget{
 
+	/** The container. */
 	private Panel container;
+	
+	/** The resolver. */
 	private NameRefResolver resolver;
 	
+	/** The label. */
 	private HTML label;
+	
+	/** The value panel. */
 	private Panel valuePanel;
+	
+	/** The uom panel. */
 	private Panel uomPanel;
+	
+	/** The root. */
 	private ISensorWidget root;
+	
+	/** The grammar. */
 	private RNGGrammar grammar;
 	
+	/**
+	 * Instantiates a new SML sensor set value widget.
+	 *
+	 * @param root the root
+	 * @param grammar the grammar
+	 */
 	public SMLSensorSetValueWidget(ISensorWidget root,final RNGGrammar grammar) {
 		super("setValue",TAG_DEF.SML,TAG_TYPE.ELEMENT);
 	
@@ -37,6 +67,9 @@ public class SMLSensorSetValueWidget extends AbstractSensorElementWidget{
 		init();
 	}
 
+	/**
+	 * Inits the widget.
+	 */
 	private void init() {
 		label = new HTML("");
 		valuePanel = new HorizontalPanel();
@@ -47,6 +80,7 @@ public class SMLSensorSetValueWidget extends AbstractSensorElementWidget{
 		container.add(new HTML(SensorConstants.HTML_SPACE+SensorConstants.HTML_SPACE));
 		container.add(uomPanel);
 		
+		//add advanced panel
 		Panel advancedPanel = getEditPanel(new IButtonCallback() {
 			
 			@Override
@@ -58,6 +92,7 @@ public class SMLSensorSetValueWidget extends AbstractSensorElementWidget{
 				final Label uom = new Label();
 				Panel newValuePanel = null;
 				
+				//on edit, we have to resolve the path again
 				for(ISensorWidget widget : getElements()) {
 					if(widget.getType() == TAG_TYPE.ATTRIBUTE && widget.getName().equals("ref")) {
 						String path = widget.getElements().get(0).getName();
@@ -96,17 +131,26 @@ public class SMLSensorSetValueWidget extends AbstractSensorElementWidget{
 		resolver.build(root,grammar);
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget#getPanel()
+	 */
 	@Override
 	public Panel getPanel() {
 		return container;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#activeMode(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE)
+	 */
 	@Override
 	protected void activeMode(MODE mode) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#addSensorWidget(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget)
+	 */
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
 		if(widget.getType() == TAG_TYPE.ATTRIBUTE && widget.getName().equals("ref")) {
@@ -118,6 +162,7 @@ public class SMLSensorSetValueWidget extends AbstractSensorElementWidget{
 				
 				@Override
 				public void callback(String...result) {
+					//one the path resolve from remote or current file, set the corresponding values
 					label.setText(result[0]);
 					uomPanel.add(new Label(result[1]));
 					
@@ -129,6 +174,9 @@ public class SMLSensorSetValueWidget extends AbstractSensorElementWidget{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#newInstance()
+	 */
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
 		return new SMLSensorSetValueWidget(root,grammar);

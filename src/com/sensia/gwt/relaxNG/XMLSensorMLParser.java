@@ -1,3 +1,13 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.gwt.relaxNG;
 
 import java.util.HashMap;
@@ -25,12 +35,27 @@ import com.sensia.relaxNG.RNGTagList;
 import com.sensia.relaxNG.RNGText;
 import com.sensia.relaxNG.RNGValue;
 
+/**
+ * The Class XMLSensorMLParser.
+ */
 public class XMLSensorMLParser {
 
+	/** The grammar cache. */
 	protected static Map<String, RNGGrammar> grammarCache = new HashMap<String, RNGGrammar>();
+	
+	/** The callback. */
 	private RNGParserCallback callback;
+	
+	/** The grammar. */
 	private RNGGrammar grammar;
 
+	/**
+	 * Gets the content of the remote file and callback the result.
+	 * The request is asynchronous
+	 *
+	 * @param url the url
+	 * @param callback the callback
+	 */
 	public void parse(final String url, final RNGParserCallback callback) {
 		this.callback = callback;
 
@@ -71,6 +96,14 @@ public class XMLSensorMLParser {
 		}
 	}
 
+	/**
+	 * Parses the xml file.
+	 *
+	 * @param url the url
+	 * @param xml the xml
+	 * @return the RNG grammar
+	 * @throws Exception the exception
+	 */
 	public RNGGrammar parse(String url, String xml) throws Exception{
 		Document dom = XMLParser.parse(xml);
 		XMLParser.removeWhitespace(dom);
@@ -78,6 +111,12 @@ public class XMLSensorMLParser {
 		return grammar;
 	}
 
+	/**
+	 * Creates the grammar.
+	 *
+	 * @param url the url
+	 * @param root the root
+	 */
 	public void createGrammar(String url, Element root) {
 		grammar = new RNGGrammar();
 		grammar.setId(url);
@@ -115,6 +154,12 @@ public class XMLSensorMLParser {
 	}
 
 	
+	/**
+	 * Parses the children.
+	 *
+	 * @param parent the parent
+	 * @param element the element
+	 */
 	protected void parseChildren(RNGTag parent, Node element) {
 		NodeList children = element.getChildNodes();
 		for (int i = 0; i < children.getLength(); i++) {
@@ -165,12 +210,25 @@ public class XMLSensorMLParser {
 		}
 	}
 	
+	/**
+	 * Gets the local name.
+	 *
+	 * @param node the node
+	 * @return the local name
+	 */
 	protected String getLocalName(Node node) {
 		QName qname = parseName(node.getNodeName());
 		return qname.localName;
 	}
 
+	/**
+	 * Parses the name.
+	 *
+	 * @param qname the qname
+	 * @return the q name
+	 */
 	protected QName parseName(String qname) {
+		//split the name space from the name
 		String[] tokens = qname.split(":");
 		String localName = null, nsUri = null;
 

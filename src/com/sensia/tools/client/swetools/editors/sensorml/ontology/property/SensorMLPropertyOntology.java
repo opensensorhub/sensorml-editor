@@ -1,3 +1,13 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.tools.client.swetools.editors.sensorml.ontology.property;
 
 import java.util.ArrayList;
@@ -27,23 +37,35 @@ import com.sensia.tools.client.swetools.editors.sensorml.ontology.TableRes;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.BoyerMoore;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
+/**
+ * The Class SensorMLPropertyOntology.
+ */
 public class SensorMLPropertyOntology implements IOntologyPropertyReader{
 
+	/** The original data. */
 	private List<Property> originalData;
 	
+	/**
+	 * Instantiates a new sensor ml property ontology.
+	 */
 	public SensorMLPropertyOntology() {
 		originalData = new ArrayList<Property>();
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.ontology.property.IOntologyPropertyReader#loadOntology(java.lang.String, com.sensia.tools.client.swetools.editors.sensorml.ontology.property.ILoadOntologyCallback)
+	 */
 	public void loadOntology(String url,final ILoadOntologyCallback callback) {
 		originalData.clear();
 		
+		//load the ontology
 		ILoadFileCallback cb = new ILoadFileCallback() {
 			@Override
 			public void onLoad(String content) {
+				//parses the content
 				Document ontologyRoot = XMLParser.parse(content);
 				parseOntology(ontologyRoot.getDocumentElement());
-				
+				//callback the result
 				callback.onLoad(getHeaders(), getValuesFromData());
 			}
 		};
@@ -51,6 +73,11 @@ public class SensorMLPropertyOntology implements IOntologyPropertyReader{
 		Utils.getFile(url, cb);
 	}
 	
+	/**
+	 * Gets the headers.
+	 *
+	 * @return the headers
+	 */
 	private List<String> getHeaders() {
 		List<String> headers = new ArrayList<String>();
 		headers.add("Definition URL");
@@ -61,6 +88,11 @@ public class SensorMLPropertyOntology implements IOntologyPropertyReader{
 		return headers;
 	}
 	
+	/**
+	 * Gets the values from data.
+	 *
+	 * @return the values from data
+	 */
 	private Object[][] getValuesFromData() {
 		int colNumber = (!originalData.isEmpty())? 5 : 0;
 		
@@ -78,6 +110,11 @@ public class SensorMLPropertyOntology implements IOntologyPropertyReader{
 		return values;
 	}
 	
+	/**
+	 * Parses the ontology.
+	 *
+	 * @param element the element
+	 */
 	private void parseOntology(Element element){
 		NodeList children = element.getChildNodes();
 		for (int i = 0; i < children.getLength(); i++) {
@@ -96,6 +133,12 @@ public class SensorMLPropertyOntology implements IOntologyPropertyReader{
 		}
 	}
 	
+	/**
+	 * Parses the property.
+	 *
+	 * @param property the property
+	 * @param propertyNode the property node
+	 */
 	private void parseProperty(final Property property,Element propertyNode) {
 		//add attributes if any
         if (propertyNode.hasAttributes()) {
@@ -126,14 +169,29 @@ public class SensorMLPropertyOntology implements IOntologyPropertyReader{
 		}
 	}
 	
+	/**
+	 * The Class Property.
+	 */
 	private class Property {
 		
+		/** The def url. */
 		private String defUrl;
+		
+		/** The def. */
 		private String def;
+		
+		/** The pre label. */
 		private String preLabel;
+		
+		/** The creator. */
 		private String creator;
+		
+		/** The title. */
 		private String title;
 		
+		/**
+		 * Instantiates a new property.
+		 */
 		public Property() {
 			defUrl = "";
 			def = "";
@@ -142,37 +200,99 @@ public class SensorMLPropertyOntology implements IOntologyPropertyReader{
 			title = "";
 		}
 		
+		/**
+		 * Gets the def url.
+		 *
+		 * @return the def url
+		 */
 		public String getDefUrl() {
 			return defUrl;
 		}
+		
+		/**
+		 * Sets the def url.
+		 *
+		 * @param defUrl the new def url
+		 */
 		public void setDefUrl(String defUrl) {
 			this.defUrl = defUrl;
 		}
+		
+		/**
+		 * Gets the def.
+		 *
+		 * @return the def
+		 */
 		public String getDef() {
 			return def;
 		}
+		
+		/**
+		 * Sets the def.
+		 *
+		 * @param def the new def
+		 */
 		public void setDef(String def) {
 			this.def = def;
 		}
+		
+		/**
+		 * Gets the pre label.
+		 *
+		 * @return the pre label
+		 */
 		public String getPreLabel() {
 			return preLabel;
 		}
+		
+		/**
+		 * Sets the pre label.
+		 *
+		 * @param preLabel the new pre label
+		 */
 		public void setPreLabel(String preLabel) {
 			this.preLabel = preLabel;
 		}
+		
+		/**
+		 * Gets the creator.
+		 *
+		 * @return the creator
+		 */
 		public String getCreator() {
 			return creator;
 		}
+		
+		/**
+		 * Sets the creator.
+		 *
+		 * @param creator the new creator
+		 */
 		public void setCreator(String creator) {
 			this.creator = creator;
 		}
+		
+		/**
+		 * Gets the title.
+		 *
+		 * @return the title
+		 */
 		public String getTitle() {
 			return title;
 		}
+		
+		/**
+		 * Sets the title.
+		 *
+		 * @param title the new title
+		 */
 		public void setTitle(String title) {
 			this.title = title;
 		}
 		
+		/* (non-Javadoc)
+		 * @see java.lang.Object#toString()
+		 */
 		@Override
 		public String toString() {
 			return "Property [defUrl=" + defUrl + ", def=" + def + ", preLabel=" + preLabel + ", creator=" + creator + ", title=" + title + "]";

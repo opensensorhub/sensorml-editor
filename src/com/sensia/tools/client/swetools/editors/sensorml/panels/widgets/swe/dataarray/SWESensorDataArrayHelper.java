@@ -1,3 +1,13 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.dataarray;
 
 import java.util.ArrayList;
@@ -9,9 +19,17 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorW
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_TYPE;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
+/**
+ * The Class SWESensorDataArrayHelper is a Helper class. It helps to get elements inside the DataArray tag.
+ */
 public final class SWESensorDataArrayHelper {
+	
+	/** The Constant VS. */
 	private static final String VS = " vs ";
 	
+	/**
+	 * Instantiates a new SWE sensor data array helper.
+	 */
 	private SWESensorDataArrayHelper() {}
 	
 	/**
@@ -94,6 +112,13 @@ public final class SWESensorDataArrayHelper {
 		
 	}
 	
+	/**
+	 * Gets the header.
+	 *
+	 * @param label the label
+	 * @param uom the uom
+	 * @return the header
+	 */
 	private static String getHeader(String label,String uom) {
 		String result = "";
 		if(label != null && !label.isEmpty()) {
@@ -108,6 +133,13 @@ public final class SWESensorDataArrayHelper {
 		return result;
 	}
 	
+	/**
+	 * Gets the uom.
+	 *
+	 * @param widget the widget
+	 * @param originalValue the original value
+	 * @return the uom
+	 */
 	private static String getUom(ISensorWidget widget,String originalValue) {
 		String result = originalValue;
 		//add UOM if any
@@ -122,6 +154,13 @@ public final class SWESensorDataArrayHelper {
 		return result;
 	}
 	
+	/**
+	 * Gets the widget value.
+	 *
+	 * @param widget the widget
+	 * @param value the value
+	 * @return the widget value
+	 */
 	private static String getWidgetValue(ISensorWidget widget,String value) {
 		String labelStr = "";
 		if(widget != null) {
@@ -163,6 +202,12 @@ public final class SWESensorDataArrayHelper {
 		return concatenedAxisNames;
 	}
 	
+	/**
+	 * Gets the titles.
+	 *
+	 * @param fields the fields
+	 * @return the titles
+	 */
 	public static List<String> getTitles(final List<ISensorWidget> fields) {
 		List<String> titles = new ArrayList<String>();
 		
@@ -178,12 +223,14 @@ public final class SWESensorDataArrayHelper {
 		
 		return titles;
 	}
+	
 	/**
 	 * Get the values as a list of Object.
-	 * @param blocks
-	 * @param tokenSeparator
-	 * @param elementCount
-	 * @return
+	 *
+	 * @param blocks the blocks
+	 * @param tokenSeparator the token separator
+	 * @param elementCount the element count
+	 * @return the values
 	 */
 	public static Object[][] getValues(final List<String> blocks,final String tokenSeparator, final int elementCount) {
 		

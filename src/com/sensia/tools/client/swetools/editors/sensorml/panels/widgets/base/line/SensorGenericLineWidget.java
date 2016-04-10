@@ -1,6 +1,15 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.line;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
@@ -10,30 +19,63 @@ import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallba
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 
+/**
+ * The Class SensorGenericLineWidget.
+ */
 public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 	
+	/** The multi lines panel. */
 	protected VerticalPanel multiLinesPanel;
+	
+	/** The line panel. */
 	protected HorizontalPanel linePanel;
+	
+	/** The label panel. */
 	protected Panel labelPanel;
+	
+	/** The dot separator label. */
 	protected HTML dotSeparatorLabel;
+	
+	/** The opt panel. */
 	protected Panel optPanel;
+	
+	/** The icon panel. */
 	protected Panel iconPanel;
+	
+	/** The def panel. */
 	protected Panel defPanel;
 	
+	/** The advanced panel. */
 	protected Panel advancedPanel;
 	
+	/** Defines if the label has been provided */
 	protected boolean isLabelProvided;
+	
+	/** Defines if the definition has been provided */
 	protected boolean isDefinitionProvided;
 	
+	/** The title value widget. */
 	protected ISensorWidget titleValueWidget;
+	
+	/** Defines if the title has been provided. */
 	protected boolean hasTitle;
 	
+	/**
+	 * Instantiates a new sensor generic line widget.
+	 *
+	 * @param name the name
+	 * @param def the def
+	 * @param type the type
+	 */
 	public SensorGenericLineWidget(String name, TAG_DEF def, TAG_TYPE type) {
 		super(name, def, type);
 		multiLinesPanel = new VerticalPanel();
 		init();
 	}
 
+	/**
+	 * Inits the widget.
+	 */
 	public void init() {
 		isLabelProvided = false;
 		isDefinitionProvided = false;
@@ -84,6 +126,10 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		//hide dots until optPanel is added
 		dotSeparatorLabel.setVisible(false);
 	}
+	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#addSensorWidget(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget)
+	 */
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
 		if(widget instanceof SensorGenericLineWidget) {
@@ -158,11 +204,17 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 				}
 			}
 			
-			//looking for element to append to line
+			//looking for element to append into the line
 			recursiveAppendTo(widget);
 		}
 	}
 
+	/**
+	 * Recursive append to.
+	 *
+	 * @param widget the widget
+	 * @return true, if successful
+	 */
 	private boolean recursiveAppendTo(ISensorWidget widget) {
 		if(widget.appendTo() == APPENDER.HORIZONTAL || widget.appendTo() == APPENDER.HORIZONTAL_STRICT) {
 			if(widget.isIcon()) {
@@ -201,16 +253,25 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#newInstance()
+	 */
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
 		return new SensorGenericLineWidget(getName(),getDef(),getType());
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget#getPanel()
+	 */
 	@Override
 	public Panel getPanel() {
 		return multiLinesPanel;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#activeMode(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE)
+	 */
 	@Override
 	protected void activeMode(MODE mode) {
 	}

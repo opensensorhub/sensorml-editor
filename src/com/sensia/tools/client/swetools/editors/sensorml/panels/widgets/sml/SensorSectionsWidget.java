@@ -1,3 +1,13 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.sml;
 
 import java.util.ArrayList;
@@ -10,34 +20,62 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_DEF;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_TYPE;
 
+/**
+ * The Class SensorSectionsWidget is corresponding to the root panel element. It handles the title, 
+ * description, keywords elements.
+ */
 public class SensorSectionsWidget extends AbstractSensorElementWidget{
 
+	/** The container. */
 	private VerticalPanel container;
+	
+	/** The title panel. */
 	private HTML titlePanel;
+	
+	/** The description panel. */
 	private HorizontalPanel descriptionPanel;
+	
+	/** The identifier panel. */
 	private HorizontalPanel identifierPanel;
+	
+	/** The keyword panel. */
 	private HorizontalPanel keywordPanel;
 	
+	/** The line description panel. */
 	private HorizontalPanel lineDescriptionPanel;
+	
+	/** The line identifier panel. */
 	private HorizontalPanel lineIdentifierPanel;
+	
+	/** The line title panel. */
 	private HorizontalPanel lineTitlePanel;
 	
+	/** The end panel. */
 	private Panel endPanel;
+	
+	/** The start panel. */
 	private Panel startPanel;
 	
+	/** The title heading start tag. */
 	private String titleHeadingStartTag = "<h2>";
+	
+	/** The title heading end tag. */
 	private String titleHeadingEndTag = "</h2>";
 	
 	
+	/** The line title. */
 	private HTML lineTitle;
+	
+	/** The line description. */
 	private HTML lineDescription;
 	
+	/** The desc id keyword panel. */
 	private Panel descIdKeywordPanel;
 	
+	/**
+	 * Instantiates a new sensor sections widget.
+	 */
 	public SensorSectionsWidget() {
 		super("", TAG_DEF.SML, TAG_TYPE.ELEMENT);
 		
@@ -100,6 +138,7 @@ public class SensorSectionsWidget extends AbstractSensorElementWidget{
 		advancedTags.add("name");
 		advancedTags.add("id");
 		
+		//add the advanced panel. It will display the dots for title and id element
 		advancedPanel = getSimpleEditPanel(new IButtonCallback() {
 			@Override
 			public void onClick() {
@@ -127,22 +166,20 @@ public class SensorSectionsWidget extends AbstractSensorElementWidget{
 				
 		container.add(lineTitlePanel);
 		
-		//draw horizontal line
+		//draws a horizontal line
 		lineTitle = new HTML("<hr  style=\"width:100%;\" />");
 		container.add(lineTitle);
-		
+
+		//each panel is added with its corresponding advanced panel
+		//the advanced panel is hidden by default
+		//this vertical panel handles the while stack of panels
 		descIdKeywordPanel = new VerticalPanel();
-		
 		descIdKeywordPanel.add(lineIdentifierPanel);
 		descIdKeywordPanel.add(lineDescriptionPanel);
 		descIdKeywordPanel.add(keywordPanel);
 		
 		container.add(descIdKeywordPanel);
 		
-		//HTML specTitle = new HTML("<h2>Specifications</h2>");
-		//specTitle.addStyleName("document-title");
-		
-		//container.add(specTitle);
 		//draw horizontal line
 		lineDescription = new HTML("<hr  style=\"width:100%;\" />");
 		container.add(lineDescription);
@@ -154,11 +191,17 @@ public class SensorSectionsWidget extends AbstractSensorElementWidget{
 		container.add(endPanel);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget#getPanel()
+	 */
 	@Override
 	public Panel getPanel() {
 		return container;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#addSensorWidget(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget)
+	 */
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
 		if(widget.getName().equals("name")){
@@ -186,17 +229,28 @@ public class SensorSectionsWidget extends AbstractSensorElementWidget{
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#activeMode(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE)
+	 */
 	@Override
 	protected void activeMode(MODE mode) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#newInstance()
+	 */
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
 		return new SensorSectionsWidget();
 	}
 	
+	/**
+	 * Sets the inner sections.
+	 *
+	 * @param isInnerSection the new inner sections
+	 */
 	public void setInnerSections(boolean isInnerSection) {
 		if(isInnerSection) {
 			titleHeadingStartTag = "<h4>";

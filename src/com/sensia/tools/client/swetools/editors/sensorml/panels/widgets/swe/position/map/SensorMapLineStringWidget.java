@@ -1,3 +1,13 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.map;
 
 import org.gwtopenmaps.openlayers.client.LonLat;
@@ -22,17 +32,36 @@ import org.gwtopenmaps.openlayers.client.layer.Vector;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 
+/**
+ * The Class SensorMapLineStringWidget display a trajectory path into the map.
+ */
 public class SensorMapLineStringWidget {
 
+	/** The lat lon coordinates. */
 	private double [][] latLonCoordinates;
+	
+	/** The epsg code. */
 	private String epsgCode;
+	
+	/** The drag. */
 	private boolean drag;
 	
+	/** The container. */
 	private Panel container;
+	
+	/** The map widget. */
 	private MapWidget mapWidget;
 	
+	/** The line feature. */
 	private VectorFeature lineFeature;
 	
+	/**
+	 * Instantiates a new sensor map line string widget.
+	 *
+	 * @param latLonCoordinates the lat lon coordinates
+	 * @param epsgCode the epsg code
+	 * @param drag the drag
+	 */
 	public SensorMapLineStringWidget(double [][] latLonCoordinates,String epsgCode, boolean drag) {
 		this.latLonCoordinates = latLonCoordinates;
 		this.epsgCode = epsgCode;
@@ -41,6 +70,9 @@ public class SensorMapLineStringWidget {
 		init();
 	}
 	
+	/**
+	 * Inits the.
+	 */
 	private void init() {
 		container = new SimplePanel();
 		
@@ -99,14 +131,21 @@ public class SensorMapLineStringWidget {
         }*/ 
 	}
 	
+	/**
+	 * Gets the panel.
+	 *
+	 * @return the panel
+	 */
 	public Panel getPanel() {
 		return container;
 	}
 	
+	/**
+	 * Gets the lat lon coordinates.
+	 *
+	 * @return the lat lon coordinates
+	 */
 	public double[][] getLatLonCoordinates() {
-		//LonLat lonLat = new LonLat(lon, lat);
-		//lonLat.transform( mapWidget.getMap().getProjection(),"EPSG:"+epsgCode); 
-		//return new double[]{lonLat.lat(),lonLat.lon()};
 		Point[] points = lineFeature.getGeometry().getVertices(true);
 		double[][] coordinates = new double[points.length][2];
 		

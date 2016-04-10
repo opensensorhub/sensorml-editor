@@ -1,3 +1,13 @@
+/***************************** BEGIN LICENSE BLOCK ***************************
+
+ The contents of this file are Copyright (C) 2016 DHAINAUT.
+ All Rights Reserved.
+ 
+ Contributor(s): 
+    Mathieu DHAINAUT <mathieu.dhainaut@gmail.com>
+ 
+ ******************************* END LICENSE BLOCK ***************************/
+
 package com.sensia.tools.client.swetools.editors.sensorml.ontology.property;
 
 import java.util.ArrayList;
@@ -15,21 +25,36 @@ import com.google.gwt.xml.client.XMLParser;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ILoadFileCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
+/**
+ * The Class RdfPropertyReader.
+ */
 public class RdfPropertyReader implements IOntologyPropertyReader{
 
+	/** The class col def map. */
 	private Map<String,Integer> classColDefMap;
+	
+	/** The original data. */
 	private List<Property> originalData;
 	
+	/**
+	 * Instantiates a new rdf property reader.
+	 */
 	public RdfPropertyReader() {
 		init();
 	}
 	
+	/**
+	 * Inits the.
+	 */
 	private void init() {
 		//init global values
 		classColDefMap = new TreeMap<String,Integer>();
 		originalData = new ArrayList<Property>();
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.ontology.property.IOntologyPropertyReader#loadOntology(java.lang.String, com.sensia.tools.client.swetools.editors.sensorml.ontology.property.ILoadOntologyCallback)
+	 */
 	public void loadOntology(String url,final ILoadOntologyCallback callback) {
 		classColDefMap.clear();
 		originalData.clear();
@@ -49,10 +74,20 @@ public class RdfPropertyReader implements IOntologyPropertyReader{
 		Utils.getFile(url, cb);
 	}
 	
+	/**
+	 * Gets the headers from class def.
+	 *
+	 * @return the headers from class def
+	 */
 	private List<String> getHeadersFromClassDef() {
 		return new ArrayList<String>(classColDefMap.keySet());
 	}
 	
+	/**
+	 * Gets the values from data.
+	 *
+	 * @return the values from data
+	 */
 	private Object[][] getValuesFromData() {
 		int colNumber = (!originalData.isEmpty())? originalData.get(0).properties.size() : 0;
 		
@@ -68,6 +103,11 @@ public class RdfPropertyReader implements IOntologyPropertyReader{
 		return values;
 	}
 	
+	/**
+	 * Parses the ontology.
+	 *
+	 * @param element the element
+	 */
 	private void parseOntology(Element element){
 		String className = "Property";
 		
@@ -106,6 +146,11 @@ public class RdfPropertyReader implements IOntologyPropertyReader{
 		}
 	}
 	
+	/**
+	 * Parses the datatype property.
+	 *
+	 * @param propertyNode the property node
+	 */
 	private void parseDatatypeProperty(Element propertyNode) {
 		NodeList children = propertyNode.getChildNodes();
 		for (int i = 0; i < children.getLength(); i++) {
@@ -122,6 +167,12 @@ public class RdfPropertyReader implements IOntologyPropertyReader{
 		}
 	}
 	
+	/**
+	 * Parses the property.
+	 *
+	 * @param property the property
+	 * @param propertyNode the property node
+	 */
 	private void parseProperty(final Property property,Element propertyNode) {
 		//add attributes if any
         if (propertyNode.hasAttributes()) {
@@ -150,6 +201,12 @@ public class RdfPropertyReader implements IOntologyPropertyReader{
 		}
 	}
 	
+	/**
+	 * Gets the real name.
+	 *
+	 * @param name the name
+	 * @return the real name
+	 */
 	private String getRealName(String name) {
 		String res = name;
 		if(res.contains(":")) {
