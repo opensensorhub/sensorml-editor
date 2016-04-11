@@ -1,5 +1,5 @@
 # SMLEditor
-A web based viewer/editor to create your sensorML document. This SensorML viewer/editor is used by OSH but can also be used as a standalone web editor.This editor allows to view any SensorML documents (V2.0) and edits the current content. The project has been designed using GWT.
+A web based viewer/editor to create your sensorML document. This SensorML viewer/editor is used by OSH but can also be used as a standalone web editor.This editor allows to view any SensorML documents (V2.0) and edit the current content. The project has been designed using GWT.
 
 Architecture design:
 -------------------
