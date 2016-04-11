@@ -13,4 +13,3 @@ according to the SensorML Specifications.
 <br />
 <br />
 ![alt tag](https://cloud.githubusercontent.com/assets/6577027/14419378/c052a3ce-ffc5-11e5-946a-0addfc097125.png)
-
