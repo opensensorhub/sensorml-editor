@@ -50,8 +50,10 @@ public class SensorValueWidget extends AbstractSensorElementWidget{
 		
 		valueBox = new TextBox();
 		
-		//remove blank space, return lines
-		valueBox.setText(value.replaceAll("\\s+", " "));
+		if(value != null) {
+			//remove blank space, return lines
+			valueBox.setText(value.replaceAll("\\s+", " "));
+		}
 	}
 
 	/* (non-Javadoc)

@@ -10,6 +10,7 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe;
 
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -117,9 +118,11 @@ public class SWESensorQuantityRangeWidget extends AbstractSensorElementWidget{
 		} else if(widget.getName().equals("value") && widget.getType() == TAG_TYPE.ELEMENT && widget.getDef() == TAG_DEF.SWE){
 			//display value as "min to max"
 			String interval = widget.getElements().get(0).getName();
-			String [] spaceSplit = interval.split(" ");
-			HTML values = new HTML(spaceSplit[0]+" to "+spaceSplit[1]);
-			valuePanel.add(values);
+			if(interval != null) {
+				String [] spaceSplit = interval.split(" ");
+				HTML values = new HTML(spaceSplit[0]+" to "+spaceSplit[1]);
+				valuePanel.add(values);
+			}
 			//appends constraints if any
 			if(hasConstraints) {
 				valuePanel.add(new HTML(SensorConstants.HTML_SPACE+"in"+SensorConstants.HTML_SPACE));
