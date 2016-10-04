@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGGrammar;
@@ -26,7 +27,6 @@ import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_DEF;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_TYPE;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorAttributeRefWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorGenericHorizontalContainerWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorGenericXLinkWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.gml.GMLSensorWidget;
@@ -214,7 +214,8 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 	@Override
 	public void visit(RNGGrammar grammar) { 
 		//create top root element
-		push(new SensorSectionsWidget());
+		//push(new SensorSectionsWidget());
+		//push(renderVerticalWidget("Root", null, null));
 		super.visit(grammar);
 	}
 
@@ -226,6 +227,11 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		String eltName = elt.getName();
 		String nsUri = elt.getNamespace();
 
+		if(rootSectionsList.contains(eltName)) {
+			pushAndVisitChildren(new SensorSectionsWidget(),elt.getChildren());
+			return;
+		}
+		
 		//get Name Space
 		TAG_DEF ns = TAG_DEF.RNG;
 		
@@ -389,5 +395,15 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 			}
 		}
 		pushAndVisitChildren(widget,children);
+	}
+	
+	/**
+	 * Because some tag can be rendered as a section if they are next to the top and renderer as simple component otherwise,
+	 * we fix a rootMinLevel to define at which level tag are considered as section or not.
+	 * TODO: remove this workaround and find a best way. In case of viewer/editor, that value can changed
+	 * @param rootMinLevel
+	 */
+	public void setRootMinLevel(int rootMinLevel) {
+		this.rootMinLevel = rootMinLevel;
 	}
 }

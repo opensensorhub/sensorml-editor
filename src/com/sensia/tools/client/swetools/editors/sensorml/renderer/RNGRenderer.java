@@ -107,7 +107,11 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 * @return the i sensor widget
 	 */
 	public ISensorWidget peek() {
-		return stack.peek();
+		if(!stack.isEmpty()) {
+			return stack.peek();
+		}else {
+			return null;
+		}
 	}
 	
 	/**
@@ -221,13 +225,12 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	@Override
 	public void visit(RNGZeroOrMore zeroOrMore) {
 		ISensorWidget widget = new SensorZeroOrMoreWidget(zeroOrMore);
+		push(widget);
 		// display current instances
 		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
 		for(List<RNGTag> tags : patternInstances) {
 			this.visitChildren(tags);
 		}
-		
-		push(widget);
 		
 		makeTagObservable(zeroOrMore);
 		
@@ -358,10 +361,12 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 			if (tag != null) {
 				tag.accept(this);
 			}
-			if(stackSize < getStackSize()){
-				ISensorWidget child = pop();
-				child.setParent(peek);
-				peek.addElement(child);
+			if(peek != null){
+				if(stackSize < getStackSize()){
+					ISensorWidget child = pop();
+					child.setParent(peek);
+					peek.addElement(child);
+				}
 			}
 		}
 	}

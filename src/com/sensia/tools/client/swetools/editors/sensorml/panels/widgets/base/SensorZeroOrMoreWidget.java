@@ -72,6 +72,10 @@ public class SensorZeroOrMoreWidget extends AbstractSensorElementWidget{
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
 		//do nothing
+		HorizontalPanel hPanel = new HorizontalPanel();
+		hPanel.addStyleName("tabular-4x");
+		hPanel.add(widget.getPanel());
+		container.add(hPanel);
 	}
 
 	/* (non-Javadoc)

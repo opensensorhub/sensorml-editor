@@ -40,6 +40,8 @@ public class RNGProcessorSML {
 	/** The mode. */
 	private MODE mode = MODE.VIEW;
 	
+	private int rootMinLevel = 1;
+	
 	/**
 	 * Instantiates a new RNG processor sml.
 	 */
@@ -98,6 +100,7 @@ public class RNGProcessorSML {
 	private void parseRNG(final RNGGrammar grammar) {
 		setLoadedGrammar(grammar);
 		RNGRendererSML renderer = new RNGRendererSML();
+		renderer.setRootMinLevel(rootMinLevel);
 		renderer.setObservers(observers);
 		renderer.visit(grammar);
 		ISensorWidget root = renderer.getRoot();
@@ -117,6 +120,7 @@ public class RNGProcessorSML {
 	 */
 	public ISensorWidget parseRNG(RNGTag tag) {
 		RNGRendererSML renderer = new RNGRendererSML();
+		renderer.setRootMinLevel(rootMinLevel);
 		renderer.visit(tag);
 		
 		return renderer.getRoot();
@@ -160,5 +164,9 @@ public class RNGProcessorSML {
 	
 	public void addObserver(IObserver observer) {
 		this.observers.add(observer);
+	}
+	
+	public void setRootMinLevel(int rootMinLevel) {
+		this.rootMinLevel = rootMinLevel;
 	}
 }

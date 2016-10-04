@@ -13,11 +13,11 @@ package com.sensia.tools.client.swetools.editors.sensorml.panels;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Composite;
@@ -29,13 +29,10 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.sensia.relaxNG.RNGGrammar;
-import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.IParsingObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.Observable;
-import com.sensia.tools.client.swetools.editors.sensorml.listeners.LoadProfileButtonClickListener;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ViewAsXMLButtonClickListener;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.ISourcePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.LocalFileSourcePanel;
@@ -73,7 +70,7 @@ public class CenterPanel extends Composite implements IParsingObserver, IObserve
 		profiles.put("Anemometer","sensormleditor/rng1.0/profiles/CSM/anemometer.rng");
 		profiles.put("Thermometer","sensormleditor/rng1.0/profiles/CSM/thermometer-minimal-view.rng");
 		profiles.put("PhysicalProcess","sensormleditor/sensorml-relaxng/sml/PhysicalProcess.rng");
-		
+		profiles.put("PhysicalProcess-minimal","sensormleditor/sensorml-relaxng/sml/PhysicalProcess-minimal.rng");
 	}
 	
 	public CenterPanel(final RNGProcessorSML sgmlEditorProcessor){
@@ -155,6 +152,7 @@ public class CenterPanel extends Composite implements IParsingObserver, IObserve
 			
 			@Override
 			public void onClick(ClickEvent event) {
+				smlEditorProcessor.setRootMinLevel(1);
 				if(fromLocalFileSystem.getValue()) {
 					fileUploadPanel.parseContent();
 				} else if(fromUrl.getValue()){
@@ -213,7 +211,7 @@ public class CenterPanel extends Composite implements IParsingObserver, IObserve
 		panel.add(load);
 		panel.add(editCheckbox);
 		
-		editCheckbox.setVisible(false);
+		editCheckbox.setVisible(true);
 		
 		//after clicking on the checkbox, the mode is sent to the tree hierarchy starting from the Root element
 		editCheckbox.addClickHandler(new ClickHandler() {
@@ -227,7 +225,13 @@ public class CenterPanel extends Composite implements IParsingObserver, IObserve
 			}
 		});
 		
-		load.addClickHandler(new LoadProfileButtonClickListener(profileListBox,profiles, smlEditorProcessor));
+		load.addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				CenterPanel.this.loadProfile();
+			}
+		});
 		
 		return panel;
 	}
@@ -251,8 +255,21 @@ public class CenterPanel extends Composite implements IParsingObserver, IObserve
 		ISensorWidget newNode = smlEditorProcessor.parseRNG(smlEditorProcessor.getLoadedGrammar());
 		dynamicCenterPanel.add(newNode.getPanel());
 		root = newNode;*/
-		GWT.log("ici");
-		smlEditorProcessor.setMode(MODE.EDIT);
 		smlEditorProcessor.parse(profiles.get(profileListBox.getValue(profileListBox.getSelectedIndex())));
+	}
+	
+	public void loadProfile(){
+		if(profileListBox != null) {
+			String key = profileListBox.getValue(profileListBox.getSelectedIndex());
+			
+			if(key != null && !key.isEmpty()){
+				editCheckbox.setValue(true);
+				smlEditorProcessor.setRootMinLevel(3);
+				smlEditorProcessor.setMode(MODE.EDIT);
+				smlEditorProcessor.parse(profiles.get(key));
+			}
+		} else {
+			Window.alert("The content seems empty or invalid");
+		}
 	}
 }
