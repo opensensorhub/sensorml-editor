@@ -292,7 +292,7 @@ public class SWESensorDataArrayWidget extends AbstractSensorElementWidget{
 			
 			final Object[][] values = getObjectValues();
 			List<String> headers    = getHeaders();
-			
+			GWT.log(values.length+" --> "+getElementCount());
 			if(values.length != getElementCount()) {
 				Window.alert("DataArray: The number of fields is not corresponding to the elementCount");
 			} else {

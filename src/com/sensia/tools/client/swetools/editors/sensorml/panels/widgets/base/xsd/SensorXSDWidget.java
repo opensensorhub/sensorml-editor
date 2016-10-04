@@ -50,7 +50,7 @@ public abstract class SensorXSDWidget extends AbstractSensorElementWidget{
 	 * @param allowedChars the allowed chars
 	 */
 	protected SensorXSDWidget(final RNGData<?> data,final int length,final String allowedChars) {
-		super(data.getStringValue(), TAG_DEF.RNG,TAG_TYPE.DATA);
+		super(data.getStringValue(), TAG_DEF.RNG,TAG_TYPE.DATA,data);
 		
 		if (length < 0)
         {

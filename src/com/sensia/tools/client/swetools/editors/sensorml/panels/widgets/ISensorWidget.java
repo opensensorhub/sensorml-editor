@@ -13,6 +13,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets;
 import java.util.List;
 
 import com.google.gwt.user.client.ui.Panel;
+import com.sensia.relaxNG.RNGTag;
 
 /**
  * This interface represents a single Node of the Sensor Widget Tree.
@@ -57,7 +58,8 @@ public interface ISensorWidget {
 		ELEMENT,
 		ZERO_OR_MORE,
 		DATA,
-		CHOICE
+		CHOICE,
+		OPTIONAL
 	}
 	
 	/**
@@ -193,4 +195,9 @@ public interface ISensorWidget {
 	 * @return a boolean to define if the widget is reprenseted as an icon.
 	 */
 	boolean isIcon();
+	
+	void setRNGTag(RNGTag tag);
+	
+	RNGTag getRNGTag();
+	
 }

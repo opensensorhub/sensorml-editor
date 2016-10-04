@@ -229,15 +229,15 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		//get Name Space
 		TAG_DEF ns = TAG_DEF.RNG;
 		
-		if (nsUri.equals(SML_NS_1) || nsUri.equals(SML_NS_2)) {
+		if (nsUri.equalsIgnoreCase(SML_NS_1) || nsUri.equalsIgnoreCase(SML_NS_2)) {
 			ns = TAG_DEF.SML;
-		} else if (nsUri.equals(SWE_NS_1) || nsUri.equals(SWE_NS_2)) {
+		} else if (nsUri.equalsIgnoreCase(SWE_NS_1) || nsUri.equalsIgnoreCase(SWE_NS_2)) {
 			ns = TAG_DEF.SWE;
-		} else if (nsUri.equals(GML_NS_1) || nsUri.equals(GML_NS_2)) {
+		} else if (nsUri.equalsIgnoreCase(GML_NS_1) || nsUri.equalsIgnoreCase(GML_NS_2)) {
 			ns = TAG_DEF.GML;
-		} else if(nsUri.equals(GMD)) {
+		} else if(nsUri.equalsIgnoreCase(GMD)) {
 			ns = TAG_DEF.GMD;
-		} else if(nsUri.equals(GCO)) {
+		} else if(nsUri.equalsIgnoreCase(GCO)) {
 			ns = TAG_DEF.GCO;
 		}
 		
@@ -253,7 +253,8 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 		}
 		
 		//if element is a section
-		if(getStackSize() > 2 && rootSectionsList.contains(eltName)) {
+		//TODO: was > 2 for embedded document
+		if(getStackSize() > 1 && rootSectionsList.contains(eltName)) {
 			int oldRootValue = rootMinLevel;
 			rootMinLevel = getStackSize()+1;
 			SensorSectionsWidget sensorSections = new SensorSectionsWidget();

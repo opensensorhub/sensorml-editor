@@ -11,6 +11,10 @@
 package com.sensia.relaxNG;
 
 import java.io.Serializable;
+import java.util.UUID;
+
+import com.sensia.tools.client.swetools.editors.sensorml.controller.Observable;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 
 /**
@@ -26,7 +30,7 @@ import java.io.Serializable;
  * @author Alexandre Robin
  * @date Sep 26, 2011
  */
-public abstract class RNGTag implements Cloneable, Serializable
+public abstract class RNGTag extends Observable implements Cloneable, Serializable
 {
     private static final long serialVersionUID = 984732656936240060L;
     protected String id;
@@ -34,13 +38,13 @@ public abstract class RNGTag implements Cloneable, Serializable
     protected RNGTag parent;
     protected boolean disabled;
     
-
+    
+    
     public RNGTag()
     {
         super();
     }
-
-
+    
     public String getId()
     {
         return id;

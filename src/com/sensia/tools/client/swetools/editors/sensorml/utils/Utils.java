@@ -9,6 +9,7 @@ import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.http.client.UrlBuilder;
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
@@ -200,5 +201,11 @@ public class Utils {
 		UrlBuilder builder = Window.Location.createUrlBuilder();
 		builder.setParameter("url", value);
 		return builder.buildString();
+	}
+	
+	private static long uniqueIncrement = 0;
+	
+	public static long getUID() {
+		return uniqueIncrement++;
 	}
 }

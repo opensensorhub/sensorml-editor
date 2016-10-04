@@ -47,6 +47,7 @@ public class RNGChoice extends RNGTagList
     public void setSelectedIndex(int item)
     {
         this.selectedIndex = item;
+        notifyObservers();
     }
     
     

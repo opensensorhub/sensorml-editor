@@ -69,6 +69,8 @@ public abstract class AbstractSensorElementWidget implements ISensorWidget{
 	/** The Constant NORMALIZE_DOT_SEPARATOR_SIZE. */
 	private static final int NORMALIZE_DOT_SEPARATOR_SIZE = 70;
 	
+	private RNGTag rngTag;
+	
 	/**
 	 * Instantiates a new abstract sensor element widget.
 	 *
@@ -80,6 +82,18 @@ public abstract class AbstractSensorElementWidget implements ISensorWidget{
 		this.name = name;
 		this.def = def;
 		this.type = type;
+	}
+	
+	/**
+	 * Instantiates a new abstract sensor element widget.
+	 *
+	 * @param name the name of the node
+	 * @param def the definition of the node
+	 * @param type the type of the node
+	 */
+	protected AbstractSensorElementWidget(String name, TAG_DEF def, TAG_TYPE type,RNGTag tag){
+		this(name,def,type);
+		this.rngTag = tag;
 	}
 	
 	/* (non-Javadoc)
@@ -300,6 +314,7 @@ public abstract class AbstractSensorElementWidget implements ISensorWidget{
 			RNGDefine def = ((RNGRef) tag).getPattern();
 			if (def != null)
 				return findLabel(def);
+			
 		}
 
 		return null;
@@ -773,5 +788,14 @@ public abstract class AbstractSensorElementWidget implements ISensorWidget{
 	 */
 	public boolean isIcon() {
 		return false;
+	}
+	
+	public void setRNGTag(RNGTag tag){
+		this.rngTag = tag;
+	}
+	
+	@Override
+	public RNGTag getRNGTag() {
+		return this.rngTag;
 	}
 }

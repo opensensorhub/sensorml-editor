@@ -10,9 +10,16 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base;
 
+import java.util.List;
+
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.user.client.ui.VerticalPanel;
+import com.sensia.relaxNG.RNGChoice;
+import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 
@@ -25,20 +32,46 @@ public class SensorChoiceWidget extends AbstractSensorElementWidget{
 	private ListBox choices;
 	
 	/** The container. */
-	private HorizontalPanel container;
+	private VerticalPanel container;
 	
 	/**
 	 * Instantiates a new sensor choice widget.
 	 */
-	public SensorChoiceWidget() {
-		super("choice", TAG_DEF.RNG, TAG_TYPE.CHOICE);
+	public SensorChoiceWidget(final RNGChoice choice) {
+		super("choice", TAG_DEF.RNG, TAG_TYPE.CHOICE,choice);
 		
 		choices = new ListBox();
-		container = new HorizontalPanel();
+		container = new VerticalPanel();
 		
 		container.add(choices);
 		
 		container.setSpacing(5);
+		
+		choices.addItem("");
+		
+		List<RNGTag> children = choice.getItems();
+		if(children != null){
+			for(RNGTag child : children) {
+				String label = findLabel(child);
+				choices.addItem(label);
+			}
+		}
+		
+		if(choice.getSelectedIndex() != -1) {
+			choices.setSelectedIndex(choice.getSelectedIndex()+1);
+		}
+		
+		choices.addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				if(choices.getSelectedIndex() == 0) {
+					choice.setSelectedIndex(-1);
+				} else {
+					choice.setSelectedIndex(choices.getSelectedIndex()-1);
+				}
+			}
+		});
 	}
 
 	/* (non-Javadoc)
@@ -63,11 +96,10 @@ public class SensorChoiceWidget extends AbstractSensorElementWidget{
 	 */
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
-		if(widget.getType() == TAG_TYPE.VALUE) {
-			choices.addItem(widget.getName());
-		} else {
-			container.add(widget.getPanel());
-		}
+		HorizontalPanel hPanel = new HorizontalPanel();
+		hPanel.addStyleName("tabular-4x");
+		hPanel.add(widget.getPanel());
+		container.add(hPanel);
 	}
 
 	/* (non-Javadoc)
@@ -75,6 +107,6 @@ public class SensorChoiceWidget extends AbstractSensorElementWidget{
 	 */
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
-		return new SensorChoiceWidget();
+		return new SensorChoiceWidget((RNGChoice) getRNGTag());
 	}
 }

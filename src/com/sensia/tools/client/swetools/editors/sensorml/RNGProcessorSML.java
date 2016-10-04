@@ -13,10 +13,14 @@ package com.sensia.tools.client.swetools.editors.sensorml;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gwt.core.shared.GWT;
 import com.sensia.gwt.relaxNG.RNGParser;
 import com.sensia.gwt.relaxNG.RNGParserCallback;
 import com.sensia.gwt.relaxNG.XMLSensorMLParser;
 import com.sensia.relaxNG.RNGGrammar;
+import com.sensia.relaxNG.RNGTag;
+import com.sensia.relaxNG.RNGTagList;
+import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRendererSML;
@@ -28,7 +32,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRendererSML
 public class RNGProcessorSML {
 
 	/** The observers. */
-	private List<IParsingObserver> observers;
+	private List<IObserver> observers;
 	
 	/** The loaded grammar. */
 	private RNGGrammar loadedGrammar;
@@ -40,16 +44,7 @@ public class RNGProcessorSML {
 	 * Instantiates a new RNG processor sml.
 	 */
 	public RNGProcessorSML(){
-		this.observers = new ArrayList<IParsingObserver>();
-	}
-	
-	/**
-	 * Adds the observer.
-	 *
-	 * @param observer the observer
-	 */
-	public void addObserver(final IParsingObserver observer) {
-		this.observers.add(observer);
+		this.observers = new ArrayList<IObserver>();
 	}
 	
 	/**
@@ -103,15 +98,28 @@ public class RNGProcessorSML {
 	private void parseRNG(final RNGGrammar grammar) {
 		setLoadedGrammar(grammar);
 		RNGRendererSML renderer = new RNGRendererSML();
+		renderer.setObservers(observers);
 		renderer.visit(grammar);
 		ISensorWidget root = renderer.getRoot();
-		for(final IParsingObserver observer : observers) {
+		
+		for(final IObserver observer : observers) {
 			observer.parseDone(root);
 		}
 		
 		if(mode == MODE.EDIT) {
 			root.switchMode(MODE.EDIT);
 		}
+	}
+	
+	/**
+	 * Parses only a subset of the global document
+	 * @param url
+	 */
+	public ISensorWidget parseRNG(RNGTag tag) {
+		RNGRendererSML renderer = new RNGRendererSML();
+		renderer.visit(tag);
+		
+		return renderer.getRoot();
 	}
 	
 	/**
@@ -148,5 +156,9 @@ public class RNGProcessorSML {
 	 */
 	public void setMode(MODE mode) {
 		this.mode = mode;
+	}
+	
+	public void addObserver(IObserver observer) {
+		this.observers.add(observer);
 	}
 }

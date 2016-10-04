@@ -39,6 +39,7 @@ public class RNGOptional extends RNGTagList
     public void setSelected(boolean selected)
     {
         this.selected = selected;
+        notifyObservers();
     }
 
 

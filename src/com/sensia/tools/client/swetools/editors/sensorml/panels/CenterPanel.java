@@ -13,6 +13,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.panels;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -28,8 +29,12 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.sensia.relaxNG.RNGGrammar;
+import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.IParsingObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
+import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
+import com.sensia.tools.client.swetools.editors.sensorml.controller.Observable;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.LoadProfileButtonClickListener;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ViewAsXMLButtonClickListener;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.ISourcePanel;
@@ -45,7 +50,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorW
  * @author Mathieu Dhainaut
  *
  */
-public class CenterPanel extends Composite implements IParsingObserver{
+public class CenterPanel extends Composite implements IParsingObserver, IObserver {
 	private static final long serialVersionUID = -7684111574093800909L;
 
 	//the panel in charge of displaying the HTML content
@@ -61,10 +66,13 @@ public class CenterPanel extends Composite implements IParsingObserver{
 	//the default RNG profiles ready to be displayed
 	private static Map<String,String> profiles = new HashMap<String,String>();
 	
+	private ListBox profileListBox;
+	
 	static {
 		//profiles.put("Gamma2070","sensormleditor/rng1.0/profiles/CSM/gamma.rng");
 		profiles.put("Anemometer","sensormleditor/rng1.0/profiles/CSM/anemometer.rng");
 		profiles.put("Thermometer","sensormleditor/rng1.0/profiles/CSM/thermometer-minimal-view.rng");
+		profiles.put("PhysicalProcess","sensormleditor/sensorml-relaxng/sml/PhysicalProcess.rng");
 		
 	}
 	
@@ -187,7 +195,7 @@ public class CenterPanel extends Composite implements IParsingObserver{
 		panel.setSpacing(20);
 		panel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 		
-		final ListBox profileListBox = new ListBox(false);
+		profileListBox = new ListBox(false);
 		
 		profileListBox.addItem("");
 		for(final String profileName : profiles.keySet()) {
@@ -233,5 +241,18 @@ public class CenterPanel extends Composite implements IParsingObserver{
 		dynamicCenterPanel.clear();
 		dynamicCenterPanel.add(topElement.getPanel());
 		root = topElement;
+	}
+	
+	@Override
+	public void update(Observable model, Object hint) {
+		//ISensorWidget newNode = smlEditorProcessor.parseRNG(((RNGTag) model).getParent());
+		// replace the old corresponding node by the new node
+		/*dynamicCenterPanel.clear();
+		ISensorWidget newNode = smlEditorProcessor.parseRNG(smlEditorProcessor.getLoadedGrammar());
+		dynamicCenterPanel.add(newNode.getPanel());
+		root = newNode;*/
+		GWT.log("ici");
+		smlEditorProcessor.setMode(MODE.EDIT);
+		smlEditorProcessor.parse(profiles.get(profileListBox.getValue(profileListBox.getSelectedIndex())));
 	}
 }

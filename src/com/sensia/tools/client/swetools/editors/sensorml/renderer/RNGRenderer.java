@@ -10,6 +10,7 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.renderer;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
@@ -37,6 +38,7 @@ import com.sensia.relaxNG.XSDDecimal;
 import com.sensia.relaxNG.XSDDouble;
 import com.sensia.relaxNG.XSDInteger;
 import com.sensia.relaxNG.XSDString;
+import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_DEF;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_TYPE;
@@ -44,6 +46,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.Sen
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorChoiceWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorGenericHorizontalContainerWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorGenericVerticalContainerWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorOptionalWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorValueWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorZeroOrMoreWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.line.SensorGenericLineWidget;
@@ -79,11 +82,14 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	/** The grammar. */
 	private RNGGrammar grammar;
 	
+	private List<IObserver> observers;
+	
 	/**
 	 * Instantiates a new RNG renderer.
 	 */
 	public RNGRenderer() {
 		stack = new Stack<ISensorWidget>();
+		this.observers = new ArrayList<IObserver>();
 	}
 
 	/**
@@ -147,7 +153,15 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGChoice choice) {
-		pushAndVisitChildren(new SensorChoiceWidget(), choice.getChildren());
+		RNGTag selectedPattern = choice.getSelectedPattern();
+		ISensorWidget widget = new SensorChoiceWidget(choice);
+		push(widget);
+		if(selectedPattern != null) {
+			visit(selectedPattern);
+		}
+		
+		makeTagObservable(choice);
+		
 	}
 
 	/* (non-Javadoc)
@@ -155,7 +169,14 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGOptional optional) {
-		// TODO Auto-generated method stub
+		ISensorWidget widget = new SensorOptionalWidget(optional);
+		push(widget);
+		if(optional.isSelected()){
+			this.visitChildren(optional.getChildren());
+		}
+		
+		
+		makeTagObservable(optional);
 		
 	}
 
@@ -200,10 +221,18 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	@Override
 	public void visit(RNGZeroOrMore zeroOrMore) {
 		ISensorWidget widget = new SensorZeroOrMoreWidget(zeroOrMore);
-		pushAndVisitChildren(widget, zeroOrMore.getChildren());
+		// display current instances
+		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
+		for(List<RNGTag> tags : patternInstances) {
+			this.visitChildren(tags);
+		}
+		
+		push(widget);
+		
+		makeTagObservable(zeroOrMore);
 		
 	}
-
+	
 	/* (non-Javadoc)
 	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGGroup)
 	 */
@@ -292,7 +321,6 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	@Override
 	public void visit(XSDInteger data) {
 		push(new SensorXSDIntegerWidget(data));
-		
 	}
 
 	/* (non-Javadoc)
@@ -301,6 +329,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	@Override
 	public void visit(XSDAnyURI data) {
 		push(new SensorXSDAnyURIWidget(data));
+		
 	}
 
 	/* (non-Javadoc)
@@ -310,6 +339,10 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	public void visit(XSDDateTime data) {
 		push(new SensorXSDDateTimeWidget(data));
 		
+	}
+	
+	public void visit(RNGTag tag) {
+		tag.accept(this);
 	}
 	
 	/**
@@ -421,5 +454,15 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	public RNGGrammar getGrammar() {
 		return  grammar;
+	}
+	
+	public void setObservers(List<IObserver> observer) {
+		this.observers = observer;
+	}
+	
+	public void makeTagObservable(RNGTag tag) {
+		for(IObserver o : this.observers) {
+			tag.addObserver(o);
+		}
 	}
 }
