@@ -29,6 +29,7 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.tools.client.swetools.editors.sensorml.IParsingObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
@@ -47,11 +48,11 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorW
  * @author Mathieu Dhainaut
  *
  */
-public class CenterPanel extends Composite implements IParsingObserver, IObserver {
+public class ViewerPanel extends Composite implements IParsingObserver, IObserver {
 	private static final long serialVersionUID = -7684111574093800909L;
 
 	//the panel in charge of displaying the HTML content
-	private VerticalPanel dynamicCenterPanel;
+	private VerticalPanel mainPanel;
 	
 	//the checkbox to switch between view and edit mode
 	private CheckBox editCheckbox;
@@ -60,24 +61,10 @@ public class CenterPanel extends Composite implements IParsingObserver, IObserve
 	//the processor in charge of parsing and create the RNG profile
 	private RNGProcessorSML smlEditorProcessor;
 	
-	//the default RNG profiles ready to be displayed
-	private static Map<String,String> profiles = new HashMap<String,String>();
-	
-	private ListBox profileListBox;
-	
-	static {
-		//profiles.put("Gamma2070","sensormleditor/rng1.0/profiles/CSM/gamma.rng");
-		profiles.put("Anemometer","sensormleditor/rng1.0/profiles/CSM/anemometer.rng");
-		profiles.put("Thermometer","sensormleditor/rng1.0/profiles/CSM/thermometer-minimal-view.rng");
-		profiles.put("PhysicalProcess","sensormleditor/sensorml-relaxng/sml/PhysicalProcess.rng");
-		profiles.put("PhysicalProcess-minimal","sensormleditor/sensorml-relaxng/sml/PhysicalProcess-minimal.rng");
-	}
-	
-	public CenterPanel(final RNGProcessorSML sgmlEditorProcessor){
+	public ViewerPanel(final RNGProcessorSML sgmlEditorProcessor){
 		sgmlEditorProcessor.addObserver(this);
 		this.smlEditorProcessor = sgmlEditorProcessor;
 
-		final Panel profilePanel = getProfilePanel();
 		final Panel viewXmlPanel = getXMLViewPanel();
 
 		final VerticalPanel verticalPanel = new VerticalPanel();
@@ -90,7 +77,6 @@ public class CenterPanel extends Composite implements IParsingObserver, IObserve
 		String passedFile = com.google.gwt.user.client.Window.Location.getParameter("url");
 		HorizontalPanel panel = new HorizontalPanel();
 		panel.add(viewXmlPanel);
-		panel.add(profilePanel);
 		panel.add(viewAsXML);
 		
 		verticalPanel.add(panel);
@@ -105,8 +91,8 @@ public class CenterPanel extends Composite implements IParsingObserver, IObserve
 			
 		}
 		
-		dynamicCenterPanel = new VerticalPanel();
-		verticalPanel.add(dynamicCenterPanel);
+		mainPanel = new VerticalPanel();
+		verticalPanel.add(mainPanel);
 		initWidget(verticalPanel);
 		
 	}
@@ -128,6 +114,8 @@ public class CenterPanel extends Composite implements IParsingObserver, IObserve
 		hPanel.add(fromLocalFileSystem);
 		hPanel.add(fromUrl);
 		
+		editCheckbox = new CheckBox("Edit");
+		
 		//container for either local file system input panel or url valueBox
 		final SimplePanel fromPanel = new SimplePanel();
 		
@@ -142,6 +130,7 @@ public class CenterPanel extends Composite implements IParsingObserver, IObserve
 		panel.add(hPanel);
 		panel.add(fromPanel);
 		panel.add(load);
+		panel.add(editCheckbox);
 		
 		//set from local file system panel as default choice
 		fromLocalFileSystem.setChecked(true);
@@ -157,6 +146,20 @@ public class CenterPanel extends Composite implements IParsingObserver, IObserve
 					fileUploadPanel.parseContent();
 				} else if(fromUrl.getValue()){
 					urlDownloadPanel.parseContent();
+				}
+			}
+		});
+		
+		editCheckbox.setVisible(true);
+		
+		//after clicking on the checkbox, the mode is sent to the tree hierarchy starting from the Root element
+		editCheckbox.addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				if(root != null){
+					MODE mode = (editCheckbox.isChecked()) ? MODE.EDIT : MODE.VIEW;
+					root.switchMode(mode);
 				}
 			}
 		});
@@ -188,53 +191,18 @@ public class CenterPanel extends Composite implements IParsingObserver, IObserve
 		return panel;
 	}
 	
-	private Panel getProfilePanel() {
-		final HorizontalPanel panel = new HorizontalPanel();
-		panel.setSpacing(20);
-		panel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
-		
-		profileListBox = new ListBox(false);
-		
-		profileListBox.addItem("");
-		for(final String profileName : profiles.keySet()) {
-			profileListBox.addItem(profileName);
-		}
-		
-		HTML titleProfile = new HTML("<b>Profiles:</b>");
-		
-		//button to load the selected profile
-		Button load = new Button("Apply");
-		editCheckbox = new CheckBox("Edit");
-		
-		panel.add(titleProfile);
-		panel.add(profileListBox);
-		panel.add(load);
-		panel.add(editCheckbox);
-		
-		editCheckbox.setVisible(true);
-		
-		//after clicking on the checkbox, the mode is sent to the tree hierarchy starting from the Root element
-		editCheckbox.addClickHandler(new ClickHandler() {
-			
-			@Override
-			public void onClick(ClickEvent event) {
-				if(root != null){
-					MODE mode = (editCheckbox.isChecked()) ? MODE.EDIT : MODE.VIEW;
-					root.switchMode(mode);
-				}
-			}
-		});
-		
-		load.addClickHandler(new ClickHandler() {
-			
-			@Override
-			public void onClick(ClickEvent event) {
-				CenterPanel.this.loadProfile();
-			}
-		});
-		
-		return panel;
+	public void parse(RNGGrammar grammar) {
+		mainPanel.clear();
+		ISensorWidget newNode = smlEditorProcessor.parseRNG(grammar);
+		mainPanel.add(newNode.getPanel());
+		root = newNode;
 	}
+	
+	public void parse(String xmlDoc) {
+		// use MVC
+		smlEditorProcessor.parseString(xmlDoc);
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * @see com.sensia.swetools.editors.sensorml.client.IParsingObserver#parseDone(com.sensia.swetools.editors.sensorml.client.panels.model.INodeWidget)
@@ -242,8 +210,8 @@ public class CenterPanel extends Composite implements IParsingObserver, IObserve
 	@Override
 	public void parseDone(final ISensorWidget topElement) {
 		//One the parsing done, the viewer is reset and displays the new content
-		dynamicCenterPanel.clear();
-		dynamicCenterPanel.add(topElement.getPanel());
+		mainPanel.clear();
+		mainPanel.add(topElement.getPanel());
 		root = topElement;
 	}
 	
@@ -255,21 +223,6 @@ public class CenterPanel extends Composite implements IParsingObserver, IObserve
 		ISensorWidget newNode = smlEditorProcessor.parseRNG(smlEditorProcessor.getLoadedGrammar());
 		dynamicCenterPanel.add(newNode.getPanel());
 		root = newNode;*/
-		smlEditorProcessor.parse(profiles.get(profileListBox.getValue(profileListBox.getSelectedIndex())));
-	}
-	
-	public void loadProfile(){
-		if(profileListBox != null) {
-			String key = profileListBox.getValue(profileListBox.getSelectedIndex());
-			
-			if(key != null && !key.isEmpty()){
-				editCheckbox.setValue(true);
-				smlEditorProcessor.setRootMinLevel(3);
-				smlEditorProcessor.setMode(MODE.EDIT);
-				smlEditorProcessor.parse(profiles.get(key));
-			}
-		} else {
-			Window.alert("The content seems empty or invalid");
-		}
+		//smlEditorProcessor.parse(profiles.get(profileListBox.getValue(profileListBox.getSelectedIndex())));
 	}
 }

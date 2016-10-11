@@ -124,7 +124,10 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 		activeMode(getMode());
 		
 		//hide dots until optPanel is added
-		dotSeparatorLabel.setVisible(false);
+		dotSeparatorLabel.setVisible(true);
+		
+		// default value
+		labelPanel.add(new HTML("{Missing Value}"));
 	}
 	
 	/* (non-Javadoc)
@@ -145,6 +148,7 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 			if(!isLabelProvided) {
 				//get the associated value
 				titleValueWidget = widget.getElements().get(0);
+				labelPanel.clear();
 				labelPanel.add(new HTML(splitAndCapitalize(titleValueWidget.getName())));
 				hasTitle = true;
 			}
@@ -165,6 +169,7 @@ public class SensorGenericLineWidget extends AbstractSensorElementWidget{
 			if(!hasTitle) {
 				String parentName = widget.getParent().getName();
 				if(parentName != null) {
+					labelPanel.clear();
 					labelPanel.add(new HTML(toNiceLabel(widget.getParent().getName())));
 					//get the associated value
 					titleValueWidget = widget.getParent();

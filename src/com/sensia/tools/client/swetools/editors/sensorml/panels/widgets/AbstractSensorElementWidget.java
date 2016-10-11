@@ -650,7 +650,7 @@ public abstract class AbstractSensorElementWidget implements ISensorWidget{
 
 				if (container != null) {
 					if(getMode() == MODE.EDIT) {
-					displayEditPanel(container, "Edit " + getName(),
+						displayEditPanel(container, "Edit " + getName(),
 							new IButtonCallback() {
 								@Override
 								public void onClick() {

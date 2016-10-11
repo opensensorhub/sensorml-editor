@@ -2,12 +2,19 @@ package com.sensia.tools.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.DockPanel;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HorizontalSplitPanel;
 import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.SplitLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sensia.gwt.relaxNG.RNGParser;
+import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.CenterPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.controller.IController;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.EditorPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.ViewerPanel;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -21,30 +28,44 @@ public class SensorMLEditor implements EntryPoint {
 	public void onModuleLoad() {
 		RNGParser.clearCache();
 		
-		RootPanel root = RootPanel.get("editor-area");
+		RootLayoutPanel root = RootLayoutPanel.get();
 		if (root != null) {
 			SensorMLEditor editor = new SensorMLEditor();
 			editor.open(root);
 		}
 	}
 	
-	private Widget centerPanel;
+	private ViewerPanel viewerPanel;
+	private Widget editorPanel;
+	private RNGProcessorSML sgmlEditorProcessor;
 	
 	public SensorMLEditor() {
 		//init a processor to handle the parsing of a document
-		RNGProcessorSML sgmlEditorProcessor = new RNGProcessorSML();
-		initPanels(sgmlEditorProcessor);
+		sgmlEditorProcessor = new RNGProcessorSML();
 	}
 
-	private void initPanels(final RNGProcessorSML sgmlEditorProcessor) {
-		initCenterPanel(sgmlEditorProcessor);
-	}
-	
 	public void open(Panel parent) {
-		parent.add(getViewer());
+		IController controller = new IController() {
+			
+			@Override
+			public void parse(RNGGrammar grammar) {
+				viewerPanel.parse(grammar);
+			}
+
+			@Override
+			public void parse(String xmlDoc) {
+				viewerPanel.parse(xmlDoc);
+			}
+		};
+		HorizontalSplitPanel p = new HorizontalSplitPanel();
+		p.setLeftWidget(getViewer());
+	    p.setRightWidget(getEditor(controller));
+	    p.setSplitPosition("1000px");
+		parent.add(p);
 	}
 
 	private Widget getViewer(){
+		viewerPanel = new ViewerPanel(sgmlEditorProcessor);
 		// Create a Dock Panel
 	    DockPanel dock = new DockPanel();
 	    dock.setStyleName("cw-DockPanel");
@@ -53,7 +74,7 @@ public class SensorMLEditor implements EntryPoint {
 	    // Add text all around
 	    
 	    //dock.add(navigationPanel, DockPanel.WEST);
-	    dock.add(centerPanel, DockPanel.CENTER);
+	    dock.add(viewerPanel, DockPanel.CENTER);
 
 	    // Return the content
 	    dock.ensureDebugId("cwDockPanel");
@@ -61,8 +82,20 @@ public class SensorMLEditor implements EntryPoint {
 	}
 	
 
-	//------ INIT DIFFERENT PARTS -----//
-	private void initCenterPanel(final RNGProcessorSML sgmlEditorProcessor) {
-		centerPanel = new CenterPanel(sgmlEditorProcessor);
+	private Widget getEditor(IController controller){
+		editorPanel = new EditorPanel(sgmlEditorProcessor,controller);
+		// Create a Dock Panel
+	    DockPanel dock = new DockPanel();
+	    dock.setStyleName("cw-DockPanel");
+	    dock.setSpacing(4);
+	    dock.setHorizontalAlignment(DockPanel.ALIGN_LEFT);
+	    // Add text all around
+	    
+	    //dock.add(navigationPanel, DockPanel.WEST);
+	    dock.add(editorPanel, DockPanel.CENTER);
+
+	    // Return the content
+	    dock.ensureDebugId("cwDockPanel");
+	    return dock;
 	}
 }

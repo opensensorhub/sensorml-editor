@@ -292,7 +292,6 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	@Override
 	public void visit(XSDString data) {
 		push(new SensorXSDStringWidget(data));
-		
 	}
 
 	/* (non-Javadoc)

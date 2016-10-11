@@ -12,6 +12,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base;
 
 import java.util.List;
 
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -97,7 +98,7 @@ public class SensorChoiceWidget extends AbstractSensorElementWidget{
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
 		HorizontalPanel hPanel = new HorizontalPanel();
-		hPanel.addStyleName("tabular-4x");
+		//hPanel.addStyleName("tabular-4x");
 		hPanel.add(widget.getPanel());
 		container.add(hPanel);
 	}
@@ -108,5 +109,10 @@ public class SensorChoiceWidget extends AbstractSensorElementWidget{
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
 		return new SensorChoiceWidget((RNGChoice) getRNGTag());
+	}
+	
+	@Override
+	public void getAdvancedPanel(Panel container) {
+		container.add(newInstance().getPanel());
 	}
 }

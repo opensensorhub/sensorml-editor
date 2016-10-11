@@ -18,6 +18,7 @@ import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
@@ -30,6 +31,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorW
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_DEF;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_TYPE;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.Mapping;
 
 /**
  * The Class SensorXSDWidget.
@@ -50,7 +52,7 @@ public abstract class SensorXSDWidget extends AbstractSensorElementWidget{
 	 * @param allowedChars the allowed chars
 	 */
 	protected SensorXSDWidget(final RNGData<?> data,final int length,final String allowedChars) {
-		super(data.getStringValue(), TAG_DEF.RNG,TAG_TYPE.DATA,data);
+		super(data.getStringValue(), TAG_DEF.RNG,TAG_TYPE.VALUE,data);
 		
 		if (length < 0)
         {
@@ -182,5 +184,27 @@ public abstract class SensorXSDWidget extends AbstractSensorElementWidget{
 		if(elementName.equals(getParent().getName())) {
 			((TextBox)textBox).setText(value);
 		}
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#getAdvancedPanel(com.google.gwt.user.client.ui.Panel)
+	 */
+	@Override
+	public void getAdvancedPanel(Panel container) {
+		HorizontalPanel hPanel = new HorizontalPanel();
+		
+		//get the mapped value if any
+		HTML hlabel = new HTML(Mapping.getCorrespondingValue(getParent().getName()));
+		hlabel.setWidth("100px");
+		hPanel.add(hlabel);
+		
+		TextBox valueBox = new TextBox();
+		valueBox.setValue(textBox.getValue());
+		valueBox.setWidth("500px");
+		
+		hPanel.add(valueBox);
+		//enable the textfield if the mode is in EDIT
+		valueBox.setEnabled(getMode() == MODE.EDIT);
+		container.add(hPanel);
 	}
 }

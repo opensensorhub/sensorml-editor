@@ -92,6 +92,17 @@ public class RNGProcessorSML {
 		parseRNG(grammar);
 	}
 	
+	public void parseString(final String xmlContent) {
+		//transform XML document into RNG profile
+		final XMLSensorMLParser parser = new XMLSensorMLParser();
+		RNGGrammar grammar;
+		try {
+			grammar = parser.parse("", xmlContent);
+			parseRNG(grammar);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * Parses the rng grammar.
 	 *
@@ -109,9 +120,7 @@ public class RNGProcessorSML {
 			observer.parseDone(root);
 		}
 		
-		if(mode == MODE.EDIT) {
-			root.switchMode(MODE.EDIT);
-		}
+		root.switchMode(mode);
 	}
 	
 	/**
