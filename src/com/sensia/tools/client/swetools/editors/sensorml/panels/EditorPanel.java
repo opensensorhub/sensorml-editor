@@ -42,6 +42,7 @@ public class EditorPanel  extends Composite  implements IParsingObserver, IObser
 		//profiles.put("Gamma2070","sensormleditor/rng1.0/profiles/CSM/gamma.rng");
 		profiles.put("Anemometer","sensormleditor/rng1.0/profiles/CSM/anemometer.rng");
 		profiles.put("Thermometer","sensormleditor/rng1.0/profiles/CSM/thermometer-minimal-view.rng");
+		profiles.put("SimpleProcess","sensormleditor/sensorml-relaxng/sml/SimpleProcess.rng");
 		profiles.put("PhysicalProcess","sensormleditor/sensorml-relaxng/sml/PhysicalProcess.rng");
 		profiles.put("PhysicalProcess-minimal","sensormleditor/sensorml-relaxng/sml/PhysicalProcess-minimal.rng");
 		profiles.put("RNG 1.0","sensormleditor/rng1.0/profiles/CSM/frame-sensor-model.rng");
@@ -49,16 +50,14 @@ public class EditorPanel  extends Composite  implements IParsingObserver, IObser
 	
 	//the processor in charge of parsing and create the RNG profile
 	//the panel in charge of displaying the HTML content
-	private VerticalPanel mainPanel;
-	private ResizeLayoutPanel rngPanel;
+	private Panel rngPanel;
 	private PopupPanel popup = new PopupPanel();
 	private RNGGrammar loadedGrammar;
-	private TextArea area;
     private IController controller;
     
 	public EditorPanel(final RNGProcessorSML sgmlEditorProcessor,IController controller){
 		this.controller = controller;
-		final VerticalPanel verticalPanel = new VerticalPanel();
+		/*final VerticalPanel verticalPanel = new VerticalPanel();
 		
 		final Panel viewXmlPanel = getProfilePanel();
 		
@@ -68,14 +67,24 @@ public class EditorPanel  extends Composite  implements IParsingObserver, IObser
 		
 		VerticalPanel panel = new VerticalPanel();
         
-        // resize panel to hold tabs
-        // tabs don work correctly if we don have it
         rngPanel = new ResizeLayoutPanel();
-        rngPanel.setPixelSize(1024, 768);        
+        rngPanel.addStyleName("editor-panel");
         panel.add(rngPanel);
         
-        verticalPanel.add(panel);
+        verticalPanel.add(panel);*/
         
+		final VerticalPanel verticalPanel = new VerticalPanel();
+		rngPanel = new ResizeLayoutPanel();
+		rngPanel.setHeight("99999");
+		final Panel viewXmlPanel = getProfilePanel();
+		
+		verticalPanel.add(viewXmlPanel);
+		verticalPanel.add(rngPanel);
+		
+		rngPanel.addStyleName("editor-panel");
+		viewXmlPanel.addStyleName("config-editor-panel");
+		verticalPanel.addStyleName("editor-v-main-panel");
+		
 		initWidget(verticalPanel);
 	}
 	
@@ -126,6 +135,7 @@ public class EditorPanel  extends Composite  implements IParsingObserver, IObser
 		panel.add(load);
 		panel.add(b2);
 		
+		panel.addStyleName("editor-panel");
 		load.addClickHandler(new ClickHandler() {
 			
 			@Override

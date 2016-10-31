@@ -83,19 +83,6 @@ public class SensorMLEditor implements EntryPoint {
 	
 
 	private Widget getEditor(IController controller){
-		editorPanel = new EditorPanel(sgmlEditorProcessor,controller);
-		// Create a Dock Panel
-	    DockPanel dock = new DockPanel();
-	    dock.setStyleName("cw-DockPanel");
-	    dock.setSpacing(4);
-	    dock.setHorizontalAlignment(DockPanel.ALIGN_LEFT);
-	    // Add text all around
-	    
-	    //dock.add(navigationPanel, DockPanel.WEST);
-	    dock.add(editorPanel, DockPanel.CENTER);
-
-	    // Return the content
-	    dock.ensureDebugId("cwDockPanel");
-	    return dock;
+		return new EditorPanel(sgmlEditorProcessor,controller);
 	}
 }

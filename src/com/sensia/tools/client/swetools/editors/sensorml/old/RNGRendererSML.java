@@ -39,7 +39,8 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor
     protected final static String CONTACTS_TAB = "Contacts";
     protected final static String DOCS_TAB = "Documentation";
     protected final static String IO_TAB = "I/O Signals";
-    protected final static String SML_NS = "http://www.opengis.net/sensorML/1.0.1";
+    protected final static String SML_NS_1 = "http://www.opengis.net/sensorML/1.0.1";
+    protected final static String SML_NS_2 = "http://www.opengis.net/sensorML/2.0";
     protected final static String GML_NS = "http://www.opengis.net/gml";
     
     protected TabLayoutPanel rootPanel;
@@ -73,7 +74,7 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor
         eltNamesToSectionName.put("legalConstraint", CONSTRAINTS_TAB);
         eltNamesToSectionName.put("characteristics", CAPS_TAB);
         eltNamesToSectionName.put("capabilities", CAPS_TAB);
-        eltNamesToSectionName.put("contact", CONTACTS_TAB);
+        eltNamesToSectionName.put("contacts", CONTACTS_TAB);
         eltNamesToSectionName.put("documentation", DOCS_TAB);
         eltNamesToSectionName.put("inputs", IO_TAB);
         eltNamesToSectionName.put("outputs", IO_TAB);
@@ -81,6 +82,7 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor
         
         // assign element names to rendering types
         eltNamesToRenderType = new HashMap<String, RenderType>();
+        eltNamesToRenderType.put("SimpleProcess", RenderType.SKIP);
         eltNamesToRenderType.put("ProcessModel", RenderType.SKIP);
         eltNamesToRenderType.put("IdentifierList", RenderType.SKIP);
         eltNamesToRenderType.put("ClassifierList", RenderType.SKIP);
@@ -118,6 +120,7 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor
     {
         newWidgetList();
         rootPanel = new TabLayoutPanel(2.5, Unit.EM);
+        rootPanel.addStyleName("main-editor-tab-panel");
         //rootPanel.setAnimationDuration(1000);
         //rootPanel.setAnimationVertical(true);
         widgets.peek().add(rootPanel);
@@ -156,7 +159,8 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor
             newWidgetList();
         
         // determine render type
-        String nameKey = nsUri.equals(SML_NS) ? eltName : nsUri + eltName;
+       // String nameKey = (nsUri.equals(SML_NS_1) || nsUri.equals(SML_NS_2)) ? eltName : nsUri + eltName;
+        String nameKey = (nsUri.equals(GML_NS)) ? nsUri + eltName : eltName;
         RenderType renderType = eltNamesToRenderType.get(nameKey);
         if (tab != null && renderType == null)
             renderType = RenderType.DECORATED_PANEL;
