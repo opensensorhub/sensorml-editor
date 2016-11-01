@@ -141,8 +141,6 @@ public class SensorSectionsWidget extends AbstractSensorElementWidget{
 		advancedPanel = getSimpleEditPanel(new IButtonCallback() {
 			@Override
 			public void onClick() {
-				refreshChildren(getElements());
-				refreshParents(getParent());
 				for(ISensorWidget child : getElements()) {
 					if(child.getName().equals("name")){
 						RNGValue value = child.getRNGValue("name", true);
