@@ -385,7 +385,7 @@ public class RNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 				//lets the renderer find them and add to the section
 				sectionName = renderSectionsList.get(eltName);
 			} 
-			widget = new SensorSectionWidget(eltName,sectionName);
+			widget = new SensorSectionWidget(eltName,sectionName,elt);
 			
 			ISensorWidget existingTagSection = getWidget(eltName);
 			if(existingTagSection != null) {

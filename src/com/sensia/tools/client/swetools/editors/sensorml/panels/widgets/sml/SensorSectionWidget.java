@@ -20,6 +20,8 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.sensia.relaxNG.RNGElement;
+import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
@@ -64,8 +66,8 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 	 * @param name the name
 	 * @param niceName the nice name
 	 */
-	public SensorSectionWidget(String name,String niceName) {
-		super(name,TAG_DEF.SML ,TAG_TYPE.ELEMENT);
+	public SensorSectionWidget(String name,String niceName,RNGElement tag) {
+		super(name,TAG_DEF.SML ,TAG_TYPE.ELEMENT,tag);
 		this.niceName = niceName;
 		
 		//add disclosure panel
@@ -128,9 +130,9 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 		String valueHeader = getName();
 		//case 1 : it's the name attribute
 		
-		//TODO:May be handled by a separator ISensorWidget?
+		//TODO:May be handled by a separate ISensorWidget?
 		if(widget.getType() == TAG_TYPE.ATTRIBUTE && widget.getName().equals("name")) {
-			valueHeader += " ("+toNiceLabel(widget.getValue(widget.getName(), true))+")";
+			valueHeader += " ("+toNiceLabel(widget.getRNGValue(widget.getName(), true).getText())+")";
 			currentHeader.setText(valueHeader);
 		} else if(widget.getName().equals("CharacteristicList") || widget.getName().equals("CapabilityList")) {
 			//looking for definition and label
@@ -148,7 +150,7 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 					child.getPanel().addStyleName("icon-def-section-header");
 					hidePanel.setHeader(headerPanel);
 				} else if(child.getType() == TAG_TYPE.ELEMENT && child.getName().equals("label")) {
-					valueHeader += " ("+toNiceLabel(child.getValue(child.getName(), true))+")";
+					valueHeader += " ("+toNiceLabel(child.getRNGValue(child.getName(), true).getText())+")";
 					currentHeader.setText(valueHeader);
 					child.getPanel().removeFromParent();
 					break;
@@ -172,9 +174,9 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 	private void handleTypeOf(ISensorWidget widget) {
 		if(widget.getType() == TAG_TYPE.ATTRIBUTE) {
 			if(widget.getName().equals("title")) {
-				linkName = widget.getValue("title", true);
+				linkName = widget.getRNGValue("title", true).getText();
 			} else if(widget.getName().equals("href")) {
-				href = widget.getValue("href", true);
+				href = widget.getRNGValue("href", true).getText();
 			}
 		}
 		if(getElements().isEmpty()) {
@@ -193,8 +195,8 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 				Panel advancedPanel = getEditPanel(new IButtonCallback() {
 					@Override
 					public void onClick() {
-						refreshChildren(getElements());
-						refreshParents(getParent());
+						//refreshChildren(getElements());
+						//refreshParents(getParent());
 						
 						
 						for(ISensorWidget widget : getElements()) {
@@ -248,6 +250,6 @@ public class SensorSectionWidget extends AbstractSensorElementWidget{
 	 */
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
-		return new SensorSectionWidget(getName(),niceName);
+		return new SensorSectionWidget(getName(),niceName,(RNGElement) getRNGTag());
 	}
 }
