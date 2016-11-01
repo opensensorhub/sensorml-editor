@@ -34,6 +34,7 @@ import com.sensia.relaxNG.RNGOptional;
 import com.sensia.relaxNG.RNGRef;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGTagList;
+import com.sensia.relaxNG.RNGValue;
 import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
@@ -204,6 +205,22 @@ public abstract class AbstractSensorElementWidget implements ISensorWidget{
 		}
 	}
 	
+	public RNGValue getRNGValue(String parentName, boolean recursive) {
+		if(recursive) {
+			return findRecursiveRNGValue(this,parentName);
+		} else {
+			RNGValue value = null;
+			//iterates over its children
+			for(ISensorWidget w : getElements()) {
+				if(w.getName().equals(parentName) && w.getType() == TAG_TYPE.ATTRIBUTE) {
+					//an attribute contains only one value tag and nothing else
+					value = (RNGValue) w.getElements().get(0).getRNGTag();
+				}
+			}
+			return value;
+		}
+	}
+	
 	/**
 	 * Find recursive the value over the sub-elements of the tree.
 	 *
@@ -220,6 +237,23 @@ public abstract class AbstractSensorElementWidget implements ISensorWidget{
 			//iterates over its children
 			for(ISensorWidget w : widget.getElements()) {
 				value = findRecursiveValue(w, parentName);
+				if(value != null) {
+					break;
+				}
+			}
+			return value;
+		}
+	}
+	
+	private RNGValue findRecursiveRNGValue(ISensorWidget widget,String parentName) {
+		//multiple values for choice tag
+		if(widget.getType() == TAG_TYPE.VALUE && widget.getParent().getName().equals(parentName)) {
+			return (RNGValue) widget.getRNGTag();
+		} else {
+			RNGValue value = null;
+			//iterates over its children
+			for(ISensorWidget w : widget.getElements()) {
+				value = findRecursiveRNGValue(w, parentName);
 				if(value != null) {
 					break;
 				}

@@ -36,7 +36,6 @@ public class SensorMLEditor implements EntryPoint {
 	}
 	
 	private ViewerPanel viewerPanel;
-	private Widget editorPanel;
 	private RNGProcessorSML sgmlEditorProcessor;
 	
 	public SensorMLEditor() {

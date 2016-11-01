@@ -29,9 +29,6 @@ public class SensorValueWidget extends AbstractSensorElementWidget{
 	/** The container. */
 	private Panel container;
 	
-	/** The rng value. */
-	private RNGValue rngValue;
-	
 	/** The value box. */
 	private TextBox valueBox;
 	
@@ -42,9 +39,8 @@ public class SensorValueWidget extends AbstractSensorElementWidget{
 	 * @param rngValue the rng value
 	 */
 	public SensorValueWidget(String value,RNGValue rngValue) {
-		super(value, TAG_DEF.RNG, TAG_TYPE.VALUE);
+		super(value, TAG_DEF.RNG, TAG_TYPE.VALUE,rngValue);
 		
-		this.rngValue = rngValue;
 		container = new HorizontalPanel();
 		container.add(new HTML(value));
 		
@@ -86,7 +82,7 @@ public class SensorValueWidget extends AbstractSensorElementWidget{
 	 */
 	@Override
 	protected AbstractSensorElementWidget newInstance() {
-		return new SensorValueWidget(getName(),rngValue);
+		return new SensorValueWidget(getName(),(RNGValue) getRNGTag());
 	}
 	
 	/* (non-Javadoc)
@@ -130,7 +126,8 @@ public class SensorValueWidget extends AbstractSensorElementWidget{
 		container.add(new HTML(value));
 		setName(value);
 		//set the value to the RNG model
-		this.rngValue.setText(value);
+		RNGValue rngvalue = (RNGValue) getRNGTag();
+		rngvalue.setText(value);
 	}
 	
 	/**
@@ -143,6 +140,7 @@ public class SensorValueWidget extends AbstractSensorElementWidget{
 		container.add(new HTML(value));
 		setName(value);
 		valueBox.setText(value.replaceAll("\\s+", " "));
-		this.rngValue.setText(value);
+		RNGValue rngvalue = (RNGValue) getRNGTag();
+		rngvalue.setText(value);
 	}
 }

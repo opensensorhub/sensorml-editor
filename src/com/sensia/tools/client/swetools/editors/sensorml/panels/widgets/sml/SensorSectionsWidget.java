@@ -17,6 +17,7 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
@@ -104,8 +105,6 @@ public class SensorSectionsWidget extends AbstractSensorElementWidget{
 		Panel advancedPanel = getSimpleEditPanel(new IButtonCallback() {
 			@Override
 			public void onClick() {
-				refreshChildren(getElements());
-				refreshParents(getParent());
 				for(ISensorWidget child : getElements()) {
 					if (child.getName().equals("identifier")) {
 						identifierPanel.clear();
@@ -146,15 +145,15 @@ public class SensorSectionsWidget extends AbstractSensorElementWidget{
 				refreshParents(getParent());
 				for(ISensorWidget child : getElements()) {
 					if(child.getName().equals("name")){
-						String value = child.getValue("name", true);
-						if(value != null && !value.isEmpty()) {
-							titlePanel.setHTML(titleHeadingStartTag+value+titleHeadingEndTag);
+						RNGValue value = child.getRNGValue("name", true);
+						if(value != null && !value.getText().isEmpty()) {
+							titlePanel.setHTML(titleHeadingStartTag+value.getText()+titleHeadingEndTag);
 						}
 					} if (child.getName().equals("id") && child.getType() == TAG_TYPE.ATTRIBUTE) {
 						if(!child.getElements().isEmpty()) {
 							//the first one should be a value widget
-							String value = child.getElements().get(0).getName();
-							titlePanel.setHTML(titleHeadingStartTag+value+titleHeadingEndTag);
+							RNGValue value = (RNGValue) child.getElements().get(0).getRNGTag();
+							titlePanel.setHTML(titleHeadingStartTag+value.getText()+titleHeadingEndTag);
 						}
 					}
 				}
@@ -205,9 +204,9 @@ public class SensorSectionsWidget extends AbstractSensorElementWidget{
 	@Override
 	protected void addSensorWidget(ISensorWidget widget) {
 		if(widget.getName().equals("name")){
-			String value = widget.getValue("name", true);
-			if(value != null && !value.isEmpty()) {
-				titlePanel.setHTML(titleHeadingStartTag+value+titleHeadingEndTag);
+			RNGValue value = widget.getRNGValue("name", true);
+			if(value != null && !value.getText().isEmpty()) {
+				titlePanel.setHTML(titleHeadingStartTag+value.getText()+titleHeadingEndTag);
 			}
 		} else if(widget.getName().equals("description")) {
 			descriptionPanel.add(widget.getPanel());
@@ -217,8 +216,8 @@ public class SensorSectionsWidget extends AbstractSensorElementWidget{
 		} else if (widget.getName().equals("id") && widget.getType() == TAG_TYPE.ATTRIBUTE) {
 			if(!widget.getElements().isEmpty()) {
 				//the first one should be a value widget
-				String value = widget.getElements().get(0).getName();
-				titlePanel.setHTML(titleHeadingStartTag+value+titleHeadingEndTag);
+				RNGValue value = (RNGValue) widget.getElements().get(0).getRNGTag();
+				titlePanel.setHTML(titleHeadingStartTag+value.getText()+titleHeadingEndTag);
 			}
 		} else if (widget.getName().equals("KeywordList")) {
 			keywordPanel.add(widget.getPanel());

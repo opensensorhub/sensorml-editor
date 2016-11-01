@@ -14,6 +14,7 @@ import java.util.List;
 
 import com.google.gwt.user.client.ui.Panel;
 import com.sensia.relaxNG.RNGTag;
+import com.sensia.relaxNG.RNGValue;
 
 /**
  * This interface represents a single Node of the Sensor Widget Tree.
@@ -156,6 +157,8 @@ public interface ISensorWidget {
 	 * @return The first VALUE found.
 	 */
 	String getValue(String parentName, boolean recursive);
+	
+	RNGValue getRNGValue(String parentName, boolean recursive);
 	
 	/**
 	 * Sets the value of the widget. The value is got from the parent element name.
