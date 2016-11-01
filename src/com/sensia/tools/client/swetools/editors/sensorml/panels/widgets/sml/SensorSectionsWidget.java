@@ -32,6 +32,8 @@ public class SensorSectionsWidget extends AbstractSensorElementWidget{
 	private VerticalPanel container;
 	
 	/** The title panel. */
+	private HTML titlePanelContent;
+	
 	private HTML titlePanel;
 	
 	/** The description panel. */
@@ -85,6 +87,7 @@ public class SensorSectionsWidget extends AbstractSensorElementWidget{
 		container.setSpacing(5);
 		titlePanel = new HTML();
 		titlePanel.addStyleName("document-title");
+		titlePanelContent = new HTML();
 		
 		descriptionPanel = new HorizontalPanel();
 		identifierPanel  = new HorizontalPanel();
@@ -160,7 +163,6 @@ public class SensorSectionsWidget extends AbstractSensorElementWidget{
 		advancedPanel.addStyleName("advanced-title-panel");
 		
 		lineTitlePanel.add(advancedPanel);
-				
 		container.add(lineTitlePanel);
 		
 		//draws a horizontal line
@@ -204,7 +206,7 @@ public class SensorSectionsWidget extends AbstractSensorElementWidget{
 		if(widget.getName().equals("name")){
 			RNGValue value = widget.getRNGValue("name", true);
 			if(value != null && !value.getText().isEmpty()) {
-				titlePanel.setHTML(titleHeadingStartTag+value.getText()+titleHeadingEndTag);
+				titlePanelContent.setHTML(titlePanelContent.getHTML()+"<br>"+value.getText());
 			}
 		} else if(widget.getName().equals("description")) {
 			descriptionPanel.add(widget.getPanel());
@@ -215,7 +217,7 @@ public class SensorSectionsWidget extends AbstractSensorElementWidget{
 			if(!widget.getElements().isEmpty()) {
 				//the first one should be a value widget
 				RNGValue value = (RNGValue) widget.getElements().get(0).getRNGTag();
-				titlePanel.setHTML(titleHeadingStartTag+value.getText()+titleHeadingEndTag);
+				titlePanelContent.setHTML(titlePanelContent.getHTML()+"<br>"+value.getText());
 			}
 		} else if (widget.getName().equals("KeywordList")) {
 			keywordPanel.add(widget.getPanel());
@@ -224,6 +226,7 @@ public class SensorSectionsWidget extends AbstractSensorElementWidget{
 		} else {
 			startPanel.add(widget.getPanel());
 		}
+		titlePanel.setHTML(titleHeadingStartTag+titlePanelContent.getHTML()+titleHeadingEndTag);
 	}
 
 	/* (non-Javadoc)
