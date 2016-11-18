@@ -16,7 +16,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.ILoad
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.IOntologyPropertyReader;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.RdfPropertyReader;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.SensorMLPropertyOntology;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.dataarray.GenericTable;
 
 public class OntologyPanel {
 	

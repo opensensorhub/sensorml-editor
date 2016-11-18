@@ -39,23 +39,20 @@ import com.sensia.relaxNG.XSDDouble;
 import com.sensia.relaxNG.XSDInteger;
 import com.sensia.relaxNG.XSDString;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_DEF;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_TYPE;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorAttributeWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorChoiceWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorGenericHorizontalContainerWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorGenericVerticalContainerWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorOptionalWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorValueWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorZeroOrMoreWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.line.SensorGenericLineWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.xsd.SensorXSDAnyURIWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.xsd.SensorXSDDateTimeWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.xsd.SensorXSDDecimalWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.xsd.SensorXSDDoubleWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.xsd.SensorXSDIntegerWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.xsd.SensorXSDStringWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.DataValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.AttributePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericHorizontalContainerPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGChoicePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDAnyURIPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDDateTimePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDDecimalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDDoublePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDIntegerPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDStringPanel;
 
 /**
  * <p>
@@ -77,7 +74,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.xsd
 public abstract class RNGRenderer implements RNGTagVisitor {
 	
 	/** The stack. */
-	private Stack<ISensorWidget> stack;
+	private Stack<IPanel<? extends RNGTag>> stack;
 	
 	/** The grammar. */
 	private RNGGrammar grammar;
@@ -88,7 +85,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 * Instantiates a new RNG renderer.
 	 */
 	public RNGRenderer() {
-		stack = new Stack<ISensorWidget>();
+		stack = new Stack<IPanel<? extends RNGTag>>();
 		this.observers = new ArrayList<IObserver>();
 	}
 
@@ -97,7 +94,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 *
 	 * @param element the element
 	 */
-	public void push(ISensorWidget element) {
+	public void push(IPanel<? extends RNGTag> element) {
 		stack.push(element);
 	}
 	
@@ -106,7 +103,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 *
 	 * @return the i sensor widget
 	 */
-	public ISensorWidget peek() {
+	public IPanel<? extends RNGTag> peek() {
 		if(!stack.isEmpty()) {
 			return stack.peek();
 		}else {
@@ -119,7 +116,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 *
 	 * @return the i sensor widget
 	 */
-	public ISensorWidget pop() {
+	public IPanel<? extends RNGTag> pop() {
 		return stack.pop();
 	}
 	
@@ -149,7 +146,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGElement elt) {
-		pushAndVisitChildren(new SensorGenericHorizontalContainerWidget(elt.getName(), TAG_DEF.RNG, TAG_TYPE.ELEMENT), elt.getChildren());
+		pushAndVisitChildren(new DisclosureElementPanel(elt), elt.getChildren());
 	}
 
 	/* (non-Javadoc)
@@ -158,14 +155,11 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	@Override
 	public void visit(RNGChoice choice) {
 		RNGTag selectedPattern = choice.getSelectedPattern();
-		ISensorWidget widget = new SensorChoiceWidget(choice);
+		IPanel<RNGChoice> widget = new RNGChoicePanel(choice);
 		push(widget);
 		if(selectedPattern != null) {
 			visit(selectedPattern);
 		}
-		
-		makeTagObservable(choice);
-		
 	}
 
 	/* (non-Javadoc)
@@ -173,14 +167,14 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGOptional optional) {
-		ISensorWidget widget = new SensorOptionalWidget(optional);
+		/*IPanel widget = new SensorOptionalWidget(optional);
 		push(widget);
 		if(optional.isSelected()){
 			this.visitChildren(optional.getChildren());
 		}
 		
 		
-		makeTagObservable(optional);
+		makeTagObservable(optional);*/
 		
 	}
 
@@ -189,8 +183,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGAttribute attribute) {
-		ISensorWidget widget = new SensorAttributeWidget(attribute.getName());
-		pushAndVisitChildren(widget, attribute.getChildren());
+		pushAndVisitChildren(new AttributePanel(attribute), attribute.getChildren());
 	}
 
 	/* (non-Javadoc)
@@ -216,7 +209,8 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGOneOrMore oneOrMore) {
-		this.visit((RNGZeroOrMore) oneOrMore);
+		//this.visit((RNGZeroOrMore) oneOrMore);
+		//visitChildren(oneOrMore.getChildren());
 	}
 
 	/* (non-Javadoc)
@@ -224,7 +218,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGZeroOrMore zeroOrMore) {
-		ISensorWidget widget = new SensorZeroOrMoreWidget(zeroOrMore);
+		/*IPanel widget = new SensorZeroOrMoreWidget(zeroOrMore);
 		push(widget);
 		// display current instances
 		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
@@ -232,7 +226,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 			this.visitChildren(tags);
 		}
 		
-		makeTagObservable(zeroOrMore);
+		makeTagObservable(zeroOrMore);*/
 		
 	}
 	
@@ -249,7 +243,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGInterleave interleave) {
-		this.visitChildren(interleave.getChildren());
+		//this.visitChildren(interleave.getChildren());
 	}
 
 	/* (non-Javadoc)
@@ -266,7 +260,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGValue val) {
-		push(new SensorValueWidget(val.getText(),val));
+		push(new ValuePanel(val));
 	}
 
 	/* (non-Javadoc)
@@ -282,8 +276,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGData<?> data) {
-		// TODO Auto-generated method stub
-		
+		push(new DataValuePanel(data));
 	}
 
 	/* (non-Javadoc)
@@ -291,7 +284,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(XSDString data) {
-		push(new SensorXSDStringWidget(data));
+		push(new XSDStringPanel(data));
 	}
 
 	/* (non-Javadoc)
@@ -306,7 +299,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(XSDDecimal data) {
-		push(new SensorXSDDecimalWidget(data));
+		push(new XSDDecimalPanel(data));
 	}
 
 	/* (non-Javadoc)
@@ -314,7 +307,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(XSDDouble data) {
-		push(new SensorXSDDoubleWidget(data));
+		push(new XSDDoublePanel(data));
 	}
 
 	/* (non-Javadoc)
@@ -322,7 +315,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(XSDInteger data) {
-		push(new SensorXSDIntegerWidget(data));
+		push(new XSDIntegerPanel(data));
 	}
 
 	/* (non-Javadoc)
@@ -330,7 +323,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(XSDAnyURI data) {
-		push(new SensorXSDAnyURIWidget(data));
+		push(new XSDAnyURIPanel(data));
 		
 	}
 
@@ -339,7 +332,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(XSDDateTime data) {
-		push(new SensorXSDDateTimeWidget(data));
+		push(new XSDDateTimePanel(data));
 		
 	}
 	
@@ -354,7 +347,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	protected void visitChildren(List<RNGTag> tags) {
 		int stackSize = getStackSize();
-		ISensorWidget peek = peek();
+		IPanel<? extends RNGTag> peek = peek();
 		
 		for (RNGTag tag : tags) {
 			if (tag != null) {
@@ -362,8 +355,8 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 			}
 			if(peek != null){
 				if(stackSize < getStackSize()){
-					ISensorWidget child = pop();
-					child.setParent(peek);
+					IPanel<? extends RNGTag> child = pop();
+					//child.setParent(peek);
 					peek.addElement(child);
 				}
 			}
@@ -376,7 +369,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 * @param widget the widget
 	 * @param tags the tags
 	 */
-	protected void pushAndVisitChildren(ISensorWidget widget, List<RNGTag> tags) {
+	protected void pushAndVisitChildren(IPanel<? extends RNGTag> widget, List<RNGTag> tags) {
 		push(widget);
 		int stackSize = getStackSize();
 		
@@ -385,8 +378,8 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 				tag.accept(this);
 			}
 			if(stackSize < getStackSize()){
-				ISensorWidget child = pop();
-				child.setParent(widget);
+				IPanel<? extends RNGTag> child = pop();
+				//child.setParent(widget);
 				widget.addElement(child);
 			}
 		}
@@ -400,10 +393,13 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 * @param type the type
 	 * @return the i sensor widget
 	 */
-	protected ISensorWidget renderVerticalWidget(String name, TAG_DEF def, TAG_TYPE type) {
-		return new SensorGenericVerticalContainerWidget(name, def, type);
+	protected IPanel<RNGTag> renderVerticalPanel(RNGTag tag) {
+		return new GenericVerticalContainerPanel(tag);
 	}
 	
+	protected IPanel<RNGElement> renderVerticalElementListPanel(RNGElement tag) {
+		return new DisclosureElementPanel(tag);
+	}
 	/**
 	 * Render horizontal widget.
 	 *
@@ -412,8 +408,13 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 * @param type the type
 	 * @return the i sensor widget
 	 */
-	protected ISensorWidget renderHorizontalWidget(String name, TAG_DEF def, TAG_TYPE type) {
-		return new SensorGenericHorizontalContainerWidget(name, def, type);
+	protected IPanel<RNGTag> renderHorizontalWidget(RNGTag tag) {
+		return new GenericHorizontalContainerPanel(tag);
+	}
+	
+	protected IPanel<RNGElement> renderSection(RNGElement tag) {
+		//return new SectionPanel(tag);
+		return new DisclosureElementPanel(tag);
 	}
 	
 	/**
@@ -424,27 +425,19 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 * @param type the type
 	 * @return the i sensor widget
 	 */
-	protected ISensorWidget renderLineWidget(String name, TAG_DEF def, TAG_TYPE type) {
-		return new SensorGenericLineWidget(name, def, type);
-	}
-	
-	/**
-	 * Gets the widget.
-	 *
-	 * @param name the name
-	 * @return the widget
-	 */
-	protected ISensorWidget getWidget(final String name) {
+	protected IPanel<RNGTag> renderLineWidget(RNGTag tag) {
+		//return new SensorGenericLineWidget(tag);
 		return null;
 	}
+	
 	
 	/**
 	 * Gets the root.
 	 *
 	 * @return the root
 	 */
-	public ISensorWidget getRoot() {
-		ISensorWidget root = null;
+	public IPanel<? extends RNGTag> getRoot() {
+		IPanel<? extends RNGTag> root = null;
 		if(!stack.isEmpty()) {
 			root = stack.get(0);
 		} 

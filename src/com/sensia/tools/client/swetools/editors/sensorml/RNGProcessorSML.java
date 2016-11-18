@@ -21,8 +21,8 @@ import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGTagList;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel.MODE;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRendererSML;
 
 /**
@@ -92,6 +92,12 @@ public class RNGProcessorSML {
 		parseRNG(grammar);
 	}
 	
+	public void parseRNG(final String fileName,final String xmlContent) throws Exception {
+		final RNGParser parser = new RNGParser();
+		final RNGGrammar grammar = parser.parse(fileName, xmlContent);
+		parseRNG(grammar);
+	}
+	
 	public void parseString(final String xmlContent) {
 		//transform XML document into RNG profile
 		final XMLSensorMLParser parser = new XMLSensorMLParser();
@@ -111,10 +117,9 @@ public class RNGProcessorSML {
 	private void parseRNG(final RNGGrammar grammar) {
 		setLoadedGrammar(grammar);
 		RNGRendererSML renderer = new RNGRendererSML();
-		renderer.setRootMinLevel(rootMinLevel);
 		renderer.setObservers(observers);
 		renderer.visit(grammar);
-		ISensorWidget root = renderer.getRoot();
+		IPanel root = renderer.getRoot();
 		
 		for(final IObserver observer : observers) {
 			observer.parseDone(root);
@@ -127,9 +132,8 @@ public class RNGProcessorSML {
 	 * Parses only a subset of the global document
 	 * @param url
 	 */
-	public ISensorWidget parseRNG(RNGTag tag) {
+	public IPanel parseRNG(RNGTag tag) {
 		RNGRendererSML renderer = new RNGRendererSML();
-		renderer.setRootMinLevel(rootMinLevel);
 		renderer.visit(tag);
 		
 		return renderer.getRoot();

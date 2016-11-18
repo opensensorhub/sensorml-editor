@@ -14,7 +14,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Panel;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel.MODE;
 
 /**
  * The Class LocalFileSourcePanel allows to load document from local file.
@@ -48,7 +48,12 @@ public class LocalFileSourcePanel extends AbstractSourcePanel{
 				//set the default mode for the editor
 				smlEditorProcessor.setMode(MODE.VIEW);
 				//parse the document corresponding to the selected uploaded file
-				smlEditorProcessor.parse(fileUploadPanel.getFileName(), fileContent);
+				if(fileUploadPanel.getFileName().endsWith("xml") || fileUploadPanel.getFileName().endsWith("XML")){
+					smlEditorProcessor.parse(fileUploadPanel.getFileName(), fileContent);
+				} else if(fileUploadPanel.getFileName().endsWith("rng") || fileUploadPanel.getFileName().endsWith("RNG")) {
+					smlEditorProcessor.parseRNG(fileUploadPanel.getFileName(), fileContent);
+				}
+				
 			} catch (Exception e) {
 				Window.alert("An error occured while parsing the file. Check that it is a valid XML file");
 			}

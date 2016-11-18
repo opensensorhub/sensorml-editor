@@ -1,5 +1,7 @@
 package com.sensia.tools.client.swetools.editors.sensorml.utils;
 
+import java.util.List;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -9,7 +11,6 @@ import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.http.client.UrlBuilder;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
@@ -18,6 +19,17 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.sensia.relaxNG.RNGAttribute;
+import com.sensia.relaxNG.RNGData;
+import com.sensia.relaxNG.RNGDefine;
+import com.sensia.relaxNG.RNGElement;
+import com.sensia.relaxNG.RNGGroup;
+import com.sensia.relaxNG.RNGOneOrMore;
+import com.sensia.relaxNG.RNGOptional;
+import com.sensia.relaxNG.RNGRef;
+import com.sensia.relaxNG.RNGTag;
+import com.sensia.relaxNG.RNGTagList;
+import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ILoadFileCallback;
 
@@ -207,5 +219,97 @@ public class Utils {
 	
 	public static long getUID() {
 		return uniqueIncrement++;
+	}
+	
+	/**
+	 * Transform the String value into a nice label. Thus the String isGeneric becomes Is Generic.
+	 * The Upper case characters defines the space and the first character will be transform into upper case.
+	 *
+	 * @param name the string to transform
+	 * @return the string the transformed String
+	 */
+	public static String toNiceLabel(String name) {
+		String label = toCamelCase(name).replace('_', ' ');
+		StringBuilder b = new StringBuilder(label);
+
+		if (label.length() > 1) {
+			boolean space = true;
+
+			for (int i = 1; i < b.length(); i++) {
+				char c = b.charAt(i);
+				if (!space && Character.isUpperCase(c) && Character.isLowerCase(b.charAt(i - 1))) {
+					b.insert(i, ' ');
+					space = true;
+					i++;
+				}
+
+				else if (c == ' ')
+					space = true;
+
+				else
+					space = false;
+			}
+		}
+
+		return b.toString();
+	}
+	
+
+	/**
+	 * Find label.
+	 *
+	 * @param tag the tag
+	 * @return the string
+	 */
+	public static String findLabel(RNGTag tag) {
+		String annot = tag.getAnnotation();
+
+		if (tag instanceof RNGElement) {
+			return toNiceLabel(((RNGElement) tag).getName());
+		}
+
+		else if (tag instanceof RNGAttribute) {
+			return toNiceLabel(((RNGAttribute) tag).getName());
+		}
+
+		else if (tag instanceof RNGData) {
+			return annot;
+		}
+
+		else if (tag instanceof RNGDefine || tag instanceof RNGGroup || tag instanceof RNGOptional || tag instanceof RNGZeroOrMore
+				|| tag instanceof RNGOneOrMore) {
+			if (annot != null)
+				return annot;
+
+			List<RNGTag> children = ((RNGTagList) tag).getChildren();
+			if (children.size() == 1)
+				return findLabel(children.get(0));
+		}
+
+		else if (tag instanceof RNGRef) {
+			if (annot != null)
+				return annot;
+
+			// try to get label from referenced pattern
+			RNGDefine def = ((RNGRef) tag).getPattern();
+			if (def != null)
+				return findLabel(def);
+			
+		}
+
+		return null;
+	}
+	
+	/**
+	 * To camel case.
+	 *
+	 * @param s the s
+	 * @return the string
+	 */
+	public static String toCamelCase(String s) {
+		String s1 = s.substring(0, 1).toUpperCase();
+		if (s.length() > 1)
+			s1 += s.substring(1);
+		return s1;
 	}
 }

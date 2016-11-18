@@ -12,7 +12,7 @@ package com.sensia.tools.client.swetools.editors.sensorml;
 
 import java.io.Serializable;
 
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 
 /**
  * An asynchronous update interface for receiving notifications
@@ -25,5 +25,5 @@ public interface IParsingObserver extends Serializable{
 	 *
 	 * @param topElement the top element
 	 */
-	void parseDone(ISensorWidget topElement);
+	void parseDone(IPanel topElement);
 }

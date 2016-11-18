@@ -76,5 +76,13 @@ public class RNGElement extends RNGTagList
     protected RNGTag newInstance()
     {
         return new RNGElement();
-    }    
+    }   
+    
+    public String toString(){
+    	if(name != null){
+    		return name;
+    	} else {
+    		return "RNG Element";
+    	}
+    }
 }

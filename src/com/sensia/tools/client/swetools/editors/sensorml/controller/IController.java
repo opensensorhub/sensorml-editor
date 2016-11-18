@@ -4,7 +4,7 @@ import com.sensia.relaxNG.RNGGrammar;
 
 public interface IController {
 
-	void parse(RNGGrammar grammer);
+	void parse(RNGGrammar grammar);
 	
 	void parse(String xmlDoc);
 }

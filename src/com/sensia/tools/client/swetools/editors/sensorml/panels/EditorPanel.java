@@ -29,7 +29,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.controller.IController;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.Observable;
 import com.sensia.tools.client.swetools.editors.sensorml.old.RNGRendererSML;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
 
 public class EditorPanel  extends Composite  implements IParsingObserver, IObserver{
 
@@ -57,21 +56,6 @@ public class EditorPanel  extends Composite  implements IParsingObserver, IObser
     
 	public EditorPanel(final RNGProcessorSML sgmlEditorProcessor,IController controller){
 		this.controller = controller;
-		/*final VerticalPanel verticalPanel = new VerticalPanel();
-		
-		final Panel viewXmlPanel = getProfilePanel();
-		
-		mainPanel = new VerticalPanel();
-		verticalPanel.add(viewXmlPanel);
-		verticalPanel.add(mainPanel);
-		
-		VerticalPanel panel = new VerticalPanel();
-        
-        rngPanel = new ResizeLayoutPanel();
-        rngPanel.addStyleName("editor-panel");
-        panel.add(rngPanel);
-        
-        verticalPanel.add(panel);*/
         
 		final VerticalPanel verticalPanel = new VerticalPanel();
 		rngPanel = new ResizeLayoutPanel();
@@ -130,24 +114,31 @@ public class EditorPanel  extends Composite  implements IParsingObserver, IObser
             }
         });
         
+		Button b3 = new Button("Load into View", new ClickHandler() {
+            public void onClick(ClickEvent event) {
+            	EditorPanel.this.loadProfile(true);
+            }
+        });
+		
 		panel.add(titleProfile);
 		panel.add(profileListBox);
 		panel.add(load);
 		panel.add(b2);
+		panel.add(b3);
 		
 		panel.addStyleName("editor-panel");
 		load.addClickHandler(new ClickHandler() {
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				EditorPanel.this.loadProfile();
+				EditorPanel.this.loadProfile(false);
 			}
 		});
 		
 		return panel;
 	}
 	
-	public void loadProfile(){
+	public void loadProfile(final boolean inView){
 		String key = profileListBox.getValue(profileListBox.getSelectedIndex());
 		
 		if(key != null && !key.isEmpty()){
@@ -157,11 +148,14 @@ public class EditorPanel  extends Composite  implements IParsingObserver, IObser
 	            @Override
 	            public void onParseDone(RNGGrammar grammar)
 	            {
-	                System.out.println("Rendering schema");
-	                RNGRendererSML renderer = new RNGRendererSML();
-	                renderer.visit(grammar);
-	                rngPanel.clear();
-	                rngPanel.add(renderer.getWidgets().get(0));
+	                if(inView) {
+	                	controller.parse(grammar);
+	                } else {
+	                	RNGRendererSML renderer = new RNGRendererSML();
+		                renderer.visit(grammar);
+		                rngPanel.clear();
+		                rngPanel.add(renderer.getWidgets().get(0));
+	                }
 	                popup.hide();
 	                loadedGrammar = grammar;
 	            }
@@ -176,7 +170,7 @@ public class EditorPanel  extends Composite  implements IParsingObserver, IObser
 	}
 
 	@Override
-	public void parseDone(ISensorWidget topElement) {
+	public void parseDone(IPanel topElement) {
 		// TODO Auto-generated method stub
 		
 	}

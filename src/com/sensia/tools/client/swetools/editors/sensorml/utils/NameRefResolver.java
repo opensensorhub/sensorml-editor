@@ -11,56 +11,24 @@
 package com.sensia.tools.client.swetools.editors.sensorml.utils;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.sensia.gwt.relaxNG.RNGParserCallback;
 import com.sensia.gwt.relaxNG.XMLSensorMLParser;
 import com.sensia.relaxNG.RNGAttribute;
-import com.sensia.relaxNG.RNGChoice;
-import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGDefine;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.relaxNG.RNGGroup;
-import com.sensia.relaxNG.RNGInterleave;
-import com.sensia.relaxNG.RNGList;
 import com.sensia.relaxNG.RNGOneOrMore;
 import com.sensia.relaxNG.RNGOptional;
-import com.sensia.relaxNG.RNGRef;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGTagList;
-import com.sensia.relaxNG.RNGTagVisitor;
-import com.sensia.relaxNG.RNGText;
-import com.sensia.relaxNG.RNGValue;
 import com.sensia.relaxNG.RNGZeroOrMore;
-import com.sensia.relaxNG.XSDAnyURI;
-import com.sensia.relaxNG.XSDBoolean;
-import com.sensia.relaxNG.XSDDateTime;
-import com.sensia.relaxNG.XSDDecimal;
-import com.sensia.relaxNG.XSDDouble;
-import com.sensia.relaxNG.XSDInteger;
-import com.sensia.relaxNG.XSDString;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ICallback;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_DEF;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_TYPE;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorAttributeWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorChoiceWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorGenericHorizontalContainerWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorValueWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorZeroOrMoreWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.xsd.SensorXSDAnyURIWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.xsd.SensorXSDDateTimeWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.xsd.SensorXSDDecimalWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.xsd.SensorXSDDoubleWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.xsd.SensorXSDIntegerWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.xsd.SensorXSDStringWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 
 /**
  * The Class NameRefResolver resolves a path from a grammar.
@@ -85,9 +53,9 @@ public final class NameRefResolver {
 	 * @param currentWidget the current widget
 	 * @param grammar the grammar
 	 */
-	public void build(ISensorWidget currentWidget,final RNGGrammar grammar) {
+	public void build(IPanel currentWidget,final RNGGrammar grammar) {
 		//first get the root node to find the typeof tag
-		ISensorWidget root = currentWidget;
+		/*IPanel root = currentWidget;
 		this.currentGrammar = grammar;
 		
 		while(root.getParent() != null) {
@@ -95,11 +63,11 @@ public final class NameRefResolver {
 		}
 		
 		//find the typeof tag
-		ISensorWidget typeOfWidget = AbstractSensorElementWidget.findWidget(root, "typeOf", TAG_DEF.SML,TAG_TYPE.ELEMENT);
+		IPanel typeOfWidget = AbstractElementPanel.findWidget(root, "typeOf", TAG_DEF.SML,TAG_TYPE.ELEMENT);
 		if(typeOfWidget != null) {
 			//get href
 			remoteFile = typeOfWidget.getValue("href", true);
-		} 
+		} */
 	}
 	
 	/**
@@ -110,7 +78,7 @@ public final class NameRefResolver {
 	 * @param path the path
 	 * @param callback the callback
 	 */
-	public void resolvePath(ISensorWidget currentWidget, final List<String> path,final ICallback<String> callback) {
+	public void resolvePath(IPanel currentWidget, final List<String> path,final ICallback<String> callback) {
 		if(path != null && path.size() > 0 && path.get(0).equals("this")) {
 			List<String> newPath = new ArrayList<String>(path.subList(1, path.size()));
 			proceedSearch(newPath,currentGrammar,callback);
@@ -162,7 +130,7 @@ public final class NameRefResolver {
 				if(results.isEmpty()) {
 					//no label, takes the name attribute instead
 					RNGAttribute nameAtt = ((RNGTagList) t).getChildAttribute("name");
-					label = AbstractSensorElementWidget.toNiceLabel(nameAtt.getChildValue().getText());
+					label = Utils.toNiceLabel(nameAtt.getChildValueText());
 				} else {
 					RNGElement tagElt = (RNGElement) results.get(0);
 					label = tagElt.getChildValue().getText();
@@ -215,7 +183,7 @@ public final class NameRefResolver {
 			} else {
 				//check attribute "name"
 				RNGAttribute nameAtt = rootElement.getChildAttribute("name");
-				if(nameAtt != null && nameAtt.getChildValue().getText().equals(name)){
+				if(nameAtt != null && nameAtt.getChildValueText().equals(name)){
 					idx++;
 				} else {
 					nameAtt = rootElement.getChildAttribute("id");
@@ -244,4 +212,6 @@ public final class NameRefResolver {
 			}
 		}
 	}
+	
+
 }

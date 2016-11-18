@@ -12,23 +12,10 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer;
 
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_DEF;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.TAG_TYPE;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.base.SensorGenericHorizontalContainerWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorCategoryWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorConditionWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorPositionWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorCurveWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.dataarray.SWESensorDataArrayWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorAllowedValuesWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorDataRecordWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorQuantityRangeWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorQuantityWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorTimeRangeWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorTimeWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.SWESensorVectorWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.swe.position.SWESensorCoordinateWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.SWECategoryPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.SWEQuantityPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.SWEQuantityRangePanel;
 
 /**
  * <p>
@@ -66,11 +53,9 @@ public class RNGRendererSWE extends RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGElement elt) {
-		final ISensorWidget widget = getWidget(elt.getName());
+		final IPanel<RNGElement> widget = getPanel(elt);
 		if(widget != null) {
 			pushAndVisitChildren(widget, elt.getChildren());
-		} else if(elt.getNamespace().equals(SWE_NS_1) || elt.getNamespace().equals(SWE_NS_2)) {
-			pushAndVisitChildren(new SensorGenericHorizontalContainerWidget(elt.getName(), TAG_DEF.SWE, TAG_TYPE.ELEMENT), elt.getChildren());
 		} else {
 			super.visit(elt);
 		}
@@ -79,8 +64,21 @@ public class RNGRendererSWE extends RNGRenderer implements RNGTagVisitor {
 	/* (non-Javadoc)
 	 * @see com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRenderer#getWidget(java.lang.String)
 	 */
-	protected ISensorWidget getWidget(final String name) {
-		 if(name.equals("Quantity") || name.equals("Count")){
+	protected IPanel<RNGElement> getPanel(RNGElement elt) {
+		final String name = elt.getName();
+		
+		/*if(name.equalsIgnoreCase("DataRecord")) {
+			return new SWEDataRecordPanel(elt);
+		} else*/ if(name.equalsIgnoreCase("Quantity")) {
+			return new SWEQuantityPanel(elt);
+		} /*else if(name.equalsIgnoreCase("field")) {
+			return new SWEFieldPanel(elt);
+		}*/ else if(name.equalsIgnoreCase("Category")) {
+			return new SWECategoryPanel(elt);
+		} else if(name.equalsIgnoreCase("QuantityRange")) {
+			return new SWEQuantityRangePanel(elt);
+		}
+		/* if(name.equals("Quantity") || name.equals("Count")){
 			return new SWESensorQuantityWidget();
 		} else if(name.equals("Vector")){
 			return new SWESensorVectorWidget();
@@ -94,7 +92,7 @@ public class RNGRendererSWE extends RNGRenderer implements RNGTagVisitor {
 			return new SWESensorTimeRangeWidget();
 		} else if(name.equals("Category")){
 			return new SWESensorCategoryWidget();
-		} else if(name.equals("DataArray")){
+		} else if(name.equals("DataArray") || name.equals("DataStream")){
 			return new SWESensorDataArrayWidget();
 		} else if(name.equals("Curve")){
 			return new SWESensorCurveWidget();
@@ -108,6 +106,7 @@ public class RNGRendererSWE extends RNGRenderer implements RNGTagVisitor {
 			return new SWESensorAllowedValuesWidget();
 		} else {
 			return super.getWidget(name);
-		}
+		}*/
+		return null;
 	}
 }

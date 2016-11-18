@@ -1,6 +1,6 @@
 package com.sensia.tools.client.swetools.editors.sensorml.controller;
 
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 
 public interface IObserver {
     
@@ -11,5 +11,5 @@ public interface IObserver {
 	 *
 	 * @param topElement the top element
 	 */
-	void parseDone(ISensorWidget topElement);
+	void parseDone(IPanel topElement);
 }

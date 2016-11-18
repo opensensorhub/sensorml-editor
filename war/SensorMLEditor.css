@@ -125,7 +125,7 @@ html>body .gwt-DecoratedTabBar {
 
 }
 
-.gwt-DisclosurePanel a.header {
+/*.gwt-DisclosurePanel a.header {
   cursor: hand;
   cursor: pointer;
   background-attachment: initial;
@@ -135,16 +135,16 @@ html>body .gwt-DecoratedTabBar {
   background-position: 0px 0px;
   background-repeat: no-repeat;
   padding-left: 18px;
-}
+}*/
 	
-.gwt-disclosurepanel .content {
+/*.gwt-disclosurepanel .content {
   border-left: 29px !important;
   padding: 0px;
   margin-left: 0px;
   margin-top: 5px;
   border-left: 2px solid #e7e7e7 !important;
   
-}
+}*/
 
 .gwt-TextBox {
   padding: 1px 1px 1px 1px;
@@ -484,14 +484,6 @@ table.sml-mode-nolabel-vertical-panel {
 	border: 1px solid #c4b29d;
 }
 
-.link-icon-panel {
-	background-image: url(sensormleditor/images/arrow-right.png) !important;
-	width:25px;
-	height:7px;
-	margin-top:2px;
-	margin-right:5px;
-}
-
 .xlink {
 	margin-right:5px;
 }
@@ -540,4 +532,93 @@ table.sml-mode-nolabel-vertical-panel {
 .editor-v-main-panel {
 	width:100%;
 	vertical-align : top !important;
+}
+
+/******** NEW ********/
+.gwt-DisclosurePanel .content {
+	padding: 0px 0px 0px 0px !important;
+	margin-left:10px;
+		
+}
+
+.viewer {
+	margin-top : 30px;
+	margin-left: 10px;
+}
+/*** HEADER ***/
+
+.header-document {
+	width: 100%;
+}
+
+.header-title-panel .gwt-HTML{
+	font-size:25px;
+	font-weight:bold;
+}
+
+/*** SECTION ***/
+
+.section-panel .header td {
+	font-weight:bold;
+	font-size:14px;
+}
+
+.section-panel .header {
+	cursor: hand;
+  	cursor: pointer;
+}
+
+.section-panel .content {
+	border-left: 2px solid #e7e7e7 !important;
+}
+
+/*** HORIZONTAL PANELS ***/
+
+.horizontal-panel .gwt-HTML{
+	margin-right:5px;
+}
+
+/** SML LINK **/
+.link-icon-panel {
+	background-image: url(sensormleditor/images/arrow-right.png) !important;
+	width:25px;
+	height:7px;
+	margin-top:2px;
+	margin-right:5px;
+	margin-left: 5px;
+}
+
+/** LINE **/
+
+.line-generic-panel-before {
+	width : 225px;
+}
+.line-generic-label-panel-before {
+	width : 220px;
+}
+.line-generic-definition-panel-before {
+	width : 30px;
+}
+
+/** DISCLOSURE **/
+
+.disclosure-generic-simple {
+	/*padding:0px 0px 5px 0px;
+	margin-left: 10px;*/
+}
+.disclosure-generic .content {
+	border-spacing:7px !important;
+	margin-left:10px !important;
+}
+
+/** remove disclosure border **/
+.disclosure-noborder .content {
+	border-left:none !important;
+}
+.disclosure-generic .disclosure-noborder {
+	margin-left:10px !important;
+}
+/** remove disclosure icon **/
+.disclosure-generic .disclosure-noborder .header>table>tbody>tr>td:first-of-type {
+	display:none !important;
 }

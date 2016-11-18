@@ -30,7 +30,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
  * @author Alexandre Robin
  * @date Sep 26, 2011
  */
-public abstract class RNGTag extends Observable implements Cloneable, Serializable
+public abstract class RNGTag extends Observable implements  ITag
 {
     private static final long serialVersionUID = 984732656936240060L;
     protected String id;
@@ -108,4 +108,5 @@ public abstract class RNGTag extends Observable implements Cloneable, Serializab
 
 
     public abstract void accept(RNGTagVisitor visitor);
+    
 }

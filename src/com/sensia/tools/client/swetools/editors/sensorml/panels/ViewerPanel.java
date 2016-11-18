@@ -13,6 +13,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.panels;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -29,17 +30,20 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.sensia.gwt.relaxNG.RNGParser;
+import com.sensia.gwt.relaxNG.RNGParserCallback;
 import com.sensia.relaxNG.RNGGrammar;
+import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.IParsingObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.Observable;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ViewAsXMLButtonClickListener;
+import com.sensia.tools.client.swetools.editors.sensorml.old.RNGRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel.MODE;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.ISourcePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.LocalFileSourcePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.UrlSourcePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE;
 
 /**
  * This class is in charge of creating the main Panel. The top elements will 
@@ -56,7 +60,7 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	
 	//the checkbox to switch between view and edit mode
 	private CheckBox editCheckbox;
-	private ISensorWidget root;
+	private IPanel root;
 	
 	//the processor in charge of parsing and create the RNG profile
 	private RNGProcessorSML smlEditorProcessor;
@@ -92,6 +96,8 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		}
 		
 		mainPanel = new VerticalPanel();
+		mainPanel.addStyleName("viewer");
+		
 		verticalPanel.add(mainPanel);
 		initWidget(verticalPanel);
 		
@@ -103,7 +109,7 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		panel.setSpacing(20);
 		panel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 		
-		HTML title = new HTML("<b>SensorML XML:</b>");
+		HTML title = new HTML("<b>SensorML XML/RNG:</b>");
 		final Button load = new Button("Load");
 		
 		//init radio buttons choices
@@ -141,7 +147,6 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				smlEditorProcessor.setRootMinLevel(1);
 				if(fromLocalFileSystem.getValue()) {
 					fileUploadPanel.parseContent();
 				} else if(fromUrl.getValue()){
@@ -193,7 +198,7 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	
 	public void parse(RNGGrammar grammar) {
 		mainPanel.clear();
-		ISensorWidget newNode = smlEditorProcessor.parseRNG(grammar);
+		IPanel newNode = smlEditorProcessor.parseRNG(grammar);
 		mainPanel.add(newNode.getPanel());
 		root = newNode;
 	}
@@ -208,7 +213,7 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	 * @see com.sensia.swetools.editors.sensorml.client.IParsingObserver#parseDone(com.sensia.swetools.editors.sensorml.client.panels.model.INodeWidget)
 	 */
 	@Override
-	public void parseDone(final ISensorWidget topElement) {
+	public void parseDone(final IPanel topElement) {
 		//One the parsing done, the viewer is reset and displays the new content
 		mainPanel.clear();
 		mainPanel.add(topElement.getPanel());
@@ -217,12 +222,12 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	
 	@Override
 	public void update(Observable model, Object hint) {
-		//ISensorWidget newNode = smlEditorProcessor.parseRNG(((RNGTag) model).getParent());
+		//IPanel newNode = smlEditorProcessor.parseRNG(((RNGTag) model).getParent());
 		// replace the old corresponding node by the new node
-		/*dynamicCenterPanel.clear();
-		ISensorWidget newNode = smlEditorProcessor.parseRNG(smlEditorProcessor.getLoadedGrammar());
-		dynamicCenterPanel.add(newNode.getPanel());
-		root = newNode;*/
+		mainPanel.clear();
+		IPanel newNode = smlEditorProcessor.parseRNG(smlEditorProcessor.getLoadedGrammar());
+		mainPanel.add(newNode.getPanel());
+		root = newNode;
 		//smlEditorProcessor.parse(profiles.get(profileListBox.getValue(profileListBox.getSelectedIndex())));
 	}
 }

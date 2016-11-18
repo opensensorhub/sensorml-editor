@@ -33,7 +33,7 @@ import com.sensia.relaxNG.RNGGroup;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGTagList;
 import com.sensia.relaxNG.RNGText;
-import com.sensia.relaxNG.RNGValue;
+import com.sensia.relaxNG.XSDString;
 
 /**
  * The Class XMLSensorMLParser.
@@ -166,9 +166,9 @@ public class XMLSensorMLParser {
 			Node node = children.item(i);
 
             if(node.getNodeType() == Node.TEXT_NODE) {
-            	RNGValue val = new RNGValue();
+            	XSDString val = new XSDString();
                 //val.setText(node.getNodeValue().replace("\\s+", " "));
-            	val.setText(node.getNodeValue());
+            	val.setStringValue(node.getNodeValue());
                 ((RNGTagList)parent).add(val);
             } else if(node.getNodeType() == Node.ELEMENT_NODE) {
             	Element elt = (Element)node;
@@ -190,11 +190,12 @@ public class XMLSensorMLParser {
 						rngAtt.setName(qName.localName);
 						rngAtt.setNamespace(qName.namespaceURI);
 						
-						RNGValue rngValue = new RNGValue();
+						//RNGValue rngValue = new RNGValue();
+						XSDString	rngData = new XSDString();
 						//rngValue.setText(attr.getNodeValue().replace("\\s+", " "));
-						rngValue.setText(attr.getNodeValue());
+						rngData.setStringValue(attr.getNodeValue());
 						//add value to attribute
-						rngAtt.add(rngValue);
+						rngAtt.add(rngData);
 						
 						//add attribute to element
 						rngElt.add(rngAtt);
