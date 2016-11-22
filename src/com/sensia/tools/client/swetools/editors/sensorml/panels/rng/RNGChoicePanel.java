@@ -17,15 +17,15 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 public class RNGChoicePanel extends AbstractPanel<RNGChoice>{
 
 	private ListBox choices;
-	private Panel paternContainer;
+	private Panel patternContainer;
 	
 	public RNGChoicePanel(final RNGChoice tag, final RNGTagVisitor visitor) {
 		super(tag);
-		paternContainer = new VerticalPanel();
+		patternContainer = new VerticalPanel();
 		
 		choices = new ListBox();
 		container.add(choices);
-		container.add(paternContainer);
+		container.add(patternContainer);
 		
 		choices.addItem("");
 		
@@ -46,7 +46,7 @@ public class RNGChoicePanel extends AbstractPanel<RNGChoice>{
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				paternContainer.clear();
+				patternContainer.clear();
 				if(choices.getSelectedIndex() == 0) {
 					RNGChoicePanel.this.getTag().setSelectedIndex(-1);
 				} else {
@@ -64,7 +64,7 @@ public class RNGChoicePanel extends AbstractPanel<RNGChoice>{
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		paternContainer.add(element.getPanel());
+		patternContainer.add(element.getPanel());
 	}
 
 	@Override

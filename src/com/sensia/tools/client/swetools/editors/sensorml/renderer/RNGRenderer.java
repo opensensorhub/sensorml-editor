@@ -47,6 +47,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.Dis
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericHorizontalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGChoicePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGOptionalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGZeroOrMorePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDAnyURIPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDDateTimePanel;
@@ -176,6 +177,10 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 		
 		
 		makeTagObservable(optional);*/
+		push(new RNGOptionalPanel(optional, this));
+		if(optional.isSelected()){
+			this.visitChildren(optional.getChildren());
+		}
 		
 	}
 
@@ -228,7 +233,11 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 		}
 		
 		makeTagObservable(zeroOrMore);*/
-		push(new RNGZeroOrMorePanel(zeroOrMore));
+		push(new RNGZeroOrMorePanel(zeroOrMore,this));
+		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
+		for(List<RNGTag> tags : patternInstances) {
+			this.visitChildren(tags);
+		}
 		
 	}
 	
