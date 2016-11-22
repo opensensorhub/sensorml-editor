@@ -16,8 +16,12 @@ import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.sensia.relaxNG.RNGAttribute;
+import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGElement;
+import com.sensia.relaxNG.RNGOneOrMore;
+import com.sensia.relaxNG.RNGOptional;
 import com.sensia.relaxNG.RNGTag;
+import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
@@ -60,6 +64,11 @@ public class DocumentPanel extends AbstractPanel{
 					((DisclosureElementPanel)element).setHeaderStr(Utils.toNiceLabel(element.getName()));
 					element.getPanel().removeStyleName("disclosure-noborder");
 					element.getPanel().addStyleName("section-panel disclosure-border");
+					container.add(element.getPanel());
+				}  else if(element.getTag() instanceof RNGZeroOrMore || 
+						element.getTag() instanceof RNGOneOrMore ||
+						element.getTag() instanceof RNGChoice ||
+						element.getTag() instanceof RNGOptional){
 					container.add(element.getPanel());
 				} else {
 					DisclosurePanel sectionPanel = new DisclosurePanel(Utils.toNiceLabel(element.getName()));
