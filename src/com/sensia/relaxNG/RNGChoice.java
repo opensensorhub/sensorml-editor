@@ -10,6 +10,7 @@
 
 package com.sensia.relaxNG;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -34,7 +35,37 @@ public class RNGChoice extends RNGTagList
     
     public List<RNGTag> getItems()
     {
-        return children;
+        ArrayList<RNGTag> allItems = new ArrayList<RNGTag>();
+    	
+        for (RNGTag item: children)
+        {
+        	if (item instanceof RNGRef)
+        		collectItems((RNGRef)item, allItems);
+        	else
+        		allItems.add(item);
+        }
+    	
+        return allItems;
+        
+    	//return children;
+    }
+    
+    
+    protected void collectItems(RNGRef ref, List<RNGTag> allItems)
+    {
+    	RNGDefine pattern = ref.getPattern();
+		if (pattern.getAnnotation() == null)
+		{
+			for (RNGTag item: pattern.getChildren())
+			{
+				if (item instanceof RNGRef)
+	        		collectItems((RNGRef)item, allItems);
+				else
+					allItems.add(item);
+			}
+		}
+		else
+			allItems.add(pattern);
     }
     
     

@@ -222,6 +222,7 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	
 	@Override
 	public void update(Observable model, Object hint) {
+		GWT.log("redraw");
 		//IPanel newNode = smlEditorProcessor.parseRNG(((RNGTag) model).getParent());
 		// replace the old corresponding node by the new node
 		mainPanel.clear();
