@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGData;
@@ -157,8 +158,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	@Override
 	public void visit(RNGChoice choice) {
 		RNGTag selectedPattern = choice.getSelectedPattern();
-		IPanel<RNGChoice> widget = new RNGChoicePanel(choice,this);
-		push(widget);
+		push(new RNGChoicePanel(choice,this));
 		if(selectedPattern != null) {
 			visit(selectedPattern);
 		}
@@ -233,7 +233,8 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 		}
 		
 		makeTagObservable(zeroOrMore);*/
-		push(new RNGZeroOrMorePanel(zeroOrMore,this));
+		GWT.log("Visit new zeroOrMore");
+		push(new RNGZeroOrMorePanel(zeroOrMore));
 		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
 		for(List<RNGTag> tags : patternInstances) {
 			this.visitChildren(tags);
@@ -254,7 +255,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGInterleave interleave) {
-		//this.visitChildren(interleave.getChildren());
+		this.visitChildren(interleave.getChildren());
 	}
 
 	/* (non-Javadoc)
@@ -263,7 +264,9 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	@Override
 	public void visit(RNGText text) {
 		// TODO Auto-generated method stub
-		
+		//push(new ValuePanel(text.get))
+		GWT.log("into RNGText");
+		text.accept(this);
 	}
 
 	/* (non-Javadoc)
@@ -303,6 +306,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(XSDBoolean data) {
+		GWT.log("into XSDBoolean");
 	}
 
 	/* (non-Javadoc)

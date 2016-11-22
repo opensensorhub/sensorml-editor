@@ -3,6 +3,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.panels.gml;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.sensia.relaxNG.RNGAttribute;
@@ -42,19 +43,13 @@ public class GMLIdentifierPanel extends AbstractPanel<RNGElement>{
 		} else if(element.getTag() instanceof RNGAttribute){
 			codeSpacePanel.add(element.getPanel());
 			codeSpacePanel.add(new HTML(":&nbsp"));
-		}
-		GWT.log(element.getTag().getClass()+"");
+		} 
 	}
 
 	@Override
 	protected AbstractPanel<RNGElement> newInstance() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	protected void activeMode(MODE mode) {
-		
 	}
 
 	@Override

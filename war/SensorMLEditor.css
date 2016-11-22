@@ -622,3 +622,25 @@ table.sml-mode-nolabel-vertical-panel {
 .disclosure-generic .disclosure-noborder .header>table>tbody>tr>td:first-of-type {
 	display:none !important;
 }
+
+.rng-optional-select-add {
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-image: url(sensormleditor/images/add.gif);
+  cursor: hand;
+  cursor: pointer;
+  margin-top: 1px;
+}
+
+.rng-optional-select-remove {
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-image: url(sensormleditor/images/remove.gif);
+  cursor: hand;
+  cursor: pointer;
+  margin-top: 5px;
+}

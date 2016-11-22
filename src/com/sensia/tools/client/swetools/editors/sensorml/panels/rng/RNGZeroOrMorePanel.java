@@ -1,24 +1,26 @@
 package com.sensia.tools.client.swetools.editors.sensorml.panels.rng;
 
-import java.util.List;
-
-import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.relaxNG.RNGTag;
-import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 
-	public RNGZeroOrMorePanel(final RNGZeroOrMore tag,final RNGTagVisitor visitor) {
+	private Panel patternContainer;
+	
+	public RNGZeroOrMorePanel(final RNGZeroOrMore tag) {
 		super(tag);
+		
+		patternContainer = new VerticalPanel();
 		
 		final String label = Utils.findLabel(tag);
 		Label addButton = new Label();
@@ -28,14 +30,16 @@ public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 		hPanel.add(new Label(label));
 		
 		container.add(hPanel);
+		container.add(patternContainer);
 		
 		addButton.addClickHandler(new ClickHandler() {
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				RNGZeroOrMore cloneZeroOrMore = tag.clone();
-				tag.addPatternInstance(cloneZeroOrMore.getChildren());
-				tag.accept(visitor);
+				container.clear();
+				RNGRendererSML newRenderer = new RNGRendererSML();
+				tag.newOccurence();
+				container.add(newRenderer.getRoot().getPanel());
 			}
 		});
 	}
@@ -47,7 +51,8 @@ public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		container.add(element.getPanel());
+		patternContainer.add(element.getPanel());
+		patternContainer.add(new Label(element.getName()));
 	}
 
 	@Override
