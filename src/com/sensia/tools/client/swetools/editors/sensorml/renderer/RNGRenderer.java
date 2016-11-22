@@ -47,6 +47,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.Dis
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericHorizontalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGChoicePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGZeroOrMorePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDAnyURIPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDDateTimePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDDecimalPanel;
@@ -155,7 +156,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	@Override
 	public void visit(RNGChoice choice) {
 		RNGTag selectedPattern = choice.getSelectedPattern();
-		IPanel<RNGChoice> widget = new RNGChoicePanel(choice);
+		IPanel<RNGChoice> widget = new RNGChoicePanel(choice,this);
 		push(widget);
 		if(selectedPattern != null) {
 			visit(selectedPattern);
@@ -209,7 +210,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGOneOrMore oneOrMore) {
-		//this.visit((RNGZeroOrMore) oneOrMore);
+		this.visit((RNGZeroOrMore) oneOrMore);
 		//visitChildren(oneOrMore.getChildren());
 	}
 
@@ -227,6 +228,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 		}
 		
 		makeTagObservable(zeroOrMore);*/
+		push(new RNGZeroOrMorePanel(zeroOrMore));
 		
 	}
 	
