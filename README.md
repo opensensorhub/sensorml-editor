@@ -1,13 +1,13 @@
 # SMLEditor
-A web based viewer/editor to create your sensorML document. This SensorML viewer/editor is used by OSH but can also be used as a standalone web editor.This editor allows to view any SensorML documents (V2.0) and edit the current content. The project has been designed using GWT.
+A web based viewer/editor to create your sensorML document. This SensorML viewer/editor is used by OSH but can also be used as a standalone web editor.This editor allows to view any SensorML documents (V2.0) and edit the current content, or to create a SensorML description "from scratch". The project has been designed using GWT.
 
 Architecture design:
 -------------------
 
-The processor transforms a XML document into a RNG instance. This instance is then processed by a Renderer to create 
+The processor transforms a XML document into a RelaxNG (RNG) instance. This instance is then processed by a Renderer to create 
 the corresponding widgets of the current parsed tags. Thus each widget will add its children and create a custom panel
 to represent the whole node. Depending on the content of the sub-elements, the same Widget can have different representations
-according to the SensorML Specifications.
+according to the SensorML Specifications. The use of RelaxNG allows one to define profiles for specific sensors, sensor-types, or communities by requiring certain properties, vocabularies, and units of measure, for example. 
 <br />
 <br />
 <br />
