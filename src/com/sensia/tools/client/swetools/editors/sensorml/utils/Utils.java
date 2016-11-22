@@ -229,6 +229,10 @@ public class Utils {
 	 * @return the string the transformed String
 	 */
 	public static String toNiceLabel(String name) {
+		if(name == null || name.isEmpty()) {
+			GWT.log("Skip label");
+			return "";
+		}
 		String label = toCamelCase(name).replace('_', ' ');
 		StringBuilder b = new StringBuilder(label);
 
