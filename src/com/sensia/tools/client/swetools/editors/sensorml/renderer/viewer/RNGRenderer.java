@@ -264,7 +264,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	@Override
 	public void visit(RNGText text) {
 		// TODO Auto-generated method stub
-		push(new ValuePanel(text));
+		//push(new ValuePanel(text));
 		GWT.log("into RNGText");
 		//text.accept(this);
 	}

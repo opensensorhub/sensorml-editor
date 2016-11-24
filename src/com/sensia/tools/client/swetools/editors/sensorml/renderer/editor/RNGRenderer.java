@@ -45,6 +45,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.base.DataValuePa
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.AttributePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.EditGenericListPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericHorizontalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGChoicePanel;
@@ -414,6 +415,11 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	
 	protected IPanel<RNGElement> renderVerticalElementListPanel(RNGElement tag) {
 		return new DisclosureElementPanel(tag);
+	}
+	
+	protected IPanel<RNGElement> renderGenericListPanel(RNGElement tag) {
+		GWT.log("Generic list");
+		return new EditGenericListPanel(tag);
 	}
 	/**
 	 * Render horizontal widget.

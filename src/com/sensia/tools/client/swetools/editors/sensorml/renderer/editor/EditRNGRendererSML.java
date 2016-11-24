@@ -28,6 +28,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.A
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.AttributeRefPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.AttributeReferenceFramePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.document.DocumentPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.document.EditDocumentPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gmd.GMDUrl;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.GMLDescription;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.GMLIdentifierPanel;
@@ -111,7 +112,9 @@ public class EditRNGRendererSML extends RNGRendererSWE implements RNGTagVisitor 
 		
 		GENERIC_VERTICAL_LIST,
 		
-		DISCLOSURE
+		DISCLOSURE,
+		
+		GENERIC_LIST
 	}
 	
 	/**
@@ -173,7 +176,6 @@ public class EditRNGRendererSML extends RNGRendererSWE implements RNGTagVisitor 
 		skipList.add("ConnectionList");
 		skipList.add("CharacteristicList");
 		skipList.add("CapabilityList");
-		
 		skipList.add("ContactList");
 		skipList.add("DocumentList");
 		skipList.add("ContactList");
@@ -205,35 +207,7 @@ public class EditRNGRendererSML extends RNGRendererSWE implements RNGTagVisitor 
 		renderElements.put("characteristic", RENDER_ELEMENT_TYPE.DISCLOSURE);
 		renderElements.put("connection", RENDER_ELEMENT_TYPE.DISCLOSURE); //TODO: should support more than one ?
 		renderElements.put("output", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		
-		renderElements.put("KeywordList", RENDER_ELEMENT_TYPE.GENERIC_HORIZONTAL); 
-		
-		//render default defined elements
-		/*renderElements.put("input",RENDER_ELEMENT_TYPE.LINE);
-		renderElements.put("output",RENDER_ELEMENT_TYPE.LINE);
-		renderElements.put("parameter", RENDER_ELEMENT_TYPE.LINE);
-		renderElements.put("field", RENDER_ELEMENT_TYPE.LINE);
-		renderElements.put("coordinate", RENDER_ELEMENT_TYPE.LINE);
-		renderElements.put("characteristic", RENDER_ELEMENT_TYPE.LINE);
-		renderElements.put("identifier", RENDER_ELEMENT_TYPE.LINE);
-		renderElements.put("capability", RENDER_ELEMENT_TYPE.LINE);
-		renderElements.put("elementCount", RENDER_ELEMENT_TYPE.LINE);
-		renderElements.put("classifier", RENDER_ELEMENT_TYPE.LINE);
-		renderElements.put("axis", RENDER_ELEMENT_TYPE.LINE);
-		renderElements.put("origin", RENDER_ELEMENT_TYPE.LINE);
-		renderElements.put("ObservableProperty", RENDER_ELEMENT_TYPE.LINE);*/
-		
-		//skip list
-		/*skipList.add("event");
-		skipList.add("contactInfo");
-		skipList.add("Security");
-		skipList.add("Term");
-		skipList.add("data");
-		skipList.add("NormalizedCurve");
-		skipList.add("function");
-		skipList.add("mode");
-		skipList.add("TimeInstant");
-		skipList.add("time");*/
+		renderElements.put("KeywordList", RENDER_ELEMENT_TYPE.GENERIC_LIST); 
 		
 		rootSectionsList.add("PhysicalSystem");
 		rootSectionsList.add("ProcessModel");
@@ -241,24 +215,8 @@ public class EditRNGRendererSML extends RNGRendererSWE implements RNGTagVisitor 
 		rootSectionsList.add("SimpleProcess");
 		rootSectionsList.add("PhysicalComponent");
 		rootSectionsList.add("Component");
-		
-		//skip contact elements tags
-		/*skipList.add("CI_ResponsibleParty");
-		skipList.add("contactInfo");
-		skipList.add("CI_Contact");
-		skipList.add("phone");
-		skipList.add("CI_Telephone");
-		skipList.add("address");
-		skipList.add("CI_Address");*/
-		
-		//skip documents tags
-		/*skipList.add("CI_OnlineResource");
-		skipList.add("linkage");*/
 	}
 
-	/** The root min level. */
-	public int rootMinLevel = 1;
-	
 	/* (non-Javadoc)
 	 * @see com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRenderer#visit(com.sensia.relaxNG.RNGGrammar)
 	 */
@@ -283,23 +241,28 @@ public class EditRNGRendererSML extends RNGRendererSWE implements RNGTagVisitor 
 		
 		
 		if(rootSectionsList.contains(eltName)) {
-			pushAndVisitChildren(new DocumentPanel(),elt.getChildren());
+			pushAndVisitChildren(new EditDocumentPanel(),elt.getChildren());
 			return;
 		}
 		
 		if(renderElements.containsKey(eltName)) {
 			RENDER_ELEMENT_TYPE type = renderElements.get(eltName);
-			
+			GWT.log(eltName);
 			IPanel<? extends RNGTag> panel = null;
 			
 			switch(type) {
 				case GENERIC_VERTICAL : panel = renderVerticalPanel(elt);break;
 				case GENERIC_HORIZONTAL : panel = renderHorizontalWidget(elt);break;
 				case DISCLOSURE : panel = renderSection(elt);break;
+				case GENERIC_LIST : panel = renderGenericListPanel(elt);break;
 				//case LINE : widget = renderLineWidget(eltName, ns, TAG_TYPE.ELEMENT);break;
 				default:break;
 			}
-			pushAndVisitChildren(panel, elt.getChildren());
+			if(type == RENDER_ELEMENT_TYPE.GENERIC_LIST) {
+				push(panel);
+			} else {
+				pushAndVisitChildren(panel, elt.getChildren());
+			}
 			return;
 		} else 
 		// handle GML elements

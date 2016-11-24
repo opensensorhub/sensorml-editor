@@ -105,4 +105,8 @@ public class RNGRef extends RNGTagList
     {
         return new RNGRef();
     }
+    
+    public String toString() {
+       	return patternName;
+    }
 }

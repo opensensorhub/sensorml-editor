@@ -61,7 +61,7 @@ public class RNGChoicePanel extends AbstractPanel<RNGChoice>{
 	
 	@Override
 	public String getName() {
-		return "";
+		return getTag().getSelectedPattern().toString();
 	}
 
 	@Override
