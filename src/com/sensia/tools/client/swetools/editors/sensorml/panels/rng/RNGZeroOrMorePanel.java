@@ -47,13 +47,12 @@ public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 	
 	@Override
 	public String getName() {
-		return "";
+		return "ZeroOrMore";
 	}
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
 		patternContainer.add(element.getPanel());
-		patternContainer.add(new Label(element.getName()));
 	}
 
 	@Override
