@@ -10,7 +10,7 @@ import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.ViewerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
@@ -36,10 +36,11 @@ public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				container.clear();
-				RNGRendererSML newRenderer = new RNGRendererSML();
+				//RNGRendererSML newRenderer = new RNGRendererSML();
 				tag.newOccurence();
-				container.add(newRenderer.getRoot().getPanel());
+				//container.add(newRenderer.getRoot().getPanel());
+				//TODO: use MVC or MVP to update the view
+				ViewerPanel.getInstance(null).redraw();
 			}
 		});
 	}

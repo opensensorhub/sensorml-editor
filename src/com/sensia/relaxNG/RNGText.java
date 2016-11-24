@@ -11,7 +11,7 @@
 package com.sensia.relaxNG;
 
 
-public class RNGText extends RNGTag
+public class RNGText extends RNGValue
 {
     private static final long serialVersionUID = 5994833804497952034L;
     protected String text;

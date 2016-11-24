@@ -33,9 +33,10 @@ public class SMLTermPanel extends AbstractGenericLinePanel<RNGElement>{
 			defPanel.add(element.getPanel());
 		} else if(element.getName().equals("value")){
 			valuePanel.add(element.getPanel());
-		} else {
+		} /*else {
 			afterDotsPanel.add(element.getPanel());
-		}
+		}*/
+		//TODO: details panel
 	}
 
 	@Override

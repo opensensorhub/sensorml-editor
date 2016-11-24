@@ -1,9 +1,7 @@
 package com.sensia.tools.client.swetools.editors.sensorml.panels.gml;
 
-import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.sensia.relaxNG.RNGAttribute;
@@ -12,7 +10,6 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ValuePanel;
 
 // xsd:string
 // http://www.datypic.com/sc/niem21/e-gml32_identifier.html

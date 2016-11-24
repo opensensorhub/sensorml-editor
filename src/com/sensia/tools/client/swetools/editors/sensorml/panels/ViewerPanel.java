@@ -38,6 +38,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.IParsingObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.Observable;
+import com.sensia.tools.client.swetools.editors.sensorml.listeners.ViewAsRelaxNGButtonClickListener;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ViewAsXMLButtonClickListener;
 import com.sensia.tools.client.swetools.editors.sensorml.old.RNGRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel.MODE;
@@ -65,7 +66,9 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	//the processor in charge of parsing and create the RNG profile
 	private RNGProcessorSML smlEditorProcessor;
 	
-	public ViewerPanel(final RNGProcessorSML sgmlEditorProcessor){
+	private static ViewerPanel instance;
+	
+	protected ViewerPanel(final RNGProcessorSML sgmlEditorProcessor){
 		sgmlEditorProcessor.addObserver(this);
 		this.smlEditorProcessor = sgmlEditorProcessor;
 
@@ -77,11 +80,16 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		Button viewAsXML = new Button("View as XML");
 		viewAsXML.addClickHandler(new ViewAsXMLButtonClickListener(sgmlEditorProcessor));
 		
+		Button viewAsRNG = new Button("View as RelaxNG");
+		viewAsRNG.addClickHandler(new ViewAsRelaxNGButtonClickListener(sgmlEditorProcessor));
+		
 		//Get the url parameter to load the document where this one is under the form : ?url=DocumentPath
 		String passedFile = com.google.gwt.user.client.Window.Location.getParameter("url");
 		HorizontalPanel panel = new HorizontalPanel();
 		panel.add(viewXmlPanel);
 		panel.add(viewAsXML);
+		panel.add(viewAsRNG);
+		panel.setSpacing(5);
 		
 		verticalPanel.add(panel);
 		
@@ -197,16 +205,23 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	}
 	
 	public void parse(RNGGrammar grammar) {
-		mainPanel.clear();
+		smlEditorProcessor.setLoadedGrammar(grammar);
+		/*mainPanel.clear();
 		IPanel newNode = smlEditorProcessor.parseRNG(grammar);
 		mainPanel.add(newNode.getPanel());
-		root = newNode;
+		root = newNode;*/
+		redraw();
 	}
 	
 	public void parse(String xmlDoc) {
 		// use MVC
 		smlEditorProcessor.parseString(xmlDoc);
 	}
+	
+	/************* TODO **********************/
+	// REMOVE / IMPROVE load grammar, parseRNG etc..
+	// Use MVC or MVP or Singleton
+	// make the system consistent
 	
 	/*
 	 * (non-Javadoc)
@@ -218,6 +233,7 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		mainPanel.clear();
 		mainPanel.add(topElement.getPanel());
 		root = topElement;
+		root.switchMode((editCheckbox.getValue())? MODE.EDIT:MODE.VIEW);
 	}
 	
 	@Override
@@ -225,10 +241,22 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		GWT.log("redraw");
 		//IPanel newNode = smlEditorProcessor.parseRNG(((RNGTag) model).getParent());
 		// replace the old corresponding node by the new node
+		redraw();
+		//smlEditorProcessor.parse(profiles.get(profileListBox.getValue(profileListBox.getSelectedIndex())));
+	}
+	
+	public void redraw() {
 		mainPanel.clear();
 		IPanel newNode = smlEditorProcessor.parseRNG(smlEditorProcessor.getLoadedGrammar());
 		mainPanel.add(newNode.getPanel());
 		root = newNode;
-		//smlEditorProcessor.parse(profiles.get(profileListBox.getValue(profileListBox.getSelectedIndex())));
+		root.switchMode((editCheckbox.getValue())? MODE.EDIT:MODE.VIEW);
+	}
+	
+	public static ViewerPanel getInstance(final RNGProcessorSML sgmlEditorProcessor){
+		if(instance == null) {
+			instance = new ViewerPanel(sgmlEditorProcessor);
+		} 
+		return instance;
 	}
 }

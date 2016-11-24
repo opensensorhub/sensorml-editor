@@ -23,7 +23,7 @@ import com.sensia.relaxNG.RNGTagList;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel.MODE;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.RNGRendererSML;
 
 /**
  * The Class RNGProcessorSML is in charge of parsing a document.
@@ -135,7 +135,9 @@ public class RNGProcessorSML {
 	public IPanel parseRNG(RNGTag tag) {
 		RNGRendererSML renderer = new RNGRendererSML();
 		renderer.visit(tag);
-		
+		if(tag instanceof RNGGrammar) {
+			setLoadedGrammar((RNGGrammar) tag);
+		}
 		return renderer.getRoot();
 	}
 	

@@ -2,6 +2,8 @@ package com.sensia.tools.client.swetools.editors.sensorml.panels.base;
 
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.event.dom.client.KeyDownEvent;
+import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.TextBox;
 import com.sensia.relaxNG.RNGData;
@@ -12,8 +14,8 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class DataValuePanel extends AbstractPanel<RNGData<?>>{
-	private static final int DEFAULT_TEXBOX_VALUE_SIZE = 50;
-
+	protected static final int DEFAULT_TEXBOX_VALUE_SIZE = 20;
+	
 	protected TextBox textBox;
 
 	protected HTML htmlTextBox;
@@ -59,6 +61,13 @@ public class DataValuePanel extends AbstractPanel<RNGData<?>>{
 			});
 		}
 
+		textBox.addKeyDownHandler(new KeyDownHandler() {
+			
+			@Override
+			public void onKeyDown(KeyDownEvent event) {
+				data.setStringValue(textBox.getText());
+			}
+		});
 		// add into the main container
 		container.add(htmlTextBox);
 	}
