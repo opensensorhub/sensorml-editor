@@ -9,16 +9,16 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 public class HeaderDocumentPanel extends VerticalPanel{
 
 	// gml:name
-	private Panel titlesPanel;
+	protected Panel titlesPanel;
 	
 	// gml:identifier
-	private Panel identifiersPanel;
+	protected Panel identifiersPanel;
 	
 	// gml:description
-	private Panel descriptionPanel;
+	protected Panel descriptionPanel;
 	
 	// sml:keywords
-	private Panel keywordsPanel;
+	protected Panel keywordsPanel;
 	
 	public HeaderDocumentPanel() {
 		

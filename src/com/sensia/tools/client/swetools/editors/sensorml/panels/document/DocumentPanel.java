@@ -33,13 +33,16 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
  */
 public class DocumentPanel extends AbstractPanel{
 
-	private HeaderDocumentPanel headerDocumentPanel;
+	protected HeaderDocumentPanel headerDocumentPanel;
 	
 	public DocumentPanel() {
+		init();
+	}
+
+	protected void init() {
 		headerDocumentPanel = new HeaderDocumentPanel();
 		container.add(headerDocumentPanel);
 	}
-
 
 	@Override
 	protected AbstractPanel newInstance() {
