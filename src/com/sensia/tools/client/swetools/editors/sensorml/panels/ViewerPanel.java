@@ -172,7 +172,9 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 			public void onClick(ClickEvent event) {
 				if(root != null){
 					MODE mode = (editCheckbox.isChecked()) ? MODE.EDIT : MODE.VIEW;
-					root.switchMode(mode);
+					smlEditorProcessor.setMode(mode);
+					redraw();
+					//root.switchMode(mode);
 				}
 			}
 		});
@@ -246,6 +248,10 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	}
 	
 	public void redraw() {
+		redraw((editCheckbox.getValue())? MODE.EDIT:MODE.VIEW);
+	}
+	
+	public void redraw(MODE mode) {
 		mainPanel.clear();
 		IPanel newNode = smlEditorProcessor.parseRNG(smlEditorProcessor.getLoadedGrammar());
 		mainPanel.add(newNode.getPanel());
@@ -258,5 +264,10 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 			instance = new ViewerPanel(sgmlEditorProcessor);
 		} 
 		return instance;
+	}
+	
+	public void setMode(MODE mode){
+		smlEditorProcessor.setMode(mode);
+		editCheckbox.setValue((mode == MODE.EDIT)?true:false);
 	}
 }

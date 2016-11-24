@@ -29,6 +29,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.controller.IController;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.Observable;
 import com.sensia.tools.client.swetools.editors.sensorml.old.RNGRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel.MODE;
 
 public class EditorPanel  extends Composite  implements IParsingObserver, IObserver{
 
@@ -149,6 +150,7 @@ public class EditorPanel  extends Composite  implements IParsingObserver, IObser
 	            public void onParseDone(RNGGrammar grammar)
 	            {
 	                if(inView) {
+	                	ViewerPanel.getInstance(null).setMode(MODE.EDIT);
 	                	controller.parse(grammar);
 	                } else {
 	                	RNGRendererSML renderer = new RNGRendererSML();

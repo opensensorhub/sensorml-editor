@@ -23,7 +23,8 @@ import com.sensia.relaxNG.RNGTagList;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel.MODE;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.RNGRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.EditRNGRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.ViewRNGRendererSML;
 
 /**
  * The Class RNGProcessorSML is in charge of parsing a document.
@@ -116,10 +117,19 @@ public class RNGProcessorSML {
 	 */
 	private void parseRNG(final RNGGrammar grammar) {
 		setLoadedGrammar(grammar);
-		RNGRendererSML renderer = new RNGRendererSML();
-		renderer.setObservers(observers);
-		renderer.visit(grammar);
-		IPanel root = renderer.getRoot();
+		IPanel root  = null;
+		
+		if(mode == MODE.EDIT){
+			EditRNGRendererSML renderer = new EditRNGRendererSML();
+			renderer.setObservers(observers);
+			renderer.visit(grammar);
+			root = renderer.getRoot();
+		} else if(mode == MODE.VIEW) {
+			ViewRNGRendererSML renderer = new ViewRNGRendererSML();
+			renderer.setObservers(observers);
+			renderer.visit(grammar);
+			root = renderer.getRoot();
+		}
 		
 		for(final IObserver observer : observers) {
 			observer.parseDone(root);
@@ -133,12 +143,21 @@ public class RNGProcessorSML {
 	 * @param url
 	 */
 	public IPanel parseRNG(RNGTag tag) {
-		RNGRendererSML renderer = new RNGRendererSML();
-		renderer.visit(tag);
-		if(tag instanceof RNGGrammar) {
-			setLoadedGrammar((RNGGrammar) tag);
+		if(mode == MODE.VIEW){
+			ViewRNGRendererSML renderer = new ViewRNGRendererSML();
+			renderer.visit(tag);
+			if(tag instanceof RNGGrammar) {
+				setLoadedGrammar((RNGGrammar) tag);
+			}
+			return renderer.getRoot();
+		} else {
+			EditRNGRendererSML renderer = new EditRNGRendererSML();
+			renderer.visit(tag);
+			if(tag instanceof RNGGrammar) {
+				setLoadedGrammar((RNGGrammar) tag);
+			}
+			return renderer.getRoot();
 		}
-		return renderer.getRoot();
 	}
 	
 	/**
