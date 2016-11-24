@@ -158,7 +158,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	@Override
 	public void visit(RNGChoice choice) {
 		RNGTag selectedPattern = choice.getSelectedPattern();
-		push(new RNGChoicePanel(choice,this));
+		//push(new RNGChoicePanel(choice,this));
 		if(selectedPattern != null) {
 			visit(selectedPattern);
 		}
@@ -177,7 +177,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 		
 		
 		makeTagObservable(optional);*/
-		push(new RNGOptionalPanel(optional, this));
+		//push(new RNGOptionalPanel(optional, this));
 		if(optional.isSelected()){
 			this.visitChildren(optional.getChildren());
 		}
@@ -234,7 +234,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 		
 		makeTagObservable(zeroOrMore);*/
 		GWT.log("Visit new zeroOrMore");
-		push(new RNGZeroOrMorePanel(zeroOrMore));
+		//push(new RNGZeroOrMorePanel(zeroOrMore));
 		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
 		for(List<RNGTag> tags : patternInstances) {
 			this.visitChildren(tags);
