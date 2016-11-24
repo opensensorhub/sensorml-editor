@@ -1,9 +1,14 @@
 package com.sensia.tools.client.swetools.editors.sensorml.panels.base;
 
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyDownHandler;
+import com.google.gwt.event.dom.client.KeyPressEvent;
+import com.google.gwt.event.dom.client.KeyPressHandler;
+import com.google.gwt.event.dom.client.KeyUpEvent;
+import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.TextBox;
 import com.sensia.relaxNG.RNGData;
@@ -52,19 +57,20 @@ public class DataValuePanel extends AbstractPanel<RNGData<?>>{
 				textBox.setVisibleLength(DEFAULT_TEXBOX_VALUE_SIZE);
 			}
 			
-			textBox.addChangeHandler(new ChangeHandler() {
+			/*textBox.addChangeHandler(new ChangeHandler() {
 				
 				@Override
 				public void onChange(ChangeEvent event) {
 					data.setStringValue(textBox.getText());
 				}
-			});
+			});*/
 		}
 
-		textBox.addKeyDownHandler(new KeyDownHandler() {
-			
+		textBox.addKeyUpHandler(new KeyUpHandler() {
+
 			@Override
-			public void onKeyDown(KeyDownEvent event) {
+			public void onKeyUp(KeyUpEvent event) {
+				GWT.log(textBox.getText());
 				data.setStringValue(textBox.getText());
 			}
 		});
