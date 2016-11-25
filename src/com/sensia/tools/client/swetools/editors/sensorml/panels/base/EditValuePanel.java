@@ -32,7 +32,7 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 		isNiceLabel = true;
 		
 		textBox = new TextBox();
-		
+		textBox.addStyleName("textbox");
 		// put saved value in text box
 		if (data.getStringValue() != null) {
 			if(isNiceLabel) {
