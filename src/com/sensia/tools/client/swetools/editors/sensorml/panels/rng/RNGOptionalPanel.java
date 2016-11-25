@@ -65,6 +65,8 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 				
 			}
 		});
+		
+		patternContainer.addStyleName("rng-optional-pattern");
 	}
 	
 	@Override
@@ -74,12 +76,16 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		GWT.log(element.getTag().toString());
-		if(element.getTag() instanceof RNGValue || element.getTag() instanceof RNGData<?> || element.getTag() instanceof RNGAttribute) {
+		/*GWT.log(element.getTag().toString());
+		if(element.getTag() instanceof RNGValue 
+				|| element.getTag() instanceof RNGData<?> 
+				|| element.getTag() instanceof RNGAttribute
+				|| element.getName().equals("role")) {
 			valuePanel.add(element.getPanel());
 		} else {
 			patternContainer.add(element.getPanel());
-		}
+		}*/
+		patternContainer.add(element.getPanel());
 	}
 
 	@Override

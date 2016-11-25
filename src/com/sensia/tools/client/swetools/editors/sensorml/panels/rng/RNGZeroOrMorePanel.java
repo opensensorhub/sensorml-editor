@@ -15,12 +15,13 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 
-	private Panel patternContainer;
+	private VerticalPanel patternContainer;
 	
 	public RNGZeroOrMorePanel(final RNGZeroOrMore tag) {
 		super(tag);
 		
 		patternContainer = new VerticalPanel();
+		patternContainer.setSpacing(5);
 		
 		final String label = Utils.findLabel(tag);
 		Label addButton = new Label();

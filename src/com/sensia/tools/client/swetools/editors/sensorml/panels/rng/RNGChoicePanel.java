@@ -23,6 +23,7 @@ public class RNGChoicePanel extends AbstractPanel<RNGChoice>{
 	public RNGChoicePanel(final RNGChoice tag, final RNGTagVisitor visitor) {
 		super(tag);
 		patternContainer = new VerticalPanel();
+		patternContainer.addStyleName("rng-choice-pattern");
 		
 		choices = new ListBox();
 		container.add(choices);
@@ -61,7 +62,11 @@ public class RNGChoicePanel extends AbstractPanel<RNGChoice>{
 	
 	@Override
 	public String getName() {
-		return getTag().getSelectedPattern().toString();
+		if(getTag().getSelectedPattern() != null) {
+			return getTag().getSelectedPattern().toString();	
+		} else {
+			return "RNGChoice";
+		}
 	}
 
 	@Override
