@@ -664,5 +664,6 @@ table.sml-mode-nolabel-vertical-panel {
 }
 
 .textbox {
+	margin-top:5px;
 	margin-bottom:5px;
 }

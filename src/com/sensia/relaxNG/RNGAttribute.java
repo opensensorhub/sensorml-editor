@@ -64,4 +64,8 @@ public class RNGAttribute extends RNGTagList
     {
         return new RNGAttribute();
     }    
+    
+    public String toString() {
+    	return this.name;
+    }
 }
