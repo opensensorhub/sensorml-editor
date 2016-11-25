@@ -53,7 +53,7 @@ public class EditDocumentPanel extends DocumentPanel{
 	@Override
 	public void addInnerElement(IPanel element) {
 		RNGTag tag = element.getTag();
-		if(tag instanceof RNGZeroOrMore) {
+		if(tag instanceof RNGZeroOrMore || tag instanceof RNGOptional) {
 			/** look for:
 			 * <gml:description>
 			        // some description
@@ -67,7 +67,13 @@ public class EditDocumentPanel extends DocumentPanel{
 			  </sml:keywords>
 			 **/
 			boolean found = false;
-			List<RNGTag> children = ((RNGZeroOrMore)tag).getChildren();
+			List<RNGTag> children = null;
+			if(tag instanceof RNGZeroOrMore) {
+				children = ((RNGZeroOrMore)tag).getChildren();
+			} else {
+				children = ((RNGOptional)tag).getChildren();
+			}
+			
 			for(RNGTag child : children ){
 				String name = child.toString();
 				
@@ -97,6 +103,8 @@ public class EditDocumentPanel extends DocumentPanel{
 			if(!found) {
 				super.addInnerElement(element);
 			}
+		} else if(element.getName().equals("identifier")){
+			headerDocumentPanel.addIdentifier(element.getPanel());
 		} else {
 			super.addInnerElement(element);
 		}
