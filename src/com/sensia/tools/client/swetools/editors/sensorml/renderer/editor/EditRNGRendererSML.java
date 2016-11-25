@@ -22,12 +22,11 @@ import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.AttributeCodePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.AttributeDefinitionPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.AttributeNamePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.AttributeRefPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.AttributeReferenceFramePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.document.DocumentPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeDefinitionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeReferenceFramePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.view.ViewAttributeCodePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.view.ViewAttributeNamePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.view.ViewAttributeRefPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.document.EditDocumentPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gmd.GMDUrl;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.GMLDescription;
@@ -40,9 +39,9 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.SMLLinkPanel
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.SMLObservablePropertyPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.SMLOriginPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.SMLTermPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.XLinkArcrolePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.XLinkHrefPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.XLinkRolePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkArcrolePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkHrefPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkRolePanel;
 
 /**
  * <p>
@@ -328,25 +327,25 @@ public class EditRNGRendererSML extends RNGRendererSWE implements RNGTagVisitor 
 		String name = att.getName();
 		if (nsUri != null && nsUri.equalsIgnoreCase(XLINK)) {
 			if(name.equals("role")){
-				pushAndVisitChildren(new XLinkRolePanel(att),att.getChildren());
+				pushAndVisitChildren(new EditXLinkRolePanel(att),att.getChildren());
 			} else if(name.equals("arcrole")) {
-				pushAndVisitChildren(new XLinkArcrolePanel(att),att.getChildren());
+				pushAndVisitChildren(new EditXLinkArcrolePanel(att),att.getChildren());
 			} else if(name.equals("href")) {
-				pushAndVisitChildren(new XLinkHrefPanel(att),att.getChildren());
+				pushAndVisitChildren(new EditXLinkHrefPanel(att),att.getChildren());
 			} else {
 				GWT.log("[WARN] Unsupported XLink element: "+name+". Skipped.");
 				super.visit(att);
 			}
 		} else if(name.equals("referenceFrame")) {
-			pushAndVisitChildren(new AttributeReferenceFramePanel(att),att.getChildren());
+			pushAndVisitChildren(new EditAttributeReferenceFramePanel(att),att.getChildren());
 		} else if(name.equals("definition")) {
-			pushAndVisitChildren(new AttributeDefinitionPanel(att),att.getChildren());
+			pushAndVisitChildren(new EditAttributeDefinitionPanel(att),att.getChildren());
 		} else if(name.equals("name")) {
-			pushAndVisitChildren(new AttributeNamePanel(att),att.getChildren());
+			pushAndVisitChildren(new ViewAttributeNamePanel(att),att.getChildren());
 		} else if(name.equals("ref")) {
-			pushAndVisitChildren(new AttributeRefPanel(att),att.getChildren());
+			pushAndVisitChildren(new ViewAttributeRefPanel(att),att.getChildren());
 		} else if(name.equals("code")) {
-			pushAndVisitChildren(new AttributeCodePanel(att),att.getChildren());
+			pushAndVisitChildren(new ViewAttributeCodePanel(att),att.getChildren());
 		} else{
 			super.visit(att);
 		}

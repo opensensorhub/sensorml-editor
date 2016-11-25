@@ -21,7 +21,7 @@ public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 		super(tag);
 		
 		patternContainer = new VerticalPanel();
-		patternContainer.setSpacing(5);
+		patternContainer.addStyleName("rng-zeroormore-pattern");
 		
 		final String label = Utils.findLabel(tag);
 		Label addButton = new Label();

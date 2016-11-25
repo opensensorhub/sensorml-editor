@@ -48,19 +48,4 @@ public class GMDUrl extends AbstractPanel<RNGElement>{
 	protected AbstractPanel<RNGElement> newInstance() {
 		return null;
 	}
-
-	protected void activeMode(MODE mode) {
-		container.clear();
-		
-		if(mode == MODE.EDIT) {
-			container.add(valuePanel.getPanel());
-		} else if(mode == MODE.VIEW) {
-			container.add(anchorHref);
-			if(valuePanel.getTag() instanceof RNGValue) {
-				anchorHref.setHref(((RNGValue)valuePanel.getTag()).getText());
-			} else if(valuePanel.getTag() instanceof RNGData<?>) {
-				anchorHref.setHref(((RNGData<?>)valuePanel.getTag()).getStringValue());
-			}
-		}
-	}
 }

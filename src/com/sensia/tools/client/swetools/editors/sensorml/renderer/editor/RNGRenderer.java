@@ -41,8 +41,8 @@ import com.sensia.relaxNG.XSDInteger;
 import com.sensia.relaxNG.XSDString;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.DataValuePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.EditValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ViewValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.AttributePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.EditGenericListPanel;
@@ -265,7 +265,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	@Override
 	public void visit(RNGText text) {
 		// TODO Auto-generated method stub
-		push(new ValuePanel(text));
+		//push(new ValuePanel(text));
 		GWT.log("into RNGText");
 		//text.accept(this);
 	}
@@ -275,7 +275,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGValue val) {
-		push(new ValuePanel(val));
+		push(new ViewValuePanel(val));
 	}
 
 	/* (non-Javadoc)
@@ -291,7 +291,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGData<?> data) {
-		push(new DataValuePanel(data));
+		push(new EditValuePanel(data));
 	}
 
 	/* (non-Javadoc)

@@ -42,15 +42,6 @@ public class GenericVerticalContainerPanel extends AbstractPanel<RNGTag>{
 	}
 
 	/* (non-Javadoc)
-	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#activeMode(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE)
-	 */
-	@Override
-	protected void activeMode(MODE mode) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/* (non-Javadoc)
 	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#newInstance()
 	 */
 	@Override

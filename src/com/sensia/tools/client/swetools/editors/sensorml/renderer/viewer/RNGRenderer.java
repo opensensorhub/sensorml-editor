@@ -41,8 +41,8 @@ import com.sensia.relaxNG.XSDInteger;
 import com.sensia.relaxNG.XSDString;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.DataValuePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.EditValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ViewValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.AttributePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericHorizontalContainerPanel;
@@ -274,7 +274,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGValue val) {
-		push(new ValuePanel(val));
+		push(new ViewValuePanel(val));
 	}
 
 	/* (non-Javadoc)
@@ -290,15 +290,21 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGData<?> data) {
-		push(new DataValuePanel(data));
+		pushRNGDataIntoRNGValue(data);
 	}
 
+	private void pushRNGDataIntoRNGValue(RNGData<?> data) {
+		RNGValue value = new RNGValue();
+		value.setText(data.getStringValue());
+		push(new ViewValuePanel(value));
+	}
+	
 	/* (non-Javadoc)
 	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.XSDString)
 	 */
 	@Override
 	public void visit(XSDString data) {
-		push(new XSDStringPanel(data));
+		pushRNGDataIntoRNGValue(data);
 	}
 
 	/* (non-Javadoc)
@@ -314,7 +320,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(XSDDecimal data) {
-		push(new XSDDecimalPanel(data));
+		pushRNGDataIntoRNGValue(data);
 	}
 
 	/* (non-Javadoc)
@@ -322,7 +328,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(XSDDouble data) {
-		push(new XSDDoublePanel(data));
+		pushRNGDataIntoRNGValue(data);
 	}
 
 	/* (non-Javadoc)
@@ -330,7 +336,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(XSDInteger data) {
-		push(new XSDIntegerPanel(data));
+		pushRNGDataIntoRNGValue(data);
 	}
 
 	/* (non-Javadoc)
@@ -338,7 +344,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(XSDAnyURI data) {
-		push(new XSDAnyURIPanel(data));
+		pushRNGDataIntoRNGValue(data);
 		
 	}
 
@@ -347,7 +353,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(XSDDateTime data) {
-		push(new XSDDateTimePanel(data));
+		pushRNGDataIntoRNGValue(data);
 		
 	}
 	

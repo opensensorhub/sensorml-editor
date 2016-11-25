@@ -10,38 +10,28 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.panels;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.sensia.gwt.relaxNG.RNGParser;
-import com.sensia.gwt.relaxNG.RNGParserCallback;
 import com.sensia.relaxNG.RNGGrammar;
-import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.IParsingObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.Observable;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ViewAsRelaxNGButtonClickListener;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ViewAsXMLButtonClickListener;
-import com.sensia.tools.client.swetools.editors.sensorml.old.RNGRendererSML;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel.MODE;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.ISourcePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.LocalFileSourcePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.UrlSourcePanel;
@@ -67,6 +57,11 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	private RNGProcessorSML smlEditorProcessor;
 	
 	private static ViewerPanel instance;
+	
+	public enum MODE {
+		EDIT,
+		VIEW
+	}
 	
 	protected ViewerPanel(final RNGProcessorSML sgmlEditorProcessor){
 		sgmlEditorProcessor.addObserver(this);
@@ -174,7 +169,6 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 					MODE mode = (editCheckbox.isChecked()) ? MODE.EDIT : MODE.VIEW;
 					smlEditorProcessor.setMode(mode);
 					redraw();
-					//root.switchMode(mode);
 				}
 			}
 		});
@@ -235,7 +229,6 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		mainPanel.clear();
 		mainPanel.add(topElement.getPanel());
 		root = topElement;
-		root.switchMode((editCheckbox.getValue())? MODE.EDIT:MODE.VIEW);
 	}
 	
 	@Override
@@ -256,7 +249,6 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		IPanel newNode = smlEditorProcessor.parseRNG(smlEditorProcessor.getLoadedGrammar());
 		mainPanel.add(newNode.getPanel());
 		root = newNode;
-		root.switchMode((editCheckbox.getValue())? MODE.EDIT:MODE.VIEW);
 	}
 	
 	public static ViewerPanel getInstance(final RNGProcessorSML sgmlEditorProcessor){

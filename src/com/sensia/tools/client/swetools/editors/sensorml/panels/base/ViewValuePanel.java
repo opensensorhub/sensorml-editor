@@ -7,7 +7,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
-public class ValuePanel extends AbstractPanel<RNGValue>{
+public class ViewValuePanel extends AbstractPanel<RNGValue>{
 	private static final int DEFAULT_TEXBOX_VALUE_SIZE = 50;
 
 	protected HTML htmlTextBox;
@@ -16,7 +16,7 @@ public class ValuePanel extends AbstractPanel<RNGValue>{
 	
 	private boolean isNiceLabel;
 	
-	public ValuePanel(final RNGValue data) {
+	public ViewValuePanel(final RNGValue data) {
 		super(data);
 		isNiceLabel = true;
 		
@@ -49,31 +49,11 @@ public class ValuePanel extends AbstractPanel<RNGValue>{
 	}
 
 	@Override
-	protected void activeMode(MODE mode) {
-		refreshTextFields();
-	}
-
-	@Override
 	public String getName() {
 		return "value";
 	}
 	
 	public void setNiceLabel(boolean isNiceLabel) {
 		this.isNiceLabel = isNiceLabel;
-		refreshTextFields();
-	}
-	
-	private void refreshTextFields() {
-		container.clear();
-		
-		// update html value with edited value
-		if(isNiceLabel) {
-			niceLabel = Utils.toNiceLabel(getTag().getText());
-		} else {
-			niceLabel = getTag().getText();
-		}
-		
-		htmlTextBox.setText(niceLabel);
-		container.add(htmlTextBox);
 	}
 }

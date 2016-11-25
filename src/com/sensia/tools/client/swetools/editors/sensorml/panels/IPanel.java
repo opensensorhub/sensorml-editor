@@ -25,16 +25,6 @@ public interface IPanel<T extends RNGTag> {
 
 	/**
 	 * 
-	 * The mode allows to make out the state of the node.
-	 *
-	 */
-	public enum MODE {
-		VIEW,
-		EDIT
-	}
-	
-	/**
-	 * 
 	 * The appender is in charge of defining the behavior of a current node
 	 * compared to its parent. Thus the parent will add the node depending of the appender position.
 	 *
@@ -47,13 +37,6 @@ public interface IPanel<T extends RNGTag> {
 		NONE,
 		OVERRIDE_LINE
 	}
-	
-	/**
-	 * Switch between different modes.
-	 * @param mode the new mode to apply.
-	 */
-	void switchMode(MODE mode);
-	
 	
 	/**
 	 * Gets the list of the children of the widget.
@@ -84,12 +67,6 @@ public interface IPanel<T extends RNGTag> {
 	 * Thus each widget can intercept the refresh event and do any action.
 	 */
 	void refresh();
-	
-	/**
-	 * Gets the APPENDER state.
-	 * @return the APPENDER value
-	 */
-	APPENDER appendTo();
 	
 	/**
 	 * Sets the APPENDER value.

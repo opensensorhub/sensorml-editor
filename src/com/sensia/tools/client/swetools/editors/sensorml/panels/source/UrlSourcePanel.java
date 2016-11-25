@@ -14,7 +14,7 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel.MODE;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.ViewerPanel.MODE;
 
 /**
  * The Class UrlSourcePanel is in charge of load a document from an url.

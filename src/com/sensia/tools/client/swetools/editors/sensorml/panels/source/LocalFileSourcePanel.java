@@ -14,7 +14,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Panel;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel.MODE;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.ViewerPanel.MODE;
 
 /**
  * The Class LocalFileSourcePanel allows to load document from local file.

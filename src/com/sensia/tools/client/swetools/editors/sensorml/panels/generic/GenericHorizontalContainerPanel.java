@@ -16,7 +16,6 @@ import com.google.gwt.user.client.ui.Panel;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel.MODE;
 
 /**
  * The Class SensorGenericHorizontalContainerWidget is a generic horizontal container.
@@ -63,15 +62,6 @@ public class GenericHorizontalContainerPanel extends AbstractPanel<RNGTag>{
 		container.add(new HTML("&nbsp;&nbsp;"));*/
 		container.add(panel.getPanel());
 		container.add(new HTML("&nbsp;&nbsp;"));
-	}
-
-	/* (non-Javadoc)
-	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#activeMode(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget.MODE)
-	 */
-	@Override
-	protected void activeMode(MODE mode) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	/* (non-Javadoc)

@@ -66,37 +66,4 @@ public class SMLComponentPanel extends DisclosureElementPanel {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	@Override
-	protected void activeMode(com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel.MODE mode) {
-		//TODO: use ontology icon to edit definition
-		clear();
-		
-		String value = "";
-		// update html value with edited value
-		
-		if(title != null) {
-			if(!value.isEmpty()) {
-				value += ": ";
-			}
-			value += title.getTag().getChildValueText();
-		}
-		
-		anchor.setText(value);
-		if(href != null) {
-			anchor.setHref(Utils.getCurrentURL(href.getTag().getChildValueText()));
-		}
-		
-		if(mode == MODE.EDIT) {
-			if(title != null) {
-				addContent(title.getPanel());
-			}
-			if(href != null) {
-				addContent(href.getElements().get(0).getPanel());
-			}
-		} else if (mode == MODE.VIEW) {
-			addContent(anchor);
-		}
-	}
-
 }

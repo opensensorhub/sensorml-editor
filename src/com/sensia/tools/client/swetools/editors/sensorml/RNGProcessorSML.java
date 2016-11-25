@@ -13,16 +13,14 @@ package com.sensia.tools.client.swetools.editors.sensorml;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gwt.core.shared.GWT;
 import com.sensia.gwt.relaxNG.RNGParser;
 import com.sensia.gwt.relaxNG.RNGParserCallback;
 import com.sensia.gwt.relaxNG.XMLSensorMLParser;
 import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.relaxNG.RNGTag;
-import com.sensia.relaxNG.RNGTagList;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel.MODE;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.ViewerPanel.MODE;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.EditRNGRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.ViewRNGRendererSML;
 
@@ -134,8 +132,6 @@ public class RNGProcessorSML {
 		for(final IObserver observer : observers) {
 			observer.parseDone(root);
 		}
-		
-		root.switchMode(mode);
 	}
 	
 	/**

@@ -14,13 +14,10 @@ package com.sensia.tools.client.swetools.editors.sensorml.panels;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.relaxNG.RNGTag;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel.APPENDER;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel.MODE;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ViewValuePanel;
 
 /**
  * The Class AbstractSensorElementWidget.
@@ -46,14 +43,6 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 		isNiceLabel = true;
 	}
 	
-	@Override
-	public void switchMode(MODE mode) {
-		activeMode(mode);
-		for(IPanel<? extends RNGTag> panel : children) {
-			panel.switchMode(mode);
-		}
-	}
-
 	@Override
 	public void addElement(IPanel<? extends RNGTag> element) {
 		children.add(element);
@@ -85,12 +74,6 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 	}
 
 	@Override
-	public APPENDER appendTo() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void setAppender(APPENDER appender) {
 		// TODO Auto-generated method stub
 		
@@ -113,13 +96,10 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 	
 	protected abstract AbstractPanel<T> newInstance();
 	
-	// To override by subclasses
-	protected void activeMode(MODE mode) {}
-	
 	protected static void setValueNiceLabel(IPanel<? extends RNGTag> root, boolean isNiceLabel) {
 		for(IPanel<? extends RNGTag> child : root.getElements()) {
-			if(child instanceof ValuePanel) {
-				((ValuePanel)child).setNiceLabel(isNiceLabel);
+			if(child instanceof ViewValuePanel) {
+				((ViewValuePanel)child).setNiceLabel(isNiceLabel);
 			} else {
 				setValueNiceLabel(child,isNiceLabel);
 			}

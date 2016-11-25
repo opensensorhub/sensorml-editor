@@ -14,8 +14,6 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.ResizeLayoutPanel;
-import com.google.gwt.user.client.ui.TabLayoutPanel;
-import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.xml.client.Document;
 import com.sensia.gwt.relaxNG.RNGInstanceWriter;
@@ -29,7 +27,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.controller.IController;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.Observable;
 import com.sensia.tools.client.swetools.editors.sensorml.old.RNGRendererSML;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel.MODE;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.ViewerPanel.MODE;
 
 public class EditorPanel  extends Composite  implements IParsingObserver, IObserver{
 

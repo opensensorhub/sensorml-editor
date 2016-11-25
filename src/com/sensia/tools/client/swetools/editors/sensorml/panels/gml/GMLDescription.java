@@ -51,10 +51,4 @@ public class GMLDescription extends AbstractPanel<RNGElement>{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	protected void activeMode(com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel.MODE mode) {
-		
-	}
-
 }
