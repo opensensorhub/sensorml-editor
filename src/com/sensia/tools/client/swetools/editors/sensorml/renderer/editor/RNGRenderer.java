@@ -159,10 +159,16 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	@Override
 	public void visit(RNGChoice choice) {
 		RNGTag selectedPattern = choice.getSelectedPattern();
-		push(new RNGChoicePanel(choice,this));
+		/*push(new RNGChoicePanel(choice));
 		if(selectedPattern != null) {
-			visit(selectedPattern);
+			selectedPattern.accept(this);
+		}*/
+		if(selectedPattern != null) {
+			pushAndVisitChildren(new RNGChoicePanel(choice), selectedPattern);
+		} else {
+			push(new RNGChoicePanel(choice));
 		}
+		
 	}
 
 	/* (non-Javadoc)
@@ -178,7 +184,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 		
 		
 		makeTagObservable(optional);*/
-		push(new RNGOptionalPanel(optional, this));
+		push(new RNGOptionalPanel(optional));
 		if(optional.isSelected()){
 			this.visitChildren(optional.getChildren());
 		}
@@ -398,6 +404,20 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 				//child.setParent(widget);
 				widget.addElement(child);
 			}
+		}
+	}
+	
+	protected void pushAndVisitChildren(IPanel<? extends RNGTag> widget, RNGTag tag) {
+		push(widget);
+		int stackSize = getStackSize();
+		
+		if (tag != null) {
+			tag.accept(this);
+		}
+		if(stackSize < getStackSize()){
+			IPanel<? extends RNGTag> child = pop();
+			//child.setParent(widget);
+			widget.addElement(child);
 		}
 	}
 	

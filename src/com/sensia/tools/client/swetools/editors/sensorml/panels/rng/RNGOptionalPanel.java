@@ -21,12 +21,10 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 
 	private Panel patternContainer;
-	private Panel valuePanel;
 	
-	public RNGOptionalPanel(final RNGOptional tag,final RNGTagVisitor visitor) {
+	public RNGOptionalPanel(final RNGOptional tag) {
 		super(tag);
 		patternContainer = new VerticalPanel();
-		valuePanel = new HorizontalPanel();
 		
 		final String label = Utils.findLabel(tag);
 		
@@ -34,7 +32,6 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 		Panel hPanel = new HorizontalPanel();
 		hPanel.add(addButton);
 		hPanel.add(new Label(label));
-		hPanel.add(valuePanel);
 		
 		container.add(hPanel);
 		container.add(patternContainer);
@@ -76,15 +73,6 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		/*GWT.log(element.getTag().toString());
-		if(element.getTag() instanceof RNGValue 
-				|| element.getTag() instanceof RNGData<?> 
-				|| element.getTag() instanceof RNGAttribute
-				|| element.getName().equals("role")) {
-			valuePanel.add(element.getPanel());
-		} else {
-			patternContainer.add(element.getPanel());
-		}*/
 		patternContainer.add(element.getPanel());
 	}
 

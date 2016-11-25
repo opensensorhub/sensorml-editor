@@ -20,7 +20,7 @@ public class RNGChoicePanel extends AbstractPanel<RNGChoice>{
 	private ListBox choices;
 	private Panel patternContainer;
 	
-	public RNGChoicePanel(final RNGChoice tag, final RNGTagVisitor visitor) {
+	public RNGChoicePanel(final RNGChoice tag) {
 		super(tag);
 		patternContainer = new VerticalPanel();
 		patternContainer.addStyleName("rng-choice-pattern");
