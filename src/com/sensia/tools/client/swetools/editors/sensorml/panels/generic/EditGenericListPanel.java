@@ -18,7 +18,7 @@ public class EditGenericListPanel  extends AbstractPanel<RNGElement>{
 		name = Utils.toNiceLabel(name);
 	
 		container = new HorizontalPanel();
-		container.add(new Label(name+" (...)"));
+		container.add(new Label(name+"s (...)"));
 	}
 	
 	@Override

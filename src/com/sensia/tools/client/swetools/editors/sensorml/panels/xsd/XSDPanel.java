@@ -30,7 +30,6 @@ public class XSDPanel<T extends RNGData<?>> extends EditValuePanel {
 		if (length < 0) {
 			((TextBox) textBox).setVisibleLength(DEFAULT_TEXBOX_VALUE_SIZE);
 		} else if (length <= 60) {
-			textBox = new TextBox();
 			((TextBox) textBox).setVisibleLength(length);
 			((TextBox) textBox).setMaxLength(length);
 		} else {

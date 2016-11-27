@@ -65,6 +65,7 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 				data.setStringValue(textBox.getText());
 			}
 		});
+		
 		// add into the main container
 		container.add(new Label(data.getParent().toString()+": "));
 		container.add(textBox);
