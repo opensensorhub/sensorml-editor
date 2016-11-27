@@ -7,7 +7,7 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.AbstractGenericLinePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.ViewAbstractGenericLinePanel;
 
 public class ElementPanel extends AbstractPanel<RNGElement>{
 
@@ -27,8 +27,8 @@ public class ElementPanel extends AbstractPanel<RNGElement>{
 		if(element.getTag() instanceof RNGAttribute && element.getName().equals("name")){
 			namePanel = new SimplePanel();
 			namePanel = element.getPanel();
-		} else if(element instanceof AbstractGenericLinePanel){
-			AbstractGenericLinePanel cast = (AbstractGenericLinePanel) element;
+		} else if(element instanceof ViewAbstractGenericLinePanel){
+			ViewAbstractGenericLinePanel cast = (ViewAbstractGenericLinePanel) element;
 			if(!cast.isLabeled() && namePanel != null) {
 				cast.setLabel(namePanel);
 			}

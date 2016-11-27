@@ -12,7 +12,7 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.AbstractGenericLinePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.ViewAbstractGenericLinePanel;
 
 /**
  * Creates a disclosure panel if name or label is provided
@@ -124,8 +124,8 @@ public class DisclosureElementPanel extends AbstractPanel<RNGElement>{
 	}
 
 	private void checkLine(IPanel<? extends RNGTag> element){
-		if(element instanceof AbstractGenericLinePanel){
-			AbstractGenericLinePanel cast = (AbstractGenericLinePanel) element;
+		if(element instanceof ViewAbstractGenericLinePanel){
+			ViewAbstractGenericLinePanel cast = (ViewAbstractGenericLinePanel) element;
 			if(!cast.isLabeled() && label != null) {
 				cast.setLabel(label);
 				initNormalPanel();

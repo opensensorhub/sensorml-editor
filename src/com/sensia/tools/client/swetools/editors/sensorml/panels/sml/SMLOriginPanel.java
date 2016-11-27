@@ -4,9 +4,9 @@ import com.google.gwt.user.client.ui.HTML;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.AbstractGenericLinePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.ViewAbstractGenericLinePanel;
 
-public class SMLOriginPanel extends AbstractGenericLinePanel<RNGElement>{
+public class SMLOriginPanel extends ViewAbstractGenericLinePanel<RNGElement>{
 
 	public SMLOriginPanel(RNGElement tag) {
 		super(tag);

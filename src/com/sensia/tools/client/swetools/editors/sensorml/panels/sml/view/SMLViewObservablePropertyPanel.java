@@ -1,17 +1,17 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels.sml;
+package com.sensia.tools.client.swetools.editors.sensorml.panels.sml.view;
 
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.AbstractGenericLinePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.ViewAbstractGenericLinePanel;
 
 
-public class SMLObservablePropertyPanel extends AbstractGenericLinePanel<RNGElement>{
+public class SMLViewObservablePropertyPanel extends ViewAbstractGenericLinePanel<RNGElement>{
 
 	private boolean isLabel = false;
 	
-	public SMLObservablePropertyPanel(RNGElement tag) {
+	public SMLViewObservablePropertyPanel(RNGElement tag) {
 		super(tag);
 	}
 	
@@ -26,7 +26,7 @@ public class SMLObservablePropertyPanel extends AbstractGenericLinePanel<RNGElem
 			labelPanel.add(element.getPanel());
 		} else if(element.getName().equals("definition")) {
 			defPanel.add(element.getPanel());
-		} else {
+		} else if(element.getName().equals("description")) {
 			afterDotsPanel.add(element.getPanel());
 		}
 	}

@@ -6,12 +6,12 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.AbstractGenericLinePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.ViewAbstractGenericLinePanel;
 
 // label
 // uom
 // value
-public class SWEQuantityPanel extends AbstractGenericLinePanel<RNGElement>{
+public class SWEQuantityPanel extends ViewAbstractGenericLinePanel<RNGElement>{
 
 	
 	protected Panel valuePanel;

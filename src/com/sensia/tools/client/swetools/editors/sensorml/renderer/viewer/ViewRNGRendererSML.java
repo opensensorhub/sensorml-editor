@@ -36,9 +36,9 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.SMLAxisPanel
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.SMLComponentPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.SMLDocument;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.SMLLinkPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.SMLObservablePropertyPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.SMLOriginPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.SMLTermPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.view.SMLViewObservablePropertyPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.view.ViewXLinkArcrolePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.view.ViewXLinkHrefPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.view.ViewXLinkRolePanel;
@@ -327,7 +327,7 @@ public class ViewRNGRendererSML extends RNGRendererSWE implements RNGTagVisitor 
 		} else if (nsUri.equalsIgnoreCase(SML_NS_1) || nsUri.equalsIgnoreCase(SML_NS_2)) {
 			// handle SML element
 			if(eltName.equalsIgnoreCase("ObservableProperty")) {
-				pushAndVisitChildren(new SMLObservablePropertyPanel(elt), elt.getChildren());
+				pushAndVisitChildren(new SMLViewObservablePropertyPanel(elt), elt.getChildren());
 			} else if(eltName.equalsIgnoreCase("Component")) {
 				pushAndVisitChildren(new SMLComponentPanel(elt), elt.getChildren());
 			} else if(eltName.equalsIgnoreCase("Link")) {

@@ -6,7 +6,7 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.ElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.AbstractGenericLinePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.ViewAbstractGenericLinePanel;
 
 /**
  * codeSpace
@@ -15,7 +15,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.Abstract
  * @author mathieu.dhainaut@gmail.com
  *
  */
-public class SWECategoryPanel extends AbstractGenericLinePanel<RNGElement>{
+public class SWECategoryPanel extends ViewAbstractGenericLinePanel<RNGElement>{
 
 	protected Panel valuePanel;
 	protected Panel codeSpace;

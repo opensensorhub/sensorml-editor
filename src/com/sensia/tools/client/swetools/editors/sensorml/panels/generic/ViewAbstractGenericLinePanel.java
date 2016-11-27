@@ -8,7 +8,7 @@ import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 
-public abstract class AbstractGenericLinePanel<T extends RNGTag> extends AbstractPanel<T>{
+public abstract class ViewAbstractGenericLinePanel<T extends RNGTag> extends AbstractPanel<T>{
 
 	protected Panel labelPanel;
 	protected Panel defPanel;
@@ -19,7 +19,7 @@ public abstract class AbstractGenericLinePanel<T extends RNGTag> extends Abstrac
 	/** The Constant NORMALIZE_DOT_SEPARATOR_SIZE. */
 	private static final int NORMALIZE_DOT_SEPARATOR_SIZE = 70;
 	
-	protected  AbstractGenericLinePanel(T tag) {
+	protected  ViewAbstractGenericLinePanel(T tag) {
 		super(tag);
 		
 		labelPanel = new SimplePanel();
@@ -39,11 +39,13 @@ public abstract class AbstractGenericLinePanel<T extends RNGTag> extends Abstrac
 		defPanel.addStyleName("line-generic-definition-panel-before");
 		afterDotsPanel.addStyleName("horizontal-panel");
 		
-		container = new HorizontalPanel();
+		Panel line = new HorizontalPanel();
 		
-		container.add(beforeDotsPanel);
-		container.add(dotsPanel);
-		container.add(afterDotsPanel);
+		line.add(beforeDotsPanel);
+		line.add(dotsPanel);
+		line.add(afterDotsPanel);
+		
+		container.add(line);
 	}
 	
 	@Override
