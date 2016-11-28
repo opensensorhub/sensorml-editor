@@ -1,8 +1,5 @@
 package com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit;
 
-import java.util.List;
-
-import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGOptional;
 import com.sensia.relaxNG.RNGTag;

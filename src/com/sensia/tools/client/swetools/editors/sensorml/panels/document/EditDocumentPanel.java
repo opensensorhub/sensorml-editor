@@ -53,6 +53,8 @@ public class EditDocumentPanel extends DocumentPanel{
 	@Override
 	public void addInnerElement(IPanel element) {
 		RNGTag tag = element.getTag();
+		boolean found = false;
+		
 		if(tag instanceof RNGZeroOrMore || tag instanceof RNGOptional) {
 			/** look for:
 			 * <gml:description>
@@ -66,7 +68,7 @@ public class EditDocumentPanel extends DocumentPanel{
 			    </sml:KeywordList>
 			  </sml:keywords>
 			 **/
-			boolean found = false;
+			
 			List<RNGTag> children = null;
 			if(tag instanceof RNGZeroOrMore) {
 				children = ((RNGZeroOrMore)tag).getChildren();
@@ -76,7 +78,6 @@ public class EditDocumentPanel extends DocumentPanel{
 			
 			for(RNGTag child : children ){
 				String name = child.toString();
-				
 				if(child instanceof RNGRef) {
 					// split namespace
 					String[] split = child.toString().split("\\.");
@@ -85,29 +86,36 @@ public class EditDocumentPanel extends DocumentPanel{
 					} 
 				}
 				
-				if(name.equals("description")) {
-					headerDocumentPanel.setDescription(element.getPanel());
-					found = true;
-				} else if(name.equals("identifier")) {
-					headerDocumentPanel.addIdentifier(element.getPanel());
-					found = true;
-				} else if(name.equals("name")){
-					headerDocumentPanel.addTitle(element.getPanel());
-					found = true;
-				} else if(name.equals("keywords")){
-					headerDocumentPanel.addKeywords(element.getPanel());
-					found = true;
-				}
+				//
+				found = handleElement(name, element);
 			}
-			
-			if(!found) {
-				super.addInnerElement(element);
-			}
-		} else if(element.getName().equals("identifier")){
-			headerDocumentPanel.addIdentifier(element.getPanel());
 		} else {
-			super.addInnerElement(element);
+			found = handleElement(element.getName(), element);
 		}
+		
+		if(!found) {
+			container.add(element.getPanel());
+		}
+	}
+	
+	private boolean handleElement(String name,IPanel element) {
+		boolean found = false;
+		
+		if(name.equals("description")) {
+			headerDocumentPanel.setDescription(element.getPanel());
+			found = true;
+		} else if(name.equals("identifier")) {
+			headerDocumentPanel.addIdentifier(element.getPanel());
+			found = true;
+		} else if(name.equals("name")){
+			headerDocumentPanel.addTitle(element.getPanel());
+			found = true;
+		} else if(name.equals("keywords")){
+			headerDocumentPanel.addKeywords(element.getPanel());
+			found = true;
+		}
+		
+		return found;
 	}
 	
 	@Override
