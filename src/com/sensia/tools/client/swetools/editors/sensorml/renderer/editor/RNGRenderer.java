@@ -220,9 +220,8 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	public void visit(RNGZeroOrMore zeroOrMore) {
 		push(new RNGZeroOrMorePanel(zeroOrMore));
 		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
-		int index = 0;
 		for(List<RNGTag> tags : patternInstances) {
-			this.pushAndVisitChildren(new RNGZeroOrMorePatternPanel(zeroOrMore,index++),tags);
+			this.visitChildren(tags);
 		}
 	}
 	

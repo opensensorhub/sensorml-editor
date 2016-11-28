@@ -3,7 +3,6 @@ package com.sensia.tools.client.swetools.editors.sensorml.panels.rng;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -21,12 +20,8 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 
 	private Panel patternContainer;
 	
-	private List<RNGTag> patternTags;
-	
 	public RNGZeroOrMorePatternPanel(final RNGZeroOrMore tag,final int indexPattern) {
 		super(tag);
-		
-		patternTags = new ArrayList<RNGTag>();
 		
 		patternContainer = new VerticalPanel();
 		
@@ -68,7 +63,6 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
 		patternContainer.add(element.getPanel());
-		patternTags.add(element.getTag());
 	}
 
 	@Override

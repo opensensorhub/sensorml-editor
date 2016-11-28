@@ -16,13 +16,13 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 
 	private VerticalPanel patternContainer;
+	private int nbPattern = 0;
 	
 	public RNGZeroOrMorePanel(final RNGZeroOrMore tag) {
 		super(tag);
 		
 		patternContainer = new VerticalPanel();
 		patternContainer.addStyleName("rng-zeroormore-pattern");
-		
 		final String label = Utils.findLabel(tag);
 		Label addButton = new Label();
 		addButton.addStyleName("rng-optional-select");
@@ -53,7 +53,11 @@ public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		patternContainer.add(element.getPanel());
+		//patternContainer.add(element.getPanel());
+		RNGZeroOrMorePatternPanel patternPanel = new RNGZeroOrMorePatternPanel(getTag(), nbPattern++);
+		patternPanel.addElement(element);
+		
+		patternContainer.add(patternPanel.getPanel());
 	}
 
 	@Override
