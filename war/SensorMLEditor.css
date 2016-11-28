@@ -186,10 +186,10 @@ html>body .gwt-DecoratedTabBar {
   width: 16px;
   height: 16px;
   background-repeat: no-repeat;
-  background-image: url(sensormleditor/images/add.gif);
+  background-image: url(sensormleditor/images/add-icon.png);
   cursor: hand;
   cursor: pointer;
-  margin-top: 1px;
+  margin-top: 4px;
   /*margin-bottom: 5px;
   margin-right: 5px;*/
 }
@@ -208,10 +208,10 @@ html>body .gwt-DecoratedTabBar {
   width: 16px;
   height: 16px;
   background-repeat: no-repeat;
-  background-image: url(sensormleditor/images/remove.gif);
+  background-image: url(sensormleditor/images/remove-icon.png);
   cursor: hand;
   cursor: pointer;
-  margin-top: 2px;
+  margin-top: 4px;
   margin-left: 5px;
 }
 
@@ -645,10 +645,10 @@ table.sml-mode-nolabel-vertical-panel {
   width: 16px;
   height: 16px;
   background-repeat: no-repeat;
-  background-image: url(sensormleditor/images/add.gif);
+  background-image: url(sensormleditor/images/add-icon.png);
   cursor: hand;
   cursor: pointer;
-  margin-top: 1px;
+  margin-top: 4px;
 }
 
 .rng-optional-select-remove {
@@ -656,10 +656,10 @@ table.sml-mode-nolabel-vertical-panel {
   width: 16px;
   height: 16px;
   background-repeat: no-repeat;
-  background-image: url(sensormleditor/images/remove.gif);
+  background-image: url(sensormleditor/images/remove-icon.png);
   cursor: hand;
   cursor: pointer;
-  margin-top: 5px;
+  margin-top: 4px;
 }
 
 .rng-optional-pattern {
@@ -677,7 +677,6 @@ table.sml-mode-nolabel-vertical-panel {
 .rng-zeroormore-pattern {
 	margin-top:5px;
 	margin-bottom:5px;
-	margin-left:22px;
 }
 
 .textbox {
