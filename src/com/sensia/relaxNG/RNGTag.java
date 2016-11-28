@@ -38,8 +38,6 @@ public abstract class RNGTag extends Observable implements  ITag
     protected RNGTag parent;
     protected boolean disabled;
     
-    
-    
     public RNGTag()
     {
         super();
@@ -85,7 +83,6 @@ public abstract class RNGTag extends Observable implements  ITag
     {
         return disabled;
     }
-
 
     public void setDisabled(boolean disabled)
     {

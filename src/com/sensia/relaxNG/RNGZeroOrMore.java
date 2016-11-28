@@ -68,6 +68,10 @@ public class RNGZeroOrMore extends RNGTagList
     }
 
 
+    public void setPatternInstances(List<List<RNGTag>> patternInstances) {
+    	this.patternInstances = patternInstances;
+    }
+    
     @Override
     public void accept(RNGTagVisitor visitor)
     {

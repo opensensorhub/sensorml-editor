@@ -51,6 +51,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericV
 import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGChoicePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGOptionalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGZeroOrMorePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGZeroOrMorePatternPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDAnyURIPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDDateTimePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDDecimalPanel;
@@ -159,10 +160,6 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	@Override
 	public void visit(RNGChoice choice) {
 		RNGTag selectedPattern = choice.getSelectedPattern();
-		/*push(new RNGChoicePanel(choice));
-		if(selectedPattern != null) {
-			selectedPattern.accept(this);
-		}*/
 		if(selectedPattern != null) {
 			pushAndVisitChildren(new RNGChoicePanel(choice), selectedPattern);
 		} else {
@@ -176,19 +173,10 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGOptional optional) {
-		/*IPanel widget = new SensorOptionalWidget(optional);
-		push(widget);
-		if(optional.isSelected()){
-			this.visitChildren(optional.getChildren());
-		}
-		
-		
-		makeTagObservable(optional);*/
 		push(new RNGOptionalPanel(optional));
 		if(optional.isSelected()){
 			this.visitChildren(optional.getChildren());
 		}
-		
 	}
 
 	/* (non-Javadoc)
@@ -223,7 +211,6 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	@Override
 	public void visit(RNGOneOrMore oneOrMore) {
 		this.visit((RNGZeroOrMore) oneOrMore);
-		//visitChildren(oneOrMore.getChildren());
 	}
 
 	/* (non-Javadoc)
@@ -231,22 +218,12 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGZeroOrMore zeroOrMore) {
-		/*IPanel widget = new SensorZeroOrMoreWidget(zeroOrMore);
-		push(widget);
-		// display current instances
-		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
-		for(List<RNGTag> tags : patternInstances) {
-			this.visitChildren(tags);
-		}
-		
-		makeTagObservable(zeroOrMore);*/
-		GWT.log("Visit new zeroOrMore");
 		push(new RNGZeroOrMorePanel(zeroOrMore));
 		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
+		int index = 0;
 		for(List<RNGTag> tags : patternInstances) {
-			this.visitChildren(tags);
+			this.pushAndVisitChildren(new RNGZeroOrMorePatternPanel(zeroOrMore,index++),tags);
 		}
-		
 	}
 	
 	/* (non-Javadoc)
