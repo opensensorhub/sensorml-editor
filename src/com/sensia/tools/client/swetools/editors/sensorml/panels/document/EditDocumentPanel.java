@@ -87,14 +87,14 @@ public class EditDocumentPanel extends DocumentPanel{
 				}
 				
 				//
-				found = handleElement(name, element);
+				found |= handleElement(name, element);
 			}
 		} else {
 			found = handleElement(element.getName(), element);
 		}
 		
 		if(!found) {
-			container.add(element.getPanel());
+			super.addInnerElement(element);
 		}
 	}
 	
