@@ -30,8 +30,8 @@ public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 		hPanel.add(addButton);
 		hPanel.add(new Label(label));
 		
-		container.add(hPanel);
 		container.add(patternContainer);
+		container.add(hPanel);
 		
 		addButton.addClickHandler(new ClickHandler() {
 			

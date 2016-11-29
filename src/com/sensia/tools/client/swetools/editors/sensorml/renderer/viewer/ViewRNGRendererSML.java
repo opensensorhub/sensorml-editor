@@ -63,16 +63,16 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.view.ViewX
 public class ViewRNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
 
 	/** The render sections list. */
-	private Map<String,String> renderSectionsList = new HashMap<String,String>();
+	protected Map<String,String> renderSectionsList = new HashMap<String,String>();
 	
 	/** The render elements. */
-	private Map<String,RENDER_ELEMENT_TYPE> renderElements= new HashMap<String,RENDER_ELEMENT_TYPE>();
+	protected Map<String,RENDER_ELEMENT_TYPE> renderElements= new HashMap<String,RENDER_ELEMENT_TYPE>();
 	
 	/** The root sections list. */
-	private Set<String> rootSectionsList = new HashSet<String>();
+	protected Set<String> rootSectionsList = new HashSet<String>();
 	
 	/** The skip list. */
-	private Set<String> skipList = new HashSet<String>();
+	protected Set<String> skipList = new HashSet<String>();
 	
 	/** The Constant SML_NS_1. */
 	protected final static String SML_NS_1 = "http://www.opengis.net/sensorML/1.0.1";
@@ -98,7 +98,7 @@ public class ViewRNGRendererSML extends RNGRendererSWE implements RNGTagVisitor 
 	/**
 	 * The Enum RENDER_ELEMENT_TYPE.
 	 */
-	enum RENDER_ELEMENT_TYPE {
+	protected enum RENDER_ELEMENT_TYPE {
 		
 		/** The line. */
 		LINE,

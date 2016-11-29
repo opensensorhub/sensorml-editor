@@ -208,7 +208,7 @@ html>body .gwt-DecoratedTabBar {
   width: 16px;
   height: 16px;
   background-repeat: no-repeat;
-  background-image: url(sensormleditor/images/remove-icon.png);
+  background-image: url(sensormleditor/images/remove.gif);
   cursor: hand;
   cursor: pointer;
   margin-top: 4px;
@@ -656,7 +656,7 @@ table.sml-mode-nolabel-vertical-panel {
   width: 16px;
   height: 16px;
   background-repeat: no-repeat;
-  background-image: url(sensormleditor/images/remove-icon.png);
+  background-image: url(sensormleditor/images/remove.gif);
   cursor: hand;
   cursor: pointer;
   margin-top: 4px;
