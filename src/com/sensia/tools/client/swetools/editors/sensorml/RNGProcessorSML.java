@@ -13,6 +13,7 @@ package com.sensia.tools.client.swetools.editors.sensorml;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gwt.core.shared.GWT;
 import com.sensia.gwt.relaxNG.RNGParser;
 import com.sensia.gwt.relaxNG.RNGParserCallback;
 import com.sensia.gwt.relaxNG.XMLSensorMLParser;
@@ -20,6 +21,7 @@ import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.ViewerPanel.MODE;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.EditRNGRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.ViewRNGRendererSML;
@@ -39,7 +41,7 @@ public class RNGProcessorSML {
 	/** The mode. */
 	private MODE mode = MODE.VIEW;
 	
-	private int rootMinLevel = 1;
+	protected IRefreshHandler refreshHandler;
 	
 	/**
 	 * Instantiates a new RNG processor sml.
@@ -120,10 +122,12 @@ public class RNGProcessorSML {
 		if(mode == MODE.EDIT){
 			EditRNGRendererSML renderer = new EditRNGRendererSML();
 			renderer.setObservers(observers);
+			renderer.setRefreshHandler(refreshHandler);
 			renderer.visit(grammar);
 			root = renderer.getRoot();
 		} else if(mode == MODE.VIEW) {
 			ViewRNGRendererSML renderer = new ViewRNGRendererSML();
+			renderer.setRefreshHandler(refreshHandler);
 			renderer.setObservers(observers);
 			renderer.visit(grammar);
 			root = renderer.getRoot();
@@ -148,6 +152,7 @@ public class RNGProcessorSML {
 			return renderer.getRoot();
 		} else {
 			EditRNGRendererSML renderer = new EditRNGRendererSML();
+			renderer.setRefreshHandler(refreshHandler);
 			renderer.visit(tag);
 			if(tag instanceof RNGGrammar) {
 				setLoadedGrammar((RNGGrammar) tag);
@@ -196,7 +201,11 @@ public class RNGProcessorSML {
 		this.observers.add(observer);
 	}
 	
-	public void setRootMinLevel(int rootMinLevel) {
-		this.rootMinLevel = rootMinLevel;
+	public IRefreshHandler getRefreshHandler() {
+		return refreshHandler;
+	}
+
+	public void setRefreshHandler(IRefreshHandler refreshHandler) {
+		this.refreshHandler = refreshHandler;
 	}
 }

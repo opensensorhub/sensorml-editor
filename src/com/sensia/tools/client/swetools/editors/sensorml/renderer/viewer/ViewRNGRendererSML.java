@@ -111,6 +111,8 @@ public class ViewRNGRendererSML extends RNGRendererSWE implements RNGTagVisitor 
 		
 		GENERIC_VERTICAL_LIST,
 		
+		DYNAMIC_DISCLOSURE,
+		
 		DISCLOSURE
 	}
 	
@@ -146,24 +148,24 @@ public class ViewRNGRendererSML extends RNGRendererSWE implements RNGTagVisitor 
 		renderSectionsList.put("modes", "Modes");*/
 		
 		//render default defined list elements
-		renderElements.put("identification", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("typeOf", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("characteristics", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("capabilities", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("outputs", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("classification", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("inputs", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("localReferenceFrame", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("parameters", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("boundedBy", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("history", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("modes", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("configuration", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("position", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("documentation", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("contacts", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("connections", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("DataRecord", RENDER_ELEMENT_TYPE.DISCLOSURE);
+		renderElements.put("identification", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
+		renderElements.put("typeOf", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
+		renderElements.put("characteristics", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
+		renderElements.put("capabilities", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
+		renderElements.put("outputs", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
+		renderElements.put("classification", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
+		renderElements.put("inputs", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
+		renderElements.put("localReferenceFrame", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
+		renderElements.put("parameters", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
+		renderElements.put("boundedBy", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
+		renderElements.put("history", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
+		renderElements.put("modes", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
+		renderElements.put("configuration", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
+		renderElements.put("position", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
+		renderElements.put("documentation", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
+		renderElements.put("contacts", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
+		renderElements.put("connections", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
+		renderElements.put("DataRecord", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
 		
 		skipList.add("OutputList");
 		skipList.add("InputList");
@@ -198,13 +200,13 @@ public class ViewRNGRendererSML extends RNGRendererSWE implements RNGTagVisitor 
 		renderElements.put("ContactList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL_LIST);
 		renderElements.put("EventList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL_LIST);*/
 		
-		renderElements.put("Settings", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("input", RENDER_ELEMENT_TYPE.DISCLOSURE);
+		renderElements.put("Settings", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
+		renderElements.put("input", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
 		//renderElements.put("parameter", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("SpatialFrame", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("characteristic", RENDER_ELEMENT_TYPE.DISCLOSURE);
-		renderElements.put("connection", RENDER_ELEMENT_TYPE.DISCLOSURE); //TODO: should support more than one ?
-		renderElements.put("output", RENDER_ELEMENT_TYPE.DISCLOSURE);
+		renderElements.put("SpatialFrame", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
+		renderElements.put("characteristic", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
+		renderElements.put("connection", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE); //TODO: should support more than one ?
+		renderElements.put("output", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
 		
 		renderElements.put("KeywordList", RENDER_ELEMENT_TYPE.GENERIC_HORIZONTAL); 
 		
@@ -295,7 +297,8 @@ public class ViewRNGRendererSML extends RNGRendererSWE implements RNGTagVisitor 
 			switch(type) {
 				case GENERIC_VERTICAL : panel = renderVerticalPanel(elt);break;
 				case GENERIC_HORIZONTAL : panel = renderHorizontalWidget(elt);break;
-				case DISCLOSURE : panel = renderSection(elt);break;
+				case DYNAMIC_DISCLOSURE : panel = renderDynamicDisclosure(elt);break;
+				case DISCLOSURE : panel = renderDisclosure(elt);break;
 				//case LINE : widget = renderLineWidget(eltName, ns, TAG_TYPE.ELEMENT);break;
 				default:break;
 			}

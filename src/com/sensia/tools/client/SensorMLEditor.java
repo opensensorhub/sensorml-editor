@@ -63,6 +63,7 @@ public class SensorMLEditor implements EntryPoint {
 	private Widget getViewer(){
 		//viewerPanel = new ViewerPanel(sgmlEditorProcessor);
 		viewerPanel = ViewerPanel.getInstance(sgmlEditorProcessor);
+		sgmlEditorProcessor.setRefreshHandler(viewerPanel);
 		// Create a Dock Panel
 	    DockPanel dock = new DockPanel();
 	    dock.setStyleName("cw-DockPanel");

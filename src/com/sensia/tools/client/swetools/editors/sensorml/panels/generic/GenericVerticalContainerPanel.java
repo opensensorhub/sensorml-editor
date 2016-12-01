@@ -33,6 +33,11 @@ public class GenericVerticalContainerPanel extends AbstractPanel<RNGTag>{
 		container.addStyleName("vertical-generic-panel");
 	}
 
+	public GenericVerticalContainerPanel() {
+		container = new VerticalPanel();
+		container.addStyleName("vertical-generic-panel");
+	}
+	
 	/* (non-Javadoc)
 	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#addSensorWidget(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget)
 	 */
@@ -51,6 +56,10 @@ public class GenericVerticalContainerPanel extends AbstractPanel<RNGTag>{
 	
 	@Override
 	public String getName() {
-		return getTag().toString();
+		if(getTag() == null) {
+			return "Generic vertical container";
+		} else {
+			return getTag().toString();
+		}
 	}
 }

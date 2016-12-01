@@ -41,10 +41,12 @@ import com.sensia.relaxNG.XSDInteger;
 import com.sensia.relaxNG.XSDString;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.EditValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ViewValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.AttributePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DynamicDisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericHorizontalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGChoicePanel;
@@ -77,12 +79,14 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDStringPan
 public abstract class RNGRenderer implements RNGTagVisitor {
 	
 	/** The stack. */
-	private Stack<IPanel<? extends RNGTag>> stack;
+	protected Stack<IPanel<? extends RNGTag>> stack;
 	
 	/** The grammar. */
 	private RNGGrammar grammar;
 	
 	private List<IObserver> observers;
+	
+	protected IRefreshHandler refreshHandler;
 	
 	/**
 	 * Instantiates a new RNG renderer.
@@ -149,7 +153,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGElement elt) {
-		pushAndVisitChildren(new DisclosureElementPanel(elt), elt.getChildren());
+		pushAndVisitChildren(new DynamicDisclosureElementPanel(elt), elt.getChildren());
 	}
 
 	/* (non-Javadoc)
@@ -419,7 +423,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	}
 	
 	protected IPanel<RNGElement> renderVerticalElementListPanel(RNGElement tag) {
-		return new DisclosureElementPanel(tag);
+		return new DynamicDisclosureElementPanel(tag);
 	}
 	/**
 	 * Render horizontal widget.
@@ -429,11 +433,16 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 * @param type the type
 	 * @return the i sensor widget
 	 */
-	protected IPanel<RNGTag> renderHorizontalWidget(RNGTag tag) {
+	protected IPanel<? extends RNGTag> renderHorizontalWidget(RNGTag tag) {
 		return new GenericHorizontalContainerPanel(tag);
 	}
 	
-	protected IPanel<RNGElement> renderSection(RNGElement tag) {
+	protected IPanel<RNGElement> renderDynamicDisclosure(RNGElement tag) {
+		//return new SectionPanel(tag);
+		return new DynamicDisclosureElementPanel(tag);
+	}
+	
+	protected IPanel<RNGElement> renderDisclosure(RNGElement tag) {
 		//return new SectionPanel(tag);
 		return new DisclosureElementPanel(tag);
 	}
@@ -482,5 +491,13 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 		for(IObserver o : this.observers) {
 			tag.addObserver(o);
 		}
+	}
+
+	public IRefreshHandler getRefreshHandler() {
+		return refreshHandler;
+	}
+
+	public void setRefreshHandler(IRefreshHandler refreshHandler) {
+		this.refreshHandler = refreshHandler;
 	}
 }

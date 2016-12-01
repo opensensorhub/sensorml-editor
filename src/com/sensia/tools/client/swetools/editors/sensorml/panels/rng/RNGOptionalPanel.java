@@ -15,31 +15,38 @@ import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.ViewerPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DynamicDisclosureElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.edit.EditDisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 
 	private Panel patternContainer;
+	private Panel headerPanel;
+	private Label addButton;
 	
-	public RNGOptionalPanel(final RNGOptional tag) {
+	public RNGOptionalPanel(final RNGOptional tag,final IRefreshHandler refreshHandler) {
 		super(tag);
-		patternContainer = new VerticalPanel();
+		container = new HorizontalPanel();
+		patternContainer = new HorizontalPanel();
 		
 		final String label = Utils.findLabel(tag);
 		
-		final Label addButton = new Label();
-		Panel hPanel = new HorizontalPanel();
-		hPanel.add(addButton);
-		hPanel.add(new Label(label));
+		addButton = new Label();
+		headerPanel = new HorizontalPanel();
+		headerPanel.add(addButton);
 		
-		container.add(hPanel);
+		container.add(headerPanel);
 		container.add(patternContainer);
 		
 		if(tag.isSelected()) {
 			addButton.addStyleName("rng-optional-select-remove");
 		} else {
 			addButton.addStyleName("rng-optional-select-add");
+			headerPanel.add(new Label(label));
 		}
 		
 		addButton.addClickHandler(new ClickHandler() {
@@ -58,7 +65,12 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 				}
 				patternContainer.add(newRenderer.getRoot().getPanel());*/
 				//TODO: use MVC or MVP to update the view
-				ViewerPanel.getInstance(null).redraw();
+				//ViewerPanel.getInstance(null).redraw();
+				
+				if(refreshHandler != null) {
+					GWT.log("refresh");
+					refreshHandler.refresh();
+				}
 				
 			}
 		});
@@ -73,7 +85,18 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		patternContainer.add(element.getPanel());
+		if(element instanceof EditDisclosureElementPanel) {
+			
+			element.getPanel().removeStyleName("disclosure-noborder");
+			element.getPanel().addStyleName("section-panel disclosure-border");
+			
+			headerPanel.clear();
+			headerPanel.add(addButton);
+			headerPanel.add(element.getPanel());
+			headerPanel.addStyleName("rng-disclosure");
+		} else {
+			patternContainer.add(element.getPanel());
+		}
 	}
 
 	@Override

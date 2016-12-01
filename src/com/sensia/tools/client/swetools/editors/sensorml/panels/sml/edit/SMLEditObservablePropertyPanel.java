@@ -17,20 +17,28 @@ public class SMLEditObservablePropertyPanel extends EditAbstractGenericLinePanel
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
 		if(element.getTag() instanceof RNGOptional && ((RNGOptional)element.getTag()).isSelected()) {
+			container.add(element.getPanel());
+			
 			for(IPanel<?> child : element.getElements()){
 				String name = child.getName();
 				if(name.equals("label")) {
-					labelPanel.add(element.getPanel());
+					labelPanel.add(child.getPanel());
 				} else if(name.equals("definition")) {
-					defPanel.add(element.getPanel());
+					defPanel.add(child.getPanel());
 				} else if(name.equals("description")) {
-					afterDotsPanel.add(element.getPanel());
-				} else {
-					container.add(element.getPanel());
+					afterDotsPanel.add(child.getPanel());
 				}
 			}
 		} else {
-			container.add(element.getPanel());
+			if(element.getName().equals("label")) {
+				labelPanel.add(element.getPanel());
+			} else if(element.getName().equals("definition")) {
+				defPanel.add(element.getPanel());
+			} else if(element.getName().equals("description")) {
+				afterDotsPanel.add(element.getPanel());
+			} else {
+				container.add(element.getPanel());
+			}
 		}
 	}
 

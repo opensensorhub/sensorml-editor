@@ -43,7 +43,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.source.UrlSource
  * @author Mathieu Dhainaut
  *
  */
-public class ViewerPanel extends Composite implements IParsingObserver, IObserver {
+public class ViewerPanel extends Composite implements IParsingObserver, IObserver, IRefreshHandler {
 	private static final long serialVersionUID = -7684111574093800909L;
 
 	//the panel in charge of displaying the HTML content
@@ -66,7 +66,7 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	protected ViewerPanel(final RNGProcessorSML sgmlEditorProcessor){
 		sgmlEditorProcessor.addObserver(this);
 		this.smlEditorProcessor = sgmlEditorProcessor;
-
+		this.smlEditorProcessor.setRefreshHandler(this);
 		final Panel viewXmlPanel = getXMLViewPanel();
 
 		final VerticalPanel verticalPanel = new VerticalPanel();
@@ -167,6 +167,13 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 			public void onClick(ClickEvent event) {
 				if(root != null){
 					MODE mode = (editCheckbox.isChecked()) ? MODE.EDIT : MODE.VIEW;
+					if(mode == MODE.EDIT){
+						mainPanel.removeStyleName("viewer");
+						mainPanel.addStyleName("editor");
+					} else if(mode == MODE.VIEW) {
+						mainPanel.removeStyleName("editor");
+						mainPanel.addStyleName("viewer");
+					}
 					smlEditorProcessor.setMode(mode);
 					redraw();
 				}
@@ -241,6 +248,16 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	}
 	
 	public void redraw() {
+		// check styles
+		MODE mode = (editCheckbox.isChecked()) ? MODE.EDIT : MODE.VIEW;
+		if(mode == MODE.EDIT){
+			mainPanel.removeStyleName("viewer");
+			mainPanel.addStyleName("editor");
+		} else if(mode == MODE.VIEW) {
+			mainPanel.removeStyleName("editor");
+			mainPanel.addStyleName("viewer");
+		}
+		
 		redraw((editCheckbox.getValue())? MODE.EDIT:MODE.VIEW);
 	}
 	
@@ -261,5 +278,10 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	public void setMode(MODE mode){
 		smlEditorProcessor.setMode(mode);
 		editCheckbox.setValue((mode == MODE.EDIT)?true:false);
+	}
+
+	@Override
+	public void refresh() {
+		redraw((editCheckbox.getValue())? MODE.EDIT:MODE.VIEW);
 	}
 }

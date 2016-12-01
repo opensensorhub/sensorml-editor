@@ -536,7 +536,7 @@ table.sml-mode-nolabel-vertical-panel {
 
 /******** NEW ********/
 .gwt-DisclosurePanel .content {
-	padding: 0px 0px 0px 0px !important;
+	/*padding: 0px 0px 0px 0px !important;*/
 	margin-left:10px;
 		
 }
@@ -544,6 +544,11 @@ table.sml-mode-nolabel-vertical-panel {
 .viewer {
 	margin-top : 30px;
 	margin-left: 10px;
+}
+
+.editor {
+	margin-top : 30px;
+	margin-left: 30px;
 }
 /*** HEADER ***/
 
@@ -560,7 +565,7 @@ table.sml-mode-nolabel-vertical-panel {
 
 .section-panel .header td {
 	font-weight:bold;
-	font-size:14px;
+	font-size:17px;
 }
 
 .section-panel .header {
@@ -591,7 +596,7 @@ table.sml-mode-nolabel-vertical-panel {
 /** LINE **/
 
 .line-generic-edit {
-	margin-top:10px;
+	margin-top:-15px;
 }
 
 .line-generic-panel-before {
@@ -605,7 +610,7 @@ table.sml-mode-nolabel-vertical-panel {
 }
 
 .line-generic-dots-edit {
-	margin-top:20px;
+	
 }
 
 .line-generic-definition-panel-before-edit {
@@ -614,7 +619,7 @@ table.sml-mode-nolabel-vertical-panel {
 }
 
 .line-generic-definition-panel-before-edit .ontology-icon {
-	margin-top:10px;
+	margin-top:30px;
 }
 	
 /** DISCLOSURE **/
@@ -631,6 +636,7 @@ table.sml-mode-nolabel-vertical-panel {
 /** remove disclosure border **/
 .disclosure-noborder .content {
 	border-left:none !important;
+	padding:4px 0px 4px 8px !important;
 }
 .disclosure-generic .disclosure-noborder {
 	margin-left:10px !important;
@@ -680,6 +686,48 @@ table.sml-mode-nolabel-vertical-panel {
 }
 
 .textbox {
-	margin-top:5px;
-	margin-bottom:5px;
+	/* margin-top: 5px; */
+    /* margin-bottom: 5px; */
+    padding: 0px 0px !important;
+    width: 221px;
+    background: transparent url(sensormleditor/images/bg.jpg) no-repeat;
+    color: #747862;
+    height: 20px;
+    /* border: 0 !important; */
+    padding: 4px 8px !important;
+    margin-bottom: 0px;
+    border-left:none !important;
+}
+
+input:focus { 
+  border-color: rgba(38, 155, 201, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+  webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(38, 155, 201, 0.6);
+  moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(38, 155, 201, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(38, 155, 201, 0.6);
+  border-left:1px !important;
+}
+
+.advanced-dialog {
+	width: 900px;
+    height: 950px;
+    overflow: auto;
+}
+
+.advanced-dialog-dots {
+	cursor:pointer;
+}
+
+.rng-disclosure {
+	margin-left:-25px;
+}
+
+.rng-disclosure >tbody>tr>td{
+	vertical-align:top !important;
+}
+
+/* advanced button associated to the disclosure element */
+.rng-advanced-button-section {
+	margin-bottom:10px;
 }

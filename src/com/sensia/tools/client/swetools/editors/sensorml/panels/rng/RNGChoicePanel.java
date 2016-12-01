@@ -12,6 +12,7 @@ import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.ViewerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -20,7 +21,7 @@ public class RNGChoicePanel extends AbstractPanel<RNGChoice>{
 	private ListBox choices;
 	private Panel patternContainer;
 	
-	public RNGChoicePanel(final RNGChoice tag) {
+	public RNGChoicePanel(final RNGChoice tag,final IRefreshHandler refreshHandler) {
 		super(tag);
 		patternContainer = new VerticalPanel();
 		patternContainer.addStyleName("rng-choice-pattern");
@@ -55,7 +56,10 @@ public class RNGChoicePanel extends AbstractPanel<RNGChoice>{
 					RNGChoicePanel.this.getTag().setSelectedIndex(choices.getSelectedIndex()-1);
 					//tag.getSelectedPattern().accept(visitor);
 				}
-				ViewerPanel.getInstance(null).redraw();
+				//ViewerPanel.getInstance(null).redraw();
+				if(refreshHandler != null) {
+					refreshHandler.refresh();
+				}
 			}
 		});
 	}

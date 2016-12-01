@@ -15,6 +15,13 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.DialogBox;
+import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGData;
@@ -38,13 +45,19 @@ import com.sensia.relaxNG.XSDDecimal;
 import com.sensia.relaxNG.XSDDouble;
 import com.sensia.relaxNG.XSDInteger;
 import com.sensia.relaxNG.XSDString;
+import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
+import com.sensia.tools.client.swetools.editors.sensorml.listeners.ICallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.EditValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ViewValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.AttributePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeDefinitionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeReferenceFramePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DynamicDisclosureElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.edit.EditDisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.document.EditDocumentPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.EditGenericOptionalSummaryPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.EditGenericListPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGChoicePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGOptionalPanel;
@@ -59,7 +72,9 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDDecimalPa
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDDoublePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDIntegerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDStringPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRNGRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.ViewRNGRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**
  * <p>
@@ -82,12 +97,22 @@ public class EditRNGRendererSML extends ViewRNGRendererSML implements RNGTagVisi
 
 	protected Map<String,RENDER_ELEMENT_TYPE_EDIT> renderEditElements= new HashMap<String,RENDER_ELEMENT_TYPE_EDIT>();
 	
+	private boolean skipRNGTags = false;
+	
 	enum RENDER_ELEMENT_TYPE_EDIT {
-		GENERIC_LIST
+		GENERIC_LIST,
+		SECTION
 	}
 
 	public EditRNGRendererSML() {
-		renderEditElements.put("KeywordList", RENDER_ELEMENT_TYPE_EDIT.GENERIC_LIST); 
+		renderEditElements.put("keywords", RENDER_ELEMENT_TYPE_EDIT.SECTION); 
+		renderEditElements.put("inputs", RENDER_ELEMENT_TYPE_EDIT.SECTION);
+		renderEditElements.put("parameters", RENDER_ELEMENT_TYPE_EDIT.SECTION);
+		renderEditElements.put("outputs", RENDER_ELEMENT_TYPE_EDIT.SECTION);
+		renderEditElements.put("characteristics", RENDER_ELEMENT_TYPE_EDIT.SECTION);
+		renderEditElements.put("capabilities", RENDER_ELEMENT_TYPE_EDIT.SECTION);
+		renderEditElements.put("identification", RENDER_ELEMENT_TYPE_EDIT.SECTION);
+		renderEditElements.put("classification", RENDER_ELEMENT_TYPE_EDIT.SECTION);
 	}
 	
 	/* (non-Javadoc)
@@ -109,16 +134,20 @@ public class EditRNGRendererSML extends ViewRNGRendererSML implements RNGTagVisi
 			return;
 		}
 		
-		if(renderElements.containsKey(eltName)) {
+		if(renderEditElements.containsKey(eltName)) {
 			RENDER_ELEMENT_TYPE_EDIT type = renderEditElements.get(eltName);
 			IPanel<? extends RNGTag> panel = null;
 			
 			switch(type) {
 				case GENERIC_LIST : panel = renderGenericListPanel(elt);break;
+				case SECTION	: panel = renderGenericSectionPanel(elt);break;
 				default:break;
 			}
-			if(type == RENDER_ELEMENT_TYPE_EDIT.GENERIC_LIST) {
-				push(panel);
+			if(type == RENDER_ELEMENT_TYPE_EDIT.GENERIC_LIST ||
+			   type == RENDER_ELEMENT_TYPE_EDIT.SECTION	) {
+				skipRNGTags = true;
+				pushAndVisitChildren(panel,elt.getChildren());
+				skipRNGTags = false;
 			} else {
 				pushAndVisitChildren(panel, elt.getChildren());
 			}
@@ -136,11 +165,11 @@ public class EditRNGRendererSML extends ViewRNGRendererSML implements RNGTagVisi
 				return;
 			} else if (nsUri.equalsIgnoreCase(SML_NS_1) || nsUri.equalsIgnoreCase(SML_NS_2)) {
 				// handle SML element
-				if(eltName.equalsIgnoreCase("ObservableProperty")) {
-					pushAndVisitChildren(new SMLEditObservablePropertyPanel(elt), elt.getChildren());
-				} else {
+				/*if(eltName.equalsIgnoreCase("ObservableProperty")) {
+					pushAndVisitChildren(new SMLObservablePropertyPanel(elt), elt.getChildren());
+				} else {*/
 					super.visit(elt);
-				}
+				//}
 				return;
 			} else {
 				// handle others
@@ -149,8 +178,110 @@ public class EditRNGRendererSML extends ViewRNGRendererSML implements RNGTagVisi
 			}
 	}
 	
-	protected IPanel<RNGElement> renderGenericListPanel(RNGElement tag) {
-		return new EditGenericListPanel(tag);
+	protected IPanel<RNGElement> renderGenericSectionPanel(final RNGElement tag) {
+		Label label = new Label("");
+		label.addStyleName("rng-advanced-button");
+		
+		IPanel<RNGElement> eltPanel = new EditDisclosureElementPanel(tag,label);
+				
+		label.addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				// create a new Renderer
+				final AdvancedRNGRendererSML renderer = new AdvancedRNGRendererSML();
+				final Panel rootPanel = new VerticalPanel();
+				
+				renderer.setRefreshHandler(new IRefreshHandler() {
+					
+					@Override
+					public void refresh() {
+						renderer.reset();
+						rootPanel.clear();
+						renderer.visitChildren(tag.getChildren());
+						rootPanel.add(renderer.getRoot().getPanel());
+						
+						IRefreshHandler currentHandler = getRefreshHandler();
+						if(currentHandler != null) {
+							currentHandler.refresh();
+						}
+					}
+				});
+
+				//tag.accept(renderer);
+				renderer.visitChildren(tag.getChildren());
+				rootPanel.add(renderer.getRoot().getPanel());
+				
+				DialogBox dialogBox = Utils.createEditDialogBox(rootPanel, "Edit "+tag.getName(), new IButtonCallback(){
+
+					@Override
+					public void onClick() {
+						IRefreshHandler currentHandler = getRefreshHandler();
+						if(currentHandler != null) {
+							currentHandler.refresh();
+						}
+					}
+					
+				});
+			}
+		});
+		return eltPanel;
+	}
+	
+	protected IPanel<RNGElement> renderGenericListPanel(final RNGElement tag) {
+		IPanel<RNGElement> hPanel = (IPanel<RNGElement>) renderHorizontalWidget(tag);
+		Label label = new Label("...");
+		
+		final IPanel<RNGElement> genericListPanel = new EditGenericListPanel(tag);
+		hPanel.addElement(genericListPanel);
+		hPanel.getPanel().add(label);
+		
+		final Panel contentPanel = new VerticalPanel();
+		contentPanel.addStyleName("advanced-dialog");
+		label.addStyleName("advanced-dialog-dots");
+		
+		label.addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				// create a new Renderer
+				final AdvancedRNGRendererSML renderer = new AdvancedRNGRendererSML();
+				final Panel rootPanel = new VerticalPanel();
+				
+				renderer.setRefreshHandler(new IRefreshHandler() {
+					
+					@Override
+					public void refresh() {
+						renderer.reset();
+						rootPanel.clear();
+						tag.accept(renderer);
+						rootPanel.add(renderer.getRoot().getPanel());
+						
+						IRefreshHandler currentHandler = getRefreshHandler();
+						if(currentHandler != null) {
+							currentHandler.refresh();
+						}
+					}
+				});
+
+				tag.accept(renderer);
+				
+				rootPanel.add(renderer.getRoot().getPanel());
+				
+				DialogBox dialogBox = Utils.createEditDialogBox(rootPanel, "Edit "+genericListPanel.getName(), new IButtonCallback(){
+
+					@Override
+					public void onClick() {
+						IRefreshHandler currentHandler = getRefreshHandler();
+						if(currentHandler != null) {
+							currentHandler.refresh();
+						}
+					}
+					
+				});
+			}
+		});
+		return hPanel;
 	}
 	
 	/* (non-Javadoc)
@@ -295,13 +426,16 @@ public class EditRNGRendererSML extends ViewRNGRendererSML implements RNGTagVisi
 	 */
 	@Override
 	public void visit(RNGChoice choice) {
-		RNGTag selectedPattern = choice.getSelectedPattern();
-		if(selectedPattern != null) {
-			pushAndVisitChildren(new RNGChoicePanel(choice), selectedPattern);
+		if(skipRNGTags) {
+			super.visit(choice);
 		} else {
-			push(new RNGChoicePanel(choice));
+			RNGTag selectedPattern = choice.getSelectedPattern();
+			if(selectedPattern != null) {
+				pushAndVisitChildren(new RNGChoicePanel(choice,getRefreshHandler()), selectedPattern);
+			} else {
+				push(new RNGChoicePanel(choice,getRefreshHandler()));
+			}
 		}
-		
 	}
 
 	/* (non-Javadoc)
@@ -309,9 +443,13 @@ public class EditRNGRendererSML extends ViewRNGRendererSML implements RNGTagVisi
 	 */
 	@Override
 	public void visit(RNGOptional optional) {
-		push(new RNGOptionalPanel(optional));
-		if(optional.isSelected()){
-			this.visitChildren(optional.getChildren());
+		if(skipRNGTags) {
+			super.visit(optional);
+		} else {
+			push(new RNGOptionalPanel(optional,getRefreshHandler()));
+			if(optional.isSelected()){
+				this.visitChildren(optional.getChildren());
+			}
 		}
 	}
 
@@ -346,11 +484,16 @@ public class EditRNGRendererSML extends ViewRNGRendererSML implements RNGTagVisi
 	 */
 	@Override
 	public void visit(RNGZeroOrMore zeroOrMore) {
-		push(new RNGZeroOrMorePanel(zeroOrMore));
-		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
-		for(List<RNGTag> tags : patternInstances) {
-			this.visitChildren(tags);
+		if(skipRNGTags) {
+			super.visit(zeroOrMore);
+		} else {
+			push(new RNGZeroOrMorePanel(zeroOrMore,getRefreshHandler()));
+			List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
+			for(List<RNGTag> tags : patternInstances) {
+				this.visitChildren(tags);
+			}
 		}
+		
 	}
 	
 	protected void pushAndVisitChildren(IPanel<? extends RNGTag> widget, RNGTag tag) {

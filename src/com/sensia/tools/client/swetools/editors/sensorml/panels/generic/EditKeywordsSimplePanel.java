@@ -8,13 +8,13 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
-public class EditGenericListPanel  extends AbstractPanel<RNGElement>{
+public class EditKeywordsSimplePanel  extends AbstractPanel<RNGElement>{
 
 	private String name;
 	
 	private static final String EXTENSION="List";
 	
-	public EditGenericListPanel(RNGElement tag){
+	public EditKeywordsSimplePanel(RNGElement tag){
 		super(tag);
 		
 		name = tag.getName().substring(0, tag.getName().length()-EXTENSION.length());
