@@ -24,7 +24,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.ViewerPanel.MODE;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.EditRNGRendererSML;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.ViewRNGRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.ViewRendererSML;
 
 /**
  * The Class RNGProcessorSML is in charge of parsing a document.
@@ -126,7 +126,7 @@ public class RNGProcessorSML {
 			renderer.visit(grammar);
 			root = renderer.getRoot();
 		} else if(mode == MODE.VIEW) {
-			ViewRNGRendererSML renderer = new ViewRNGRendererSML();
+			ViewRendererSML renderer = new ViewRendererSML();
 			renderer.setRefreshHandler(refreshHandler);
 			renderer.setObservers(observers);
 			renderer.visit(grammar);
@@ -144,7 +144,7 @@ public class RNGProcessorSML {
 	 */
 	public IPanel parseRNG(RNGTag tag) {
 		if(mode == MODE.VIEW){
-			ViewRNGRendererSML renderer = new ViewRNGRendererSML();
+			ViewRendererSML renderer = new ViewRendererSML();
 			renderer.visit(tag);
 			if(tag instanceof RNGGrammar) {
 				setLoadedGrammar((RNGGrammar) tag);

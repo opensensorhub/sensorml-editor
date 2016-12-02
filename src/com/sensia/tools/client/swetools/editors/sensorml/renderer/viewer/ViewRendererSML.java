@@ -42,6 +42,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.view.SMLView
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.view.ViewXLinkArcrolePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.view.ViewXLinkHrefPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.view.ViewXLinkRolePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.EditRNGRendererSML;
 
 /**
  * <p>
@@ -60,40 +61,13 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.view.ViewX
  * @author Alexandre Robin
  * @date Aug 27, 2011
  */
-public class ViewRNGRendererSML extends RNGRendererSWE implements RNGTagVisitor {
+public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 
 	/** The render sections list. */
 	protected Map<String,String> renderSectionsList = new HashMap<String,String>();
 	
 	/** The render elements. */
 	protected Map<String,RENDER_ELEMENT_TYPE> renderElements= new HashMap<String,RENDER_ELEMENT_TYPE>();
-	
-	/** The root sections list. */
-	protected Set<String> rootSectionsList = new HashSet<String>();
-	
-	/** The skip list. */
-	protected Set<String> skipList = new HashSet<String>();
-	
-	/** The Constant SML_NS_1. */
-	protected final static String SML_NS_1 = "http://www.opengis.net/sensorML/1.0.1";
-	
-	/** The Constant SML_NS_2. */
-	protected final static String SML_NS_2 = "http://www.opengis.net/sensorML/2.0";
-	
-	/** The Constant GML_NS_1. */
-	protected final static String GML_NS_1 = "http://www.opengis.net/gml";
-	
-	/** The Constant GML_NS_2. */
-	protected final static String GML_NS_2 = "http://www.opengis.net/gml/3.2";
-	
-	/** The Constant GMD. */
-	protected final static String GMD = "http://www.isotc211.org/2005/gmd";
-	
-	/** The Constant GCO. */
-	protected final static String GCO = "http://www.isotc211.org/2005/gco";
-	
-	/** The Xlink constant. */
-	protected final static String XLINK = "http://www.w3.org/1999/xlink";
 	
 	/**
 	 * The Enum RENDER_ELEMENT_TYPE.
@@ -102,7 +76,6 @@ public class ViewRNGRendererSML extends RNGRendererSWE implements RNGTagVisitor 
 		
 		/** The line. */
 		LINE,
-		
 		/** The generic horizontal. */
 		GENERIC_HORIZONTAL,
 		
@@ -119,7 +92,7 @@ public class ViewRNGRendererSML extends RNGRendererSWE implements RNGTagVisitor 
 	/**
 	 * Instantiates a new RNG renderer sml.
 	 */
-	public ViewRNGRendererSML() {
+	public ViewRendererSML() {
 		//render section names
 		/*renderSectionsList.put("identification","Identification");
 		renderSectionsList.put("typeOf","Type of");
@@ -167,24 +140,6 @@ public class ViewRNGRendererSML extends RNGRendererSWE implements RNGTagVisitor 
 		renderElements.put("connections", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
 		renderElements.put("DataRecord", RENDER_ELEMENT_TYPE.DYNAMIC_DISCLOSURE);
 		
-		skipList.add("OutputList");
-		skipList.add("InputList");
-		skipList.add("IdentifierList");
-		skipList.add("ClassifierList");
-		skipList.add("ParameterList");
-		skipList.add("ConnectionList");
-		skipList.add("CharacteristicList");
-		skipList.add("CapabilityList");
-		
-		skipList.add("ContactList");
-		skipList.add("DocumentList");
-		skipList.add("ContactList");
-		skipList.add("EventList");
-		
-		//skip sml:documents tags
-		skipList.add("CI_OnlineResource");
-		skipList.add("linkage");
-				
 		/*renderElements.put("OutputList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL_LIST);
 		renderElements.put("InputList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL_LIST);
 		renderElements.put("IdentifierList", RENDER_ELEMENT_TYPE.GENERIC_VERTICAL_LIST);
@@ -236,13 +191,6 @@ public class ViewRNGRendererSML extends RNGRendererSWE implements RNGTagVisitor 
 		skipList.add("mode");
 		skipList.add("TimeInstant");
 		skipList.add("time");*/
-		
-		rootSectionsList.add("PhysicalSystem");
-		rootSectionsList.add("ProcessModel");
-		rootSectionsList.add("AggregateProcess");
-		rootSectionsList.add("SimpleProcess");
-		rootSectionsList.add("PhysicalComponent");
-		rootSectionsList.add("Component");
 		
 		//skip contact elements tags
 		/*skipList.add("CI_ResponsibleParty");

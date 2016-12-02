@@ -8,11 +8,13 @@
  
  ******************************* END LICENSE BLOCK ***************************/
 
-package com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced;
 
+import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.SWECategoryPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.SWEQuantityPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.SWEQuantityRangePanel;
@@ -35,7 +37,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.SWEQuantityR
  * @author Alexandre Robin
  * @date Aug 27, 2011
  */
-public class RNGRendererSWE extends RNGRenderer implements RNGTagVisitor {
+public class AdvancedRendererSWE extends AdvancedRNGRenderer implements RNGTagVisitor {
 	
 	/** The Constant SWE_NS_1. */
 	protected final static String SWE_NS_1 = "http://www.opengis.net/swe/1.0.1";
@@ -46,7 +48,7 @@ public class RNGRendererSWE extends RNGRenderer implements RNGTagVisitor {
 	/**
 	 * Instantiates a new RNG renderer swe.
 	 */
-	public RNGRendererSWE() {}
+	public AdvancedRendererSWE() {}
 
 	/* (non-Javadoc)
 	 * @see com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRenderer#visit(com.sensia.relaxNG.RNGElement)
@@ -108,5 +110,13 @@ public class RNGRendererSWE extends RNGRenderer implements RNGTagVisitor {
 			return super.getWidget(name);
 		}*/
 		return null;
+	}
+
+	@Override
+	public void refresh() {
+		IRefreshHandler handler = getRefreshHandler();
+		if(handler != null) {
+			handler.refresh();
+		}
 	}
 }

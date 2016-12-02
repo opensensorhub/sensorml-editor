@@ -8,7 +8,7 @@
  
  ******************************* END LICENSE BLOCK ***************************/
 
-package com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +76,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDStringPan
  * @author Alexandre Robin
  * @date Aug 27, 2011
  */
-public abstract class RNGRenderer implements RNGTagVisitor {
+public abstract class AdvancedRNGRenderer implements RNGTagVisitor, IRefreshHandler {
 	
 	/** The stack. */
 	protected Stack<IPanel<? extends RNGTag>> stack;
@@ -91,7 +91,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	/**
 	 * Instantiates a new RNG renderer.
 	 */
-	public RNGRenderer() {
+	public AdvancedRNGRenderer() {
 		stack = new Stack<IPanel<? extends RNGTag>>();
 		this.observers = new ArrayList<IObserver>();
 	}
@@ -148,6 +148,10 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 		grammar.getStartPattern().accept(this);
 	}
 
+	public void visit(RNGTag tag) {
+		tag.accept(this);
+	}
+	
 	/* (non-Javadoc)
 	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGElement)
 	 */
@@ -155,95 +159,13 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	public void visit(RNGElement elt) {
 		pushAndVisitChildren(new DynamicDisclosureElementPanel(elt), elt.getChildren());
 	}
-
-	/* (non-Javadoc)
-	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGChoice)
-	 */
-	@Override
-	public void visit(RNGChoice choice) {
-		RNGTag selectedPattern = choice.getSelectedPattern();
-		//push(new RNGChoicePanel(choice,this));
-		if(selectedPattern != null) {
-			visit(selectedPattern);
-		}
-	}
-
-	/* (non-Javadoc)
-	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGOptional)
-	 */
-	@Override
-	public void visit(RNGOptional optional) {
-		/*IPanel widget = new SensorOptionalWidget(optional);
-		push(widget);
-		if(optional.isSelected()){
-			this.visitChildren(optional.getChildren());
-		}
-		
-		
-		makeTagObservable(optional);*/
-		//push(new RNGOptionalPanel(optional, this));
-		if(optional.isSelected()){
-			this.visitChildren(optional.getChildren());
-		}
-		
-	}
-
+	
 	/* (non-Javadoc)
 	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGAttribute)
 	 */
 	@Override
 	public void visit(RNGAttribute attribute) {
 		pushAndVisitChildren(new AttributePanel(attribute), attribute.getChildren());
-	}
-
-	/* (non-Javadoc)
-	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGRef)
-	 */
-	@Override
-	public void visit(RNGRef ref) {
-		if (ref.getPattern() != null) {
-			ref.getPattern().accept(this);
-		}
-	}
-
-	/* (non-Javadoc)
-	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGDefine)
-	 */
-	@Override
-	public void visit(RNGDefine pattern) {
-		this.visitChildren(pattern.getChildren());
-	}
-
-	/* (non-Javadoc)
-	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGOneOrMore)
-	 */
-	@Override
-	public void visit(RNGOneOrMore oneOrMore) {
-		this.visit((RNGZeroOrMore) oneOrMore);
-		//visitChildren(oneOrMore.getChildren());
-	}
-
-	/* (non-Javadoc)
-	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGZeroOrMore)
-	 */
-	@Override
-	public void visit(RNGZeroOrMore zeroOrMore) {
-		/*IPanel widget = new SensorZeroOrMoreWidget(zeroOrMore);
-		push(widget);
-		// display current instances
-		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
-		for(List<RNGTag> tags : patternInstances) {
-			this.visitChildren(tags);
-		}
-		
-		makeTagObservable(zeroOrMore);*/
-		GWT.log("Visit new zeroOrMore");
-		//push(new RNGZeroOrMorePanel(zeroOrMore));
-		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
-		for(List<RNGTag> tags : patternInstances) {
-			this.visitChildren(tags);
-		}
-		
 	}
 	
 	/* (non-Javadoc)
@@ -294,21 +216,15 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(RNGData<?> data) {
-		pushRNGDataIntoRNGValue(data);
+		push(new EditValuePanel(data));
 	}
 
-	private void pushRNGDataIntoRNGValue(RNGData<?> data) {
-		RNGValue value = new RNGValue();
-		value.setText(data.getStringValue());
-		push(new ViewValuePanel(value));
-	}
-	
 	/* (non-Javadoc)
 	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.XSDString)
 	 */
 	@Override
 	public void visit(XSDString data) {
-		pushRNGDataIntoRNGValue(data);
+		push(new XSDStringPanel(data));
 	}
 
 	/* (non-Javadoc)
@@ -324,7 +240,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(XSDDecimal data) {
-		pushRNGDataIntoRNGValue(data);
+		push(new XSDDecimalPanel(data));
 	}
 
 	/* (non-Javadoc)
@@ -332,7 +248,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(XSDDouble data) {
-		pushRNGDataIntoRNGValue(data);
+		push(new XSDDoublePanel(data));
 	}
 
 	/* (non-Javadoc)
@@ -340,7 +256,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(XSDInteger data) {
-		pushRNGDataIntoRNGValue(data);
+		push(new XSDIntegerPanel(data));
 	}
 
 	/* (non-Javadoc)
@@ -348,7 +264,7 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(XSDAnyURI data) {
-		pushRNGDataIntoRNGValue(data);
+		push(new XSDAnyURIPanel(data));
 		
 	}
 
@@ -357,20 +273,91 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 	 */
 	@Override
 	public void visit(XSDDateTime data) {
-		pushRNGDataIntoRNGValue(data);
+		push(new XSDDateTimePanel(data));
 		
 	}
 	
-	public void visit(RNGTag tag) {
-		tag.accept(this);
+	/* (non-Javadoc)
+	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGChoice)
+	 */
+	@Override
+	public void visit(RNGChoice choice) {
+		RNGTag selectedPattern = choice.getSelectedPattern();
+		if(selectedPattern != null) {
+			pushAndVisitChildren(new RNGChoicePanel(choice,getRefreshHandler()), selectedPattern);
+		} else {
+			push(new RNGChoicePanel(choice,getRefreshHandler()));
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGOptional)
+	 */
+	@Override
+	public void visit(RNGOptional optional) {
+		push(new RNGOptionalPanel(optional,getRefreshHandler()));
+		if(optional.isSelected()){
+			this.visitChildren(optional.getChildren());
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGRef)
+	 */
+	@Override
+	public void visit(RNGRef ref) {
+		if (ref.getPattern() != null) {
+			ref.getPattern().accept(this);
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGDefine)
+	 */
+	@Override
+	public void visit(RNGDefine pattern) {
+		this.visitChildren(pattern.getChildren());
+	}
+
+	/* (non-Javadoc)
+	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGOneOrMore)
+	 */
+	@Override
+	public void visit(RNGOneOrMore oneOrMore) {
+		this.visit((RNGZeroOrMore) oneOrMore);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGZeroOrMore)
+	 */
+	@Override
+	public void visit(RNGZeroOrMore zeroOrMore) {
+		push(new RNGZeroOrMorePanel(zeroOrMore,getRefreshHandler()));
+		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
+		for(List<RNGTag> tags : patternInstances) {
+			this.visitChildren(tags);
+		}
 	}
 	
+	protected void pushAndVisitChildren(IPanel<? extends RNGTag> widget, RNGTag tag) {
+		push(widget);
+		int stackSize = getStackSize();
+		
+		if (tag != null) {
+			tag.accept(this);
+		}
+		if(stackSize < getStackSize()){
+			IPanel<? extends RNGTag> child = pop();
+			//child.setParent(widget);
+			widget.addElement(child);
+		}
+	}
 	/**
 	 * Visit children.
 	 *
 	 * @param tags the tags
 	 */
-	protected void visitChildren(List<RNGTag> tags) {
+	public void visitChildren(List<RNGTag> tags) {
 		int stackSize = getStackSize();
 		IPanel<? extends RNGTag> peek = peek();
 		
@@ -487,12 +474,6 @@ public abstract class RNGRenderer implements RNGTagVisitor {
 		this.observers = observer;
 	}
 	
-	public void makeTagObservable(RNGTag tag) {
-		for(IObserver o : this.observers) {
-			tag.addObserver(o);
-		}
-	}
-
 	public IRefreshHandler getRefreshHandler() {
 		return refreshHandler;
 	}

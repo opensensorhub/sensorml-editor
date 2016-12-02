@@ -42,16 +42,67 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.EditRNG
  * @author Alexandre Robin
  * @date Aug 27, 2011
  */
-public class AdvancedRNGRendererSML extends EditRNGRendererSML implements RNGTagVisitor {
+public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVisitor {
 	
-	public AdvancedRNGRendererSML() {
-		skipList.add("KeywordList");
+	/** The Constant SML_NS_1. */
+	protected final static String SML_NS_1 = "http://www.opengis.net/sensorML/1.0.1";
+	
+	/** The Constant SML_NS_2. */
+	protected final static String SML_NS_2 = "http://www.opengis.net/sensorML/2.0";
+	
+	/** The Constant GML_NS_1. */
+	protected final static String GML_NS_1 = "http://www.opengis.net/gml";
+	
+	/** The Constant GML_NS_2. */
+	protected final static String GML_NS_2 = "http://www.opengis.net/gml/3.2";
+	
+	/** The Constant GMD. */
+	protected final static String GMD = "http://www.isotc211.org/2005/gmd";
+	
+	/** The Constant GCO. */
+	protected final static String GCO = "http://www.isotc211.org/2005/gco";
+	
+	/** The Xlink constant. */
+	protected final static String XLINK = "http://www.w3.org/1999/xlink";
+	
+	/** The skip list. */
+	protected Set<String> skipList = new HashSet<String>();
+	
+	/** The root sections list. */
+	protected Set<String> rootSectionsList = new HashSet<String>();
+	
+	public AdvancedRendererSML() {
 		GenericVerticalContainerPanel rootAdvanced = new GenericVerticalContainerPanel();
 		rootAdvanced.getPanel().addStyleName("advanced-dialog");
 		
 		GenericVerticalContainerPanel rootAdvanced2 = new GenericVerticalContainerPanel();
 		rootAdvanced2.getPanel().add(rootAdvanced.getPanel());
 		push(rootAdvanced2);
+		
+		rootSectionsList.add("PhysicalSystem");
+		rootSectionsList.add("ProcessModel");
+		rootSectionsList.add("AggregateProcess");
+		rootSectionsList.add("SimpleProcess");
+		rootSectionsList.add("PhysicalComponent");
+		rootSectionsList.add("Component");
+		
+		skipList.add("OutputList");
+		skipList.add("InputList");
+		skipList.add("IdentifierList");
+		skipList.add("ClassifierList");
+		skipList.add("ParameterList");
+		skipList.add("ConnectionList");
+		skipList.add("CharacteristicList");
+		skipList.add("CapabilityList");
+		
+		skipList.add("ContactList");
+		skipList.add("DocumentList");
+		skipList.add("ContactList");
+		skipList.add("EventList");
+		
+		//skip sml:documents tags
+		skipList.add("CI_OnlineResource");
+		skipList.add("linkage");
 	}
 	
 	/* (non-Javadoc)
