@@ -1,2 +1,3 @@
-war/WEB-INF/classes
-war/sensormleditor/sensormleditor.devmode.js
+/war/WEB-INF/classes
+/war/sensormleditor/sensormleditor.devmode.js
+/gwt-unitCache/
