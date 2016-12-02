@@ -284,6 +284,7 @@ public abstract class AdvancedRNGRenderer implements RNGTagVisitor, IRefreshHand
 	 */
 	@Override
 	public void visit(RNGChoice choice) {
+	    choice.combineNestedChoices();
 		RNGTag selectedPattern = choice.getSelectedPattern();
 		if(selectedPattern != null) {
 			if(!skipTags) {

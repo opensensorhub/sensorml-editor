@@ -31,41 +31,11 @@ public class RNGChoice extends RNGTagList
 {
     private static final long serialVersionUID = -644155943333464599L;
     protected int selectedIndex = -1;
-    
+        
     
     public List<RNGTag> getItems()
     {
-        ArrayList<RNGTag> allItems = new ArrayList<RNGTag>();
-    	
-        for (RNGTag item: children)
-        {
-        	if (item instanceof RNGRef)
-        		collectItems((RNGRef)item, allItems);
-        	else
-        		allItems.add(item);
-        }
-    	
-        return allItems;
-        
-    	//return children;
-    }
-    
-    
-    protected void collectItems(RNGRef ref, List<RNGTag> allItems)
-    {
-    	RNGDefine pattern = ref.getPattern();
-		if (pattern.getAnnotation() == null)
-		{
-			for (RNGTag item: pattern.getChildren())
-			{
-				if (item instanceof RNGRef)
-	        		collectItems((RNGRef)item, allItems);
-				else
-					allItems.add(item);
-			}
-		}
-		else
-			allItems.add(pattern);
+        return children;
     }
     
     
@@ -117,6 +87,40 @@ public class RNGChoice extends RNGTagList
     protected RNGTag newInstance()
     {
         return new RNGChoice();
+    }
+    
+    
+    public void combineNestedChoices()
+    {
+        ArrayList<RNGTag> allItems = new ArrayList<RNGTag>();
+        for (RNGTag item: children)
+        {
+            if (item instanceof RNGRef)
+                collectItems((RNGRef)item, allItems);
+            else
+                allItems.add(item);
+        }
+        
+        children.clear();
+        children.addAll(allItems);
+    }
+    
+    
+    protected void collectItems(RNGRef ref, List<RNGTag> allItems)
+    {
+        RNGDefine pattern = ref.getPattern();
+        if (pattern.getAnnotation() == null)
+        {
+            for (RNGTag item: pattern.getChildren())
+            {
+                if (item instanceof RNGRef)
+                    collectItems((RNGRef)item, allItems);
+                else
+                    allItems.add(item);
+            }
+        }
+        else
+            allItems.add(pattern);
     }
     
 }
