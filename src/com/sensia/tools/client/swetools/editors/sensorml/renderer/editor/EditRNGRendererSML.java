@@ -32,6 +32,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.e
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.edit.EditDisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.document.EditDocumentPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.EditGenericListPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditObservablePropertyPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkArcrolePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkHrefPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkRolePanel;
@@ -124,11 +125,11 @@ public class EditRNGRendererSML extends AdvancedRendererSML implements RNGTagVis
 				return;
 			} else if (nsUri.equalsIgnoreCase(SML_NS_1) || nsUri.equalsIgnoreCase(SML_NS_2)) {
 				// handle SML element
-				/*if(eltName.equalsIgnoreCase("ObservableProperty")) {
-					pushAndVisitChildren(new SMLObservablePropertyPanel(elt), elt.getChildren());
-				} else {*/
+				if(eltName.equalsIgnoreCase("ObservableProperty")) {
+					pushAndVisitChildren(new SMLEditObservablePropertyPanel(elt), elt.getChildren());
+				} else {
 					super.visit(elt);
-				//}
+				}
 				return;
 			} else {
 				// handle others
