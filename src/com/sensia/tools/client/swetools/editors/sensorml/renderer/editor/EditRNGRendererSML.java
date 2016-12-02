@@ -107,7 +107,9 @@ public class EditRNGRendererSML extends AdvancedRendererSML implements RNGTagVis
 			}
 			if(type == RENDER_ELEMENT_TYPE_EDIT.GENERIC_LIST ||
 			   type == RENDER_ELEMENT_TYPE_EDIT.SECTION	) {
+				skipTags = true;
 				pushAndVisitChildren(panel,elt.getChildren());
+				skipTags = false;
 			} else {
 				pushAndVisitChildren(panel, elt.getChildren());
 			}

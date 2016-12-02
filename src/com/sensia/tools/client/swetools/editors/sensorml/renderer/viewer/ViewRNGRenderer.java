@@ -38,7 +38,7 @@ import com.sensia.relaxNG.XSDString;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ViewValuePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.AttributePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.view.ViewAttributePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DynamicDisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericHorizontalContainerPanel;
@@ -105,7 +105,7 @@ public abstract class ViewRNGRenderer extends EditRNGRendererSML {
 	 */
 	@Override
 	public void visit(RNGAttribute attribute) {
-		pushAndVisitChildren(new AttributePanel(attribute), attribute.getChildren());
+		pushAndVisitChildren(new ViewAttributePanel(attribute), attribute.getChildren());
 	}
 
 	/* (non-Javadoc)

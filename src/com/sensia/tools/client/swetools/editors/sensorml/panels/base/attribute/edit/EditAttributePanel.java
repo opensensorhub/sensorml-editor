@@ -1,4 +1,4 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute;
+package com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit;
 
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
@@ -8,9 +8,9 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
-public class AttributePanel extends AbstractPanel<RNGAttribute> {
+public class EditAttributePanel extends AbstractPanel<RNGAttribute> {
 
-	public AttributePanel(RNGAttribute tag) {
+	public EditAttributePanel(RNGAttribute tag) {
 		super(tag);
 		container = new HorizontalPanel();
 		container.add(new Label(Utils.findLabel(tag)));

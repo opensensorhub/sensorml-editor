@@ -44,7 +44,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.EditValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ViewValuePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.AttributePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.view.ViewAttributePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DynamicDisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericHorizontalContainerPanel;
@@ -87,6 +87,8 @@ public abstract class AdvancedRNGRenderer implements RNGTagVisitor, IRefreshHand
 	private List<IObserver> observers;
 	
 	protected IRefreshHandler refreshHandler;
+	
+	protected boolean skipTags = false;
 	
 	/**
 	 * Instantiates a new RNG renderer.
@@ -165,7 +167,7 @@ public abstract class AdvancedRNGRenderer implements RNGTagVisitor, IRefreshHand
 	 */
 	@Override
 	public void visit(RNGAttribute attribute) {
-		pushAndVisitChildren(new AttributePanel(attribute), attribute.getChildren());
+		pushAndVisitChildren(new ViewAttributePanel(attribute), attribute.getChildren());
 	}
 	
 	/* (non-Javadoc)
@@ -284,9 +286,15 @@ public abstract class AdvancedRNGRenderer implements RNGTagVisitor, IRefreshHand
 	public void visit(RNGChoice choice) {
 		RNGTag selectedPattern = choice.getSelectedPattern();
 		if(selectedPattern != null) {
-			pushAndVisitChildren(new RNGChoicePanel(choice,getRefreshHandler()), selectedPattern);
+			if(!skipTags) {
+				pushAndVisitChildren(new RNGChoicePanel(choice,getRefreshHandler()), selectedPattern);
+			} else {
+				selectedPattern.accept(this);
+			}
 		} else {
-			push(new RNGChoicePanel(choice,getRefreshHandler()));
+			if(!skipTags) {
+				push(new RNGChoicePanel(choice,getRefreshHandler()));
+			}
 		}
 	}
 
@@ -295,7 +303,9 @@ public abstract class AdvancedRNGRenderer implements RNGTagVisitor, IRefreshHand
 	 */
 	@Override
 	public void visit(RNGOptional optional) {
-		push(new RNGOptionalPanel(optional,getRefreshHandler()));
+		if(!skipTags) {
+			push(new RNGOptionalPanel(optional,getRefreshHandler()));
+		}
 		if(optional.isSelected()){
 			this.visitChildren(optional.getChildren());
 		}
@@ -332,7 +342,9 @@ public abstract class AdvancedRNGRenderer implements RNGTagVisitor, IRefreshHand
 	 */
 	@Override
 	public void visit(RNGZeroOrMore zeroOrMore) {
-		push(new RNGZeroOrMorePanel(zeroOrMore,getRefreshHandler()));
+		if(!skipTags) {
+			push(new RNGZeroOrMorePanel(zeroOrMore,getRefreshHandler()));
+		}
 		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
 		for(List<RNGTag> tags : patternInstances) {
 			this.visitChildren(tags);
