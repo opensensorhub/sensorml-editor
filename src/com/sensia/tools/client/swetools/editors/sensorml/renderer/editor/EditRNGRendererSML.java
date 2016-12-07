@@ -33,6 +33,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEdit
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditInputsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditKeywordsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditLegalConstraintsPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditMethodPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditModesPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditObservablePropertyPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditOutputPanel;
@@ -65,14 +66,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.Advan
 public class EditRNGRendererSML extends AdvancedRendererSML implements RNGTagVisitor {
 
 	public EditRNGRendererSML() {
-		/*renderEditElements.put("keywords", RENDER_ELEMENT_TYPE_EDIT.SECTION); 
-		renderEditElements.put("inputs", RENDER_ELEMENT_TYPE_EDIT.SECTION);
-		renderEditElements.put("parameters", RENDER_ELEMENT_TYPE_EDIT.SECTION);
-		renderEditElements.put("outputs", RENDER_ELEMENT_TYPE_EDIT.SECTION);
-		renderEditElements.put("characteristics", RENDER_ELEMENT_TYPE_EDIT.SECTION);
-		renderEditElements.put("capabilities", RENDER_ELEMENT_TYPE_EDIT.SECTION);
-		renderEditElements.put("identification", RENDER_ELEMENT_TYPE_EDIT.SECTION);
-		renderEditElements.put("classification", RENDER_ELEMENT_TYPE_EDIT.SECTION);*/
 		
 	}
 	
@@ -182,6 +175,11 @@ public class EditRNGRendererSML extends AdvancedRendererSML implements RNGTagVis
 			} else if(eltName.equalsIgnoreCase("typeOf")) {
 				skipTags = true;
 				pushAndVisitChildren(new SMLEditTypeOfPanel(elt,getRefreshHandler()), elt.getChildren());
+				skipTags = false;
+				return;
+			} else if(eltName.equalsIgnoreCase("method")) {
+				skipTags = true;
+				pushAndVisitChildren(new SMLEditMethodPanel(elt,getRefreshHandler()), elt.getChildren());
 				skipTags = false;
 				return;
 			} 
