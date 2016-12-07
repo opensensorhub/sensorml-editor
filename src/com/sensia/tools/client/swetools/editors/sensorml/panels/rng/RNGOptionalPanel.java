@@ -6,20 +6,12 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.VerticalPanel;
-import com.sensia.relaxNG.RNGAttribute;
-import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGOptional;
 import com.sensia.relaxNG.RNGTag;
-import com.sensia.relaxNG.RNGTagVisitor;
-import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.ViewerPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DynamicDisclosureElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.edit.EditDisclosureElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.edit.EditSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
@@ -85,7 +77,7 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		if(element instanceof EditDisclosureElementPanel) {
+		if(element instanceof EditSectionElementPanel) {
 			
 			element.getPanel().removeStyleName("disclosure-noborder");
 			element.getPanel().addStyleName("section-panel disclosure-border");

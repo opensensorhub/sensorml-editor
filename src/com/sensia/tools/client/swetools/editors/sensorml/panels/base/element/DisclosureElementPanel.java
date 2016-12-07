@@ -11,7 +11,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class DisclosureElementPanel extends AbstractPanel<RNGElement>{
 
-	private Panel innerContent;
+	protected Panel innerContent;
 	protected DisclosurePanel sectionPanel;
 	
 	public DisclosureElementPanel(RNGElement tag) {

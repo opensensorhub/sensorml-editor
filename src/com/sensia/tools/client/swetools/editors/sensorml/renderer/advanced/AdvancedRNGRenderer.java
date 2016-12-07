@@ -47,6 +47,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ViewValuePa
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.view.ViewAttributePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DynamicDisclosureElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.ElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericHorizontalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGChoicePanel;
@@ -159,7 +160,8 @@ public abstract class AdvancedRNGRenderer implements RNGTagVisitor, IRefreshHand
 	 */
 	@Override
 	public void visit(RNGElement elt) {
-		pushAndVisitChildren(new DynamicDisclosureElementPanel(elt), elt.getChildren());
+		//pushAndVisitChildren(new DynamicDisclosureElementPanel(elt), elt.getChildren());
+		pushAndVisitChildren(new ElementPanel(elt), elt.getChildren());
 	}
 	
 	/* (non-Javadoc)

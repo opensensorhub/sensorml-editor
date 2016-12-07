@@ -7,6 +7,7 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DynamicDisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -20,7 +21,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
  * - xlink:href
  *
  */
-public class SMLComponentPanel extends DynamicDisclosureElementPanel {
+public class SMLComponentPanel extends DisclosureElementPanel {
 
 	private Anchor anchor;
 	private IPanel<RNGAttribute> title;
@@ -32,7 +33,8 @@ public class SMLComponentPanel extends DynamicDisclosureElementPanel {
 		anchor.setText("");
 		anchor.setHref("");
 		
-		addContent(anchor);
+		//addContent(anchor);
+		innerContent.add(anchor);
 	}
 	
 	
@@ -57,7 +59,7 @@ public class SMLComponentPanel extends DynamicDisclosureElementPanel {
 				super.addInnerElement(element);
 			}
 		} else {
-			addContent(panelToAdd);
+			innerContent.add(panelToAdd);
 		}
 	}
 

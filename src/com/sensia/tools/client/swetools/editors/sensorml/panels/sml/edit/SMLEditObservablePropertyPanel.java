@@ -5,7 +5,7 @@ import com.sensia.relaxNG.RNGOptional;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.EditAbstractGenericLinePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.line.EditAbstractGenericLinePanel;
 
 
 public class SMLEditObservablePropertyPanel extends EditAbstractGenericLinePanel<RNGElement> {
