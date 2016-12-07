@@ -37,6 +37,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEdit
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditOutputPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditOutputsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditParametersPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditValidTimePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkArcrolePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkHrefPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkRolePanel;
@@ -164,6 +165,11 @@ public class EditRNGRendererSML extends AdvancedRendererSML implements RNGTagVis
 			} else if(eltName.equalsIgnoreCase("modes")) {
 				skipTags = true;
 				pushAndVisitChildren(new SMLEditModesPanel(elt,getRefreshHandler()), elt.getChildren());
+				skipTags = false;
+				return;
+			} else if(eltName.equalsIgnoreCase("validTime")) {
+				skipTags = true;
+				pushAndVisitChildren(new SMLEditValidTimePanel(elt,getRefreshHandler()), elt.getChildren());
 				skipTags = false;
 				return;
 			} 
