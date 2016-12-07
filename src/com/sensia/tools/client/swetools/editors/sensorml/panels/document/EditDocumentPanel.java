@@ -79,10 +79,8 @@ public class EditDocumentPanel extends DocumentPanel{
 			
 			for(RNGTag child : children ){
 				String name = child.toString();
-				GWT.log(name);
 				if(skipList.contains(name)) {
 					found = true;
-					GWT.log(name+" -> skipping");
 					break;
 				}
 				if(child instanceof RNGRef) {
