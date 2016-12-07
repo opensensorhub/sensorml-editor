@@ -21,6 +21,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.e
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeReferenceFramePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.edit.EditElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.document.EditDocumentPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditIdentificationPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditInputPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditInputsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditKeywordsPanel;
@@ -82,39 +83,44 @@ public class EditRNGRendererSML extends AdvancedRendererSML implements RNGTagVis
 			return;
 		}
 		
-			if (nsUri.equalsIgnoreCase(SWE_NS_1) || nsUri.equalsIgnoreCase(SWE_NS_2)) {
-				super.visit(elt);
+		if (nsUri.equalsIgnoreCase(SWE_NS_1) || nsUri.equalsIgnoreCase(SWE_NS_2)) {
+			super.visit(elt);
+			return;
+		} else if (nsUri.equalsIgnoreCase(SML_NS_1) || nsUri.equalsIgnoreCase(SML_NS_2)) {
+			// handle SML element
+			if(eltName.equalsIgnoreCase("ObservableProperty")) {
+				pushAndVisitChildren(new SMLEditObservablePropertyPanel(elt), elt.getChildren());
 				return;
-			} else if (nsUri.equalsIgnoreCase(SML_NS_1) || nsUri.equalsIgnoreCase(SML_NS_2)) {
-				// handle SML element
-				if(eltName.equalsIgnoreCase("ObservableProperty")) {
-					pushAndVisitChildren(new SMLEditObservablePropertyPanel(elt), elt.getChildren());
-					return;
-				} else if(eltName.equalsIgnoreCase("output")) {
-					pushAndVisitChildren(new SMLEditOutputPanel(elt), elt.getChildren());
-					return;
-				} else if(eltName.equalsIgnoreCase("input")) {
-					pushAndVisitChildren(new SMLEditInputPanel(elt), elt.getChildren());
-					return;
-				} else if(eltName.equalsIgnoreCase("inputs")) {
-					skipTags = true;
-					pushAndVisitChildren(new SMLEditInputsPanel(elt,getRefreshHandler()), elt.getChildren());
-					skipTags = false;
-					return;
-				} else if(eltName.equalsIgnoreCase("outputs")) {
-					skipTags = true;
-					pushAndVisitChildren(new SMLEditOutputsPanel(elt,getRefreshHandler()), elt.getChildren());
-					skipTags = false;
-					return;
-				} else if(eltName.equalsIgnoreCase("keywords")) {
-					skipTags = true;
-					pushAndVisitChildren(new SMLEditKeywordsPanel(elt,getRefreshHandler()), elt.getChildren());
-					skipTags = false;
-					return;
-				} 
+			} else if(eltName.equalsIgnoreCase("output")) {
+				pushAndVisitChildren(new SMLEditOutputPanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("input")) {
+				pushAndVisitChildren(new SMLEditInputPanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("inputs")) {
+				skipTags = true;
+				pushAndVisitChildren(new SMLEditInputsPanel(elt,getRefreshHandler()), elt.getChildren());
+				skipTags = false;
+				return;
+			} else if(eltName.equalsIgnoreCase("outputs")) {
+				skipTags = true;
+				pushAndVisitChildren(new SMLEditOutputsPanel(elt,getRefreshHandler()), elt.getChildren());
+				skipTags = false;
+				return;
+			} else if(eltName.equalsIgnoreCase("keywords")) {
+				skipTags = true;
+				pushAndVisitChildren(new SMLEditKeywordsPanel(elt,getRefreshHandler()), elt.getChildren());
+				skipTags = false;
+				return;
+			} else if(eltName.equalsIgnoreCase("identification")) {
+				skipTags = true;
+				pushAndVisitChildren(new SMLEditIdentificationPanel(elt,getRefreshHandler()), elt.getChildren());
+				skipTags = false;
+				return;
 			} 
+		} 
 			
-			pushAndVisitChildren(new EditElementPanel(elt), elt.getChildren());
+		pushAndVisitChildren(new EditElementPanel(elt), elt.getChildren());
 	}
 	
 	/* (non-Javadoc)
