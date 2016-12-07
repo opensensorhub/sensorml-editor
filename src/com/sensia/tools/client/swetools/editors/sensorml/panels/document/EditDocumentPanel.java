@@ -10,8 +10,11 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.panels.document;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import com.google.gwt.core.client.GWT;
 import com.sensia.relaxNG.RNGOptional;
 import com.sensia.relaxNG.RNGRef;
 import com.sensia.relaxNG.RNGTag;
@@ -25,9 +28,13 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
  */
 public class EditDocumentPanel extends DocumentPanel{
 
-	
+	private Set<String> skipList;
 	public EditDocumentPanel() {
 		super();
+		skipList = new HashSet<String>();
+		skipList.add("definition");
+		skipList.add("id");
+		skipList.add("gml.id");
 	}
 
 	@Override
@@ -43,6 +50,9 @@ public class EditDocumentPanel extends DocumentPanel{
 
 	@Override
 	public void addInnerElement(IPanel element) {
+		if(skipList.contains(element.getName())) {
+			return;
+		}
 		RNGTag tag = element.getTag();
 		boolean found = false;
 		
@@ -69,6 +79,12 @@ public class EditDocumentPanel extends DocumentPanel{
 			
 			for(RNGTag child : children ){
 				String name = child.toString();
+				GWT.log(name);
+				if(skipList.contains(name)) {
+					found = true;
+					GWT.log(name+" -> skipping");
+					break;
+				}
 				if(child instanceof RNGRef) {
 					// split namespace
 					String[] split = child.toString().split("\\.");

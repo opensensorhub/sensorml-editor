@@ -81,46 +81,6 @@ public class EditRNGRendererSML extends AdvancedRendererSML implements RNGTagVis
 			return;
 		}
 		
-		/*if(renderEditElements.containsKey(eltName)) {
-			RENDER_ELEMENT_TYPE_EDIT type = renderEditElements.get(eltName);
-			IPanel<? extends RNGTag> panel = null;
-			
-			switch(type) {
-				case SECTION	: panel = renderGenericSectionPanel(elt);break;
-				default:break;
-			}
-			if(type == RENDER_ELEMENT_TYPE_EDIT.SECTION	) {
-				skipTags = true;
-				pushAndVisitChildren(panel,elt.getChildren());
-				skipTags = false;
-			} else {
-				pushAndVisitChildren(panel, elt.getChildren());
-			}
-			return;
-		} else */
-			/*// handle GML elements
-			if (nsUri.equalsIgnoreCase(GML_NS_1) || nsUri.equalsIgnoreCase(GML_NS_2)) {
-				super.visit(elt);
-				return;
-			} else if (nsUri.equalsIgnoreCase(GMD)) {
-				super.visit(elt);
-				return;
-			} else if (nsUri.equalsIgnoreCase(SWE_NS_1) || nsUri.equalsIgnoreCase(SWE_NS_2)) {
-				super.visit(elt);
-				return;
-			} else if (nsUri.equalsIgnoreCase(SML_NS_1) || nsUri.equalsIgnoreCase(SML_NS_2)) {
-				// handle SML element
-				if(eltName.equalsIgnoreCase("ObservableProperty")) {
-					pushAndVisitChildren(new SMLEditObservablePropertyPanel(elt), elt.getChildren());
-				} else {
-					super.visit(elt);
-				}
-				return;
-			} else {
-				// handle others
-				super.visit(elt);
-				return;
-			}*/
 			if (nsUri.equalsIgnoreCase(SWE_NS_1) || nsUri.equalsIgnoreCase(SWE_NS_2)) {
 				super.visit(elt);
 				return;
