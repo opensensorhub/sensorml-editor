@@ -29,9 +29,9 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.v
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.view.ViewAttributeReferenceFramePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.document.DocumentPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gmd.GMDUrl;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.GMLDescription;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.GMLIdentifierPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.GMLNamePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.view.GMLDescriptionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.view.GMLIdentifierPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.view.GMLNamePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.SMLAxisPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.SMLComponentPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.SMLDocument;
@@ -259,7 +259,7 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 			if(eltName.equalsIgnoreCase("identifier")){
 				pushAndVisitChildren(new GMLIdentifierPanel(elt), elt.getChildren());
 			} else if(eltName.equalsIgnoreCase("description")){
-				pushAndVisitChildren(new GMLDescription(elt), elt.getChildren());
+				pushAndVisitChildren(new GMLDescriptionPanel(elt), elt.getChildren());
 			} else if(eltName.equalsIgnoreCase("name")){
 				pushAndVisitChildren(new GMLNamePanel(elt), elt.getChildren());
 			} else {
