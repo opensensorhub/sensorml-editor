@@ -13,21 +13,24 @@ import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.ViewerPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.edit.EditSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 
 	private Panel patternContainer;
+	private Label removeButton;
 	
-	public RNGZeroOrMorePatternPanel(final RNGZeroOrMore tag,final int indexPattern) {
+	public RNGZeroOrMorePatternPanel(final RNGZeroOrMore tag,final int indexPattern,final IRefreshHandler refreshHandler) {
 		super(tag);
 		
 		patternContainer = new VerticalPanel();
 		
 		final String label = Utils.findLabel(tag);
 		
-		final Label removeButton = new Label();
+		removeButton = new Label();
 		Panel hPanel = new HorizontalPanel();
 		hPanel.add(removeButton);
 		hPanel.add(new Label(label));
@@ -46,8 +49,9 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 				tag.getPatternInstances().remove(indexPattern);
 				
 				//TODO: use MVC or MVP to update the view
-				ViewerPanel.getInstance(null).redraw();
-				
+				if(refreshHandler != null) {
+					refreshHandler.refresh();
+				}
 			}
 		});
 		
@@ -62,7 +66,20 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		patternContainer.add(element.getPanel());
+		if(element instanceof EditSectionElementPanel) {
+			
+			element.getPanel().removeStyleName("disclosure-noborder");
+			element.getPanel().addStyleName("section-panel disclosure-border");
+			container.clear();
+			Panel hPanel = new HorizontalPanel();
+			hPanel.add(removeButton);
+			hPanel.add(element.getPanel());
+			
+			hPanel.addStyleName("rng-disclosure");
+			container.add(hPanel);
+		} else {
+			patternContainer.add(element.getPanel());
+		}
 	}
 
 	@Override
