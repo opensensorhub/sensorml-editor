@@ -16,12 +16,12 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.document.DocumentPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.gmd.GMDUrl;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.view.GMLDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.view.GMLIdentifierPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.view.GMLNamePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditComponentPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditDocument;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gmd.GMDEditUrl;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditAxisPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditLinkPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditOriginPanel;
@@ -95,12 +95,6 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 				visitChildren(elt.getChildren());
 			}
 			return;
-		} else if (nsUri.equalsIgnoreCase(GMD)) {
-			if(eltName.equalsIgnoreCase("URL")) {
-				pushAndVisitChildren(new GMDUrl(elt), elt.getChildren());
-			} else {
-				super.visit(elt);
-			}
 		} else {
 			// handle others
 			super.visit(elt);

@@ -1,4 +1,4 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels.gmd;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gmd;
 
 import com.google.gwt.user.client.ui.Anchor;
 import com.sensia.relaxNG.RNGData;
@@ -8,12 +8,12 @@ import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 
-public class GMDUrl extends AbstractPanel<RNGElement>{
+public class GMDEditUrl extends AbstractPanel<RNGElement>{
 
 	private Anchor anchorHref;
 	private IPanel<? extends RNGTag> valuePanel;
 	
-	public GMDUrl(RNGElement tag) {
+	public GMDEditUrl(RNGElement tag) {
 		super(tag);
 		
 		anchorHref = new Anchor();
