@@ -78,9 +78,14 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 			// inline the simple edit panel
 			container.clear();
 			container = new HorizontalPanel();
-			container.addStyleName("rng-optional-pattern");
+			//container.addStyleName("rng-optional-pattern");
 			container.add(removeButton);
-			container.add(element.getPanel());
+			container.add(patternContainer);
+			
+			// remove default style because of new inline configuration
+			patternContainer.removeStyleName("rng-optional-pattern");
+			patternContainer.addStyleName("rng-optional-pattern-single");
+			patternContainer.add(element.getPanel());
 		} else {
 			patternContainer.add(element.getPanel());
 		}

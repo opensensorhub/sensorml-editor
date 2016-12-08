@@ -674,6 +674,11 @@ table.sml-mode-nolabel-vertical-panel {
 	margin-left:22px;
 }
 
+.rng-optional-pattern-single {
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
 .rng-choice-pattern {
 	margin-top:5px;
 	margin-bottom:5px;
