@@ -1,13 +1,13 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels.gml.edit;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml;
 
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.edit.EditSimpleElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
-public class GMLEditNamePanel extends EditSimpleElementPanel{
+public class GMLEditDescriptionPanel extends EditSimpleElementPanel{
 
-	public GMLEditNamePanel(RNGElement element) {
+	public GMLEditDescriptionPanel(RNGElement element) {
 		super(element,Utils.findLabel(element.getParent()));
 	}
 	

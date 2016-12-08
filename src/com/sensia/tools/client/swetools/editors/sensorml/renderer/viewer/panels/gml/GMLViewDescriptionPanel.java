@@ -1,4 +1,4 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels.gml.view;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml;
 
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -20,11 +20,11 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
  *	xlink:title	[0..1]	xsd:string		from group xlink:simpleLink
  *
  */
-public class GMLDescriptionPanel extends AbstractPanel<RNGElement>{
+public class GMLViewDescriptionPanel extends AbstractPanel<RNGElement>{
 
 	private Panel valuePanel;
 
-	public GMLDescriptionPanel(RNGElement element) {
+	public GMLViewDescriptionPanel(RNGElement element) {
 		super(element);
 		
 		container = new HorizontalPanel();

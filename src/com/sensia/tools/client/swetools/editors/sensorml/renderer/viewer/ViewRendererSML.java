@@ -16,9 +16,6 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.document.DocumentPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.view.GMLDescriptionPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.view.GMLIdentifierPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.view.GMLNamePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditComponentPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditDocument;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gmd.GMDEditUrl;
@@ -36,6 +33,9 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewXLinkHrefPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewXLinkRolePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewXLinkTitlePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewDescriptionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewIdentifierPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewNamePanel;
 
 /**
  * <p>
@@ -86,11 +86,11 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 		if (nsUri.equalsIgnoreCase(GML_NS_1) || nsUri.equalsIgnoreCase(GML_NS_2)) {
 			// gml:identifier
 			if(eltName.equalsIgnoreCase("identifier")){
-				pushAndVisitChildren(new GMLIdentifierPanel(elt), elt.getChildren());
+				pushAndVisitChildren(new GMLViewIdentifierPanel(elt), elt.getChildren());
 			} else if(eltName.equalsIgnoreCase("description")){
-				pushAndVisitChildren(new GMLDescriptionPanel(elt), elt.getChildren());
+				pushAndVisitChildren(new GMLViewDescriptionPanel(elt), elt.getChildren());
 			} else if(eltName.equalsIgnoreCase("name")){
-				pushAndVisitChildren(new GMLNamePanel(elt), elt.getChildren());
+				pushAndVisitChildren(new GMLViewNamePanel(elt), elt.getChildren());
 			} else {
 				visitChildren(elt.getChildren());
 			}

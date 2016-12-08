@@ -1,4 +1,4 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels.gml.edit;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.HTML;

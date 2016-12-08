@@ -1,4 +1,4 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels.gml.view;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml;
 
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -13,7 +13,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 
 // xsd:string
 // http://www.datypic.com/sc/niem21/e-gml32_identifier.html
-public class GMLIdentifierPanel extends AbstractPanel<RNGElement>{
+public class GMLViewIdentifierPanel extends AbstractPanel<RNGElement>{
 
 	protected static final String CODE_SPACE_LABEL = "codeSpace";
 	
@@ -22,7 +22,7 @@ public class GMLIdentifierPanel extends AbstractPanel<RNGElement>{
 	private Panel valuePanel;
 	private Panel codeSpacePanel;
 	
-	public GMLIdentifierPanel(RNGElement element) {
+	public GMLViewIdentifierPanel(RNGElement element) {
 		super(element);
 		
 		container = new HorizontalPanel();
