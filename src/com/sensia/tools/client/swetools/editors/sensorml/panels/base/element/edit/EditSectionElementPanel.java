@@ -12,6 +12,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Widget;
 import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
@@ -69,11 +70,17 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 			}
 		});
 
-		container.clear();
+		/*container.clear();
 		HorizontalPanel hPanel = new HorizontalPanel();
 		hPanel.add(sectionPanel);
 		hPanel.add(label);
-		container.add(hPanel);
+		container.add(hPanel);*/
+		Widget currentHeader = sectionPanel.getHeader();
+		HorizontalPanel hPanel = new HorizontalPanel();
+		hPanel.add(currentHeader);
+		hPanel.add(label);
+		
+		sectionPanel.setHeader(hPanel);
 		
 		label.addStyleName("rng-advanced-button-section");
 		

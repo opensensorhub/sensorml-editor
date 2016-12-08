@@ -541,6 +541,11 @@ table.sml-mode-nolabel-vertical-panel {
 		
 }
 
+/* remove click onto disclosure header */
+table.gwt-DisclosurePanel-open>tbody>tr>td> a.header {
+    width: 0px;
+}
+
 .viewer {
 	margin-top : 30px;
 	margin-left: 10px;
@@ -730,9 +735,4 @@ input:focus {
 
 .rng-disclosure >tbody>tr>td{
 	vertical-align:top !important;
-}
-
-/* advanced button associated to the disclosure element */
-.rng-advanced-button-section {
-	margin-bottom:10px;
 }
