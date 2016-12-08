@@ -1,4 +1,4 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels.sml;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml;
 
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -8,12 +8,12 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
 
-public class SMLTermPanel extends AbstractGenericLinePanel<RNGElement>{
+public class SMLEditTermPanel extends AbstractGenericLinePanel<RNGElement>{
 
 	
 	protected Panel valuePanel;
 	
-	public SMLTermPanel(RNGElement tag) {
+	public SMLEditTermPanel(RNGElement tag) {
 		super(tag);
 		valuePanel = new SimplePanel();
 		

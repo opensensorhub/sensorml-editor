@@ -20,12 +20,12 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.gmd.GMDUrl;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.view.GMLDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.view.GMLIdentifierPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.view.GMLNamePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.SMLAxisPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.SMLComponentPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.SMLDocument;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.SMLLinkPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.SMLOriginPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.SMLTermPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditComponentPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditDocument;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditAxisPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditLinkPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditOriginPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditTermPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewAttributeCodePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewAttributeDefinitionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewAttributeNamePanel;
@@ -60,17 +60,6 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 	 * Instantiates a new RNG renderer sml.
 	 */
 	public ViewRendererSML() {
-	}
-
-	/** The root min level. */
-	public int rootMinLevel = 1;
-	
-	/* (non-Javadoc)
-	 * @see com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRenderer#visit(com.sensia.relaxNG.RNGGrammar)
-	 */
-	@Override
-	public void visit(RNGGrammar grammar) { 
-		super.visit(grammar);
 	}
 
 	/* (non-Javadoc)
@@ -112,31 +101,6 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 			} else {
 				super.visit(elt);
 			}
-		} else if (nsUri.equalsIgnoreCase(SWE_NS_1) || nsUri.equalsIgnoreCase(SWE_NS_2)) {
-			super.visit(elt);
-			return;
-		} else if (nsUri.equalsIgnoreCase(SML_NS_1) || nsUri.equalsIgnoreCase(SML_NS_2)) {
-			// handle SML element
-			 if(eltName.equalsIgnoreCase("Component")) {
-				pushAndVisitChildren(new SMLComponentPanel(elt), elt.getChildren());
-			} else if(eltName.equalsIgnoreCase("Link")) {
-				pushAndVisitChildren(new SMLLinkPanel(elt), elt.getChildren());
-			} else if(eltName.equalsIgnoreCase("Term")) {
-				pushAndVisitChildren(new SMLTermPanel(elt), elt.getChildren());
-			} else if(eltName.equalsIgnoreCase("identifier")) {
-				pushAndVisitChildren(renderVerticalElementListPanel(elt), elt.getChildren());
-			} else if(eltName.equalsIgnoreCase("classifier")) {
-				pushAndVisitChildren(renderVerticalElementListPanel(elt), elt.getChildren());
-			} else if(eltName.equalsIgnoreCase("Document")) {
-				pushAndVisitChildren(new SMLDocument(elt), elt.getChildren());
-			} else if(eltName.equalsIgnoreCase("origin")) {
-				pushAndVisitChildren(new SMLOriginPanel(elt), elt.getChildren());
-			} else if(eltName.equalsIgnoreCase("axis")) {
-				pushAndVisitChildren(new SMLAxisPanel(elt), elt.getChildren());
-			} else {
-				super.visit(elt);
-			}
-			return;
 		} else {
 			// handle others
 			super.visit(elt);

@@ -1,4 +1,4 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels.sml;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml;
 
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Widget;
@@ -20,13 +20,13 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
  * - xlink:href
  *
  */
-public class SMLComponentPanel extends DisclosureElementPanel {
+public class SMLEditComponentPanel extends DisclosureElementPanel {
 
 	private Anchor anchor;
 	private IPanel<RNGAttribute> title;
 	private IPanel<RNGAttribute> href;
 	
-	public SMLComponentPanel(RNGElement tag) {
+	public SMLEditComponentPanel(RNGElement tag) {
 		super(tag);
 		anchor = new Anchor();
 		anchor.setText("");

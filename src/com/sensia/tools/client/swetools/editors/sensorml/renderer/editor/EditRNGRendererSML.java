@@ -19,27 +19,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.document.EditDoc
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.edit.GMLEditDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.edit.GMLEditIdentifierPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.edit.GMLEditNamePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditCapabilitiesPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditCapabilityPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditCharacteristicsPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditClassificationPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditConfigurationPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditContactsPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditDocumentationPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditHistoryPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditIdentificationPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditInputPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditInputsPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditKeywordsPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditLegalConstraintsPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditMethodPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditModesPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditOutputPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditOutputsPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditParameterPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditParametersPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditTypeOfPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditValidTimePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditAttributeCodePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditAttributeDefinitionPanel;
@@ -51,7 +30,34 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditXLinkHrefPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditXLinkRolePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditXLinkTitlePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditComponentPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditDocument;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditAxisPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditCapabilitiesPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditCapabilityPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditCharacteristicsPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditClassificationPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditConfigurationPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditContactsPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditDocumentationPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditHistoryPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditIdentificationPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditInputPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditInputsPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditKeywordsPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditLegalConstraintsPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditMethodPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditModesPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditObservablePropertyPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditOutputPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditOutputsPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditParameterPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditParametersPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditTypeOfPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditValidTimePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditLinkPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditOriginPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditTermPanel;
 
 /**
  * <p>
@@ -211,6 +217,32 @@ public class EditRNGRendererSML extends AdvancedRendererSML implements RNGTagVis
 				return;
 			} else if(eltName.equalsIgnoreCase("capability")) {
 				pushAndVisitChildren(new SMLEditCapabilityPanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("axis")) {
+				pushAndVisitChildren(new SMLEditAxisPanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("Component")) {
+				pushAndVisitChildren(new SMLEditComponentPanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("Link")) {
+				pushAndVisitChildren(new SMLEditLinkPanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("Term")) {
+				pushAndVisitChildren(new SMLEditTermPanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("identifier")) {
+				//TODO
+				pushAndVisitChildren(renderVerticalElementListPanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("classifier")) {
+				//TODO
+				pushAndVisitChildren(renderVerticalElementListPanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("Document")) {
+				pushAndVisitChildren(new SMLEditDocument(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("origin")) {
+				pushAndVisitChildren(new SMLEditOriginPanel(elt), elt.getChildren());
 				return;
 			}
 		} 

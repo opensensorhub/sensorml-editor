@@ -1,12 +1,12 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml;
 
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.edit.EditSectionElementPanel;
 
-public class SMLEditContactsPanel extends EditSectionElementPanel{
+public class SMLEditHistoryPanel extends EditSectionElementPanel{
 
-	public SMLEditContactsPanel(RNGElement tag, IRefreshHandler refreshHandler) {
+	public SMLEditHistoryPanel(RNGElement tag, IRefreshHandler refreshHandler) {
 		super(tag, refreshHandler);
 	}
 }
