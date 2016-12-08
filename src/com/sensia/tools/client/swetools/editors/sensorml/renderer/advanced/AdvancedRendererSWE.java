@@ -16,6 +16,7 @@ import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.edit.SWEEditDescriptionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.edit.SWEEditIdentifierPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.edit.SWEEditLabelPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.view.SWEViewCategoryPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.view.SWEViewDescriptionPanel;
@@ -86,6 +87,8 @@ public class AdvancedRendererSWE extends AdvancedRNGRenderer implements RNGTagVi
 			return new SWEEditDescriptionPanel(elt);
 		} else if(name.equalsIgnoreCase("label")) {
 			return new SWEEditLabelPanel(elt);
+		} else if(name.equalsIgnoreCase("identifier")) {
+			return new SWEEditIdentifierPanel(elt);
 		}
 		/* if(name.equals("Quantity") || name.equals("Count")){
 			return new SWESensorQuantityWidget();
