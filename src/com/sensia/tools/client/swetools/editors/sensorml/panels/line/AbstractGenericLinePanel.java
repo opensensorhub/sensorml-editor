@@ -41,6 +41,12 @@ public abstract class AbstractGenericLinePanel<T extends RNGTag> extends Abstrac
 		line.add(afterDotsPanel);
 		
 		container.add(line);
+		
+		// add styles
+		beforeDotsPanel.addStyleName("line-generic-panel-before");
+		labelPanel.addStyleName("line-generic-label-panel-before");
+		defPanel.addStyleName("line-generic-definition-panel-before");
+		afterDotsPanel.addStyleName("horizontal-panel");
 	}
 	
 	@Override
