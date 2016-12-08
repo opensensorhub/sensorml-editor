@@ -8,7 +8,7 @@
  
  ******************************* END LICENSE BLOCK ***************************/
 
-package com.sensia.tools.client.swetools.editors.sensorml.panels.document;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.root;
 
 import java.util.HashSet;
 import java.util.List;
@@ -23,6 +23,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGZeroOrMorePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGZeroOrMorePatternPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root.DocumentPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**
