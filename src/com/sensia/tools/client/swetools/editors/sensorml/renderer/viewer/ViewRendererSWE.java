@@ -13,9 +13,9 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.SWECategoryPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.SWEQuantityPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.SWEQuantityRangePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.view.SWEViewCategoryPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.view.SWEViewQuantityPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.view.SWEViewQuantityRangePanel;
 
 /**
  * <p>
@@ -70,13 +70,13 @@ public class ViewRendererSWE extends ViewRNGRenderer implements RNGTagVisitor {
 		/*if(name.equalsIgnoreCase("DataRecord")) {
 			return new SWEDataRecordPanel(elt);
 		} else*/ if(name.equalsIgnoreCase("Quantity")) {
-			return new SWEQuantityPanel(elt);
+			return new SWEViewQuantityPanel(elt);
 		} /*else if(name.equalsIgnoreCase("field")) {
 			return new SWEFieldPanel(elt);
 		}*/ else if(name.equalsIgnoreCase("Category")) {
-			return new SWECategoryPanel(elt);
+			return new SWEViewCategoryPanel(elt);
 		} else if(name.equalsIgnoreCase("QuantityRange")) {
-			return new SWEQuantityRangePanel(elt);
+			return new SWEViewQuantityRangePanel(elt);
 		}
 		/* if(name.equals("Quantity") || name.equals("Count")){
 			return new SWESensorQuantityWidget();

@@ -22,6 +22,8 @@ import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.document.EditDocumentPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.edit.GMLEditDescriptionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.edit.GMLEditNamePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditObservablePropertyPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.EditRNGRendererSML;
 
@@ -127,7 +129,13 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 		
 		// handle GML elements
 		if (nsUri.equalsIgnoreCase(GML_NS_1) || nsUri.equalsIgnoreCase(GML_NS_2)) {
-			super.visit(elt);
+			if(eltName.equalsIgnoreCase("description")) {
+				pushAndVisitChildren(new GMLEditDescriptionPanel(elt), elt.getChildren());
+			} else if(eltName.equalsIgnoreCase("name")) {
+				pushAndVisitChildren(new GMLEditNamePanel(elt), elt.getChildren());
+			} else {
+				super.visit(elt);
+			}
 			return;
 		} else if (nsUri.equalsIgnoreCase(GMD)) {
 			super.visit(elt);

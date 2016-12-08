@@ -1,4 +1,4 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels.swe;
+package com.sensia.tools.client.swetools.editors.sensorml.panels.swe.view;
 
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -11,13 +11,13 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.line.ViewAbstrac
 // label
 // uom
 // value
-public class SWEQuantityPanel extends ViewAbstractGenericLinePanel<RNGElement>{
+public class SWEViewQuantityPanel extends ViewAbstractGenericLinePanel<RNGElement>{
 
 	
 	protected Panel valuePanel;
 	protected Panel uomPanel;
 	
-	public SWEQuantityPanel(RNGElement tag) {
+	public SWEViewQuantityPanel(RNGElement tag) {
 		super(tag);
 		valuePanel = new SimplePanel();
 		uomPanel = new SimplePanel();

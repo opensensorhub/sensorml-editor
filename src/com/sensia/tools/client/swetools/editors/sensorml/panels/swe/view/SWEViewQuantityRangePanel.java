@@ -1,4 +1,4 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels.swe;
+package com.sensia.tools.client.swetools.editors.sensorml.panels.swe.view;
 
 import com.google.gwt.user.client.ui.HTML;
 import com.sensia.relaxNG.RNGElement;
@@ -9,11 +9,11 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 // label
 // uom
 // value
-public class SWEQuantityRangePanel extends SWEQuantityPanel{
+public class SWEViewQuantityRangePanel extends SWEViewQuantityPanel{
 	
 	private IPanel valueIPanel;
 	
-	public SWEQuantityRangePanel(RNGElement tag) {
+	public SWEViewQuantityRangePanel(RNGElement tag) {
 		super(tag);
 	}
 	
