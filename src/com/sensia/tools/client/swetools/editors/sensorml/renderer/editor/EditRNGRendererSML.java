@@ -10,9 +10,6 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
@@ -21,7 +18,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.e
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeReferenceFramePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.edit.EditElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.document.EditDocumentPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditCapabilitiesPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditCharacteristicsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditClassificationPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditConfigurationPanel;
