@@ -6,7 +6,7 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-public class HeaderDocumentPanel extends VerticalPanel{
+public class ViewRootHeaderPanel extends VerticalPanel{
 
 	// gml:name
 	protected Panel titlesPanel;
@@ -20,7 +20,7 @@ public class HeaderDocumentPanel extends VerticalPanel{
 	// sml:keywords
 	protected Panel keywordsPanel;
 	
-	public HeaderDocumentPanel() {
+	public ViewRootHeaderPanel() {
 		
 		setSpacing(5);	
 		// 1..~

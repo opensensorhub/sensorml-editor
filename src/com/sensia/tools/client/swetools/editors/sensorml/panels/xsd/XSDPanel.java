@@ -16,7 +16,7 @@ import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.EditValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
 
 public class XSDPanel<T extends RNGData<?>> extends EditValuePanel {
 

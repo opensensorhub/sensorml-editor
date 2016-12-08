@@ -23,17 +23,17 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGZeroOrMorePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGZeroOrMorePatternPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root.DocumentPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root.ViewRootPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**
  * The Class SensorSectionsWidget is corresponding to the root panel element. It handles the title, 
  * description, keywords elements.
  */
-public class EditDocumentPanel extends DocumentPanel{
+public class EditRootPanel extends ViewRootPanel{
 
 	private Set<String> skipList;
-	public EditDocumentPanel() {
+	public EditRootPanel() {
 		super();
 		skipList = new HashSet<String>();
 		skipList.add("definition");
@@ -43,7 +43,7 @@ public class EditDocumentPanel extends DocumentPanel{
 
 	@Override
 	protected void init() {
-		headerDocumentPanel = new EditHeaderDocumentPanel();
+		headerDocumentPanel = new EditRootHeaderPanel();
 		container.add(headerDocumentPanel);
 	}
 	@Override

@@ -1,4 +1,4 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels.base;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ChangeEvent;

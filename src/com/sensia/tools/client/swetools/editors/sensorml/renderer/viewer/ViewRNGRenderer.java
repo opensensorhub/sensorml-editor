@@ -28,8 +28,8 @@ import com.sensia.relaxNG.XSDDecimal;
 import com.sensia.relaxNG.XSDDouble;
 import com.sensia.relaxNG.XSDInteger;
 import com.sensia.relaxNG.XSDString;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ViewValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.EditRNGRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
 
 /**
  * <p>

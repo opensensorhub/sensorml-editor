@@ -27,7 +27,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewIdentifierPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewNamePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root.DocumentPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root.ViewRootPanel;
 
 /**
  * <p>
@@ -70,7 +70,7 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 		
 		
 		if(rootSectionsList.contains(eltName)) {
-			pushAndVisitChildren(new DocumentPanel(),elt.getChildren());
+			pushAndVisitChildren(new ViewRootPanel(),elt.getChildren());
 			return;
 		}
 		

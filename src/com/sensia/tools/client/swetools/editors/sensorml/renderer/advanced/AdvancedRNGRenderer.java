@@ -42,8 +42,6 @@ import com.sensia.relaxNG.XSDString;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.EditValuePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ViewValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericHorizontalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
@@ -58,6 +56,8 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDIntegerPa
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDStringPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
 
 /**
  * <p>

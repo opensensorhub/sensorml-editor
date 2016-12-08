@@ -30,16 +30,16 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
  * The Class SensorSectionsWidget is corresponding to the root panel element. It handles the title, 
  * description, keywords elements.
  */
-public class DocumentPanel extends AbstractPanel{
+public class ViewRootPanel extends AbstractPanel{
 
-	protected HeaderDocumentPanel headerDocumentPanel;
+	protected ViewRootHeaderPanel headerDocumentPanel;
 	
-	public DocumentPanel() {
+	public ViewRootPanel() {
 		init();
 	}
 
 	protected void init() {
-		headerDocumentPanel = new HeaderDocumentPanel();
+		headerDocumentPanel = new ViewRootHeaderPanel();
 		container.add(headerDocumentPanel);
 	}
 

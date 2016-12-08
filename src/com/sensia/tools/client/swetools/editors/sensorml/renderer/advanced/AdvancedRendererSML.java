@@ -30,7 +30,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkTitlePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditNamePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.root.EditDocumentPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.root.EditRootPanel;
 
 /**
  * <p>
@@ -127,7 +127,7 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 		}
 				
 		if(rootSectionsList.contains(eltName)) {
-			pushAndVisitChildren(new EditDocumentPanel(),elt.getChildren());
+			pushAndVisitChildren(new EditRootPanel(),elt.getChildren());
 			return;
 		}
 		

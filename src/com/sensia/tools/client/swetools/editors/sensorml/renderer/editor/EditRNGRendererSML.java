@@ -30,7 +30,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditIdentifierPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditNamePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.root.EditDocumentPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.root.EditRootPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditComponentPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditDocument;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditAxisPanel;
@@ -98,7 +98,7 @@ public class EditRNGRendererSML extends EditRendererSWE implements RNGTagVisitor
 		}
 				
 		if(rootSectionsList.contains(eltName)) {
-			pushAndVisitChildren(new EditDocumentPanel(),elt.getChildren());
+			pushAndVisitChildren(new EditRootPanel(),elt.getChildren());
 			return;
 		}
 		

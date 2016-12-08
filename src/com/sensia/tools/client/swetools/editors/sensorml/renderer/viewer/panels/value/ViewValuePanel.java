@@ -1,4 +1,4 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels.base;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value;
 
 import com.google.gwt.user.client.ui.HTML;
 import com.sensia.relaxNG.RNGTag;

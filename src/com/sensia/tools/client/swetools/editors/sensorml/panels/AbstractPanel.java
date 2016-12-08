@@ -17,7 +17,7 @@ import java.util.List;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.relaxNG.RNGTag;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ViewValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
 
 /**
  * The Class AbstractSensorElementWidget.

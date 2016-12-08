@@ -13,8 +13,8 @@ import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallba
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.OntologyPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.EditValuePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ViewValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public abstract class AbstractAdvancedAttributeOntologyIconPanel<T extends RNGTag> extends AbstractPanel<T>{
