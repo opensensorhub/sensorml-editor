@@ -14,6 +14,7 @@ import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeCodeSpacePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeDefinitionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeReferenceFramePanel;
@@ -47,6 +48,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEdit
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkArcrolePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkHrefPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkRolePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkTitlePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 
 /**
@@ -229,6 +231,8 @@ public class EditRNGRendererSML extends AdvancedRendererSML implements RNGTagVis
 				pushAndVisitChildren(new EditXLinkArcrolePanel(att),att.getChildren());
 			} else if(name.equals("href")) {
 				pushAndVisitChildren(new EditXLinkHrefPanel(att),att.getChildren());
+			} else if(name.equals("title")) {
+				pushAndVisitChildren(new EditXLinkTitlePanel(att),att.getChildren());
 			} else {
 				GWT.log("[WARN] Unsupported XLink element: "+name+". Skipped.");
 				super.visit(att);
@@ -238,7 +242,7 @@ public class EditRNGRendererSML extends AdvancedRendererSML implements RNGTagVis
 		} else if(name.equals("definition")) {
 			pushAndVisitChildren(new EditAttributeDefinitionPanel(att),att.getChildren());
 		} else if(name.equals("codeSpace")) {
-			pushAndVisitChildren(new EditAttributePanel(att),att.getChildren());
+			pushAndVisitChildren(new EditAttributeCodeSpacePanel(att),att.getChildren());
 		} else {
 			super.visit(att);
 		}
