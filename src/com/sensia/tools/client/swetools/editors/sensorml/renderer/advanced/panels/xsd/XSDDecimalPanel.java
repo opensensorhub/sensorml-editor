@@ -1,18 +1,18 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels.xsd;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd;
 
-import com.sensia.relaxNG.XSDInteger;
+import com.sensia.relaxNG.XSDDecimal;
 
-public class XSDIntegerPanel extends XSDPanel<XSDInteger>{
-
+public class XSDDecimalPanel extends XSDPanel<XSDDecimal>{
 	/** The Constant ALLOWED_CHARS. */
 	private static final String ALLOWED_CHARS = "-+0123456789";
+	
 	
 	/**
 	 * Instantiates a new sensor xsd integer widget.
 	 *
 	 * @param data the data
 	 */
-	public XSDIntegerPanel(final XSDInteger data) {
+	public XSDDecimalPanel(final XSDDecimal data) {
 		super(data,getLength(data),ALLOWED_CHARS);
 	}
 	
@@ -22,7 +22,7 @@ public class XSDIntegerPanel extends XSDPanel<XSDInteger>{
 	 * @param data the data
 	 * @return the length
 	 */
-	private static int getLength(XSDInteger data){
+	private static int getLength(XSDDecimal data){
 		 int length = 10;
 	        
 	        int fixedLength = data.getTotalDigits();

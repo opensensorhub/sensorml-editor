@@ -1,4 +1,4 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels.rng;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng;
 
 import java.util.List;
 
