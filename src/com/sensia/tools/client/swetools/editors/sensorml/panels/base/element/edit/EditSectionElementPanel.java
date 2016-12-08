@@ -93,6 +93,7 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 				
 			}
 		});
+		container.addStyleName("section-panel");
 	}
 	
 	@Override

@@ -27,7 +27,7 @@ public class DisclosureElementPanel extends AbstractPanel<RNGElement>{
 		sectionPanel.getContent().addStyleName("disclosure-generic-content-panel");
 		
 		container.add(sectionPanel);
-		container.addStyleName("disclosure-generic disclosure-noborder");
+		container.addStyleName("disclosure-generic disclosure-border");
 	}
 	
 	@Override

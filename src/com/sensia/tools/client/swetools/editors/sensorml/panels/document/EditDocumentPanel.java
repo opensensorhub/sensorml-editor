@@ -21,6 +21,9 @@ import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGZeroOrMorePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGZeroOrMorePatternPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**
  * The Class SensorSectionsWidget is corresponding to the root panel element. It handles the title, 
@@ -70,11 +73,20 @@ public class EditDocumentPanel extends DocumentPanel{
 			  </sml:keywords>
 			 **/
 			
+			boolean shiftIntoMargin = false;
 			List<RNGTag> children = null;
 			if(tag instanceof RNGZeroOrMore) {
 				children = ((RNGZeroOrMore)tag).getChildren();
 			} else {
 				children = ((RNGOptional)tag).getChildren();
+				if( ((RNGOptional)tag).isSelected()) {
+					element.getPanel().addStyleName("rng-shift-remove");
+				}
+			}
+			
+			// test zeroOrMore pattern to shift to the left
+			if(element instanceof RNGZeroOrMorePanel) {
+				((RNGZeroOrMorePanel)element).getPatternPanel().addStyleName("rng-shift-remove");
 			}
 			
 			for(RNGTag child : children ){

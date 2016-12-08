@@ -74,5 +74,8 @@ public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	public Panel getPatternPanel() {
+		return patternContainer;
+	}
 }

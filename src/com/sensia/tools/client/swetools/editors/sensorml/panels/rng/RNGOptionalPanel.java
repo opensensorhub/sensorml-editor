@@ -79,10 +79,6 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
 		if(element instanceof EditSectionElementPanel) {
-			
-			element.getPanel().removeStyleName("disclosure-noborder");
-			element.getPanel().addStyleName("section-panel disclosure-border");
-			
 			headerPanel.clear();
 			headerPanel.add(addButton);
 			headerPanel.add(element.getPanel());
