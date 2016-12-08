@@ -2,7 +2,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels
 
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.ElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.edit.EditSimpleElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSimpleElementPanel;
 
 public class SWEEditIdentifierPanel extends EditSimpleElementPanel{
 

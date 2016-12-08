@@ -12,7 +12,6 @@ package com.sensia.tools.client.swetools.editors.sensorml.panels.document;
 
 import java.util.List;
 
-import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.sensia.relaxNG.RNGAttribute;
@@ -25,7 +24,6 @@ import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DynamicDisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**
@@ -64,10 +62,7 @@ public class DocumentPanel extends AbstractPanel{
 			}
 			case "description" : headerDocumentPanel.setDescription(element.getPanel()); break;
 			default:{
-				if(element instanceof DynamicDisclosureElementPanel || element instanceof DisclosureElementPanel) {
-					if(element instanceof DynamicDisclosureElementPanel) {
-						((DynamicDisclosureElementPanel)element).setHeaderStr(Utils.toNiceLabel(element.getName()));
-					}
+				if(element instanceof DisclosureElementPanel) {
 					element.getPanel().removeStyleName("disclosure-noborder");
 					element.getPanel().addStyleName("section-panel disclosure-border");
 					container.add(element.getPanel());

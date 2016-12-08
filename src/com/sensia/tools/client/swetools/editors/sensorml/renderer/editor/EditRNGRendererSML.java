@@ -14,7 +14,6 @@ import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.edit.EditElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.document.EditDocumentPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditAttributeCodePanel;
@@ -27,6 +26,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditXLinkHrefPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditXLinkRolePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditXLinkTitlePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gmd.GMDEditUrl;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditIdentifierPanel;
@@ -240,11 +240,11 @@ public class EditRNGRendererSML extends EditRendererSWE implements RNGTagVisitor
 				return;
 			} else if(eltName.equalsIgnoreCase("identifier")) {
 				//TODO
-				pushAndVisitChildren(renderVerticalElementListPanel(elt), elt.getChildren());
+				GWT.log("[WARN] sml:identifier is not supported yet");
 				return;
 			} else if(eltName.equalsIgnoreCase("classifier")) {
 				//TODO
-				pushAndVisitChildren(renderVerticalElementListPanel(elt), elt.getChildren());
+				GWT.log("[WARN] sml:classifier is not supported yet");
 				return;
 			} else if(eltName.equalsIgnoreCase("Document")) {
 				pushAndVisitChildren(new SMLEditDocument(elt), elt.getChildren());

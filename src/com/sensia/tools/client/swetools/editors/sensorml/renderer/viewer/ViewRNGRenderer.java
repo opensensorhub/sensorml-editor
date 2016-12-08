@@ -13,7 +13,6 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer;
 import java.util.List;
 
 import com.google.gwt.core.shared.GWT;
-import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGElement;
@@ -30,7 +29,6 @@ import com.sensia.relaxNG.XSDDouble;
 import com.sensia.relaxNG.XSDInteger;
 import com.sensia.relaxNG.XSDString;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ViewValuePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DynamicDisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.EditRNGRendererSML;
 
 /**

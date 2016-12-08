@@ -1,4 +1,4 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.edit;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element;
 
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;

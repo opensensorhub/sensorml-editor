@@ -45,9 +45,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.EditValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ViewValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DynamicDisclosureElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.ElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.edit.EditElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericHorizontalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGChoicePanel;
@@ -60,6 +57,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDDoublePan
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDIntegerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDStringPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditElementPanel;
 
 /**
  * <p>
@@ -425,9 +423,6 @@ public abstract class AdvancedRNGRenderer implements RNGTagVisitor, IRefreshHand
 		return new GenericVerticalContainerPanel(tag);
 	}
 	
-	protected IPanel<RNGElement> renderVerticalElementListPanel(RNGElement tag) {
-		return new DynamicDisclosureElementPanel(tag);
-	}
 	/**
 	 * Render horizontal widget.
 	 *
@@ -438,11 +433,6 @@ public abstract class AdvancedRNGRenderer implements RNGTagVisitor, IRefreshHand
 	 */
 	protected IPanel<? extends RNGTag> renderHorizontalWidget(RNGTag tag) {
 		return new GenericHorizontalContainerPanel(tag);
-	}
-	
-	protected IPanel<RNGElement> renderDynamicDisclosure(RNGElement tag) {
-		//return new SectionPanel(tag);
-		return new DynamicDisclosureElementPanel(tag);
 	}
 	
 	protected IPanel<RNGElement> renderDisclosure(RNGElement tag) {
