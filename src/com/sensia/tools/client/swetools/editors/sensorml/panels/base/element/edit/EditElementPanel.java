@@ -73,9 +73,6 @@ public class EditElementPanel extends ElementPanel{
 			}
 		});
 
-		container.clear();
 		container.add(label);
-		
-		label.addStyleName("rng-advanced-button-section");
 	}
 }
