@@ -51,5 +51,34 @@ public class AdvancedRendererSWE extends AdvancedRendererRNG {
 	 * Instantiates a new RNG renderer swe.
 	 */
 	public AdvancedRendererSWE() {}
+
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRenderer#visit(com.sensia.relaxNG.RNGElement)
+	 */
+	@Override
+	public void visit(RNGElement elt) {
+		final IPanel<RNGElement> widget = getPanel(elt);
+		if(widget != null) {
+			pushAndVisitChildren(widget, elt.getChildren());
+		} else {
+			super.visit(elt);
+		}
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRenderer#getWidget(java.lang.String)
+	 */
+	protected IPanel<RNGElement> getPanel(RNGElement elt) {
+		final String name = elt.getName();
+		
+		if(name.equalsIgnoreCase("description")) {
+			return new SWEEditDescriptionPanel(elt);
+		} else if(name.equalsIgnoreCase("label")) {
+			return new SWEEditLabelPanel(elt);
+		} else if(name.equalsIgnoreCase("identifier")) {
+			return new SWEEditIdentifierPanel(elt);
+		}
+		return null;
+	}
 	
 }
