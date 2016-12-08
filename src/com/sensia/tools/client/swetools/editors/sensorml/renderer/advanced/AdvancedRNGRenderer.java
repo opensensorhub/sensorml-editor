@@ -43,7 +43,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericHorizontalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGChoicePanel;
@@ -421,18 +420,6 @@ public abstract class AdvancedRNGRenderer implements RNGTagVisitor, IRefreshHand
 	 */
 	protected IPanel<RNGTag> renderVerticalPanel(RNGTag tag) {
 		return new GenericVerticalContainerPanel(tag);
-	}
-	
-	/**
-	 * Render horizontal widget.
-	 *
-	 * @param name the name
-	 * @param def the def
-	 * @param type the type
-	 * @return the i sensor widget
-	 */
-	protected IPanel<? extends RNGTag> renderHorizontalWidget(RNGTag tag) {
-		return new GenericHorizontalContainerPanel(tag);
 	}
 	
 	protected IPanel<RNGElement> renderDisclosure(RNGElement tag) {
