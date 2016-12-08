@@ -15,10 +15,12 @@ import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeDefinitionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeReferenceFramePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.edit.EditElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.document.EditDocumentPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.edit.GMLEditDescriptionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.edit.GMLEditIdentifierPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.edit.GMLEditNamePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditCapabilitiesPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditCapabilityPanel;
@@ -95,6 +97,9 @@ public class EditRNGRendererSML extends AdvancedRendererSML implements RNGTagVis
 				return;
 			} else if(eltName.equalsIgnoreCase("name")) {
 				pushAndVisitChildren(new GMLEditNamePanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("identifier")) {
+				pushAndVisitChildren(new GMLEditIdentifierPanel(elt), elt.getChildren());
 				return;
 			}
 		}
@@ -232,6 +237,8 @@ public class EditRNGRendererSML extends AdvancedRendererSML implements RNGTagVis
 			pushAndVisitChildren(new EditAttributeReferenceFramePanel(att),att.getChildren());
 		} else if(name.equals("definition")) {
 			pushAndVisitChildren(new EditAttributeDefinitionPanel(att),att.getChildren());
+		} else if(name.equals("codeSpace")) {
+			pushAndVisitChildren(new EditAttributePanel(att),att.getChildren());
 		} else {
 			super.visit(att);
 		}

@@ -13,7 +13,7 @@ public class EditAttributePanel extends AbstractPanel<RNGAttribute> {
 	public EditAttributePanel(RNGAttribute tag) {
 		super(tag);
 		container = new HorizontalPanel();
-		container.add(new Label(Utils.findLabel(tag)));
+		//container.add(new Label(Utils.findLabel(tag)));
 	}
 
 	@Override
