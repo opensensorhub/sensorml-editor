@@ -30,9 +30,10 @@ public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 		final String label = Utils.findLabel(tag);
 		Label addButton = new Label();
 		addButton.addStyleName("rng-optional-select");
+		
 		HorizontalPanel headerPanel = new HorizontalPanel();
-		headerPanel.add(addButton);
 		headerPanel.add(new Label(label));
+		headerPanel.add(addButton);
 		
 		container.add(headerPanel);
 		container.add(patternContainer);
