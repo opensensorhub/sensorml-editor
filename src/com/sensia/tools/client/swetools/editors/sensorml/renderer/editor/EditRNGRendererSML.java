@@ -76,7 +76,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
  * @author Alexandre Robin
  * @date Aug 27, 2011
  */
-public class EditRNGRendererSML extends AdvancedRendererSML implements RNGTagVisitor {
+public class EditRNGRendererSML extends EditRendererSWE implements RNGTagVisitor {
 
 	public EditRNGRendererSML() {
 		

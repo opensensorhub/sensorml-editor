@@ -1,13 +1,13 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels.swe.view;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe;
 
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericIconPanel;
 
-public class SWEViewDataArray extends GenericIconPanel<RNGElement>{
+public class SWEEditDataArray extends GenericIconPanel<RNGElement>{
 
-	public SWEViewDataArray(RNGElement tag, String path) {
+	public SWEEditDataArray(RNGElement tag, String path) {
 		super(tag, path);
 	}
 

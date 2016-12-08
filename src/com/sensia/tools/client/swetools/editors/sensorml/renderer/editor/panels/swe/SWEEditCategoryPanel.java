@@ -1,4 +1,4 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels.swe.view;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe;
 
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -14,13 +14,13 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGen
  * @author mathieu.dhainaut@gmail.com
  *
  */
-public class SWEViewCategoryPanel extends AbstractGenericLinePanel<RNGElement>{
+public class SWEEditCategoryPanel extends AbstractGenericLinePanel<RNGElement>{
 
 	protected Panel valuePanel;
 	protected Panel codeSpace;
 	protected Panel constraint;
 	
-	public SWEViewCategoryPanel(RNGElement element) {
+	public SWEEditCategoryPanel(RNGElement element) {
 		super(element);
 		
 		valuePanel = new SimplePanel();

@@ -497,4 +497,12 @@ public abstract class AdvancedRNGRenderer implements RNGTagVisitor, IRefreshHand
 	public void setRefreshHandler(IRefreshHandler refreshHandler) {
 		this.refreshHandler = refreshHandler;
 	}
+	
+
+	@Override
+	public void refresh() {
+		if(getRefreshHandler() != null) {
+			getRefreshHandler().refresh();
+		}
+	}
 }
