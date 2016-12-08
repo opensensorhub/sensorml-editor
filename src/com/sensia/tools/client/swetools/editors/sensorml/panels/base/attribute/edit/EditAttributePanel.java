@@ -5,6 +5,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGTag;
+import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
@@ -25,6 +26,9 @@ public class EditAttributePanel extends AbstractPanel<RNGAttribute> {
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
+		if(element.getTag() instanceof RNGValue) {
+			container.clear();
+		}
 		container.add(element.getPanel());
 	}
 

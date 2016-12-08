@@ -19,7 +19,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.ElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.line.EditAbstractGenericLinePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.line.edit.EditAbstractGenericLinePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 

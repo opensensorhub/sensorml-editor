@@ -1,6 +1,7 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels.line;
+package com.sensia.tools.client.swetools.editors.sensorml.panels.line.edit;
 
 import com.sensia.relaxNG.RNGTag;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
 
 public abstract class EditAbstractGenericLinePanel<T extends RNGTag> extends AbstractGenericLinePanel<T>{
 

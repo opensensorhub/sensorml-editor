@@ -14,7 +14,6 @@ import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeCodeSpacePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeDefinitionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeReferenceFramePanel;
@@ -242,7 +241,7 @@ public class EditRNGRendererSML extends AdvancedRendererSML implements RNGTagVis
 		} else if(name.equals("definition")) {
 			pushAndVisitChildren(new EditAttributeDefinitionPanel(att),att.getChildren());
 		} else if(name.equals("codeSpace")) {
-			pushAndVisitChildren(new EditAttributeCodeSpacePanel(att),att.getChildren());
+			pushAndVisitChildren(new EditAttributePanel(att),att.getChildren());
 		} else {
 			super.visit(att);
 		}

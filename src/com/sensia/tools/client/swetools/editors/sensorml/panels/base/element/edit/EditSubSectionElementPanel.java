@@ -3,7 +3,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.ed
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.line.EditAbstractGenericLinePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.line.edit.EditAbstractGenericLinePanel;
 
 public class EditSubSectionElementPanel extends EditElementPanel{
 
