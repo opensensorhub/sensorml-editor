@@ -3,9 +3,9 @@ package com.sensia.tools.client.swetools.editors.sensorml.panels.sml;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.line.view.ViewAbstractGenericLinePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
 
-public class SMLAxisPanel extends ViewAbstractGenericLinePanel<RNGElement>{
+public class SMLAxisPanel extends AbstractGenericLinePanel<RNGElement>{
 
 	public SMLAxisPanel(RNGElement tag) {
 		super(tag);

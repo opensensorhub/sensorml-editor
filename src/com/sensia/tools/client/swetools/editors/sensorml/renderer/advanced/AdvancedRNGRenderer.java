@@ -44,10 +44,10 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.EditValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ViewValuePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.view.ViewAttributePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DynamicDisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.ElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.edit.EditElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericHorizontalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.rng.RNGChoicePanel;
@@ -59,6 +59,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDDecimalPa
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDDoublePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDIntegerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.xsd.XSDStringPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributePanel;
 
 /**
  * <p>
@@ -161,7 +162,7 @@ public abstract class AdvancedRNGRenderer implements RNGTagVisitor, IRefreshHand
 	@Override
 	public void visit(RNGElement elt) {
 		//pushAndVisitChildren(new DynamicDisclosureElementPanel(elt), elt.getChildren());
-		pushAndVisitChildren(new ElementPanel(elt), elt.getChildren());
+		pushAndVisitChildren(new EditElementPanel(elt), elt.getChildren());
 	}
 	
 	/* (non-Javadoc)
@@ -169,7 +170,7 @@ public abstract class AdvancedRNGRenderer implements RNGTagVisitor, IRefreshHand
 	 */
 	@Override
 	public void visit(RNGAttribute attribute) {
-		pushAndVisitChildren(new ViewAttributePanel(attribute), attribute.getChildren());
+		pushAndVisitChildren(new AdvancedAttributePanel(attribute), attribute.getChildren());
 	}
 	
 	/* (non-Javadoc)

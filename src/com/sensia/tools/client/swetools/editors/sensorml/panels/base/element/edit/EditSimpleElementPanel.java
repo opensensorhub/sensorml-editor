@@ -2,12 +2,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.ed
 
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.SimplePanel;
-import com.sensia.relaxNG.RNGAttribute;
-import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGElement;
-import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;

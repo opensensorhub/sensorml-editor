@@ -16,16 +16,10 @@ import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGData;
-import com.sensia.relaxNG.RNGDefine;
 import com.sensia.relaxNG.RNGElement;
-import com.sensia.relaxNG.RNGGroup;
-import com.sensia.relaxNG.RNGInterleave;
-import com.sensia.relaxNG.RNGList;
 import com.sensia.relaxNG.RNGOneOrMore;
 import com.sensia.relaxNG.RNGOptional;
-import com.sensia.relaxNG.RNGRef;
 import com.sensia.relaxNG.RNGTag;
-import com.sensia.relaxNG.RNGText;
 import com.sensia.relaxNG.RNGValue;
 import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.relaxNG.XSDAnyURI;
@@ -35,14 +29,8 @@ import com.sensia.relaxNG.XSDDecimal;
 import com.sensia.relaxNG.XSDDouble;
 import com.sensia.relaxNG.XSDInteger;
 import com.sensia.relaxNG.XSDString;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.ViewValuePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.view.ViewAttributePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DynamicDisclosureElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericHorizontalContainerPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.EditRNGRendererSML;
 
 /**
@@ -76,7 +64,8 @@ public abstract class ViewRNGRenderer extends EditRNGRendererSML {
 	 */
 	@Override
 	public void visit(RNGElement elt) {
-		pushAndVisitChildren(new DynamicDisclosureElementPanel(elt), elt.getChildren());
+		//pushAndVisitChildren(new DynamicDisclosureElementPanel(elt), elt.getChildren());
+		super.visit(elt);
 	}
 
 	/* (non-Javadoc)
@@ -103,10 +92,10 @@ public abstract class ViewRNGRenderer extends EditRNGRendererSML {
 	/* (non-Javadoc)
 	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGAttribute)
 	 */
-	@Override
-	public void visit(RNGAttribute attribute) {
-		pushAndVisitChildren(new ViewAttributePanel(attribute), attribute.getChildren());
-	}
+	//@Override
+	//public void visit(RNGAttribute attribute) {
+	//	pushAndVisitChildren(new ViewAttributePanel(attribute), attribute.getChildren());
+	//}
 
 	/* (non-Javadoc)
 	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGOneOrMore)

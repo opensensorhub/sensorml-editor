@@ -10,7 +10,6 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced;
 
-import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
@@ -19,7 +18,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.edit.SWEEdit
 import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.edit.SWEEditIdentifierPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.edit.SWEEditLabelPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.view.SWEViewCategoryPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.view.SWEViewDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.view.SWEViewQuantityPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.swe.view.SWEViewQuantityRangePanel;
 

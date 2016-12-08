@@ -10,7 +10,6 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
@@ -20,21 +19,18 @@ import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGTagVisitor;
-import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeDefinitionPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeReferenceFramePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.document.EditDocumentPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.edit.GMLEditDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.edit.GMLEditNamePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditObservablePropertyPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkArcrolePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkHrefPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkRolePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkTitlePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.EditRNGRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributeDefinitionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributeReferenceFramePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkArcrolePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkHrefPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkRolePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkTitlePanel;
 
 /**
  * <p>
@@ -177,29 +173,29 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 		String name = att.getName();
 		if (nsUri != null && nsUri.equalsIgnoreCase(XLINK)) {
 			if(name.equals("role")){
-				pushAndVisitChildren(new EditXLinkRolePanel(att),att.getChildren());
+				pushAndVisitChildren(new AdvancedXLinkRolePanel(att),att.getChildren());
 			} else if(name.equals("arcrole")) {
-				pushAndVisitChildren(new EditXLinkArcrolePanel(att),att.getChildren());
+				pushAndVisitChildren(new AdvancedXLinkArcrolePanel(att),att.getChildren());
 			} else if(name.equals("href")) {
-				pushAndVisitChildren(new EditXLinkHrefPanel(att),att.getChildren());
+				pushAndVisitChildren(new AdvancedXLinkHrefPanel(att),att.getChildren());
 			} else if(name.equals("title")) {
-				pushAndVisitChildren(new EditXLinkTitlePanel(att),att.getChildren());
+				pushAndVisitChildren(new AdvancedXLinkTitlePanel(att),att.getChildren());
 			} else {
 				GWT.log("[WARN] Unsupported XLink element: "+name+". Skipped.");
 				super.visit(att);
 			}
 		} else if(name.equals("referenceFrame")) {
-			pushAndVisitChildren(new EditAttributeReferenceFramePanel(att),att.getChildren());
+			pushAndVisitChildren(new AdvancedAttributeReferenceFramePanel(att),att.getChildren());
 		} else if(name.equals("definition")) {
-			pushAndVisitChildren(new EditAttributeDefinitionPanel(att),att.getChildren());
+			pushAndVisitChildren(new AdvancedAttributeDefinitionPanel(att),att.getChildren());
 		} else if(name.equals("codeSpace")) {
-			pushAndVisitChildren(new EditAttributePanel(att),att.getChildren());
+			pushAndVisitChildren(new AdvancedAttributePanel(att),att.getChildren());
 		} else if(name.equals("definition")) {
-			pushAndVisitChildren(new EditAttributePanel(att),att.getChildren());
+			pushAndVisitChildren(new AdvancedAttributePanel(att),att.getChildren());
 		} else if(name.equals("id")) {
-			pushAndVisitChildren(new EditAttributePanel(att),att.getChildren());
+			pushAndVisitChildren(new AdvancedAttributePanel(att),att.getChildren());
 		} else if(name.equals("name")) {
-			pushAndVisitChildren(new EditAttributePanel(att),att.getChildren());
+			pushAndVisitChildren(new AdvancedAttributePanel(att),att.getChildren());
 		} else {
 			super.visit(att);
 		}

@@ -14,9 +14,6 @@ import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeDefinitionPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeReferenceFramePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.edit.EditElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.document.EditDocumentPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.edit.GMLEditDescriptionPanel;
@@ -37,18 +34,24 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEdit
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditLegalConstraintsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditMethodPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditModesPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditObservablePropertyPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditOutputPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditOutputsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditParameterPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditParametersPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditTypeOfPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditValidTimePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkArcrolePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkHrefPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkRolePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkTitlePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditAttributeCodePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditAttributeDefinitionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditAttributeNamePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditAttributePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditAttributeRefPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditAttributeReferenceFramePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditXLinkArcrolePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditXLinkHrefPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditXLinkRolePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditXLinkTitlePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditObservablePropertyPanel;
 
 /**
  * <p>
@@ -213,5 +216,41 @@ public class EditRNGRendererSML extends AdvancedRendererSML implements RNGTagVis
 		} 
 			
 		pushAndVisitChildren(new EditElementPanel(elt), elt.getChildren());
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRenderer#visit(com.sensia.relaxNG.RNGAttribute)
+	 */
+	@Override
+	public void visit(RNGAttribute att) {
+		// handle xlink
+		String nsUri = att.getNamespace();
+		String name = att.getName();
+		if (nsUri != null && nsUri.equalsIgnoreCase(XLINK)) {
+			if(name.equals("role")){
+				pushAndVisitChildren(new EditXLinkRolePanel(att),att.getChildren());
+			} else if(name.equals("arcrole")) {
+				pushAndVisitChildren(new EditXLinkArcrolePanel(att),att.getChildren());
+			} else if(name.equals("href")) {
+				pushAndVisitChildren(new EditXLinkHrefPanel(att),att.getChildren());
+			} else if(name.equals("title")) {
+				pushAndVisitChildren(new EditXLinkTitlePanel(att),att.getChildren());
+			} else {
+				GWT.log("[WARN] Unsupported XLink element: "+name+". Skipped.");
+				pushAndVisitChildren(new EditAttributePanel(att),att.getChildren());
+			}
+		} else if(name.equals("referenceFrame")) {
+			pushAndVisitChildren(new EditAttributeReferenceFramePanel(att),att.getChildren());
+		} else if(name.equals("definition")) {
+			pushAndVisitChildren(new EditAttributeDefinitionPanel(att),att.getChildren());
+		} else if(name.equals("name")) {
+			pushAndVisitChildren(new EditAttributeNamePanel(att),att.getChildren());
+		} else if(name.equals("ref")) {
+			pushAndVisitChildren(new EditAttributeRefPanel(att),att.getChildren());
+		} else if(name.equals("code")) {
+			pushAndVisitChildren(new EditAttributeCodePanel(att),att.getChildren());
+		} else {
+			pushAndVisitChildren(new EditAttributePanel(att),att.getChildren());
+		}
 	}
 }

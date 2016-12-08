@@ -6,9 +6,9 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.line.view.ViewAbstractGenericLinePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
 
-public class SMLTermPanel extends ViewAbstractGenericLinePanel<RNGElement>{
+public class SMLTermPanel extends AbstractGenericLinePanel<RNGElement>{
 
 	
 	protected Panel valuePanel;
