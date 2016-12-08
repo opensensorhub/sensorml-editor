@@ -214,38 +214,4 @@ public class EditRNGRendererSML extends AdvancedRendererSML implements RNGTagVis
 			
 		pushAndVisitChildren(new EditElementPanel(elt), elt.getChildren());
 	}
-	
-	/* (non-Javadoc)
-	 * @see com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRenderer#visit(com.sensia.relaxNG.RNGAttribute)
-	 */
-	@Override
-	public void visit(RNGAttribute att) {
-		// handle xlink
-		String nsUri = att.getNamespace();
-		String name = att.getName();
-		if (nsUri != null && nsUri.equalsIgnoreCase(XLINK)) {
-			if(name.equals("role")){
-				pushAndVisitChildren(new EditXLinkRolePanel(att),att.getChildren());
-			} else if(name.equals("arcrole")) {
-				pushAndVisitChildren(new EditXLinkArcrolePanel(att),att.getChildren());
-			} else if(name.equals("href")) {
-				pushAndVisitChildren(new EditXLinkHrefPanel(att),att.getChildren());
-			} else if(name.equals("title")) {
-				pushAndVisitChildren(new EditXLinkTitlePanel(att),att.getChildren());
-			} else {
-				GWT.log("[WARN] Unsupported XLink element: "+name+". Skipped.");
-				super.visit(att);
-			}
-		} else if(name.equals("referenceFrame")) {
-			pushAndVisitChildren(new EditAttributeReferenceFramePanel(att),att.getChildren());
-		} else if(name.equals("definition")) {
-			pushAndVisitChildren(new EditAttributeDefinitionPanel(att),att.getChildren());
-		} else if(name.equals("codeSpace")) {
-			pushAndVisitChildren(new EditAttributePanel(att),att.getChildren());
-		} else {
-			super.visit(att);
-		}
-	}
-	
-	
 }

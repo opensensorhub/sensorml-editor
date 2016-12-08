@@ -15,16 +15,25 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
 
+import com.google.gwt.core.shared.GWT;
+import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeDefinitionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeReferenceFramePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.document.EditDocumentPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.edit.GMLEditDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.edit.GMLEditNamePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditObservablePropertyPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkArcrolePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkHrefPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkRolePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.xlink.edit.EditXLinkTitlePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.EditRNGRendererSML;
 
 /**
@@ -155,6 +164,44 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 			// handle others
 			super.visit(elt);
 			return;
+		}
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRenderer#visit(com.sensia.relaxNG.RNGAttribute)
+	 */
+	@Override
+	public void visit(RNGAttribute att) {
+		// handle xlink
+		String nsUri = att.getNamespace();
+		String name = att.getName();
+		if (nsUri != null && nsUri.equalsIgnoreCase(XLINK)) {
+			if(name.equals("role")){
+				pushAndVisitChildren(new EditXLinkRolePanel(att),att.getChildren());
+			} else if(name.equals("arcrole")) {
+				pushAndVisitChildren(new EditXLinkArcrolePanel(att),att.getChildren());
+			} else if(name.equals("href")) {
+				pushAndVisitChildren(new EditXLinkHrefPanel(att),att.getChildren());
+			} else if(name.equals("title")) {
+				pushAndVisitChildren(new EditXLinkTitlePanel(att),att.getChildren());
+			} else {
+				GWT.log("[WARN] Unsupported XLink element: "+name+". Skipped.");
+				super.visit(att);
+			}
+		} else if(name.equals("referenceFrame")) {
+			pushAndVisitChildren(new EditAttributeReferenceFramePanel(att),att.getChildren());
+		} else if(name.equals("definition")) {
+			pushAndVisitChildren(new EditAttributeDefinitionPanel(att),att.getChildren());
+		} else if(name.equals("codeSpace")) {
+			pushAndVisitChildren(new EditAttributePanel(att),att.getChildren());
+		} else if(name.equals("definition")) {
+			pushAndVisitChildren(new EditAttributePanel(att),att.getChildren());
+		} else if(name.equals("id")) {
+			pushAndVisitChildren(new EditAttributePanel(att),att.getChildren());
+		} else if(name.equals("name")) {
+			pushAndVisitChildren(new EditAttributePanel(att),att.getChildren());
+		} else {
+			super.visit(att);
 		}
 	}
 	
