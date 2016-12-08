@@ -77,9 +77,9 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
  * @author Alexandre Robin
  * @date Aug 27, 2011
  */
-public class EditRNGRendererSML extends EditRendererSWE implements RNGTagVisitor {
+public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 
-	public EditRNGRendererSML() {
+	public EditRendererSML() {
 		
 	}
 	
@@ -254,7 +254,7 @@ public class EditRNGRendererSML extends EditRendererSWE implements RNGTagVisitor
 				return;
 			}
 		} 
-			
+		//GWT.log("[WARN] "+nsUri+":"+eltName+" is not supported yet");
 		pushAndVisitChildren(new EditElementPanel(elt), elt.getChildren());
 	}
 	

@@ -68,7 +68,6 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 			return;
 		}
 		
-		
 		if(rootSectionsList.contains(eltName)) {
 			pushAndVisitChildren(new ViewRootPanel(),elt.getChildren());
 			return;
@@ -83,9 +82,7 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 				pushAndVisitChildren(new GMLViewDescriptionPanel(elt), elt.getChildren());
 			} else if(eltName.equalsIgnoreCase("name")){
 				pushAndVisitChildren(new GMLViewNamePanel(elt), elt.getChildren());
-			} else {
-				visitChildren(elt.getChildren());
-			}
+			} 
 			return;
 		} else {
 			// handle others

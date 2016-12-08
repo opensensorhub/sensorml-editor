@@ -7,7 +7,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 public class SWEEditDescriptionPanel extends EditSimpleElementPanel{
 
 	public SWEEditDescriptionPanel(RNGElement element) {
-		super(element);
+		super(element,"description");
 	}
 
 }

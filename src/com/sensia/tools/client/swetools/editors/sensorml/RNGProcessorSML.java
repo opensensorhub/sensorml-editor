@@ -23,7 +23,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.ViewerPanel.MODE;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.EditRNGRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.EditRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.ViewRendererSML;
 
 /**
@@ -120,7 +120,7 @@ public class RNGProcessorSML {
 		IPanel root  = null;
 		
 		if(mode == MODE.EDIT){
-			EditRNGRendererSML renderer = new EditRNGRendererSML();
+			EditRendererSML renderer = new EditRendererSML();
 			renderer.setObservers(observers);
 			renderer.setRefreshHandler(refreshHandler);
 			renderer.visit(grammar);
@@ -151,7 +151,7 @@ public class RNGProcessorSML {
 			}
 			return renderer.getRoot();
 		} else {
-			EditRNGRendererSML renderer = new EditRNGRendererSML();
+			EditRendererSML renderer = new EditRendererSML();
 			renderer.setRefreshHandler(refreshHandler);
 			renderer.visit(tag);
 			if(tag instanceof RNGGrammar) {

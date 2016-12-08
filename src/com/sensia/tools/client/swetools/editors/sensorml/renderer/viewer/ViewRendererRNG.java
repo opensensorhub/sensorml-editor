@@ -28,7 +28,7 @@ import com.sensia.relaxNG.XSDDecimal;
 import com.sensia.relaxNG.XSDDouble;
 import com.sensia.relaxNG.XSDInteger;
 import com.sensia.relaxNG.XSDString;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.EditRNGRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.EditRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
 
 /**
@@ -48,23 +48,14 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
  * @author Alexandre Robin
  * @date Aug 27, 2011
  */
-public abstract class ViewRNGRenderer extends EditRNGRendererSML {
+public class ViewRendererRNG extends EditRendererSML {
 	
 	/**
 	 * Instantiates a new RNG renderer.
 	 */
-	public ViewRNGRenderer() {
+	public ViewRendererRNG() {
 	}
 
-
-	/* (non-Javadoc)
-	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGElement)
-	 */
-	@Override
-	public void visit(RNGElement elt) {
-		//pushAndVisitChildren(new DynamicDisclosureElementPanel(elt), elt.getChildren());
-		super.visit(elt);
-	}
 
 	/* (non-Javadoc)
 	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGChoice)
@@ -86,14 +77,6 @@ public abstract class ViewRNGRenderer extends EditRNGRendererSML {
 			this.visitChildren(optional.getChildren());
 		}
 	}
-
-	/* (non-Javadoc)
-	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGAttribute)
-	 */
-	//@Override
-	//public void visit(RNGAttribute attribute) {
-	//	pushAndVisitChildren(new ViewAttributePanel(attribute), attribute.getChildren());
-	//}
 
 	/* (non-Javadoc)
 	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGOneOrMore)

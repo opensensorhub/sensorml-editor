@@ -75,7 +75,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
  * @author Alexandre Robin
  * @date Aug 27, 2011
  */
-public abstract class AdvancedRNGRenderer implements RNGTagVisitor, IRefreshHandler {
+public abstract class AdvancedRendererRNG implements RNGTagVisitor, IRefreshHandler {
 	
 	/** The stack. */
 	protected Stack<IPanel<? extends RNGTag>> stack;
@@ -92,7 +92,7 @@ public abstract class AdvancedRNGRenderer implements RNGTagVisitor, IRefreshHand
 	/**
 	 * Instantiates a new RNG renderer.
 	 */
-	public AdvancedRNGRenderer() {
+	public AdvancedRendererRNG() {
 		stack = new Stack<IPanel<? extends RNGTag>>();
 		this.observers = new ArrayList<IObserver>();
 	}

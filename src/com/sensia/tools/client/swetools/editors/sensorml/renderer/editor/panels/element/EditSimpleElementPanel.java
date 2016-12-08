@@ -13,9 +13,7 @@ public class EditSimpleElementPanel extends AbstractPanel<RNGElement>{
 	
 	public EditSimpleElementPanel(RNGElement element) {
 		super(element);
-		
 		container = new HorizontalPanel();
-		container.add(new HTML(Utils.findLabel(element.getParent())+":"+SMLEditorConstants.HTML_SPACE));
 	}
 	
 	public EditSimpleElementPanel(RNGElement element,String label) {
