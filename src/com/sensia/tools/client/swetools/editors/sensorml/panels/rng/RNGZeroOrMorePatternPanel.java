@@ -12,6 +12,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.edit.EditSectionElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.edit.EditSimpleElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
@@ -73,6 +74,13 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 			
 			hPanel.addStyleName("rng-disclosure");
 			container.add(hPanel);
+		} else if(element instanceof EditSimpleElementPanel){
+			// inline the simple edit panel
+			container.clear();
+			container = new HorizontalPanel();
+			container.addStyleName("rng-optional-pattern");
+			container.add(removeButton);
+			container.add(element.getPanel());
 		} else {
 			patternContainer.add(element.getPanel());
 		}
