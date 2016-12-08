@@ -74,9 +74,7 @@ public class EditElementPanel extends ElementPanel{
 		});
 
 		container.clear();
-		HorizontalPanel hPanel = new HorizontalPanel();
-		hPanel.add(label);
-		container.add(hPanel);
+		container.add(label);
 		
 		label.addStyleName("rng-advanced-button-section");
 	}
