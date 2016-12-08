@@ -23,6 +23,8 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 			container.add(element.getPanel());
 		} else if(element.getName().equals("name")) {
 			namePanel = element;
+		} else {
+			super.addInnerElement(element);
 		}
 	}
 }
