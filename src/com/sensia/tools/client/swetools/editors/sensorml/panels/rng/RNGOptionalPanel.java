@@ -79,13 +79,13 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
 		if(element instanceof EditSectionElementPanel) {
-			headerPanel.clear();
-			headerPanel.add(addButton);
-			headerPanel.add(element.getPanel());
 			headerPanel.addStyleName("rng-disclosure");
-		} else {
-			patternContainer.add(element.getPanel());
-		}
+		} 
+
+		headerPanel.clear();
+		headerPanel.add(addButton);
+		headerPanel.add(element.getPanel());
+		//patternContainer.add(element.getPanel());
 	}
 
 	@Override

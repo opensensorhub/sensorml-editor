@@ -18,6 +18,8 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.e
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.attribute.edit.EditAttributeReferenceFramePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.edit.EditElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.document.EditDocumentPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.edit.GMLEditDescriptionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.gml.edit.GMLEditNamePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditCapabilitiesPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditCapabilityPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.sml.edit.SMLEditCharacteristicsPanel;
@@ -87,6 +89,15 @@ public class EditRNGRendererSML extends AdvancedRendererSML implements RNGTagVis
 			return;
 		}
 		
+		if (nsUri.equalsIgnoreCase(GML_NS_1) || nsUri.equalsIgnoreCase(GML_NS_2)) {
+			if(eltName.equalsIgnoreCase("description")) {
+				pushAndVisitChildren(new GMLEditDescriptionPanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("name")) {
+				pushAndVisitChildren(new GMLEditNamePanel(elt), elt.getChildren());
+				return;
+			}
+		}
 		if (nsUri.equalsIgnoreCase(SWE_NS_1) || nsUri.equalsIgnoreCase(SWE_NS_2)) {
 			super.visit(elt);
 			return;
