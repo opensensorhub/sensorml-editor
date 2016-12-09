@@ -5,7 +5,11 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.DialogBox;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.Panel;
 import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGValue;
@@ -13,16 +17,19 @@ import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallba
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.OntologyPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public abstract class AbstractAdvancedAttributeOntologyIconPanel<T extends RNGTag> extends AbstractPanel<T>{
 
-	private IPanel<? extends RNGTag> valuePanel;
+	private Panel valuePanel;
 	private Image ontologyImage;
+	private RNGData<?> rngData;
 	
-	public AbstractAdvancedAttributeOntologyIconPanel(T tag) {
+	public AbstractAdvancedAttributeOntologyIconPanel(T tag,String name,final IRefreshHandler refreshHandler) {
 		super(tag);
 		
 		//creates an ontology icon
@@ -41,20 +48,28 @@ public abstract class AbstractAdvancedAttributeOntologyIconPanel<T extends RNGTa
 						@Override
 						public void onClick() {
 							String value = ontologyPanel.getSelectedValue();
-							if(valuePanel.getTag() instanceof RNGValue) {
-								((RNGValue)valuePanel.getTag()).setText(value);
-							} else if(valuePanel.getTag() instanceof RNGData<?>) {
-								((RNGData<?>)valuePanel.getTag()).setStringValue(value);
+							if(rngData != null) {
+								rngData.setStringValue(value);
 							}
-							
 							ontologyImage.setTitle(value);
+							
+							if(refreshHandler != null) {
+								refreshHandler.refresh();
+							}
 						}
 					});
 					dialogBox.show();
 			}
 		});
+		valuePanel = new HorizontalPanel();
 		
+		container = new HorizontalPanel();
+		
+		container.add(new HTML(name+":"+SMLEditorConstants.HTML_SPACE));
+		container.add(valuePanel);
 		container.add(ontologyImage);
+		
+		container.addStyleName("attribute-panel-advanced");
 	}
 	
 	@Override
@@ -65,8 +80,9 @@ public abstract class AbstractAdvancedAttributeOntologyIconPanel<T extends RNGTa
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
 		 if(element.getTag() instanceof RNGData<?>) {
-			valuePanel =  element;
-			ontologyImage.setTitle(((RNGData<?>)valuePanel.getTag()).getStringValue());
+			rngData = (RNGData<?>) element.getTag();
+			valuePanel.add(element.getPanel());
+			ontologyImage.setTitle(rngData.getStringValue());
 		}
 	}
 

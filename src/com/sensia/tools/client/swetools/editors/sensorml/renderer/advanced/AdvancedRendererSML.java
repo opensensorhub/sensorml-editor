@@ -200,7 +200,7 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 		} else if(name.equals("referenceFrame")) {
 			pushAndVisitChildren(new AdvancedAttributeReferenceFramePanel(att),att.getChildren());
 		} else if(name.equals("definition")) {
-			pushAndVisitChildren(new AdvancedAttributeDefinitionPanel(att),att.getChildren());
+			pushAndVisitChildren(new AdvancedAttributeDefinitionPanel(att,getRefreshHandler()),att.getChildren());
 		} else if(name.equals("codeSpace")) {
 			pushAndVisitChildren(new AdvancedAttributePanel(att),att.getChildren());
 		} else if(name.equals("definition")) {
