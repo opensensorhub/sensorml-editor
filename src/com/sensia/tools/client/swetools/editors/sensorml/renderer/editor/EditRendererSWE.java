@@ -14,10 +14,8 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SMLEditFieldPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditCategoryPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditDescriptionPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditIdentifierPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditLabelPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditQuantityPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditQuantityRangePanel;
 
@@ -81,7 +79,9 @@ public class EditRendererSWE extends AdvancedRendererSML implements RNGTagVisito
 			return new SWEEditCategoryPanel(elt);
 		} else if(name.equalsIgnoreCase("QuantityRange")) {
 			return new SWEEditQuantityRangePanel(elt);
-		} /*else if(name.equalsIgnoreCase("description")) {
+		} else if(name.equals("field")) {
+			return new SMLEditFieldPanel(elt);
+		}/*else if(name.equalsIgnoreCase("description")) {
 			return new SWEEditDescriptionPanel(elt);
 		} else if(name.equalsIgnoreCase("label")) {
 			return new SWEEditLabelPanel(elt);
