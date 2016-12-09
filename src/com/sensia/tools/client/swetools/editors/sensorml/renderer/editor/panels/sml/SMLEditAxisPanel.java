@@ -18,9 +18,11 @@ public class SMLEditAxisPanel extends AbstractGenericLinePanel<RNGElement>{
 			defPanel.add(element.getPanel());
 		} else if(element.getName().equals("name")){
 			labelPanel.add(element.getPanel());
-			GWT.log(""+element.getClass());
 		} else if(element.getName().equals("label")){
 			labelPanel.add(element.getPanel());
-		} 
+		} else {
+			// should be RNGValue or RNGData
+			afterDotsPanel.add(element.getPanel());
+		}
 	}
 }
