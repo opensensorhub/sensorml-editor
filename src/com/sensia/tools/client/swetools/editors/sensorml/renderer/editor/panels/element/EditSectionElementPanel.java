@@ -66,6 +66,8 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 				renderer.visitChildren(tag.getChildren());
 				rootPanel.add(renderer.getRoot().getPanel());
 				
+				renderer.getRoot().getPanel().addStyleName("advanced-panel");
+				
 				DialogBox dialogBox = Utils.createEditDialogBox(rootPanel, "Edit "+tag.getName(), new IButtonCallback(){
 
 					@Override

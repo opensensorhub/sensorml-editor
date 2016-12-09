@@ -15,6 +15,8 @@ import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedDescriptionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedLabelPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditAttributeCodePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditAttributeDefinitionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditAttributeNamePanel;
@@ -259,10 +261,10 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 				pushAndVisitChildren(new SMLEditKeywordListPanel(elt), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("description")) {
-				pushAndVisitChildren(new SMLEditDescriptionPanel(elt), elt.getChildren());
+				pushAndVisitChildren(new SMLAdvancedDescriptionPanel(elt), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("label")) {
-				pushAndVisitChildren(new SMLEditLabelPanel(elt), elt.getChildren());
+				pushAndVisitChildren(new SMLAdvancedLabelPanel(elt), elt.getChildren());
 				return;
 			}
 		} 
@@ -286,7 +288,8 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 			} else if(name.equals("href")) {
 				pushAndVisitChildren(new EditXLinkHrefPanel(att),att.getChildren());
 			} else if(name.equals("title")) {
-				pushAndVisitChildren(new EditXLinkTitlePanel(att),att.getChildren());
+				//pushAndVisitChildren(new EditXLinkTitlePanel(att),att.getChildren());
+				//skip title
 			} else {
 				GWT.log("[WARN] Unsupported XLink element: "+name+". Skipped.");
 				pushAndVisitChildren(new EditAttributePanel(att),att.getChildren());

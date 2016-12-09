@@ -108,7 +108,8 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 			} else if(name.equals("href")) {
 				pushAndVisitChildren(new ViewXLinkHrefPanel(att),att.getChildren());
 			} else if(name.equals("title")) {
-				pushAndVisitChildren(new ViewXLinkTitlePanel(att),att.getChildren());
+				//pushAndVisitChildren(new ViewXLinkTitlePanel(att),att.getChildren());
+				//skip title
 			} else {
 				GWT.log("[WARN] Unsupported XLink element: "+name+". Skipped.");
 				pushAndVisitChildren(new ViewAttributePanel(att),att.getChildren());

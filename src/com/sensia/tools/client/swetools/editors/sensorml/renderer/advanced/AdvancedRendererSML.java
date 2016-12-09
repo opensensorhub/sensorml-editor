@@ -28,6 +28,8 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkHrefPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkRolePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkTitlePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedDescriptionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedLabelPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditNamePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.root.EditRootPanel;
@@ -156,6 +158,10 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 				visitChildren(elt.getChildren());
 			} else if(eltName.equalsIgnoreCase("classifier")) {
 				visitChildren(elt.getChildren());
+			} else if(eltName.equalsIgnoreCase("description")) {
+				pushAndVisitChildren(new SMLAdvancedDescriptionPanel(elt), elt.getChildren());
+			} else if(eltName.equalsIgnoreCase("label")) {
+				pushAndVisitChildren(new SMLAdvancedLabelPanel(elt), elt.getChildren());
 			} else {
 				super.visit(elt);
 			}

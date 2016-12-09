@@ -1,5 +1,6 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml;
 
+import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
@@ -17,6 +18,7 @@ public class SMLEditAxisPanel extends AbstractGenericLinePanel<RNGElement>{
 			defPanel.add(element.getPanel());
 		} else if(element.getName().equals("name")){
 			labelPanel.add(element.getPanel());
+			GWT.log(""+element.getClass());
 		} else if(element.getName().equals("label")){
 			labelPanel.add(element.getPanel());
 		} 

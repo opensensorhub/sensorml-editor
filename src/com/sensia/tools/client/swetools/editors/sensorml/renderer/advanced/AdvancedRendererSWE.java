@@ -11,15 +11,10 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced;
 
 import com.sensia.relaxNG.RNGElement;
-import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditDescriptionPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditIdentifierPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditLabelPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditCategoryPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditQuantityPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditQuantityRangePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.swe.SWEAdvancedDescriptionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.swe.SWEAdvancedIdentifierPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.swe.SWEAdvancedLabelPanel;
 
 /**
  * <p>
@@ -72,11 +67,11 @@ public class AdvancedRendererSWE extends AdvancedRendererRNG {
 		final String name = elt.getName();
 		
 		if(name.equalsIgnoreCase("description")) {
-			return new SWEEditDescriptionPanel(elt);
+			return new SWEAdvancedDescriptionPanel(elt);
 		} else if(name.equalsIgnoreCase("label")) {
-			return new SWEEditLabelPanel(elt);
+			return new SWEAdvancedLabelPanel(elt);
 		} else if(name.equalsIgnoreCase("identifier")) {
-			return new SWEEditIdentifierPanel(elt);
+			return new SWEAdvancedIdentifierPanel(elt);
 		}
 		return null;
 	}

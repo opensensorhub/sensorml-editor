@@ -81,13 +81,13 @@ public class EditRendererSWE extends AdvancedRendererSML implements RNGTagVisito
 			return new SWEEditCategoryPanel(elt);
 		} else if(name.equalsIgnoreCase("QuantityRange")) {
 			return new SWEEditQuantityRangePanel(elt);
-		} else if(name.equalsIgnoreCase("description")) {
+		} /*else if(name.equalsIgnoreCase("description")) {
 			return new SWEEditDescriptionPanel(elt);
 		} else if(name.equalsIgnoreCase("label")) {
 			return new SWEEditLabelPanel(elt);
 		} else if(name.equalsIgnoreCase("identifier")) {
 			return new SWEEditIdentifierPanel(elt);
-		}
+		}*/
 		/* if(name.equals("Quantity") || name.equals("Count")){
 			return new SWESensorQuantityWidget();
 		} else if(name.equals("Vector")){

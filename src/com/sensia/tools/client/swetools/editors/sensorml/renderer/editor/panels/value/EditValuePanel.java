@@ -26,8 +26,6 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 	
 	protected TextBox textBox;
 
-	private String niceLabel;
-	
 	private boolean isNiceLabel;
 	
 	public EditValuePanel(final RNGData<?> data) {
@@ -40,12 +38,6 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 		textBox.addStyleName("textbox");
 		// put saved value in text box
 		if (data.getStringValue() != null) {
-			if(isNiceLabel) {
-				niceLabel = Utils.toNiceLabel(data.getStringValue().trim());
-			} else {
-				niceLabel = data.getStringValue().trim();
-			}
-			
 			textBox.setText(data.getStringValue().trim());
 			
 			int valueLength = data.getStringValue().trim().length();
@@ -61,13 +53,11 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 
 			@Override
 			public void onKeyUp(KeyUpEvent event) {
-				GWT.log(textBox.getText());
 				data.setStringValue(textBox.getText());
 			}
 		});
 		
 		// add into the main container
-		//container.add(new Label(data.getParent().toString()+": "));
 		container.add(textBox);
 	}
 
@@ -85,9 +75,5 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 	@Override
 	public String getName() {
 		return "value";
-	}
-	
-	public void setNiceLabel(boolean isNiceLabel) {
-		this.isNiceLabel = isNiceLabel;
 	}
 }

@@ -17,6 +17,7 @@ public class AdvancedAttributePanel extends AbstractPanel<RNGAttribute> {
 		super(tag);
 		container = new HorizontalPanel();
 		container.add(new HTML(Utils.findLabel(tag)+":"+SMLEditorConstants.HTML_SPACE));
+		container.addStyleName("attribute-panel-advanced");
 	}
 
 	@Override
