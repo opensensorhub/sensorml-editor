@@ -16,6 +16,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SMLEditFieldPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditCategoryPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditDataRecordPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditQuantityPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditQuantityRangePanel;
 
@@ -81,6 +82,8 @@ public class EditRendererSWE extends AdvancedRendererSML implements RNGTagVisito
 			return new SWEEditQuantityRangePanel(elt);
 		} else if(name.equals("field")) {
 			return new SMLEditFieldPanel(elt);
+		} else if(name.equals("DataRecord")) {
+			return new SWEEditDataRecordPanel(elt);
 		}/*else if(name.equalsIgnoreCase("description")) {
 			return new SWEEditDescriptionPanel(elt);
 		} else if(name.equalsIgnoreCase("label")) {

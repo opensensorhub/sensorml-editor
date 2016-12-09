@@ -772,3 +772,16 @@ input:focus {
 .advanced-simple-element-panel .gwt-HTML {
 	width:100px;
 }
+
+.edit-subsection-element-inner-panel {
+	margin-left:20px;
+}
+
+.edit-subsection-element-panel{
+	margin-top: 10px;
+    margin-bottom: 10px;
+}
+    
+.edit-subsection-element-panel .gwt-HTML {
+	font-weight: bold;
+}
