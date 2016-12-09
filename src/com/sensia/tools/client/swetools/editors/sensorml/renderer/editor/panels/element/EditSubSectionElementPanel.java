@@ -1,5 +1,6 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element;
 
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -22,6 +23,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		label = new SimplePanel();
 		label.setVisible(false);
 		label.addStyleName("edit-subsection-element-panel");
+		label.add(new HTML(element.getName()));
 		
 		definition = new SimplePanel();
 		definition.setVisible(false);
@@ -43,6 +45,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 			}
 			innerContainer.add(element.getPanel());
 		} else if(element.getName().equals("name")) {
+			label.clear();
 			namePanel = element;
 			innerContainer.addStyleName("edit-subsection-element-inner-panel");
 			label.add(element.getPanel());
