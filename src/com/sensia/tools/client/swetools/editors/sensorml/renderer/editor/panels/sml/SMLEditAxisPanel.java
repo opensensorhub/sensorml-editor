@@ -19,8 +19,6 @@ public class SMLEditAxisPanel extends AbstractGenericLinePanel<RNGElement>{
 			labelPanel.add(element.getPanel());
 		} else if(element.getName().equals("label")){
 			labelPanel.add(element.getPanel());
-		} /* else {
-			afterDotsPanel.add(element.getPanel());
-		}*/
+		} 
 	}
 }

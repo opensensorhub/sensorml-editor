@@ -151,7 +151,11 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 		} else if (nsUri.equalsIgnoreCase(SML_NS_1) || nsUri.equalsIgnoreCase(SML_NS_2)) {
 			// handle SML element
 			if(eltName.equalsIgnoreCase("ObservableProperty")) {
-					visitChildren(elt.getChildren());
+				visitChildren(elt.getChildren());
+			} else if(eltName.equalsIgnoreCase("identifier")) {
+				visitChildren(elt.getChildren());
+			} else if(eltName.equalsIgnoreCase("classifier")) {
+				visitChildren(elt.getChildren());
 			} else {
 				super.visit(elt);
 			}
