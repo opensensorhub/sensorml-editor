@@ -15,6 +15,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.swe.SWEAdvancedDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.swe.SWEAdvancedIdentifierPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.swe.SWEAdvancedLabelPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.swe.SWEAdvancedValuePanel;
 
 /**
  * <p>
@@ -72,6 +73,8 @@ public class AdvancedRendererSWE extends AdvancedRendererRNG {
 			return new SWEAdvancedLabelPanel(elt);
 		} else if(name.equalsIgnoreCase("identifier")) {
 			return new SWEAdvancedIdentifierPanel(elt);
+		} else if(name.equalsIgnoreCase("value")) {
+			return new SWEAdvancedValuePanel(elt);
 		}
 		return null;
 	}
