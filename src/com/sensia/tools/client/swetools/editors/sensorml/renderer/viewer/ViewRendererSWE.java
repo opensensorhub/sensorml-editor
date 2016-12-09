@@ -15,6 +15,8 @@ import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewIdentifierPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewLabelPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewValuesPanel;
 
 /**
  * <p>
@@ -53,14 +55,25 @@ public class ViewRendererSWE extends ViewRendererRNG implements RNGTagVisitor {
 	@Override
 	public void visit(RNGElement element) {
 		String name = element.getName();
-		if(name.equals("description")) {
-			pushAndVisitChildren(new SWEViewDescriptionPanel(element), element.getChildren());
-		} else if(name.equals("label")){
-			pushAndVisitChildren(new SWEViewLabelPanel(element), element.getChildren());
-		} else if(name.equals("identifier")) {
-			pushAndVisitChildren(new SWEViewIdentifierPanel(element), element.getChildren());
+		String nsUri = element.getNamespace();
+		
+		if (nsUri.equalsIgnoreCase(SWE_NS_1) || nsUri.equalsIgnoreCase(SWE_NS_2)) {
+			if(name.equals("description")) {
+				pushAndVisitChildren(new SWEViewDescriptionPanel(element), element.getChildren());
+			} else if(name.equals("label")){
+				pushAndVisitChildren(new SWEViewLabelPanel(element), element.getChildren());
+			} else if(name.equals("identifier")) {
+				pushAndVisitChildren(new SWEViewIdentifierPanel(element), element.getChildren());
+			} else if(name.equals("values")) {
+				pushAndVisitChildren(new SWEViewValuesPanel(element), element.getChildren());
+			} else if(name.equals("value")) {
+				pushAndVisitChildren(new SWEViewValuePanel(element), element.getChildren());
+			} else {
+				super.visit(element);
+			}
 		} else {
 			super.visit(element);
 		}
+		
 	}
 }
