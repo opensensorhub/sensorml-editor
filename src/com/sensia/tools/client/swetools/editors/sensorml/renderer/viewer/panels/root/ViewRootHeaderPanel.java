@@ -5,6 +5,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 
 public class ViewRootHeaderPanel extends VerticalPanel{
 
@@ -31,6 +32,7 @@ public class ViewRootHeaderPanel extends VerticalPanel{
 		
 		// 1..~
 		keywordsPanel = new VerticalPanel();
+		keywordsPanel.add(new HTML("Keywords:"+SMLEditorConstants.HTML_SPACE));
 		
 		// 1..~
 		identifiersPanel = new VerticalPanel();
@@ -46,10 +48,7 @@ public class ViewRootHeaderPanel extends VerticalPanel{
 	}
 	
 	public void addKeywords(Panel keywordsPanel) {
-		Panel hPanel = new HorizontalPanel();
-		hPanel.add(new HTML("Keywords:&nbsp"));
-		hPanel.add(keywordsPanel);
-		this.keywordsPanel.add(hPanel);
+		this.keywordsPanel.add(keywordsPanel);
 	}
 	
 	public void addTitle(Panel titlePanel) {

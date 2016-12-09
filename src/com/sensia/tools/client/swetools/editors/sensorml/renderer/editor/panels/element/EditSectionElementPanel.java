@@ -70,11 +70,6 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 			}
 		});
 
-		/*container.clear();
-		HorizontalPanel hPanel = new HorizontalPanel();
-		hPanel.add(sectionPanel);
-		hPanel.add(label);
-		container.add(hPanel);*/
 		Widget currentHeader = sectionPanel.getHeader();
 		HorizontalPanel hPanel = new HorizontalPanel();
 		hPanel.add(currentHeader);
@@ -105,8 +100,8 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 	
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		//innerContent.add(element.getPanel());
 		if(element.getTag() instanceof RNGData<?>) {
+			//TODO:??
 			Label label = new Label(Utils.toNiceLabel(getName()));
 			HorizontalPanel hPanel = new HorizontalPanel();
 			hPanel.add(label);
