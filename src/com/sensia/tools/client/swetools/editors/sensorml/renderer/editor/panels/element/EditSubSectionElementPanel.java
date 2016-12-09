@@ -44,18 +44,22 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 			innerContainer.add(element.getPanel());
 		} else if(element.getName().equals("name")) {
 			namePanel = element;
+			innerContainer.addStyleName("edit-subsection-element-inner-panel");
+			label.add(element.getPanel());
 		} else if(element.getName().equals("label")){
 			namePanel = element;
+			label.clear();
 			label.setVisible(true);
 			definition.setVisible(true);
 			innerContainer.addStyleName("edit-subsection-element-inner-panel");
 			label.add(element.getPanel());
-		} else if(element.getName().equals("definition")){
-			namePanel = element;
+		} else if(element.getName().equals("definition") 
+				|| element.getName().equals("role") 
+				|| element.getName().equals("arcrole")){
 			label.setVisible(true);
 			definition.setVisible(true);
 			innerContainer.addStyleName("edit-subsection-element-inner-panel");
-			label.add(element.getPanel());
+			definition.add(element.getPanel());
 		} else {
 			//super.addInnerElement(element);
 			innerContainer.add(element.getPanel());
