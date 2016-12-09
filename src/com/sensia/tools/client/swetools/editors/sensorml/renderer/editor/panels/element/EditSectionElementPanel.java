@@ -8,9 +8,11 @@ import com.google.gwt.event.logical.shared.OpenEvent;
 import com.google.gwt.event.logical.shared.OpenHandler;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.DisclosurePanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sensia.relaxNG.RNGData;
@@ -25,13 +27,20 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class EditSectionElementPanel extends DisclosureElementPanel{
 
+	private Label button;
+	private Panel labelPanel;
+	private Panel definitionPanel;
+	
 	public EditSectionElementPanel(final RNGElement tag, final IRefreshHandler refreshHander) {
 		super(tag);
 		
-		final Label label = new Label("");
-		label.addStyleName("rng-advanced-button");
+		labelPanel = new HorizontalPanel();
+		definitionPanel = new HorizontalPanel();
 		
-		label.addClickHandler(new ClickHandler() {
+		button= new Label("");
+		button.addStyleName("rng-advanced-button");
+		
+		button.addClickHandler(new ClickHandler() {
 			
 			@Override
 			public void onClick(ClickEvent event) {
@@ -73,17 +82,21 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 		Widget currentHeader = sectionPanel.getHeader();
 		HorizontalPanel hPanel = new HorizontalPanel();
 		hPanel.add(currentHeader);
-		hPanel.add(label);
+		hPanel.add(labelPanel);
+		hPanel.add(definitionPanel);
+		hPanel.add(button);
+		
+		labelPanel.setVisible(false);
+		definitionPanel.setVisible(false);
 		
 		sectionPanel.setHeader(hPanel);
-		
-		label.addStyleName("rng-advanced-button-section");
+		button.addStyleName("rng-advanced-button-section");
 		
 		sectionPanel.addCloseHandler(new CloseHandler<DisclosurePanel>() {
 			
 			@Override
 			public void onClose(CloseEvent<DisclosurePanel> event) {
-				label.removeStyleName("rng-advanced-button-section");
+				button.removeStyleName("rng-advanced-button-section");
 			}
 		});
 		
@@ -91,7 +104,7 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 
 			@Override
 			public void onOpen(OpenEvent<DisclosurePanel> event) {
-				label.addStyleName("rng-advanced-button-section");
+				button.addStyleName("rng-advanced-button-section");
 				
 			}
 		});
@@ -106,6 +119,16 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 			HorizontalPanel hPanel = new HorizontalPanel();
 			hPanel.add(label);
 			hPanel.add(element.getPanel());
+		} else if(element.getName().equals("label")){
+			labelPanel.add(new HTML("("));
+			labelPanel.add(element.getPanel());
+			labelPanel.add(new HTML(")"));
+			
+			labelPanel.setVisible(true);
+		} else if(element.getName().equals("definition")){
+			definitionPanel.add(element.getPanel());
+			
+			definitionPanel.setVisible(true);
 		} else {
 			super.addInnerElement(element);
 		}

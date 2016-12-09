@@ -1,5 +1,6 @@
 package com.sensia.tools.client.swetools.editors.sensorml.panels.base.element;
 
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -28,6 +29,7 @@ public class DisclosureElementPanel extends AbstractPanel<RNGElement>{
 		
 		container.add(sectionPanel);
 		container.addStyleName("disclosure-generic disclosure-border");
+		
 	}
 	
 	@Override
