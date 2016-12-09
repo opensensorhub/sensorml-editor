@@ -608,13 +608,13 @@ table.sml-mode-nolabel-vertical-panel {
 	border-spacing:5px;
 }
 .line-generic-panel-before {
-	width : 370px;
+	min-width : 370px;
 }
 .line-generic-label-panel-before {
-	width : 220px;
+	min-width : 220px;
 }
 .line-generic-definition-panel-before {
-	width : 30px;
+	min-width : 30px;
 }
 
 .line-generic-dots-edit {
@@ -724,8 +724,10 @@ input:focus {
 }
 
 .advanced-dialog {
-	width: 900px;
-    height: 950px;
+	min-width: 400px;
+    min-height: 300px;
+    max-width: 900px;
+    max-height: 950px;
     overflow: auto;
 }
 
@@ -757,7 +759,7 @@ input:focus {
 }
 
 .attribute-panel-advanced .gwt-HTML {
-	width:100px;
+	min-width:100px;
 }
 
 .advanced-simple-element-panel {
@@ -770,7 +772,7 @@ input:focus {
     margin-left: -7px;
 }
 .advanced-simple-element-panel .gwt-HTML {
-	width:100px;
+	min-width:100px;
 }
 
 .edit-subsection-element-inner-panel {

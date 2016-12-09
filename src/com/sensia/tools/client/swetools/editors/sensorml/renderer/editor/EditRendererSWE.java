@@ -17,6 +17,9 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.Advan
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SMLEditFieldPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditCategoryPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditDataRecordPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditDescriptionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditIdentifierPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditLabelPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditQuantityPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditQuantityRangePanel;
 
@@ -56,70 +59,25 @@ public class EditRendererSWE extends AdvancedRendererSML implements RNGTagVisito
 	 */
 	@Override
 	public void visit(RNGElement elt) {
-		final IPanel<RNGElement> widget = getPanel(elt);
+		final String name = elt.getName();
+		IPanel<RNGElement> widget = null;
+		
+		 if(name.equalsIgnoreCase("Quantity")) {
+			widget = new SWEEditQuantityPanel(elt);
+		} else if(name.equalsIgnoreCase("Category")) {
+			widget = new SWEEditCategoryPanel(elt);
+		} else if(name.equalsIgnoreCase("QuantityRange")) {
+			widget = new SWEEditQuantityRangePanel(elt);
+		} else if(name.equals("field")) {
+			widget = new SMLEditFieldPanel(elt);
+		} else if(name.equals("DataRecord")) {
+			widget = new SWEEditDataRecordPanel(elt);
+		}
+		
 		if(widget != null) {
 			pushAndVisitChildren(widget, elt.getChildren());
 		} else {
 			super.visit(elt);
 		}
-	}
-	
-	/* (non-Javadoc)
-	 * @see com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRenderer#getWidget(java.lang.String)
-	 */
-	protected IPanel<RNGElement> getPanel(RNGElement elt) {
-		final String name = elt.getName();
-		
-		/*if(name.equalsIgnoreCase("DataRecord")) {
-			return new SWEDataRecordPanel(elt);
-		} else*/ if(name.equalsIgnoreCase("Quantity")) {
-			return new SWEEditQuantityPanel(elt);
-		} /*else if(name.equalsIgnoreCase("field")) {
-			return new SWEFieldPanel(elt);
-		}*/ else if(name.equalsIgnoreCase("Category")) {
-			return new SWEEditCategoryPanel(elt);
-		} else if(name.equalsIgnoreCase("QuantityRange")) {
-			return new SWEEditQuantityRangePanel(elt);
-		} else if(name.equals("field")) {
-			return new SMLEditFieldPanel(elt);
-		} else if(name.equals("DataRecord")) {
-			return new SWEEditDataRecordPanel(elt);
-		}/*else if(name.equalsIgnoreCase("description")) {
-			return new SWEEditDescriptionPanel(elt);
-		} else if(name.equalsIgnoreCase("label")) {
-			return new SWEEditLabelPanel(elt);
-		} else if(name.equalsIgnoreCase("identifier")) {
-			return new SWEEditIdentifierPanel(elt);
-		}*/
-		/* if(name.equals("Quantity") || name.equals("Count")){
-			return new SWESensorQuantityWidget();
-		} else if(name.equals("Vector")){
-			return new SWESensorVectorWidget();
-		} else if(name.equals("coordinate")){
-			return new SWESensorCoordinateWidget();
-		} else if(name.equals("Time")){ 
-			return new SWESensorTimeWidget();
-		} else if(name.equals("QuantityRange")){
-			return new SWESensorQuantityRangeWidget();
-		} else if(name.equals("TimeRange")){
-			return new SWESensorTimeRangeWidget();
-		} else if(name.equals("Category")){
-			return new SWESensorCategoryWidget();
-		} else if(name.equals("DataArray") || name.equals("DataStream")){
-			return new SWESensorDataArrayWidget();
-		} else if(name.equals("Curve")){
-			return new SWESensorCurveWidget();
-		} else if(name.equals("DataRecord")){
-			return new SWESensorDataRecordWidget();
-		} else if(name.equals("condition")){
-			return new SWESensorConditionWidget();
-		} else if(name.equals("position")){
-			return new SWESensorPositionWidget();
-		}else if(name.equals("AllowedValues") || name.equals("AllowedTokens")){
-			return new SWESensorAllowedValuesWidget();
-		} else {
-			return super.getWidget(name);
-		}*/
-		return null;
 	}
 }

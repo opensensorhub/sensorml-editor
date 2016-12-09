@@ -28,6 +28,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkHrefPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkRolePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkTitlePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.gco.GCOAdvancedCharacterStringPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedLabelPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedValuePanel;
@@ -147,6 +148,9 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 			return;
 		} else if (nsUri.equalsIgnoreCase(GMD)) {
 			super.visit(elt);
+			return;
+		} else if (nsUri.equalsIgnoreCase(GCO)) {
+			pushAndVisitChildren(new GCOAdvancedCharacterStringPanel(elt), elt.getChildren());
 			return;
 		} else if (nsUri.equalsIgnoreCase(SWE_NS_1) || nsUri.equalsIgnoreCase(SWE_NS_2)) {
 			super.visit(elt);

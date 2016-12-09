@@ -132,6 +132,8 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 				super.visit(elt);
 			}
 			return;
+		} else if (nsUri.equalsIgnoreCase(GCO)) {
+			//super.visit(elt);
 		} else if (nsUri.equalsIgnoreCase(SML_NS_1) || nsUri.equalsIgnoreCase(SML_NS_2)) {
 			// handle SML element
 			if(eltName.equalsIgnoreCase("ObservableProperty")) {

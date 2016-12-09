@@ -16,6 +16,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.swe.SWEAdvancedIdentifierPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.swe.SWEAdvancedLabelPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.swe.SWEAdvancedValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.swe.SWEAdvancedValuesPanel;
 
 /**
  * <p>
@@ -53,30 +54,26 @@ public class AdvancedRendererSWE extends AdvancedRendererRNG {
 	 */
 	@Override
 	public void visit(RNGElement elt) {
-		final IPanel<RNGElement> widget = getPanel(elt);
+		IPanel<RNGElement> widget = null;
+		
+		final String name = elt.getName();
+		
+		if(name.equalsIgnoreCase("description")) {
+			widget = new SWEAdvancedDescriptionPanel(elt);
+		} else if(name.equalsIgnoreCase("label")) {
+			widget = new SWEAdvancedLabelPanel(elt);
+		} else if(name.equalsIgnoreCase("identifier")) {
+			widget = new SWEAdvancedIdentifierPanel(elt);
+		} else if(name.equalsIgnoreCase("value")) {
+			widget = new SWEAdvancedValuePanel(elt);
+		} else if(name.equalsIgnoreCase("values")) {
+			widget = new SWEAdvancedValuesPanel(elt);
+		}
+		
 		if(widget != null) {
 			pushAndVisitChildren(widget, elt.getChildren());
 		} else {
 			super.visit(elt);
 		}
 	}
-	
-	/* (non-Javadoc)
-	 * @see com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRenderer#getWidget(java.lang.String)
-	 */
-	protected IPanel<RNGElement> getPanel(RNGElement elt) {
-		final String name = elt.getName();
-		
-		if(name.equalsIgnoreCase("description")) {
-			return new SWEAdvancedDescriptionPanel(elt);
-		} else if(name.equalsIgnoreCase("label")) {
-			return new SWEAdvancedLabelPanel(elt);
-		} else if(name.equalsIgnoreCase("identifier")) {
-			return new SWEAdvancedIdentifierPanel(elt);
-		} else if(name.equalsIgnoreCase("value")) {
-			return new SWEAdvancedValuePanel(elt);
-		}
-		return null;
-	}
-	
 }
