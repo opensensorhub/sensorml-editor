@@ -127,7 +127,9 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 			labelPanel.add(new HTML(")"));
 			
 			labelPanel.setVisible(true);
-		} else if(element.getName().equals("definition")){
+		} else if(element.getName().equals("definition") ||
+				 element.getName().equals("role") ||
+				 element.getName().equals("arcrole")){
 			definitionPanel.add(element.getPanel());
 			
 			definitionPanel.setVisible(true);
