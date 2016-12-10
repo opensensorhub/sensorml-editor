@@ -52,7 +52,16 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 					tag.setSelected(false);
 				}
 				
+				/*RNGRendererSML newRenderer = new RNGRendererSML();
+				for(RNGTag child : tag.getChildren()) {
+					child.accept(newRenderer);
+				}
+				patternContainer.add(newRenderer.getRoot().getPanel());*/
+				//TODO: use MVC or MVP to update the view
+				//ViewerPanel.getInstance(null).redraw();
+				
 				if(refreshHandler != null) {
+					GWT.log("refresh");
 					refreshHandler.refresh();
 				}
 				
@@ -69,10 +78,13 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		headerPanel.addStyleName("rng-disclosure");
+		if(element instanceof EditSectionElementPanel || element instanceof RNGChoicePanel) {
+			headerPanel.addStyleName("rng-disclosure");
+		} 
 		headerPanel.clear();
 		headerPanel.add(addButton);
 		headerPanel.add(element.getPanel());
+		//patternContainer.add(element.getPanel());
 	}
 
 	@Override
