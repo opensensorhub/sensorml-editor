@@ -14,6 +14,7 @@ import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedLabelPanel;
@@ -220,11 +221,12 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 				skipTags = false;
 				return;
 			} else if(eltName.equalsIgnoreCase("typeOf")) {
-				skipTags = true;
-				pushAndVisitChildren(new SMLEditTypeOfPanel(elt,getRefreshHandler()), elt.getChildren());
-				skipTags = false;
+				pushAndVisitChildren(new DisclosureElementPanel(elt), elt.getChildren());
 				return;
-			} else if(eltName.equalsIgnoreCase("method")) {
+			} else if(eltName.equalsIgnoreCase("attachedTo")) {
+                pushAndVisitChildren(new DisclosureElementPanel(elt), elt.getChildren());
+                return;
+            } else if(eltName.equalsIgnoreCase("method")) {
 				skipTags = true;
 				pushAndVisitChildren(new SMLEditMethodPanel(elt,getRefreshHandler()), elt.getChildren());
 				skipTags = false;
@@ -298,8 +300,7 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 			} else if(name.equals("href")) {
 				pushAndVisitChildren(new EditXLinkHrefPanel(att),att.getChildren());
 			} else if(name.equals("title")) {
-				//pushAndVisitChildren(new EditXLinkTitlePanel(att),att.getChildren());
-				//skip title
+				pushAndVisitChildren(new EditXLinkTitlePanel(att),att.getChildren());
 			} else {
 				GWT.log("[WARN] Unsupported XLink element: "+name+". Skipped.");
 				pushAndVisitChildren(new EditAttributePanel(att),att.getChildren());
