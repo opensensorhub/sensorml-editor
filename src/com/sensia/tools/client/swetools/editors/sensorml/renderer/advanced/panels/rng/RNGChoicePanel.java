@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -26,11 +28,14 @@ public class RNGChoicePanel extends AbstractPanel<RNGChoice>{
 		patternContainer = new VerticalPanel();
 		patternContainer.addStyleName("rng-choice-pattern");
 		
+		HorizontalPanel selectHeader = new HorizontalPanel();
+		selectHeader.add(new Label(Utils.findLabel(tag) + ": "));
 		choices = new ListBox();
-		container.add(choices);
+		selectHeader.add(choices);
+		container.add(selectHeader);
 		container.add(patternContainer);
 		
-		choices.addItem("");
+		choices.addItem("---");
 		
 		// add children name into the choice and
 		List<RNGTag> children = tag.getItems();
