@@ -48,6 +48,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGChoicePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGOptionalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePatternPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd.XSDAnyURIPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd.XSDDateTimePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd.XSDDecimalPanel;
@@ -347,7 +348,10 @@ public abstract class AdvancedRendererRNG implements RNGTagVisitor, IRefreshHand
 			push(new RNGZeroOrMorePanel(zeroOrMore,getRefreshHandler()));
 		}
 		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
+		int nbPattern = 0;
 		for(List<RNGTag> tags : patternInstances) {
+			//RNGZeroOrMorePatternPanel patternPanel = new RNGZeroOrMorePatternPanel(zeroOrMore, nbPattern++,getRefreshHandler());
+			//pushAndVisitChildren(patternPanel, tags);
 			this.visitChildren(tags);
 		}
 	}
@@ -481,5 +485,17 @@ public abstract class AdvancedRendererRNG implements RNGTagVisitor, IRefreshHand
 		if(getRefreshHandler() != null) {
 			getRefreshHandler().refresh();
 		}
+	}
+	
+	public void reset() {
+		stack = new Stack<IPanel<? extends RNGTag>>();
+		
+		//TODO: improve two-way root panels
+		GenericVerticalContainerPanel rootAdvanced = new GenericVerticalContainerPanel();
+		rootAdvanced.getPanel().addStyleName("advanced-dialog");
+		
+		GenericVerticalContainerPanel rootAdvanced2 = new GenericVerticalContainerPanel();
+		rootAdvanced2.getPanel().add(rootAdvanced.getPanel());
+		push(rootAdvanced2);
 	}
 }

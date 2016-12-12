@@ -63,11 +63,10 @@ public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		//patternContainer.add(element.getPanel());
 		RNGZeroOrMorePatternPanel patternPanel = new RNGZeroOrMorePatternPanel(getTag(), nbPattern++,refreshHandler);
 		patternPanel.addElement(element);
-		
 		patternContainer.add(patternPanel.getPanel());
+		//patternContainer.add(element.getPanel());
 	}
 
 	@Override

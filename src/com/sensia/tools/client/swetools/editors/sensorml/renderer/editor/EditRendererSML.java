@@ -107,7 +107,7 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 		}
 				
 		if(rootSectionsList.contains(eltName)) {
-			pushAndVisitChildren(new EditRootPanel(),elt.getChildren());
+			pushAndVisitChildren(new EditRootPanel(elt,getRefreshHandler()),elt.getChildren());
 			return;
 		}
 		

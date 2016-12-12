@@ -131,7 +131,7 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 		}
 				
 		if(rootSectionsList.contains(eltName)) {
-			pushAndVisitChildren(new EditRootPanel(),elt.getChildren());
+			pushAndVisitChildren(new EditRootPanel(elt,getRefreshHandler()),elt.getChildren());
 			return;
 		}
 		
@@ -216,17 +216,5 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 		} else {
 			super.visit(att);
 		}
-	}
-	
-	public void reset() {
-		stack = new Stack<IPanel<? extends RNGTag>>();
-		
-		//TODO: improve two-way root panels
-		GenericVerticalContainerPanel rootAdvanced = new GenericVerticalContainerPanel();
-		rootAdvanced.getPanel().addStyleName("advanced-dialog");
-		
-		GenericVerticalContainerPanel rootAdvanced2 = new GenericVerticalContainerPanel();
-		rootAdvanced2.getPanel().add(rootAdvanced.getPanel());
-		push(rootAdvanced2);
 	}
 }

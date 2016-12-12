@@ -35,6 +35,7 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 		
 		if(tag.isSelected()) {
 			addButton.addStyleName("rng-optional-select-remove");
+			headerPanel.add(new Label(label));
 			headerPanel.add(addButton);
 		} else {
 			addButton.addStyleName("rng-optional-select-add");

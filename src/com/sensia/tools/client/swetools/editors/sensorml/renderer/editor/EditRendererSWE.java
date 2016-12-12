@@ -41,7 +41,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
  * @author Alexandre Robin
  * @date Aug 27, 2011
  */
-public class EditRendererSWE extends AdvancedRendererSML implements RNGTagVisitor {
+public class EditRendererSWE extends EditRendererRNG implements RNGTagVisitor {
 	
 	/** The Constant SWE_NS_1. */
 	protected final static String SWE_NS_1 = "http://www.opengis.net/swe/1.0.1";

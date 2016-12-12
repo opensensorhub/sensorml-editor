@@ -8,15 +8,14 @@
  
  ******************************* END LICENSE BLOCK ***************************/
 
-package com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.root;
 
 import java.util.List;
 
-import com.google.gwt.core.shared.GWT;
+import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGElement;
-import com.sensia.relaxNG.RNGOneOrMore;
 import com.sensia.relaxNG.RNGOptional;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGValue;
@@ -28,8 +27,10 @@ import com.sensia.relaxNG.XSDDecimal;
 import com.sensia.relaxNG.XSDDouble;
 import com.sensia.relaxNG.XSDInteger;
 import com.sensia.relaxNG.XSDString;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.EditRendererSML;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererRNG;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGChoicePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGOptionalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePanel;
 
 /**
  * <p>
@@ -48,12 +49,30 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
  * @author Alexandre Robin
  * @date Aug 27, 2011
  */
-public class ViewRendererRNG extends EditRendererSML {
+public class RootRenderer extends AdvancedRendererRNG {
 	
-	/**
-	 * Instantiates a new RNG renderer.
+	
+	/* (non-Javadoc)
+	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGElement)
 	 */
-	public ViewRendererRNG() {
+	@Override
+	public void visit(RNGElement elt) {
+		visitChildren(elt.getChildren());
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGAttribute)
+	 */
+	@Override
+	public void visit(RNGAttribute attribute) {
+		visitChildren(attribute.getChildren());
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGValue)
+	 */
+	@Override
+	public void visit(RNGValue val) {
 	}
 
 	/* (non-Javadoc)
@@ -61,21 +80,13 @@ public class ViewRendererRNG extends EditRendererSML {
 	 */
 	@Override
 	public void visit(RNGData<?> data) {
-		pushRNGDataIntoRNGValue(data);
 	}
 
-	private void pushRNGDataIntoRNGValue(RNGData<?> data) {
-		RNGValue value = new RNGValue();
-		value.setText(data.getStringValue());
-		push(new ViewValuePanel(value));
-	}
-	
 	/* (non-Javadoc)
 	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.XSDString)
 	 */
 	@Override
 	public void visit(XSDString data) {
-		pushRNGDataIntoRNGValue(data);
 	}
 
 	/* (non-Javadoc)
@@ -83,7 +94,6 @@ public class ViewRendererRNG extends EditRendererSML {
 	 */
 	@Override
 	public void visit(XSDBoolean data) {
-		GWT.log("into XSDBoolean");
 	}
 
 	/* (non-Javadoc)
@@ -91,7 +101,6 @@ public class ViewRendererRNG extends EditRendererSML {
 	 */
 	@Override
 	public void visit(XSDDecimal data) {
-		pushRNGDataIntoRNGValue(data);
 	}
 
 	/* (non-Javadoc)
@@ -99,7 +108,6 @@ public class ViewRendererRNG extends EditRendererSML {
 	 */
 	@Override
 	public void visit(XSDDouble data) {
-		pushRNGDataIntoRNGValue(data);
 	}
 
 	/* (non-Javadoc)
@@ -107,7 +115,6 @@ public class ViewRendererRNG extends EditRendererSML {
 	 */
 	@Override
 	public void visit(XSDInteger data) {
-		pushRNGDataIntoRNGValue(data);
 	}
 
 	/* (non-Javadoc)
@@ -115,7 +122,6 @@ public class ViewRendererRNG extends EditRendererSML {
 	 */
 	@Override
 	public void visit(XSDAnyURI data) {
-		pushRNGDataIntoRNGValue(data);
 		
 	}
 
@@ -124,7 +130,31 @@ public class ViewRendererRNG extends EditRendererSML {
 	 */
 	@Override
 	public void visit(XSDDateTime data) {
-		pushRNGDataIntoRNGValue(data);
 		
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGChoice)
+	 */
+	@Override
+	public void visit(RNGChoice choice) {
+	    choice.combineNestedChoices();
+		push(new RNGChoicePanel(choice,getRefreshHandler()));
+	}
+
+	/* (non-Javadoc)
+	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGOptional)
+	 */
+	@Override
+	public void visit(RNGOptional optional) {
+		push(new RNGOptionalPanel(optional,getRefreshHandler()));
+	}
+
+	/* (non-Javadoc)
+	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGZeroOrMore)
+	 */
+	@Override
+	public void visit(RNGZeroOrMore zeroOrMore) {
+		push(new RNGZeroOrMorePanel(zeroOrMore,getRefreshHandler()));
 	}
 }
