@@ -8,7 +8,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 public class GMLEditNamePanel extends EditSimpleElementPanel{
 
 	public GMLEditNamePanel(RNGElement element) {
-		super(element,Utils.findLabel(element.getParent()));
+		super(element,Utils.findLabel(element));
 	}
 	
 	@Override
