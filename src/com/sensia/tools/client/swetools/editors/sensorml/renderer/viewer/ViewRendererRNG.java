@@ -28,6 +28,9 @@ import com.sensia.relaxNG.XSDDecimal;
 import com.sensia.relaxNG.XSDDouble;
 import com.sensia.relaxNG.XSDInteger;
 import com.sensia.relaxNG.XSDString;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGChoicePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGOptionalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePatternPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.EditRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
 
@@ -56,6 +59,38 @@ public class ViewRendererRNG extends EditRendererSML {
 	public ViewRendererRNG() {
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGChoice)
+	 */
+	@Override
+	public void visit(RNGChoice choice) {
+		RNGTag selectedPattern = choice.getSelectedPattern();
+		if(selectedPattern != null) {
+			selectedPattern.accept(this);
+		} 
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGZeroOrMore)
+	 */
+	@Override
+	public void visit(RNGZeroOrMore zeroOrMore) {
+		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
+		for(List<RNGTag> tags : patternInstances) {
+			this.visitChildren(tags);
+		}
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGOptional)
+	 */
+	@Override
+	public void visit(RNGOptional optional) {
+		if(optional.isSelected()){
+			this.visitChildren(optional.getChildren());
+		}
+	}
+	
 	/* (non-Javadoc)
 	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGData)
 	 */
