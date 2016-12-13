@@ -568,6 +568,10 @@ table.sml-mode-nolabel-vertical-panel {
 
 /*** SECTION ***/
 
+.section-panel {
+	margin-left:-4px;
+}
+
 .section-panel .header td {
 	font-weight:bold;
 	font-size:17px;
