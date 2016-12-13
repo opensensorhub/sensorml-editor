@@ -73,7 +73,7 @@ public class CloseDialog extends DialogBox {
         });
 		bottomPanel.add(save);
 		
-		mainPanel.addSouth(bottomPanel,40); //40px
+		//mainPanel.addSouth(bottomPanel,40); //40px
 		mainPanel.add(sPanel);
 		
 		this.add(mainPanel);

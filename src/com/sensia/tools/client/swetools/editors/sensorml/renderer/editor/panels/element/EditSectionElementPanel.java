@@ -69,7 +69,7 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 				
 				renderer.getRoot().getPanel().addStyleName("advanced-panel");
 				
-				CloseDialog dialogBox = Utils.createEditDialogBox(rootPanel, "Edit "+tag.getName());
+				CloseDialog dialogBox = Utils.displayDialogBox(rootPanel, "Edit "+tag.getName());
 				dialogBox.addSaveHandler(new ClickHandler(){
 					@Override
 					public void onClick(ClickEvent event) {

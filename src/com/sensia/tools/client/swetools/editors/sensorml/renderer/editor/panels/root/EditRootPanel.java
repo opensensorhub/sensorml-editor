@@ -31,6 +31,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallba
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePatternPanel;
@@ -101,15 +102,15 @@ public class EditRootPanel extends ViewRootPanel{
 				
 				renderer.getRoot().getPanel().addStyleName("advanced-panel");
 				
-				CloseDialog dialogBox = Utils.createEditDialogBox(rootPanel, "Add section");
-				dialogBox.addSaveHandler(new ClickHandler(){
+				CloseDialog dialogBox = Utils.displayDialogBox(rootPanel, "Add section");
+				/*dialogBox.addSaveHandler(new ClickHandler(){
 					@Override
 					public void onClick(ClickEvent event) {
 						if(refreshHandler != null) {
 							refreshHandler.refresh();
 						}
 					}
-				});
+				});*/
 			}
 		});
 	}

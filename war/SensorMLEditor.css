@@ -797,6 +797,8 @@ input:focus {
 	width:660px;
 	height:550px;
 	overflow:auto;
+	margin-left: 10px;
+	margin-top: 10px;
 }
 
 .dialog-close {

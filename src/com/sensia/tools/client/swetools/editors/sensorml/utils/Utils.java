@@ -100,7 +100,7 @@ public class Utils {
 		return dialogBox;
 	}
 	
-	public static final CloseDialog createEditDialogBox(final Panel panel,final String title){
+	public static final CloseDialog displayDialogBox(final Panel panel,final String title){
 		final CloseDialog dialogBox = new CloseDialog(title);
 		dialogBox.setContent(panel);
 		dialogBox.center();

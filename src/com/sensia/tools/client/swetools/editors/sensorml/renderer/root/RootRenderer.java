@@ -27,6 +27,7 @@ import com.sensia.relaxNG.XSDDecimal;
 import com.sensia.relaxNG.XSDDouble;
 import com.sensia.relaxNG.XSDInteger;
 import com.sensia.relaxNG.XSDString;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererRNG;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGChoicePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGOptionalPanel;
@@ -51,7 +52,12 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
  */
 public class RootRenderer extends AdvancedRendererRNG {
 	
-	
+	public RootRenderer() {
+		super();
+		GenericVerticalContainerPanel rootAdvanced = new GenericVerticalContainerPanel();
+		rootAdvanced.getPanel().addStyleName("advanced-dialog");
+		push(rootAdvanced);
+	}
 	/* (non-Javadoc)
 	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGElement)
 	 */

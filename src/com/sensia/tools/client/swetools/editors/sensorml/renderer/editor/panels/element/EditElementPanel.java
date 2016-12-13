@@ -68,7 +68,7 @@ public class EditElementPanel extends ElementPanel{
 				renderer.visitChildren(element.getChildren());
 				rootPanel.add(renderer.getRoot().getPanel());
 				
-				CloseDialog dialogBox = Utils.createEditDialogBox(rootPanel, "Edit "+element.getName());
+				CloseDialog dialogBox = Utils.displayDialogBox(rootPanel, "Edit "+element.getName());
 				dialogBox.addSaveHandler(new ClickHandler(){
 					@Override
 					public void onClick(ClickEvent event) {
