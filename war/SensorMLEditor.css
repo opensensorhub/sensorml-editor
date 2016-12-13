@@ -811,3 +811,8 @@ input:focus {
 	width:16px;
 	height:16px;
 }
+
+/** hide label element from the () header */
+.section-panel .header .advanced-simple-element-panel .gwt-HTML {
+	display: none;
+}
