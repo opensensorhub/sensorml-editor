@@ -1,11 +1,16 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element;
 
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.CloseEvent;
 import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.event.logical.shared.OpenEvent;
 import com.google.gwt.event.logical.shared.OpenHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.Event.NativePreviewEvent;
+import com.google.gwt.user.client.Event.NativePreviewHandler;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.HTML;
@@ -31,6 +36,7 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 	private Label button;
 	private Panel labelPanel;
 	private Panel definitionPanel;
+	private boolean preventChangeDisclosure;
 	
 	public EditSectionElementPanel(final RNGElement tag, final IRefreshHandler refreshHandler) {
 		super(tag);
@@ -41,10 +47,14 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 		button= new Label("");
 		button.addStyleName("rng-advanced-button");
 		
+		boolean isOpened = false;
+		
 		button.addClickHandler(new ClickHandler() {
 			
 			@Override
 			public void onClick(ClickEvent event) {
+				preventChangeDisclosure = true;
+				sectionPanel.setAnimationEnabled(false);
 				// create a new Renderer
 				final AdvancedRendererSML renderer = new AdvancedRendererSML();
 				final Panel rootPanel = new VerticalPanel();
@@ -80,7 +90,7 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 				});
 			}
 		});
-
+		
 		Widget currentHeader = sectionPanel.getHeader();
 		HorizontalPanel hPanel = new HorizontalPanel();
 		hPanel.add(currentHeader);
@@ -98,7 +108,13 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 			
 			@Override
 			public void onClose(CloseEvent<DisclosurePanel> event) {
-				button.removeStyleName("rng-advanced-button-section");
+				if(preventChangeDisclosure) {
+					preventChangeDisclosure = false;
+					sectionPanel.setOpen(true);
+					sectionPanel.setAnimationEnabled(true);
+				} else {
+					button.removeStyleName("rng-advanced-button-section");
+				}
 			}
 		});
 		
@@ -106,7 +122,13 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 
 			@Override
 			public void onOpen(OpenEvent<DisclosurePanel> event) {
-				button.addStyleName("rng-advanced-button-section");
+				if(preventChangeDisclosure) {
+					preventChangeDisclosure = false;
+					sectionPanel.setOpen(false);
+					sectionPanel.setAnimationEnabled(true);
+				} else {
+					button.addStyleName("rng-advanced-button-section");
+				}
 				
 			}
 		});
