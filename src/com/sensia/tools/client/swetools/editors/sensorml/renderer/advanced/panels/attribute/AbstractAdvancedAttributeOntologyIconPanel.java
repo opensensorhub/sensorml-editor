@@ -20,6 +20,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseDialog;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -42,23 +43,22 @@ public abstract class AbstractAdvancedAttributeOntologyIconPanel<T extends RNGTa
 			
 			@Override
 			public void onClick(ClickEvent event) {
-					final OntologyPanel ontologyPanel = new OntologyPanel();
-					final DialogBox dialogBox = Utils.createEditDialogBox(ontologyPanel.getPanel(),"SWE Ontology",new IButtonCallback() {
-						
-						@Override
-						public void onClick() {
-							String value = ontologyPanel.getSelectedValue();
-							if(rngData != null) {
-								rngData.setStringValue(value);
-							}
-							ontologyImage.setTitle(value);
-							
-							if(refreshHandler != null) {
-								refreshHandler.refresh();
-							}
+				final OntologyPanel ontologyPanel = new OntologyPanel();
+				CloseDialog dialogBox = Utils.createEditDialogBox(ontologyPanel.getPanel(),"SWE Ontology");
+				dialogBox.addSaveHandler(new ClickHandler(){
+					@Override
+					public void onClick(ClickEvent event) {
+						String value = ontologyPanel.getSelectedValue();
+						if(rngData != null) {
+							rngData.setStringValue(value);
 						}
-					});
-					dialogBox.show();
+						ontologyImage.setTitle(value);
+						
+						if(refreshHandler != null) {
+							refreshHandler.refresh();
+						}
+					}
+				});
 			}
 		});
 		valuePanel = new HorizontalPanel();

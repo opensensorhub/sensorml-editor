@@ -787,3 +787,21 @@ input:focus {
 .edit-subsection-element-panel .gwt-HTML {
 	font-weight: bold;
 }
+
+.dialog {
+	width:700px;
+	height:750px;
+}
+
+.dialog-main {
+	width:660px;
+	height:550px;
+	overflow:auto;
+}
+
+.dialog-close {
+	background: transparent url(sensormleditor/images/remove.gif) no-repeat !important;
+	padding: 0 0 0 0 !important;
+	width:16px;
+	height:16px;
+}

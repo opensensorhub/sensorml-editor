@@ -100,9 +100,11 @@ public class Utils {
 		return dialogBox;
 	}
 	
-	public static final DialogBox createEditDialogBox(final Panel panel,final String title,final IButtonCallback addCB){
-		final DialogBox dialogBox = new DialogBox();
-		dialogBox.setText(title);
+	public static final CloseDialog createEditDialogBox(final Panel panel,final String title){
+		final CloseDialog dialogBox = new CloseDialog(title);
+		dialogBox.setContent(panel);
+		dialogBox.center();
+		/*dialogBox.setText(title);
 		dialogBox.setGlassEnabled(true);
 		dialogBox.setAnimationEnabled(true);
 		
@@ -138,12 +140,11 @@ public class Utils {
 		main.add(buttons);
 		
 		ScrollPanel sPanel = new ScrollPanel();
-		sPanel.setStyleName("edit-table-panel");
+		sPanel.setStyleName("dialog");
 		sPanel.add(main);
 		
 		dialogBox.add(sPanel);
-		dialogBox.center();
-         
+		dialogBox.center();*/
 		return dialogBox;
 	}
 	

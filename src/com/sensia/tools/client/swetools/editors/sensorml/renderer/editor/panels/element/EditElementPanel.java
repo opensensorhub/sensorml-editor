@@ -22,6 +22,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.ElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseDialog;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class EditElementPanel extends ElementPanel{
@@ -67,15 +68,14 @@ public class EditElementPanel extends ElementPanel{
 				renderer.visitChildren(element.getChildren());
 				rootPanel.add(renderer.getRoot().getPanel());
 				
-				DialogBox dialogBox = Utils.createEditDialogBox(rootPanel, "Edit "+element.getName(), new IButtonCallback(){
-
+				CloseDialog dialogBox = Utils.createEditDialogBox(rootPanel, "Edit "+element.getName());
+				dialogBox.addSaveHandler(new ClickHandler(){
 					@Override
-					public void onClick() {
+					public void onClick(ClickEvent event) {
 						if(refreshHandler != null) {
 							refreshHandler.refresh();
 						}
 					}
-					
 				});
 			}
 		});

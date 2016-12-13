@@ -36,6 +36,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePatternPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.root.RootRenderer;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root.ViewRootPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseDialog;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**
@@ -100,15 +101,14 @@ public class EditRootPanel extends ViewRootPanel{
 				
 				renderer.getRoot().getPanel().addStyleName("advanced-panel");
 				
-				DialogBox dialogBox = Utils.createEditDialogBox(rootPanel, "Add section", new IButtonCallback(){
-
+				CloseDialog dialogBox = Utils.createEditDialogBox(rootPanel, "Add section");
+				dialogBox.addSaveHandler(new ClickHandler(){
 					@Override
-					public void onClick() {
+					public void onClick(ClickEvent event) {
 						if(refreshHandler != null) {
 							refreshHandler.refresh();
 						}
 					}
-					
 				});
 			}
 		});

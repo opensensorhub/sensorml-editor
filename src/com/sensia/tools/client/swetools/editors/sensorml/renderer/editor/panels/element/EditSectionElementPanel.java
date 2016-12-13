@@ -23,6 +23,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseDialog;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class EditSectionElementPanel extends DisclosureElementPanel{
@@ -31,7 +32,7 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 	private Panel labelPanel;
 	private Panel definitionPanel;
 	
-	public EditSectionElementPanel(final RNGElement tag, final IRefreshHandler refreshHander) {
+	public EditSectionElementPanel(final RNGElement tag, final IRefreshHandler refreshHandler) {
 		super(tag);
 		
 		labelPanel = new HorizontalPanel();
@@ -57,8 +58,8 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 						renderer.visitChildren(tag.getChildren());
 						rootPanel.add(renderer.getRoot().getPanel());
 						
-						if(refreshHander != null) {
-							refreshHander.refresh();
+						if(refreshHandler != null) {
+							refreshHandler.refresh();
 						}
 					}
 				});
@@ -68,15 +69,14 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 				
 				renderer.getRoot().getPanel().addStyleName("advanced-panel");
 				
-				DialogBox dialogBox = Utils.createEditDialogBox(rootPanel, "Edit "+tag.getName(), new IButtonCallback(){
-
+				CloseDialog dialogBox = Utils.createEditDialogBox(rootPanel, "Edit "+tag.getName());
+				dialogBox.addSaveHandler(new ClickHandler(){
 					@Override
-					public void onClick() {
-						if(refreshHander != null) {
-							refreshHander.refresh();
+					public void onClick(ClickEvent event) {
+						if(refreshHandler != null) {
+							refreshHandler.refresh();
 						}
 					}
-					
 				});
 			}
 		});
