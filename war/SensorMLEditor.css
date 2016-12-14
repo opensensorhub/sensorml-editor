@@ -812,3 +812,7 @@ input:focus {
 .section-panel .header .advanced-simple-element-panel .gwt-HTML {
 	display: none;
 }
+
+.connection {
+	border-spacing: 5;
+}
