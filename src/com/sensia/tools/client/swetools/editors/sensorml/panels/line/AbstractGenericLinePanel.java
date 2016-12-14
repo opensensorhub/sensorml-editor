@@ -18,7 +18,7 @@ public abstract class AbstractGenericLinePanel<T extends RNGTag> extends Abstrac
 	protected Panel dotsPanel;
 	
 	/** The Constant NORMALIZE_DOT_SEPARATOR_SIZE. */
-	private static final int NORMALIZE_DOT_SEPARATOR_SIZE = 70;
+	private static final int NORMALIZE_DOT_SEPARATOR_SIZE = 50;
 	
 	protected  AbstractGenericLinePanel(T tag) {
 		super(tag);

@@ -1,15 +1,10 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml;
 
-import com.google.gwt.user.client.ui.Anchor;
-import com.google.gwt.user.client.ui.Widget;
-import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSubSectionElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**
  * 
