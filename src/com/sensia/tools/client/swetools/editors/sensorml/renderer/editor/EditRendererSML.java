@@ -36,6 +36,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditNamePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.root.EditRootPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditComponentPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditComponentsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditDocument;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditAxisPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditCapabilitiesPanel;
@@ -245,7 +246,12 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 			} else if(eltName.equalsIgnoreCase("axis")) {
 				pushAndVisitChildren(new SMLEditAxisPanel(elt), elt.getChildren());
 				return;
-			} else if(eltName.equalsIgnoreCase("Component")) {
+			} else if(eltName.equalsIgnoreCase("components")) {
+				skipTags = true;
+				pushAndVisitChildren(new SMLEditComponentsPanel(elt,getRefreshHandler()), elt.getChildren());
+				skipTags = false;
+				return;
+			} else if(eltName.equalsIgnoreCase("component")) {
 				pushAndVisitChildren(new SMLEditComponentPanel(elt), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("Link")) {

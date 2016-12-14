@@ -8,6 +8,7 @@ import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSubSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**
@@ -20,20 +21,10 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
  * - xlink:href
  *
  */
-public class SMLEditComponentPanel extends DisclosureElementPanel {
+public class SMLEditComponentPanel extends EditSubSectionElementPanel{
 
-	private Anchor anchor;
-	private IPanel<RNGAttribute> title;
-	private IPanel<RNGAttribute> href;
-	
 	public SMLEditComponentPanel(RNGElement tag) {
 		super(tag);
-		anchor = new Anchor();
-		anchor.setText("");
-		anchor.setHref("");
-		
-		//addContent(anchor);
-		innerContent.add(anchor);
 	}
 	
 	
@@ -44,22 +35,7 @@ public class SMLEditComponentPanel extends DisclosureElementPanel {
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		Widget panelToAdd = element.getPanel();
-		if(element.getTag() instanceof RNGAttribute) {
-			RNGAttribute att = (RNGAttribute) element.getTag();
-			
-			if(element.getName().equals("title")) {
-				anchor.setText(anchor.getText());
-				title = (IPanel<RNGAttribute>) element;
-			}  else if(element.getName().equals("href")){
-				anchor.setHref(Utils.getCurrentURL(att.getChildValueText()));
-				href = (IPanel<RNGAttribute>) element;
-			} else {
-				super.addInnerElement(element);
-			}
-		} else {
-			innerContent.add(panelToAdd);
-		}
+		super.addInnerElement(element);
 	}
 
 	@Override
