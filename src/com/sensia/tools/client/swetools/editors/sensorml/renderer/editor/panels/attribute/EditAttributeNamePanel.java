@@ -7,7 +7,6 @@ public class EditAttributeNamePanel extends EditAttributePanel{
 
 	public EditAttributeNamePanel(RNGAttribute data) {
 		super(data);
-		container.addStyleName("attribute-panel-edit");
 	}
 
 	@Override
