@@ -23,6 +23,7 @@ public class ViewAttributePanel extends AbstractPanel<RNGAttribute> {
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
 		container.add(element.getPanel());
+		setValueNiceLabel(element, isNiceLabel);
 	}
 
 	@Override

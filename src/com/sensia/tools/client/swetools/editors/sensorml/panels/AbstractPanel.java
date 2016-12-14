@@ -97,10 +97,10 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 	protected abstract AbstractPanel<T> newInstance();
 	
 	protected static void setValueNiceLabel(IPanel<? extends RNGTag> root, boolean isNiceLabel) {
-		for(IPanel<? extends RNGTag> child : root.getElements()) {
-			if(child instanceof ViewValuePanel) {
-				((ViewValuePanel)child).setNiceLabel(isNiceLabel);
-			} else {
+		if(root instanceof ViewValuePanel) {
+			((ViewValuePanel)root).setNiceLabel(isNiceLabel);
+		} else {
+			for(IPanel<? extends RNGTag> child : root.getElements()) {
 				setValueNiceLabel(child,isNiceLabel);
 			}
 		}

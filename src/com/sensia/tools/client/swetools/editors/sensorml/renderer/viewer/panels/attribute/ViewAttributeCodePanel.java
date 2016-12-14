@@ -8,5 +8,4 @@ public class ViewAttributeCodePanel extends ViewAttributePanel{
 		super(tag);
 		isNiceLabel = false;
 	}
-
 }
