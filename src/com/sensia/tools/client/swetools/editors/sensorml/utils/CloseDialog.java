@@ -30,6 +30,7 @@ public class CloseDialog extends DialogBox {
 	private ClickHandler saveHandler;
 	private Panel centerPanel;
 	private Panel bottomPanel;
+	private DockLayoutPanel mainPanel;
 	
 	public CloseDialog(String title) {
 		super(new ButtonCaption(title));
@@ -52,7 +53,7 @@ public class CloseDialog extends DialogBox {
 		} );
 		
 		// build main panel
-		DockLayoutPanel mainPanel = new DockLayoutPanel(Unit.PX);
+		mainPanel = new DockLayoutPanel(Unit.PX);
 		
 		centerPanel = new VerticalPanel();
 		bottomPanel = new VerticalPanel();
@@ -74,7 +75,7 @@ public class CloseDialog extends DialogBox {
         });
 		bottomPanel.add(save);
 		
-		mainPanel.addSouth(bottomPanel,40); //40px
+		mainPanel.addSouth(bottomPanel,40); //20px
 		mainPanel.add(sPanel);
 		
 		bottomPanel.setVisible(false);
