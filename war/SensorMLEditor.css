@@ -775,6 +775,10 @@ input:focus {
 	min-width:100px;
 }
 
+.attribute-panel-edit .gwt-HTML {
+	min-width:100px;
+}
+
 .edit-subsection-element-inner-panel {
 	margin-left:8px;
 }
@@ -814,5 +818,9 @@ input:focus {
 }
 
 .connection {
+	border-spacing: 5;
+}
+
+ .component .edit-subsection-element-inner-panel {
 	border-spacing: 5;
 }
