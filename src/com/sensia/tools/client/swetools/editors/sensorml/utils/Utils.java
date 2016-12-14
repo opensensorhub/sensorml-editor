@@ -104,47 +104,14 @@ public class Utils {
 		final CloseDialog dialogBox = new CloseDialog(title);
 		dialogBox.setContent(panel);
 		dialogBox.center();
-		/*dialogBox.setText(title);
-		dialogBox.setGlassEnabled(true);
-		dialogBox.setAnimationEnabled(true);
-		
-		//create Panel
-		Panel main = new VerticalPanel();
-		
-		Button close = new Button("Close");
-		close.addClickHandler(new ClickHandler() {
-           public void onClick(ClickEvent event) {
-        	   dialogBox.hide();
-           }
-        });
-        
-		HorizontalPanel buttons = new HorizontalPanel();
-		
-		if(addCB != null) {
-			Button add = new Button("Save");
-			add.addClickHandler(new ClickHandler() {
-	           public void onClick(ClickEvent event) {
-	        	   addCB.onClick();
-	        	   dialogBox.hide();
-	           }
-	        });
-			
-			buttons.add(add);
-		}
-		
-		
-		buttons.add(close);
-		buttons.setSpacing(5);
-		
-		main.add(panel);
-		main.add(buttons);
-		
-		ScrollPanel sPanel = new ScrollPanel();
-		sPanel.setStyleName("dialog");
-		sPanel.add(main);
-		
-		dialogBox.add(sPanel);
-		dialogBox.center();*/
+		return dialogBox;
+	}
+	
+	public static final CloseDialog displaySaveDialogBox(final Panel panel,final String title){
+		final CloseDialog dialogBox = new CloseDialog(title);
+		dialogBox.setContent(panel);
+		dialogBox.showSaveButton();
+		dialogBox.center();
 		return dialogBox;
 	}
 	

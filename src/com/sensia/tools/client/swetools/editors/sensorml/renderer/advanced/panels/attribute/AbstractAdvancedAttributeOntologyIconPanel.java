@@ -44,7 +44,7 @@ public abstract class AbstractAdvancedAttributeOntologyIconPanel<T extends RNGTa
 			@Override
 			public void onClick(ClickEvent event) {
 				final OntologyPanel ontologyPanel = new OntologyPanel();
-				CloseDialog dialogBox = Utils.displayDialogBox(ontologyPanel.getPanel(),"SWE Ontology");
+				CloseDialog dialogBox = Utils.displaySaveDialogBox(ontologyPanel.getPanel(),"SWE Ontology");
 				dialogBox.addSaveHandler(new ClickHandler(){
 					@Override
 					public void onClick(ClickEvent event) {
