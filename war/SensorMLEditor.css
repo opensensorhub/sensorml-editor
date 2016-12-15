@@ -826,6 +826,6 @@ input:focus {
 }
 
 /** For swe:AllowedValues **/
-.allowedValues {
+.allowedValues .gwt-HTML{
 	font-style: italic;
 }

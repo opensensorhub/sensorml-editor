@@ -6,6 +6,7 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.line.ValueGenericLinePanel;
 
 /**
  * codeSpace
@@ -14,38 +15,24 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGen
  * @author mathieu.dhainaut@gmail.com
  *
  */
-public class SWEEditCategoryPanel extends AbstractGenericLinePanel<RNGElement>{
+public class SWEEditCategoryPanel extends ValueGenericLinePanel{
 
-	protected Panel valuePanel;
 	protected Panel codeSpace;
-	protected Panel constraint;
 	
 	public SWEEditCategoryPanel(RNGElement element) {
 		super(element);
 		
-		valuePanel = new SimplePanel();
-		constraint = new SimplePanel();
 		codeSpace = new SimplePanel();
 		
-		afterDotsPanel.add(valuePanel);
-		afterDotsPanel.add(constraint);
 		afterDotsPanel.add(codeSpace);
 	}
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		if(element.getName().equals("label")) {
-			labelPanel.add(element.getPanel());
-		} else if(element.getName().equals("definition")) {
-			defPanel.add(element.getPanel());
-		} else if(element.getName().equals("constraint")){
-			constraint.add(element.getPanel());
-		} else if(element.getName().equals("value")){
-			valuePanel.add(element.getPanel());
-		} else if(element.getName().equals("codeSpace")){
+		if(element.getName().equals("codeSpace")){
 			codeSpace.add(element.getPanel());
 		} else {
-			afterDotsPanel.add(element.getPanel());
+			super.addInnerElement(element);
 		}
 	}
 }

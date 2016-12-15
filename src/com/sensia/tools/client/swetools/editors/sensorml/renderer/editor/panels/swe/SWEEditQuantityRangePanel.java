@@ -26,6 +26,15 @@ public class SWEEditQuantityRangePanel extends SWEEditQuantityPanel{
 			} else {
 				valuePanel.add(element.getPanel());
 			}
+			
+			valueIPanel = element;
+			
+			if(constraintIPanel != null) {
+				constraintPanel.clear();
+				constraintPanel.add(new HTML(" in "));
+				constraintPanel.add(constraintIPanel.getPanel());
+			}
+
 		} else {
 			super.addInnerElement(element);
 		}
