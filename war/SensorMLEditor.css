@@ -824,3 +824,8 @@ input:focus {
  .component .edit-subsection-element-inner-panel {
 	border-spacing: 5;
 }
+
+/** For swe:AllowedValues **/
+.allowedValues {
+	font-style: italic;
+}

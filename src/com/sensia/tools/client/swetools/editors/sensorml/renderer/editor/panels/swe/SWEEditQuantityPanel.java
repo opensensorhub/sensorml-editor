@@ -1,5 +1,7 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe;
 
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.sensia.relaxNG.RNGElement;
@@ -16,13 +18,19 @@ public class SWEEditQuantityPanel extends AbstractGenericLinePanel<RNGElement>{
 	
 	protected Panel valuePanel;
 	protected Panel uomPanel;
+	protected Panel constraintPanel;
+	
+	private IPanel valueIPanel;
+	private IPanel constraintIPanel;
 	
 	public SWEEditQuantityPanel(RNGElement tag) {
 		super(tag);
 		valuePanel = new SimplePanel();
 		uomPanel = new SimplePanel();
+		constraintPanel = new HorizontalPanel();
 		
 		afterDotsPanel.add(valuePanel);
+		afterDotsPanel.add(constraintPanel);
 		afterDotsPanel.add(uomPanel);
 	}
 	
@@ -41,6 +49,21 @@ public class SWEEditQuantityPanel extends AbstractGenericLinePanel<RNGElement>{
 			uomPanel.add(element.getPanel());
 		} else if(element.getName().equals("value")){
 			valuePanel.add(element.getPanel());
+			valueIPanel = element;
+			
+			if(constraintIPanel != null) {
+				constraintPanel.clear();
+				constraintPanel.add(new HTML(" in "));
+				constraintPanel.add(constraintIPanel.getPanel());
+			}
+			
+		} else if(element.getName().equals("constraint")){
+			constraintIPanel = element;
+			
+			if(valueIPanel != null) {
+				constraintPanel.add(new HTML(" in "));
+			}
+			constraintPanel.add(element.getPanel());
 		} else {
 			//afterDotsPanel.add(element.getPanel());
 		}

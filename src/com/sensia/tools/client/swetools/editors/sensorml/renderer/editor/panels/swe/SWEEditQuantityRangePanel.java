@@ -11,8 +11,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 // value
 public class SWEEditQuantityRangePanel extends SWEEditQuantityPanel{
 	
-	private IPanel valueIPanel;
-	
 	public SWEEditQuantityRangePanel(RNGElement tag) {
 		super(tag);
 	}
@@ -25,7 +23,6 @@ public class SWEEditQuantityRangePanel extends SWEEditQuantityPanel{
 			if(valueAsStr != null) {
 				String [] values = valueElement.getChildValueText().split(" ");
 				valuePanel.add(new HTML(values[0]+" to "+values[1]));
-				valueIPanel = element;
 			} else {
 				valuePanel.add(element.getPanel());
 			}

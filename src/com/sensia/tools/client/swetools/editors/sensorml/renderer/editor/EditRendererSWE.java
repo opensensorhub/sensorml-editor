@@ -13,6 +13,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditAllowedValuesPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditCategoryPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditConstraintPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditDataArrayPanel;
@@ -74,6 +75,8 @@ public class EditRendererSWE extends EditRendererRNG implements RNGTagVisitor {
 			widget = new SWEditEncodingPanel(elt);
 		} else if(name.equals("constraint")) {
 			widget = new SWEEditConstraintPanel(elt);
+		} else if(name.equals("AllowedValues")) {
+			widget = new SWEEditAllowedValuesPanel(elt);
 		}
 		
 		if(widget != null) {
