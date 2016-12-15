@@ -1,7 +1,7 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe;
 
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
@@ -9,7 +9,11 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 
 public class SWEEditAllowedValuesPanel extends EditSimpleElementPanel{
 
+	private Panel innerValuesPanel;
 	private Panel valuesPanel;
+	
+	private Panel intervalPanel;
+	
 	private boolean isFirst = true;
 	
 	public SWEEditAllowedValuesPanel(RNGElement element) {
@@ -17,23 +21,35 @@ public class SWEEditAllowedValuesPanel extends EditSimpleElementPanel{
 		
 		container = new HorizontalPanel();
 		valuesPanel = new HorizontalPanel();
+		innerValuesPanel = new HorizontalPanel();
+		intervalPanel = new HorizontalPanel();
 		
-		container.add(new Label("["));
+		valuesPanel.add(new HTML("["));
+		valuesPanel.add(innerValuesPanel);
+		valuesPanel.add(new HTML("]"));
+		
 		container.add(valuesPanel);
-		container.add(new Label("]"));
+		container.add(intervalPanel);
 		
 		container.addStyleName("allowedValues");
+		
+		valuesPanel.setVisible(false);
+		intervalPanel.setVisible(false);
 	}
 	
 	@Override
 	public void addInnerElement(IPanel element) {
 		if(element.getName().equals("value")) {
+			valuesPanel.setVisible(true);
 			if(!isFirst) {
-				valuesPanel.add(new Label(" / "));
+				innerValuesPanel.add(new HTML(" / "));
 			} else {
 				isFirst = false;
 			}
-			valuesPanel.add(element.getPanel());
+			innerValuesPanel.add(element.getPanel());
+		} else if(element.getName().equals("interval")) {
+			intervalPanel.setVisible(true);
+			intervalPanel.add(element.getPanel());
 		}
 	}
 
