@@ -14,7 +14,9 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewIdentifierPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewIntervalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewLabelPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewQuantityRangePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewUOMPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewValuesPanel;
@@ -66,6 +68,10 @@ public class ViewRendererSWE extends ViewRendererRNG implements RNGTagVisitor {
 				pushAndVisitChildren(new SWEViewValuePanel(element), element.getChildren());
 			} else if(name.equals("uom")) {
 				pushAndVisitChildren(new SWEViewUOMPanel(element), element.getChildren());
+			}  else if(name.equals("interval")) {
+				pushAndVisitChildren(new SWEViewIntervalPanel(element), element.getChildren());
+			}  else if(name.equals("QuantityRange")) {
+				pushAndVisitChildren(new SWEViewQuantityRangePanel(element), element.getChildren());
 			}  else {
 				super.visit(element);
 			}
