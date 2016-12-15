@@ -13,6 +13,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGen
 public class EditSubSectionElementPanel extends EditElementPanel{
 
 	private IPanel<?> namePanel;
+	private IPanel<?> defPanel;
 	private Panel label;
 	private Panel definition;
 	private Panel innerContainer;
@@ -43,8 +44,8 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 			if(!eltPanel.isLabeled() && namePanel != null) {
 				eltPanel.setLabel(namePanel.getPanel());
 			}
-			if(definition != null) {
-				eltPanel.setDefinition(definition);
+			if(defPanel != null) {
+				eltPanel.setDefinition(defPanel.getPanel());
 			}
 			innerContainer.add(element.getPanel());
 		} else if(element.getName().equals("name")) {
@@ -62,6 +63,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		} else if(element.getName().equals("definition") 
 				|| element.getName().equals("role") 
 				|| element.getName().equals("arcrole")){
+			defPanel = element;
 			label.setVisible(true);
 			definition.setVisible(true);
 			innerContainer.addStyleName("edit-subsection-element-inner-panel");
