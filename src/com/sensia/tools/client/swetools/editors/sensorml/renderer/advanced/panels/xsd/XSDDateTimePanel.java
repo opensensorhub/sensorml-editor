@@ -1,6 +1,7 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd;
 
 import com.sensia.relaxNG.XSDDateTime;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 
 public class XSDDateTimePanel extends XSDPanel<XSDDateTime>{
 
@@ -12,7 +13,7 @@ public class XSDDateTimePanel extends XSDPanel<XSDDateTime>{
 	 *
 	 * @param data the data
 	 */
-	public XSDDateTimePanel(XSDDateTime data) {
-		super(data,LENGTH,null);
+	public XSDDateTimePanel(XSDDateTime data, IRefreshHandler refreshHandler) {
+		super(data,LENGTH,null,refreshHandler);
 	}
 }

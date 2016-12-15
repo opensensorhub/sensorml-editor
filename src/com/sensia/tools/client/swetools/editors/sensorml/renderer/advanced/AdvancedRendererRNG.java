@@ -219,7 +219,7 @@ public abstract class AdvancedRendererRNG implements RNGTagVisitor, IRefreshHand
 	 */
 	@Override
 	public void visit(RNGData<?> data) {
-		push(new EditValuePanel(data));
+		push(new EditValuePanel(data,getRefreshHandler()));
 	}
 
 	/* (non-Javadoc)
@@ -227,7 +227,7 @@ public abstract class AdvancedRendererRNG implements RNGTagVisitor, IRefreshHand
 	 */
 	@Override
 	public void visit(XSDString data) {
-		push(new XSDStringPanel(data));
+		push(new XSDStringPanel(data,getRefreshHandler()));
 	}
 
 	/* (non-Javadoc)
@@ -243,7 +243,7 @@ public abstract class AdvancedRendererRNG implements RNGTagVisitor, IRefreshHand
 	 */
 	@Override
 	public void visit(XSDDecimal data) {
-		push(new XSDDecimalPanel(data));
+		push(new XSDDecimalPanel(data,getRefreshHandler()));
 	}
 
 	/* (non-Javadoc)
@@ -251,7 +251,7 @@ public abstract class AdvancedRendererRNG implements RNGTagVisitor, IRefreshHand
 	 */
 	@Override
 	public void visit(XSDDouble data) {
-		push(new XSDDoublePanel(data));
+		push(new XSDDoublePanel(data,getRefreshHandler()));
 	}
 
 	/* (non-Javadoc)
@@ -259,7 +259,7 @@ public abstract class AdvancedRendererRNG implements RNGTagVisitor, IRefreshHand
 	 */
 	@Override
 	public void visit(XSDInteger data) {
-		push(new XSDIntegerPanel(data));
+		push(new XSDIntegerPanel(data,getRefreshHandler()));
 	}
 
 	/* (non-Javadoc)
@@ -267,7 +267,7 @@ public abstract class AdvancedRendererRNG implements RNGTagVisitor, IRefreshHand
 	 */
 	@Override
 	public void visit(XSDAnyURI data) {
-		push(new XSDAnyURIPanel(data));
+		push(new XSDAnyURIPanel(data,getRefreshHandler()));
 		
 	}
 
@@ -276,7 +276,7 @@ public abstract class AdvancedRendererRNG implements RNGTagVisitor, IRefreshHand
 	 */
 	@Override
 	public void visit(XSDDateTime data) {
-		push(new XSDDateTimePanel(data));
+		push(new XSDDateTimePanel(data,getRefreshHandler()));
 		
 	}
 	

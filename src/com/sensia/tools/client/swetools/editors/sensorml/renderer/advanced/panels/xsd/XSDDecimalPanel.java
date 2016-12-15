@@ -1,6 +1,7 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd;
 
 import com.sensia.relaxNG.XSDDecimal;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 
 public class XSDDecimalPanel extends XSDPanel<XSDDecimal>{
 	/** The Constant ALLOWED_CHARS. */
@@ -12,8 +13,8 @@ public class XSDDecimalPanel extends XSDPanel<XSDDecimal>{
 	 *
 	 * @param data the data
 	 */
-	public XSDDecimalPanel(final XSDDecimal data) {
-		super(data,getLength(data),ALLOWED_CHARS);
+	public XSDDecimalPanel(final XSDDecimal data, IRefreshHandler refreshHandler) {
+		super(data,getLength(data),ALLOWED_CHARS,refreshHandler);
 	}
 	
 	/**

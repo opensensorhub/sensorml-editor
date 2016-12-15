@@ -1,6 +1,7 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd;
 
 import com.sensia.relaxNG.XSDString;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 
 public class XSDStringPanel extends XSDPanel<XSDString>{
 
@@ -9,8 +10,8 @@ public class XSDStringPanel extends XSDPanel<XSDString>{
 	 *
 	 * @param data the data
 	 */
-	public XSDStringPanel(final XSDString data) {
-		super(data,getLength(data),null);
+	public XSDStringPanel(final XSDString data, IRefreshHandler refreshHandler) {
+		super(data,getLength(data),null,refreshHandler);
 	}
 	
 	/**

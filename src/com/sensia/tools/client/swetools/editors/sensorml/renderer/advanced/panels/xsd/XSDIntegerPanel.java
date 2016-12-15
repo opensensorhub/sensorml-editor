@@ -1,6 +1,7 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd;
 
 import com.sensia.relaxNG.XSDInteger;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 
 public class XSDIntegerPanel extends XSDPanel<XSDInteger>{
 
@@ -12,8 +13,8 @@ public class XSDIntegerPanel extends XSDPanel<XSDInteger>{
 	 *
 	 * @param data the data
 	 */
-	public XSDIntegerPanel(final XSDInteger data) {
-		super(data,getLength(data),ALLOWED_CHARS);
+	public XSDIntegerPanel(final XSDInteger data, IRefreshHandler refreshHandler) {
+		super(data,getLength(data),ALLOWED_CHARS,refreshHandler);
 	}
 	
 	/**

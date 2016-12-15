@@ -16,6 +16,7 @@ import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
 
 public class XSDPanel<T extends RNGData<?>> extends EditValuePanel {
@@ -24,8 +25,8 @@ public class XSDPanel<T extends RNGData<?>> extends EditValuePanel {
 
 	//protected HTML htmlTextBox;
 
-	public XSDPanel(final T data, final int length, final String allowedChars) {
-		super(data);
+	public XSDPanel(final T data, final int length, final String allowedChars, IRefreshHandler refreshHandler) {
+		super(data,refreshHandler);
 		
 		if (length < 0) {
 			((TextBox) textBox).setVisibleLength(DEFAULT_TEXBOX_VALUE_SIZE);

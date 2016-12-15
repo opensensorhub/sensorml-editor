@@ -1,6 +1,7 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd;
 
 import com.sensia.relaxNG.XSDDouble;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 
 public class XSDDoublePanel extends XSDPanel<XSDDouble>{
 
@@ -15,7 +16,7 @@ public class XSDDoublePanel extends XSDPanel<XSDDouble>{
 	 *
 	 * @param data the data
 	 */
-	public XSDDoublePanel(XSDDouble data) {
-		super(data,LENGTH,ALLOWED_CHARS);
+	public XSDDoublePanel(XSDDouble data, IRefreshHandler refreshHandler) {
+		super(data,LENGTH,ALLOWED_CHARS,refreshHandler);
 	}
 }

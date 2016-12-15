@@ -1,25 +1,19 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value;
 
 import com.google.gwt.core.shared.GWT;
-import com.google.gwt.event.dom.client.ChangeEvent;
-import com.google.gwt.event.dom.client.ChangeHandler;
-import com.google.gwt.event.dom.client.KeyDownEvent;
-import com.google.gwt.event.dom.client.KeyDownHandler;
-import com.google.gwt.event.dom.client.KeyPressEvent;
-import com.google.gwt.event.dom.client.KeyPressHandler;
+import com.google.gwt.event.dom.client.BlurEvent;
+import com.google.gwt.event.dom.client.BlurHandler;
+import com.google.gwt.event.dom.client.FocusEvent;
+import com.google.gwt.event.dom.client.FocusHandler;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGTag;
-import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 
 public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 	protected static final int DEFAULT_TEXBOX_VALUE_SIZE = 20;
@@ -27,8 +21,9 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 	protected TextBox textBox;
 
 	private boolean isNiceLabel;
+	private String focusTmpText="";
 	
-	public EditValuePanel(final RNGData<?> data) {
+	public EditValuePanel(final RNGData<?> data,final IRefreshHandler refreshHandler) {
 		super(data);
 		container = new HorizontalPanel();
 		
@@ -57,6 +52,23 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 			}
 		});
 		
+		textBox.addBlurHandler(new BlurHandler() {
+			
+			@Override
+			public void onBlur(BlurEvent event) {
+				if(!focusTmpText.equals(textBox.getText()) && refreshHandler != null) {
+					refreshHandler.refresh();
+				}
+			}
+		});
+		
+		textBox.addFocusHandler(new FocusHandler() {
+			
+			@Override
+			public void onFocus(FocusEvent event) {
+				focusTmpText = textBox.getText();
+			}
+		});
 		// add into the main container
 		container.add(textBox);
 	}

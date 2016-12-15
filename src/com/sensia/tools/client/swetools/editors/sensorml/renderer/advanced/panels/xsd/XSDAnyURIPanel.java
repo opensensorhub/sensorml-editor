@@ -1,6 +1,7 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd;
 
 import com.sensia.relaxNG.XSDAnyURI;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 
 public class XSDAnyURIPanel extends XSDPanel<XSDAnyURI> {
 
@@ -11,8 +12,8 @@ public class XSDAnyURIPanel extends XSDPanel<XSDAnyURI> {
 	 * @param data
 	 *            the data
 	 */
-	public XSDAnyURIPanel(final XSDAnyURI data) {
-		super(data, getLength(data), null);
+	public XSDAnyURIPanel(final XSDAnyURI data, IRefreshHandler refreshHandler) {
+		super(data, getLength(data), null,refreshHandler);
 	}
 
 	/**
