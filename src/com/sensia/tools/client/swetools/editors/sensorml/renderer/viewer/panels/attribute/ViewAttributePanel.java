@@ -6,10 +6,13 @@ import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class ViewAttributePanel extends AbstractPanel<RNGAttribute> {
 
+	protected ViewValuePanel valuePanel;
+	
 	public ViewAttributePanel(RNGAttribute tag) {
 		super(tag);
 		container = new HorizontalPanel();
@@ -24,6 +27,9 @@ public class ViewAttributePanel extends AbstractPanel<RNGAttribute> {
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
 		container.add(element.getPanel());
 		setValueNiceLabel(element, isNiceLabel);
+		if(element instanceof ViewValuePanel) {
+			valuePanel = (ViewValuePanel) element;
+		}
 	}
 
 	@Override

@@ -4,9 +4,9 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSubSectionElementPanel;
 
-public class SMLEditFieldPanel extends EditSubSectionElementPanel{
+public class SWEEditFieldPanel extends EditSubSectionElementPanel{
 
-	public SMLEditFieldPanel(RNGElement element) {
+	public SWEEditFieldPanel(RNGElement element) {
 		super(element);
 	}
 

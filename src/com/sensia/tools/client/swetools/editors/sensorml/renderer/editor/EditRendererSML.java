@@ -67,9 +67,12 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditOutputsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditParameterPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditParametersPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditSpatialFramePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditTypeOfPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditValidTimePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditLinkPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditLocalReferenceFramePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditOriginPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditTermPanel;
 
@@ -127,7 +130,7 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 				return;
 			}
 		}
-		if (nsUri.equalsIgnoreCase(SWE_NS_1) || nsUri.equalsIgnoreCase(SWE_NS_2)) {
+		if (nsUri.equalsIgnoreCase(SMLEditorConstants.SWE_NS_1) || nsUri.equalsIgnoreCase(SMLEditorConstants.SWE_NS_2)) {
 			super.visit(elt);
 			return;
 		} else if (nsUri.equalsIgnoreCase(GMD)) {
@@ -160,9 +163,14 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 				pushAndVisitChildren(new SMLEditOutputsPanel(elt,getRefreshHandler()), elt.getChildren());
 				skipTags = false;
 				return;
-			} else if(eltName.equalsIgnoreCase("keywords")) {
+			} else if(eltName.equalsIgnoreCase("outputs")) {
 				skipTags = true;
-				pushAndVisitChildren(new SMLEditKeywordsPanel(elt,getRefreshHandler()), elt.getChildren());
+				pushAndVisitChildren(new SMLEditOutputsPanel(elt,getRefreshHandler()), elt.getChildren());
+				skipTags = false;
+				return;
+			} else if(eltName.equalsIgnoreCase("localReferenceFrame")) {
+				skipTags = true;
+				pushAndVisitChildren(new SMLEditLocalReferenceFramePanel(elt,getRefreshHandler()), elt.getChildren());
 				skipTags = false;
 				return;
 			} else if(eltName.equalsIgnoreCase("identification")) {
@@ -286,8 +294,11 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 			} else if(eltName.equalsIgnoreCase("KeywordList")) {
 				pushAndVisitChildren(new SMLEditKeywordListPanel(elt), elt.getChildren());
 				return;
-			} else if(eltName.equalsIgnoreCase("description")) {
-				pushAndVisitChildren(new SMLAdvancedDescriptionPanel(elt), elt.getChildren());
+			} else if(eltName.equalsIgnoreCase("input")) {
+				pushAndVisitChildren(new SMLEditInputPanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("SpatialFrame")) {
+				pushAndVisitChildren(new SMLEditSpatialFramePanel(elt), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("label")) {
 				pushAndVisitChildren(new SMLAdvancedLabelPanel(elt), elt.getChildren());

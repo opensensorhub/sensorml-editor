@@ -15,8 +15,10 @@ import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewIdentifierPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewLabelPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewUOMPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewValuesPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 
 /**
  * <p>
@@ -38,12 +40,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
  */
 public class ViewRendererSWE extends ViewRendererRNG implements RNGTagVisitor {
 	
-	/** The Constant SWE_NS_1. */
-	protected final static String SWE_NS_1 = "http://www.opengis.net/swe/1.0.1";
-	
-	/** The Constant SWE_NS_2. */
-	protected final static String SWE_NS_2 = "http://www.opengis.net/swe/2.0";
-
 	/**
 	 * Instantiates a new RNG renderer swe.
 	 */
@@ -57,7 +53,7 @@ public class ViewRendererSWE extends ViewRendererRNG implements RNGTagVisitor {
 		String name = element.getName();
 		String nsUri = element.getNamespace();
 		
-		if (nsUri.equalsIgnoreCase(SWE_NS_1) || nsUri.equalsIgnoreCase(SWE_NS_2)) {
+		if (nsUri.equalsIgnoreCase(SMLEditorConstants.SWE_NS_1) || nsUri.equalsIgnoreCase(SMLEditorConstants.SWE_NS_2)) {
 			if(name.equals("description")) {
 				pushAndVisitChildren(new SWEViewDescriptionPanel(element), element.getChildren());
 			} else if(name.equals("label")){
@@ -68,7 +64,9 @@ public class ViewRendererSWE extends ViewRendererRNG implements RNGTagVisitor {
 				pushAndVisitChildren(new SWEViewValuesPanel(element), element.getChildren());
 			} else if(name.equals("value")) {
 				pushAndVisitChildren(new SWEViewValuePanel(element), element.getChildren());
-			} else {
+			} else if(name.equals("uom")) {
+				pushAndVisitChildren(new SWEViewUOMPanel(element), element.getChildren());
+			}  else {
 				super.visit(element);
 			}
 		} else {

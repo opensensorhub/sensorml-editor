@@ -79,4 +79,9 @@ public abstract class AbstractGenericLinePanel<T extends RNGTag> extends Abstrac
 		labelPanel.clear();
 		labelPanel.add(panel);
 	}
+	
+	public void setDefinition(Panel panel) {
+		defPanel.clear();
+		defPanel.add(panel);
+	}
 }

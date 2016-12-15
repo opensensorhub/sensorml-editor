@@ -11,5 +11,11 @@ public class SMLEditorConstants {
 	/** The Constant ONTOLOGY_MMI_MVCO_PROPERTY_URL. */
 	//public static final String ONTOLOGY_MMI_MVCO_PROPERTY_URL = "sensormleditor/ontologies/mmi.mvco.ont";
 	public static final String ONTOLOGY_MMI_MVCO_PROPERTY_URL = "http://mmisw.org/ont?form=rdf&uri=http://mmisw.org/ont/mvco/properties";
+	
+	/** The Constant SWE_NS_1. */
+	public final static String SWE_NS_1 = "http://www.opengis.net/swe/1.0.1";
+	
+	/** The Constant SWE_NS_2. */
+	public final static String SWE_NS_2 = "http://www.opengis.net/swe/2.0";
 
 }

@@ -8,4 +8,10 @@ public class ViewAttributeCodePanel extends ViewAttributePanel{
 		super(tag);
 		isNiceLabel = false;
 	}
+	
+	public void setValue(String value) {
+		if(valuePanel != null) {
+			valuePanel.setLabel(value);
+		}
+	}
 }

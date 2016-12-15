@@ -38,12 +38,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
  */
 public class AdvancedRendererSWE extends AdvancedRendererRNG {
 	
-	/** The Constant SWE_NS_1. */
-	protected final static String SWE_NS_1 = "http://www.opengis.net/swe/1.0.1";
-	
-	/** The Constant SWE_NS_2. */
-	protected final static String SWE_NS_2 = "http://www.opengis.net/swe/2.0";
-
 	/**
 	 * Instantiates a new RNG renderer swe.
 	 */

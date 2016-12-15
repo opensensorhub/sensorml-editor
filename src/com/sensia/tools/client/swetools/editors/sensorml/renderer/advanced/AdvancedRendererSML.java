@@ -36,6 +36,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditNamePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.root.EditRootPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 
 /**
  * <p>
@@ -153,7 +154,7 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 		} else if (nsUri.equalsIgnoreCase(GCO)) {
 			pushAndVisitChildren(new GCOAdvancedCharacterStringPanel(elt), elt.getChildren());
 			return;
-		} else if (nsUri.equalsIgnoreCase(SWE_NS_1) || nsUri.equalsIgnoreCase(SWE_NS_2)) {
+		} else if (nsUri.equalsIgnoreCase(SMLEditorConstants.SWE_NS_1) || nsUri.equalsIgnoreCase(SMLEditorConstants.SWE_NS_2)) {
 			super.visit(elt);
 			return;
 		} else if (nsUri.equalsIgnoreCase(SML_NS_1) || nsUri.equalsIgnoreCase(SML_NS_2)) {

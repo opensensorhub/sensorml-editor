@@ -14,8 +14,11 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SMLEditFieldPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEditElementTypePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEditEncodingPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditFieldPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditCategoryPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditDataArrayPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditDataRecordPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditIdentifierPanel;
@@ -43,12 +46,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
  */
 public class EditRendererSWE extends EditRendererRNG implements RNGTagVisitor {
 	
-	/** The Constant SWE_NS_1. */
-	protected final static String SWE_NS_1 = "http://www.opengis.net/swe/1.0.1";
-	
-	/** The Constant SWE_NS_2. */
-	protected final static String SWE_NS_2 = "http://www.opengis.net/swe/2.0";
-
 	/**
 	 * Instantiates a new RNG renderer swe.
 	 */
@@ -69,9 +66,15 @@ public class EditRendererSWE extends EditRendererRNG implements RNGTagVisitor {
 		} else if(name.equalsIgnoreCase("QuantityRange")) {
 			widget = new SWEEditQuantityRangePanel(elt);
 		} else if(name.equals("field")) {
-			widget = new SMLEditFieldPanel(elt);
+			widget = new SWEEditFieldPanel(elt);
 		} else if(name.equals("DataRecord")) {
 			widget = new SWEEditDataRecordPanel(elt);
+		} else if(name.equals("DataArray")) {
+			widget = new SWEEditDataArrayPanel(elt);
+		} else if(name.equals("elementType")) {
+			widget = new SWEditElementTypePanel(elt);
+		} else if(name.equals("encoding")) {
+			widget = new SWEditEncodingPanel(elt);
 		}
 		
 		if(widget != null) {

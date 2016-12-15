@@ -43,6 +43,9 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 			if(!eltPanel.isLabeled() && namePanel != null) {
 				eltPanel.setLabel(namePanel.getPanel());
 			}
+			if(definition != null) {
+				eltPanel.setDefinition(definition);
+			}
 			innerContainer.add(element.getPanel());
 		} else if(element.getName().equals("name")) {
 			label.clear();

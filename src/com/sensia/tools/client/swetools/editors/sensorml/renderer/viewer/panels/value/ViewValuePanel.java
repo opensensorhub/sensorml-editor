@@ -47,6 +47,10 @@ public class ViewValuePanel extends AbstractPanel<RNGValue>{
 		computeName();
 	}
 	
+	public void setLabel(String label) {
+		this.htmlTextBox.setText(label);
+	}
+	
 	private void computeName() {
 		// put saved value in text box
 		if (getTag().getText() != null) {
