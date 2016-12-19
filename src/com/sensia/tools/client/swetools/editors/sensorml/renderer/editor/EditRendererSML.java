@@ -62,6 +62,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditLabelPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditLegalConstraintsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditMethodPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditModePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditModesPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditObservablePropertyPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditOutputPanel;
@@ -160,6 +161,9 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 				skipTags = true;
 				pushAndVisitChildren(new SMLEditInputsPanel(elt,getRefreshHandler()), elt.getChildren());
 				skipTags = false;
+				return;
+			} else if(eltName.equalsIgnoreCase("Mode")) {
+				pushAndVisitChildren(new SMLEditModePanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("outputs")) {
 				skipTags = true;
@@ -346,6 +350,8 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 			pushAndVisitChildren(new EditAttributeRefPanel(att),att.getChildren());
 		} else if(name.equals("code")) {
 			pushAndVisitChildren(new EditAttributeCodePanel(att),att.getChildren());
+		} else if(name.equals("id")) {
+			// skip ids
 		} else {
 			pushAndVisitChildren(new EditAttributePanel(att),att.getChildren());
 		}

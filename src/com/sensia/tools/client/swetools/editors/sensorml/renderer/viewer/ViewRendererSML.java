@@ -16,6 +16,7 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewAttributeCodePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewAttributeDefinitionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewAttributeIdPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewAttributeNamePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewAttributePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewAttributeRefPanel;
@@ -151,6 +152,9 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 			pushAndVisitChildren(new ViewAttributeRefPanel(att),att.getChildren());
 		} else if(name.equals("code")) {
 			pushAndVisitChildren(new ViewAttributeCodePanel(att),att.getChildren());
+		} else if(name.equals("id")) {
+			// skip ids
+			pushAndVisitChildren(new ViewAttributeIdPanel(att),att.getChildren());
 		} else {
 			pushAndVisitChildren(new ViewAttributePanel(att),att.getChildren());
 		}

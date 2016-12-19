@@ -116,6 +116,9 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 		//skip sml:documents tags
 		skipList.add("CI_OnlineResource");
 		skipList.add("linkage");
+		
+		//skip sml:mode
+		skipList.add("mode");
 	}
 	
 	/* (non-Javadoc)

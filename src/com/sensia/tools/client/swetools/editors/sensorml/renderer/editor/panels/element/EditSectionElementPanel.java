@@ -25,11 +25,11 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class EditSectionElementPanel extends DisclosureElementPanel{
 
-	private Label button;
-	private Panel labelPanel;
-	private Panel definitionPanel;
-	private Panel descriptionPanel;
-	private boolean preventChangeDisclosure;
+	protected Label button;
+	protected Panel labelPanel;
+	protected Panel definitionPanel;
+	protected Panel descriptionPanel;
+	protected boolean preventChangeDisclosure;
 	
 	public EditSectionElementPanel(final RNGElement tag, final IRefreshHandler refreshHandler) {
 		super(tag);
@@ -93,7 +93,6 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 		hPanel.add(descriptionPanel);
 		hPanel.add(button);
 		
-		labelPanel.setVisible(false);
 		definitionPanel.setVisible(false);
 		
 		sectionPanel.setHeader(hPanel);
@@ -128,6 +127,8 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 			}
 		});
 		container.addStyleName("section-panel");
+		
+		labelPanel.add(new HTML(Utils.toNiceLabel(tag.getName())));
 	}
 	
 	@Override
@@ -139,9 +140,10 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 			hPanel.add(label);
 			hPanel.add(element.getPanel());
 		} else if(element.getName().equals("label")){
-			labelPanel.add(new HTML("("));
+			labelPanel.clear();
+			//labelPanel.add(new HTML("("));
 			labelPanel.add(element.getPanel());
-			labelPanel.add(new HTML(")"));
+			//labelPanel.add(new HTML(")"));
 			
 			labelPanel.setVisible(true);
 		} else if(element.getName().equals("definition") ||
