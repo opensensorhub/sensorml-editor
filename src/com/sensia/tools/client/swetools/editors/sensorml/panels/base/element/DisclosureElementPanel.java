@@ -20,7 +20,7 @@ public class DisclosureElementPanel extends AbstractPanel<RNGElement>{
 		
 		innerContent = new VerticalPanel();
 		
-		sectionPanel = new DisclosurePanel(Utils.toNiceLabel(tag.getName()));
+		sectionPanel = new DisclosurePanel("");
 		sectionPanel.setAnimationEnabled(true);
 		sectionPanel.setOpen(true);
 		sectionPanel.add(innerContent);
