@@ -440,7 +440,7 @@ table.sml-mode-nolabel-vertical-panel {
 
 .ontology-table-result {
 	height: 100px;
-	width : 768px;
+	width : 100%;
 	margin-top:25px;
 	border-width:1px; 
  	border-style:solid; 
@@ -453,8 +453,13 @@ table.sml-mode-nolabel-vertical-panel {
 }
 
 .ontology-table-panel {
-	height:475px;	
-	width: 800px;
+	height: 475px;
+    width: 650px;
+}
+
+.ontology-panel {
+	height: 475px;
+    width: 650px;
 }
 
 .edit-table-panel {
@@ -463,10 +468,11 @@ table.sml-mode-nolabel-vertical-panel {
 }
 
 .chart-panel {
-	height:490px;	
-	width: 790px;
+	width:630px;
+	height:500px;
 	margin-top:10px;
 	margin-left:10px;
+	overflow:hidden !important;
 }
 .ontology-icon {
 	margin-left: 15px;	
@@ -843,3 +849,4 @@ input:focus {
 .section-panel .section-panel .gwt-DisclosurePanel .content {
 	border-left:0px !important;
 }
+
