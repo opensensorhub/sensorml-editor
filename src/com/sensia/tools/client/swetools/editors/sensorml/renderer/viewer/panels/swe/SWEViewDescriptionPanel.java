@@ -10,7 +10,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 public class SWEViewDescriptionPanel extends AbstractEditIconPanel<RNGElement>{
 
 	public SWEViewDescriptionPanel(RNGElement element) {
-		super(element,new Image(GWT.getModuleBaseURL()+"images/icon_question.png"),"def-description",false);
+		super(element,new Image(GWT.getModuleBaseURL()+"images/icon_question.png"),"description-icon",false);
 	}
 
 	@Override

@@ -837,8 +837,8 @@ input:focus {
 }
 
 .description-icon {
-	/*margin-left:0px !important;
-	margin-right:10px;*/
+	margin-left:10px;
+	margin-right:10px;
 }
 
 .component .header-title-panel .gwt-HTML {

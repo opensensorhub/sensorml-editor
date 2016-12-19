@@ -8,7 +8,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.Abstract
 public class SWEEditDescriptionPanel extends AbstractEditIconPanel<RNGElement>{
 
 	public SWEEditDescriptionPanel(RNGElement tag) {
-		super(tag,new Image(GWT.getModuleBaseURL()+"images/icon_question.png"),"def-description",false);
+		super(tag,new Image(GWT.getModuleBaseURL()+"images/icon_question.png"),"description-icon",false);
 	}
 
 	@Override
