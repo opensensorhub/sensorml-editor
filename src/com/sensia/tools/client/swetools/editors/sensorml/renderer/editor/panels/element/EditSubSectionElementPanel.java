@@ -63,7 +63,6 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 			namePanel = element;
 			//innerContainer.addStyleName("edit-subsection-element-inner-panel");
 			label.add(element.getPanel());
-			label.setVisible(true);
 		} else if(element.getName().equals("label")){
 			namePanel = element;
 			label.clear();
