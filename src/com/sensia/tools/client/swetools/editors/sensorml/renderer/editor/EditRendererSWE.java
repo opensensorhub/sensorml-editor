@@ -20,6 +20,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditCountPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditDataArrayPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditDataRecordPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditFieldPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditIntervalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditQuantityPanel;
@@ -86,6 +87,8 @@ public class EditRendererSWE extends EditRendererRNG implements RNGTagVisitor {
 			widget = new SWEEditAllowedTokensPanel(elt);
 		} else if(name.equals("Count")) {
 			widget = new SWEEditCountPanel(elt);
+		} else if(name.equals("description")) {
+			widget = new SWEEditDescriptionPanel(elt);
 		}
 		
 		if(widget != null) {

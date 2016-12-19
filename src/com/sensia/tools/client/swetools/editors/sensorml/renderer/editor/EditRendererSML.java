@@ -30,6 +30,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditXLinkRolePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditXLinkTitlePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gmd.GMDEditDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gmd.GMDEditUrl;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditIdentifierPanel;
@@ -136,6 +137,8 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 		} else if (nsUri.equalsIgnoreCase(GMD)) {
 			if(eltName.equalsIgnoreCase("URL")) {
 				pushAndVisitChildren(new GMDEditUrl(elt), elt.getChildren());
+			} else if(eltName.equalsIgnoreCase("description")) {
+				pushAndVisitChildren(new GMDEditDescriptionPanel(elt), elt.getChildren());
 			} else {
 				super.visit(elt);
 			}

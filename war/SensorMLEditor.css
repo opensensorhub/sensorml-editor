@@ -829,3 +829,8 @@ input:focus {
 .allowedValues .gwt-HTML{
 	font-style: italic;
 }
+
+.description-icon {
+	margin-left:0px !important;
+	margin-right:10px;
+}

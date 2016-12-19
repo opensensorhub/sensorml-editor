@@ -1,29 +1,21 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element;
 
-import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.CloseEvent;
 import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.event.logical.shared.OpenEvent;
 import com.google.gwt.event.logical.shared.OpenHandler;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.Event;
-import com.google.gwt.user.client.Event.NativePreviewEvent;
-import com.google.gwt.user.client.Event.NativePreviewHandler;
-import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
-import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
@@ -36,6 +28,7 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 	private Label button;
 	private Panel labelPanel;
 	private Panel definitionPanel;
+	private Panel descriptionPanel;
 	private boolean preventChangeDisclosure;
 	
 	public EditSectionElementPanel(final RNGElement tag, final IRefreshHandler refreshHandler) {
@@ -43,6 +36,7 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 		
 		labelPanel = new HorizontalPanel();
 		definitionPanel = new HorizontalPanel();
+		descriptionPanel = new HorizontalPanel();
 		
 		button= new Label("");
 		button.addStyleName("rng-advanced-button");
@@ -96,6 +90,7 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 		hPanel.add(currentHeader);
 		hPanel.add(labelPanel);
 		hPanel.add(definitionPanel);
+		hPanel.add(descriptionPanel);
 		hPanel.add(button);
 		
 		labelPanel.setVisible(false);
@@ -155,6 +150,9 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 			definitionPanel.add(element.getPanel());
 			
 			definitionPanel.setVisible(true);
+		} else if(element.getName().equals("description-icon")){
+			descriptionPanel.add(element.getPanel());
+			descriptionPanel.setVisible(true);
 		} else if(element.getName().equals("id")){
 			// skip
 		} else if(element.getName().equals("name")){

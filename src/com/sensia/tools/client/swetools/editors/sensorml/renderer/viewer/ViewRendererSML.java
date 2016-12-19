@@ -23,6 +23,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewXLinkArcrolePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewXLinkHrefPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewXLinkRolePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gmd.GMDViewDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewIdentifierPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewNamePanel;
@@ -86,6 +87,15 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 				pushAndVisitChildren(new GMLViewNamePanel(elt), elt.getChildren());
 			}  
 			return;
+		} if (nsUri.equalsIgnoreCase(GMD)) {
+				if(eltName.equals("description")) {
+					pushAndVisitChildren(new GMDViewDescriptionPanel(elt), elt.getChildren());
+					return;
+				} else {
+					// handle others
+					super.visit(elt);
+					return;
+				}
 		} else if (nsUri.equalsIgnoreCase(SML_NS_1) || nsUri.equalsIgnoreCase(SML_NS_2)) {
 			if(eltName.equalsIgnoreCase("description")) {
 				pushAndVisitChildren(new SMLViewDescriptionPanel(elt), elt.getChildren());

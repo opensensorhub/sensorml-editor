@@ -1,36 +1,38 @@
-package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute;
+package com.sensia.tools.client.swetools.editors.sensorml.panels.generic;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.Image;
 import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGValue;
-import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
-import com.sensia.tools.client.swetools.editors.sensorml.ontology.OntologyPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
-public abstract class AbstractEditAttributeOntologyIconPanel<T extends RNGTag> extends AbstractPanel<T>{
+public abstract class AbstractEditIconPanel<T extends RNGTag> extends AbstractPanel<T>{
 
 	/** The def image. */
 	private Image defImage;
 	
 	private IPanel<? extends RNGTag> valuePanel;
 	
-	public AbstractEditAttributeOntologyIconPanel(T tag) {
+	public AbstractEditIconPanel(T tag, Image image, String css) {
+		this(tag,image,css,true);
+	}
+	
+	public AbstractEditIconPanel(T tag, Image image, String css,boolean initHandler) {
 		super(tag);
+		defImage = image;
+		defImage.addStyleName(css);
+		container.add(defImage);
 		
-		defImage = new Image(GWT.getModuleBaseURL()+"images/icon_info.png");
-		
-		//defImage.setTitle(getValue());
-		
+		if(initHandler) {
+			initHandler();
+		}
+	}
+	
+	private void initHandler() {
 		//open a new Window pointing to the name href given by the attribute name
 		defImage.addClickHandler(new ClickHandler() {
 			
@@ -47,10 +49,6 @@ public abstract class AbstractEditAttributeOntologyIconPanel<T extends RNGTag> e
 				}
 			}
 		});
-		
-		defImage.addStyleName("def-icon");
-		
-		container.add(defImage);
 	}
 	
 	@Override
@@ -62,8 +60,10 @@ public abstract class AbstractEditAttributeOntologyIconPanel<T extends RNGTag> e
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
 		if(element.getTag() instanceof RNGValue) {
 			valuePanel =  element;
-			((ViewValuePanel)valuePanel).setNiceLabel(false);
 			defImage.setTitle(((RNGValue)valuePanel.getTag()).getText());
+		} else if(element.getTag() instanceof RNGData) {
+			valuePanel =  element;
+			defImage.setTitle(((RNGData)valuePanel.getTag()).getStringValue());
 		} 
 	}
 

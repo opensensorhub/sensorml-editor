@@ -16,6 +16,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 	private IPanel<?> defPanel;
 	private Panel label;
 	private Panel definition;
+	private Panel description;
 	private Panel innerContainer;
 	
 	public EditSubSectionElementPanel(RNGElement element) {
@@ -29,9 +30,13 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		definition = new SimplePanel();
 		definition.setVisible(false);
 		
+		description = new SimplePanel();
+		description.setVisible(false);
+		
 		Panel hPanel = new HorizontalPanel();
 		hPanel.add(label);
 		hPanel.add(definition);
+		hPanel.add(description);
 		
 		container.add(hPanel);
 		container.add(innerContainer);
@@ -58,6 +63,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 			label.clear();
 			label.setVisible(true);
 			definition.setVisible(true);
+			description.setVisible(true);
 			innerContainer.addStyleName("edit-subsection-element-inner-panel");
 			label.add(element.getPanel());
 		} else if(element.getName().equals("definition") 
@@ -66,8 +72,11 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 			defPanel = element;
 			label.setVisible(true);
 			definition.setVisible(true);
+			description.setVisible(true);
 			innerContainer.addStyleName("edit-subsection-element-inner-panel");
 			definition.add(element.getPanel());
+		} else if(element.getName().equals("description-icon")){
+			description.add(element.getPanel());
 		} else {
 			//super.addInnerElement(element);
 			innerContainer.add(element.getPanel());

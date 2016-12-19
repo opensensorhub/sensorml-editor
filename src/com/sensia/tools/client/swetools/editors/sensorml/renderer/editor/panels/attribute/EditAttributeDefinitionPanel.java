@@ -1,11 +1,14 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.Image;
 import com.sensia.relaxNG.RNGAttribute;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.AbstractEditIconPanel;
 
-public class EditAttributeDefinitionPanel extends AbstractEditAttributeOntologyIconPanel<RNGAttribute>{
+public class EditAttributeDefinitionPanel extends AbstractEditIconPanel<RNGAttribute>{
 
 	public EditAttributeDefinitionPanel(RNGAttribute tag) {
-		super(tag);
+		super(tag,new Image(GWT.getModuleBaseURL()+"images/icon_info.png"),"def-icon");
 	}
 
 	@Override
