@@ -10,18 +10,18 @@ import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 
-public abstract class AbstractEditIconPanel<T extends RNGTag> extends AbstractPanel<T>{
+public class EditIconPanel<T extends RNGTag> extends AbstractPanel<T>{
 
 	/** The def image. */
 	private Image defImage;
 	
 	private IPanel<? extends RNGTag> valuePanel;
 	
-	public AbstractEditIconPanel(T tag, Image image, String css) {
+	public EditIconPanel(T tag, Image image, String css) {
 		this(tag,image,css,true);
 	}
 	
-	public AbstractEditIconPanel(T tag, Image image, String css,boolean initHandler) {
+	public EditIconPanel(T tag, Image image, String css,boolean initHandler) {
 		super(tag);
 		defImage = image;
 		defImage.addStyleName(css);
