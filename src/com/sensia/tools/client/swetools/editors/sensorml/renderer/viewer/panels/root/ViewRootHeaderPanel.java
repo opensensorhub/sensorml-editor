@@ -45,23 +45,48 @@ public class ViewRootHeaderPanel extends VerticalPanel{
 		add(new HTML("<hr  style=\"width:100%;\" />"));
 		
 		addStyleName("header-document");
+		
+		this.keywordsPanel.setVisible(false);
+		this.descriptionPanel.setVisible(false);
+		this.identifiersPanel.setVisible(false);
+		this.titlesPanel.setVisible(false);
 	}
 	
 	public void addKeywords(Panel keywordsPanel) {
 		this.keywordsPanel.add(keywordsPanel);
+		this.keywordsPanel.setVisible(true);
 	}
 	
 	public void addTitle(Panel titlePanel) {
 		titlesPanel.add(titlePanel);
+		titlesPanel.setVisible(true);
 	}
 	
 	public void addIdentifier(Panel identifierPanel) {
 		identifiersPanel.add(identifierPanel);
+		identifiersPanel.setVisible(true);
 	}
 	
 	public void setDescription(Panel descriptionPanel) {
 		this.descriptionPanel.clear();
 		this.descriptionPanel.add(descriptionPanel);
+		this.descriptionPanel.setVisible(true);
+	}
+
+	public Panel getTitlesPanel() {
+		return titlesPanel;
+	}
+
+	public Panel getIdentifiersPanel() {
+		return identifiersPanel;
+	}
+
+	public Panel getDescriptionPanel() {
+		return descriptionPanel;
+	}
+
+	public Panel getKeywordsPanel() {
+		return keywordsPanel;
 	}
 	
 }

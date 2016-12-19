@@ -36,6 +36,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.Advan
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePatternPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.root.RootRenderer;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root.ViewRootHeaderPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root.ViewRootPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseDialog;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;

@@ -34,6 +34,8 @@ public class ViewRootPanel extends AbstractPanel{
 
 	protected ViewRootHeaderPanel headerDocumentPanel;
 	
+	protected Panel id;
+	
 	public ViewRootPanel() {
 		init();
 	}
@@ -61,6 +63,7 @@ public class ViewRootPanel extends AbstractPanel{
 				headerDocumentPanel.addTitle(titlePanel); break;
 			}
 			case "description" : headerDocumentPanel.setDescription(element.getPanel()); break;
+			case "id" : id = element.getPanel();break;
 			default:{
 				if(element instanceof DisclosureElementPanel) {
 					element.getPanel().removeStyleName("disclosure-noborder");
@@ -111,5 +114,14 @@ public class ViewRootPanel extends AbstractPanel{
 	@Override
 	public String getName() {
 		return "Root Panel";
+	}
+	
+	
+	public ViewRootHeaderPanel getHeader() {
+		return headerDocumentPanel;
+	}
+	
+	public Panel getId() {
+		return id;
 	}
 }

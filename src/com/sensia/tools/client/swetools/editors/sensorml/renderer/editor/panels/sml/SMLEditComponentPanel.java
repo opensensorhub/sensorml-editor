@@ -1,8 +1,17 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml;
 
+import com.google.gwt.core.shared.GWT;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Panel;
 import com.sensia.relaxNG.RNGElement;
+import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSubSectionElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root.ViewRootHeaderPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root.ViewRootPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**
  * 
@@ -14,11 +23,23 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
  * - xlink:href
  *
  */
-public class SMLEditComponentPanel extends EditSubSectionElementPanel{
+public class SMLEditComponentPanel extends EditSectionElementPanel{
 
 	public SMLEditComponentPanel(RNGElement tag) {
-		super(tag);
+		super(tag,null);
 		container.addStyleName("component");
+	}
+	
+	
+	@Override
+	protected void addInnerElement(IPanel<? extends RNGTag> element) {
+		if(element.getName().equals("name")) {
+			labelPanel.clear();
+			labelPanel.add(element.getPanel());
+			labelPanel.setVisible(true);
+		} else {
+			super.addInnerElement(element);
+		}
 	}
 	
 	@Override
