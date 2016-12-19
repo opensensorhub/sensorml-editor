@@ -16,6 +16,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.NameRefResolver;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class SMLEditSetValuePanel extends AbstractGenericLinePanel<RNGElement>{
 
@@ -56,15 +57,17 @@ public class SMLEditSetValuePanel extends AbstractGenericLinePanel<RNGElement>{
 				@Override
 				public void callback(String...result) {
 					//one the path resolve from remote or current file, set the corresponding values
-					label.setText(result[0]);
-					uom.setText(result[1]);
+					label.setText(Utils.toNiceLabel(result[0]));
+					uom.setText(Utils.getUOMSymbol(result[1]));
 					
 				}
 			});
 		} else if(element.getTag() instanceof RNGValue){
-			value.setText(((RNGValue)element.getTag()).getText());
+			String text = ((RNGValue)element.getTag()).getText();
+			value.setText(Utils.toNiceLabel(text));
 		} else if(element.getTag() instanceof RNGData){
-			value.setText(((RNGData)element.getTag()).getStringValue());
+			String text = ((RNGData)element.getTag()).getStringValue();
+			value.setText(Utils.toNiceLabel(text));
 		} 
 	}
 
