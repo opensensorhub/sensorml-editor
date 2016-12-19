@@ -158,7 +158,9 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 		} else if(element.getName().equals("id")){
 			// skip
 		} else if(element.getName().equals("name")){
-			// skip
+			labelPanel.clear();
+			labelPanel.add(element.getPanel());
+			labelPanel.setVisible(true);
 		} else {
 			super.addInnerElement(element);
 		}
