@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Stack;
 
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.dev.javac.Resolver;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGData;
@@ -58,6 +59,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.NameRefResolver;
 
 /**
  * <p>
@@ -90,12 +92,15 @@ public abstract class AdvancedRendererRNG implements RNGTagVisitor, IRefreshHand
 	
 	protected boolean skipTags = false;
 	
+	protected NameRefResolver resolver;
+	
 	/**
 	 * Instantiates a new RNG renderer.
 	 */
 	public AdvancedRendererRNG() {
 		stack = new Stack<IPanel<? extends RNGTag>>();
 		this.observers = new ArrayList<IObserver>();
+		resolver = new NameRefResolver();
 	}
 
 	/**
@@ -147,6 +152,7 @@ public abstract class AdvancedRendererRNG implements RNGTagVisitor, IRefreshHand
 			throw new IllegalStateException("Grammar has no 'start' pattern and cannot be used to create a new instance");
 		}
 		this.grammar = grammar;
+		resolver.setCurrentGrammar(this.grammar);
 		grammar.getStartPattern().accept(this);
 	}
 

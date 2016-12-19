@@ -69,6 +69,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditOutputsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditParameterPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditParametersPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditSetValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditSpatialFramePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditTypeOfPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditValidTimePanel;
@@ -239,7 +240,11 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 				skipTags = false;
 				return;
 			} else if(eltName.equalsIgnoreCase("typeOf")) {
-				pushAndVisitChildren(new DisclosureElementPanel(elt), elt.getChildren());
+				SMLEditTypeOfPanel typeOf = new SMLEditTypeOfPanel(elt, refreshHandler);
+				pushAndVisitChildren(typeOf, elt.getChildren());
+				
+				// use href of typeof to update resolver remote file
+				resolver.setRemoteFile(typeOf.getRemotePath());
 				return;
 			} else if(eltName.equalsIgnoreCase("attachedTo")) {
                 pushAndVisitChildren(new DisclosureElementPanel(elt), elt.getChildren());
@@ -312,6 +317,9 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 				return;
 			} else if(eltName.equalsIgnoreCase("value")) {
 				pushAndVisitChildren(new SMLAdvancedValuePanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("setValue")) {
+				pushAndVisitChildren(new SMLEditSetValuePanel(elt,resolver), elt.getChildren());
 				return;
 			}
 		} 

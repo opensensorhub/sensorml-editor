@@ -46,29 +46,6 @@ public final class NameRefResolver {
 	 */
 	public NameRefResolver() {}
 	
-	/**
-	 * Build the instance by getting the typeof element. Once the typeOf
-	 * element found, the method will get the href attribute to load the content.
-	 *
-	 * @param currentWidget the current widget
-	 * @param grammar the grammar
-	 */
-	public void build(IPanel currentWidget,final RNGGrammar grammar) {
-		//first get the root node to find the typeof tag
-		/*IPanel root = currentWidget;
-		this.currentGrammar = grammar;
-		
-		while(root.getParent() != null) {
-			root = root.getParent();
-		}
-		
-		//find the typeof tag
-		IPanel typeOfWidget = AbstractElementPanel.findWidget(root, "typeOf", TAG_DEF.SML,TAG_TYPE.ELEMENT);
-		if(typeOfWidget != null) {
-			//get href
-			remoteFile = typeOfWidget.getValue("href", true);
-		} */
-	}
 	
 	/**
 	 * Resolve the path. The path can be resolved from a remote file or from the current instance.
@@ -133,7 +110,7 @@ public final class NameRefResolver {
 					label = Utils.toNiceLabel(nameAtt.getChildValueText());
 				} else {
 					RNGElement tagElt = (RNGElement) results.get(0);
-					label = tagElt.getChildValue().getText();
+					label = tagElt.getChildValueText();
 				}
 				
 				//find uom
@@ -143,7 +120,7 @@ public final class NameRefResolver {
 				if(!results.isEmpty()) {
 					if(results.get(0) instanceof RNGAttribute) {
 						RNGAttribute tagElt = (RNGAttribute) results.get(0);
-						uom = tagElt.getChildValue().getText();
+						uom = tagElt.getChildValueText();
 					}
 				} 
 				
@@ -187,7 +164,7 @@ public final class NameRefResolver {
 					idx++;
 				} else {
 					nameAtt = rootElement.getChildAttribute("id");
-					if(nameAtt != null && nameAtt.getChildValue().getText().equals(name)){
+					if(nameAtt != null && nameAtt.getChildValueText().equals(name)){
 						idx++;
 					} 
 				}
@@ -211,6 +188,22 @@ public final class NameRefResolver {
 				}
 			}
 		}
+	}
+
+	public String getRemoteFile() {
+		return remoteFile;
+	}
+
+	public void setRemoteFile(String remoteFile) {
+		this.remoteFile = remoteFile;
+	}
+
+	public RNGGrammar getCurrentGrammar() {
+		return currentGrammar;
+	}
+
+	public void setCurrentGrammar(RNGGrammar currentGrammar) {
+		this.currentGrammar = currentGrammar;
 	}
 	
 

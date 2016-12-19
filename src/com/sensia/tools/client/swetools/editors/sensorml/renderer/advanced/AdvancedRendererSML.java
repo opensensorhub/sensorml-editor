@@ -36,6 +36,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditNamePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.root.EditRootPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.NameRefResolver;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 
 /**
@@ -83,6 +84,7 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 	
 	/** The root sections list. */
 	protected Set<String> rootSectionsList = new HashSet<String>();
+	
 	
 	public AdvancedRendererSML() {
 		GenericVerticalContainerPanel rootAdvanced = new GenericVerticalContainerPanel();
