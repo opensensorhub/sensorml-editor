@@ -850,3 +850,6 @@ input:focus {
 	border-left:0px !important;
 }
 
+.Point-panel {
+	border-spacing: 5px;
+}

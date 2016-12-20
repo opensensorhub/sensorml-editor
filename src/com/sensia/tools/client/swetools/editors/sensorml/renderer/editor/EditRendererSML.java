@@ -32,9 +32,11 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gmd.GMDEditDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gmd.GMDEditUrl;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditCoordinatesPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditIdentifierPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditNamePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditPointPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.root.EditRootPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditComponentPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditComponentsPanel;
@@ -132,6 +134,12 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 				return;
 			} else if(eltName.equalsIgnoreCase("identifier")) {
 				pushAndVisitChildren(new GMLEditIdentifierPanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("Point")) {
+				pushAndVisitChildren(new GMLEditPointPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("coordinates")) {
+				pushAndVisitChildren(new GMLEditCoordinatesPanel(elt), elt.getChildren());
 				return;
 			}
 		}

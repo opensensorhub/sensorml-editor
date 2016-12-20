@@ -81,6 +81,20 @@ public abstract class RNGTagList extends RNGTag
         return null;
     }
     
+    
+    public void setChildValueText(String text)
+    {
+        for (RNGTag tag: children)
+            if (tag instanceof RNGValue){
+            	 ((RNGValue)tag).setText(text);
+            	 return;
+            } else if(tag instanceof RNGData) {
+            	((RNGData)tag).setStringValue(text);
+            }
+        
+        return;
+    }
+    
     public String getChildValueText()
     {
         for (RNGTag tag: children)
