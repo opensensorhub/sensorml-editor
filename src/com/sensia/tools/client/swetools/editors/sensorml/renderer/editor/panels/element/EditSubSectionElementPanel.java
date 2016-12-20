@@ -16,12 +16,12 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class EditSubSectionElementPanel extends EditElementPanel{
 
-	private IPanel<?> namePanel;
-	private IPanel<?> defPanel;
-	private Panel label;
-	private Panel definition;
-	private Panel description;
-	private Panel innerContainer;
+	protected IPanel<?> namePanel;
+	protected IPanel<?> defPanel;
+	protected Panel label;
+	protected Panel definition;
+	protected Panel description;
+	protected Panel innerContainer;
 	
 	public EditSubSectionElementPanel(RNGElement element) {
 		super(element);
