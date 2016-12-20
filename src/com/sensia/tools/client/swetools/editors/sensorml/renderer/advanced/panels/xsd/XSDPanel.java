@@ -26,31 +26,12 @@ public class XSDPanel<T extends RNGData<?>> extends EditValuePanel {
 		((TextBox) textBox).setVisibleLength(DEFAULT_TEXBOX_VALUE_SIZE);
 	}
 
-	/*@Override
-	public void addInnerElement(IPanel<? extends RNGTag> element) {
-		// TODO Auto-generated method stub
-		container.add(element.getPanel());
-
-	}*/
-
 	@Override
 	protected AbstractPanel<RNGData<?>> newInstance() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/*@Override
-	protected void activeMode(MODE mode) {
-		container.clear();
-		
-		// update html value with edited value
-		htmlTextBox.setText(textBox.getText());
-		if(mode == MODE.EDIT) {
-			container.add(textBox);
-		} else if (mode == MODE.VIEW) {
-			container.add(htmlTextBox);
-		}
-	}*/
 
 	@Override
 	public String getName() {

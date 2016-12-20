@@ -1,6 +1,5 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value;
 
-import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.dom.client.FocusEvent;
@@ -20,7 +19,6 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 	
 	protected TextBox textBox;
 
-	private boolean isNiceLabel;
 	private String focusTmpText="";
 	
 	public EditValuePanel(final RNGData<?> data,final IRefreshHandler refreshHandler) {
