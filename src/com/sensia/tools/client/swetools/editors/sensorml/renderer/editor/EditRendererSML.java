@@ -69,6 +69,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditOutputsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditParameterPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditParametersPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditPositionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditSetModePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditSetValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditSpatialFramePanel;
@@ -170,6 +171,11 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 			} else if(eltName.equalsIgnoreCase("outputs")) {
 				skipTags = true;
 				pushAndVisitChildren(new SMLEditOutputsPanel(elt,getRefreshHandler()), elt.getChildren());
+				skipTags = false;
+				return;
+			} else if(eltName.equalsIgnoreCase("position")) {
+				skipTags = true;
+				pushAndVisitChildren(new SMLEditPositionPanel(elt,getRefreshHandler()), elt.getChildren());
 				skipTags = false;
 				return;
 			} else if(eltName.equalsIgnoreCase("outputs")) {
