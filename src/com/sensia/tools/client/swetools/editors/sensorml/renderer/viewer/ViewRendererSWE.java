@@ -19,6 +19,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewUOMPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewValuesPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewVectorPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 
 /**
@@ -71,6 +72,8 @@ public class ViewRendererSWE extends ViewRendererRNG implements RNGTagVisitor {
 				pushAndVisitChildren(new SWEViewIntervalPanel(element), element.getChildren());
 			}  else if(name.equals("QuantityRange")) {
 				pushAndVisitChildren(new SWEViewQuantityRangePanel(element), element.getChildren());
+			}  else if(name.equals("Vector")) {
+				pushAndVisitChildren(new SWEViewVectorPanel(element,getRefreshHandler()), element.getChildren());
 			}  else {
 				super.visit(element);
 			}

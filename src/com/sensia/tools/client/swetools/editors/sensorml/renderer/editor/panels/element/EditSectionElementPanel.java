@@ -33,9 +33,12 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 	protected Panel definitionPanel;
 	protected Panel descriptionPanel;
 	protected boolean preventChangeDisclosure;
+	protected IRefreshHandler refreshHandler;
 	
 	public EditSectionElementPanel(final RNGElement tag, final IRefreshHandler refreshHandler) {
 		super(tag);
+		
+		this.refreshHandler = refreshHandler;
 		
 		labelPanel = new HorizontalPanel();
 		definitionPanel = new HorizontalPanel();

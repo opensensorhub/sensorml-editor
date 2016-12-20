@@ -10,6 +10,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.EditIconPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
@@ -22,6 +23,12 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 	protected Panel definition;
 	protected Panel description;
 	protected Panel innerContainer;
+	protected IRefreshHandler refreshHandler;
+	
+	public EditSubSectionElementPanel(RNGElement element, IRefreshHandler refreshHandler) {
+		this(element);
+		this.refreshHandler = refreshHandler;
+	}
 	
 	public EditSubSectionElementPanel(RNGElement element) {
 		super(element);
@@ -58,6 +65,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 				//eltPanel.setDefinition(defPanel.getPanel());
 			}
 			innerContainer.add(element.getPanel());
+			isInLine = true;
 		} else if(element.getName().equals("name")) {
 			label.clear();
 			namePanel = element;

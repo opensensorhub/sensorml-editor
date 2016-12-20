@@ -86,4 +86,6 @@ public interface IPanel<T extends RNGTag> {
 	
 	String getName();
 	
+	boolean isInLine();
+	
 }

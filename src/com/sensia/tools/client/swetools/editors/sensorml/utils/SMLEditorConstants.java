@@ -17,5 +17,13 @@ public class SMLEditorConstants {
 	
 	/** The Constant SWE_NS_2. */
 	public final static String SWE_NS_2 = "http://www.opengis.net/swe/2.0";
+	
+	public final static String LATITUDE_DEFINITION = "http://sensorml.com/ont/swe/property/Latitude";
+	
+	public final static String LONGIGUTE_DEFINITION = "http://sensorml.com/ont/swe/property/Longitude";
+	
+	public final static String ALTITUDE_DEFINITION = "http://sensorml.com/ont/swe/property/Altitude";
+	
+	public final static String HEADING_DEFINITION = "http://sensorml.com/ont/swe/property/TrueHeading";
 
 }

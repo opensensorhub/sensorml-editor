@@ -30,6 +30,8 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 	protected List<IPanel<? extends RNGTag>> children;
 	protected boolean isNiceLabel;
 	
+	protected boolean isInLine= false;
+	
 	protected AbstractPanel() {
 		container = new VerticalPanel();
 		children = new ArrayList<IPanel<? extends RNGTag>>();
@@ -104,5 +106,9 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 				setValueNiceLabel(child,isNiceLabel);
 			}
 		}
+	}
+	
+	public boolean isInLine() {
+		return isInLine;
 	}
 }
