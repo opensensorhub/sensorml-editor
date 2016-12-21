@@ -33,6 +33,10 @@ public class ModelHelper {
 		return findRecursiveAttributeValue(value, tag);
 	}
 	
+	public static RNGAttribute findAttributeValue(String attributeName, RNGTag tag) {
+		return findRecursiveAttribute(attributeName, tag);
+	}
+	
 	public static String findLabel(RNGElement tag) {
 		String result = null;
 		for(RNGTag child : tag.getChildren()) {
@@ -163,5 +167,45 @@ public class ModelHelper {
 			}
 		}
 		return found;
+	}
+	
+	private static RNGAttribute findRecursiveAttribute(String attName, RNGTag tag) {
+		 RNGAttribute res = null;
+		 if (tag instanceof RNGAttribute) {
+			 RNGAttribute att = (RNGAttribute) tag;
+			 if(att.getName().equals(attName)) {
+				 res = att; 
+			 }
+		} else if (tag instanceof RNGRef) {
+			RNGDefine def = ((RNGRef) tag).getPattern();
+			if (def != null)
+				return findRecursiveAttribute(attName, def);
+		} else if(tag instanceof RNGZeroOrMore) {
+			List<List<RNGTag>> children0 = ((RNGZeroOrMore) tag).getPatternInstances();
+			for(List<RNGTag> child0 : children0) {
+				for(RNGTag child1 : child0) {
+					if((res=findRecursiveAttribute(attName, child1)) != null) {
+						break;
+					}
+				}
+			}
+		} else if(tag instanceof RNGChoice && ((RNGChoice)tag).isSelected()) {
+			return findRecursiveAttribute(attName, ((RNGChoice) tag).getSelectedPattern());
+		} else if(tag instanceof RNGOptional && ((RNGOptional)tag).isSelected()) {
+			List<RNGTag> children = ((RNGOptional) tag).getChildren();
+			for(RNGTag child : children) {
+				if((res=findRecursiveAttribute(attName, child)) != null) {
+					break;
+				}
+			}
+		} else if(tag instanceof RNGTagList) {
+			List<RNGTag> children = ((RNGTagList) tag).getChildren();
+			for(RNGTag child : children) {
+				if((res=findRecursiveAttribute(attName, child)) != null) {
+					break;
+				}
+			}
+		}
+		return res;
 	}
 }

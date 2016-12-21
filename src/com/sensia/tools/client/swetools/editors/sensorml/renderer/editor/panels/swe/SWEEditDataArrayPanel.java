@@ -11,6 +11,7 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
@@ -91,12 +92,18 @@ public class SWEEditDataArrayPanel extends AbstractPanel<RNGElement>{
 		
 		private int computeAcceptance=0;
 		
+		private Panel graphIconPanel;
+		private Panel tableIconPanel;
+		
 		// values + elementType + encoding
 		private static final int COMPUTE_ACCEPTANCE = 3;
 		
 		public SWEEditDataArrayLinePanel(RNGElement tag) {
 			super(tag);
 			container.setVisible(false);
+			
+			graphIconPanel = new SimplePanel();
+			tableIconPanel = new SimplePanel();
 		}
 
 		@Override
@@ -234,7 +241,8 @@ public class SWEEditDataArrayPanel extends AbstractPanel<RNGElement>{
 				}
 			});
 			
-			afterDotsPanel.add(tableImageWrapper);
+			tableIconPanel.add(tableImageWrapper);
+			afterDotsPanel.add(tableIconPanel);
 		}
 		
 		protected void buildGraph() {
@@ -251,16 +259,41 @@ public class SWEEditDataArrayPanel extends AbstractPanel<RNGElement>{
 				@Override
 				public void onClick(ClickEvent event) {
 					final GenericCurveChart chart = new GenericCurveChart();
-					
 					Panel chartPanel = chart.createChart(title);
-					
 					chart.populateTable(title, axis, values);
-					
 					Utils.displayDialogBox(chartPanel,title);
 				}
 			});
-			
-			afterDotsPanel.add(graphicImageWrapper);
+			graphIconPanel.add(graphicImageWrapper);
+			afterDotsPanel.add(graphIconPanel);
 		}
+		
+		public void setTableVisible(boolean isVisible) {
+			tableIconPanel.setVisible(isVisible);
+		}
+		
+		public void setGraphVisible(boolean isVisible) {
+			graphIconPanel.setVisible(isVisible);
+		}
+		
+		public Object [] [] getValues() {
+			return values;
+		}
+	}
+	
+	public void setTableVisible(boolean isVisible) {
+		linePanel.setTableVisible(isVisible);
+	}
+	
+	public void setGraphVisible(boolean isVisible) {
+		linePanel.setGraphVisible(isVisible);
+	}
+	
+	public Object [] [] getValues() {
+		return linePanel.getValues();
+	}
+	
+	public void appendToLine(Panel panel) {
+		linePanel.appendToLine(panel);
 	}
 }

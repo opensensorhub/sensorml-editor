@@ -84,4 +84,8 @@ public abstract class AbstractGenericLinePanel<T extends RNGTag> extends Abstrac
 		defPanel.clear();
 		defPanel.add(panel);
 	}
+	
+	public void appendToLine(Panel panel) {
+		afterDotsPanel.add(panel);
+	}
 }
