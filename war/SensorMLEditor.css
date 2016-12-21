@@ -548,6 +548,9 @@ table.sml-mode-nolabel-vertical-panel {
 		
 }
 
+.gwt-DialogBox .Caption {
+    padding: 8px 0px 4px 0px !important; /** override default title position for dialog **/
+}
 /* remove click onto disclosure header */
 /*table.gwt-DisclosurePanel-open>tbody>tr>td> a.header {
     width: 0px;
@@ -814,7 +817,7 @@ input:focus {
 .dialog-close {
 	background: transparent url(sensormleditor/images/remove.gif) no-repeat !important;
 	padding: 0 0 0 0 !important;
-	width:16px;
+	width:17px;
 	height:16px;
 }
 
