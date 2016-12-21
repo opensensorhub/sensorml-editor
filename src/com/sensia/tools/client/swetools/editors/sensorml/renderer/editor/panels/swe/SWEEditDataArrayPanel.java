@@ -162,10 +162,27 @@ public class SWEEditDataArrayPanel extends AbstractPanel<RNGElement>{
 				List<RNGElement> uoms = ModelHelper.findTags(SMLEditorConstants.SWE_NS_2, "uom", currentField);
 				if(uoms.size() > 0) {
 					for(RNGElement uomElt : uoms) {
+						String axisValue = "";
+						
 						RNGAttribute code = uomElt.getChildAttribute("code");
 						if(code != null) {
-							axis.add(Utils.getUOMSymbol(code.getChildValueText()));
+							axisValue = Utils.getUOMSymbol(code.getChildValueText());
 						}
+						
+						// looking for axisID into parent
+						if(uomElt.getParent() instanceof RNGElement) {
+							RNGElement parent = (RNGElement) uomElt.getParent();
+							RNGAttribute axisID = parent.getChildAttribute("axisID");
+							if(axisID != null) {
+								axisValue = axisID.getChildValueText() + "("+axisValue+")";
+							} else if(!axisValue.isEmpty()){
+								// otherwise takes the field name
+								axisValue = niceLabel + "("+axisValue+")";
+							} else {
+								axisValue = niceLabel;
+							}
+						}
+						axis.add(axisValue);
 					}
 				}
 				// build title
