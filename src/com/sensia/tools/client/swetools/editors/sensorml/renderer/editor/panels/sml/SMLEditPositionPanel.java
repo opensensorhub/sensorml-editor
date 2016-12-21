@@ -23,19 +23,20 @@ public class SMLEditPositionPanel extends EditSectionElementPanel{
 		if(element.getName().equals("DataArray")) {
 			SMLEditPositionByTrajectoryPanel positionPanel =
 					new SMLEditPositionByTrajectoryPanel((RNGElement) element.getTag(), refreshHandler);
-			
-			container.add(positionPanel.getPanel());
+			positionPanel.addElement(element);
+			super.addInnerElement(positionPanel);
 		} else if(element.getName().equals("Vector")) {
 			SMLEditPositionByLocationPanel positionPanel =
 					new SMLEditPositionByLocationPanel((RNGElement) element.getTag(), refreshHandler);
-			
-			container.add(positionPanel.getPanel());
+			positionPanel.addElement(element);
+			super.addInnerElement(positionPanel);
 		} else if(element.getName().equals("DataRecord")) {
 			SMLEditPositionByPositionPanel positionPanel =
 					new SMLEditPositionByPositionPanel((RNGElement) element.getTag(), refreshHandler);
-			
-			container.add(positionPanel.getPanel());
-		} 
-		super.addInnerElement(element);
+			positionPanel.addElement(element);
+			super.addInnerElement(positionPanel);
+		} else {
+			super.addInnerElement(element);
+		}
 	}
 }

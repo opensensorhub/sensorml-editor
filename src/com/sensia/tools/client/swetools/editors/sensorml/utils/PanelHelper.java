@@ -53,4 +53,17 @@ public class PanelHelper {
 		
 		return result;
 	}
+	
+	public static void findPanels(IPanel root,String nameElement,int currentLevel, int maxLevel,List<IPanel> results) {
+		if(currentLevel >= maxLevel) {
+			return;
+		}
+		if(root.getName().equals(nameElement)) {
+			results.add(root);
+		} 
+		List<IPanel> children = root.getElements();
+		for(IPanel child: children) {
+			findPanels(child, nameElement,currentLevel++,maxLevel,results);
+		}
+	}
 }

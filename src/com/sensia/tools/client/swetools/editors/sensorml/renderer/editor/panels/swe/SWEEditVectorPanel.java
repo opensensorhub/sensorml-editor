@@ -153,6 +153,10 @@ public class SWEEditVectorPanel extends EditSubSectionElementPanel{
 		this.htmlLabel.setText(label);
 	}
 	
+	public void setHeadingCoordinateElt(RNGElement headingCoordinateElt) {
+		this.headingCoordinateElt = headingCoordinateElt;
+	}
+
 	@Override
 	protected AbstractPanel<RNGElement> newInstance() {
 		return null;

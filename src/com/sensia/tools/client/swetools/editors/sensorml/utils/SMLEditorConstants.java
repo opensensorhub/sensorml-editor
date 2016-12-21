@@ -25,5 +25,9 @@ public class SMLEditorConstants {
 	public final static String ALTITUDE_DEFINITION = "http://sensorml.com/ont/swe/property/Altitude";
 	
 	public final static String HEADING_DEFINITION = "http://sensorml.com/ont/swe/property/TrueHeading";
+	
+	public final static String LOCATION_DEFINITION = "http://sensorml.com/ont/swe/property/SensorLocation";
+	
+	public final static String ORIENTATION_DEFINITION = "http://sensorml.com/ont/swe/property/SensorOrientation";
 
 }
