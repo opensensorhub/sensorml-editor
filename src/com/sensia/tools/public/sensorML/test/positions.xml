@@ -96,6 +96,7 @@
    <sml:position>
    	 <swe:label>Position by trajectory</swe:label>
      <swe:DataArray definition="http://sensorml.com/ont/swe/property/Trajectory">
+     	 <swe:label>Trajectory sample</swe:label>
          <swe:elementCount>
             <swe:Count>
                <swe:value>10</swe:value>

@@ -39,6 +39,8 @@ public class SWEEditDataArrayPanel extends AbstractPanel<RNGElement>{
 	private SWEEditDataArrayLinePanel linePanel;
 	private Panel beforeLineContentPanel;
 	
+	private String label;
+	
 	public SWEEditDataArrayPanel(RNGElement tag) {
 		super(tag);
 		linePanel = new SWEEditDataArrayLinePanel(tag);
@@ -58,6 +60,8 @@ public class SWEEditDataArrayPanel extends AbstractPanel<RNGElement>{
 		} else if(element.getName().equals("elementType")){
 			linePanel.addElement(element);
 			beforeLineContentPanel.add(element.getPanel());
+		} else if(element.getName().equals("label")) {
+			label = ((RNGElement)element.getTag()).getChildValueText();
 		}
 	}
 	
@@ -193,6 +197,12 @@ public class SWEEditDataArrayPanel extends AbstractPanel<RNGElement>{
 				}
 				
 			}
+			
+			// override title if DataArray label is found
+			if(label != null) {
+				title = label;
+			}
+			
 			Panel labelPanel = new HorizontalPanel();
 			labelPanel.add(new HTML(title));
 			setLabel(labelPanel);
