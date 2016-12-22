@@ -59,7 +59,7 @@ public class GenericLineMap {
 		container = new SimplePanel();
 		
 		MapOptions defaultMapOptions = new MapOptions();
-        mapWidget = new MapWidget("500px", "500px", defaultMapOptions);
+        mapWidget = new MapWidget("660px", "500px", defaultMapOptions);
 
         OSM osmMapnik = OSM.Mapnik("Mapnik");
         OSM osmCycle = OSM.CycleMap("CycleMap");

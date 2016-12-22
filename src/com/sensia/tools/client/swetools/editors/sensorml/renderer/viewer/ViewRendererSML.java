@@ -32,6 +32,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root.ViewRootPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewLabelPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewPositionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewValuePanel;
 
 /**
@@ -112,6 +113,9 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 				return;
 			} else if(eltName.equalsIgnoreCase("value")) {
 				pushAndVisitChildren(new SMLViewValuePanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("position")) {
+				pushAndVisitChildren(new SMLViewPositionPanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
 			} else {
 				// handle others

@@ -95,6 +95,8 @@ public class SWEEditDataArrayPanel extends AbstractPanel<RNGElement>{
 		private Panel graphIconPanel;
 		private Panel tableIconPanel;
 		
+		private List<Integer> codeIdx = new ArrayList<Integer>();
+		
 		// values + elementType + encoding
 		private static final int COMPUTE_ACCEPTANCE = 3;
 		
@@ -164,6 +166,8 @@ public class SWEEditDataArrayPanel extends AbstractPanel<RNGElement>{
 			axis = new ArrayList<String>();
 			//looking for name/label
 			title = "";
+			int codeIdx = 0;
+			
 			for(int i=0; i < fields.size();i++) {
 				RNGElement currentField = fields.get(i);
 				// looking for label
@@ -178,6 +182,8 @@ public class SWEEditDataArrayPanel extends AbstractPanel<RNGElement>{
 						RNGAttribute code = uomElt.getChildAttribute("code");
 						if(code != null) {
 							axisValue = Utils.getUOMSymbol(code.getChildValueText());
+							codeIdx++; // increment code
+							this.codeIdx.add(codeIdx);
 						}
 						
 						// looking for axisID into parent
@@ -195,6 +201,8 @@ public class SWEEditDataArrayPanel extends AbstractPanel<RNGElement>{
 						}
 						axis.add(axisValue);
 					}
+				} else {
+					codeIdx++;
 				}
 				// build title
 				if(i == fields.size() -1 ) {
@@ -202,7 +210,6 @@ public class SWEEditDataArrayPanel extends AbstractPanel<RNGElement>{
 				} else {
 					title += niceLabel + " vs ";
 				}
-				
 			}
 			
 			// override title if DataArray label is found
@@ -279,6 +286,10 @@ public class SWEEditDataArrayPanel extends AbstractPanel<RNGElement>{
 		public Object [] [] getValues() {
 			return values;
 		}
+
+		public List<Integer> getCodeIdx() {
+			return codeIdx;
+		}
 	}
 	
 	public void setTableVisible(boolean isVisible) {
@@ -295,5 +306,9 @@ public class SWEEditDataArrayPanel extends AbstractPanel<RNGElement>{
 	
 	public void appendToLine(Panel panel) {
 		linePanel.appendToLine(panel);
+	}
+	
+	public List<Integer> getCodesIdx() {
+		return linePanel.getCodeIdx();
 	}
 }

@@ -1,6 +1,6 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.position;
 
-import java.awt.Panel;
+import java.util.List;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -13,7 +13,6 @@ import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.map.GenericLineMap;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.map.GenericPointMap;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSubSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditDataArrayPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseDialog;
@@ -24,6 +23,7 @@ public class SMLEditPositionByTrajectoryPanel extends EditSubSectionElementPanel
 
 	protected String epsg;
 	protected Object[][] values;
+	protected List<Integer> codesIdx;
 	
 	public SMLEditPositionByTrajectoryPanel(RNGElement tag, IRefreshHandler refreshHandler) {
 		super(tag, refreshHandler);
@@ -43,8 +43,11 @@ public class SMLEditPositionByTrajectoryPanel extends EditSubSectionElementPanel
 			// looking for EPSG
 			RNGAttribute referenceFrame = ModelHelper.findAttributeValue("referenceFrame",element.getTag());
 			if(referenceFrame != null) {
-				epsg = referenceFrame.getChildValueText();
+				String split[] = referenceFrame.getChildValueText().split("/");
+				epsg = split[split.length-1];
 			}
+			
+			codesIdx = panel.getCodesIdx();
 			
 			Image mapIcon = new Image(GWT.getModuleBaseURL()+"images/maps-icon.png");
 			
@@ -69,11 +72,13 @@ public class SMLEditPositionByTrajectoryPanel extends EditSubSectionElementPanel
 		
 		// parse Object into Double
 		double [] [] latLonValues = new double[values.length][values[0].length];
+		GWT.log(epsg);
 		for(int i=0;i < values.length;i++){
-			for(int j=0;j < values[0].length;j++){
-				GWT.log(values[i][j]+"");
-				GWT.log(values[i][j].toString()+"");
-				latLonValues[i] [j] = Double.parseDouble(values[i][j].toString().trim());
+			int j = 0;
+			for(Integer  codeIdx: codesIdx) {
+				GWT.log(values[i][codeIdx]+"");
+				GWT.log(values[i][codeIdx].toString()+"");
+				latLonValues[i] [j++] = Double.parseDouble(values[i][codeIdx].toString().trim());
 			}
 		}
 		return new GenericLineMap(latLonValues, epsg, true);
