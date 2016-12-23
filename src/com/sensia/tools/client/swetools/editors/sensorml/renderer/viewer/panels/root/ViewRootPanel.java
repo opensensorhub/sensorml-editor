@@ -10,21 +10,16 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root;
 
-import java.util.List;
-
-import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.Panel;
-import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGOneOrMore;
 import com.sensia.relaxNG.RNGOptional;
-import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.element.ViewSectionElementPanel;
 
 /**
  * The Class SensorSectionsWidget is corresponding to the root panel element. It handles the title, 
@@ -76,34 +71,9 @@ public class ViewRootPanel extends AbstractPanel<RNGElement>{
 						element.getTag() instanceof RNGOptional){
 					container.add(element.getPanel());
 				} else {
-					DisclosurePanel sectionPanel = new DisclosurePanel(Utils.toNiceLabel(element.getName()));
-					sectionPanel.setAnimationEnabled(true);
-					sectionPanel.setOpen(true);
-					sectionPanel.add(element.getPanel());
-					sectionPanel.addStyleName("section-panel");
-					sectionPanel.getContent().addStyleName("disclosure-generic-content-panel");
-					
-					if(element.getTag() instanceof RNGElement) {
-						RNGElement castTag = (RNGElement) element.getTag();
-						if(castTag.getChildAttribute("name") != null) {
-							// get the corresponding panel
-							List<IPanel<? extends RNGTag>> children = element.getElements();
-							
-							for(IPanel<? extends RNGTag> child : children) {
-								if(child.getTag() instanceof RNGAttribute && child.getName().equals("name")){
-									String nameStr = ((RNGAttribute)child.getTag()).getChildValueText();
-									
-									sectionPanel.getHeaderTextAccessor().setText(Utils.toNiceLabel(nameStr));
-									child.getPanel().setVisible(false);
-									break;
-								}
-							}
-						}
-					}
-					
-					container.add(sectionPanel);
-					element.getPanel().removeStyleName("disclosure-noborder");
-					element.getPanel().addStyleName("disclosure-border");
+					ViewSectionElementPanel section = new ViewSectionElementPanel((RNGElement) element.getTag(),refreshHandler);
+					section.addElement(element);
+					container.add(section.getPanel());
 				}
 				
 				break;

@@ -32,6 +32,8 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 	
 	protected boolean isInLine= false;
 	
+	protected IRefreshHandler refreshHandler;
+	
 	protected AbstractPanel() {
 		container = new VerticalPanel();
 		children = new ArrayList<IPanel<? extends RNGTag>>();
@@ -39,10 +41,13 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 	}
 	
 	protected AbstractPanel(T tag) {
+		this();
 		this.tag = tag;
-		container = new VerticalPanel();
-		children = new ArrayList<IPanel<? extends RNGTag>>();
-		isNiceLabel = true;
+	}
+	
+	protected AbstractPanel(T tag,IRefreshHandler refreshHandler) {
+		this(tag);
+		this.refreshHandler = refreshHandler;
 	}
 	
 	@Override

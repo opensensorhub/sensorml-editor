@@ -31,6 +31,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewPointPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root.ViewRootPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewCapabilitiesPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewCharacteristicsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewClassificationPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewComponentPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewComponentsPanel;
@@ -129,6 +130,9 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 		} else if (nsUri.equalsIgnoreCase(SML_NS_1) || nsUri.equalsIgnoreCase(SML_NS_2)) {
 			if(eltName.equalsIgnoreCase("capabilities")) {
 				pushAndVisitChildren(new SMLViewCapabilitiesPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("characteristics")) {
+				pushAndVisitChildren(new SMLViewCharacteristicsPanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("classification")) {
 				pushAndVisitChildren(new SMLViewClassificationPanel(elt,getRefreshHandler()), elt.getChildren());
