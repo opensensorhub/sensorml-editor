@@ -26,12 +26,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 	protected IRefreshHandler refreshHandler;
 	
 	public EditSubSectionElementPanel(RNGElement element, IRefreshHandler refreshHandler) {
-		this(element);
-		this.refreshHandler = refreshHandler;
-	}
-	
-	public EditSubSectionElementPanel(RNGElement element) {
-		super(element);
+		super(element,refreshHandler);
 		innerContainer = new VerticalPanel();
 		label = new SimplePanel();
 		label.setVisible(false);
@@ -52,6 +47,10 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		
 		container.add(hPanel);
 		container.add(innerContainer);
+	}
+	
+	public EditSubSectionElementPanel(RNGElement element) {
+		this(element,null);
 	}
 
 	@Override

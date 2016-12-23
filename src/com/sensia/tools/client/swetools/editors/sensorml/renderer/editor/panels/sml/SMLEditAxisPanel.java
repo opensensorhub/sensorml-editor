@@ -1,12 +1,11 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml;
 
-import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.line.EditGenericLinePanel;
 
-public class SMLEditAxisPanel extends AbstractGenericLinePanel<RNGElement>{
+public class SMLEditAxisPanel extends EditGenericLinePanel<RNGElement>{
 
 	public SMLEditAxisPanel(RNGElement tag) {
 		super(tag);

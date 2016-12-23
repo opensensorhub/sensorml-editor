@@ -22,7 +22,7 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 	private Label addButton;
 	
 	public RNGOptionalPanel(final RNGOptional tag,final IRefreshHandler refreshHandler) {
-		super(tag);
+		super(tag,refreshHandler);
 		container = new HorizontalPanel();
 		patternContainer = new HorizontalPanel();
 		

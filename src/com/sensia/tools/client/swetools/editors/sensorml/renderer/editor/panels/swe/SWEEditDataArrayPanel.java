@@ -21,6 +21,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.chart.GenericCurveChart;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.chart.GenericTable;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.line.EditGenericLinePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.ModelHelper;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
@@ -77,7 +78,7 @@ public class SWEEditDataArrayPanel extends AbstractPanel<RNGElement>{
 		return null;
 	}
 	
-	class SWEEditDataArrayLinePanel extends AbstractGenericLinePanel<RNGElement> {
+	class SWEEditDataArrayLinePanel extends EditGenericLinePanel<RNGElement> {
 
 		private Object [][] values;
 		private String title;

@@ -17,6 +17,8 @@ public abstract class AbstractGenericLinePanel<T extends RNGTag> extends Abstrac
 	protected Panel afterDotsPanel;
 	protected Panel dotsPanel;
 	
+	protected Panel line;
+	
 	/** The Constant NORMALIZE_DOT_SEPARATOR_SIZE. */
 	private static final int NORMALIZE_DOT_SEPARATOR_SIZE = 50;
 	
@@ -34,7 +36,7 @@ public abstract class AbstractGenericLinePanel<T extends RNGTag> extends Abstrac
 		beforeDotsPanel.add(defPanel);
 		dotsPanel.add(new HTML(getDotsLine()));
 		
-		Panel line = new HorizontalPanel();
+		line = new HorizontalPanel();
 		
 		line.add(beforeDotsPanel);
 		line.add(dotsPanel);

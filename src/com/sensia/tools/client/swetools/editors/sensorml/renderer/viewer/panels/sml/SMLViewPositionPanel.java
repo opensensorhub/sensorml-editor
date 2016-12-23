@@ -10,7 +10,7 @@ public class SMLViewPositionPanel extends SMLEditPositionPanel{
 
 	public SMLViewPositionPanel(RNGElement tag, IRefreshHandler refreshHandler) {
 		super(tag, refreshHandler);
-		advancedButton.setVisible(false);
+		advancedButtonPanel.setVisible(false);
 		// if vector => by location
 		// if dataRecord => by position
 		// if dataArray => by trajectory

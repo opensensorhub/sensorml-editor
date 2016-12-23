@@ -14,10 +14,18 @@ package com.sensia.tools.client.swetools.editors.sensorml.panels;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.Renderer;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseDialog;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**
  * The Class AbstractSensorElementWidget.
@@ -115,5 +123,64 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 	
 	public boolean isInLine() {
 		return isInLine;
+	}
+	
+	protected Label buildAdvancedButton(Renderer renderer) {
+		// support only RNGElement
+		if(!(getTag() instanceof RNGElement)) {
+			return null;
+		}
+		
+		Label advancedButton= new Label("");
+		advancedButton.addStyleName("rng-advanced-button");
+		
+		advancedButton.addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				advancedButtonClickHandler((RNGElement) getTag());
+			}
+		});
+		return advancedButton;
+	}
+	
+	protected void advancedButtonClickHandler(final RNGElement element) {
+		// create a new Renderer
+		final AdvancedRendererSML renderer = new AdvancedRendererSML();
+		final Panel rootPanel = new VerticalPanel();
+		
+		renderer.setRefreshHandler(new IRefreshHandler() {
+			
+			@Override
+			public void refresh() {
+				renderer.reset();
+				rootPanel.clear();
+				renderer.visitChildren(element.getChildren());
+				rootPanel.add(renderer.getRoot().getPanel());
+				
+				if(refreshHandler != null) {
+					refreshHandler.refresh();
+				}
+			}
+		});
+
+		renderer.visitChildren(element.getChildren());
+		rootPanel.add(renderer.getRoot().getPanel());
+		
+		renderer.getRoot().getPanel().addStyleName("advanced-panel");
+		
+		CloseDialog dialogBox = Utils.displaySaveDialogBox(rootPanel, "Edit "+element.getName());
+		dialogBox.addSaveHandler(new ClickHandler(){
+			@Override
+			public void onClick(ClickEvent event) {
+				advancedButtonSaveHandler();
+			}
+		});
+	}
+	
+	protected void advancedButtonSaveHandler() {
+		if(refreshHandler != null) {
+			refreshHandler.refresh();
+		}
 	}
 }

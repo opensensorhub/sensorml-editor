@@ -4,10 +4,10 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.line.EditGenericLinePanel;
 
 
-public class SMLEditObservablePropertyPanel extends AbstractGenericLinePanel<RNGElement>{
+public class SMLEditObservablePropertyPanel extends EditGenericLinePanel<RNGElement>{
 
 	private boolean isLabel = false;
 	

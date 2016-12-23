@@ -336,7 +336,7 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 			}
 		} 
 		//GWT.log("[WARN] "+nsUri+":"+eltName+" is not supported yet");
-		pushAndVisitChildren(new EditElementPanel(elt), elt.getChildren());
+		pushAndVisitChildren(new EditElementPanel(elt,getRefreshHandler()), elt.getChildren());
 	}
 	
 	/* (non-Javadoc)

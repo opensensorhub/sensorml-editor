@@ -19,11 +19,9 @@ public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 
 	private VerticalPanel patternContainer;
 	private int nbPattern = 0;
-	private IRefreshHandler refreshHandler;
 	
 	public RNGZeroOrMorePanel(final RNGZeroOrMore tag,final IRefreshHandler refreshHandler) {
-		super(tag);
-		this.refreshHandler = refreshHandler;
+		super(tag,refreshHandler);
 		patternContainer = new VerticalPanel();
 		patternContainer.addStyleName("rng-zeroormore-pattern");
 		

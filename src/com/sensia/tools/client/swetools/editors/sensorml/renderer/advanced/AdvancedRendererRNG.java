@@ -45,6 +45,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.Renderer;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGChoicePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGOptionalPanel;
@@ -78,17 +79,13 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.NameRefResolver;
  * @author Alexandre Robin
  * @date Aug 27, 2011
  */
-public abstract class AdvancedRendererRNG implements RNGTagVisitor, IRefreshHandler {
+public abstract class AdvancedRendererRNG extends Renderer {
 	
 	/** The stack. */
 	protected Stack<IPanel<? extends RNGTag>> stack;
 	
 	/** The grammar. */
 	private RNGGrammar grammar;
-	
-	private List<IObserver> observers;
-	
-	protected IRefreshHandler refreshHandler;
 	
 	protected boolean skipTags = false;
 	
@@ -98,8 +95,8 @@ public abstract class AdvancedRendererRNG implements RNGTagVisitor, IRefreshHand
 	 * Instantiates a new RNG renderer.
 	 */
 	public AdvancedRendererRNG() {
+		super();
 		stack = new Stack<IPanel<? extends RNGTag>>();
-		this.observers = new ArrayList<IObserver>();
 		resolver = new NameRefResolver();
 	}
 
@@ -166,7 +163,7 @@ public abstract class AdvancedRendererRNG implements RNGTagVisitor, IRefreshHand
 	@Override
 	public void visit(RNGElement elt) {
 		//pushAndVisitChildren(new DynamicDisclosureElementPanel(elt), elt.getChildren());
-		pushAndVisitChildren(new EditElementPanel(elt), elt.getChildren());
+		pushAndVisitChildren(new EditElementPanel(elt,getRefreshHandler()), elt.getChildren());
 	}
 	
 	/* (non-Javadoc)
@@ -471,26 +468,6 @@ public abstract class AdvancedRendererRNG implements RNGTagVisitor, IRefreshHand
 	 */
 	public RNGGrammar getGrammar() {
 		return  grammar;
-	}
-	
-	public void setObservers(List<IObserver> observer) {
-		this.observers = observer;
-	}
-	
-	public IRefreshHandler getRefreshHandler() {
-		return refreshHandler;
-	}
-
-	public void setRefreshHandler(IRefreshHandler refreshHandler) {
-		this.refreshHandler = refreshHandler;
-	}
-	
-
-	@Override
-	public void refresh() {
-		if(getRefreshHandler() != null) {
-			getRefreshHandler().refresh();
-		}
 	}
 	
 	public void reset() {

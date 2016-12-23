@@ -31,7 +31,7 @@ public abstract class AbstractAdvancedAttributeOntologyIconPanel<T extends RNGTa
 	private RNGData<?> rngData;
 	
 	public AbstractAdvancedAttributeOntologyIconPanel(T tag,String name,final IRefreshHandler refreshHandler) {
-		super(tag);
+		super(tag,refreshHandler);
 		
 		//creates an ontology icon
 		ontologyImage = new Image(GWT.getModuleBaseURL()+"images/ontology.png");

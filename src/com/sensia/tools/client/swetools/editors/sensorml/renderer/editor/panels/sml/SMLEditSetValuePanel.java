@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.SimplePanel;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGElement;
@@ -14,11 +12,11 @@ import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ICallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.line.EditGenericLinePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.NameRefResolver;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
-public class SMLEditSetValuePanel extends AbstractGenericLinePanel<RNGElement>{
+public class SMLEditSetValuePanel extends EditGenericLinePanel<RNGElement>{
 
 	
 	protected HTML value;

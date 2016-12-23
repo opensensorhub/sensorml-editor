@@ -3,8 +3,6 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels
 import java.util.List;
 
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Panel;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
@@ -13,8 +11,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSubSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
-
-import sun.awt.HorizBagLayout;
 
 public class SMLEditModePanel extends EditSectionElementPanel{
 

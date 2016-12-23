@@ -5,15 +5,13 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 
 public class SMLEditKeywordListPanel extends EditElementPanel{
 
 	public SMLEditKeywordListPanel(RNGElement tag) {
-		super(tag);
+		super(tag,null);
 		container = new HorizontalPanel();
 	}
 	

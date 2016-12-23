@@ -34,15 +34,12 @@ public class SWEEditVectorPanel extends EditSubSectionElementPanel{
 	protected RNGElement headingCoordinateElt;
 	
 	protected RNGAttribute referenceFrame;
-	protected IRefreshHandler refreshHandler;
 	
 	protected HTML htmlLabel;
 	
 	public SWEEditVectorPanel(RNGElement element, final IRefreshHandler refreshHandler) {
-		super(element);
+		super(element,refreshHandler);
 	
-		this.refreshHandler = refreshHandler;
-		
 		Panel hPanel = new HorizontalPanel();
 		srsPanel = new HorizontalPanel();
 		coordinatePanel = new HorizontalPanel();

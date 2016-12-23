@@ -49,13 +49,11 @@ public class EditRootPanel extends ViewRootPanel{
 
 	private Set<String> skipList;
 	private RNGElement rootTag;
-	private IRefreshHandler refreshHandler;
 	
 	public EditRootPanel(RNGElement rootTag,IRefreshHandler refreshHandler) {
-		super(rootTag);
+		super(rootTag,refreshHandler);
 		
 		this.rootTag = rootTag;
-		this.refreshHandler = refreshHandler;
 		skipList = new HashSet<String>();
 		skipList.add("definition");
 		skipList.add("id");

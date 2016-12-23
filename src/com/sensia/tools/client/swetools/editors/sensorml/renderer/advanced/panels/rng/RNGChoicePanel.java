@@ -24,7 +24,7 @@ public class RNGChoicePanel extends AbstractPanel<RNGChoice>{
 	private Panel patternContainer;
 	
 	public RNGChoicePanel(final RNGChoice tag,final IRefreshHandler refreshHandler) {
-		super(tag);
+		super(tag,refreshHandler);
 		patternContainer = new VerticalPanel();
 		patternContainer.addStyleName("rng-choice-pattern");
 		

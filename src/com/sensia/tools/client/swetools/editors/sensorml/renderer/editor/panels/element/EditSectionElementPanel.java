@@ -13,6 +13,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sensia.relaxNG.RNGData;
@@ -28,68 +29,23 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class EditSectionElementPanel extends DisclosureElementPanel{
 
-	protected Label advancedButton;
 	protected Panel labelPanel;
 	protected Panel definitionPanel;
 	protected Panel descriptionPanel;
+	protected Panel advancedButtonPanel;
+	
 	protected boolean preventChangeDisclosure;
-	protected IRefreshHandler refreshHandler;
 	
 	public EditSectionElementPanel(final RNGElement tag, final IRefreshHandler refreshHandler) {
-		super(tag);
-		
-		this.refreshHandler = refreshHandler;
+		super(tag,refreshHandler);
 		
 		labelPanel = new HorizontalPanel();
 		definitionPanel = new HorizontalPanel();
 		descriptionPanel = new HorizontalPanel();
+		advancedButtonPanel = new SimplePanel();
 		
-		advancedButton= new Label("");
-		advancedButton.addStyleName("rng-advanced-button");
-		
-		boolean isOpened = false;
-		
-		advancedButton.addClickHandler(new ClickHandler() {
-			
-			@Override
-			public void onClick(ClickEvent event) {
-				preventChangeDisclosure = true;
-				sectionPanel.setAnimationEnabled(false);
-				// create a new Renderer
-				final AdvancedRendererSML renderer = new AdvancedRendererSML();
-				final Panel rootPanel = new VerticalPanel();
-				
-				renderer.setRefreshHandler(new IRefreshHandler() {
-					
-					@Override
-					public void refresh() {
-						renderer.reset();
-						rootPanel.clear();
-						renderer.visitChildren(tag.getChildren());
-						rootPanel.add(renderer.getRoot().getPanel());
-						
-						if(refreshHandler != null) {
-							refreshHandler.refresh();
-						}
-					}
-				});
-
-				renderer.visitChildren(tag.getChildren());
-				rootPanel.add(renderer.getRoot().getPanel());
-				
-				renderer.getRoot().getPanel().addStyleName("advanced-panel");
-				
-				CloseDialog dialogBox = Utils.displayDialogBox(rootPanel, "Edit "+tag.getName());
-				dialogBox.addSaveHandler(new ClickHandler(){
-					@Override
-					public void onClick(ClickEvent event) {
-						if(refreshHandler != null) {
-							refreshHandler.refresh();
-						}
-					}
-				});
-			}
-		});
+		final Label advancedButton= buildAdvancedButton(new AdvancedRendererSML());
+		advancedButtonPanel.add(advancedButton);
 		
 		Widget currentHeader = sectionPanel.getHeader();
 		HorizontalPanel hPanel = new HorizontalPanel();
@@ -97,7 +53,7 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 		hPanel.add(labelPanel);
 		hPanel.add(definitionPanel);
 		hPanel.add(descriptionPanel);
-		hPanel.add(advancedButton);
+		hPanel.add(advancedButtonPanel);
 		
 		definitionPanel.setVisible(false);
 		
@@ -135,6 +91,13 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 		container.addStyleName("section-panel");
 		
 		labelPanel.add(new HTML(Utils.toNiceLabel(tag.getName())));
+	}
+	
+	@Override
+	protected void advancedButtonClickHandler(RNGElement element) {
+		preventChangeDisclosure = true;
+		sectionPanel.setAnimationEnabled(false);
+		super.advancedButtonClickHandler(element);
 	}
 	
 	@Override

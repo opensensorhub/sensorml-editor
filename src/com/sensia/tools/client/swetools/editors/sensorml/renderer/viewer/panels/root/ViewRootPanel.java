@@ -18,6 +18,7 @@ import com.sensia.relaxNG.RNGOptional;
 import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.element.ViewSectionElementPanel;
 
@@ -32,10 +33,14 @@ public class ViewRootPanel extends AbstractPanel<RNGElement>{
 	protected Panel id;
 	
 	public ViewRootPanel(RNGElement element) {
-		super(element);
-		init();
+		this(element,null);
 	}
 
+	public ViewRootPanel(RNGElement element,IRefreshHandler refreshHandler) {
+		super(element,refreshHandler);
+		init();
+	}
+	
 	protected void init() {
 		headerDocumentPanel = new ViewRootHeaderPanel();
 		container.add(headerDocumentPanel);

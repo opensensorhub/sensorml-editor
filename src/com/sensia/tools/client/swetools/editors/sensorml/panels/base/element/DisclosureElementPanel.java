@@ -8,6 +8,7 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class DisclosureElementPanel extends AbstractPanel<RNGElement>{
@@ -16,8 +17,11 @@ public class DisclosureElementPanel extends AbstractPanel<RNGElement>{
 	protected DisclosurePanel sectionPanel;
 	
 	public DisclosureElementPanel(RNGElement tag) {
-		super(tag);
-		
+		this(tag,null);
+	}
+	
+	public DisclosureElementPanel(RNGElement tag,IRefreshHandler refreshHandler) {
+		super(tag,refreshHandler);
 		innerContent = new VerticalPanel();
 		
 		sectionPanel = new DisclosurePanel("");

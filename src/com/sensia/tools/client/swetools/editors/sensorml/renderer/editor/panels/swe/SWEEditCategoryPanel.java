@@ -5,8 +5,7 @@ import com.google.gwt.user.client.ui.SimplePanel;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.line.ValueGenericLinePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.line.EditValueGenericLinePanel;
 
 /**
  * codeSpace
@@ -15,7 +14,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.line.ValueGeneri
  * @author mathieu.dhainaut@gmail.com
  *
  */
-public class SWEEditCategoryPanel extends ValueGenericLinePanel{
+public class SWEEditCategoryPanel extends EditValueGenericLinePanel{
 
 	protected Panel codeSpace;
 	

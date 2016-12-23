@@ -9,6 +9,6 @@ public class ViewSectionElementPanel extends EditSectionElementPanel{
 	public ViewSectionElementPanel(final RNGElement tag, final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
 		
-		advancedButton.setVisible(false);
+		advancedButtonPanel.setVisible(false);
 	}
 }

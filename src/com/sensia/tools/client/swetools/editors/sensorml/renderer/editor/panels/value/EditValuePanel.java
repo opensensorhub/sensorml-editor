@@ -22,7 +22,7 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 	private String focusTmpText="";
 	
 	public EditValuePanel(final RNGData<?> data,final IRefreshHandler refreshHandler) {
-		super(data);
+		super(data,refreshHandler);
 		container = new HorizontalPanel();
 		
 		isNiceLabel = true;
