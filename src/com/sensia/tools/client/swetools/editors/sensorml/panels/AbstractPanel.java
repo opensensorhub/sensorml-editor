@@ -125,7 +125,7 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 		return isInLine;
 	}
 	
-	protected Label buildAdvancedButton(Renderer renderer) {
+	protected Label buildAdvancedButton(final Renderer renderer) {
 		// support only RNGElement
 		if(!(getTag() instanceof RNGElement)) {
 			return null;
@@ -138,15 +138,14 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				advancedButtonClickHandler((RNGElement) getTag());
+				advancedButtonClickHandler((RNGElement) getTag(),renderer);
 			}
 		});
 		return advancedButton;
 	}
 	
-	protected void advancedButtonClickHandler(final RNGElement element) {
+	protected void advancedButtonClickHandler(final RNGElement element,final Renderer renderer) {
 		// create a new Renderer
-		final AdvancedRendererSML renderer = new AdvancedRendererSML();
 		final Panel rootPanel = new VerticalPanel();
 		
 		renderer.setRefreshHandler(new IRefreshHandler() {
@@ -169,6 +168,10 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 		
 		renderer.getRoot().getPanel().addStyleName("advanced-panel");
 		
+		CloseDialog dialogBox = getAndDisplayAdvancedCloseDialog(rootPanel, element);
+	}
+	
+	protected CloseDialog getAndDisplayAdvancedCloseDialog(Panel rootPanel, RNGElement element) {
 		CloseDialog dialogBox = Utils.displaySaveDialogBox(rootPanel, "Edit "+element.getName());
 		dialogBox.addSaveHandler(new ClickHandler(){
 			@Override
@@ -176,6 +179,7 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 				advancedButtonSaveHandler();
 			}
 		});
+		return dialogBox;
 	}
 	
 	protected void advancedButtonSaveHandler() {

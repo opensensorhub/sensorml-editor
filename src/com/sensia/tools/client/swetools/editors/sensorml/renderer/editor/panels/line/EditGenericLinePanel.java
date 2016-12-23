@@ -13,5 +13,4 @@ public abstract class EditGenericLinePanel<T extends RNGTag> extends AbstractGen
 		Label advancedButton = buildAdvancedButton(new AdvancedRendererSML());
 		line.add(advancedButton);
 	}
-	
 }

@@ -86,4 +86,8 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 	public String getName() {
 		return "value";
 	}
+	
+	public void setEnable(boolean isEnable) {
+		textBox.setEnabled(isEnable);
+	}
 }

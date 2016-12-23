@@ -30,6 +30,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewNamePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewPointPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root.ViewRootPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewAxisPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewCapabilitiesPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewCharacteristicsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewClassificationPanel;
@@ -50,9 +51,13 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewMethodPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewModePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewModesPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewObservablePropertyPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewOriginPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewOutputsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewParametersPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewPositionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewSetValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewTermPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewTypeOfPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewValidTimePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewValuePanel;
@@ -128,6 +133,7 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 					return;
 				}
 		} else if (nsUri.equalsIgnoreCase(SML_NS_1) || nsUri.equalsIgnoreCase(SML_NS_2)) {
+			//----------- SECTION
 			if(eltName.equalsIgnoreCase("capabilities")) {
 				pushAndVisitChildren(new SMLViewCapabilitiesPanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
@@ -202,6 +208,26 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 				pushAndVisitChildren(new SMLViewValidTimePanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
 			}
+			//----------- END SECTION
+			
+			//----------- LINE
+			if (eltName.equalsIgnoreCase("ObservableProperty")) {
+				pushAndVisitChildren(new SMLViewObservablePropertyPanel(elt), elt.getChildren());
+				return;
+			} else if (eltName.equalsIgnoreCase("axis")) {
+				pushAndVisitChildren(new SMLViewAxisPanel(elt), elt.getChildren());
+				return;
+			} else if (eltName.equalsIgnoreCase("origin")) {
+				pushAndVisitChildren(new SMLViewOriginPanel(elt), elt.getChildren());
+				return;
+			} else if (eltName.equalsIgnoreCase("setValue")) {
+				pushAndVisitChildren(new SMLViewSetValuePanel(elt, resolver), elt.getChildren());
+				return;
+			} else if (eltName.equalsIgnoreCase("Term")) {
+				pushAndVisitChildren(new SMLViewTermPanel(elt), elt.getChildren());
+				return;
+			}
+			//----------- END LINE
 			
 			//--------------------------------------
 			else if(eltName.equalsIgnoreCase("description")) {

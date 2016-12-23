@@ -81,76 +81,13 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.NameRefResolver;
  */
 public abstract class AdvancedRendererRNG extends Renderer {
 	
-	/** The stack. */
-	protected Stack<IPanel<? extends RNGTag>> stack;
-	
-	/** The grammar. */
-	private RNGGrammar grammar;
-	
 	protected boolean skipTags = false;
-	
-	protected NameRefResolver resolver;
 	
 	/**
 	 * Instantiates a new RNG renderer.
 	 */
 	public AdvancedRendererRNG() {
 		super();
-		stack = new Stack<IPanel<? extends RNGTag>>();
-		resolver = new NameRefResolver();
-	}
-
-	/**
-	 * Push.
-	 *
-	 * @param element the element
-	 */
-	public void push(IPanel<? extends RNGTag> element) {
-		stack.push(element);
-	}
-	
-	/**
-	 * Peek.
-	 *
-	 * @return the i sensor widget
-	 */
-	public IPanel<? extends RNGTag> peek() {
-		if(!stack.isEmpty()) {
-			return stack.peek();
-		}else {
-			return null;
-		}
-	}
-	
-	/**
-	 * Pop.
-	 *
-	 * @return the i sensor widget
-	 */
-	public IPanel<? extends RNGTag> pop() {
-		return stack.pop();
-	}
-	
-	/**
-	 * Gets the stack size.
-	 *
-	 * @return the stack size
-	 */
-	protected int getStackSize() {
-		return stack.size();
-	}
-	
-	/* (non-Javadoc)
-	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGGrammar)
-	 */
-	@Override
-	public void visit(RNGGrammar grammar) {
-		if (grammar.getStartPattern() == null) {
-			throw new IllegalStateException("Grammar has no 'start' pattern and cannot be used to create a new instance");
-		}
-		this.grammar = grammar;
-		resolver.setCurrentGrammar(this.grammar);
-		grammar.getStartPattern().accept(this);
 	}
 
 	public void visit(RNGTag tag) {
@@ -359,120 +296,9 @@ public abstract class AdvancedRendererRNG extends Renderer {
 		}
 	}
 	
-	protected void pushAndVisitChildren(IPanel<? extends RNGTag> widget, RNGTag tag) {
-		push(widget);
-		int stackSize = getStackSize();
-		
-		if (tag != null) {
-			tag.accept(this);
-		}
-		if(stackSize < getStackSize()){
-			IPanel<? extends RNGTag> child = pop();
-			//child.setParent(widget);
-			widget.addElement(child);
-		}
-	}
-	/**
-	 * Visit children.
-	 *
-	 * @param tags the tags
-	 */
-	public void visitChildren(List<RNGTag> tags) {
-		int stackSize = getStackSize();
-		IPanel<? extends RNGTag> peek = peek();
-		
-		for (RNGTag tag : tags) {
-			if (tag != null) {
-				tag.accept(this);
-			}
-			if(peek != null){
-				if(stackSize < getStackSize()){
-					IPanel<? extends RNGTag> child = pop();
-					//child.setParent(peek);
-					peek.addElement(child);
-				}
-			}
-		}
-	}
-	
-	/**
-	 * Push and visit children.
-	 *
-	 * @param widget the widget
-	 * @param tags the tags
-	 */
-	protected void pushAndVisitChildren(IPanel<? extends RNGTag> widget, List<RNGTag> tags) {
-		push(widget);
-		int stackSize = getStackSize();
-		
-		for (RNGTag tag : tags) {
-			if (tag != null) {
-				tag.accept(this);
-			}
-			if(stackSize < getStackSize()){
-				IPanel<? extends RNGTag> child = pop();
-				//child.setParent(widget);
-				widget.addElement(child);
-			}
-		}
-	}
-	
-	/**
-	 * Render vertical widget.
-	 *
-	 * @param name the name
-	 * @param def the def
-	 * @param type the type
-	 * @return the i sensor widget
-	 */
-	protected IPanel<RNGTag> renderVerticalPanel(RNGTag tag) {
-		return new GenericVerticalContainerPanel(tag);
-	}
-	
-	protected IPanel<RNGElement> renderDisclosure(RNGElement tag) {
-		//return new SectionPanel(tag);
-		return new DisclosureElementPanel(tag);
-	}
-	
-	/**
-	 * Render line widget.
-	 *
-	 * @param name the name
-	 * @param def the def
-	 * @param type the type
-	 * @return the i sensor widget
-	 */
-	protected IPanel<RNGTag> renderLineWidget(RNGTag tag) {
-		//return new SensorGenericLineWidget(tag);
-		return null;
-	}
-	
-	
-	/**
-	 * Gets the root.
-	 *
-	 * @return the root
-	 */
-	public IPanel<? extends RNGTag> getRoot() {
-		IPanel<? extends RNGTag> root = null;
-		if(!stack.isEmpty()) {
-			root = stack.get(0);
-		} 
-		return root;
-	}
-	
-	/**
-	 * Gets the grammar.
-	 *
-	 * @return the grammar
-	 */
-	public RNGGrammar getGrammar() {
-		return  grammar;
-	}
-	
+	@Override
 	public void reset() {
-		stack = new Stack<IPanel<? extends RNGTag>>();
-		
+		super.reset();
 		//TODO: improve two-way root panels
 		GenericVerticalContainerPanel rootAdvanced = new GenericVerticalContainerPanel();
 		rootAdvanced.getPanel().addStyleName("advanced-dialog");

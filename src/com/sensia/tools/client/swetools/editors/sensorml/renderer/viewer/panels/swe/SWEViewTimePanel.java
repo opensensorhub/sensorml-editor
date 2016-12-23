@@ -1,4 +1,4 @@
-package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe;
 
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -8,17 +8,16 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.line.ValueGenericLinePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.line.EditValueGenericLinePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.line.ViewValueGenericLinePanel;
 
 // label
 // uom
 // value
-public class SWEEditTimePanel extends ViewValueGenericLinePanel{
+public class SWEViewTimePanel extends EditValueGenericLinePanel{
 
 	
 	protected Panel uomPanel;
 	
-	public SWEEditTimePanel(RNGElement tag) {
+	public SWEViewTimePanel(RNGElement tag) {
 		super(tag);
 		uomPanel = new SimplePanel();
 		afterDotsPanel.add(uomPanel);

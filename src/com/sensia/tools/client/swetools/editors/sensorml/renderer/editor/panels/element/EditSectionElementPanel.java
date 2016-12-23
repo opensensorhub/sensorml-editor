@@ -23,6 +23,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.EditIconPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.Renderer;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseDialog;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
@@ -94,10 +95,10 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 	}
 	
 	@Override
-	protected void advancedButtonClickHandler(RNGElement element) {
+	protected void advancedButtonClickHandler(RNGElement element, Renderer renderer) {
 		preventChangeDisclosure = true;
 		sectionPanel.setAnimationEnabled(false);
-		super.advancedButtonClickHandler(element);
+		super.advancedButtonClickHandler(element,renderer);
 	}
 	
 	@Override

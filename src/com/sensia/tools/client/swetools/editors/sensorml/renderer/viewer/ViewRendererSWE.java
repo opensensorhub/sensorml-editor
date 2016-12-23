@@ -12,10 +12,15 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer;
 
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewCategoryPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewCountPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewDataArrayPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewIntervalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewLabelPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewQuantityPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewQuantityRangePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewTimePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewUOMPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewValuesPanel;
@@ -74,6 +79,16 @@ public class ViewRendererSWE extends ViewRendererRNG implements RNGTagVisitor {
 				pushAndVisitChildren(new SWEViewQuantityRangePanel(element), element.getChildren());
 			}  else if(name.equals("Vector")) {
 				pushAndVisitChildren(new SWEViewVectorPanel(element,getRefreshHandler()), element.getChildren());
+			}  else if(name.equals("Category")) {
+				pushAndVisitChildren(new SWEViewCategoryPanel(element), element.getChildren());
+			} else if(name.equals("Time")) {
+				pushAndVisitChildren(new SWEViewTimePanel(element), element.getChildren());
+			} else if(name.equals("Quantity")) {
+				pushAndVisitChildren(new SWEViewQuantityPanel(element), element.getChildren());
+			} else if(name.equals("Count")) {
+				pushAndVisitChildren(new SWEViewCountPanel(element), element.getChildren());
+			} else if(name.equals("DataArray")) {
+				pushAndVisitChildren(new SWEViewDataArrayPanel(element), element.getChildren());
 			}  else {
 				super.visit(element);
 			}
