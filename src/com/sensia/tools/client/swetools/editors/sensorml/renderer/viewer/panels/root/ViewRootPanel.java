@@ -30,13 +30,14 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
  * The Class SensorSectionsWidget is corresponding to the root panel element. It handles the title, 
  * description, keywords elements.
  */
-public class ViewRootPanel extends AbstractPanel{
+public class ViewRootPanel extends AbstractPanel<RNGElement>{
 
 	protected ViewRootHeaderPanel headerDocumentPanel;
 	
 	protected Panel id;
 	
-	public ViewRootPanel() {
+	public ViewRootPanel(RNGElement element) {
+		super(element);
 		init();
 	}
 
@@ -46,7 +47,7 @@ public class ViewRootPanel extends AbstractPanel{
 	}
 
 	@Override
-	protected AbstractPanel newInstance() {
+	protected AbstractPanel<RNGElement> newInstance() {
 		// TODO Auto-generated method stub
 		return null;
 	}

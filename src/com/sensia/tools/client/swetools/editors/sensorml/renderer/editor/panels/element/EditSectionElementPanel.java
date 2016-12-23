@@ -28,7 +28,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class EditSectionElementPanel extends DisclosureElementPanel{
 
-	protected Label button;
+	protected Label advancedButton;
 	protected Panel labelPanel;
 	protected Panel definitionPanel;
 	protected Panel descriptionPanel;
@@ -44,12 +44,12 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 		definitionPanel = new HorizontalPanel();
 		descriptionPanel = new HorizontalPanel();
 		
-		button= new Label("");
-		button.addStyleName("rng-advanced-button");
+		advancedButton= new Label("");
+		advancedButton.addStyleName("rng-advanced-button");
 		
 		boolean isOpened = false;
 		
-		button.addClickHandler(new ClickHandler() {
+		advancedButton.addClickHandler(new ClickHandler() {
 			
 			@Override
 			public void onClick(ClickEvent event) {
@@ -97,12 +97,12 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 		hPanel.add(labelPanel);
 		hPanel.add(definitionPanel);
 		hPanel.add(descriptionPanel);
-		hPanel.add(button);
+		hPanel.add(advancedButton);
 		
 		definitionPanel.setVisible(false);
 		
 		sectionPanel.setHeader(hPanel);
-		button.addStyleName("rng-advanced-button-section");
+		advancedButton.addStyleName("rng-advanced-button-section");
 		
 		sectionPanel.addCloseHandler(new CloseHandler<DisclosurePanel>() {
 			
@@ -113,7 +113,7 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 					sectionPanel.setOpen(true);
 					sectionPanel.setAnimationEnabled(true);
 				} else {
-					button.removeStyleName("rng-advanced-button-section");
+					advancedButton.removeStyleName("rng-advanced-button-section");
 				}
 			}
 		});
@@ -127,7 +127,7 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 					sectionPanel.setOpen(false);
 					sectionPanel.setAnimationEnabled(true);
 				} else {
-					button.addStyleName("rng-advanced-button-section");
+					advancedButton.addStyleName("rng-advanced-button-section");
 				}
 				
 			}

@@ -30,9 +30,30 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewNamePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewPointPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root.ViewRootPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewCapabilitiesPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewClassificationPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewComponentPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewComponentsPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewConfigurationPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewConnectionsPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewContactsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewDescriptionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewDocumentationPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewHistoryPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewIdentificationPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewInputsPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewKeywordsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewLabelPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewLegalConstraintsPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewLocalReferenceFramePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewMethodPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewModePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewModesPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewOutputsPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewParametersPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewPositionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewTypeOfPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewValidTimePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewValuePanel;
 
 /**
@@ -54,6 +75,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
  */
 public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 
+	
 	/**
 	 * Instantiates a new RNG renderer sml.
 	 */
@@ -75,7 +97,7 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 		}
 		
 		if(rootSectionsList.contains(eltName)) {
-			pushAndVisitChildren(new ViewRootPanel(),elt.getChildren());
+			pushAndVisitChildren(new ViewRootPanel(elt),elt.getChildren());
 			return;
 		}
 		
@@ -105,7 +127,80 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 					return;
 				}
 		} else if (nsUri.equalsIgnoreCase(SML_NS_1) || nsUri.equalsIgnoreCase(SML_NS_2)) {
-			if(eltName.equalsIgnoreCase("description")) {
+			if(eltName.equalsIgnoreCase("capabilities")) {
+				pushAndVisitChildren(new SMLViewCapabilitiesPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("classification")) {
+				pushAndVisitChildren(new SMLViewClassificationPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("components")) {
+				pushAndVisitChildren(new SMLViewComponentsPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("component")) {
+				pushAndVisitChildren(new SMLViewComponentPanel(elt), elt.getChildren());
+				return;
+			}  else if(eltName.equalsIgnoreCase("configuration")) {
+				pushAndVisitChildren(new SMLViewConfigurationPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("connections")) {
+				pushAndVisitChildren(new SMLViewConnectionsPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("contacts")) {
+				pushAndVisitChildren(new SMLViewContactsPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("documentation")) {
+				pushAndVisitChildren(new SMLViewDocumentationPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("history")) {
+				pushAndVisitChildren(new SMLViewHistoryPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("identification")) {
+				pushAndVisitChildren(new SMLViewIdentificationPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("inputs")) {
+				pushAndVisitChildren(new SMLViewInputsPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("keywords")) {
+				pushAndVisitChildren(new SMLViewKeywordsPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("legalConstraints")) {
+				pushAndVisitChildren(new SMLViewLegalConstraintsPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("localReferenceFrame")) {
+				pushAndVisitChildren(new SMLViewLocalReferenceFramePanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("Mode")) {
+				pushAndVisitChildren(new SMLViewModePanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("modes")) {
+				pushAndVisitChildren(new SMLViewModesPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("method")) {
+				pushAndVisitChildren(new SMLViewMethodPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			}  else if(eltName.equalsIgnoreCase("outputs")) {
+				pushAndVisitChildren(new SMLViewOutputsPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("parameters")) {
+				pushAndVisitChildren(new SMLViewParametersPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("position")) {
+				pushAndVisitChildren(new SMLViewPositionPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("typeOf")) {
+				SMLViewTypeOfPanel typeOf = new SMLViewTypeOfPanel(elt, refreshHandler);
+				pushAndVisitChildren(typeOf, elt.getChildren());
+				
+				// use href of typeof to update resolver remote file
+				resolver.setRemoteFile(typeOf.getRemotePath());
+				return;
+			} else if(eltName.equalsIgnoreCase("validTime")) {
+				pushAndVisitChildren(new SMLViewValidTimePanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			}
+			
+			//--------------------------------------
+			else if(eltName.equalsIgnoreCase("description")) {
 				pushAndVisitChildren(new SMLViewDescriptionPanel(elt), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("label")) {
@@ -113,9 +208,6 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 				return;
 			} else if(eltName.equalsIgnoreCase("value")) {
 				pushAndVisitChildren(new SMLViewValuePanel(elt), elt.getChildren());
-				return;
-			} else if(eltName.equalsIgnoreCase("position")) {
-				pushAndVisitChildren(new SMLViewPositionPanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
 			} else {
 				// handle others

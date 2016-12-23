@@ -72,12 +72,9 @@ public class SMLEditPositionByTrajectoryPanel extends EditSubSectionElementPanel
 		
 		// parse Object into Double
 		double [] [] latLonValues = new double[values.length][values[0].length];
-		GWT.log(epsg);
 		for(int i=0;i < values.length;i++){
 			int j = 0;
 			for(Integer  codeIdx: codesIdx) {
-				GWT.log(values[i][codeIdx]+"");
-				GWT.log(values[i][codeIdx].toString()+"");
 				latLonValues[i] [j++] = Double.parseDouble(values[i][codeIdx].toString().trim());
 			}
 		}

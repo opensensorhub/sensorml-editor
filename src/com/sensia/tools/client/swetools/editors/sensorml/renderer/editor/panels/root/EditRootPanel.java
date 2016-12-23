@@ -52,7 +52,7 @@ public class EditRootPanel extends ViewRootPanel{
 	private IRefreshHandler refreshHandler;
 	
 	public EditRootPanel(RNGElement rootTag,IRefreshHandler refreshHandler) {
-		super();
+		super(rootTag);
 		
 		this.rootTag = rootTag;
 		this.refreshHandler = refreshHandler;

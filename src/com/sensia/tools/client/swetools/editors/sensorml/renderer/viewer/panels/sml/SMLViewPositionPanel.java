@@ -3,18 +3,14 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditPositionPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.position.SMLEditPositionByLocationPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.position.SMLEditPositionByPositionPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.position.SMLEditPositionByTrajectoryPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.position.SMLViewPositionByTrajectoryPanel;
 
 public class SMLViewPositionPanel extends SMLEditPositionPanel{
 
 	public SMLViewPositionPanel(RNGElement tag, IRefreshHandler refreshHandler) {
 		super(tag, refreshHandler);
-		
+		advancedButton.setVisible(false);
 		// if vector => by location
 		// if dataRecord => by position
 		// if dataArray => by trajectory
