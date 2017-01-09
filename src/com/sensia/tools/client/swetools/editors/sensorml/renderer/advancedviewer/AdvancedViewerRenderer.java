@@ -11,6 +11,7 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.advancedviewer;
 
 import com.google.gwt.core.shared.GWT;
+import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGValue;
 import com.sensia.relaxNG.XSDAnyURI;
@@ -21,6 +22,14 @@ import com.sensia.relaxNG.XSDDouble;
 import com.sensia.relaxNG.XSDInteger;
 import com.sensia.relaxNG.XSDString;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributeDefinitionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributeReferenceFramePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkArcrolePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkHrefPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkRolePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkTitlePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advancedviewer.attribute.AdvancedViewerAttributeDefinitionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.xsd.ViewXSDAnyURIPanel;
@@ -119,5 +128,18 @@ public class AdvancedViewerRenderer extends AdvancedRendererSML{
 	public void visit(XSDDateTime data) {
 		push(new ViewXSDDateTimePanel(data,getRefreshHandler()));
 		
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRenderer#visit(com.sensia.relaxNG.RNGAttribute)
+	 */
+	@Override
+	public void visit(RNGAttribute att) {
+		String name = att.getName();
+		if(name.equals("definition")) {
+			pushAndVisitChildren(new AdvancedViewerAttributeDefinitionPanel(att,getRefreshHandler()),att.getChildren());
+		} else {
+			super.visit(att);
+		}
 	}
 }

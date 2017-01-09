@@ -27,7 +27,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 public abstract class AbstractAdvancedAttributeOntologyIconPanel<T extends RNGTag> extends AbstractPanel<T>{
 
 	private Panel valuePanel;
-	private Image ontologyImage;
+	protected Image ontologyImage;
 	private RNGData<?> rngData;
 	
 	public AbstractAdvancedAttributeOntologyIconPanel(T tag,String name,final IRefreshHandler refreshHandler) {
