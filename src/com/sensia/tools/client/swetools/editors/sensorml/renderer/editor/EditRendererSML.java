@@ -36,6 +36,11 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditIdentifierPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditNamePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditPointPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.time.GMLEditBeginPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.time.GMLEditEndPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.time.GMLEditTimeInstantPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.time.GMLEditTimePositionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.time.GMLEditTimePeriodPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.root.EditRootPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditAxisPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditCapabilitiesPanel;
@@ -138,6 +143,21 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 				return;
 			} else if(eltName.equalsIgnoreCase("Envelope")) {
 				pushAndVisitChildren(new GMLEditEnvelopePanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("TimeInstant")) {
+				pushAndVisitChildren(new GMLEditTimeInstantPanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("TimePeriod")) {
+				pushAndVisitChildren(new GMLEditTimePeriodPanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("timePosition")) {
+				pushAndVisitChildren(new GMLEditTimePositionPanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("begin")) {
+				pushAndVisitChildren(new GMLEditBeginPanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("end")) {
+				pushAndVisitChildren(new GMLEditEndPanel(elt), elt.getChildren());
 				return;
 			}
 		}

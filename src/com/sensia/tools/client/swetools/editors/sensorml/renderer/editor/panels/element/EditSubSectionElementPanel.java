@@ -90,7 +90,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		} else if(element.getName().equals("description")){
 			RNGElement tag = (RNGElement) element.getTag();
 			EditIconPanel<RNGElement> iconPanel = new EditIconPanel<RNGElement>(tag, 
-					new Image(GWT.getModuleBaseURL()+"images/icon_question.png"), "description-icon");
+					new Image(GWT.getModuleBaseURL()+"images/icon_question.png"), "description-icon",false);
 			for(IPanel child : element.getElements()) {
 				iconPanel.addElement(child);
 			}

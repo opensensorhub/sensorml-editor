@@ -151,7 +151,8 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 				pushAndVisitChildren(new GMLEditNamePanel(elt), elt.getChildren());
 			} else if(eltName.equalsIgnoreCase("coordinates")) {
 				pushAndVisitChildren(new GMLEditNamePanel(elt), elt.getChildren());
-			} else {
+			} 
+			else {
 				super.visit(elt);
 			}
 			return;

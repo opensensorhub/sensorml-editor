@@ -284,4 +284,19 @@ public class Utils {
 			s1 += s.substring(1);
 		return s1;
 	}
+	
+	public static int indexOfIgnoreCase(List<String> list, String value) {
+		int idx = -1;
+		
+		int i =0;
+		for(String item : list) {
+			if(item.toLowerCase().equals(value.toLowerCase())) {
+				idx = i;
+				break;
+			} else {
+				i++;
+			}
+		}
+		return idx;
+	}
 }
