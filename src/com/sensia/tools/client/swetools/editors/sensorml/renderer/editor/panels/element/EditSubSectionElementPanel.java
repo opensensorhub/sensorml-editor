@@ -30,7 +30,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		innerContainer = new VerticalPanel();
 		label = new SimplePanel();
 		label.setVisible(false);
-		label.addStyleName("edit-subsection-element-panel");
+		label.addStyleName("edit-subsection-label-panel");
 		label.add(new HTML(Utils.toNiceLabel(element.getName())));
 		//label.add(new HTML(element.getName()));
 		
@@ -47,6 +47,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		
 		container.add(hPanel);
 		container.add(innerContainer);
+		container.addStyleName("edit-subsection-element-panel");
 	}
 	
 	public EditSubSectionElementPanel(RNGElement element) {
