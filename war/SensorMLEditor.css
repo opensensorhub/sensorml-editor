@@ -588,6 +588,7 @@ table.sml-mode-nolabel-vertical-panel {
 
 .section-panel .content {
 	border-left: 2px solid #e7e7e7 !important;
+	margin-bottom: 10px;
 }
 
 /*** HORIZONTAL PANELS ***/
