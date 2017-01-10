@@ -97,10 +97,10 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 	}
 	
 	@Override
-	protected void advancedButtonClickHandler(RNGElement element, Renderer renderer) {
+	protected void advancedButtonClickHandler(RNGElement element, Renderer renderer,final Panel rootPanel) {
 		preventChangeDisclosure = true;
 		sectionPanel.setAnimationEnabled(false);
-		super.advancedButtonClickHandler(element,renderer);
+		super.advancedButtonClickHandler(element,renderer,rootPanel);
 	}
 	
 	@Override

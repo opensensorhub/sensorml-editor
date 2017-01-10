@@ -8,6 +8,7 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
 
 // label
@@ -22,8 +23,8 @@ public class EditValueGenericLinePanel extends EditGenericLinePanel<RNGElement>{
 	protected IPanel valueIPanel;
 	protected IPanel constraintIPanel;
 	
-	public EditValueGenericLinePanel(RNGElement tag) {
-		super(tag);
+	public EditValueGenericLinePanel(RNGElement tag,IRefreshHandler refreshHandler) {
+		super(tag,refreshHandler);
 		valuePanel = new SimplePanel();
 		constraintPanel = new HorizontalPanel();
 		

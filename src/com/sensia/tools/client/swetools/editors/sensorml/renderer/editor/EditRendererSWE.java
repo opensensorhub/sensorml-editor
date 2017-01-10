@@ -67,17 +67,17 @@ public class EditRendererSWE extends EditRendererRNG implements RNGTagVisitor {
 		IPanel<RNGElement> widget = null;
 		
 		 if(name.equalsIgnoreCase("Quantity")) {
-			widget = new SWEEditQuantityPanel(elt);
+			widget = new SWEEditQuantityPanel(elt,getRefreshHandler());
 		} else if(name.equalsIgnoreCase("Category")) {
-			widget = new SWEEditCategoryPanel(elt);
+			widget = new SWEEditCategoryPanel(elt,getRefreshHandler());
 		} else if(name.equalsIgnoreCase("QuantityRange")) {
-			widget = new SWEEditQuantityRangePanel(elt);
+			widget = new SWEEditQuantityRangePanel(elt,getRefreshHandler());
 		} else if(name.equals("field")) {
 			widget = new SWEEditFieldPanel(elt);
 		} else if(name.equals("DataRecord")) {
 			widget = new SWEEditDataRecordPanel(elt);
 		} else if(name.equals("DataArray")) {
-			widget = new SWEEditDataArrayPanel(elt);
+			widget = new SWEEditDataArrayPanel(elt,getRefreshHandler());
 		} else if(name.equals("elementType")) {
 			widget = new SWEditElementTypePanel(elt);
 		} else if(name.equals("encoding")) {
@@ -91,7 +91,7 @@ public class EditRendererSWE extends EditRendererRNG implements RNGTagVisitor {
 		} else if(name.equals("AllowedTokens")) {
 			widget = new SWEEditAllowedTokensPanel(elt);
 		} else if(name.equals("Count")) {
-			widget = new SWEEditCountPanel(elt);
+			widget = new SWEEditCountPanel(elt,getRefreshHandler());
 		} else if(name.equals("description")) {
 			widget = new SWEEditDescriptionPanel(elt);
 		} else if(name.equals("Text")) {
@@ -101,9 +101,9 @@ public class EditRendererSWE extends EditRendererRNG implements RNGTagVisitor {
 		} else if(name.equals("coordinate")) {
 			widget = new SWEEditCoordinatePanel(elt);
 		} else if(name.equals("Time")) {
-			widget = new SWEEditTimePanel(elt);
+			widget = new SWEEditTimePanel(elt,getRefreshHandler());
 		} else if(name.equals("TimeRange")) {
-			widget = new SWEEditTimeRangePanel(elt);
+			widget = new SWEEditTimeRangePanel(elt,getRefreshHandler());
 		}
 		
 		if(widget != null) {

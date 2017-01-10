@@ -2,14 +2,15 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels
 
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 
 // label
 // uom
 // value
 public class SWEEditTimeRangePanel extends SWEEditTimePanel{
 	
-	public SWEEditTimeRangePanel(RNGElement tag) {
-		super(tag);
+	public SWEEditTimeRangePanel(RNGElement tag,IRefreshHandler refreshHandler) {
+		super(tag,refreshHandler);
 	}
 	
 	@Override

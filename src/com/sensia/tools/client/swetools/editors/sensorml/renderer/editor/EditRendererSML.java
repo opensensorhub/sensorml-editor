@@ -180,7 +180,7 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 		} else if (nsUri.equalsIgnoreCase(SML_NS_1) || nsUri.equalsIgnoreCase(SML_NS_2)) {
 			// handle SML element
 			if(eltName.equalsIgnoreCase("ObservableProperty")) {
-				pushAndVisitChildren(new SMLEditObservablePropertyPanel(elt), elt.getChildren());
+				pushAndVisitChildren(new SMLEditObservablePropertyPanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("output")) {
 				pushAndVisitChildren(new SMLEditOutputPanel(elt), elt.getChildren());
@@ -301,7 +301,7 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 				pushAndVisitChildren(new SMLEditCapabilityPanel(elt), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("axis")) {
-				pushAndVisitChildren(new SMLEditAxisPanel(elt), elt.getChildren());
+				pushAndVisitChildren(new SMLEditAxisPanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("components")) {
 				skipTags = true;
@@ -324,7 +324,7 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 				super.visit(elt);
 				return;
 			} else if(eltName.equalsIgnoreCase("Term")) {
-				pushAndVisitChildren(new SMLEditTermPanel(elt), elt.getChildren());
+				pushAndVisitChildren(new SMLEditTermPanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("identifier")) {
 				pushAndVisitChildren(new SMLEditIdentifierPanel(elt), elt.getChildren());
@@ -336,7 +336,7 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 				pushAndVisitChildren(new SMLEditDocument(elt), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("origin")) {
-				pushAndVisitChildren(new SMLEditOriginPanel(elt), elt.getChildren());
+				pushAndVisitChildren(new SMLEditOriginPanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("KeywordList")) {
 				pushAndVisitChildren(new SMLEditKeywordListPanel(elt), elt.getChildren());
@@ -354,10 +354,10 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 				pushAndVisitChildren(new SMLAdvancedValuePanel(elt), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("setValue")) {
-				pushAndVisitChildren(new SMLEditSetValuePanel(elt,resolver), elt.getChildren());
+				pushAndVisitChildren(new SMLEditSetValuePanel(elt,resolver,getRefreshHandler()), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("setMode")) {
-				pushAndVisitChildren(new SMLEditSetModePanel(elt,resolver), elt.getChildren());
+				pushAndVisitChildren(new SMLEditSetModePanel(elt,resolver,getRefreshHandler()), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("property")) {
 				pushAndVisitChildren(new SMLEditPropertyPanel(elt), elt.getChildren());

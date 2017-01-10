@@ -2,14 +2,15 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels
 
 import com.google.gwt.user.client.ui.Label;
 import com.sensia.relaxNG.RNGTag;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 
 public abstract class EditGenericLinePanel<T extends RNGTag> extends AbstractGenericLinePanel<T>{
 
-	protected EditGenericLinePanel(T tag) {
+	protected EditGenericLinePanel(T tag,IRefreshHandler refreshHandler) {
 		super(tag);
-		
+		super.refreshHandler = refreshHandler;
 		Label advancedButton = buildAdvancedButton(new AdvancedRendererSML());
 		line.add(advancedButton);
 	}

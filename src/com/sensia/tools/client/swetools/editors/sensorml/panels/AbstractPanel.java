@@ -133,21 +133,23 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 		
 		Label advancedButton= new Label("");
 		advancedButton.addStyleName("rng-advanced-button");
+		final Panel rootPanel = new VerticalPanel();
 		
 		advancedButton.addClickHandler(new ClickHandler() {
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				advancedButtonClickHandler((RNGElement) getTag(),renderer);
+				
+				advancedButtonClickHandler((RNGElement) getTag(),renderer,rootPanel);
 			}
 		});
 		return advancedButton;
 	}
 	
-	protected void advancedButtonClickHandler(final RNGElement element,final Renderer renderer) {
+	protected void advancedButtonClickHandler(final RNGElement element,final Renderer renderer,final Panel rootPanel) {
 		// create a new Renderer
-		final Panel rootPanel = new VerticalPanel();
-		
+		renderer.reset();
+		rootPanel.clear();
 		renderer.setRefreshHandler(new IRefreshHandler() {
 			
 			@Override

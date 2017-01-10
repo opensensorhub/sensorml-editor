@@ -12,6 +12,7 @@ import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ICallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.line.EditGenericLinePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.NameRefResolver;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
@@ -25,8 +26,8 @@ public class SMLEditSetValuePanel extends EditGenericLinePanel<RNGElement>{
 	
 	private NameRefResolver resolver;
 	
-	public SMLEditSetValuePanel(RNGElement tag, NameRefResolver resolver) {
-		super(tag);
+	public SMLEditSetValuePanel(RNGElement tag, NameRefResolver resolver,IRefreshHandler refreshHandler) {
+		super(tag,refreshHandler);
 		value = new HTML("");
 		label = new HTML("");
 		uom = new HTML("");

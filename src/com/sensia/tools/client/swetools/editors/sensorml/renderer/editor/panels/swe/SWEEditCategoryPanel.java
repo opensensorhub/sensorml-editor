@@ -5,6 +5,7 @@ import com.google.gwt.user.client.ui.SimplePanel;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.line.EditValueGenericLinePanel;
 
 /**
@@ -18,8 +19,8 @@ public class SWEEditCategoryPanel extends EditValueGenericLinePanel{
 
 	protected Panel codeSpace;
 	
-	public SWEEditCategoryPanel(RNGElement element) {
-		super(element);
+	public SWEEditCategoryPanel(RNGElement element,IRefreshHandler refreshHandler) {
+		super(element,refreshHandler);
 		
 		codeSpace = new SimplePanel();
 		

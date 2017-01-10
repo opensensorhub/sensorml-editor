@@ -6,6 +6,7 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.line.ValueGenericLinePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.line.EditValueGenericLinePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.line.ViewValueGenericLinePanel;
@@ -18,8 +19,8 @@ public class SWEEditTimePanel extends EditValueGenericLinePanel{
 	
 	protected Panel uomPanel;
 	
-	public SWEEditTimePanel(RNGElement tag) {
-		super(tag);
+	public SWEEditTimePanel(RNGElement tag,IRefreshHandler refreshHandler) {
+		super(tag,refreshHandler);
 		uomPanel = new SimplePanel();
 		afterDotsPanel.add(uomPanel);
 	}

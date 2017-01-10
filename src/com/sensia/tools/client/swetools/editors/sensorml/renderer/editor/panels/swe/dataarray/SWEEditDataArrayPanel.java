@@ -18,6 +18,7 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.chart.GenericCurveChart;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.chart.GenericTable;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
@@ -44,8 +45,8 @@ public class SWEEditDataArrayPanel extends AbstractPanel<RNGElement>{
 	
 	private String label;
 	
-	public SWEEditDataArrayPanel(RNGElement tag) {
-		super(tag);
+	public SWEEditDataArrayPanel(RNGElement tag,IRefreshHandler refreshHandler) {
+		super(tag,refreshHandler);
 		linePanel = getLinePanel(tag);
 		
 		beforeLineContentPanel = new VerticalPanel();
@@ -55,7 +56,7 @@ public class SWEEditDataArrayPanel extends AbstractPanel<RNGElement>{
 	}
 
 	protected SWEEditDataArrayLinePanel getLinePanel(RNGElement tag) {
-		return new SWEEditDataArrayLinePanel(tag);
+		return new SWEEditDataArrayLinePanel(tag,refreshHandler);
 	}
 	
 	@Override

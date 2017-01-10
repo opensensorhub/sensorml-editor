@@ -4,6 +4,7 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.line.EditGenericLinePanel;
 
 
@@ -11,8 +12,8 @@ public class SMLEditObservablePropertyPanel extends EditGenericLinePanel<RNGElem
 
 	private boolean isLabel = false;
 	
-	public SMLEditObservablePropertyPanel(RNGElement tag) {
-		super(tag);
+	public SMLEditObservablePropertyPanel(RNGElement tag,IRefreshHandler refreshHandler) {
+		super(tag,refreshHandler);
 	}
 	
 	@Override

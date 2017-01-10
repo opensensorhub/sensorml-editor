@@ -17,7 +17,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 public class SWEViewDataArrayPanel extends SWEEditDataArrayPanel{
 
 	public SWEViewDataArrayPanel(RNGElement tag) {
-		super(tag);
+		super(tag,null);
 	}
 	
 	protected SWEEditDataArrayLinePanel getLinePanel(RNGElement tag) {
