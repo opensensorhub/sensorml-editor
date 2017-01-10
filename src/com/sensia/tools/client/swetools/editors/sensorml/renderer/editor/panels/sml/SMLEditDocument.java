@@ -25,6 +25,8 @@ public class SMLEditDocument extends AbstractPanel<RNGElement>{
 		container.add(linkPanel);
 		container.add(descriptionPanel);
 		container.add(attributesPanel);
+		
+		descriptionPanel.addStyleName("document-description-panel");
 	}
 	
 	@Override
