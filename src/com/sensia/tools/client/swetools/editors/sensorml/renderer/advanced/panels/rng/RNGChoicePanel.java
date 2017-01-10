@@ -2,6 +2,8 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.pane
 
 import java.util.List;
 
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -50,11 +52,27 @@ public class RNGChoicePanel extends AbstractPanel<RNGChoice>{
 			choices.setSelectedIndex(getTag().getSelectedIndex()+1);
 		}
 		
-		choices.addClickHandler(new ClickHandler() {
+		/*choices.addClickHandler(new ClickHandler() {
 			
 			@Override
 			public void onClick(ClickEvent event) {
 				//patternContainer.clear();
+				if(choices.getSelectedIndex() == 0) {
+					RNGChoicePanel.this.getTag().setSelectedIndex(-1);
+				} else {
+					RNGChoicePanel.this.getTag().setSelectedIndex(choices.getSelectedIndex()-1);
+					//tag.getSelectedPattern().accept(visitor);
+				}
+				//ViewerPanel.getInstance(null).redraw();
+				if(refreshHandler != null) {
+					refreshHandler.refresh();
+				}
+			}
+		});*/
+		choices.addChangeHandler(new ChangeHandler() {
+			
+			@Override
+			public void onChange(ChangeEvent event) {
 				if(choices.getSelectedIndex() == 0) {
 					RNGChoicePanel.this.getTag().setSelectedIndex(-1);
 				} else {

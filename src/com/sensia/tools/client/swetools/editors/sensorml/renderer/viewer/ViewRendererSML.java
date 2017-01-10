@@ -14,6 +14,7 @@ import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.time.GMLEditTimePositionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewAttributeCodePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewAttributeDefinitionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewAttributeIdPanel;
@@ -29,6 +30,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewIdentifierPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewNamePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewPointPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewTimePositionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root.ViewRootPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewAxisPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewCapabilitiesPanel;
@@ -118,6 +120,8 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 				pushAndVisitChildren(new GMLViewNamePanel(elt), elt.getChildren());
 			} else if(eltName.equalsIgnoreCase("Point")){
 				pushAndVisitChildren(new GMLViewPointPanel(elt), elt.getChildren());
+			} else if(eltName.equalsIgnoreCase("timePosition")) {
+				pushAndVisitChildren(new GMLViewTimePositionPanel(elt), elt.getChildren());
 			} else {
 				// handle others
 				super.visit(elt);

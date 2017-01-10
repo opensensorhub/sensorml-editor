@@ -20,13 +20,14 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class GMLEditTimePositionTypePanel extends EditSimpleElementPanel{
 
-	private Panel calendarEraPanelPanel;
-	private Panel indeterminatePositionPanel;
-	private Panel valuePanel;
+	protected Panel calendarEraPanelPanel;
+	protected Panel indeterminatePositionPanel;
+	protected Panel valuePanel;
 	
-	private ListBox relativePosition;
+	protected ListBox relativePosition;
 	
 	private static final List<String> relativePositionItems;
+	
 	static {
 		relativePositionItems = new ArrayList<String>();
 		relativePositionItems.add("Before");
@@ -71,7 +72,7 @@ public class GMLEditTimePositionTypePanel extends EditSimpleElementPanel{
 			}
 		});
 		
-		container.add(relativePosition);
+		container.add(indeterminatePositionPanel);
 		container.add(calendarEraPanelPanel);
 		container.add(valuePanel);
 		
