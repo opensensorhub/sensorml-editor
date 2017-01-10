@@ -496,7 +496,6 @@ table.sml-mode-nolabel-vertical-panel {
 }
 
 .def-icon {
-	margin-left:10px;
 	margin-right:10px;
 }
 
@@ -795,6 +794,7 @@ input:focus {
 .edit-subsection-element-panel{
 	margin-top: 10px;
     margin-bottom: 10px;
+    margin-right:10px;
 }
     
 .edit-subsection-element-panel .gwt-HTML {
@@ -840,7 +840,6 @@ input:focus {
 }
 
 .description-icon {
-	margin-left:10px;
 	margin-right:10px;
 }
 
