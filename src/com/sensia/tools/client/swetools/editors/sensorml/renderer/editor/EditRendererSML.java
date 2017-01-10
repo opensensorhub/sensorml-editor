@@ -75,12 +75,14 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditParameterPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditParametersPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditPositionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditPropertyPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditSetModePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditSetValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditSpatialFramePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditTermPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditTypeOfPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditValidTimePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.history.SMLEditEventPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 
 /**
@@ -356,6 +358,12 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 				return;
 			} else if(eltName.equalsIgnoreCase("setMode")) {
 				pushAndVisitChildren(new SMLEditSetModePanel(elt,resolver), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("property")) {
+				pushAndVisitChildren(new SMLEditPropertyPanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("Event")) {
+				pushAndVisitChildren(new SMLEditEventPanel(elt), elt.getChildren());
 				return;
 			}
 		} 

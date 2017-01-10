@@ -864,3 +864,11 @@ input:focus {
 .TimePositionType-panel {
 	border-spacing: 5px;
 }
+
+.Event-panel .gwt-HTML{
+	font-weight: bold;
+}
+
+.Event-panel .TimePositionType-panel{
+	border-spacing: 0px;
+}

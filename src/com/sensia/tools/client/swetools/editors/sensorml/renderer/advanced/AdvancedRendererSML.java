@@ -102,6 +102,7 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 		rootSectionsList.add("Component");
 		
 		skipList.add("OutputList");
+		skipList.add("EventList");
 		skipList.add("InputList");
 		skipList.add("IdentifierList");
 		skipList.add("ClassifierList");
@@ -121,6 +122,9 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 		
 		//skip sml:mode
 		skipList.add("mode");
+		
+		//skip sml:event
+		skipList.add("event");
 	}
 	
 	/* (non-Javadoc)
