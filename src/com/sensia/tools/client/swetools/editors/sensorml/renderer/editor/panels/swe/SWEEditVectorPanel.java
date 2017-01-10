@@ -74,6 +74,9 @@ public class SWEEditVectorPanel extends EditSubSectionElementPanel{
 		});
 		
 		iconsPanel.add(mapIcon);
+		
+		// default name
+		setHtmlLabel("Location");
 	}
 
 	@Override
