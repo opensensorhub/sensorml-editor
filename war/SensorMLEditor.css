@@ -613,7 +613,7 @@ table.sml-mode-nolabel-vertical-panel {
 }
 
 .line-generic {
-	border-spacing:5px;
+	/*border-spacing:5px;*/
 }
 .line-generic-panel-before {
 	min-width : 370px;
@@ -802,6 +802,10 @@ input:focus {
 	margin-right:10px;
 }    
 
+.edit-section-label-panel {
+	margin-right:10px;
+} 
+
 .edit-subsection-label-panel .gwt-HTML {
 	font-weight: bold;
 }
@@ -881,3 +885,7 @@ input:focus {
 	margin-left:-10px; /* override subsection label margin */
 	margin-right:10px;
 }  
+
+.document-description-panel {
+	margin-right:10px;
+}
