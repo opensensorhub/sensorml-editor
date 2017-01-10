@@ -22,8 +22,8 @@ public class SMLEditEventPanel extends EditSubSectionElementPanel{
 		timePanel = new HorizontalPanel();
 		
 		Panel hPanel = new HorizontalPanel();
-		hPanel.add(timePanel);
 		hPanel.add(label);
+		hPanel.add(timePanel);
 		hPanel.add(definition);
 		hPanel.add(description);
 		
@@ -37,8 +37,10 @@ public class SMLEditEventPanel extends EditSubSectionElementPanel{
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
 		if(element.getName().equals("time")) {
+			SimplePanel linkIconPanel = new SimplePanel();
+			linkIconPanel.addStyleName("link-icon-panel");
+			timePanel.add(linkIconPanel);
 			timePanel.add(element.getPanel());
-			timePanel.add(new HTML(":"));
 			timePanel.setVisible(true);
 		} else {
 			super.addInnerElement(element);

@@ -10,9 +10,9 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 // label
 // uom
 // value
-public class SWEViewQuantityRangePanel extends SWEViewQuantityPanel{
+public class SWEViewTimeRangePanel extends SWEViewTimePanel{
 	
-	public SWEViewQuantityRangePanel(RNGElement tag) {
+	public SWEViewTimeRangePanel(RNGElement tag) {
 		super(tag);
 	}
 	

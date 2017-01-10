@@ -13,7 +13,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
 // label
 // uom
 // value
-public class SWEEditTimePanel extends ViewValueGenericLinePanel{
+public class SWEEditTimePanel extends EditValueGenericLinePanel{
 
 	
 	protected Panel uomPanel;

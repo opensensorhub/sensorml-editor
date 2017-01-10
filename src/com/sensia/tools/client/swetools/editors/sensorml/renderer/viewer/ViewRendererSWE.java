@@ -20,6 +20,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewQuantityPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewQuantityRangePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewTimePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewTimeRangePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewUOMPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewValuesPanel;
@@ -83,6 +84,8 @@ public class ViewRendererSWE extends ViewRendererRNG implements RNGTagVisitor {
 				pushAndVisitChildren(new SWEViewCategoryPanel(element), element.getChildren());
 			} else if(name.equals("Time")) {
 				pushAndVisitChildren(new SWEViewTimePanel(element), element.getChildren());
+			} else if(name.equals("TimeRange")) {
+				pushAndVisitChildren(new SWEViewTimeRangePanel(element), element.getChildren());
 			} else if(name.equals("Quantity")) {
 				pushAndVisitChildren(new SWEViewQuantityPanel(element), element.getChildren());
 			} else if(name.equals("Count")) {
