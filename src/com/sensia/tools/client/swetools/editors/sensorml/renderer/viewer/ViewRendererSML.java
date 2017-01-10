@@ -43,6 +43,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewContactsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewDocumentationPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewEventPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewHistoryPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewIdentificationPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml.SMLViewInputsPanel;
@@ -210,6 +211,9 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 				return;
 			} else if(eltName.equalsIgnoreCase("validTime")) {
 				pushAndVisitChildren(new SMLViewValidTimePanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("Event")) {
+				pushAndVisitChildren(new SMLViewEventPanel(elt), elt.getChildren());
 				return;
 			}
 			//----------- END SECTION

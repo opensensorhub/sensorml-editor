@@ -1,4 +1,4 @@
-package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.history;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml;
 
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
@@ -9,12 +9,13 @@ import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSectionElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.element.ViewSectionElementPanel;
 
-public class SMLEditEventPanel extends EditSectionElementPanel{
+public class SMLViewEventPanel extends ViewSectionElementPanel{
 
 	protected Panel timePanel;
 	
-	public SMLEditEventPanel(RNGElement element) {
+	public SMLViewEventPanel(RNGElement element) {
 		super(element,null);
 		
 		// add label header
@@ -32,6 +33,8 @@ public class SMLEditEventPanel extends EditSectionElementPanel{
 		
 		timePanel.setVisible(false);
 		timePanel.addStyleName("Event-panel");
+		
+		sectionPanel.setOpen(false);
 	}
 
 	@Override
