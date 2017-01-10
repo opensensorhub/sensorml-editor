@@ -26,6 +26,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewXLinkHrefPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewXLinkRolePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gmd.GMDViewDescriptionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewCoordinatesPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewIdentifierPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewNamePanel;
@@ -121,6 +122,8 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 				pushAndVisitChildren(new GMLViewNamePanel(elt), elt.getChildren());
 			} else if(eltName.equalsIgnoreCase("Point")){
 				pushAndVisitChildren(new GMLViewPointPanel(elt), elt.getChildren());
+			} else if(eltName.equalsIgnoreCase("coordinates")){
+				pushAndVisitChildren(new GMLViewCoordinatesPanel(elt), elt.getChildren());
 			} else if(eltName.equalsIgnoreCase("timePosition")) {
 				pushAndVisitChildren(new GMLViewTimePositionPanel(elt), elt.getChildren());
 			} else {
