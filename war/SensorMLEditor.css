@@ -704,8 +704,10 @@ table.sml-mode-nolabel-vertical-panel {
 }
 
 .rng-zeroormore-pattern {
-	margin-top:5px;
-	margin-bottom:5px;
+}
+
+.rng-shift-remove .rng-optional-select-remove {
+	margin-top:2px !important;
 }
 
 .textbox {
