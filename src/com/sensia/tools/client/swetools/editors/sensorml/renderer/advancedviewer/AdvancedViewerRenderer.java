@@ -10,10 +10,16 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.advancedviewer;
 
+import java.util.List;
+
 import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGAttribute;
+import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGData;
+import com.sensia.relaxNG.RNGOptional;
+import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGValue;
+import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.relaxNG.XSDAnyURI;
 import com.sensia.relaxNG.XSDBoolean;
 import com.sensia.relaxNG.XSDDateTime;
@@ -140,6 +146,38 @@ public class AdvancedViewerRenderer extends AdvancedRendererSML{
 			pushAndVisitChildren(new AdvancedViewerAttributeDefinitionPanel(att,getRefreshHandler()),att.getChildren());
 		} else {
 			super.visit(att);
+		}
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGChoice)
+	 */
+	@Override
+	public void visit(RNGChoice choice) {
+		RNGTag selectedPattern = choice.getSelectedPattern();
+		if(selectedPattern != null) {
+			selectedPattern.accept(this);
+		} 
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGZeroOrMore)
+	 */
+	@Override
+	public void visit(RNGZeroOrMore zeroOrMore) {
+		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
+		for(List<RNGTag> tags : patternInstances) {
+			this.visitChildren(tags);
+		}
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGOptional)
+	 */
+	@Override
+	public void visit(RNGOptional optional) {
+		if(optional.isSelected()){
+			this.visitChildren(optional.getChildren());
 		}
 	}
 }
