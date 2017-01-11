@@ -904,3 +904,14 @@ input:focus {
 .document-description-panel {
 	margin-right:10px;
 }
+
+.advanced-simple-element-panel .gwt-TextBox .textbox {
+	width:200px !important;
+}
+.gwt-TextBox {
+	width:200px !important;
+}
+
+.gwt-ListBox {
+    width: 200px !important;
+}
