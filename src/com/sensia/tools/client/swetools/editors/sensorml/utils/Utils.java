@@ -32,6 +32,7 @@ import com.sensia.relaxNG.RNGTagList;
 import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ILoadFileCallback;
+import com.smartgwt.client.widgets.Canvas;
 
 public class Utils {
 
@@ -100,18 +101,20 @@ public class Utils {
 		return dialogBox;
 	}
 	
-	public static final CloseDialog displayDialogBox(final Panel panel,final String title){
-		final CloseDialog dialogBox = new CloseDialog(title);
+	
+	public static final CloseWindow displayDialogBox(final Panel panel,final String title){
+		final CloseWindow dialogBox = new CloseWindow(title,true);
 		dialogBox.setContent(panel);
-		dialogBox.center();
+
+		dialogBox.draw();
 		return dialogBox;
 	}
 	
-	public static final CloseDialog displaySaveDialogBox(final Panel panel,final String title){
-		final CloseDialog dialogBox = new CloseDialog(title);
+	public static final CloseWindow displaySaveDialogBox(final Panel panel,final String title){
+		final CloseWindow dialogBox = new CloseWindow(title,false);
 		dialogBox.setContent(panel);
-		dialogBox.showSaveButton();
-		dialogBox.center();
+		dialogBox.draw();
+		
 		return dialogBox;
 	}
 	

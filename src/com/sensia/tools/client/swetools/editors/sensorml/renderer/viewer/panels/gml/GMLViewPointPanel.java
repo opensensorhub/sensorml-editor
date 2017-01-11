@@ -13,7 +13,7 @@ import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.map.GenericPointMap;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseDialog;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class GMLViewPointPanel extends AbstractPanel<RNGElement>{

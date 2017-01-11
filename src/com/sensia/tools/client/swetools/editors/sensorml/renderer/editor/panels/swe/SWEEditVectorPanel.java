@@ -17,7 +17,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.map.GenericPointMap;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSubSectionElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseDialog;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.ModelHelper;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
@@ -132,7 +132,7 @@ public class SWEEditVectorPanel extends EditSubSectionElementPanel{
 	}
 	
 	protected void createDialog(final GenericPointMap pointMap) {
-		CloseDialog dialog = Utils.displaySaveDialogBox(pointMap.getPanel(), "Point position");
+		CloseWindow dialog = Utils.displaySaveDialogBox(pointMap.getPanel(), "Point position");
 		dialog.addSaveHandler(new ClickHandler() {
 			
 			@Override

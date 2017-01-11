@@ -25,7 +25,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.Dis
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.EditIconPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.Renderer;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseDialog;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class EditSectionElementPanel extends DisclosureElementPanel{

@@ -20,7 +20,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseDialog;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -44,7 +44,7 @@ public abstract class AbstractAdvancedAttributeOntologyIconPanel<T extends RNGTa
 			@Override
 			public void onClick(ClickEvent event) {
 				final OntologyPanel ontologyPanel = new OntologyPanel();
-				CloseDialog dialogBox = Utils.displaySaveDialogBox(ontologyPanel.getPanel(),"SWE Ontology");
+				CloseWindow dialogBox = Utils.displaySaveDialogBox(ontologyPanel.getPanel(),"SWE Ontology");
 				dialogBox.addSaveHandler(new ClickHandler(){
 					@Override
 					public void onClick(ClickEvent event) {

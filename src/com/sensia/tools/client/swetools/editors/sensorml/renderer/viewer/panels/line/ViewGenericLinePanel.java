@@ -6,7 +6,7 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advancedviewer.AdvancedViewerRenderer;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseDialog;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public abstract class ViewGenericLinePanel<T extends RNGTag> extends AbstractGenericLinePanel<T>{
@@ -19,7 +19,7 @@ public abstract class ViewGenericLinePanel<T extends RNGTag> extends AbstractGen
 	}
 	
 	@Override
-	protected CloseDialog getAndDisplayAdvancedCloseDialog(Panel rootPanel, RNGElement element) {
+	protected CloseWindow getAndDisplayAdvancedCloseDialog(Panel rootPanel, RNGElement element) {
 		return Utils.displayDialogBox(rootPanel, "View "+element.getName());
 	}
 }

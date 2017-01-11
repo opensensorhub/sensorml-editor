@@ -15,7 +15,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.map.GenericLineMap;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSubSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.dataarray.SWEEditDataArrayPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseDialog;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.ModelHelper;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -82,7 +82,7 @@ public class SMLEditPositionByTrajectoryPanel extends EditSubSectionElementPanel
 	}
 	
 	protected void createDialog(final GenericLineMap lineMap) {
-		CloseDialog dialog = Utils.displaySaveDialogBox(lineMap.getPanel(), "Line position");
+		CloseWindow dialog = Utils.displaySaveDialogBox(lineMap.getPanel(), "Line position");
 		dialog.addSaveHandler(new ClickHandler() {
 			
 			@Override
