@@ -110,6 +110,14 @@ public class Utils {
 		return dialogBox;
 	}
 	
+	public static final CloseWindow displayDialogBox(final Widget panel,final String title,String css){
+		final CloseWindow dialogBox = new CloseWindow(title,false,css);
+		dialogBox.setContent(panel);
+
+		dialogBox.draw();
+		return dialogBox;
+	}
+	
 	public static final CloseWindow displaySaveDialogBox(final Panel panel,final String title){
 		final CloseWindow dialogBox = new CloseWindow(title,false);
 		dialogBox.setContent(panel);

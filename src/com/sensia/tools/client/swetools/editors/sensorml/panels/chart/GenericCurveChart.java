@@ -26,6 +26,7 @@ import org.moxieapps.gwt.highcharts.client.plotOptions.SeriesPlotOptions;
 
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.ScrollPanel;
+import com.google.gwt.user.client.ui.Widget;
 
 /**
  * The Class GenericCurveChart.
@@ -114,12 +115,12 @@ public class GenericCurveChart{
 	 * @param title the title
 	 * @return the panel
 	 */
-	public Panel createChart(final String title) {
+	public Widget createChart(final String title) {
 		chart = new Chart()  
         .setType(Series.Type.LINE)  
         .setChartTitle(new ChartTitle()  
             .setText(title)  
-        )  
+        )
         .setToolTip(new ToolTip()  
                 .setShared(true)  
                 .setCrosshairs(true)  
@@ -143,10 +144,12 @@ public class GenericCurveChart{
 	        .setFloating(false)  
 	        .setBorderWidth(0));
      
-	    ScrollPanel sPanel = new ScrollPanel();
-	    chart.setStyleName("chart-panel");
-		sPanel.add(chart);
-		
-		return sPanel;
+		chart.setWidth100();
+		chart.setHeight100();
+		return chart;
+	}
+	
+	public void redraw() {
+		chart.setSizeToMatchContainer();
 	}
 }

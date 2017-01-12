@@ -13,6 +13,7 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.Widget;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
@@ -20,15 +21,24 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.chart.GenericCurveChart;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.chart.GenericTable;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.chart.SmartGWTGenericCurveChart;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.line.EditGenericLinePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEditEncodingPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.table.IDataChangeHandler;
+import com.sensia.tools.client.swetools.editors.sensorml.table.ITable;
+import com.sensia.tools.client.swetools.editors.sensorml.table.SmartGWTGenericTable;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.ModelHelper;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
+import com.smartgwt.client.widgets.events.ResizedEvent;
+import com.smartgwt.client.widgets.events.ResizedHandler;
+import com.smartgwt.client.widgets.form.fields.events.ChangeEvent;
+import com.smartgwt.client.widgets.form.fields.events.ChangeHandler;
 
 public class SWEEditDataArrayLinePanel extends EditGenericLinePanel<RNGElement> {
 
-	private Object [][] values;
+	private String [][] values;
 	private String title;
 	private List<String> axis;
 	private String tokenSeparator;
@@ -94,7 +104,7 @@ public class SWEEditDataArrayLinePanel extends EditGenericLinePanel<RNGElement> 
 		
 		if(blocks.length > 0) {
 			int nbElementInBlock  = blocks[0].split(tokenSeparator).length;
-			values = new Object[blocks.length] [nbElementInBlock];
+			values = new String[blocks.length] [nbElementInBlock];
 			
 			int i=0;
 			for(final String block : blocks) {
@@ -190,16 +200,41 @@ public class SWEEditDataArrayLinePanel extends EditGenericLinePanel<RNGElement> 
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				final GenericTable table = new GenericTable();
-				Panel tablePanel = table.createTable();
+				final ITable<String> table = new SmartGWTGenericTable<String>(editable);
+				Widget tablePanel = table.getTablePanel();
 				
-				table.setEditable(editable);
+				//table.setEditable(editable);
 				//Get headers
 				//populates the table with the headers + data
 				//headers are corresponding to the label/name of the field
 				table.poupulateTable(axis, values);
 				
-				Utils.displayDialogBox(tablePanel,title);
+				Utils.displayDialogBox(tablePanel,title,"dialog-datatable");
+				
+				// add handler for edit mode
+				table.addDataChangeHandler(new IDataChangeHandler() {
+					
+					@Override
+					public void onChange() {
+						Object[][] values = table.getValues();
+						// save into model
+						RNGElement valueElt = (RNGElement) valuesPanel.getTag();
+						
+						String newValues = "";
+						for(int i=0;i < values.length;i++) {
+							for(int j=0;j < values[0].length;j++) {
+								if(j == values[0].length-1) {
+									newValues += values[i][j];
+								} else {
+									newValues += values[i][j]+tokenSeparator;
+								}
+							}
+							newValues += blockSeparator;
+						}
+						valueElt.setChildValueText(newValues);
+						handleValues(valuesPanel);
+					}
+				});
 			}
 		});
 		
@@ -221,9 +256,16 @@ public class SWEEditDataArrayLinePanel extends EditGenericLinePanel<RNGElement> 
 			@Override
 			public void onClick(ClickEvent event) {
 				final GenericCurveChart chart = new GenericCurveChart();
-				Panel chartPanel = chart.createChart(title);
+				Widget chartPanel = chart.createChart(title);
 				chart.populateTable(title, axis, values);
-				Utils.displayDialogBox(chartPanel,title);
+				CloseWindow dialog = Utils.displayDialogBox(chartPanel,title,"dialog-chart");
+				dialog.addResizedHandler(new ResizedHandler() {
+					
+					@Override
+					public void onResized(ResizedEvent event) {
+						chart.redraw();
+					}
+				});
 			}
 		});
 		graphIconPanel.add(graphicImageWrapper);
