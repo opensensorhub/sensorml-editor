@@ -155,9 +155,23 @@ public class RNGWriter
         
         else if (tag instanceof RNGOptional)
         {
-            RNGOptional opt = (RNGOptional)tag;
+            /*RNGOptional opt = (RNGOptional)tag;
                         
             if (!opt.isDisabled())
+            {
+                Element newElt = dom.createElement("optional");
+                parentNode.appendChild(newElt);
+                
+                if (keepUserInput)
+                    newElt.setAttribute("selected", Boolean.toString(opt.isSelected()));
+                
+                for (RNGTag child: opt.getChildren())
+                    writeRNGTag(child, dom, newElt);
+            }*/
+        	
+        	RNGOptional opt = (RNGOptional)tag;
+            
+            if (!opt.isDisabled() && opt.isSelected())
             {
                 Element newElt = dom.createElement("optional");
                 parentNode.appendChild(newElt);
@@ -172,7 +186,7 @@ public class RNGWriter
         
         else if (tag instanceof RNGChoice)
         {
-            RNGChoice choice = (RNGChoice)tag;
+           /* RNGChoice choice = (RNGChoice)tag;
             Element newElt = dom.createElement("choice");
             parentNode.appendChild(newElt);
             
@@ -188,6 +202,19 @@ public class RNGWriter
                     writeRNGTag(item, dom, newElt);
                     if (keepUserInput && i == selectedIndex)
                         ((Element)newElt.getLastChild()).setAttribute("selected", "true");
+                }
+            }*/
+        	
+        	RNGChoice choice = (RNGChoice)tag;
+            Element newElt = dom.createElement("choice");
+            parentNode.appendChild(newElt);
+            
+            int selectedIndex = choice.getSelectedIndex();
+            if(selectedIndex >= 0 ){
+            	RNGTag item = choice.getItems().get(selectedIndex);
+                if (!item.isDisabled()) {
+                    writeRNGTag(item, dom, newElt);
+                    ((Element)newElt.getLastChild()).setAttribute("selected", "true");
                 }
             }
         }
@@ -215,12 +242,12 @@ public class RNGWriter
                         Element occElt = dom.createElement("occurence");
                         for (RNGTag item: tagList)
                             writeRNGTag(item, dom, occElt);
-                        newElt.appendChild(newElt);
+                        newElt.appendChild(occElt);
                     }
                 }
                 
-                for (RNGTag child: zeroOrMore.getChildren())
-                    writeRNGTag(child, dom, newElt);
+                //for (RNGTag child: zeroOrMore.getChildren())
+                 //   writeRNGTag(child, dom, newElt);
             }            
         }
         
@@ -240,6 +267,11 @@ public class RNGWriter
             Element newElt = dom.createElement("ref");
             newElt.setAttribute("name", ref.getId());
             parentNode.appendChild(newElt);
+            
+            if (ref.getPattern() != null) {
+                for (RNGTag child: ref.getPattern().getChildren())
+                    writeRNGTag(child, dom, parentNode);
+            }
         }
         
         else if (tag instanceof RNGValue)
