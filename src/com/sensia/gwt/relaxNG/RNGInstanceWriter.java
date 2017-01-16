@@ -25,6 +25,7 @@ import com.google.gwt.xml.client.XMLParser;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGData;
+import com.sensia.relaxNG.RNGDefine;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.relaxNG.RNGGroup;
@@ -119,10 +120,12 @@ public class RNGInstanceWriter
         else if (tag instanceof RNGChoice)
         {
             RNGChoice choice = (RNGChoice)tag;
-            if (choice.isSelected())
-                text = writeRNGTag(choice.getSelectedPattern(), dom, parentNode);
-            else
-                error = NO_CHOICE;
+            if(choice.isSelected()) {
+	            if (choice.getSelectedIndex() >= 0) 
+	                text = writeRNGTag(choice.getSelectedPattern(), dom, parentNode);
+	            else
+	                error = NO_CHOICE;
+            }
         }
         
         else if (tag instanceof RNGZeroOrMore)
@@ -165,7 +168,12 @@ public class RNGInstanceWriter
             else
                 error = NO_REF;
         }
-        
+        else if (tag instanceof RNGDefine)
+        {
+        	RNGDefine def = (RNGDefine)tag;
+             for (RNGTag child: def.getChildren())
+                writeRNGTag(child, dom, parentNode);
+        }
         else if (tag instanceof RNGValue)
         {
             text = ((RNGValue)tag).getText();

@@ -118,7 +118,7 @@ public class RNGWriter
             //parentNode.appendChild(newElt);
             
             for (RNGTag child: def.getChildren())
-                writeRNGTag(child, dom, newElt);
+                writeRNGTag(child, dom, parentNode);
         }
         
         else if (tag instanceof RNGElement)
@@ -150,7 +150,7 @@ public class RNGWriter
             //parentNode.appendChild(newElt);
             
             for (RNGTag child: grp.getChildren())
-                writeRNGTag(child, dom, newElt);
+                writeRNGTag(child, dom, parentNode);
         }
         
         else if (tag instanceof RNGOptional)
