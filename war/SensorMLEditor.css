@@ -765,6 +765,7 @@ input:focus {
 
 .attribute-panel-advanced .gwt-HTML {
 	min-width:100px;
+	margin-bottom:5px;
 }
 
 .attribute-panel-advanced .textbox {
