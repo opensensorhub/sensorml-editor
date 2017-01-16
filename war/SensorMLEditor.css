@@ -767,6 +767,10 @@ input:focus {
 	min-width:100px;
 }
 
+.attribute-panel-advanced .textbox {
+	margin-bottom:5px;	
+}
+
 .advanced-simple-element-panel {
 }
 
