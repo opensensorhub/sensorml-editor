@@ -6,6 +6,7 @@ import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
@@ -31,7 +32,9 @@ public class RNGChoicePanel extends AbstractPanel<RNGChoice>{
 		patternContainer.addStyleName("rng-choice-pattern");
 		
 		HorizontalPanel selectHeader = new HorizontalPanel();
-		selectHeader.add(new Label(Utils.findLabel(tag) + ": "));
+		HTML htmlLabel = new HTML(Utils.findLabel(tag) + ": ");
+		htmlLabel.addStyleName("rng-optional-label");
+		selectHeader.add(htmlLabel);
 		choices = new ListBox();
 		selectHeader.add(choices);
 		container.add(selectHeader);
