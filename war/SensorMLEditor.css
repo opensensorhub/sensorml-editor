@@ -761,6 +761,7 @@ input:focus {
 }
 
 .editor .attribute-panel-edit {
+	margin-bottom:5px;
 }
 
 .attribute-panel-advanced .gwt-HTML {
