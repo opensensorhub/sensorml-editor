@@ -32,10 +32,15 @@ public class RNGChoicePanel extends AbstractPanel<RNGChoice>{
 		patternContainer.addStyleName("rng-choice-pattern");
 		
 		HorizontalPanel selectHeader = new HorizontalPanel();
-		HTML htmlLabel = new HTML(Utils.findLabel(tag) + ": ");
+		//TODO: check that we take the parent tag for the choice box name
+		String strLabel = Utils.findLabel(tag);
+		HTML htmlLabel = new HTML(strLabel + ": ");
 		htmlLabel.addStyleName("rng-optional-label");
 		selectHeader.add(htmlLabel);
 		choices = new ListBox();
+		
+		//TODO: hide the label for now
+		htmlLabel.setVisible(strLabel != null && !strLabel.trim().isEmpty());
 		selectHeader.add(choices);
 		container.add(selectHeader);
 		container.add(patternContainer);
