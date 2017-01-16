@@ -115,7 +115,7 @@ public class RNGWriter
             RNGDefine def = (RNGDefine)tag;
             Element newElt = dom.createElement("define");
             newElt.setAttribute("name", def.getId());
-            parentNode.appendChild(newElt);
+            //parentNode.appendChild(newElt);
             
             for (RNGTag child: def.getChildren())
                 writeRNGTag(child, dom, newElt);
@@ -147,7 +147,7 @@ public class RNGWriter
         {
             RNGGroup grp = (RNGGroup)tag;
             Element newElt = dom.createElement("group");
-            parentNode.appendChild(newElt);
+            //parentNode.appendChild(newElt);
             
             for (RNGTag child: grp.getChildren())
                 writeRNGTag(child, dom, newElt);
@@ -176,8 +176,8 @@ public class RNGWriter
                 Element newElt = dom.createElement("optional");
                 parentNode.appendChild(newElt);
                 
-                if (keepUserInput)
-                    newElt.setAttribute("selected", Boolean.toString(opt.isSelected()));
+                //if (keepUserInput)
+                    //newElt.setAttribute("selected", Boolean.toString(opt.isSelected()));
                 
                 for (RNGTag child: opt.getChildren())
                     writeRNGTag(child, dom, newElt);
@@ -214,7 +214,7 @@ public class RNGWriter
             	RNGTag item = choice.getItems().get(selectedIndex);
                 if (!item.isDisabled()) {
                     writeRNGTag(item, dom, newElt);
-                    ((Element)newElt.getLastChild()).setAttribute("selected", "true");
+                    //((Element)newElt.getLastChild()).setAttribute("selected", "true");
                 }
             }
         }
@@ -239,10 +239,10 @@ public class RNGWriter
                 {
                     for (List<RNGTag> tagList: zeroOrMore.getPatternInstances())
                     {
-                        Element occElt = dom.createElement("occurence");
+                        //Element occElt = dom.createElement("occurence");
                         for (RNGTag item: tagList)
-                            writeRNGTag(item, dom, occElt);
-                        newElt.appendChild(occElt);
+                            writeRNGTag(item, dom, newElt);
+                        //newElt.appendChild(occElt);
                     }
                 }
                 
@@ -255,7 +255,7 @@ public class RNGWriter
         {
             RNGList list = (RNGList)tag;
             Element newElt = dom.createElement("list");
-            parentNode.appendChild(newElt);
+            //parentNode.appendChild(newElt);
             
             for (RNGTag child: list.getChildren())
                 writeRNGTag(child, dom, newElt);
@@ -266,7 +266,7 @@ public class RNGWriter
             RNGRef ref = (RNGRef)tag;
             Element newElt = dom.createElement("ref");
             newElt.setAttribute("name", ref.getId());
-            parentNode.appendChild(newElt);
+            //parentNode.appendChild(newElt);
             
             if (ref.getPattern() != null) {
                 for (RNGTag child: ref.getPattern().getChildren())
