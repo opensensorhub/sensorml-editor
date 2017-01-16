@@ -23,7 +23,6 @@ public abstract class AbstractViewAttributeHrefPanel extends AbstractPanel<RNGAt
 	/** The anchor href. */
 	private Anchor anchorHref;
 	private IPanel<? extends RNGTag> valuePanel;
-	private Image ontologyImage;
 	
 	//TODO: add textbox to edit value??
 	
@@ -41,11 +40,6 @@ public abstract class AbstractViewAttributeHrefPanel extends AbstractPanel<RNGAt
 		anchorHref.setTarget("_blank");
 		
 		container.add(anchorHref);
-		
-		//creates an ontology icon
-		ontologyImage = new Image(GWT.getModuleBaseURL()+"images/ontology.png");
-		ontologyImage.setTitle("Ontology");
-		ontologyImage.setStyleName("ontology-icon");
 	}
 	
 	
@@ -60,6 +54,10 @@ public abstract class AbstractViewAttributeHrefPanel extends AbstractPanel<RNGAt
 		} 
 	}
 
+	public Anchor getAnchorHref() {
+		return anchorHref;
+	}
+	
 	@Override
 	protected AbstractPanel<RNGAttribute> newInstance() {
 		return null;
