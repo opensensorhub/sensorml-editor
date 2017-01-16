@@ -6,7 +6,7 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewXLinkHrefPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.AbstractViewAttributeHrefPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.element.ViewSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -25,8 +25,8 @@ public class SMLViewTypeOfPanel extends ViewSectionElementPanel{
 			if(hrefAtt.getName().equals("href")) {
 				remotePath = hrefAtt.getChildValueText();
 			}
-			if(element instanceof ViewXLinkHrefPanel) {
-					Anchor anchor = ((ViewXLinkHrefPanel)element).getAnchorHref();
+			if(element instanceof AbstractViewAttributeHrefPanel) {
+					Anchor anchor = ((AbstractViewAttributeHrefPanel)element).getAnchorHref();
 					anchor.setHref(Utils.getCurrentURL(anchor.getHref()));
 			}
 		}
