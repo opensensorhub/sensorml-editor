@@ -20,7 +20,7 @@ public class AdvancedSimpleElementPanel extends AbstractPanel<RNGElement>{
 		super(element);
 		
 		container = new HorizontalPanel();
-		container.add(new HTML(label+":"+SMLEditorConstants.HTML_SPACE));
+		container.add(new HTML(Utils.toNiceLabel(label)+":"+SMLEditorConstants.HTML_SPACE));
 		container.addStyleName("advanced-simple-element-panel");
 	}
 	

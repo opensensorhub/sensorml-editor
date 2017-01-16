@@ -3,6 +3,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.pane
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
@@ -11,7 +12,6 @@ import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -19,7 +19,7 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 
 	private Panel patternContainer;
 	private Panel headerPanel;
-	private Label addButton;
+	private HTML addButton;
 	
 	public RNGOptionalPanel(final RNGOptional tag,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
@@ -28,21 +28,22 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 		
 		final String label = Utils.findLabel(tag);
 		
-		addButton = new Label();
+		addButton = new HTML();
 		headerPanel = new HorizontalPanel();
 		container.add(headerPanel);
 		container.add(patternContainer);
-		
+
+		HTML htmlLabel = new HTML(Utils.toNiceLabel(label));
 		if(tag.isSelected()) {
 			addButton.addStyleName("rng-optional-select-remove");
-			headerPanel.add(new Label(label));
-			headerPanel.add(addButton);
 		} else {
 			addButton.addStyleName("rng-optional-select-add");
-			headerPanel.add(new Label(label));
-			headerPanel.add(addButton);
 		}
 		
+		headerPanel.add(htmlLabel);
+		headerPanel.addStyleName("rng-optional-select-label");
+		
+		headerPanel.add(addButton);
 		addButton.addClickHandler(new ClickHandler() {
 			
 			@Override

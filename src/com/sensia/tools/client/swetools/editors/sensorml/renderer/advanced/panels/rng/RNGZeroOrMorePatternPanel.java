@@ -2,6 +2,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.pane
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
@@ -18,7 +19,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 
 	private Panel patternContainer;
-	private Label removeButton;
+	private HTML removeButton;
 	
 	public RNGZeroOrMorePatternPanel(final RNGZeroOrMore tag,final int indexPattern,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
@@ -28,10 +29,10 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 		
 		final String label = Utils.findLabel(tag);
 		
-		removeButton = new Label();
+		removeButton = new HTML();
 		Panel hPanel = new HorizontalPanel();
 		hPanel.add(removeButton);
-		hPanel.add(new Label(label));
+		hPanel.add(new HTML(Utils.toNiceLabel(label)));
 		
 		container.add(hPanel);
 		container.add(patternContainer);

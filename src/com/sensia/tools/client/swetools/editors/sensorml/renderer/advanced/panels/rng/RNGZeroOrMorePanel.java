@@ -2,6 +2,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.pane
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
@@ -11,8 +12,6 @@ import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.ViewerPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
@@ -26,12 +25,13 @@ public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 		patternContainer.addStyleName("rng-zeroormore-pattern");
 		
 		final String label = Utils.findLabel(tag);
-		Label addButton = new Label();
+		HTML addButton = new HTML();
 		addButton.addStyleName("rng-optional-select");
 		
 		HorizontalPanel headerPanel = new HorizontalPanel();
-		headerPanel.add(new Label(label));
+		headerPanel.add(new HTML(Utils.toNiceLabel(label)));
 		headerPanel.add(addButton);
+		headerPanel.addStyleName("rng-optional-select-label");
 		
 		container.add(headerPanel);
 		container.add(patternContainer);
