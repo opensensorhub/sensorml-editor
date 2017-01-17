@@ -20,6 +20,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.ModelHelper;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class SWEEditVectorPanel extends EditSubSectionElementPanel{
@@ -132,7 +133,7 @@ public class SWEEditVectorPanel extends EditSubSectionElementPanel{
 	}
 	
 	protected void createDialog(final GenericPointMap pointMap) {
-		CloseWindow dialog = Utils.displaySaveDialogBox(pointMap.getPanel(), "Point position");
+		SaveCloseWindow dialog = Utils.displaySaveDialogBox(pointMap.getPanel(), "Point position");
 		dialog.addSaveHandler(new ClickHandler() {
 			
 			@Override

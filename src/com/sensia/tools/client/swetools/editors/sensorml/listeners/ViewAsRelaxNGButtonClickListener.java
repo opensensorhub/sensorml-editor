@@ -15,8 +15,11 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.ScrollPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.xml.client.Document;
 import com.sensia.gwt.relaxNG.RNGInstanceWriter;
 import com.sensia.gwt.relaxNG.RNGWriter;
@@ -24,7 +27,11 @@ import com.sensia.gwt.relaxNG.XMLSerializer;
 import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.FileUploadPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
+import com.smartgwt.client.widgets.Canvas;
+import com.smartgwt.client.widgets.layout.HLayout;
 
 /**
  * The listener interface for receiving viewAsXMLButtonClick events.
@@ -70,48 +77,12 @@ public class ViewAsRelaxNGButtonClickListener implements ClickHandler{
 			
 	        //creates main panel
 	        ScrollPanel panel = new ScrollPanel(labelXml);
-			panel.setHeight("550px");
-			panel.setWidth("1024px");
-			
-			//adds Validate, Close and Save buttons
-			final Button validateButton = new Button("Validate");
-			final Button closeButton = new Button("Close");
-			final Button saveButton = new Button("Save");
 			final FileUploadPanel saveFile = new FileUploadPanel();
 			
-			//init file upload panel
-			final FileUploadPanel fileUploadPanel = new FileUploadPanel();
-			final HTML schemaLabel = new HTML("<b>Schema:</b>");
-			
-			//TODO: functionality is disabled for now
-			validateButton.setVisible(false);
-			schemaLabel.setVisible(false);
-			fileUploadPanel.getPanel().setVisible(false);
-			
-			final DialogBox dialogBox = Utils.createCustomDialogBox(panel, "Sensor ML document",validateButton,saveButton,closeButton,schemaLabel,fileUploadPanel.getPanel());
-			
-			//adds listener to Close button
-			closeButton.addClickHandler(new ClickHandler() {
-				
-				@Override
-				public void onClick(ClickEvent event) {
-					dialogBox.hide();
-				}
-			});
-			
-			//adds listener to Validate button
-			validateButton.addClickHandler(new ClickHandler() {
-				
-				@Override
-				public void onClick(ClickEvent event) {
-					validate(xml,fileUploadPanel.getContents());
-				}
-			});
-			
-			
-			//adds listener to Save button
-			saveButton.addClickHandler(new ClickHandler() {
-				
+			VerticalPanel main = new VerticalPanel();
+			main.add(panel);
+			final SaveCloseWindow dialog = Utils.displaySaveDialogBox(main, "Sensor ML document");
+			dialog.addSaveHandler(new ClickHandler(){
 				@Override
 				public void onClick(ClickEvent event) {
 					//save(xml);
@@ -127,6 +98,7 @@ public class ViewAsRelaxNGButtonClickListener implements ClickHandler{
 					//saveFile.click();
 				}
 			});
+			dialog.setExitOnSave(false);
 		}
 	}
 	

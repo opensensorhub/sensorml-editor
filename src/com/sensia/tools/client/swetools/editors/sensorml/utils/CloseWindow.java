@@ -42,11 +42,16 @@ public class CloseWindow extends Window {
 			
 			@Override
 			public void onCloseClick(CloseClickEvent event) {
-				c.destroy();
-				CloseWindow.this.markForDestroy();
+				closeDialog();
 			}
 		});
 		
+	}
+	
+	protected void closeDialog() {
+		hide();
+		c.destroy();
+		markForDestroy();
 	}
 	
 	private void centerTitle() {
@@ -60,13 +65,7 @@ public class CloseWindow extends Window {
 		setHeaderControls(l, HeaderControls.HEADER_LABEL, HeaderControls.CLOSE_BUTTON);
 	}
 	
-	public void showSaveButton() {
-	}
-	
 	public void addCloseHandler(ClickHandler handler) {
-	}
-	
-	public void addSaveHandler(ClickHandler handler) {
 	}
 	
 	public void setContent(Panel panel) {
@@ -86,8 +85,7 @@ public class CloseWindow extends Window {
 	public void center() {
 	}
 	
-	@Override
-	public void redraw() {
+	public void redrawDialog() {
 		c.adjustForContent(true);
 		//c.redraw();
 	}

@@ -31,76 +31,13 @@ import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGTagList;
 import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
+import com.sensia.tools.client.swetools.editors.sensorml.listeners.ICallback;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ILoadFileCallback;
 import com.smartgwt.client.widgets.Canvas;
 
 public class Utils {
 
 	private Utils(){}
-	
-	public static final DialogBox createCustomDialogBox(final Panel panel,final String title,final Widget... widgets){
-		final DialogBox dialogBox = new DialogBox();
-		dialogBox.setText(title);
-		dialogBox.setGlassEnabled(true);
-		dialogBox.setAnimationEnabled(true);
-		
-		//create Panel
-		Panel main = new VerticalPanel();
-		
-		HorizontalPanel buttonsPanel = new HorizontalPanel();
-		for(Widget widget : widgets) {
-			buttonsPanel.add(widget);
-		}
-		
-		buttonsPanel.setSpacing(5);
-		
-		main.add(panel);
-		main.add(buttonsPanel);
-		
-		dialogBox.add(main);
-		dialogBox.center();
-         
-		return dialogBox;
-	}
-	
-	public static final DialogBox createAddDialogBox(final Panel panel,final String title,final IButtonCallback addCB){
-		final DialogBox dialogBox = new DialogBox();
-		dialogBox.setText(title);
-		dialogBox.setGlassEnabled(true);
-		dialogBox.setAnimationEnabled(true);
-		
-		//create Panel
-		Panel main = new VerticalPanel();
-		
-		Button close = new Button("Close");
-		close.addClickHandler(new ClickHandler() {
-           public void onClick(ClickEvent event) {
-        	   dialogBox.hide();
-           }
-        });
-        
-		Button add = new Button("Add");
-		add.addClickHandler(new ClickHandler() {
-           public void onClick(ClickEvent event) {
-        	   addCB.onClick();
-        	   dialogBox.hide();
-           }
-        });
-		
-		HorizontalPanel buttons = new HorizontalPanel();
-		buttons.add(add);
-		buttons.add(close);
-		buttons.setSpacing(5);
-		
-		main.add(panel);
-		main.add(buttons);
-		
-		dialogBox.add(main);
-		dialogBox.center();
-         
-		return dialogBox;
-	}
-	
 	
 	public static final CloseWindow displayDialogBox(final Panel panel,final String title){
 		final CloseWindow dialogBox = new CloseWindow(title,true);
@@ -118,41 +55,21 @@ public class Utils {
 		return dialogBox;
 	}
 	
-	public static final CloseWindow displaySaveDialogBox(final Panel panel,final String title){
-		final CloseWindow dialogBox = new CloseWindow(title,false);
+	public static final SaveCloseWindow displaySaveDialogBox(final Panel panel,final String title,String css){
+		final SaveCloseWindow dialogBox = new SaveCloseWindow(title,false);
+		
 		dialogBox.setContent(panel);
 		dialogBox.draw();
 		
 		return dialogBox;
 	}
 	
-	public static final DialogBox createDialogBox(final Panel panel,final String title,final IButtonCallback addCB){
-		final DialogBox dialogBox = new DialogBox();
-		dialogBox.setText(title);
-		dialogBox.setGlassEnabled(true);
-		dialogBox.setAnimationEnabled(true);
+	public static final SaveCloseWindow displaySaveDialogBox(final Panel panel,final String title){
+		final SaveCloseWindow dialogBox = new SaveCloseWindow(title,false);
 		
-		//create Panel
-		VerticalPanel main = new VerticalPanel();
+		dialogBox.setContent(panel);
+		dialogBox.draw();
 		
-		Button close = new Button("Close");
-		close.addClickHandler(new ClickHandler() {
-           public void onClick(ClickEvent event) {
-        	   dialogBox.hide();
-           }
-        });
-        
-		HorizontalPanel buttons = new HorizontalPanel();
-		buttons.add(close);
-		buttons.setSpacing(5);
-		
-		main.add(panel);
-		main.add(buttons);
-		
-		main.setSpacing(10);
-		dialogBox.add(main);
-		dialogBox.center();
-         
 		return dialogBox;
 	}
 	

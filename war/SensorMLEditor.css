@@ -909,6 +909,7 @@ input:focus {
 .gwt-TextBox {
 	width:200px !important;
 	height: 23px !important;
+	margin-bottom: 5px;
 }
 
 /** Set the same margin as the listbox margin **/
@@ -936,4 +937,17 @@ input:focus {
 .dialog-datatable{
 }
 .dialog-chart{
+}
+
+/** smartgwt status bar**/
+.windowStatusBar {
+	display:none;
+}
+.smartgwt-dialog-save-button {
+	height:45px !important;
+	padding: 5 5 5 5;
+}
+
+.smartgwt-dialog-save-button div{
+	font-size:17px;
 }

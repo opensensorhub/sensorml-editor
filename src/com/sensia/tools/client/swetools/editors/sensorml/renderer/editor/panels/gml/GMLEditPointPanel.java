@@ -16,6 +16,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.map.GenericPointMap;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSimpleElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class GMLEditPointPanel extends EditSimpleElementPanel{
@@ -58,7 +59,7 @@ public class GMLEditPointPanel extends EditSimpleElementPanel{
 					double lon = Double.parseDouble(split[1]);
 					
 					final GenericPointMap pointMap = new GenericPointMap(lat, lon, epsg, true);
-					CloseWindow dialog = Utils.displaySaveDialogBox(pointMap.getPanel(), "Point position");
+					SaveCloseWindow dialog = Utils.displaySaveDialogBox(pointMap.getPanel(), "Point position");
 					dialog.addSaveHandler(new ClickHandler() {
 						
 						@Override

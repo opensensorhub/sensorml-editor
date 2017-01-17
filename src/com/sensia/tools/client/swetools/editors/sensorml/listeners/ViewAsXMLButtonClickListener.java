@@ -10,6 +10,8 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.listeners;
 
+import org.apache.commons.io.input.ClosedInputStream;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
@@ -19,14 +21,19 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.FileUpload;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.ScrollPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.xml.client.Document;
 import com.sensia.gwt.relaxNG.RNGInstanceWriter;
 import com.sensia.gwt.relaxNG.XMLSerializer;
 import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.FileUploadPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**
@@ -91,16 +98,20 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 			schemaLabel.setVisible(false);
 			fileUploadPanel.getPanel().setVisible(false);
 			
-			final DialogBox dialogBox = Utils.createCustomDialogBox(panel, "Sensor ML document",validateButton,saveButton,closeButton,schemaLabel,fileUploadPanel.getPanel());
+			//create Panel
+			Panel main = new VerticalPanel();
 			
-			//adds listener to Close button
-			closeButton.addClickHandler(new ClickHandler() {
-				
-				@Override
-				public void onClick(ClickEvent event) {
-					dialogBox.hide();
-				}
-			});
+			HorizontalPanel buttonsPanel = new HorizontalPanel();
+			buttonsPanel.add(validateButton);
+			buttonsPanel.add(saveButton);
+			buttonsPanel.add(fileUploadPanel.getPanel());
+			
+			buttonsPanel.setSpacing(5);
+			
+			main.add(panel);
+			main.add(buttonsPanel);
+			
+			final CloseWindow dialog = Utils.displayDialogBox(main, "Sensor ML document");
 			
 			//adds listener to Validate button
 			validateButton.addClickHandler(new ClickHandler() {

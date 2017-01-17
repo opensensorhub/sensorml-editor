@@ -25,6 +25,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.Renderer;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**
@@ -164,7 +165,7 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 				if(refreshHandler != null) {
 					refreshHandler.refresh();
 				}
-				dialogBox.redraw();
+				dialogBox.redrawDialog();
 			}
 		});
 
@@ -172,13 +173,13 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 		rootPanel.add(renderer.getRoot().getPanel());
 		
 		renderer.getRoot().getPanel().addStyleName("advanced-panel");
-		dialogBox.redraw();
+		dialogBox.redrawDialog();
 		
 		
 	}
 	
 	protected CloseWindow getAndDisplayAdvancedCloseDialog(Panel rootPanel, RNGElement element) {
-		final CloseWindow dialogBox = Utils.displaySaveDialogBox(rootPanel, "Edit "+element.getName());
+		final SaveCloseWindow dialogBox = Utils.displaySaveDialogBox(rootPanel, "Edit "+element.getName());
 		dialogBox.addSaveHandler(new ClickHandler(){
 			@Override
 			public void onClick(ClickEvent event) {
