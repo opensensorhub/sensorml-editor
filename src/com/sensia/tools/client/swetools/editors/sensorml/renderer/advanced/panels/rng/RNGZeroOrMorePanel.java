@@ -41,11 +41,7 @@ public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				//RNGRendererSML newRenderer = new RNGRendererSML();
 				tag.newOccurence();
-				//container.add(newRenderer.getRoot().getPanel());
-				//TODO: use MVC or MVP to update the view
-				//ViewerPanel.getInstance(null).redraw();
 				
 				if(refreshHandler != null) {
 					refreshHandler.refresh();
@@ -64,7 +60,6 @@ public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 		RNGZeroOrMorePatternPanel patternPanel = new RNGZeroOrMorePatternPanel(getTag(), nbPattern++,refreshHandler);
 		patternPanel.addElement(element);
 		patternContainer.add(patternPanel.getPanel());
-		//patternContainer.add(element.getPanel());
 	}
 
 	@Override

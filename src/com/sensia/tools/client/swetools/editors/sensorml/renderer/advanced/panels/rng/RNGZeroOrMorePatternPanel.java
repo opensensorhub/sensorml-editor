@@ -47,7 +47,6 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 				// remove pattern from pattern instances
 				tag.getPatternInstances().remove(indexPattern);
 				
-				//TODO: use MVC or MVP to update the view
 				if(refreshHandler != null) {
 					refreshHandler.refresh();
 				}
