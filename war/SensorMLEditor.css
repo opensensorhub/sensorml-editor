@@ -806,6 +806,10 @@ input:focus {
 	margin-right:10px;
 }    
 
+.edit-subsection-label-panel .attribute-panel-edit{
+	margin-bottom:0px !important;
+}
+
 .edit-section-label-panel {
 	margin-right:10px;
 } 

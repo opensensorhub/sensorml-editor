@@ -39,6 +39,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.root.RootRende
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root.ViewRootHeaderPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root.ViewRootPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**
@@ -101,15 +102,15 @@ public class EditRootPanel extends ViewRootPanel{
 				
 				renderer.getRoot().getPanel().addStyleName("advanced-panel");
 				
-				CloseWindow dialogBox = Utils.displaySaveDialogBox(rootPanel, "Add section");
-				/*dialogBox.addSaveHandler(new ClickHandler(){
+				SaveCloseWindow dialogBox = Utils.displaySaveDialogBox(rootPanel, "Add section");
+				dialogBox.addSaveHandler(new ClickHandler(){
 					@Override
 					public void onClick(ClickEvent event) {
 						if(refreshHandler != null) {
 							refreshHandler.refresh();
 						}
 					}
-				});*/
+				});
 			}
 		});
 	}
