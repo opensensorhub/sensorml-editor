@@ -789,6 +789,7 @@ input:focus {
 
 .rng-optional-label{
 	min-width:100px;
+	margin-right: 5px;
 }
 
 .editor .edit-subsection-element-inner-panel {
@@ -924,6 +925,7 @@ input:focus {
     height: 23px;
     font-size: 17px;
     margin-bottom:5px;
+    padding: 1px 0 0 0; /** margin top for text **/
 }
 
 
