@@ -33,6 +33,8 @@ import com.sensia.gwt.relaxNG.XMLSerializer;
 import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.FileUploadPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.syntaxhighlighter.BrushFactory;
+import com.sensia.tools.client.swetools.editors.sensorml.syntaxhighlighter.SyntaxHighlighter;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
@@ -74,13 +76,12 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 			
 			final String xml = XMLSerializer.serialize(dom);
 			
-			//replace xml special chars
-			String xmlText = xml.replaceAll("<", "&#60;");
-	        xmlText = xmlText.replaceAll(">", "&#62;");
-	        Label labelXml = new HTML("<pre>" + xmlText + "</pre>", false);
-			
 	        //creates main panel
-	        ScrollPanel panel = new ScrollPanel(labelXml);
+	        String htmlCode = SyntaxHighlighter.highlight(xml, BrushFactory.newXmlBrush(), false);
+	        HTML html = new HTML();
+	        html.setHTML(htmlCode);
+	        
+	        ScrollPanel panel = new ScrollPanel(html);
 			
 			final FileUploadPanel saveFile = new FileUploadPanel();
 			
