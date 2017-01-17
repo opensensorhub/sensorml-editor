@@ -34,6 +34,7 @@ import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.FileUploadPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**
@@ -80,52 +81,14 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 			
 	        //creates main panel
 	        ScrollPanel panel = new ScrollPanel(labelXml);
-			panel.setHeight("550px");
-			panel.setWidth("1024px");
 			
-			//adds Validate, Close and Save buttons
-			final Button validateButton = new Button("Validate");
-			final Button closeButton = new Button("Close");
-			final Button saveButton = new Button("Save");
 			final FileUploadPanel saveFile = new FileUploadPanel();
 			
-			//init file upload panel
-			final FileUploadPanel fileUploadPanel = new FileUploadPanel();
-			final HTML schemaLabel = new HTML("<b>Schema:</b>");
 			
-			//TODO: functionality is disabled for now
-			validateButton.setVisible(false);
-			schemaLabel.setVisible(false);
-			fileUploadPanel.getPanel().setVisible(false);
-			
-			//create Panel
-			Panel main = new VerticalPanel();
-			
-			HorizontalPanel buttonsPanel = new HorizontalPanel();
-			buttonsPanel.add(validateButton);
-			buttonsPanel.add(saveButton);
-			buttonsPanel.add(fileUploadPanel.getPanel());
-			
-			buttonsPanel.setSpacing(5);
-			
+			VerticalPanel main = new VerticalPanel();
 			main.add(panel);
-			main.add(buttonsPanel);
-			
-			final CloseWindow dialog = Utils.displayDialogBox(main, "Sensor ML document");
-			
-			//adds listener to Validate button
-			validateButton.addClickHandler(new ClickHandler() {
-				
-				@Override
-				public void onClick(ClickEvent event) {
-					validate(xml,fileUploadPanel.getContents());
-				}
-			});
-			
-			
-			//adds listener to Save button
-			saveButton.addClickHandler(new ClickHandler() {
-				
+			final SaveCloseWindow dialog = Utils.displaySaveDialogBox(main, "Sensor ML document");
+			dialog.addSaveHandler(new ClickHandler(){
 				@Override
 				public void onClick(ClickEvent event) {
 					//save(xml);
@@ -141,6 +104,7 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 					//saveFile.click();
 				}
 			});
+			dialog.setExitOnSave(false);
 		}
 	}
 	
