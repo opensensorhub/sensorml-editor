@@ -204,9 +204,16 @@ public class XMLSensorMLParser {
                 ((RNGTagList)parent).add(rngElt);
                 parseChildren(rngElt, elt);
             } else if(node.getNodeType() == Node.COMMENT_NODE) {
-            	RNGText rngComment = new RNGText();
-            	rngComment.setText("\n<!--"+node.getNodeValue()+"-->");
-            	((RNGTagList)parent).add(rngComment);
+            	String text = "\n<!--"+node.getNodeValue()+"-->";
+            	
+            	if(((RNGTagList)parent).getLastChild() instanceof RNGText) {
+            		RNGText rngComment = (RNGText) ((RNGTagList)parent).getLastChild();
+            		rngComment.setText(rngComment.getText()+text);
+            	} else {
+            		RNGText rngComment = new RNGText();
+            		rngComment.setText(text);
+            		((RNGTagList)parent).add(rngComment);
+            	}
             }
 		}
 	}

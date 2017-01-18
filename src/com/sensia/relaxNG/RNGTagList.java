@@ -130,4 +130,13 @@ public abstract class RNGTagList extends RNGTag
         newTagList.children = newChildren;
         return newTagList;
     }
+    
+    public RNGTag getLastChild() {
+    	if(children.isEmpty()) {
+    		return null;
+    	} else {
+    		return children.get(children.size()-1);
+    	}
+    	
+    }
 }
