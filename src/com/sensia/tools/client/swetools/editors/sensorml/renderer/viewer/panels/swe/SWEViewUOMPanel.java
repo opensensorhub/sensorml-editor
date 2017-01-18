@@ -20,7 +20,8 @@ public class SWEViewUOMPanel extends EditSimpleElementPanel{
 			RNGAttribute codeAtt = (RNGAttribute) element.getTag();
 			String code = Utils.getUOMSymbol(codeAtt.getChildValueText());
 			((ViewAttributeCodePanel)element).setValue(code);
+			// display only code
+			super.addInnerElement(element);
 		} 
-		super.addInnerElement(element);
 	}
 }
