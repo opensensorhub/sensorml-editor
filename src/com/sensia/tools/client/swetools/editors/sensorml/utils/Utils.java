@@ -56,7 +56,16 @@ public class Utils {
 	}
 	
 	public static final SaveCloseWindow displaySaveDialogBox(final Panel panel,final String title,String css){
-		final SaveCloseWindow dialogBox = new SaveCloseWindow(title,false);
+		final SaveCloseWindow dialogBox = new SaveCloseWindow(title,false,css);
+		
+		dialogBox.setContent(panel);
+		dialogBox.draw();
+		
+		return dialogBox;
+	}
+	
+	public static final SaveCloseWindow displaySaveDialogBox(final Widget panel,final String title,String css){
+		final SaveCloseWindow dialogBox = new SaveCloseWindow(title,false,css);
 		
 		dialogBox.setContent(panel);
 		dialogBox.draw();
@@ -65,6 +74,15 @@ public class Utils {
 	}
 	
 	public static final SaveCloseWindow displaySaveDialogBox(final Panel panel,final String title){
+		final SaveCloseWindow dialogBox = new SaveCloseWindow(title,false);
+		
+		dialogBox.setContent(panel);
+		dialogBox.draw();
+		
+		return dialogBox;
+	}
+	
+	public static final SaveCloseWindow displaySaveDialogBox(final Widget panel,final String title){
 		final SaveCloseWindow dialogBox = new SaveCloseWindow(title,false);
 		
 		dialogBox.setContent(panel);

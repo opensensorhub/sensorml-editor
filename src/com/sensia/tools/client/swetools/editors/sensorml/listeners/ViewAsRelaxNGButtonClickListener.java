@@ -12,6 +12,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.listeners;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HTML;
@@ -19,6 +20,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.ScrollPanel;
+import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.xml.client.Document;
 import com.sensia.gwt.relaxNG.RNGInstanceWriter;
@@ -33,6 +35,8 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 import com.smartgwt.client.widgets.Canvas;
+import com.smartgwt.client.widgets.HTMLPane;
+import com.smartgwt.client.widgets.RichTextEditor;
 import com.smartgwt.client.widgets.layout.HLayout;
 
 /**
@@ -73,16 +77,20 @@ public class ViewAsRelaxNGButtonClickListener implements ClickHandler{
 			final String xml = XMLSerializer.serialize(dom);
 			
 			String htmlCode = SyntaxHighlighter.highlight(xml, BrushFactory.newXmlBrush(), false);
-		    HTML html = new HTML();
-		    html.setHTML(htmlCode);
 		        
-		    ScrollPanel panel = new ScrollPanel(html);
-		        
+		    HTML html = new HTML(SafeHtmlUtils.fromTrustedString(htmlCode));
+		    HTMLPane panel = new HTMLPane();
+		    panel.setContents(html.getHTML());
+		    panel.setWidth100();
+		    panel.setHeight100();
+		    panel.addStyleName("html-pane-code");
+		    
+		    //ScrollPanel panel = new ScrollPanel(html);
 			final FileUploadPanel saveFile = new FileUploadPanel();
 			
 			VerticalPanel main = new VerticalPanel();
 			main.add(panel);
-			final SaveCloseWindow dialog = Utils.displaySaveDialogBox(main, "Sensor ML document");
+			final SaveCloseWindow dialog = Utils.displaySaveDialogBox(panel, "Sensor ML document","dialog-code");
 			dialog.addSaveHandler(new ClickHandler(){
 				@Override
 				public void onClick(ClickEvent event) {

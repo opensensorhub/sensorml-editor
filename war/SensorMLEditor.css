@@ -953,5 +953,21 @@ input:focus {
 }
 
 .smartgwt-dialog-save-button div{
-	font-size:17px;
+	font-size:13px;
+}
+
+.html-pane-code {
+	height:100%;
+}
+
+.dialog-code {
+}
+
+/** SyntaxHighlight **/
+.syntaxhighlighter {
+  margin: 0em 0em 0em 0em !important;
+  height:100%;
+   height: calc(100% - 60px) !important;
+  /*width: 100% !important;
+  height: calc(100% - 60px) !important;*/
 }
