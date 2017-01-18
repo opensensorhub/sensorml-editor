@@ -28,6 +28,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditTextPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditTimePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditTimeRangePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditUOMPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditVectorPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEditElementTypePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEditEncodingPanel;
@@ -104,6 +105,8 @@ public class EditRendererSWE extends EditRendererRNG implements RNGTagVisitor {
 			widget = new SWEEditTimePanel(elt,getRefreshHandler());
 		} else if(name.equals("TimeRange")) {
 			widget = new SWEEditTimeRangePanel(elt,getRefreshHandler());
+		} else if(name.equals("uom")) {
+			widget = new SWEEditUOMPanel(elt);
 		}
 		
 		if(widget != null) {
