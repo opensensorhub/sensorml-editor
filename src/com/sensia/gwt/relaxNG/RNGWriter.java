@@ -274,6 +274,13 @@ public class RNGWriter
             }
         }
         
+        else if (tag instanceof RNGText)
+        {
+            RNGText text = ((RNGText)tag);
+            Element newElt = dom.createElement("text");
+            newElt.appendChild(dom.createTextNode(text.getText()));
+            parentNode.appendChild(newElt);
+        }
         else if (tag instanceof RNGValue)
         {
             RNGValue val = ((RNGValue)tag);
@@ -281,31 +288,6 @@ public class RNGWriter
             newElt.appendChild(dom.createTextNode(val.getText()));
             parentNode.appendChild(newElt);
         }
-        
-        else if (tag instanceof RNGText)
-        {
-            RNGText text = ((RNGText)tag);
-                        
-            if (keepUserInput || text.getText() == null)
-            {
-                Element newElt = dom.createElement("text");
-                parentNode.appendChild(newElt);
-                
-                if (text.getText() != null)
-                {
-                    Element valElt = dom.createElement("value");
-                    valElt.appendChild(dom.createTextNode(text.getText()));
-                    newElt.appendChild(valElt);
-                }
-            }
-            else
-            {
-                Element newElt = dom.createElement("value");
-                newElt.appendChild(dom.createTextNode(text.getText()));
-                parentNode.appendChild(newElt);
-            }
-        }
-        
         else if (tag instanceof RNGData<?>)
         {
             RNGData<?> data = ((RNGData<?>)tag);
