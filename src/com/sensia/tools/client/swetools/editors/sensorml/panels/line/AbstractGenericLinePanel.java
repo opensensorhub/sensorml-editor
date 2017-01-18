@@ -32,8 +32,13 @@ public abstract class AbstractGenericLinePanel<T extends RNGTag> extends Abstrac
 		afterDotsPanel = new HorizontalPanel();
 		dotsPanel = new SimplePanel();
 		
-		beforeDotsPanel.add(labelPanel);
-		beforeDotsPanel.add(defPanel);
+		HorizontalPanel labelAndDefPanel = new HorizontalPanel();
+		labelAndDefPanel.add(labelPanel);
+		labelAndDefPanel.add(defPanel);
+		SimplePanel labelAndDefPanelForCorrectDots = new SimplePanel();
+		labelAndDefPanelForCorrectDots.add(labelAndDefPanel);
+
+		beforeDotsPanel.add(labelAndDefPanelForCorrectDots);
 		dotsPanel.add(new HTML(getDotsLine()));
 		
 		line = new HorizontalPanel();

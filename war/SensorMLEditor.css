@@ -614,7 +614,7 @@ table.sml-mode-nolabel-vertical-panel {
 	min-width : 370px;
 }
 .line-generic-label-panel-before {
-	min-width : 220px;
+	margin-right:10px;
 }
 .line-generic-definition-panel-before {
 	min-width : 30px;
@@ -797,10 +797,18 @@ input:focus {
 	margin-left:15px;
 }
 
-.editor  .edit-subsection-element-panel {
+.editor .edit-subsection-element-panel {
     margin-bottom: 10px;
 }
 
+.viewer .edit-subsection-element-inner-panel {
+	margin-top:10px;
+	margin-left:15px;
+}
+
+.viewer  .edit-subsection-element-panel {
+    margin-bottom: 10px;
+}
 
 .edit-subsection-label-panel {
 	margin-right:10px;
