@@ -233,7 +233,7 @@ public class RNGWriter
                 Element newElt = (zeroOrMore instanceof RNGOneOrMore) ?
                         dom.createElement("oneOrMore") :
                         dom.createElement("zeroOrMore");
-                parentNode.appendChild(newElt);
+               // parentNode.appendChild(newElt);
        
                 if (keepUserInput)
                 {
@@ -241,7 +241,7 @@ public class RNGWriter
                     {
                         //Element occElt = dom.createElement("occurence");
                         for (RNGTag item: tagList)
-                            writeRNGTag(item, dom, newElt);
+                            writeRNGTag(item, dom, parentNode);
                         //newElt.appendChild(occElt);
                     }
                 }
