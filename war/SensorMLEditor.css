@@ -704,7 +704,7 @@ table.sml-mode-nolabel-vertical-panel {
 }
 
 .rng-shift-remove .rng-optional-select-remove {
-	margin-top:2px !important;
+	margin-top:1px !important;
 }
 
 .textbox {
@@ -755,8 +755,12 @@ input:focus {
 
 .rng-shift-remove {
 	margin-left:-22px;
+	margin-bottom:2px; 
 }
 
+.editor .header-document .rng-shift-remove{
+	margin-left:-12px;
+}
 .rng-disclosure .rng-shift-remove {
 	margin-left:0px !important;
 }
