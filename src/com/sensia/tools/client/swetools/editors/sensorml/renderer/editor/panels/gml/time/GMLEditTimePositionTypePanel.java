@@ -87,9 +87,11 @@ public class GMLEditTimePositionTypePanel extends EditSimpleElementPanel{
 		if(element.getName().equals("indeterminatePosition")){
 			// get value
 			String value = ((RNGAttribute)element.getTag()).getChildValueText();
-			int index = Utils.indexOfIgnoreCase(relativePositionItems,value.toLowerCase());
-			relativePosition.setSelectedIndex(index);
-			indeterminatePositionPanel.setVisible(true);
+			if(value != null) {
+				int index = Utils.indexOfIgnoreCase(relativePositionItems,value.toLowerCase());
+				relativePosition.setSelectedIndex(index);
+				indeterminatePositionPanel.setVisible(true);
+			}
 		} else if(element.getName().equals("calendarEraName")){
 			calendarEraPanelPanel.add(new HTML("("));
 			calendarEraPanelPanel.add(element.getPanel());

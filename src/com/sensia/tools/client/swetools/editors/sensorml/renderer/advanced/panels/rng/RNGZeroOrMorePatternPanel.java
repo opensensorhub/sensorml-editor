@@ -12,6 +12,7 @@ import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.element.AdvancedSimpleElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSimpleElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
@@ -76,7 +77,7 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 			
 			hPanel.addStyleName("rng-disclosure");
 			container.add(hPanel);
-		} else if(element instanceof EditSimpleElementPanel){
+		} else if(element instanceof EditSimpleElementPanel || element instanceof AdvancedSimpleElementPanel){
 			// inline the simple edit panel
 			container.clear();
 			container = new HorizontalPanel();
