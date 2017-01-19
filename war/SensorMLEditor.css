@@ -767,6 +767,7 @@ input:focus {
 }
 .rng-disclosure .rng-shift-remove {
 	margin-left:0px !important;
+	margin-top: 3px !important;
 }
 
 .rng-disclosure >tbody>tr>td{

@@ -57,6 +57,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditContactsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditDocument;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditDocumentationPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditFeatureOfInterestPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditHistoryPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditIdentificationPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditIdentifierPanel;
@@ -293,6 +294,11 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
             } else if(eltName.equalsIgnoreCase("method")) {
 				skipTags = true;
 				pushAndVisitChildren(new SMLEditMethodPanel(elt,getRefreshHandler()), elt.getChildren());
+				skipTags = false;
+				return;
+			} else if(eltName.equalsIgnoreCase("featureOfInterest")) {
+				skipTags = true;
+				pushAndVisitChildren(new SMLEditFeatureOfInterestPanel(elt,getRefreshHandler()), elt.getChildren());
 				skipTags = false;
 				return;
 			} else if(eltName.equalsIgnoreCase("capabilities")) {
