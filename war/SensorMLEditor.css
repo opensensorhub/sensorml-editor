@@ -698,7 +698,7 @@ table.sml-mode-nolabel-vertical-panel {
 .rng-choice-pattern {
 	margin-top:5px;
 	margin-bottom:5px;
-	margin-left:22px;
+	margin-left:4px;
 }
 
 .rng-zeroormore-pattern {
@@ -790,6 +790,7 @@ input:focus {
 .rng-optional-label{
 	min-width:100px;
 	margin-right: 5px;
+	margin-bottom:5px;
 }
 
 .editor .edit-subsection-element-inner-panel {
