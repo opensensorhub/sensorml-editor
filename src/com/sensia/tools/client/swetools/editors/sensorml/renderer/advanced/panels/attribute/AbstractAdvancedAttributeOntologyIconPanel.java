@@ -67,7 +67,7 @@ public abstract class AbstractAdvancedAttributeOntologyIconPanel<T extends RNGTa
 		
 		container = new HorizontalPanel();
 		
-		container.add(new HTML(name+":"+SMLEditorConstants.HTML_SPACE));
+		container.add(new HTML(Utils.toNiceLabel(name)+":"+SMLEditorConstants.HTML_SPACE));
 		container.add(valuePanel);
 		container.add(ontologyImage);
 		

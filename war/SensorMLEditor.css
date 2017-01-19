@@ -790,10 +790,12 @@ input:focus {
 
 .advanced-simple-element-panel .gwt-HTML {
 	min-width:100px;
+	margin-right: 5px;
 }
 
 .attribute-panel-edit .gwt-HTML {
 	min-width:100px;
+	margin-right: 5px;
 }
 
 .rng-optional-label{
