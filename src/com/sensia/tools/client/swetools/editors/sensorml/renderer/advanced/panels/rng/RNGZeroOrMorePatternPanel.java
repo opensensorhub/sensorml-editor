@@ -38,6 +38,7 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 		container.add(patternContainer);
 		
 		removeButton.addStyleName("rng-optional-select-remove");
+		removeButton.addStyleName("rng-shift-remove");
 		
 		removeButton.addClickHandler(new ClickHandler() {
 			

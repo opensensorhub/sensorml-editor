@@ -56,6 +56,7 @@ public class RootRenderer extends AdvancedRendererRNG {
 		super();
 		GenericVerticalContainerPanel rootAdvanced = new GenericVerticalContainerPanel();
 		rootAdvanced.getPanel().addStyleName("advanced-dialog");
+		rootAdvanced.getPanel().addStyleName("root");
 		push(rootAdvanced);
 	}
 	/* (non-Javadoc)

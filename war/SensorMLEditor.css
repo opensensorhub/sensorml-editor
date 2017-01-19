@@ -743,12 +743,21 @@ input:focus {
     overflow: auto;
 }
 
+.advanced, .root {
+	margin-left:15px;
+}
+
+
 .advanced-dialog-dots {
 	cursor:pointer;
 }
 
 .rng-shift-remove {
 	margin-left:-22px;
+}
+
+.rng-disclosure .rng-shift-remove {
+	margin-left:0px !important;
 }
 
 .rng-disclosure >tbody>tr>td{
@@ -765,6 +774,7 @@ input:focus {
 .attribute-panel-advanced .gwt-HTML {
 	min-width:100px;
 	margin-bottom:5px;
+	margin-right: 5px;
 }
 
 .attribute-panel-advanced .textbox {
@@ -787,8 +797,8 @@ input:focus {
 
 .rng-optional-label{
 	min-width:100px;
-	margin-right: 5px;
 	margin-bottom:5px;
+	margin-right: 5px;
 }
 
 .editor .edit-subsection-element-inner-panel {

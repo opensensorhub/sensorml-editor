@@ -1,15 +1,18 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng;
 
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.relaxNG.RNGOptional;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -21,7 +24,7 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 	
 	public RNGOptionalPanel(final RNGOptional tag,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
-		container = new HorizontalPanel();
+		container = new VerticalPanel();
 		patternContainer = new HorizontalPanel();
 		
 		final String label = Utils.findLabel(tag);
@@ -34,14 +37,16 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 		HTML htmlLabel = new HTML(Utils.toNiceLabel(label));
 		if(tag.isSelected()) {
 			addButton.addStyleName("rng-optional-select-remove");
+			addButton.addStyleName("rng-shift-remove");
+			headerPanel.add(addButton);
+			headerPanel.add(htmlLabel);
 		} else {
 			addButton.addStyleName("rng-optional-select-add");
+			headerPanel.add(htmlLabel);
+			headerPanel.add(addButton);
 		}
 		
-		headerPanel.add(htmlLabel);
 		headerPanel.addStyleName("rng-optional-select-label");
-		
-		headerPanel.add(addButton);
 		addButton.addClickHandler(new ClickHandler() {
 			
 			@Override
@@ -61,6 +66,7 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 		});
 		
 		patternContainer.addStyleName("rng-optional-pattern");
+		patternContainer.setVisible(false);
 	}
 	
 	@Override
@@ -70,13 +76,19 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		if(element instanceof EditSectionElementPanel || element instanceof RNGChoicePanel) {
+		if(element instanceof EditSectionElementPanel || element instanceof RNGChoicePanel ) {
 			headerPanel.addStyleName("rng-disclosure");
 		} 
-		headerPanel.clear();
-		headerPanel.add(addButton);
-		headerPanel.add(element.getPanel());
+		if(!(element instanceof EditElementPanel)){
+			headerPanel.clear();
+			headerPanel.add(addButton);
+			headerPanel.add(element.getPanel());
+		} else {
+			patternContainer.setVisible(true);
+			patternContainer.add(element.getPanel());
+		}
 		//patternContainer.add(element.getPanel());
+		
 	}
 
 	@Override
