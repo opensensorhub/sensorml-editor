@@ -304,6 +304,7 @@ public abstract class AdvancedRendererRNG extends Renderer {
 		rootAdvanced.getPanel().addStyleName("advanced-dialog");
 		
 		GenericVerticalContainerPanel rootAdvanced2 = new GenericVerticalContainerPanel();
+		rootAdvanced2.getPanel().addStyleName("advanced");
 		rootAdvanced2.getPanel().add(rootAdvanced.getPanel());
 		push(rootAdvanced2);
 	}

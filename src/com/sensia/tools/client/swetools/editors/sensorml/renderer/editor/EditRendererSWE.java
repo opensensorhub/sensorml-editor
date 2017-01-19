@@ -65,8 +65,14 @@ public class EditRendererSWE extends EditRendererRNG implements RNGTagVisitor {
 	@Override
 	public void visit(RNGElement elt) {
 		final String name = elt.getName();
+		String nsUri = elt.getNamespace();
+		
 		IPanel<RNGElement> widget = null;
 		
+		if(nsUri == null){
+			super.visit(elt);
+			return;
+		}
 		 if(name.equalsIgnoreCase("Quantity")) {
 			widget = new SWEEditQuantityPanel(elt,getRefreshHandler());
 		} else if(name.equalsIgnoreCase("Category")) {

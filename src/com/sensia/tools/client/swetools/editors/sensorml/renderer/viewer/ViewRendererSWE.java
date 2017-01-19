@@ -61,6 +61,11 @@ public class ViewRendererSWE extends ViewRendererRNG implements RNGTagVisitor {
 		String name = element.getName();
 		String nsUri = element.getNamespace();
 		
+		if(nsUri == null){
+			super.visit(element);
+			return;
+		}
+		
 		if (nsUri.equalsIgnoreCase(SMLEditorConstants.SWE_NS_1) || nsUri.equalsIgnoreCase(SMLEditorConstants.SWE_NS_2)) {
 			if(name.equals("description")) {
 				pushAndVisitChildren(new SWEViewDescriptionPanel(element), element.getChildren());

@@ -111,6 +111,10 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 			return;
 		}
 		
+		if(nsUri == null){
+			super.visit(elt);
+			return;
+		}
 		// handle GML elements
 		if (nsUri.equalsIgnoreCase(GML_NS_1) || nsUri.equalsIgnoreCase(GML_NS_2)) {
 			// gml:identifier
@@ -131,7 +135,7 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 				super.visit(elt);
 			}
 			return;
-		} if (nsUri.equalsIgnoreCase(GMD)) {
+		} else if (nsUri.equalsIgnoreCase(GMD)) {
 				if(eltName.equals("description")) {
 					pushAndVisitChildren(new GMDViewDescriptionPanel(elt), elt.getChildren());
 					return;
