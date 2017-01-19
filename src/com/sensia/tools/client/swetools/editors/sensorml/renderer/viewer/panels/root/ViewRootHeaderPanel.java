@@ -1,10 +1,16 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root;
 
+import java.util.List;
+
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.sensia.relaxNG.RNGElement;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.ModelHelper;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 
 public class ViewRootHeaderPanel extends VerticalPanel{
@@ -21,6 +27,8 @@ public class ViewRootHeaderPanel extends VerticalPanel{
 	// sml:keywords
 	protected Panel keywordsPanel;
 	
+	protected Label keywordsLabel;
+	
 	public ViewRootHeaderPanel() {
 		
 		setSpacing(5);	
@@ -32,7 +40,10 @@ public class ViewRootHeaderPanel extends VerticalPanel{
 		
 		// 1..~
 		keywordsPanel = new VerticalPanel();
-		keywordsPanel.add(new HTML("Keywords:"+SMLEditorConstants.HTML_SPACE));
+		keywordsPanel.addStyleName("keywords-panel");
+		keywordsLabel = new Label("Keywords: ");
+		keywordsPanel.add(keywordsLabel);
+		keywordsLabel.addStyleName("keyword-label");
 		
 		// 1..~
 		identifiersPanel = new VerticalPanel();
@@ -52,8 +63,15 @@ public class ViewRootHeaderPanel extends VerticalPanel{
 		this.titlesPanel.setVisible(false);
 	}
 	
-	public void addKeywords(Panel keywordsPanel) {
-		this.keywordsPanel.add(keywordsPanel);
+	public void addKeywords(IPanel keywordsPanel) {
+		List<RNGElement>  keywordElements = (List<RNGElement>) ModelHelper.findTags(SMLEditorConstants.SML_NS_2, "keyword", keywordsPanel.getTag());
+		if(keywordElements != null && keywordElements.size() > 0) {
+			for(RNGElement elt : keywordElements){
+				if(elt.getChildValueText() != null) {
+					keywordsLabel.setText(keywordsLabel.getText()+" "+elt.getChildValueText());
+				}
+			}
+		}
 		this.keywordsPanel.setVisible(true);
 	}
 	

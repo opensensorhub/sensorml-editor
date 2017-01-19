@@ -77,6 +77,12 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 			
 			hPanel.addStyleName("rng-disclosure");
 			container.add(hPanel);
+		} else if(element.getName().equalsIgnoreCase("keywords")){
+			container.clear();
+			Panel hPanel = new HorizontalPanel();
+			hPanel.add(removeButton);
+			hPanel.add(element.getPanel());
+			container.add(hPanel);
 		} else if(element instanceof EditSimpleElementPanel || element instanceof AdvancedSimpleElementPanel){
 			// inline the simple edit panel
 			container.clear();

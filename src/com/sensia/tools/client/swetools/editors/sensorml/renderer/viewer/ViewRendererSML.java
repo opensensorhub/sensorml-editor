@@ -183,7 +183,7 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 				pushAndVisitChildren(new SMLViewInputsPanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("keywords")) {
-				pushAndVisitChildren(new SMLViewKeywordsPanel(elt,getRefreshHandler()), elt.getChildren());
+				pushAndVisitChildren(new SMLViewKeywordsPanel(elt), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("legalConstraints")) {
 				pushAndVisitChildren(new SMLViewLegalConstraintsPanel(elt,getRefreshHandler()), elt.getChildren());

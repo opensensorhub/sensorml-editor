@@ -63,7 +63,7 @@ public class ModelHelper {
 		if (tag instanceof RNGElement) {
 			String eltName = ((RNGElement) tag).getName();
 			String nsUri = ((RNGElement) tag).getNamespace();
-			if(nsUri.equals(namespace) && eltName.equals(name)) {
+			if(nsUri.equalsIgnoreCase(namespace) && eltName.equalsIgnoreCase(name)) {
 				results.add((RNGElement) tag);
 			}
 		} else if (tag instanceof RNGRef) {
@@ -101,7 +101,7 @@ public class ModelHelper {
 		if (tag instanceof RNGElement) {
 			String eltName = ((RNGElement) tag).getName();
 			String nsUri = ((RNGElement) tag).getNamespace();
-			if(nsUri.equals(namespace) && eltName.equals(name)) {
+			if(nsUri.equalsIgnoreCase(namespace) && eltName.equalsIgnoreCase(name)) {
 				results.add((RNGElement) tag);
 			}
 		} else if (tag instanceof RNGRef) {

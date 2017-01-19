@@ -35,6 +35,10 @@ public class XSDPanel<T extends RNGData<?>> extends EditValuePanel {
 
 	@Override
 	public String getName() {
-		return getTag().getAnnotation();
+		if(getTag().getAnnotation() != null) {
+			return getTag().getAnnotation();
+		} else {
+			return super.getName();
+		}
 	}
 }

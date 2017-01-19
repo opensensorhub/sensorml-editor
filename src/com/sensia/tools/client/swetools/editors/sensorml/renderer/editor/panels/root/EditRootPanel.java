@@ -18,6 +18,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.DialogBox;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
@@ -72,6 +73,7 @@ public class EditRootPanel extends ViewRootPanel{
 		HorizontalPanel hPanel = new HorizontalPanel();
 		hPanel.add(new Label("Add section"));
 		hPanel.add(addSectionButton);
+		hPanel.addStyleName("addsection-button");
 		container.add(hPanel);
 		
 		addSectionButton.addClickHandler(new ClickHandler() {
@@ -197,7 +199,7 @@ public class EditRootPanel extends ViewRootPanel{
 			headerDocumentPanel.addTitle(element.getPanel());
 			found = true;
 		} else if(name.equals("keywords")){
-			headerDocumentPanel.addKeywords(element.getPanel());
+			headerDocumentPanel.addKeywords(element);
 			found = true;
 		}
 		

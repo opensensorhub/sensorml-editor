@@ -6,6 +6,7 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class EditSimpleElementPanel extends AbstractPanel<RNGElement>{
 
@@ -19,7 +20,7 @@ public class EditSimpleElementPanel extends AbstractPanel<RNGElement>{
 		super(element);
 		
 		container = new HorizontalPanel();
-		container.add(new HTML(label+":"+SMLEditorConstants.HTML_SPACE));
+		container.add(new HTML(Utils.toNiceLabel(label)+":"+SMLEditorConstants.HTML_SPACE));
 	}
 	
 	@Override

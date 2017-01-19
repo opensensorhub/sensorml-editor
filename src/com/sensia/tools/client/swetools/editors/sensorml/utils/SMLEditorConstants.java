@@ -15,6 +15,12 @@ public class SMLEditorConstants {
 	/** The Constant SWE_NS_1. */
 	public final static String SWE_NS_1 = "http://www.opengis.net/swe/1.0.1";
 	
+	/** The Constant SML_NS_1. */
+	public final static String SML_NS_1 = "http://www.opengis.net/sensorML/1.0.1";
+	
+	/** The Constant SML_NS_2. */
+	public final static String SML_NS_2 = "http://www.opengis.net/sensorML/2.0";
+	
 	/** The Constant SWE_NS_2. */
 	public final static String SWE_NS_2 = "http://www.opengis.net/swe/2.0";
 	

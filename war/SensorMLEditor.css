@@ -556,7 +556,6 @@ table.sml-mode-nolabel-vertical-panel {
 
 .editor {
 	margin-top : 30px;
-	margin-left: 30px;
 }
 /*** HEADER ***/
 
@@ -745,9 +744,13 @@ input:focus {
 }
 
 .advanced, .root {
-	margin-left:15px;
+	margin-left:21px;
 }
 
+.addsection-button {
+	margin-left:6px;
+	margin-right:5px;
+}
 
 .advanced-dialog-dots {
 	cursor:pointer;
@@ -759,7 +762,8 @@ input:focus {
 }
 
 .editor .header-document .rng-shift-remove{
-	margin-left:-12px;
+	margin-left: -13px;
+    margin-right: 8px;
 }
 .rng-disclosure .rng-shift-remove {
 	margin-left:0px !important;
@@ -931,6 +935,19 @@ input:focus {
 	margin-right:10px;
 }
 
+
+.keywords-panel .rng-shift-remove{
+	margin-left: 0px !important;
+}
+
+.keyword-label {
+	max-width:600px;
+}
+
+.keywords-panel .textbox {
+	margin-right:5px;
+}
+
 .advanced-simple-element-panel .gwt-TextBox .textbox {
 	width:200px !important;
 }
@@ -969,7 +986,7 @@ input:focus {
 
 /** smartgwt status bar**/
 .windowStatusBar {
-	display:none;
+	display:none !important;
 }
 .smartgwt-dialog-save-button {
 	height:45px !important;

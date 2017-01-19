@@ -57,7 +57,7 @@ public class ViewRootPanel extends AbstractPanel<RNGElement>{
 		String name = element.getName();
 		switch(name) {
 			case "identifier" : headerDocumentPanel.addIdentifier(element.getPanel());break;
-			case "keywords" : headerDocumentPanel.addKeywords(element.getPanel());break;
+			case "keywords" : headerDocumentPanel.addKeywords(element);break;
 			case "name" : {
 				Panel titlePanel = element.getPanel();
 				titlePanel.addStyleName("header-title-panel");

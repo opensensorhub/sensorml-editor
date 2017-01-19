@@ -111,6 +111,7 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 		skipList.add("ConnectionList");
 		skipList.add("CharacteristicList");
 		skipList.add("CapabilityList");
+		skipList.add("KeywordList");
 		
 		skipList.add("ContactList");
 		skipList.add("DocumentList");

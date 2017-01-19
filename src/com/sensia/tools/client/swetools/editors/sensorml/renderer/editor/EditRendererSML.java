@@ -39,8 +39,8 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.time.GMLEditBeginPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.time.GMLEditEndPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.time.GMLEditTimeInstantPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.time.GMLEditTimePositionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.time.GMLEditTimePeriodPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.time.GMLEditTimePositionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.root.EditRootPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditAxisPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditCapabilitiesPanel;
@@ -62,7 +62,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditIdentifierPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditInputPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditInputsPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditKeywordListPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditKeywordsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditLegalConstraintsPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditLocalReferenceFramePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditMethodPanel;
@@ -344,9 +344,6 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 			} else if(eltName.equalsIgnoreCase("origin")) {
 				pushAndVisitChildren(new SMLEditOriginPanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
-			} else if(eltName.equalsIgnoreCase("KeywordList")) {
-				pushAndVisitChildren(new SMLEditKeywordListPanel(elt), elt.getChildren());
-				return;
 			} else if(eltName.equalsIgnoreCase("input")) {
 				pushAndVisitChildren(new SMLEditInputPanel(elt), elt.getChildren());
 				return;
@@ -355,6 +352,9 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 				return;
 			} else if(eltName.equalsIgnoreCase("label")) {
 				pushAndVisitChildren(new SMLAdvancedLabelPanel(elt), elt.getChildren());
+				return;
+			} else if(eltName.equalsIgnoreCase("keywords")) {
+				pushAndVisitChildren(new SMLEditKeywordsPanel(elt), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("value")) {
 				pushAndVisitChildren(new SMLAdvancedValuePanel(elt), elt.getChildren());
