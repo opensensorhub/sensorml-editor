@@ -127,6 +127,12 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 			return;
 		}
 		
+		if(nsUri == null) {
+			GWT.log("NameSpace for element "+elt.getName()+" does not exist");
+			super.visit(elt);
+			return;
+		}
+		
 		if (nsUri.equalsIgnoreCase(GML_NS_1) || nsUri.equalsIgnoreCase(GML_NS_2)) {
 			if(eltName.equalsIgnoreCase("description")) {
 				pushAndVisitChildren(new GMLEditDescriptionPanel(elt), elt.getChildren());
