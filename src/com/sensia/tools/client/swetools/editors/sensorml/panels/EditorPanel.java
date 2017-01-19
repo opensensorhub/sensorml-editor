@@ -37,13 +37,7 @@ public class EditorPanel  extends Composite  implements IParsingObserver, IObser
 	private ListBox profileListBox;
 	
 	static {
-		//profiles.put("Gamma2070","sensormleditor/rng1.0/profiles/CSM/gamma.rng");
-		profiles.put("Anemometer","sensormleditor/rng1.0/profiles/CSM/anemometer.rng");
-		profiles.put("Thermometer","sensormleditor/rng1.0/profiles/CSM/thermometer-minimal-view.rng");
-		profiles.put("SimpleProcess","sensormleditor/sensorml-relaxng/sml/SimpleProcess.rng");
-		profiles.put("PhysicalProcess","sensormleditor/sensorml-relaxng/sml/PhysicalProcess.rng");
-		profiles.put("PhysicalProcess-minimal","sensormleditor/sensorml-relaxng/sml/PhysicalProcess-minimal.rng");
-		profiles.put("RNG 1.0","sensormleditor/rng1.0/profiles/CSM/frame-sensor-model.rng");
+		profiles.put("Basic simple process","https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/basic_sml/Basic_SimpleProcess.rng");
 	}
 	
 	//the processor in charge of parsing and create the RNG profile
