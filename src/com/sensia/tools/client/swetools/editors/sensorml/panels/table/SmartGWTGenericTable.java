@@ -1,8 +1,11 @@
-package com.sensia.tools.client.swetools.editors.sensorml.table;
+package com.sensia.tools.client.swetools.editors.sensorml.panels.table;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.Button;
 import com.smartgwt.client.data.DataSource;
 import com.smartgwt.client.data.DataSourceField;
 import com.smartgwt.client.data.Record;
@@ -18,6 +21,7 @@ import com.smartgwt.client.widgets.grid.events.EditCompleteEvent;
 import com.smartgwt.client.widgets.grid.events.EditCompleteHandler;
 import com.smartgwt.client.widgets.grid.events.RemoveRecordClickEvent;
 import com.smartgwt.client.widgets.grid.events.RemoveRecordClickHandler;
+import com.smartgwt.client.widgets.layout.VLayout;
 
 public class SmartGWTGenericTable<T> implements ITable<T>{
 
@@ -26,6 +30,7 @@ public class SmartGWTGenericTable<T> implements ITable<T>{
 	private IDataChangeHandler handler;
 	
 	private List<String> attributes;
+	private com.smartgwt.client.widgets.Button addNewEntryButton;
 	
 	public SmartGWTGenericTable(boolean editable) {
 		grid = new ListGrid();
@@ -58,6 +63,17 @@ public class SmartGWTGenericTable<T> implements ITable<T>{
 				}
 			}
 		});
+		
+		if(editable) {
+			addNewEntryButton = new com.smartgwt.client.widgets.Button("Add");
+			addNewEntryButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
+				
+				@Override
+				public void onClick(com.smartgwt.client.widgets.events.ClickEvent event) {
+					grid.startEditingNew();  
+				}
+			});
+		}
 	}
 
 	@Override
@@ -136,7 +152,20 @@ public class SmartGWTGenericTable<T> implements ITable<T>{
 			panel = new Canvas();
 			panel.setWidth100();
 			panel.setHeight100();
-			panel.addChild(grid);
+			// add Add button
+			if(addNewEntryButton != null) {
+				 VLayout vLayout = new VLayout();  
+				 vLayout.setHeight100();
+				 vLayout.setWidth100();
+				 vLayout.addMember(grid);
+				 vLayout.addMember(addNewEntryButton);
+				 addNewEntryButton.addStyleName("table-add-button");
+				 vLayout.addStyleName("smartgwt-generic-table-vlayout");
+				 panel.addChild(vLayout);
+			} else {
+				panel.addChild(grid);
+			}
+			
 			panel.adjustForContent(true);
 		}
 		

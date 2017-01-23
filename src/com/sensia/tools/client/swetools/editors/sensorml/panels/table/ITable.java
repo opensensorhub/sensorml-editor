@@ -1,4 +1,4 @@
-package com.sensia.tools.client.swetools.editors.sensorml.table;
+package com.sensia.tools.client.swetools.editors.sensorml.panels.table;
 
 import java.util.List;
 

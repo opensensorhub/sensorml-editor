@@ -36,7 +36,7 @@ import com.google.gwt.view.client.SelectionChangeEvent;
 import com.google.gwt.view.client.SingleSelectionModel;
 import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.Property;
-import com.sensia.tools.client.swetools.editors.sensorml.table.ITable;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.table.ITable;
 
 /**
  * The Class GenericTable allows to create generic table from any Property objects.
