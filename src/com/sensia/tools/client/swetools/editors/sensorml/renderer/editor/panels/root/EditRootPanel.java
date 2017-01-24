@@ -80,39 +80,7 @@ public class EditRootPanel extends ViewRootPanel{
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				// create a new Renderer
-				final RootRenderer renderer = new RootRenderer();
-				final Panel rootPanel = new VerticalPanel();
-				
-				renderer.setRefreshHandler(new IRefreshHandler() {
-					
-					@Override
-					public void refresh() {
-						renderer.reset();
-						rootPanel.clear();
-						renderer.visitChildren(rootTag.getChildren());
-						rootPanel.add(renderer.getRoot().getPanel());
-						
-						if(refreshHandler != null) {
-							refreshHandler.refresh();
-						}
-					}
-				});
-
-				renderer.visitChildren(rootTag.getChildren());
-				rootPanel.add(renderer.getRoot().getPanel());
-				
-				renderer.getRoot().getPanel().addStyleName("advanced-panel");
-				
-				SaveCloseWindow dialogBox = Utils.displaySaveDialogBox(rootPanel, "Add section");
-				dialogBox.addSaveHandler(new ClickHandler(){
-					@Override
-					public void onClick(ClickEvent event) {
-						if(refreshHandler != null) {
-							refreshHandler.refresh();
-						}
-					}
-				});
+				Utils.displaySaveDialogBox(rootTag, refreshHandler, new VerticalPanel(), "Add section", new RootRenderer());
 			}
 		});
 	}

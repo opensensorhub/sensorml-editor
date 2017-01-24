@@ -81,7 +81,9 @@ public class EditRendererSWE extends EditRendererRNG implements RNGTagVisitor {
 		} else if(name.equalsIgnoreCase("QuantityRange")) {
 			widget = new SWEEditQuantityRangePanel(elt,getRefreshHandler());
 		} else if(name.equals("field")) {
+			skipTags=false;
 			widget = new SWEEditFieldPanel(elt);
+			skipTags=true;
 		} else if(name.equals("DataRecord")) {
 			widget = new SWEEditDataRecordPanel(elt);
 		} else if(name.equals("DataArray")) {

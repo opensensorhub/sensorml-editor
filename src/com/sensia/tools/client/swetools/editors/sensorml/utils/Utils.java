@@ -33,6 +33,9 @@ import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ICallback;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ILoadFileCallback;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.Renderer;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.root.RootRenderer;
 import com.smartgwt.client.widgets.Canvas;
 
 public class Utils {
@@ -91,6 +94,83 @@ public class Utils {
 		return dialogBox;
 	}
 	
+	public static final SaveCloseWindow displaySaveDialogBox(final RNGTagList rootTag,final IRefreshHandler refreshHandler,
+			final Panel rootPanel,final String title, final Renderer renderer){
+		
+		renderer.setRefreshHandler(new IRefreshHandler() {
+			
+			@Override
+			public void refresh() {
+				renderer.reset();
+				rootPanel.clear();
+				renderer.visitChildren(rootTag.getChildren());
+				rootPanel.add(renderer.getRoot().getPanel());
+				
+				if(refreshHandler != null) {
+					refreshHandler.refresh();
+				}
+			}
+		});
+
+		renderer.visitChildren(rootTag.getChildren());
+		rootPanel.add(renderer.getRoot().getPanel());
+		
+		renderer.getRoot().getPanel().addStyleName("advanced-panel");
+		
+		final SaveCloseWindow dialogBox = new SaveCloseWindow(title,false);
+		dialogBox.addSaveHandler(new ClickHandler(){
+			@Override
+			public void onClick(ClickEvent event) {
+				if(refreshHandler != null) {
+					refreshHandler.refresh();
+				}
+			}
+		});
+		
+		dialogBox.setContent(rootPanel);
+		dialogBox.draw();
+		
+		return dialogBox;
+	}
+	
+	public static final SaveCloseWindow displaySaveDialogBox(final List<RNGTag> rootTag,final IRefreshHandler refreshHandler,
+			final Panel rootPanel,final String title, final Renderer renderer){
+		
+		renderer.setRefreshHandler(new IRefreshHandler() {
+			
+			@Override
+			public void refresh() {
+				renderer.reset();
+				rootPanel.clear();
+				renderer.visitChildren(rootTag);
+				rootPanel.add(renderer.getRoot().getPanel());
+				
+				if(refreshHandler != null) {
+					refreshHandler.refresh();
+				}
+			}
+		});
+
+		renderer.visitChildren(rootTag);
+		rootPanel.add(renderer.getRoot().getPanel());
+		
+		renderer.getRoot().getPanel().addStyleName("advanced-panel");
+		
+		final SaveCloseWindow dialogBox = new SaveCloseWindow(title,false);
+		dialogBox.addSaveHandler(new ClickHandler(){
+			@Override
+			public void onClick(ClickEvent event) {
+				if(refreshHandler != null) {
+					refreshHandler.refresh();
+				}
+			}
+		});
+		
+		dialogBox.setContent(rootPanel);
+		dialogBox.draw();
+		
+		return dialogBox;
+	}
 	private static final String DEGREE  = "\u00b0";
 	private static final String OHM = "\u2126";
 	
