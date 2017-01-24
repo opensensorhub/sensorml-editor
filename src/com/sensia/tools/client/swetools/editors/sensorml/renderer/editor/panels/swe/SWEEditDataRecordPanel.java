@@ -23,10 +23,10 @@ public class SWEEditDataRecordPanel extends EditSubSectionElementPanel {
 			nameFound = true;
 		} else if(element.getName().equals("label")){
 			labelFound = true;
-			innerContainer.addStyleName("edit-subsection-element-inner-panel");
 		} else if(element.getName().equals("field") && (labelFound || nameFound)){
 			// take the field name
 			((EditSubSectionElementPanel)element).setLabelVisible(false);
+			((EditSubSectionElementPanel)element).removeInnerStyle("edit-subsection-element-inner-panel");
 		}
 		super.addInnerElement(element);
 	}

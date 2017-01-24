@@ -105,4 +105,8 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 	public void setLabelVisible(boolean isVisible) {
 		this.label.setVisible(isVisible);;
 	}
+	
+	public void removeInnerStyle(String style) {
+		innerContainer.removeStyleName(style);
+	}
 }
