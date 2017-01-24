@@ -1,4 +1,4 @@
-package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng;
+package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.rng;
 
 import java.util.List;
 
@@ -17,17 +17,19 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
-public class RNGZeroOrMorePopupPanel extends AbstractPanel<RNGZeroOrMore>{
+public class EditRNGZeroOrMorePopupPanel extends AbstractPanel<RNGZeroOrMore>{
 
 	private VerticalPanel patternContainer;
 	private int nbPattern = 0;
 	
-	public RNGZeroOrMorePopupPanel(final RNGZeroOrMore tag,final IRefreshHandler refreshHandler) {
+	private String label = "zeroOrMore";
+	
+	public EditRNGZeroOrMorePopupPanel(final RNGZeroOrMore tag,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
 		patternContainer = new VerticalPanel();
 		patternContainer.addStyleName("rng-zeroormore-pattern");
 		
-		final String label = Utils.findLabel(tag);
+		label = Utils.findLabel(tag);
 		HTML addButton = new HTML();
 		addButton.addStyleName("rng-optional-select");
 		
@@ -52,6 +54,9 @@ public class RNGZeroOrMorePopupPanel extends AbstractPanel<RNGZeroOrMore>{
 				// display into a popup
 				List<RNGTag> tags = tag.newOccurence();
 				Utils.displaySaveDialogBox(tags, refreshHandler, new VerticalPanel(), getName(), new AdvancedRendererSML());
+				if(refreshHandler != null) {
+					refreshHandler.refresh();
+				}
 				
 			}
 		});
@@ -59,14 +64,12 @@ public class RNGZeroOrMorePopupPanel extends AbstractPanel<RNGZeroOrMore>{
 	
 	@Override
 	public String getName() {
-		return "ZeroOrMore";
+		return label;
 	}
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		RNGZeroOrMorePatternPanel patternPanel = new RNGZeroOrMorePatternPanel(getTag(), nbPattern++,refreshHandler);
-		patternPanel.addElement(element);
-		patternContainer.add(patternPanel.getPanel());
+		patternContainer.add(element.getPanel());
 	}
 
 	@Override
@@ -78,4 +81,5 @@ public class RNGZeroOrMorePopupPanel extends AbstractPanel<RNGZeroOrMore>{
 	public Panel getPatternPanel() {
 		return patternContainer;
 	}
+	
 }

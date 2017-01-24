@@ -81,11 +81,9 @@ public class EditRendererSWE extends EditRendererRNG implements RNGTagVisitor {
 		} else if(name.equalsIgnoreCase("QuantityRange")) {
 			widget = new SWEEditQuantityRangePanel(elt,getRefreshHandler());
 		} else if(name.equals("field")) {
-			skipTags=false;
-			widget = new SWEEditFieldPanel(elt);
-			skipTags=true;
+			widget = new SWEEditFieldPanel(elt,getRefreshHandler());
 		} else if(name.equals("DataRecord")) {
-			widget = new SWEEditDataRecordPanel(elt);
+			widget = new SWEEditDataRecordPanel(elt,getRefreshHandler());
 		} else if(name.equals("DataArray")) {
 			widget = new SWEEditDataArrayPanel(elt,getRefreshHandler());
 		} else if(name.equals("elementType")) {
@@ -117,7 +115,7 @@ public class EditRendererSWE extends EditRendererRNG implements RNGTagVisitor {
 		} else if(name.equals("uom")) {
 			widget = new SWEEditUOMPanel(elt);
 		} else if(name.equals("quality")) {
-			widget = new SWEEditQualityPanel(elt);
+			widget = new SWEEditQualityPanel(elt,getRefreshHandler());
 		}
 		
 		if(widget != null) {

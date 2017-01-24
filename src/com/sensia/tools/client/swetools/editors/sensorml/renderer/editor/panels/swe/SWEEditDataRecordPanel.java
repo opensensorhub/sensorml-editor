@@ -3,6 +3,8 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSubSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.PanelHelper;
 
@@ -11,8 +13,8 @@ public class SWEEditDataRecordPanel extends EditSubSectionElementPanel {
 	private boolean nameFound;
 	private boolean labelFound;
 	
-	public SWEEditDataRecordPanel(RNGElement element) {
-		super(element);
+	public SWEEditDataRecordPanel(RNGElement element,IRefreshHandler refreshHandler) {
+		super(element,refreshHandler);
 		nameFound = false;
 		labelFound = false;
 	}
@@ -23,7 +25,9 @@ public class SWEEditDataRecordPanel extends EditSubSectionElementPanel {
 			nameFound = true;
 		} else if(element.getName().equals("label")){
 			labelFound = true;
-		} else if(element.getName().equals("field") && (labelFound || nameFound)){
+		} else if(element.getName().equalsIgnoreCase("field") && (labelFound || nameFound)){
+			detailsPanel.add(buildAdvancedButton(new AdvancedRendererSML()));
+			detailsPanel.setVisible(true);
 			// take the field name
 			((EditSubSectionElementPanel)element).setLabelVisible(false);
 			((EditSubSectionElementPanel)element).removeInnerStyle("edit-subsection-element-inner-panel");

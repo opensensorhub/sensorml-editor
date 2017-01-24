@@ -20,19 +20,28 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 	protected IPanel<?> namePanel;
 	protected IPanel<?> defPanel;
 	protected Panel label;
+	protected Panel namedlabel;
+	
 	protected Panel definition;
 	protected Panel description;
 	protected Panel innerContainer;
 	protected IRefreshHandler refreshHandler;
+	protected Panel headerPanel;
+	protected Panel detailsPanel;
 	
 	public EditSubSectionElementPanel(RNGElement element, IRefreshHandler refreshHandler) {
 		super(element,refreshHandler);
 		innerContainer = new VerticalPanel();
 		label = new SimplePanel();
-		label.setVisible(false);
 		label.addStyleName("edit-subsection-label-panel");
 		label.add(new HTML(Utils.toNiceLabel(element.getName())));
 		//label.add(new HTML(element.getName()));
+		
+		namedlabel = new HorizontalPanel();
+		label.clear();
+		namedlabel.add(label);
+		namedlabel.add(new HTML("("+Utils.toNiceLabel(element.getName())+")"));
+		namedlabel.setVisible(false);
 		
 		definition = new SimplePanel();
 		definition.setVisible(false);
@@ -40,12 +49,16 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		description = new SimplePanel();
 		description.setVisible(false);
 		
-		Panel hPanel = new HorizontalPanel();
-		hPanel.add(label);
-		hPanel.add(definition);
-		hPanel.add(description);
+		detailsPanel = new SimplePanel();
+		detailsPanel.setVisible(false);
 		
-		container.add(hPanel);
+		headerPanel = new HorizontalPanel();
+		headerPanel.add(namedlabel);
+		headerPanel.add(definition);
+		headerPanel.add(description);
+		headerPanel.add(detailsPanel);
+		
+		container.add(headerPanel);
 		container.add(innerContainer);
 		container.addStyleName("edit-subsection-element-panel");
 	}
@@ -60,6 +73,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 			AbstractGenericLinePanel eltPanel = (AbstractGenericLinePanel) element;
 			if(!eltPanel.isLabeled() && namePanel != null) {
 				eltPanel.setLabel(namePanel.getPanel());
+				headerPanel.setVisible(false);
 			}
 			if(defPanel != null) {
 				//eltPanel.setDefinition(defPanel.getPanel());
@@ -74,7 +88,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		} else if(element.getName().equals("label")){
 			namePanel = element;
 			label.clear();
-			label.setVisible(true);
+			namedlabel.setVisible(true);
 			definition.setVisible(true);
 			description.setVisible(true);
 			innerContainer.addStyleName("edit-subsection-element-inner-panel");
@@ -83,7 +97,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 				|| element.getName().equals("role") 
 				|| element.getName().equals("arcrole")){
 			defPanel = element;
-			label.setVisible(true);
+			namedlabel.setVisible(true);
 			definition.setVisible(true);
 			description.setVisible(true);
 			innerContainer.addStyleName("edit-subsection-element-inner-panel");
@@ -103,7 +117,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 	}
 	
 	public void setLabelVisible(boolean isVisible) {
-		this.label.setVisible(isVisible);;
+		this.headerPanel.setVisible(isVisible);
 	}
 	
 	public void removeInnerStyle(String style) {

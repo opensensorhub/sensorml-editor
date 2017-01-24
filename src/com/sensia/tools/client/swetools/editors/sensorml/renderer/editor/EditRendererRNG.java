@@ -33,7 +33,9 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGOptionalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePatternPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.EditRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.rng.EditRNGZeroOrMorePopupPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**
  * <p>
@@ -107,6 +109,7 @@ public class EditRendererRNG extends AdvancedRendererSML {
 	@Override
 	public void visit(RNGZeroOrMore zeroOrMore) {
 		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
+			
 		int nbPattern = 0;
 		for(List<RNGTag> tags : patternInstances) {
 			if(!skipTags) {
@@ -116,5 +119,10 @@ public class EditRendererRNG extends AdvancedRendererSML {
 				this.visitChildren(tags);
 			}
 		}
+		String label = Utils.findLabel(zeroOrMore);
+		if(label != null && label.equalsIgnoreCase("field")){
+			EditRNGZeroOrMorePopupPanel patternPanel = new EditRNGZeroOrMorePopupPanel(zeroOrMore, getRefreshHandler());
+			push(patternPanel);
+		} 
 	}
 }
