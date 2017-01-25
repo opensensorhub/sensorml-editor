@@ -19,8 +19,7 @@ public class SWEEditFieldPanel extends EditSubSectionElementPanel{
 		if(element.getName().equals("name")) {
 			namedlabel.setVisible(true);
 			innerContainer.addStyleName("edit-subsection-element-inner-panel");
-			detailsPanel.add(buildAdvancedButton(new AdvancedRendererSML()));
-			detailsPanel.setVisible(true);
+			setDetailsPanel(buildAdvancedButton(new AdvancedRendererSML()));
 		}
 		super.addInnerElement(element);
 	}

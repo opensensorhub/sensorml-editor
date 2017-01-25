@@ -25,9 +25,9 @@ public class SWEEditDataRecordPanel extends EditSubSectionElementPanel {
 			nameFound = true;
 		} else if(element.getName().equals("label")){
 			labelFound = true;
-		} else if(element.getName().equalsIgnoreCase("field") && (labelFound || nameFound)){
-			detailsPanel.add(buildAdvancedButton(new AdvancedRendererSML()));
-			detailsPanel.setVisible(true);
+		} else if(element.getName().equalsIgnoreCase("field") && element instanceof EditSubSectionElementPanel 
+				&& (labelFound || nameFound)){
+			setDetailsPanel(buildAdvancedButton(new AdvancedRendererSML()));
 			// take the field name
 			((EditSubSectionElementPanel)element).setLabelVisible(false);
 			((EditSubSectionElementPanel)element).removeInnerStyle("edit-subsection-element-inner-panel");
