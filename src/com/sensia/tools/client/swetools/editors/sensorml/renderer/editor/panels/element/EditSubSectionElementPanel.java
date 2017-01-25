@@ -42,7 +42,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		namedlabel = new HorizontalPanel();
 		label.clear();
 		namedlabel.add(label);
-		namedlabel.add(new HTML("("+Utils.toNiceLabel(element.getName())+")"));
+		//namedlabel.add(new HTML("("+Utils.toNiceLabel(element.getName())+")"));
 		namedlabel.setVisible(false);
 		
 		definition = new SimplePanel();
@@ -65,6 +65,15 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		container.addStyleName("edit-subsection-element-panel");
 	}
 	
+	public void setShowDataType(boolean show) {
+		namedlabel.clear();
+		if(show) {
+			namedlabel.add(label);
+			namedlabel.add(new HTML("("+Utils.toNiceLabel(getTag().getName())+")"));
+		} else {
+			namedlabel.add(label);
+		}
+	}
 	public EditSubSectionElementPanel(RNGElement element) {
 		this(element,null);
 	}

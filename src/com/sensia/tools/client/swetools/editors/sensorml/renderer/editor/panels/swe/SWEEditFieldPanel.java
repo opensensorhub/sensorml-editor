@@ -12,6 +12,7 @@ public class SWEEditFieldPanel extends EditSubSectionElementPanel{
 
 	public SWEEditFieldPanel(RNGElement element,IRefreshHandler refreshHandler) {
 		super(element,refreshHandler);
+		setShowDataType(true);
 	}
 
 	@Override

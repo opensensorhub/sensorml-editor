@@ -17,6 +17,7 @@ public class SWEEditDataRecordPanel extends EditSubSectionElementPanel {
 		super(element,refreshHandler);
 		nameFound = false;
 		labelFound = false;
+		setShowDataType(true);
 	}
 
 	@Override
