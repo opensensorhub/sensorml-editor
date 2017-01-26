@@ -75,7 +75,7 @@ public class EditRootPanel extends ViewRootPanel{
 		hPanel.add(addSectionButton);
 		hPanel.addStyleName("addsection-button");
 		container.add(hPanel);
-		
+		container.add(new HTML("<hr  style=\"width:100%;\" />"));
 		addSectionButton.addClickHandler(new ClickHandler() {
 			
 			@Override
