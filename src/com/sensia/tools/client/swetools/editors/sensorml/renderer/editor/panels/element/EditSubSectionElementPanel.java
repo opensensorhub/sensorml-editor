@@ -18,6 +18,8 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.EditIconPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePatternPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.rng.EditRNGChoicePatternPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class EditSubSectionElementPanel extends EditElementPanel{
@@ -93,26 +95,34 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		String eltName = element.getName();
-		if(element instanceof AbstractGenericLinePanel) {
-			displayHeader = handleLine(element);
+		IPanel currentElement = element;
+		if(element instanceof RNGZeroOrMorePatternPanel) {
+			currentElement = ((RNGZeroOrMorePatternPanel)element).getIPanelPattern();
+		} else if(element instanceof EditRNGChoicePatternPanel) {
+			currentElement = ((EditRNGChoicePatternPanel)element).getIPanelPattern();
+		}
+		
+		String eltName = currentElement.getName();
+		
+		if(currentElement instanceof AbstractGenericLinePanel) {
+			displayHeader = handleLine(currentElement);
 		} else if(eltName.equals("name")) {
-			displayHeader |= handleName(element);
+			displayHeader |= handleName(currentElement);
 		} else if(eltName.equals("label")){
 			displayHeader |= handleLabel(element);
 		} else if(eltName.equals("definition") 
 				|| eltName.equals("role") 
 				|| eltName.equals("arcrole")){
-			displayHeader |= handleDefinition(element);
+			displayHeader |= handleDefinition(currentElement);
 		} else if(eltName.equals("description")){
-			displayHeader |= handleDescription(element);
+			displayHeader |= handleDescription(currentElement);
 		} else {
 			innerContainer.add(element.getPanel());
 			displayHeader |= true;
 		}
 		
-		if(element instanceof EditSubSectionElementPanel) {
-			EditSubSectionElementPanel subSection = (EditSubSectionElementPanel) element;
+		if(currentElement instanceof EditSubSectionElementPanel) {
+			EditSubSectionElementPanel subSection = (EditSubSectionElementPanel) currentElement;
 			if(!subSection.isInLine()) {
 				if(!hasLabel() && subSection.hasLabel()) {
 					// hide the name 
@@ -128,7 +138,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 			}
 		}
 
-		if(element instanceof AbstractGenericLinePanel && displayHeader) {
+		if(currentElement instanceof AbstractGenericLinePanel && displayHeader) {
 			innerContainer.addStyleName("edit-subsection-element-inner-panel");
 		}
 		
@@ -160,7 +170,9 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		// remove inner container style because it becomes a line itself
 		//innerContainer.removeStyleName("edit-subsection-element-inner-panel");
 		isInLine = true;
-		
+		if(!hasLabel) {
+			displayHeader = false;
+		}
 		return displayHeader;
 	}
 	

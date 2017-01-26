@@ -21,6 +21,7 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 
 	private Panel patternContainer;
 	private HTML removeButton;
+	protected IPanel pattern;
 	
 	public RNGZeroOrMorePatternPanel(final RNGZeroOrMore tag,final int indexPattern,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
@@ -98,12 +99,18 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 		} else {
 			patternContainer.add(element.getPanel());
 		}
+		pattern = element;
 	}
 
 	@Override
 	protected AbstractPanel<RNGZeroOrMore> newInstance() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+
+	public IPanel getIPanelPattern() {
+		return pattern;
 	}
 	
 }

@@ -33,9 +33,8 @@ public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 		headerPanel.add(addButton);
 		headerPanel.addStyleName("rng-optional-select-label");
 		
-		container.add(headerPanel);
 		container.add(patternContainer);
-		
+		container.add(headerPanel);
 		
 		addButton.addClickHandler(new ClickHandler() {
 			

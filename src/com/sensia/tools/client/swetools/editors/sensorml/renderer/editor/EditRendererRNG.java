@@ -33,6 +33,8 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGOptionalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePatternPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.EditRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.rng.EditRNGChoicePatternPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.rng.EditRNGZeroOrMorePatternPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.rng.EditRNGZeroOrMorePopupPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
@@ -69,8 +71,14 @@ public class EditRendererRNG extends AdvancedRendererSML {
 	@Override
 	public void visit(RNGChoice choice) {
 		RNGTag selectedPattern = choice.getSelectedPattern();
-		if(selectedPattern != null) {
-			if(!skipTags) {
+		
+		if(selectedPattern != null ) {
+			String label = Utils.findLabel(selectedPattern);
+			if((label != null && label.equalsIgnoreCase("Data Record"))){
+				
+				EditRNGChoicePatternPanel patternPanel = new EditRNGChoicePatternPanel(choice,getRefreshHandler());
+				pushAndVisitChildren(patternPanel, selectedPattern);
+			} else if(!skipTags) {
 				pushAndVisitChildren(new RNGChoicePanel(choice,getRefreshHandler()), selectedPattern);
 			} else {
 				selectedPattern.accept(this);
@@ -109,17 +117,21 @@ public class EditRendererRNG extends AdvancedRendererSML {
 	@Override
 	public void visit(RNGZeroOrMore zeroOrMore) {
 		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
-			
+		String label = Utils.findLabel(zeroOrMore);
+		
 		int nbPattern = 0;
 		for(List<RNGTag> tags : patternInstances) {
-			if(!skipTags) {
+			/*if((label != null && label.equalsIgnoreCase("Data Record"))){
+				EditRNGZeroOrMorePatternPanel patternPanel = new EditRNGZeroOrMorePatternPanel(zeroOrMore, nbPattern++,getRefreshHandler());
+				pushAndVisitChildren(patternPanel, tags);
+			} else*/ if(!skipTags) {
 				RNGZeroOrMorePatternPanel patternPanel = new RNGZeroOrMorePatternPanel(zeroOrMore, nbPattern++,getRefreshHandler());
 				pushAndVisitChildren(patternPanel, tags);
 			} else {
 				this.visitChildren(tags);
 			}
 		}
-		String label = Utils.findLabel(zeroOrMore);
+		
 		if(label != null && label.equalsIgnoreCase("field")){
 			EditRNGZeroOrMorePopupPanel patternPanel = new EditRNGZeroOrMorePopupPanel(zeroOrMore, getRefreshHandler());
 			push(patternPanel);

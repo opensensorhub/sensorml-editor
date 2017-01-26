@@ -1,7 +1,5 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.rng;
 
-import java.util.List;
-
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HTML;
@@ -14,22 +12,19 @@ import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
-public class EditRNGZeroOrMorePopupPanel extends AbstractPanel<RNGZeroOrMore>{
+public class EditRNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 
 	private VerticalPanel patternContainer;
 	private int nbPattern = 0;
 	
-	private String label = "zeroOrMore";
-	
-	public EditRNGZeroOrMorePopupPanel(final RNGZeroOrMore tag,final IRefreshHandler refreshHandler) {
+	public EditRNGZeroOrMorePanel(final RNGZeroOrMore tag,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
 		patternContainer = new VerticalPanel();
 		patternContainer.addStyleName("rng-zeroormore-pattern");
 		
-		label = Utils.findLabel(tag);
+		final String label = Utils.findLabel(tag);
 		HTML addButton = new HTML();
 		addButton.addStyleName("rng-optional-select");
 		
@@ -45,30 +40,25 @@ public class EditRNGZeroOrMorePopupPanel extends AbstractPanel<RNGZeroOrMore>{
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				/*tag.newOccurence();
+				tag.newOccurence();
 				
-				if(refreshHandler != null) {
-					refreshHandler.refresh();
-				}*/
-				// display into a popup
-				List<RNGTag> tags = tag.newOccurence();
-				Utils.displaySaveDialogBox(tags, refreshHandler, new VerticalPanel(), getName(), new AdvancedRendererSML());
 				if(refreshHandler != null) {
 					refreshHandler.refresh();
 				}
-				
 			}
 		});
 	}
 	
 	@Override
 	public String getName() {
-		return label;
+		return "ZeroOrMore";
 	}
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		patternContainer.add(element.getPanel());
+		EditRNGZeroOrMorePatternPanel patternPanel = new EditRNGZeroOrMorePatternPanel(getTag(), nbPattern++,refreshHandler);
+		patternPanel.addElement(element);
+		patternContainer.add(patternPanel.getPanel());
 	}
 
 	@Override
@@ -80,5 +70,4 @@ public class EditRNGZeroOrMorePopupPanel extends AbstractPanel<RNGZeroOrMore>{
 	public Panel getPatternPanel() {
 		return patternContainer;
 	}
-	
 }
