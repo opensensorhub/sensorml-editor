@@ -20,6 +20,9 @@ public class PanelHelper {
 	
 	public static IPanel findPanel(IPanel root,String nameElement) {
 		IPanel result = null;
+		if(root == null) {
+			return null;
+		}
 		
 		if(root.getName().equals(nameElement)) {
 			result = root;

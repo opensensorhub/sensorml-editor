@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="libs/gwt-openlayers-client-1.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/smartgwt.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/smartgwt-skins.jar"/>
+	<classpathentry kind="con" path="com.gwtplugins.gwt.eclipse.core.GWT_CONTAINER"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

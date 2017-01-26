@@ -8,8 +8,11 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGElement;
+import com.sensia.relaxNG.RNGOptional;
 import com.sensia.relaxNG.RNGTag;
+import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.EditIconPanel;
@@ -19,10 +22,9 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class EditSubSectionElementPanel extends EditElementPanel{
 
-	protected IPanel<?> namePanel;
-	protected IPanel<?> defPanel;
-	protected Panel label;
-	protected Panel namedlabel;
+	protected IPanel<?> nameIPanel;
+	protected Panel labelPanel;
+	protected Panel namedLabelPanel;
 	
 	protected Panel definition;
 	protected Panel description;
@@ -31,19 +33,20 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 	protected Panel headerPanel;
 	protected Panel detailsPanel;
 	
+	protected boolean hasLabel=false;
+	protected boolean hasName=false;
+	protected boolean showDataTypeName=false;
+	
+	protected boolean displayHeader = false;
+	
 	public EditSubSectionElementPanel(RNGElement element, IRefreshHandler refreshHandler) {
 		super(element,refreshHandler);
 		innerContainer = new VerticalPanel();
-		label = new SimplePanel();
-		label.addStyleName("edit-subsection-label-panel");
-		label.add(new HTML(Utils.toNiceLabel(element.getName())));
-		//label.add(new HTML(element.getName()));
+		labelPanel = new SimplePanel();
+		labelPanel.addStyleName("edit-subsection-label-panel");
 		
-		namedlabel = new HorizontalPanel();
-		label.clear();
-		namedlabel.add(label);
-		//namedlabel.add(new HTML("("+Utils.toNiceLabel(element.getName())+")"));
-		namedlabel.setVisible(false);
+		namedLabelPanel = new HorizontalPanel();
+		namedLabelPanel.add(labelPanel);
 		
 		definition = new SimplePanel();
 		definition.setVisible(false);
@@ -55,76 +58,150 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		detailsPanel.setVisible(false);
 		
 		headerPanel = new HorizontalPanel();
-		headerPanel.add(namedlabel);
+		headerPanel.add(namedLabelPanel);
 		headerPanel.add(definition);
 		headerPanel.add(description);
 		headerPanel.add(detailsPanel);
 		
+		headerPanel.setVisible(false);
+		
 		container.add(headerPanel);
 		container.add(innerContainer);
 		container.addStyleName("edit-subsection-element-panel");
+		
+		//innerContainer.addStyleName("edit-subsection-element-inner-panel");
 	}
 	
 	public void setShowDataType(boolean show) {
-		namedlabel.clear();
+		showDataTypeName = show;
+	}
+	
+	public void setDataTypeName(boolean show) {
+		namedLabelPanel.clear();
 		if(show) {
-			namedlabel.add(label);
-			namedlabel.add(new HTML("("+Utils.toNiceLabel(getTag().getName())+")"));
+			namedLabelPanel.add(labelPanel);
+			namedLabelPanel.add(new HTML("("+Utils.toNiceLabel(getTag().getName())+")"));
 		} else {
-			namedlabel.add(label);
+			namedLabelPanel.add(labelPanel);
 		}
 	}
+	
+	
 	public EditSubSectionElementPanel(RNGElement element) {
 		this(element,null);
 	}
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
+		String eltName = element.getName();
 		if(element instanceof AbstractGenericLinePanel) {
-			AbstractGenericLinePanel eltPanel = (AbstractGenericLinePanel) element;
-			if(!eltPanel.isLabeled() && namePanel != null) {
-				eltPanel.setLabel(namePanel.getPanel());
-				headerPanel.setVisible(false);
-			}
-			if(defPanel != null) {
-				//eltPanel.setDefinition(defPanel.getPanel());
-			}
-			innerContainer.add(element.getPanel());
-			isInLine = true;
-		} else if(element.getName().equals("name")) {
-			label.clear();
-			namePanel = element;
-			//innerContainer.addStyleName("edit-subsection-element-inner-panel");
-			label.add(element.getPanel());
-		} else if(element.getName().equals("label")){
-			namePanel = element;
-			label.clear();
-			namedlabel.setVisible(true);
-			definition.setVisible(true);
-			description.setVisible(true);
-			innerContainer.addStyleName("edit-subsection-element-inner-panel");
-			label.add(element.getPanel());
-		} else if(element.getName().equals("definition") 
-				|| element.getName().equals("role") 
-				|| element.getName().equals("arcrole")){
-			defPanel = element;
-			namedlabel.setVisible(true);
-			definition.setVisible(true);
-			description.setVisible(true);
-			innerContainer.addStyleName("edit-subsection-element-inner-panel");
-			definition.add(element.getPanel());
-		} else if(element.getName().equals("description")){
-			RNGElement tag = (RNGElement) element.getTag();
-			EditIconPanel<RNGElement> iconPanel = new EditIconPanel<RNGElement>(tag, 
-					new Image(GWT.getModuleBaseURL()+"images/icon_question.png"), "description-icon",false);
-			for(IPanel child : element.getElements()) {
-				iconPanel.addElement(child);
-			}
-			description.add(iconPanel.getPanel());
+			displayHeader = handleLine(element);
+		} else if(eltName.equals("name")) {
+			displayHeader |= handleName(element);
+		} else if(eltName.equals("label")){
+			displayHeader |= handleLabel(element);
+		} else if(eltName.equals("definition") 
+				|| eltName.equals("role") 
+				|| eltName.equals("arcrole")){
+			displayHeader |= handleDefinition(element);
+		} else if(eltName.equals("description")){
+			displayHeader |= handleDescription(element);
 		} else {
-			//super.addInnerElement(element);
 			innerContainer.add(element.getPanel());
+			displayHeader |= true;
 		}
+		
+		if(element instanceof EditSubSectionElementPanel) {
+			EditSubSectionElementPanel subSection = (EditSubSectionElementPanel) element;
+			if(!subSection.isInLine()) {
+				if(!hasLabel() && subSection.hasLabel()) {
+					// hide the name 
+					subSection.removeInnerStyle("edit-subsection-element-inner-panel");
+					//handleLabel(subSection.getLabelIPanel());
+					labelPanel.clear();
+					labelPanel.add(subSection.getLabelIPanel().getPanel());
+					labelPanel.setVisible(true);
+				} 
+			} 
+			if(subSection.hasNameOrLabel()) {
+				innerContainer.addStyleName("edit-subsection-element-inner-panel");
+			}
+		}
+
+		if(element instanceof AbstractGenericLinePanel && displayHeader) {
+			innerContainer.addStyleName("edit-subsection-element-inner-panel");
+		}
+		
+		if(displayHeader) {
+			headerPanel.setVisible(true);
+			if(showDataTypeName) {
+				setShowDataType(true);
+			}
+		} else {
+			headerPanel.setVisible(false);
+		}
+	}
+	
+	protected boolean handleLine(IPanel element) {
+		boolean displayHeader = this.displayHeader;
+		
+		AbstractGenericLinePanel eltPanel = (AbstractGenericLinePanel) element;
+		
+		// replace the line label/name by this name/label
+		if(!eltPanel.isLabeled() && nameIPanel != null) {
+			eltPanel.setLabel(nameIPanel.getPanel());
+			displayHeader = false;
+			//if(hasNameOrLabel()) {
+			//	innerContainer.addStyleName("edit-subsection-element-inner-panel");
+			//}
+		}
+		innerContainer.add(element.getPanel());
+		
+		// remove inner container style because it becomes a line itself
+		//innerContainer.removeStyleName("edit-subsection-element-inner-panel");
+		isInLine = true;
+		
+		return displayHeader;
+	}
+	
+	protected boolean handleName(IPanel element) {
+		nameIPanel = element;
+		labelPanel.add(element.getPanel());
+		labelPanel.setVisible(true);
+		hasName = true;
+		
+		return true;
+	}
+	
+	protected boolean handleDefinition(IPanel element) {
+		definition.setVisible(true);
+		definition.add(element.getPanel());
+		
+		return true;
+	}
+	
+	protected boolean handleDescription(IPanel<? extends RNGTag> element) {
+		RNGElement tag = (RNGElement) element.getTag();
+		EditIconPanel<RNGElement> iconPanel = new EditIconPanel<RNGElement>(tag, 
+				new Image(GWT.getModuleBaseURL()+"images/icon_question.png"), "description-icon",false);
+		for(IPanel child : element.getElements()) {
+			iconPanel.addElement(child);
+		}
+		description.setVisible(true);
+		description.add(iconPanel.getPanel());
+		
+		return true;
+	}
+	
+	protected boolean handleLabel(IPanel element) {
+		nameIPanel = element;
+		// label comes after name if any
+		labelPanel.clear();
+		labelPanel.add(element.getPanel());
+		labelPanel.setVisible(true);
+		hasLabel = true;
+		
+		return true;
 	}
 	
 	public void setLabelVisible(boolean isVisible) {
@@ -139,5 +216,21 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		detailsPanel.clear();
 		detailsPanel.add(widget);
 		detailsPanel.setVisible(true);
+	}
+	
+	public boolean hasLabel() {
+		return hasLabel;
+	}
+	
+	public IPanel getLabelIPanel() {
+		return nameIPanel;
+	}
+	
+	public Panel getLabelPanel() {
+		return headerPanel;
+	}
+	
+	public boolean hasNameOrLabel() {
+		return (hasName || hasLabel) && displayHeader;
 	}
 }

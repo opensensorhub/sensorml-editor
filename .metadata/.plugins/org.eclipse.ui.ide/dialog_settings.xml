@@ -5,6 +5,8 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="/mnt/DATA/home/nevro/progs/workspace-sensorml-editor/SensorMLEditor"/>
+			<item value="/mnt/DATA/home/nevro/progs/workspace-sensorml-editor"/>
 			<item value="/mnt/HOME_EXT/Progs/OpenSensorHub/OpenSensorHub-client/repo/SMLEditor-repo/SensorMLEditor"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">

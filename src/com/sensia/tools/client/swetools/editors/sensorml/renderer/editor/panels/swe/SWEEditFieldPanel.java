@@ -14,18 +14,4 @@ public class SWEEditFieldPanel extends EditSubSectionElementPanel{
 		super(element,refreshHandler);
 		setShowDataType(true);
 	}
-
-	@Override
-	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		if(element.getName().equals("name")) {
-			namedlabel.setVisible(true);
-			innerContainer.addStyleName("edit-subsection-element-inner-panel");
-			setDetailsPanel(buildAdvancedButton(new AdvancedRendererSML()));
-		}
-		super.addInnerElement(element);
-	}
-	@Override
-	protected AbstractPanel<RNGElement> newInstance() {
-		return null;
-	}
 }
