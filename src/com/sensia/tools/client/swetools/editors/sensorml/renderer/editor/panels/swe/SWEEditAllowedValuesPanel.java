@@ -1,11 +1,11 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe;
 
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSimpleElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 
 public class SWEEditAllowedValuesPanel extends EditSimpleElementPanel{
 
@@ -19,10 +19,10 @@ public class SWEEditAllowedValuesPanel extends EditSimpleElementPanel{
 	public SWEEditAllowedValuesPanel(RNGElement element) {
 		super(element,"AllowedValues");
 		
-		container = new HorizontalPanel();
-		valuesPanel = new HorizontalPanel();
-		innerValuesPanel = new HorizontalPanel();
-		intervalPanel = new HorizontalPanel();
+		container = new SMLHorizontalPanel();
+		valuesPanel = new SMLHorizontalPanel();
+		innerValuesPanel = new SMLHorizontalPanel();
+		intervalPanel = new SMLHorizontalPanel();
 		
 		valuesPanel.add(new HTML("["));
 		valuesPanel.add(innerValuesPanel);

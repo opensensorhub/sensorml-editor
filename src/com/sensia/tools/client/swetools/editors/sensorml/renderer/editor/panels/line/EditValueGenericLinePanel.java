@@ -1,7 +1,6 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.line;
 
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.sensia.relaxNG.RNGElement;
@@ -9,7 +8,7 @@ import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 
 // label
 // uom
@@ -26,7 +25,7 @@ public class EditValueGenericLinePanel extends EditGenericLinePanel<RNGElement>{
 	public EditValueGenericLinePanel(RNGElement tag,IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
 		valuePanel = new SimplePanel();
-		constraintPanel = new HorizontalPanel();
+		constraintPanel = new SMLHorizontalPanel();
 		
 		afterDotsPanel.add(valuePanel);
 		afterDotsPanel.add(constraintPanel);

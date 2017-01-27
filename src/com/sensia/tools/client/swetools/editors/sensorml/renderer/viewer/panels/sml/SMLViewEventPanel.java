@@ -1,6 +1,5 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.sml;
 
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -8,8 +7,8 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.element.ViewSectionElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 
 public class SMLViewEventPanel extends ViewSectionElementPanel{
 
@@ -19,10 +18,10 @@ public class SMLViewEventPanel extends ViewSectionElementPanel{
 		super(element,null);
 		
 		// add label header
-		timePanel = new HorizontalPanel();
+		timePanel = new SMLHorizontalPanel();
 		
 		Widget currentHeader = sectionPanel.getHeader();
-		HorizontalPanel hPanel = new HorizontalPanel();
+		SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
 		hPanel.add(currentHeader);
 		hPanel.add(labelPanel);
 		hPanel.add(timePanel);

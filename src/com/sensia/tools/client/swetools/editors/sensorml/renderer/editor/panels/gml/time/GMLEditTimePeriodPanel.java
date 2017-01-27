@@ -1,12 +1,12 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.time;
 
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSimpleElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 
 public class GMLEditTimePeriodPanel extends EditSimpleElementPanel{
 
@@ -17,10 +17,10 @@ public class GMLEditTimePeriodPanel extends EditSimpleElementPanel{
 	
 	public GMLEditTimePeriodPanel(RNGElement element) {
 		super(element);
-		container = new HorizontalPanel();
+		container = new SMLHorizontalPanel();
 		
-		beginPanel = new HorizontalPanel();
-		endPanel = new HorizontalPanel();
+		beginPanel = new SMLHorizontalPanel();
+		endPanel = new SMLHorizontalPanel();
 		durationPanel = new SimplePanel();
 		timeIntervalPanel = new SimplePanel();
 		

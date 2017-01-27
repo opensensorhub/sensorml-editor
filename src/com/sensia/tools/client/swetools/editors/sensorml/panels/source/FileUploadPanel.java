@@ -13,13 +13,11 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
-import com.google.gwt.user.client.Event;
-import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.FileUpload;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 
 /**
  * The Class FileUploadPanel. Most of the reading is from
@@ -43,7 +41,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallba
 public class FileUploadPanel {
 
 	/** The container. */
-	private HorizontalPanel container;
+	private SMLHorizontalPanel container;
 
 	/** The file name. */
 	private String fileName;
@@ -57,7 +55,7 @@ public class FileUploadPanel {
 	 * Instantiates a new file upload panel.
 	 */
 	public FileUploadPanel() {
-		container = new HorizontalPanel();
+		container = new SMLHorizontalPanel();
 		init();
 	}
 

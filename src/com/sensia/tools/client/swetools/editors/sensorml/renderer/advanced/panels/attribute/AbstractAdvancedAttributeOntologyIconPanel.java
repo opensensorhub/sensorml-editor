@@ -3,25 +3,17 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.pane
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGTag;
-import com.sensia.relaxNG.RNGValue;
-import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.OntologyPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -63,9 +55,9 @@ public abstract class AbstractAdvancedAttributeOntologyIconPanel<T extends RNGTa
 				});
 			}
 		});
-		valuePanel = new HorizontalPanel();
+		valuePanel = new SMLHorizontalPanel();
 		
-		container = new HorizontalPanel();
+		container = new SMLHorizontalPanel();
 		
 		container.add(new HTML(Utils.toNiceLabel(name)+":"+SMLEditorConstants.HTML_SPACE));
 		container.add(valuePanel);

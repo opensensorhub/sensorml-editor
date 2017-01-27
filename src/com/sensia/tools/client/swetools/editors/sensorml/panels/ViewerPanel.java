@@ -10,6 +10,9 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.panels;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -17,14 +20,14 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
-import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HasVerticalAlignment;
-import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.SimplePanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
+import com.sensia.gwt.relaxNG.RNGParser;
+import com.sensia.gwt.relaxNG.RNGParserCallback;
 import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.tools.client.swetools.editors.sensorml.IParsingObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
@@ -35,6 +38,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.listeners.ViewAsXMLButt
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.ISourcePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.LocalFileSourcePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.UrlSourcePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 
 /**
  * This class is in charge of creating the main Panel. The top elements will 
@@ -43,11 +47,11 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.source.UrlSource
  * @author Mathieu Dhainaut
  *
  */
-public class ViewerPanel extends Composite implements IParsingObserver, IObserver, IRefreshHandler {
+public class ViewerPanel extends FlowPanel implements IParsingObserver, IObserver, IRefreshHandler {
 	private static final long serialVersionUID = -7684111574093800909L;
 
 	//the panel in charge of displaying the HTML content
-	private VerticalPanel mainPanel;
+	private FlowPanel viewerPanel;
 	
 	//the checkbox to switch between view and edit mode
 	private CheckBox editCheckbox;
@@ -58,6 +62,19 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	
 	private static ViewerPanel instance;
 	
+	//the default RNG profiles ready to be displayed
+	private static Map<String,String> profiles = new HashMap<String,String>();
+	
+	private ListBox profileListBox;
+	
+	static {
+		profiles.put("Simple Deployment", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/profiles/Simple_Deployment.rng");
+		profiles.put("Physical Process", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/basic_sml/Basic_PhysicalProcess.rng");
+		profiles.put("Process", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/basic_sml/Basic_Process.rng");
+		profiles.put("SensorML", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/basic_sml/Basic_SensorML.rng");
+		profiles.put("Simple Process", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/basic_sml/Basic_SimpleProcess.rng");
+	}
+		
 	public enum MODE {
 		EDIT,
 		VIEW
@@ -69,8 +86,6 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		this.smlEditorProcessor.setRefreshHandler(this);
 		final Panel viewXmlPanel = getXMLViewPanel();
 
-		final VerticalPanel verticalPanel = new VerticalPanel();
-		
 		//add View as XML button
 		Button viewAsXML = new Button("View as XML");
 		viewAsXML.addClickHandler(new ViewAsXMLButtonClickListener(sgmlEditorProcessor));
@@ -78,15 +93,18 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		Button viewAsRNG = new Button("View as RelaxNG");
 		viewAsRNG.addClickHandler(new ViewAsRelaxNGButtonClickListener(sgmlEditorProcessor));
 		
+		Panel viewButtonPanel = new SMLHorizontalPanel(true);
+		viewButtonPanel.add(viewAsXML);
+		viewButtonPanel.add(viewAsRNG);
+		
+		Panel profilePanel = getProfilePanel();
+		
 		//Get the url parameter to load the document where this one is under the form : ?url=DocumentPath
 		String passedFile = com.google.gwt.user.client.Window.Location.getParameter("url");
-		HorizontalPanel panel = new HorizontalPanel();
-		panel.add(viewXmlPanel);
-		panel.add(viewAsXML);
-		panel.add(viewAsRNG);
-		panel.setSpacing(5);
-		
-		verticalPanel.add(panel);
+		Panel headerPanel = new SMLHorizontalPanel(true);
+		headerPanel.add(viewXmlPanel);
+		headerPanel.add(viewButtonPanel);
+		headerPanel.add(profilePanel);
 		
 		if(passedFile != null) {
 			//load the file given the url passed as parameter
@@ -98,19 +116,20 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 			
 		}
 		
-		mainPanel = new VerticalPanel();
-		mainPanel.addStyleName("viewer");
+		viewerPanel = new FlowPanel();
 		
-		verticalPanel.add(mainPanel);
-		initWidget(verticalPanel);
+		add(headerPanel);
+		add(viewerPanel);
 		
+		// add styles
+		
+		viewerPanel.addStyleName("viewer");
+		headerPanel.addStyleName("viewer-header");
 	}
 
 	// Get the top elements panel for the XML part
 	private Panel getXMLViewPanel() {
-		final HorizontalPanel panel = new HorizontalPanel();
-		panel.setSpacing(20);
-		panel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
+		final SMLHorizontalPanel panel = new SMLHorizontalPanel(true);
 		
 		HTML title = new HTML("<b>SensorML XML/RNG:</b>");
 		final Button load = new Button("Load");
@@ -119,7 +138,7 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		final RadioButton fromLocalFileSystem = new RadioButton("myRadioGroup", "from local");
 		final RadioButton fromUrl = new RadioButton("myRadioGroup", "from url");
 		
-		HorizontalPanel hPanel = new HorizontalPanel();
+		Panel hPanel = new SMLHorizontalPanel(true);
 		hPanel.add(fromLocalFileSystem);
 		hPanel.add(fromUrl);
 		
@@ -168,11 +187,11 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 				if(root != null){
 					MODE mode = (editCheckbox.isChecked()) ? MODE.EDIT : MODE.VIEW;
 					if(mode == MODE.EDIT){
-						mainPanel.removeStyleName("viewer");
-						mainPanel.addStyleName("editor");
+						viewerPanel.removeStyleName("viewer");
+						viewerPanel.addStyleName("editor");
 					} else if(mode == MODE.VIEW) {
-						mainPanel.removeStyleName("editor");
-						mainPanel.addStyleName("viewer");
+						viewerPanel.removeStyleName("editor");
+						viewerPanel.addStyleName("viewer");
 					}
 					smlEditorProcessor.setMode(mode);
 					redraw();
@@ -233,8 +252,8 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	@Override
 	public void parseDone(final IPanel topElement) {
 		//One the parsing done, the viewer is reset and displays the new content
-		mainPanel.clear();
-		mainPanel.add(topElement.getPanel());
+		viewerPanel.clear();
+		viewerPanel.add(topElement.getPanel());
 		root = topElement;
 	}
 	
@@ -251,20 +270,20 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		// check styles
 		MODE mode = (editCheckbox.isChecked()) ? MODE.EDIT : MODE.VIEW;
 		if(mode == MODE.EDIT){
-			mainPanel.removeStyleName("viewer");
-			mainPanel.addStyleName("editor");
+			viewerPanel.removeStyleName("viewer");
+			viewerPanel.addStyleName("editor");
 		} else if(mode == MODE.VIEW) {
-			mainPanel.removeStyleName("editor");
-			mainPanel.addStyleName("viewer");
+			viewerPanel.removeStyleName("editor");
+			viewerPanel.addStyleName("viewer");
 		}
 		
 		redraw((editCheckbox.getValue())? MODE.EDIT:MODE.VIEW);
 	}
 	
 	public void redraw(MODE mode) {
-		mainPanel.clear();
+		viewerPanel.clear();
 		IPanel newNode = smlEditorProcessor.parseRNG(smlEditorProcessor.getLoadedGrammar());
-		mainPanel.add(newNode.getPanel());
+		viewerPanel.add(newNode.getPanel());
 		root = newNode;
 	}
 	
@@ -283,5 +302,43 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	@Override
 	public void refresh() {
 		redraw((editCheckbox.getValue())? MODE.EDIT:MODE.VIEW);
+	}
+	
+	protected Panel getProfilePanel() {
+		Panel panel = new SMLHorizontalPanel(true);
+		
+		profileListBox = new ListBox(false);
+		
+		profileListBox.addItem("");
+		for(final String profileName : profiles.keySet()) {
+			profileListBox.addItem(profileName);
+		}
+		
+		HTML titleProfile = new HTML("<b>Profiles:</b>");
+		
+		Button b3 = new Button("Load relaxNG", new ClickHandler() {
+            public void onClick(ClickEvent event) {
+            	String key = profileListBox.getValue(profileListBox.getSelectedIndex());
+        		
+        		if(key != null && !key.isEmpty()){
+        			RNGParser parser = new RNGParser();
+        			parser.clearCache();
+        	        parser.parse(profiles.get(key), new RNGParserCallback() {
+        	            @Override
+        	            public void onParseDone(RNGGrammar grammar)
+        	            {
+    	                	setMode(MODE.EDIT);
+    	                	parse(grammar);
+        	            }
+        	        });
+        		}
+            }
+        });
+		
+		panel.add(titleProfile);
+		panel.add(profileListBox);
+		panel.add(b3);
+
+		return panel;
 	}
 }

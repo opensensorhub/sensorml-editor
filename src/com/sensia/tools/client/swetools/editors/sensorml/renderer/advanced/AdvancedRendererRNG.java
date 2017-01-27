@@ -10,18 +10,14 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 import com.google.gwt.core.shared.GWT;
-import com.google.gwt.dev.javac.Resolver;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGDefine;
 import com.sensia.relaxNG.RNGElement;
-import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.relaxNG.RNGGroup;
 import com.sensia.relaxNG.RNGInterleave;
 import com.sensia.relaxNG.RNGList;
@@ -29,7 +25,6 @@ import com.sensia.relaxNG.RNGOneOrMore;
 import com.sensia.relaxNG.RNGOptional;
 import com.sensia.relaxNG.RNGRef;
 import com.sensia.relaxNG.RNGTag;
-import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.relaxNG.RNGText;
 import com.sensia.relaxNG.RNGValue;
 import com.sensia.relaxNG.RNGZeroOrMore;
@@ -40,17 +35,12 @@ import com.sensia.relaxNG.XSDDecimal;
 import com.sensia.relaxNG.XSDDouble;
 import com.sensia.relaxNG.XSDInteger;
 import com.sensia.relaxNG.XSDString;
-import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.Renderer;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGChoicePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGOptionalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePatternPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd.XSDAnyURIPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd.XSDDateTimePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd.XSDDecimalPanel;
@@ -60,7 +50,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.NameRefResolver;
 
 /**
  * <p>

@@ -10,7 +10,7 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.panels.generic;
 
-import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
@@ -29,13 +29,13 @@ public class GenericVerticalContainerPanel extends AbstractPanel<RNGTag>{
 	 */
 	public GenericVerticalContainerPanel(RNGTag tag) {
 		super(tag);
-		container = new VerticalPanel();
-		container.addStyleName("vertical-generic-panel");
+		container = new FlowPanel();
+		container.addStyleName("panel-vertical-generic");
 	}
 
 	public GenericVerticalContainerPanel() {
-		container = new VerticalPanel();
-		container.addStyleName("vertical-generic-panel");
+		container = new FlowPanel();
+		container.addStyleName("panel-vertical-generic");
 	}
 	
 	/* (non-Javadoc)

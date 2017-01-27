@@ -1,15 +1,12 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gmd;
 
-import com.google.gwt.core.shared.GWT;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
-import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
-import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 
 public class GMDViewDescriptionPanel extends AbstractPanel<RNGElement>{
 
@@ -18,7 +15,7 @@ public class GMDViewDescriptionPanel extends AbstractPanel<RNGElement>{
 	public GMDViewDescriptionPanel(RNGElement element) {
 		super(element);
 		
-		container = new HorizontalPanel();
+		container = new SMLHorizontalPanel();
 		valuePanel = new SimplePanel();
 		
 		// ensure element order

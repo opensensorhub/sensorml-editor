@@ -2,8 +2,8 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels
 
 import java.util.List;
 
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -12,8 +12,9 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.ModelHelper;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 
-public class ViewRootHeaderPanel extends VerticalPanel{
+public class ViewRootHeaderPanel extends SMLVerticalPanel{
 
 	// gml:name
 	protected Panel titlesPanel;
@@ -30,23 +31,24 @@ public class ViewRootHeaderPanel extends VerticalPanel{
 	protected Label keywordsLabel;
 	
 	public ViewRootHeaderPanel() {
-		
-		setSpacing(5);	
+		isSpacing = true;
 		// 1..~
-		titlesPanel = new VerticalPanel();
+		titlesPanel = new FlowPanel();
 		
 		// 0..1
 		descriptionPanel = new SimplePanel();
 		
 		// 1..~
-		keywordsPanel = new VerticalPanel();
+		keywordsPanel = new FlowPanel();
 		keywordsPanel.addStyleName("keywords-panel");
 		keywordsLabel = new Label("Keywords: ");
 		keywordsPanel.add(keywordsLabel);
 		keywordsLabel.addStyleName("keyword-label");
 		
 		// 1..~
-		identifiersPanel = new VerticalPanel();
+		identifiersPanel = new FlowPanel();
+		
+		titlesPanel.addStyleName("panel-viewrootheader-title");
 		
 		add(titlesPanel);
 		add(new HTML("<hr  style=\"width:100%;\" />"));
@@ -54,8 +56,6 @@ public class ViewRootHeaderPanel extends VerticalPanel{
 		add(descriptionPanel);
 		add(keywordsPanel);
 		add(new HTML("<hr  style=\"width:100%;\" />"));
-		
-		addStyleName("header-document");
 		
 		this.keywordsPanel.setVisible(false);
 		this.descriptionPanel.setVisible(false);

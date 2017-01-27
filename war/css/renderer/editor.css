@@ -1,0 +1,32 @@
+.editor {
+	overflow:auto;
+	padding: 45px;
+	padding-left: 30px;
+    padding-top: 100px;
+    padding-right: 5px;
+    padding-bottom: 15px;
+}
+
+.panel-edit-section-element {
+	
+}
+
+.editor .panel-abstract-generic-line div {
+	vertical-align:bottom;	
+}
+
+.editor .panel-disclosure-element-section a.header td {
+	vertical-align : bottom !important;
+}
+
+.editor .subsection-inner {
+	padding:10px;
+}
+
+.editor .spacing {
+	padding:4px;
+}
+
+.editor .panel-abstract-generic-line div {
+	vertical-align:bottom;	
+}

@@ -1,13 +1,11 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute;
 
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 
 public class ViewAttributePanel extends AbstractPanel<RNGAttribute> {
 
@@ -15,7 +13,7 @@ public class ViewAttributePanel extends AbstractPanel<RNGAttribute> {
 	
 	public ViewAttributePanel(RNGAttribute tag) {
 		super(tag);
-		container = new HorizontalPanel();
+		container = new SMLHorizontalPanel();
 	}
 
 	@Override

@@ -12,7 +12,6 @@ import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ICallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.line.EditGenericLinePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.line.ViewGenericLinePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.NameRefResolver;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;

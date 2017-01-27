@@ -2,7 +2,6 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.sensia.relaxNG.RNGAttribute;
@@ -11,6 +10,7 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 
 // xsd:string
 // http://www.datypic.com/sc/niem21/e-gml32_identifier.html
@@ -26,10 +26,10 @@ public class GMLEditIdentifierPanel extends AbstractPanel<RNGElement>{
 	public GMLEditIdentifierPanel(RNGElement element) {
 		super(element);
 		
-		container = new HorizontalPanel();
+		container = new SMLHorizontalPanel();
 		
 		valuePanel = new SimplePanel();
-		codeSpacePanel = new HorizontalPanel();
+		codeSpacePanel = new SMLHorizontalPanel();
 		container.add(codeSpacePanel);
 		container.add(valuePanel);
 	}

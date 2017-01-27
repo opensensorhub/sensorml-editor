@@ -1,8 +1,6 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.CloseEvent;
 import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.event.logical.shared.OpenEvent;
@@ -14,7 +12,6 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGElement;
@@ -25,7 +22,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.Dis
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.EditIconPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.Renderer;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class EditSectionElementPanel extends DisclosureElementPanel{
@@ -49,7 +46,7 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 		advancedButtonPanel.add(advancedButton);
 		
 		Widget currentHeader = sectionPanel.getHeader();
-		HorizontalPanel hPanel = new HorizontalPanel();
+		Panel hPanel = new HorizontalPanel();
 		hPanel.add(currentHeader);
 		hPanel.add(labelPanel);
 		hPanel.add(definitionPanel);
@@ -93,7 +90,7 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 		
 		labelPanel.add(new HTML(Utils.toNiceLabel(tag.getName())));
 		
-		labelPanel.addStyleName("edit-section-label-panel");
+		labelPanel.addStyleName("panel-edit-section-element");
 	}
 	
 	@Override
@@ -108,7 +105,7 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 		if(element.getTag() instanceof RNGData<?>) {
 			//TODO:??
 			Label label = new Label(Utils.toNiceLabel(getName()));
-			HorizontalPanel hPanel = new HorizontalPanel();
+			SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
 			hPanel.add(label);
 			hPanel.add(element.getPanel());
 		} else if(element.getName().equals("label")){

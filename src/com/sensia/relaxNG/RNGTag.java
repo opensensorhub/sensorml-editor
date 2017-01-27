@@ -10,11 +10,7 @@
 
 package com.sensia.relaxNG;
 
-import java.io.Serializable;
-import java.util.UUID;
-
 import com.sensia.tools.client.swetools.editors.sensorml.controller.Observable;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 
 /**

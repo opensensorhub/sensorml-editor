@@ -30,7 +30,7 @@ public class EditElementPanel extends ElementPanel{
 			public void onClick(ClickEvent event) {
 				// create a new Renderer
 				final AdvancedRendererSML renderer = new AdvancedRendererSML();
-				final Panel rootPanel = new VerticalPanel();
+				final Panel rootPanel = new FlowPanel();
 				
 				renderer.setRefreshHandler(new IRefreshHandler() {
 					
@@ -64,11 +64,11 @@ public class EditElementPanel extends ElementPanel{
 
 		String panelName = Utils.toNiceLabel(element.getName());
 		
-		HorizontalPanel hPanel = new HorizontalPanel();
+		SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
 		hPanel.add(new HTML(panelName));
 		hPanel.add(label);
 		
-		innerContent = new VerticalPanel();
+		innerContent = new FlowPanel();
 		
 		container.add(hPanel);
 		container.add(innerContent);

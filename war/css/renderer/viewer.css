@@ -1,0 +1,36 @@
+/** the main viewer **/
+.viewer {
+	overflow:auto;
+	padding: 45px;
+	padding-left: 30px;
+    padding-top: 100px;
+    padding-right: 5px;
+    padding-bottom: 15px;
+}
+
+.viewer .panel-viewrootheader-title {
+	font-weight: bold;
+	font-size:25px;
+}
+
+.viewer .panel-abstract-generic-line div {
+	vertical-align:middle;	
+}
+
+.viewer .panel-disclosure-element-section a.header td {
+	vertical-align : middle !important;
+}
+
+.viewer .subsection-inner {
+	padding-top:5px;
+	padding-left:10px;
+	padding-bottom:5px;
+}
+
+.viewer .subsection-label {
+	font-weight: bold;
+}
+
+.viewer .panel-document div{
+	vertical-align:middle;
+}

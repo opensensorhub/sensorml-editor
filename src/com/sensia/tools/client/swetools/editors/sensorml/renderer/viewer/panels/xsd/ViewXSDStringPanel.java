@@ -2,7 +2,6 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels
 
 import com.sensia.relaxNG.XSDString;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd.XSDPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd.XSDStringPanel;
 
 public class ViewXSDStringPanel extends XSDStringPanel{

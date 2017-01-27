@@ -16,13 +16,12 @@ import java.util.List;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.Renderer;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
@@ -44,7 +43,7 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 	protected IRefreshHandler refreshHandler;
 	
 	protected AbstractPanel() {
-		container = new VerticalPanel();
+		container = new FlowPanel();
 		children = new ArrayList<IPanel<? extends RNGTag>>();
 		isNiceLabel = true;
 	}
@@ -133,8 +132,8 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 		}
 		
 		Label advancedButton= new Label("");
-		advancedButton.addStyleName("rng-advanced-button");
-		final Panel rootPanel = new VerticalPanel();
+		advancedButton.addStyleName("icons-advanced");
+		final Panel rootPanel = new FlowPanel();
 		
 		advancedButton.addClickHandler(new ClickHandler() {
 			
@@ -172,7 +171,7 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 		renderer.visitChildren(element.getChildren());
 		rootPanel.add(renderer.getRoot().getPanel());
 		
-		renderer.getRoot().getPanel().addStyleName("advanced-panel");
+		renderer.getRoot().getPanel().addStyleName("renderer-advanced");
 		dialogBox.redrawDialog();
 		
 		

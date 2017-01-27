@@ -1,25 +1,23 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGElement;
-import com.sensia.relaxNG.RNGOptional;
 import com.sensia.relaxNG.RNGTag;
-import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.EditIconPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePatternPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.rng.EditRNGChoicePatternPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class EditSubSectionElementPanel extends EditElementPanel{
@@ -43,11 +41,10 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 	
 	public EditSubSectionElementPanel(RNGElement element, IRefreshHandler refreshHandler) {
 		super(element,refreshHandler);
-		innerContainer = new VerticalPanel();
+		innerContainer = new SMLVerticalPanel(true);
 		labelPanel = new SimplePanel();
-		labelPanel.addStyleName("edit-subsection-label-panel");
 		
-		namedLabelPanel = new HorizontalPanel();
+		namedLabelPanel = new SMLHorizontalPanel();
 		namedLabelPanel.add(labelPanel);
 		
 		definition = new SimplePanel();
@@ -59,7 +56,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		detailsPanel = new SimplePanel();
 		detailsPanel.setVisible(false);
 		
-		headerPanel = new HorizontalPanel();
+		headerPanel = new SMLHorizontalPanel(SPACING.RIGHT);
 		headerPanel.add(namedLabelPanel);
 		headerPanel.add(definition);
 		headerPanel.add(description);
@@ -69,8 +66,9 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		
 		container.add(headerPanel);
 		container.add(innerContainer);
-		container.addStyleName("edit-subsection-element-panel");
 		
+		container.addStyleName("subsection-panel");
+		labelPanel.addStyleName("subsection-label");
 		//innerContainer.addStyleName("edit-subsection-element-inner-panel");
 	}
 	
@@ -126,7 +124,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 			if(!subSection.isInLine()) {
 				if(!hasLabel() && subSection.hasLabel()) {
 					// hide the name 
-					subSection.removeInnerStyle("edit-subsection-element-inner-panel");
+					subSection.removeInnerStyle("subsection-inner");
 					//handleLabel(subSection.getLabelIPanel());
 					labelPanel.clear();
 					labelPanel.add(subSection.getLabelIPanel().getPanel());
@@ -134,12 +132,12 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 				} 
 			} 
 			if(subSection.hasNameOrLabel()) {
-				innerContainer.addStyleName("edit-subsection-element-inner-panel");
+				innerContainer.addStyleName("subsection-inner");
 			}
 		}
 
 		if(currentElement instanceof AbstractGenericLinePanel && displayHeader) {
-			innerContainer.addStyleName("edit-subsection-element-inner-panel");
+			innerContainer.addStyleName("subsection-inner");
 		}
 		
 		if(displayHeader) {

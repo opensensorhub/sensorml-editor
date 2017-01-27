@@ -1,12 +1,13 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml;
 
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 
 public class SMLEditLinkPanel extends AbstractPanel<RNGElement>{
 
@@ -15,7 +16,7 @@ public class SMLEditLinkPanel extends AbstractPanel<RNGElement>{
 	
 	public SMLEditLinkPanel(RNGElement element) {
 		super(element);
-		container = new HorizontalPanel();
+		container = new SMLHorizontalPanel(SPACING.RIGHT);
 		
 		sourcePanel = new SimplePanel();
 		destinationPanel = new SimplePanel();

@@ -8,7 +8,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.EditIcon
 public class EditXLinkRolePanel  extends EditIconPanel<RNGAttribute>{
 
 	public EditXLinkRolePanel(RNGAttribute att) {
-		super(att,new Image(GWT.getModuleBaseURL()+"images/icon_info.png"),"def-icon");
+		super(att,new Image(GWT.getModuleBaseURL()+"images/icon_info.png"),"icons-definition");
 	}
 	
 	@Override

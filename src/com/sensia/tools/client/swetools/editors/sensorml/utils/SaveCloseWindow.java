@@ -3,15 +3,8 @@ package com.sensia.tools.client.swetools.editors.sensorml.utils;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
-import com.smartgwt.client.types.Alignment;
-import com.smartgwt.client.types.HeaderControls;
 import com.smartgwt.client.widgets.Canvas;
-import com.smartgwt.client.widgets.Label;
-import com.smartgwt.client.widgets.Window;
 import com.smartgwt.client.widgets.events.ClickEvent;
-import com.smartgwt.client.widgets.events.CloseClickEvent;
-import com.smartgwt.client.widgets.events.CloseClickHandler;
-import com.smartgwt.client.widgets.layout.LayoutSpacer;
 
 public class SaveCloseWindow extends CloseWindow {
 	

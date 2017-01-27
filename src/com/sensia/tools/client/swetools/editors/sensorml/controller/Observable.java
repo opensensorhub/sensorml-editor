@@ -4,9 +4,6 @@ package com.sensia.tools.client.swetools.editors.sensorml.controller;
  * 
  */
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 

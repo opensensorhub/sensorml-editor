@@ -8,9 +8,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -20,8 +18,6 @@ import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.chart.GenericCurveChart;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.chart.GenericTable;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.chart.SmartGWTGenericCurveChart;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.table.IDataChangeHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.table.ITable;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.table.SmartGWTGenericTable;
@@ -30,11 +26,10 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.ModelHelper;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 import com.smartgwt.client.widgets.events.ResizedEvent;
 import com.smartgwt.client.widgets.events.ResizedHandler;
-import com.smartgwt.client.widgets.form.fields.events.ChangeEvent;
-import com.smartgwt.client.widgets.form.fields.events.ChangeHandler;
 
 public class SWEEditDataArrayLinePanel extends EditGenericLinePanel<RNGElement> {
 
@@ -182,7 +177,7 @@ public class SWEEditDataArrayLinePanel extends EditGenericLinePanel<RNGElement> 
 			title = label;
 		}
 		
-		Panel labelPanel = new HorizontalPanel();
+		Panel labelPanel = new SMLHorizontalPanel();
 		labelPanel.add(new HTML(title));
 		setLabel(labelPanel);
 	}

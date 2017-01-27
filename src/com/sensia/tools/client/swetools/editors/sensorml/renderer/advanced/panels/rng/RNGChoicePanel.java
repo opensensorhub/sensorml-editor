@@ -4,40 +4,35 @@ import java.util.List;
 
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGTag;
-import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.ViewerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class RNGChoicePanel extends AbstractPanel<RNGChoice>{
 
 	private ListBox choices;
 	private Panel patternContainer;
-	private HorizontalPanel selectHeader;
+	private Panel selectHeader;
 	
 	private int currentSelectedIndex = -1;
 	
 	public RNGChoicePanel(final RNGChoice tag,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
-		patternContainer = new VerticalPanel();
+		patternContainer = new FlowPanel();
 		
 		patternContainer.addStyleName("rng-choice-pattern");
 		
-		selectHeader = new HorizontalPanel();
+		selectHeader = new SMLHorizontalPanel();
 		//TODO: check that we take the parent tag for the choice box name
 		String strLabel = Utils.findLabel(tag);
 		HTML htmlLabel = new HTML(strLabel + ": ");

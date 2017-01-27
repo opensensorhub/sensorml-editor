@@ -10,31 +10,9 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.simpledatatype;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import com.sensia.relaxNG.RNGAttribute;
-import com.sensia.relaxNG.RNGChoice;
-import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGElement;
-import com.sensia.relaxNG.RNGOptional;
-import com.sensia.relaxNG.RNGTag;
-import com.sensia.relaxNG.RNGValue;
 import com.sensia.relaxNG.RNGZeroOrMore;
-import com.sensia.relaxNG.XSDAnyURI;
-import com.sensia.relaxNG.XSDBoolean;
-import com.sensia.relaxNG.XSDDateTime;
-import com.sensia.relaxNG.XSDDecimal;
-import com.sensia.relaxNG.XSDDouble;
-import com.sensia.relaxNG.XSDInteger;
-import com.sensia.relaxNG.XSDString;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererRNG;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGChoicePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGOptionalPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePanel;
 
 /**
  * <p>

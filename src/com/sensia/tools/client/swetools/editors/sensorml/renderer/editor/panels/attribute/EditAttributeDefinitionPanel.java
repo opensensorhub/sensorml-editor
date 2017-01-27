@@ -8,7 +8,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.EditIcon
 public class EditAttributeDefinitionPanel extends EditIconPanel<RNGAttribute>{
 
 	public EditAttributeDefinitionPanel(RNGAttribute tag) {
-		super(tag,new Image(GWT.getModuleBaseURL()+"images/icon_info.png"),"def-icon");
+		super(tag,new Image(GWT.getModuleBaseURL()+"images/icon_info.png"),"icons-definition");
 	}
 
 	@Override

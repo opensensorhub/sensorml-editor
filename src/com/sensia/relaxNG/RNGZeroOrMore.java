@@ -13,9 +13,6 @@ package com.sensia.relaxNG;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gwt.core.shared.GWT;
-import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
-
 
 /**
  * <p><b>Title:</b>
