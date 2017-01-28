@@ -8,13 +8,13 @@
     padding-bottom: 15px;
 }
 
+.viewer  div{
+	vertical-align:middle;
+}
+
 .viewer .panel-viewrootheader-title {
 	font-weight: bold;
 	font-size:25px;
-}
-
-.viewer .panel-abstract-generic-line div {
-	vertical-align:middle;	
 }
 
 .viewer .panel-disclosure-element-section a.header td {
@@ -29,8 +29,4 @@
 
 .viewer .subsection-header {
 	font-weight: bold;
-}
-
-.viewer .panel-document div{
-	vertical-align:middle;
 }

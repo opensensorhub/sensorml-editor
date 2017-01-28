@@ -56,8 +56,8 @@ public class SWEEditVectorPanel extends EditSubSectionElementPanel{
 		hPanel.add(coordinatePanel);
 		hPanel.add(iconsPanel);
 		
-		labelPanel.clear();
-		labelPanel.add(hPanel);
+		label.clear();
+		label.add(hPanel);
 		
 		srsPanel.setVisible(false);
 		coordinatePanel.setVisible(false);
@@ -88,7 +88,6 @@ public class SWEEditVectorPanel extends EditSubSectionElementPanel{
 		if(element.getName().equals("referenceFrame")) {
 			srsPanel.add(element.getPanel());
 			srsPanel.setVisible(true);
-			hasLabel = true;
 			referenceFrame = ((RNGAttribute)element.getTag());
 		} else if(element.getName().equals("localFrame")) {
 			// skip localFrame
@@ -115,7 +114,6 @@ public class SWEEditVectorPanel extends EditSubSectionElementPanel{
 						iconsPanel.setVisible(true);
 					}
 				}
-				hasLabel = true;
 			}
 			super.addInnerElement(element);
 		}

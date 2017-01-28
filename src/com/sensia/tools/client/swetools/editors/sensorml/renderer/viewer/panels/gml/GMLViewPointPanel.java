@@ -12,6 +12,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.map.GenericPointMap;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class GMLViewPointPanel extends AbstractPanel<RNGElement>{
@@ -28,12 +29,12 @@ public class GMLViewPointPanel extends AbstractPanel<RNGElement>{
 	
 	public GMLViewPointPanel(RNGElement element) {
 		super(element);
-		container = new SMLHorizontalPanel();
+		container = new SMLHorizontalPanel(SPACING.RIGHT);
 		srsPanel = new SMLHorizontalPanel();
 		coordinatesPanel = new SMLHorizontalPanel();
 		mapIcon = new Image(GWT.getModuleBaseURL()+"images/maps-icon.png");
 		
-		container.addStyleName("Point-panel");
+		container.addStyleName("panel-point");
 		
 		container.add(new HTML("Point"));
 		container.add(srsPanel);
