@@ -38,8 +38,13 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 	protected boolean showDataTypeName=false;
 	
 	protected boolean displayHeader = false;
+	protected boolean displayDefaultName= false;
 	
-	public EditSubSectionElementPanel(RNGElement element, IRefreshHandler refreshHandler) {
+	public EditSubSectionElementPanel(RNGElement element,boolean defaultDisplayName) {
+		this(element,null,defaultDisplayName);
+	}
+	
+	public EditSubSectionElementPanel(RNGElement element, IRefreshHandler refreshHandler,boolean defaultDisplayName) {
 		super(element,refreshHandler);
 		innerContainer = new SMLVerticalPanel(true);
 		labelPanel = new SimplePanel();
@@ -68,8 +73,14 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		container.add(innerContainer);
 		
 		container.addStyleName("subsection-panel");
-		labelPanel.addStyleName("subsection-label");
+		headerPanel.addStyleName("subsection-header");
+		innerContainer.addStyleName("subsection-inner");
 		//innerContainer.addStyleName("edit-subsection-element-inner-panel");
+		displayDefaultName = defaultDisplayName;
+	}
+	
+	public EditSubSectionElementPanel(RNGElement element, IRefreshHandler refreshHandler) {
+		this(element,refreshHandler,true);
 	}
 	
 	public void setShowDataType(boolean show) {
@@ -105,7 +116,12 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		if(currentElement instanceof AbstractGenericLinePanel) {
 			displayHeader = handleLine(currentElement);
 		} else if(eltName.equals("name")) {
-			displayHeader |= handleName(currentElement);
+			if(displayDefaultName) {
+				 handleName(currentElement);
+				 displayHeader = true;
+			} else {
+				displayHeader |= handleName(currentElement);
+			}
 		} else if(eltName.equals("label")){
 			displayHeader |= handleLabel(element);
 		} else if(eltName.equals("definition") 
@@ -116,28 +132,6 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 			displayHeader |= handleDescription(currentElement);
 		} else {
 			innerContainer.add(element.getPanel());
-			displayHeader |= true;
-		}
-		
-		if(currentElement instanceof EditSubSectionElementPanel) {
-			EditSubSectionElementPanel subSection = (EditSubSectionElementPanel) currentElement;
-			if(!subSection.isInLine()) {
-				if(!hasLabel() && subSection.hasLabel()) {
-					// hide the name 
-					subSection.removeInnerStyle("subsection-inner");
-					//handleLabel(subSection.getLabelIPanel());
-					labelPanel.clear();
-					labelPanel.add(subSection.getLabelIPanel().getPanel());
-					labelPanel.setVisible(true);
-				} 
-			} 
-			if(subSection.hasNameOrLabel()) {
-				innerContainer.addStyleName("subsection-inner");
-			}
-		}
-
-		if(currentElement instanceof AbstractGenericLinePanel && displayHeader) {
-			innerContainer.addStyleName("subsection-inner");
 		}
 		
 		if(displayHeader) {
@@ -148,6 +142,31 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		} else {
 			headerPanel.setVisible(false);
 		}
+		
+		if(currentElement instanceof EditSubSectionElementPanel) {
+			EditSubSectionElementPanel subSection = (EditSubSectionElementPanel) currentElement;
+			if(!subSection.isInLine()) {
+				if(!hasLabel() && subSection.hasLabel()) {
+					// hide the name 
+					subSection.removeInnerStyle("subsection-inner");
+					//handleLabel(subSection.getLabelIPanel());
+					labelPanel.clear();
+					labelPanel.add(subSection.getLabelPanel());
+					labelPanel.setVisible(true);
+				} 
+			} 
+			if(subSection.hasNameOrLabel()) {
+				innerContainer.addStyleName("subsection-inner");
+			}
+		}
+
+		if(currentElement instanceof AbstractGenericLinePanel) {
+			if(hasNameOrLabel()) {
+				innerContainer.addStyleName("subsection-inner");
+			} else {
+				innerContainer.removeStyleName("subsection-inner");
+			}
+		} 
 	}
 	
 	protected boolean handleLine(IPanel element) {
@@ -162,9 +181,14 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 			//if(hasNameOrLabel()) {
 			//	innerContainer.addStyleName("edit-subsection-element-inner-panel");
 			//}
+			innerContainer.removeStyleName("subsection-inner");
 		}
 		innerContainer.add(element.getPanel());
 		
+		if((displayHeader) ) {
+			// hide the name 
+			innerContainer.removeStyleName("subsection-inner");
+		}
 		// remove inner container style because it becomes a line itself
 		//innerContainer.removeStyleName("edit-subsection-element-inner-panel");
 		isInLine = true;
@@ -187,7 +211,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		definition.setVisible(true);
 		definition.add(element.getPanel());
 		
-		return true;
+		return false;
 	}
 	
 	protected boolean handleDescription(IPanel<? extends RNGTag> element) {
@@ -200,7 +224,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		description.setVisible(true);
 		description.add(iconPanel.getPanel());
 		
-		return true;
+		return false;
 	}
 	
 	protected boolean handleLabel(IPanel element) {
@@ -241,6 +265,6 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 	}
 	
 	public boolean hasNameOrLabel() {
-		return (hasName || hasLabel) && displayHeader;
+		return headerPanel.isVisible();
 	}
 }

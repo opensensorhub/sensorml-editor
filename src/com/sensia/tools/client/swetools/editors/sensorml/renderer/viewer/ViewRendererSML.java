@@ -24,6 +24,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewXLinkArcrolePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewXLinkHrefPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewXLinkRolePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.element.ViewSubSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gmd.GMDViewDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewCoordinatesPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewDescriptionPanel;
@@ -223,7 +224,40 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 				return;
 			}
 			//----------- END SECTION
+			 else if(eltName.equalsIgnoreCase("capability")) {
+				pushAndVisitChildren(new ViewSubSectionElementPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			}else if(eltName.equalsIgnoreCase("characteristic")) {
+				pushAndVisitChildren(new ViewSubSectionElementPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			}else if(eltName.equalsIgnoreCase("classifier")) {
+				pushAndVisitChildren(new ViewSubSectionElementPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			}else if(eltName.equalsIgnoreCase("connection")) {
+				pushAndVisitChildren(new ViewSubSectionElementPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			}else if(eltName.equalsIgnoreCase("identifier")) {
+				pushAndVisitChildren(new ViewSubSectionElementPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			}else if(eltName.equalsIgnoreCase("input")) {
+				pushAndVisitChildren(new ViewSubSectionElementPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			}else if(eltName.equalsIgnoreCase("output")) {
+				pushAndVisitChildren(new ViewSubSectionElementPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			}else if(eltName.equalsIgnoreCase("parameter")) {
+				pushAndVisitChildren(new ViewSubSectionElementPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			}else if(eltName.equalsIgnoreCase("property")) {
+				pushAndVisitChildren(new ViewSubSectionElementPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			}else if(eltName.equalsIgnoreCase("SpatialFrame")) {
+				pushAndVisitChildren(new ViewSubSectionElementPanel(elt,getRefreshHandler()), elt.getChildren());
+				return;
+			}
+			//----------- SUBSECTION
 			
+			//----------- END SUBSECTION
 			//----------- LINE
 			if (eltName.equalsIgnoreCase("ObservableProperty")) {
 				pushAndVisitChildren(new SMLViewObservablePropertyPanel(elt), elt.getChildren());

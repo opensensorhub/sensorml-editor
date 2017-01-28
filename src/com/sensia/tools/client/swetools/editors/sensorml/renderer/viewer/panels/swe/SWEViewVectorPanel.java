@@ -9,7 +9,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 public class SWEViewVectorPanel extends SWEEditVectorPanel {
 
 	public SWEViewVectorPanel(RNGElement element, IRefreshHandler refreshHandler) {
-		super(element, refreshHandler);
+		super(element, refreshHandler,false);
 	}
 	
 	@Override

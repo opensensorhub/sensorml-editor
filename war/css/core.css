@@ -114,3 +114,22 @@ input.file-upload {
     width: 25px;
     height: 9px;
 }
+
+/** smartgwt status bar**/
+.windowStatusBar {
+	display:none !important;
+}
+.smartgwt-dialog-save-button {
+	height:45px !important;
+	padding: 5 5 5 5;
+}
+
+.smartgwt-dialog-save-button div{
+	font-size:13px;
+}
+
+.html-pane-code {
+}
+
+.dialog-code {
+}

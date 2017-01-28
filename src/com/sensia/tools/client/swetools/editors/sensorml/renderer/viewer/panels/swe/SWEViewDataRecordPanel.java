@@ -6,6 +6,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 public class SWEViewDataRecordPanel extends EditSubSectionElementPanel {
 
 	public SWEViewDataRecordPanel(RNGElement element) {
-		super(element);
+		super(element,false);
 	}
 }

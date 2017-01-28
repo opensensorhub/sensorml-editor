@@ -9,6 +9,7 @@ import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 
 /**
  * This class is in charge of building the data array line + icons.
@@ -31,7 +32,7 @@ public class SWEEditDataArrayPanel extends AbstractPanel<RNGElement>{
 		super(tag,refreshHandler);
 		linePanel = getLinePanel(tag);
 		
-		beforeLineContentPanel = new FlowPanel();
+		beforeLineContentPanel = new SMLVerticalPanel(true);
 		
 		container.add(beforeLineContentPanel);
 		container.add(linePanel.getPanel());

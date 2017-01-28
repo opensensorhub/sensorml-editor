@@ -12,6 +12,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer;
 
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.element.ViewSubSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewCategoryPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewCountPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewDataRecordPanel;
@@ -103,6 +104,18 @@ public class ViewRendererSWE extends ViewRendererRNG implements RNGTagVisitor {
 				pushAndVisitChildren(new SWEViewDataRecordPanel(element), element.getChildren());
 			} else if(name.equals("field")) {
 				pushAndVisitChildren(new SWEViewFieldPanel(element), element.getChildren());
+			} else if(name.equals("elementType")) {
+				pushAndVisitChildren(new ViewSubSectionElementPanel(element,getRefreshHandler()), element.getChildren());
+			} else if(name.equals("encoding")) {
+				pushAndVisitChildren(new ViewSubSectionElementPanel(element,getRefreshHandler()), element.getChildren());
+			} else if(name.equals("coordinate")) {
+				pushAndVisitChildren(new ViewSubSectionElementPanel(element,getRefreshHandler()), element.getChildren());
+			} else if(name.equals("Text")) {
+				pushAndVisitChildren(new ViewSubSectionElementPanel(element,getRefreshHandler()), element.getChildren());
+			} else if(name.equals("")) {
+				pushAndVisitChildren(new ViewSubSectionElementPanel(element,getRefreshHandler()), element.getChildren());
+			} else if(name.equals("")) {
+				pushAndVisitChildren(new ViewSubSectionElementPanel(element,getRefreshHandler()), element.getChildren());
 			} else {
 				super.visit(element);
 			}

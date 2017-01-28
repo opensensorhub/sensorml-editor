@@ -7,7 +7,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 public class SWEViewFieldPanel extends EditSubSectionElementPanel{
 
 	public SWEViewFieldPanel(RNGElement element) {
-		super(element);
+		super(element,false);
 	}
 
 	@Override

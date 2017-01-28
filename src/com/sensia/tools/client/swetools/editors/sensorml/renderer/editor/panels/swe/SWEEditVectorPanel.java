@@ -19,6 +19,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.utils.ModelHelper;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -37,10 +38,10 @@ public class SWEEditVectorPanel extends EditSubSectionElementPanel{
 	
 	protected HTML htmlLabel;
 	
-	public SWEEditVectorPanel(RNGElement element, final IRefreshHandler refreshHandler) {
-		super(element,refreshHandler);
-	
-		Panel hPanel = new SMLHorizontalPanel();
+	public SWEEditVectorPanel(RNGElement element, final IRefreshHandler refreshHandler,boolean defaultName) {
+		super(element,refreshHandler,defaultName);
+		
+		Panel hPanel = new SMLHorizontalPanel(SPACING.RIGHT);
 		srsPanel = new SMLHorizontalPanel();
 		coordinatePanel = new SMLHorizontalPanel();
 		iconsPanel = new SMLHorizontalPanel();
@@ -78,13 +79,16 @@ public class SWEEditVectorPanel extends EditSubSectionElementPanel{
 		// default name
 		setHtmlLabel("Location");
 	}
+	public SWEEditVectorPanel(RNGElement element, final IRefreshHandler refreshHandler) {
+		this(element,refreshHandler,false);
+	}
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
 		if(element.getName().equals("referenceFrame")) {
 			srsPanel.add(element.getPanel());
 			srsPanel.setVisible(true);
-			
+			hasLabel = true;
 			referenceFrame = ((RNGAttribute)element.getTag());
 		} else if(element.getName().equals("localFrame")) {
 			// skip localFrame
@@ -111,6 +115,7 @@ public class SWEEditVectorPanel extends EditSubSectionElementPanel{
 						iconsPanel.setVisible(true);
 					}
 				}
+				hasLabel = true;
 			}
 			super.addInnerElement(element);
 		}
