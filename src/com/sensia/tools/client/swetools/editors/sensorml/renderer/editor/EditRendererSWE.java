@@ -15,6 +15,7 @@ import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditAllowedTokensPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditAllowedValuesPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditBooleanPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditCategoryPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditConstraintPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditCoordinatePanel;
@@ -82,9 +83,13 @@ public class EditRendererSWE extends EditRendererRNG implements RNGTagVisitor {
 			widget = new SWEEditQuantityRangePanel(elt,getRefreshHandler());
 		} else if(name.equals("field")) {
 			widget = new SWEEditFieldPanel(elt,getRefreshHandler());
+		} else if(name.equals("item")) {
+	        widget = new SWEEditFieldPanel(elt,getRefreshHandler());
 		} else if(name.equals("DataRecord")) {
 			widget = new SWEEditDataRecordPanel(elt,getRefreshHandler());
-		} else if(name.equals("DataArray")) {
+		} else if(name.equals("DataChoice")) {
+            widget = new SWEEditDataRecordPanel(elt,getRefreshHandler());
+        } else if(name.equals("DataArray")) {
 			widget = new SWEEditDataArrayPanel(elt,getRefreshHandler());
 		} else if(name.equals("elementType")) {
 			widget = new SWEditElementTypePanel(elt);
@@ -104,8 +109,11 @@ public class EditRendererSWE extends EditRendererRNG implements RNGTagVisitor {
 			widget = new SWEEditDescriptionPanel(elt);
 		} else if(name.equals("Text")) {
 			widget = new SWEEditTextPanel(elt);
-		} else if(name.equals("Vector")) {
-			widget = new SWEEditVectorPanel(elt,getRefreshHandler());
+		} else if(name.equals("Boolean")) {
+            widget = new SWEEditBooleanPanel(elt,getRefreshHandler());
+        } else if(name.equals("Vector")) {
+			//widget = new SWEEditVectorPanel(elt,getRefreshHandler());
+		    widget = new SWEEditDataRecordPanel(elt,getRefreshHandler());
 		} else if(name.equals("coordinate")) {
 			widget = new SWEEditCoordinatePanel(elt);
 		} else if(name.equals("Time")) {
