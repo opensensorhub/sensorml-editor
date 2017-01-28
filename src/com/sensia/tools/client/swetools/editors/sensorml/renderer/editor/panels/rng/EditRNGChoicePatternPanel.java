@@ -22,7 +22,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 public class EditRNGChoicePatternPanel extends AbstractPanel<RNGChoice>{
 
 	private Panel patternContainer;
-	private HTML removeButton;
+	//private HTML removeButton;
 	protected IPanel pattern;
 	
 	public EditRNGChoicePatternPanel(final RNGChoice tag,final IRefreshHandler refreshHandler) {
@@ -33,12 +33,9 @@ public class EditRNGChoicePatternPanel extends AbstractPanel<RNGChoice>{
 		patternContainer = new VerticalPanel();
 		patternContainer.addStyleName("edit-rng-choice-pattern");
 		
-		removeButton = new HTML();
+		/*removeButton = new HTML();
 		removeButton.addStyleName("rng-optional-select-remove");
 		removeButton.addStyleName("rng-shift-remove");
-		
-		container.add(patternContainer);
-		
 		removeButton.addClickHandler(new ClickHandler() {
 			
 			@Override
@@ -51,10 +48,10 @@ public class EditRNGChoicePatternPanel extends AbstractPanel<RNGChoice>{
 					refreshHandler.refresh();
 				}
 			}
-		});
+		});*/
 		
 		//container.addStyleName("rng-optional-pattern");
-		container.add(removeButton);
+		//container.add(removeButton);
 		container.add(patternContainer);
 		
 	}

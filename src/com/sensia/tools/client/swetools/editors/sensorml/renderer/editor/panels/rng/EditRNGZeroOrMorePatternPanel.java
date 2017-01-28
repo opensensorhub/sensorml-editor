@@ -34,9 +34,7 @@ public class EditRNGZeroOrMorePatternPanel extends RNGZeroOrMorePatternPanel{
 		removeButton = new HTML();
 		removeButton.addStyleName("rng-optional-select-remove");
 		removeButton.addStyleName("rng-shift-remove");
-		
-		container.add(patternContainer);
-		
+	
 		removeButton.addClickHandler(new ClickHandler() {
 			
 			@Override
