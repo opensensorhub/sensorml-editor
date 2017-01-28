@@ -34,3 +34,7 @@
 }
 
 /**** END Align ****/
+
+.editor .connection .gwt-TextBox {
+    width:400px;
+}

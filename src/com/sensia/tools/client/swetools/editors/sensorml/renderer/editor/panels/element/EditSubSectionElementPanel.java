@@ -20,7 +20,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class EditSubSectionElementPanel extends EditElementPanel{
 
-	protected IPanel<?> namePanel;
+	protected Panel namePanel;
 	protected IPanel<?> defPanel;
 	protected Panel label;
 	protected Panel definition;
@@ -71,7 +71,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		if(element instanceof AbstractGenericLinePanel) {
 			AbstractGenericLinePanel eltPanel = (AbstractGenericLinePanel) element;
 			if(!eltPanel.isLabeled() && namePanel != null) {
-				eltPanel.setLabel(namePanel.getPanel());
+				eltPanel.setLabel(namePanel);
 			} 
 			
 			if(!label.isVisible()) {
@@ -84,7 +84,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 			isInLine = true;
 		} else if(element.getName().equals("name")) {
 			label.clear();
-			namePanel = element;
+			namePanel = element.getPanel();
 			//innerContainer.addStyleName("subsection-inner");
 			label.add(element.getPanel());
 			if(definition.isVisible() || description.isVisible()) {
@@ -92,7 +92,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 				innerContainer.addStyleName("subsection-inner");
 			}
 		} else if(element.getName().equals("label")){
-			namePanel = element;
+			namePanel = element.getPanel();
 			label.clear();
 			label.setVisible(true);
 			definition.setVisible(true);
@@ -118,15 +118,16 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 				iconPanel.addElement(child);
 			}
 			description.add(iconPanel.getPanel());
+			description.setVisible(true);
 		} else {
 			//super.addInnerElement(element);
 			innerContainer.add(element.getPanel());
 		}
 	}
 	
-	public void setLabelVisible(boolean isVisible) {
+	/*public void setLabelVisible(boolean isVisible) {
 		this.label.setVisible(isVisible);;
-	}
+	}*/
 	
 	public void setShowDataType(boolean v){
 		

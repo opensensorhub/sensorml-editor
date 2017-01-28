@@ -58,6 +58,7 @@ public class SWEEditVectorPanel extends EditSubSectionElementPanel{
 		
 		label.clear();
 		label.add(hPanel);
+		namePanel = hPanel;
 		
 		srsPanel.setVisible(false);
 		coordinatePanel.setVisible(false);
