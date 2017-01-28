@@ -47,6 +47,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.Dis
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.Renderer;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.element.AdvancedElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGChoicePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGOptionalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePanel;
@@ -99,8 +100,9 @@ public abstract class AdvancedRendererRNG extends Renderer {
 	 */
 	@Override
 	public void visit(RNGElement elt) {
-		//pushAndVisitChildren(new DynamicDisclosureElementPanel(elt), elt.getChildren());
-		pushAndVisitChildren(new EditElementPanel(elt,getRefreshHandler()), elt.getChildren());
+		//pushAndVisitChildren(new DisclosureElementPanel(elt,getRefreshHandler()), elt.getChildren());
+		//pushAndVisitChildren(new EditElementPanel(elt,getRefreshHandler()), elt.getChildren());
+	    pushAndVisitChildren(new AdvancedElementPanel(elt,getRefreshHandler()), elt.getChildren());
 	}
 	
 	/* (non-Javadoc)

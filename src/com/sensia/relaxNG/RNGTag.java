@@ -10,11 +10,7 @@
 
 package com.sensia.relaxNG;
 
-import java.io.Serializable;
-import java.util.UUID;
-
 import com.sensia.tools.client.swetools.editors.sensorml.controller.Observable;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 
 /**
@@ -37,11 +33,14 @@ public abstract class RNGTag extends Observable implements  ITag
     protected String annotation;
     protected RNGTag parent;
     protected boolean disabled;
+    protected boolean collapsed;
+    
     
     public RNGTag()
     {
         super();
     }
+    
     
     public String getId()
     {
@@ -87,6 +86,18 @@ public abstract class RNGTag extends Observable implements  ITag
     public void setDisabled(boolean disabled)
     {
         this.disabled = disabled;
+    }
+
+
+    public boolean isCollapsed()
+    {
+        return collapsed;
+    }
+
+
+    public void setCollapsed(boolean collapsed)
+    {
+        this.collapsed = collapsed;
     }
 
 

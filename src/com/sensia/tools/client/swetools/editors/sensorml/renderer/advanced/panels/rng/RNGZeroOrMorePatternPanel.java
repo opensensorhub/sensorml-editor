@@ -12,6 +12,7 @@ import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.element.AdvancedElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.element.AdvancedSimpleElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSimpleElementPanel;
@@ -25,24 +26,17 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 	
 	public RNGZeroOrMorePatternPanel(final RNGZeroOrMore tag,final int indexPattern,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
-		
+		container = new HorizontalPanel();
+        container.addStyleName("rng-zeroormore-pattern");
+        
 		patternContainer = new VerticalPanel();
 		patternContainer.addStyleName("rng-zeroormore-pattern");
 		
-		final String label = Utils.findLabel(tag);
-		
 		removeButton = new HTML();
-		Panel hPanel = new HorizontalPanel();
-		hPanel.add(removeButton);
-		hPanel.add(new HTML(Utils.toNiceLabel(label)));
-		
-		container.add(hPanel);
-		container.add(patternContainer);
-		
 		removeButton.addStyleName("rng-optional-select-remove");
-		removeButton.addStyleName("rng-shift-remove");
-		
-		removeButton.addClickHandler(new ClickHandler() {
+        removeButton.addStyleName("rng-shift-remove");
+        
+        removeButton.addClickHandler(new ClickHandler() {
 			
 			@Override
 			public void onClick(ClickEvent event) {
@@ -56,7 +50,8 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 			}
 		});
 		
-		patternContainer.addStyleName("rng-optional-pattern");
+        container.add(removeButton);
+        container.add(patternContainer);
 	}
 	
 	@Override
@@ -67,7 +62,7 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		if(element instanceof EditSectionElementPanel) {
+		if(element instanceof EditSectionElementPanel || element instanceof AdvancedElementPanel) {
 			
 			element.getPanel().removeStyleName("disclosure-noborder");
 			element.getPanel().addStyleName("section-panel disclosure-border");
