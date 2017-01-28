@@ -6,9 +6,13 @@ import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.TextBoxBase;
 import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
@@ -18,30 +22,34 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 	protected static final int DEFAULT_TEXBOX_VALUE_SIZE = 20;
 	
-	protected TextBox textBox;
+	protected TextBoxBase textBox;
 
 	private String focusTmpText="";
 	
 	public EditValuePanel(final RNGData<?> data,final IRefreshHandler refreshHandler) {
+	    this(data, false, refreshHandler);
+	}
+	
+	public EditValuePanel(final RNGData<?> data, boolean largeText, final IRefreshHandler refreshHandler) {
 		super(data,refreshHandler);
 		container = new HorizontalPanel();
 		
 		isNiceLabel = true;
 		
-		textBox = new TextBox();
-		textBox.addStyleName("textbox");
-		// put saved value in text box
-		if (data.getStringValue() != null) {
-			textBox.setText(data.getStringValue().trim());
-			
-			int valueLength = data.getStringValue().trim().length();
-			if(valueLength > 0) {
-				textBox.setVisibleLength(data.getStringValue().trim().length());
-			} else {
-				textBox.setVisibleLength(DEFAULT_TEXBOX_VALUE_SIZE);
-			}
-			
+		if (largeText) {
+		    textBox = new TextArea();
+            textBox.addStyleName("textArea");
+            textBox.setWidth("");
+            ((TextArea)textBox).setVisibleLines(3);
+		} else {
+		    textBox = new TextBox();
+    		textBox.addStyleName("textbox");
+    		((TextBox)textBox).setVisibleLength(DEFAULT_TEXBOX_VALUE_SIZE);
 		}
+		
+		// put saved value in text box
+        if (data.getStringValue() != null)
+            textBox.setText(data.getStringValue().trim());
 
 		textBox.addKeyUpHandler(new KeyUpHandler() {
 
@@ -50,8 +58,18 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 				data.setStringValue(textBox.getText());
 			}
 		});
+        
+        textBox.addValueChangeHandler(new ValueChangeHandler<String>() {
+            
+            @Override
+            public void onValueChange(ValueChangeEvent<String> event) {
+                if(!focusTmpText.equals(textBox.getText()) && refreshHandler != null) {
+                    refreshHandler.refresh();
+                }
+            }
+        });
 		
-		textBox.addBlurHandler(new BlurHandler() {
+		/*textBox.addBlurHandler(new BlurHandler() {
 			
 			@Override
 			public void onBlur(BlurEvent event) {
@@ -59,7 +77,7 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 					refreshHandler.refresh();
 				}
 			}
-		});
+		});*/
 		
 		textBox.addFocusHandler(new FocusHandler() {
 			
