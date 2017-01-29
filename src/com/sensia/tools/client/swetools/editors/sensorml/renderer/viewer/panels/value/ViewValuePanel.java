@@ -16,7 +16,7 @@ public class ViewValuePanel extends AbstractPanel<RNGValue>{
 	
 	public ViewValuePanel(final RNGValue data) {
 		super(data);
-		isNiceLabel = true;
+		isNiceLabel = false;
 		
 		htmlTextBox = new HTML();
 		
