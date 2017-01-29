@@ -68,6 +68,9 @@ public class AdvancedRendererSWE extends AdvancedRendererRNG {
 			widget = new SWEAdvancedIntervalPanel(elt);
 		} else if(name.equalsIgnoreCase("significantFigures")) {
 			widget = new SWEAdvancedSignificanFiguresPanel(elt);
+		} else if(name.equalsIgnoreCase("uom")) {
+		    this.visitChildren(elt.getChildren());
+		    return;
 		}
 		
 		if(widget != null) {
