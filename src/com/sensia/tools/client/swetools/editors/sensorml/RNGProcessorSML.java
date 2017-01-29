@@ -13,7 +13,6 @@ package com.sensia.tools.client.swetools.editors.sensorml;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gwt.core.shared.GWT;
 import com.sensia.gwt.relaxNG.RNGParser;
 import com.sensia.gwt.relaxNG.RNGParserCallback;
 import com.sensia.gwt.relaxNG.XMLSensorMLParser;
@@ -117,7 +116,7 @@ public class RNGProcessorSML {
 	 */
 	private void parseRNG(final RNGGrammar grammar) {
 		setLoadedGrammar(grammar);
-		IPanel root  = null;
+		IPanel<?> root  = null;
 		
 		if(mode == MODE.EDIT){
 			EditRendererSML renderer = new EditRendererSML();
@@ -142,7 +141,7 @@ public class RNGProcessorSML {
 	 * Parses only a subset of the global document
 	 * @param url
 	 */
-	public IPanel parseRNG(RNGTag tag) {
+	public IPanel<?> parseRNG(RNGTag tag) {
 		if(mode == MODE.VIEW){
 			ViewRendererSML renderer = new ViewRendererSML();
 			renderer.visit(tag);

@@ -41,7 +41,7 @@ public abstract class AbstractSourcePanel implements ISourcePanel{
 	public void checkEditButton() {
 		if(edit != null) {
 			edit.setVisible(true);
-			edit.setChecked(false);
+			edit.setValue(true);
 		}
 	}
 }

@@ -56,7 +56,7 @@ public class UrlSourcePanel extends AbstractSourcePanel {
 	 */
 	@Override
 	public void parseContent() {
-		smlEditorProcessor.setMode(MODE.VIEW);
+		smlEditorProcessor.setMode(MODE.EDIT);
 		smlEditorProcessor.parse(urlBox.getText());
 	}
 }
