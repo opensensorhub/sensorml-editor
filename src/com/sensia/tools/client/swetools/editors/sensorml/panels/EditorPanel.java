@@ -38,10 +38,12 @@ public class EditorPanel  extends Composite  implements IParsingObserver, IObser
 	
 	static {
 		profiles.put("Simple Deployment", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/profiles/Simple_Deployment.rng");
-		profiles.put("Physical Process", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/basic_sml/Basic_PhysicalProcess.rng");
-		profiles.put("Process", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/basic_sml/Basic_Process.rng");
-		profiles.put("SensorML", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/basic_sml/Basic_SensorML.rng");
-		profiles.put("Simple Process", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/basic_sml/Basic_SimpleProcess.rng");
+		profiles.put("Frame Sensor Model (CSM)", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/profiles/RemoteSensing/frame-sensor-model.rng");
+        profiles.put("Basic Physical Process", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/basic_sml/Basic_PhysicalProcess.rng");
+		profiles.put("Basic Process", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/basic_sml/Basic_Process.rng");
+		profiles.put("Basic Simple Process", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/basic_sml/Basic_SimpleProcess.rng");
+        profiles.put("Simple Process", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/sml/SimpleProcess.rng");
+        profiles.put("Physical Process", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/sml/PhysicalProcess.rng");
 	}
 	
 	//the processor in charge of parsing and create the RNG profile
