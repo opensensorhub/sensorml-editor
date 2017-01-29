@@ -63,7 +63,10 @@ public class ModelHelper {
 		if (tag instanceof RNGElement) {
 			String eltName = ((RNGElement) tag).getName();
 			String nsUri = ((RNGElement) tag).getNamespace();
-			if(nsUri.equalsIgnoreCase(namespace) && eltName.equalsIgnoreCase(name)) {
+			if (namespace == null && name == null) {
+			    results.add((RNGElement) tag);
+			    return;
+			} else if(nsUri.equalsIgnoreCase(namespace) && eltName.equalsIgnoreCase(name)) {
 				results.add((RNGElement) tag);
 			}
 		} else if (tag instanceof RNGRef) {
@@ -79,7 +82,7 @@ public class ModelHelper {
 			}
 		} else if(tag instanceof RNGChoice && ((RNGChoice)tag).isSelected()) {
 			findRecursiveTags(namespace, name, ((RNGChoice) tag).getSelectedPattern(), results);
-		} else if(tag instanceof RNGOptional && ((RNGOptional)tag).isSelected()) {
+		} else if(tag instanceof RNGOptional) {// && ((RNGOptional)tag).isSelected()) {
 			List<RNGTag> children = ((RNGOptional) tag).getChildren();
 			for(RNGTag child : children) {
 				findRecursiveTags(namespace, name, child, results);

@@ -10,11 +10,17 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor;
 
+import java.util.List;
 import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
+import com.sensia.relaxNG.RNGOptional;
+import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGTagVisitor;
+import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGOptionalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePatternPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedLabelPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditAttributeCodePanel;
@@ -41,6 +47,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.time.GMLEditTimeInstantPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.time.GMLEditTimePeriodPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.time.GMLEditTimePositionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.rng.EditRNGZeroOrMorePopupPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.root.EditRootPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditAxisPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditCapabilitiesPanel;
@@ -84,7 +91,9 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditTypeOfPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditValidTimePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.history.SMLEditEventPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.ModelHelper;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**
  * <p>
@@ -419,5 +428,52 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 		} else {
 			pushAndVisitChildren(new EditAttributePanel(att),att.getChildren());
 		}
+	}
+	
+	@Override
+    public void visit(RNGOptional optional) {
+        
+	    // to show + buttons in the main sections
+        if (!optional.isSelected() && canShowOptionalContent(optional)) {
+            push(new RNGOptionalPanel(optional,getRefreshHandler()));
+        }
+        else {
+            super.visit(optional);
+        }
+    }
+	
+	@Override
+    public void visit(RNGZeroOrMore zeroOrMore) {
+        super.visit(zeroOrMore);
+        
+        // to show + buttons in the main sections
+        if (canShowOptionalContent(zeroOrMore)) {
+            EditRNGZeroOrMorePopupPanel patternPanel = new EditRNGZeroOrMorePopupPanel(zeroOrMore, getRefreshHandler());
+            push(patternPanel);
+        }
+    }
+	
+	protected boolean canShowOptionalContent(RNGTag tag)
+	{
+	    List<RNGElement> childElts = ModelHelper.findTags(null, null, tag);
+        if (!childElts.isEmpty())
+        {
+            String name = childElts.get(0).getName(); 
+            if (name != null && (name.equalsIgnoreCase("identifier") || 
+                                 name.equalsIgnoreCase("classifier") ||
+                                 name.equalsIgnoreCase("characteristic") ||
+                                 name.equalsIgnoreCase("capability") ||
+                                 name.equalsIgnoreCase("contact") ||
+                                 name.equalsIgnoreCase("input") ||
+                                 name.equalsIgnoreCase("output") ||
+                                 name.equalsIgnoreCase("parameter") ||
+                                 name.equalsIgnoreCase("field") ||
+                                 name.equalsIgnoreCase("coordinate") ||
+                                 name.equalsIgnoreCase("item")) ){
+                return true;
+            }
+        }
+        
+        return false;
 	}
 }
