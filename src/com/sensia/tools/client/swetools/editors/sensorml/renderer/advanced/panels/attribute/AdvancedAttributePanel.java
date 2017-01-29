@@ -27,9 +27,6 @@ public class AdvancedAttributePanel extends AbstractPanel<RNGAttribute> {
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		if(element.getTag() instanceof RNGValue) {
-			container.clear();
-		}
 		container.add(element.getPanel());
 	}
 
