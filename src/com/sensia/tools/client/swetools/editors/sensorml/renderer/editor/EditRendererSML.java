@@ -18,6 +18,7 @@ import com.sensia.relaxNG.RNGOptional;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.relaxNG.RNGZeroOrMore;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGOptionalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePatternPanel;
@@ -199,10 +200,10 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 				pushAndVisitChildren(new SMLEditObservablePropertyPanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("output")) {
-				pushAndVisitChildren(new SMLEditOutputPanel(elt), elt.getChildren());
+				pushAndVisitChildren(new SMLEditOutputPanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("input")) {
-				pushAndVisitChildren(new SMLEditInputPanel(elt), elt.getChildren());
+				pushAndVisitChildren(new SMLEditInputPanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("inputs")) {
 				skipTags = true;
@@ -248,7 +249,7 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 				skipTags = false;
 				return;
 			} else if(eltName.equalsIgnoreCase("characteristic")) {
-				pushAndVisitChildren(new SMLEditCharacteristicPanel(elt), elt.getChildren());
+				pushAndVisitChildren(new SMLEditCharacteristicPanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("contacts")) {
 				skipTags = true;
@@ -316,10 +317,10 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 				skipTags = false;
 				return;
 			} else if(eltName.equalsIgnoreCase("parameter")) {
-				pushAndVisitChildren(new SMLEditParameterPanel(elt), elt.getChildren());
+				pushAndVisitChildren(new SMLEditParameterPanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("capability")) {
-				pushAndVisitChildren(new SMLEditCapabilityPanel(elt), elt.getChildren());
+				pushAndVisitChildren(new SMLEditCapabilityPanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("axis")) {
 				pushAndVisitChildren(new SMLEditAxisPanel(elt,getRefreshHandler()), elt.getChildren());
@@ -358,9 +359,6 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 				return;
 			} else if(eltName.equalsIgnoreCase("origin")) {
 				pushAndVisitChildren(new SMLEditOriginPanel(elt,getRefreshHandler()), elt.getChildren());
-				return;
-			} else if(eltName.equalsIgnoreCase("input")) {
-				pushAndVisitChildren(new SMLEditInputPanel(elt), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("SpatialFrame")) {
 				pushAndVisitChildren(new SMLEditSpatialFramePanel(elt), elt.getChildren());
@@ -455,7 +453,7 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 	
 	protected boolean canShowOptionalContent(RNGTag tag)
 	{
-	    List<RNGElement> childElts = ModelHelper.findTags(null, null, tag);
+	    /*List<RNGElement> childElts = ModelHelper.findTags(null, null, tag);
         if (!childElts.isEmpty())
         {
             String name = childElts.get(0).getName(); 
@@ -472,7 +470,7 @@ public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
                                  name.equalsIgnoreCase("item")) ){
                 return true;
             }
-        }
+        }*/
         
         return false;
 	}
