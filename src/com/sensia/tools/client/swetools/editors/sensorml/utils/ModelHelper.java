@@ -138,7 +138,8 @@ public class ModelHelper {
 		 boolean found = false;
 		 if (tag instanceof RNGAttribute) {
 			 RNGAttribute att = (RNGAttribute) tag;
-			 return att.getChildValueText().equalsIgnoreCase(value);
+			 String attVal = att.getChildValueText();
+			 return (attVal != null && attVal.equalsIgnoreCase(value));
 		} else if (tag instanceof RNGRef) {
 			RNGDefine def = ((RNGRef) tag).getPattern();
 			if (def != null)
