@@ -87,10 +87,10 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 			}
 		});
 		container.addStyleName("section-panel");
+		currentHeader.addStyleName("section-panel header");
 		
 		labelPanel.add(new HTML(Utils.toNiceLabel(tag.getName())));
 		
-		labelPanel.addStyleName("edit-section-label-panel");
 	}
 	
 	@Override

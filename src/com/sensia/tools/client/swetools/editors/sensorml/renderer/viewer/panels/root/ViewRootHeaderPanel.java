@@ -12,7 +12,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.ModelHelper;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 
-public class ViewRootHeaderPanel extends SMLVerticalPanel{
+public class ViewRootHeaderPanel extends SMLVerticalPanel {
 
 	// gml:name
 	protected Panel titlesPanel;
@@ -29,7 +29,7 @@ public class ViewRootHeaderPanel extends SMLVerticalPanel{
 	protected Label keywordsLabel;
 	
 	public ViewRootHeaderPanel() {
-		
+		super(true);
 		// 1..~
 		titlesPanel = new SMLVerticalPanel();
 		
@@ -53,12 +53,13 @@ public class ViewRootHeaderPanel extends SMLVerticalPanel{
 		add(keywordsPanel);
 		add(new HTML("<hr  style=\"width:100%;\" />"));
 		
-		addStyleName("header-document");
-		
 		this.keywordsPanel.setVisible(false);
 		this.descriptionPanel.setVisible(false);
 		this.identifiersPanel.setVisible(false);
 		this.titlesPanel.setVisible(false);
+		
+		titlesPanel.addStyleName("document-title");
+		descriptionPanel.addStyleName("document-description");
 	}
 	
 	public void addKeywords(IPanel keywordsPanel) {

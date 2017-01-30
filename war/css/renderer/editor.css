@@ -41,3 +41,12 @@
 .editor .connection .gwt-TextBox {
     width:400px;
 }
+
+.editor .section-panel .header {
+	font-weight: bold;
+}
+
+.editor .document-description .gwt-TextArea {
+	width: 600px;
+    height: 50px;
+}

@@ -47,7 +47,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 	public EditSubSectionElementPanel(RNGElement element, IRefreshHandler refreshHandler) {
 		super(element,refreshHandler);
 		
-		innerContainer = new SMLVerticalPanel();
+		innerContainer = new SMLVerticalPanel(true);
 		
 		labelPanel = new SimplePanel();
 		labelPanel.addStyleName("edit-subsection-label-panel");

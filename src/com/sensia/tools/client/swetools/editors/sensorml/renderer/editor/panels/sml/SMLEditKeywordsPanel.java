@@ -6,12 +6,13 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.PanelHelper;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 
 public class SMLEditKeywordsPanel extends AbstractPanel<RNGElement>{
 
 	public SMLEditKeywordsPanel(RNGElement tag) {
 		super(tag);
-		container = new SMLHorizontalPanel();
+		container = new SMLHorizontalPanel(SPACING.RIGHT);
 	}
 
 	@Override

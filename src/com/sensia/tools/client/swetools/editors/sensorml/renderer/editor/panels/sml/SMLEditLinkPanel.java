@@ -7,6 +7,7 @@ import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 
 public class SMLEditLinkPanel extends AbstractPanel<RNGElement>{
 
@@ -15,7 +16,7 @@ public class SMLEditLinkPanel extends AbstractPanel<RNGElement>{
 	
 	public SMLEditLinkPanel(RNGElement element) {
 		super(element);
-		container = new SMLHorizontalPanel();
+		container = new SMLHorizontalPanel(SPACING.RIGHT);
 		
 		sourcePanel = new SimplePanel();
 		destinationPanel = new SimplePanel();

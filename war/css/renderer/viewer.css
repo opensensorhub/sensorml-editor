@@ -7,9 +7,13 @@
 	vertical-align:middle;
 }
 
-.viewer .panel-viewrootheader-title {
+.viewer .document-title div{
 	font-weight: bold;
 	font-size:25px;
+}
+
+.viewer .section-panel .header {
+	font-weight: bold;
 }
 
 .viewer .panel-disclosure-element-section a.header td {

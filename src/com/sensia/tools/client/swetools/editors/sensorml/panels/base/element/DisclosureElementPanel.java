@@ -20,19 +20,15 @@ public class DisclosureElementPanel extends AbstractPanel<RNGElement>{
 	
 	public DisclosureElementPanel(RNGElement tag,IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
-		innerContent = new SMLVerticalPanel();
+		innerContent = new SMLVerticalPanel(true);
 		
 		sectionPanel = new DisclosurePanel("");
 		sectionPanel.setAnimationEnabled(true);
 		sectionPanel.setOpen(true);
 		sectionPanel.add(innerContent);
-		sectionPanel.addStyleName("section-panel");
-		//sectionPanel.getContent().addStyleName("disclosure-generic-content-panel");
+		sectionPanel.addStyleName("panel-disclosure-element-section");
 		
 		container.add(sectionPanel);
-		container.addStyleName("disclosure-generic disclosure-border");
-		
-		innerContent.addStyleName("disclosure-generic-content-panel");
 		
 	}
 	

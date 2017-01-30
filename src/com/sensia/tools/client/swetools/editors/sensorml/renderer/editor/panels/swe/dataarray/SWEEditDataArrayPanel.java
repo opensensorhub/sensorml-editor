@@ -31,7 +31,7 @@ public class SWEEditDataArrayPanel extends AbstractPanel<RNGElement>{
 		super(tag,refreshHandler);
 		linePanel = getLinePanel(tag);
 		
-		beforeLineContentPanel = new SMLVerticalPanel();
+		beforeLineContentPanel = new SMLVerticalPanel(true);
 		
 		container.add(beforeLineContentPanel);
 		container.add(linePanel.getPanel());

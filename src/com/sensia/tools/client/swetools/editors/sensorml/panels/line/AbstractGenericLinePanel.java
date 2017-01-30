@@ -7,6 +7,7 @@ import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 
 public abstract class AbstractGenericLinePanel<T extends RNGTag> extends AbstractPanel<T>{
 
@@ -28,11 +29,11 @@ public abstract class AbstractGenericLinePanel<T extends RNGTag> extends Abstrac
 		labelPanel = new SimplePanel();
 		defPanel = new SimplePanel();
 		
-		beforeDotsPanel = new SMLHorizontalPanel();
-		afterDotsPanel = new SMLHorizontalPanel();
+		beforeDotsPanel = new SMLHorizontalPanel(SPACING.RIGHT);
+		afterDotsPanel = new SMLHorizontalPanel(SPACING.RIGHT);
 		dotsPanel = new SimplePanel();
 		
-		SMLHorizontalPanel labelAndDefPanel = new SMLHorizontalPanel();
+		SMLHorizontalPanel labelAndDefPanel = new SMLHorizontalPanel(SPACING.RIGHT);
 		labelAndDefPanel.add(labelPanel);
 		labelAndDefPanel.add(defPanel);
 		SimplePanel labelAndDefPanelForCorrectDots = new SimplePanel();
@@ -41,7 +42,7 @@ public abstract class AbstractGenericLinePanel<T extends RNGTag> extends Abstrac
 		beforeDotsPanel.add(labelAndDefPanelForCorrectDots);
 		dotsPanel.add(new HTML(getDotsLine()));
 		
-		line = new SMLHorizontalPanel();
+		line = new SMLHorizontalPanel(SPACING.RIGHT);
 		
 		line.add(beforeDotsPanel);
 		line.add(dotsPanel);
@@ -50,11 +51,12 @@ public abstract class AbstractGenericLinePanel<T extends RNGTag> extends Abstrac
 		container.add(line);
 		
 		// add styles
-		beforeDotsPanel.addStyleName("line-generic-panel-before");
-		labelPanel.addStyleName("line-generic-label-panel-before");
-		defPanel.addStyleName("line-generic-definition-panel-before");
-		afterDotsPanel.addStyleName("horizontal-panel");
-		container.addStyleName("line-generic");
+		// add styles
+		beforeDotsPanel.addStyleName("panel-abstract-generic-line before");
+		labelPanel.addStyleName("panel-abstract-generic-line label");
+		defPanel.addStyleName("panel-abstract-generic-line def");
+		afterDotsPanel.addStyleName("panel-abstract-generic-line after");
+		container.addStyleName("panel-abstract-generic-line");
 	}
 	
 	@Override
