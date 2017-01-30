@@ -14,7 +14,9 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSimpleElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 
 public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 
@@ -25,21 +27,21 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 	public RNGZeroOrMorePatternPanel(final RNGZeroOrMore tag,final int indexPattern,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
 		
-		patternContainer = new FlowPanel();
+		patternContainer = new SMLVerticalPanel(true);
 		patternContainer.addStyleName("rng-zeroormore-pattern");
 		
 		final String label = Utils.findLabel(tag);
 		
 		removeButton = new HTML();
-		Panel hPanel = new SMLHorizontalPanel();
+		Panel hPanel = new SMLHorizontalPanel(SPACING.RIGHT);
 		hPanel.add(removeButton);
 		hPanel.add(new HTML(Utils.toNiceLabel(label)));
 		
 		container.add(hPanel);
 		container.add(patternContainer);
 		
-		removeButton.addStyleName("rng-optional-select-remove");
-		removeButton.addStyleName("rng-shift-remove");
+		removeButton.addStyleName("remove-button");
+		removeButton.addStyleName("shift-remove");
 		
 		removeButton.addClickHandler(new ClickHandler() {
 			

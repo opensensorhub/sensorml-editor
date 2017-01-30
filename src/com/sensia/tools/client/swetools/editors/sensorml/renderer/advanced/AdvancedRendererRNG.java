@@ -285,9 +285,4 @@ public abstract class AdvancedRendererRNG extends Renderer {
 			this.visitChildren(tags);
 		}
 	}
-	
-	@Override
-	public void reset() {
-		super.reset();
-	}
 }

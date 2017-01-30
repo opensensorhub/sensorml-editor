@@ -33,6 +33,8 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.root.RootRende
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root.ViewRootPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 
 /**
  * The Class SensorSectionsWidget is corresponding to the root panel element. It handles the title, 
@@ -59,19 +61,19 @@ public class EditRootPanel extends ViewRootPanel{
 		container.add(headerDocumentPanel);
 		
 		Label addSectionButton = new Label("");
-		addSectionButton.addStyleName("rng-optional-select-add");
+		addSectionButton.addStyleName("add-section-button");
 		
-		SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
+		SMLHorizontalPanel hPanel = new SMLHorizontalPanel(SPACING.RIGHT);
 		hPanel.add(new Label("Add section"));
 		hPanel.add(addSectionButton);
-		hPanel.addStyleName("addsection-button");
+		hPanel.addStyleName("addsection-button valign-middle");
 		container.add(hPanel);
 		container.add(new HTML("<hr  style=\"width:100%;\" />"));
 		addSectionButton.addClickHandler(new ClickHandler() {
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				Utils.displaySaveDialogBox(rootTag, refreshHandler, new FlowPanel(), "Add section", new RootRenderer());
+				Utils.displaySaveDialogBox(rootTag, refreshHandler, new SMLVerticalPanel(true), "Add section", new RootRenderer());
 			}
 		});
 	}

@@ -123,7 +123,7 @@ public class ViewerPanel extends FlowPanel implements IParsingObserver, IObserve
 		
 		// add styles
 		
-		viewerPanel.addStyleName("viewer");
+		viewerPanel.addStyleName("main-content");
 		headerPanel.addStyleName("viewer-header");
 	}
 
@@ -186,13 +186,6 @@ public class ViewerPanel extends FlowPanel implements IParsingObserver, IObserve
 			public void onClick(ClickEvent event) {
 				if(root != null){
 					MODE mode = (editCheckbox.isChecked()) ? MODE.EDIT : MODE.VIEW;
-					if(mode == MODE.EDIT){
-						viewerPanel.removeStyleName("viewer");
-						viewerPanel.addStyleName("editor");
-					} else if(mode == MODE.VIEW) {
-						viewerPanel.removeStyleName("editor");
-						viewerPanel.addStyleName("viewer");
-					}
 					smlEditorProcessor.setMode(mode);
 					redraw();
 				}
@@ -269,14 +262,6 @@ public class ViewerPanel extends FlowPanel implements IParsingObserver, IObserve
 	public void redraw() {
 		// check styles
 		MODE mode = (editCheckbox.isChecked()) ? MODE.EDIT : MODE.VIEW;
-		if(mode == MODE.EDIT){
-			viewerPanel.removeStyleName("viewer");
-			viewerPanel.addStyleName("editor");
-		} else if(mode == MODE.VIEW) {
-			viewerPanel.removeStyleName("editor");
-			viewerPanel.addStyleName("viewer");
-		}
-		
 		redraw((editCheckbox.getValue())? MODE.EDIT:MODE.VIEW);
 	}
 	

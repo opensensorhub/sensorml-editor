@@ -13,6 +13,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
@@ -24,23 +25,23 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 	public RNGOptionalPanel(final RNGOptional tag,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
 		container = new FlowPanel();
-		patternContainer = new SMLHorizontalPanel();
+		patternContainer = new SMLHorizontalPanel(SPACING.RIGHT);
 		
 		final String label = Utils.findLabel(tag);
 		
 		addButton = new HTML();
-		headerPanel = new SMLHorizontalPanel();
+		headerPanel = new SMLHorizontalPanel(SPACING.RIGHT);
 		container.add(headerPanel);
 		container.add(patternContainer);
 
 		HTML htmlLabel = new HTML(Utils.toNiceLabel(label));
 		if(tag.isSelected()) {
-			addButton.addStyleName("rng-optional-select-remove");
-			addButton.addStyleName("rng-shift-remove");
+			addButton.addStyleName("remove-button");
+			addButton.addStyleName("shift-remove");
 			headerPanel.add(addButton);
 			headerPanel.add(htmlLabel);
 		} else {
-			addButton.addStyleName("rng-optional-select-add");
+			addButton.addStyleName("select-add");
 			headerPanel.add(htmlLabel);
 			headerPanel.add(addButton);
 		}
@@ -50,7 +51,7 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				if(addButton.getStyleName().contains("rng-optional-select-add")){
+				if(addButton.getStyleName().contains("select-add")){
 					tag.setSelected(true);
 				} else {
 					tag.setSelected(false);
@@ -64,7 +65,6 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 			}
 		});
 		
-		patternContainer.addStyleName("rng-optional-pattern");
 		patternContainer.setVisible(false);
 	}
 	

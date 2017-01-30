@@ -34,7 +34,8 @@ public abstract class Renderer implements IRefreshHandler, RNGTagVisitor{
 		stack = new Stack<IPanel<? extends RNGTag>>();
 		resolver = new NameRefResolver();
 		this.observers = new ArrayList<IObserver>();
-		rootPanel = new GenericVerticalContainerPanel();
+		rootPanel = new GenericVerticalContainerPanel(true);
+		push(rootPanel);
 	}
 	
 	@Override
@@ -223,5 +224,9 @@ public abstract class Renderer implements IRefreshHandler, RNGTagVisitor{
 	public void reset() {
 		stack = new Stack<IPanel<? extends RNGTag>>();
 		rootPanel.getPanel().clear();
+	}
+	
+	public IPanel getRootPanel() {
+		return rootPanel;
 	}
 }

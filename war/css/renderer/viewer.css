@@ -1,11 +1,6 @@
 /** the main viewer **/
 .viewer {
-	overflow:auto;
-	padding: 45px;
-	padding-left: 30px;
-    padding-top: 100px;
-    padding-right: 5px;
-    padding-bottom: 15px;
+
 }
 
 .viewer  div{

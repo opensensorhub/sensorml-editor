@@ -104,7 +104,7 @@ public class Utils {
 		});
 
 		renderer.visitChildren(rootTag.getChildren());
-		rootPanel.add(renderer.getRoot().getPanel());
+		rootPanel.add(renderer.getRootPanel().getPanel());
 		
 		renderer.getRoot().getPanel().addStyleName("advanced-panel");
 		
@@ -118,7 +118,7 @@ public class Utils {
 			}
 		});
 		
-		dialogBox.setContent(rootPanel);
+		dialogBox.setContent(renderer.getRoot().getPanel());
 		dialogBox.draw();
 		
 		return dialogBox;

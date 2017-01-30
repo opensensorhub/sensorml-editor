@@ -30,12 +30,13 @@ public class CloseWindow extends Window {
         //setIsModal(true);  
         //setShowModalMask(true);  
         c.addStyleName(customCss);
-        c.setWidth100();
-        c.setHeight100();
         c.setCanSelectText(true);
 		if(!autoSize) {
 			resizeTo(660, 550);
-		} 
+		}  else {
+			 c.setWidth100();
+		     c.setHeight100();
+		}
 		
 		// ensure the window is destroyed
 		addCloseClickHandler(new CloseClickHandler() {

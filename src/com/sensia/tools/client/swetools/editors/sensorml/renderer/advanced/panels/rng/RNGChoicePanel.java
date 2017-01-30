@@ -17,6 +17,8 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 
 public class RNGChoicePanel extends AbstractPanel<RNGChoice>{
 
@@ -28,15 +30,14 @@ public class RNGChoicePanel extends AbstractPanel<RNGChoice>{
 	
 	public RNGChoicePanel(final RNGChoice tag,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
-		patternContainer = new FlowPanel();
+		patternContainer = new SMLVerticalPanel();
 		
 		patternContainer.addStyleName("rng-choice-pattern");
 		
-		selectHeader = new SMLHorizontalPanel();
+		selectHeader = new SMLHorizontalPanel(SPACING.RIGHT);
 		//TODO: check that we take the parent tag for the choice box name
 		String strLabel = Utils.findLabel(tag);
 		HTML htmlLabel = new HTML(strLabel + ": ");
-		htmlLabel.addStyleName("rng-optional-label");
 		selectHeader.add(htmlLabel);
 		choices = new ListBox();
 		
