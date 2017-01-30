@@ -97,7 +97,7 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		}
 		
 		mainPanel = new SMLVerticalPanel();
-		mainPanel.addStyleName("viewer");
+		mainPanel.addStyleName("main-content");
 		
 		verticalPanel.add(mainPanel);
 		initWidget(verticalPanel);
@@ -168,13 +168,6 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 			public void onClick(ClickEvent event) {
 				if(root != null){
 					MODE mode = (editCheckbox.getValue()) ? MODE.EDIT : MODE.VIEW;
-					if(mode == MODE.EDIT){
-						mainPanel.removeStyleName("viewer");
-						mainPanel.addStyleName("editor");
-					} else if(mode == MODE.VIEW) {
-						mainPanel.removeStyleName("editor");
-						mainPanel.addStyleName("viewer");
-					}
 					smlEditorProcessor.setMode(mode);
 					redraw();
 				}
@@ -261,14 +254,6 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	public void redraw() {
 		// check styles
 		MODE mode = (editCheckbox.getValue()) ? MODE.EDIT : MODE.VIEW;
-		if(mode == MODE.EDIT){
-			mainPanel.removeStyleName("viewer");
-			mainPanel.addStyleName("editor");
-		} else if(mode == MODE.VIEW) {
-			mainPanel.removeStyleName("editor");
-			mainPanel.addStyleName("viewer");
-		}
-		
 		redraw((editCheckbox.getValue())? MODE.EDIT:MODE.VIEW);
 	}
 	

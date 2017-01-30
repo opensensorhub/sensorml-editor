@@ -30,12 +30,14 @@ public class GenericVerticalContainerPanel extends AbstractPanel<RNGTag>{
 	public GenericVerticalContainerPanel(RNGTag tag) {
 		super(tag);
 		container = new SMLVerticalPanel();
-		container.addStyleName("vertical-generic-panel");
 	}
 
 	public GenericVerticalContainerPanel() {
 		container = new SMLVerticalPanel();
-		container.addStyleName("vertical-generic-panel");
+	}
+	
+	public GenericVerticalContainerPanel(boolean spacing) {
+		container = new SMLVerticalPanel(spacing);
 	}
 	
 	/* (non-Javadoc)

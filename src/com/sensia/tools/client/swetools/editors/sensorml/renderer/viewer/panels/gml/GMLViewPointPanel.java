@@ -33,7 +33,7 @@ public class GMLViewPointPanel extends AbstractPanel<RNGElement>{
 		coordinatesPanel = new SMLHorizontalPanel();
 		mapIcon = new Image(GWT.getModuleBaseURL()+"images/maps-icon.png");
 		
-		container.addStyleName("Point-panel");
+		container.addStyleName("panel-point");
 		
 		container.add(new HTML("Point"));
 		container.add(srsPanel);

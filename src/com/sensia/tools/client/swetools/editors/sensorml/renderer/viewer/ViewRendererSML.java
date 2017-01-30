@@ -313,4 +313,9 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 			pushAndVisitChildren(new ViewAttributePanel(att),att.getChildren());
 		}
 	}
+	
+	@Override
+	public String getDefaultStyle() {
+		return "viewer";
+	}
 }

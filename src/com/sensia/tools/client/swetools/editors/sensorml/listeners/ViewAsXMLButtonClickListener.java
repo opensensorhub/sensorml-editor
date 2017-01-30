@@ -12,6 +12,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.listeners;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.xml.client.Document;
@@ -25,6 +26,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.syntaxhighlighter.Synta
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
+import com.smartgwt.client.widgets.HTMLPane;
 
 /**
  * The listener interface for receiving viewAsXMLButtonClick events.
@@ -65,17 +67,16 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 			
 	        //creates main panel
 	        String htmlCode = SyntaxHighlighter.highlight(xml, BrushFactory.newXmlBrush(), false);
-	        HTML html = new HTML();
-	        html.setHTML(htmlCode);
-	        
-	        ScrollPanel panel = new ScrollPanel(html);
+	        HTMLPane panel = new HTMLPane();
+			HTML html = new HTML(SafeHtmlUtils.fromTrustedString(htmlCode));
+			panel.setContents(html.getHTML());
+			panel.setWidth100();
+			panel.setHeight100();
 			
 			final FileUploadPanel saveFile = new FileUploadPanel();
 			
 			
-			SMLVerticalPanel main = new SMLVerticalPanel();
-			main.add(panel);
-			final SaveCloseWindow dialog = Utils.displaySaveDialogBox(main, "Sensor ML document");
+			final SaveCloseWindow dialog = Utils.displaySaveDialogBox(panel, "Sensor ML document");
 			dialog.addSaveHandler(new ClickHandler(){
 				@Override
 				public void onClick(ClickEvent event) {

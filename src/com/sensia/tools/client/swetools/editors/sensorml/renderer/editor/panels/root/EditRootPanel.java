@@ -57,12 +57,11 @@ public class EditRootPanel extends ViewRootPanel{
 		container.add(headerDocumentPanel);
 		
 		Label addSectionButton = new Label("");
-		addSectionButton.addStyleName("rng-optional-select-add");
+		addSectionButton.addStyleName("add-button");
 		
 		SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
 		hPanel.add(new Label("Add section"));
 		hPanel.add(addSectionButton);
-		hPanel.addStyleName("addsection-button");
 		headerDocumentPanel.add(hPanel);
 		headerDocumentPanel.add(new HTML("<hr  style=\"width:100%;\" />"));
 		

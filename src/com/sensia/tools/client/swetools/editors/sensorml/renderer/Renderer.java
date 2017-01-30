@@ -220,4 +220,8 @@ public abstract class Renderer implements IRefreshHandler, RNGTagVisitor{
 	public void reset() {
 		stack = new Stack<IPanel<? extends RNGTag>>();
 	}
+	
+	public String getDefaultStyle() {
+		return "renderer";
+	}
 }

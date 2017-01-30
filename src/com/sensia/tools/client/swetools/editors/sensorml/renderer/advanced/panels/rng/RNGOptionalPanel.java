@@ -15,6 +15,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 
 public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 
@@ -24,24 +25,24 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 	
 	public RNGOptionalPanel(final RNGOptional tag,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
-		container = new SMLVerticalPanel();
+		container = new SMLVerticalPanel(true);
 		patternContainer = new SMLHorizontalPanel();
 		
 		final String label = Utils.findLabel(tag);
 		
 		addButton = new HTML();
-		headerPanel = new SMLHorizontalPanel();
+		headerPanel = new SMLHorizontalPanel(SPACING.RIGHT);
 		container.add(headerPanel);
 		container.add(patternContainer);
 
 		HTML htmlLabel = new HTML(Utils.toNiceLabel(label));
 		if(tag.isSelected()) {
-			addButton.addStyleName("rng-optional-select-remove");
-			addButton.addStyleName("rng-shift-remove");
+			addButton.addStyleName("remove-button");
+			addButton.addStyleName("shift-remove");
 			headerPanel.add(addButton);
 			headerPanel.add(htmlLabel);
 		} else {
-			addButton.addStyleName("rng-optional-select-add");
+			addButton.addStyleName("add-button");
 			headerPanel.add(htmlLabel);
 			headerPanel.add(addButton);
 		}
@@ -51,7 +52,7 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				if(addButton.getStyleName().contains("rng-optional-select-add")){
+				if(addButton.getStyleName().contains("add-button")){
 					tag.setSelected(true);
 				} else {
 					tag.setSelected(false);

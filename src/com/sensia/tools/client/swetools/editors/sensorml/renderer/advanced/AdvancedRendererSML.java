@@ -87,7 +87,7 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 		rootAdvanced.getPanel().addStyleName("advanced-dialog");
 		
 		GenericVerticalContainerPanel rootAdvanced2 = new GenericVerticalContainerPanel();
-		rootAdvanced2.getPanel().addStyleName("advanced");
+		rootAdvanced2.getPanel().addStyleName(getDefaultStyle());
 		rootAdvanced2.getPanel().add(rootAdvanced.getPanel());
 		push(rootAdvanced2);
 		
@@ -237,5 +237,10 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 		} else {
 			super.visit(att);
 		}
+	}
+	
+	@Override
+	public String getDefaultStyle() {
+		return "advanced";
 	}
 }

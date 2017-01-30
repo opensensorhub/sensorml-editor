@@ -161,4 +161,9 @@ public class RootRenderer extends AdvancedRendererRNG {
 	public void visit(RNGZeroOrMore zeroOrMore) {
 		push(new RNGZeroOrMorePanel(zeroOrMore,getRefreshHandler()));
 	}
+	
+	@Override
+	public String getDefaultStyle() {
+		return "root";
+	}
 }

@@ -12,6 +12,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 
 public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 
@@ -20,14 +21,14 @@ public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 	
 	public RNGZeroOrMorePanel(final RNGZeroOrMore tag,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
-		patternContainer = new SMLVerticalPanel();
+		patternContainer = new SMLVerticalPanel(true);
 		patternContainer.addStyleName("rng-zeroormore-pattern");
 		
 		final String label = Utils.findLabel(tag);
 		HTML addButton = new HTML();
-		addButton.addStyleName("rng-optional-select");
+		addButton.addStyleName("add-button");
 		
-		SMLHorizontalPanel headerPanel = new SMLHorizontalPanel();
+		SMLHorizontalPanel headerPanel = new SMLHorizontalPanel(SPACING.RIGHT);
 		headerPanel.add(new HTML(Utils.toNiceLabel(label)));
 		headerPanel.add(addButton);
 		headerPanel.addStyleName("rng-optional-select-label");

@@ -66,18 +66,15 @@ public class ViewAsRelaxNGButtonClickListener implements ClickHandler{
 			
 			String htmlCode = SyntaxHighlighter.highlight(xml, BrushFactory.newXmlBrush(), false);
 		        
-		    HTML html = new HTML(SafeHtmlUtils.fromTrustedString(htmlCode));
-		    HTMLPane panel = new HTMLPane();
-		    panel.setContents(html.getHTML());
-		    panel.setWidth100();
-		    panel.setHeight100();
-		    panel.addStyleName("html-pane-code");
+			HTMLPane panel = new HTMLPane();
+			HTML html = new HTML(SafeHtmlUtils.fromTrustedString(htmlCode));
+			panel.setContents(html.getHTML());
+			panel.setWidth100();
+			panel.setHeight100();
 		    
 		    //ScrollPanel panel = new ScrollPanel(html);
 			final FileUploadPanel saveFile = new FileUploadPanel();
 			
-			SMLVerticalPanel main = new SMLVerticalPanel();
-			main.add(panel);
 			final SaveCloseWindow dialog = Utils.displaySaveDialogBox(panel, "Sensor ML document","dialog-code");
 			dialog.addSaveHandler(new ClickHandler(){
 				@Override

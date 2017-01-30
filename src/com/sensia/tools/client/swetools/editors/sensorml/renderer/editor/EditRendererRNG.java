@@ -123,4 +123,8 @@ public class EditRendererRNG extends AdvancedRendererSML {
 			push(patternPanel);
 		} 
 	}
+	
+	public String getDefaultStyle() {
+		return "editor";
+	}
 }
