@@ -73,8 +73,6 @@ public class ViewRendererSWE extends ViewRendererRNG implements RNGTagVisitor {
 				pushAndVisitChildren(new SWEViewDescriptionPanel(element), element.getChildren());
 			} else if(name.equals("label")){
 				pushAndVisitChildren(new SWEViewLabelPanel(element), element.getChildren());
-			} else if(name.equals("label")){
-				pushAndVisitChildren(new SWEViewLabelPanel(element), element.getChildren());
 			} else if(name.equals("values")) {
 				pushAndVisitChildren(new SWEViewValuesPanel(element), element.getChildren());
 			} else if(name.equals("value")) {
@@ -86,7 +84,8 @@ public class ViewRendererSWE extends ViewRendererRNG implements RNGTagVisitor {
 			}  else if(name.equals("QuantityRange")) {
 				pushAndVisitChildren(new SWEViewQuantityRangePanel(element), element.getChildren());
 			}  else if(name.equals("Vector")) {
-				pushAndVisitChildren(new SWEViewVectorPanel(element,getRefreshHandler()), element.getChildren());
+				//pushAndVisitChildren(new SWEViewVectorPanel(element,getRefreshHandler()), element.getChildren());
+			    pushAndVisitChildren(new SWEViewDataRecordPanel(element), element.getChildren());
 			}  else if(name.equals("Category")) {
 				pushAndVisitChildren(new SWEViewCategoryPanel(element), element.getChildren());
 			} else if(name.equals("Time")) {
@@ -99,9 +98,9 @@ public class ViewRendererSWE extends ViewRendererRNG implements RNGTagVisitor {
 				pushAndVisitChildren(new SWEViewCountPanel(element), element.getChildren());
 			} else if(name.equals("DataArray")) {
 				pushAndVisitChildren(new SWEViewDataArrayPanel(element), element.getChildren());
-			}  else if(name.equals("DataRecord")) {
+			}  else if(name.equals("DataRecord") || name.equals("DataChoice")) {
 				pushAndVisitChildren(new SWEViewDataRecordPanel(element), element.getChildren());
-			} else if(name.equals("field")) {
+			} else if(name.equals("field") || name.equals("coordinate") || name.equals("item")) {
 				pushAndVisitChildren(new SWEViewFieldPanel(element), element.getChildren());
 			} else {
 				super.visit(element);

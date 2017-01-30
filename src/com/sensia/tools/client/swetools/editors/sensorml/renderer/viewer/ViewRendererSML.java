@@ -15,6 +15,8 @@ import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.time.GMLEditTimePositionPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditInputPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditOutputPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewAttributeCodePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewAttributeDefinitionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewAttributeIdPanel;
@@ -25,6 +27,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewXLinkArcrolePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewXLinkHrefPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewXLinkRolePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.element.ViewSubSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gmd.GMDViewDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewCoordinatesPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.gml.GMLViewDescriptionPanel;
@@ -182,7 +185,13 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 			} else if(eltName.equalsIgnoreCase("inputs")) {
 				pushAndVisitChildren(new SMLViewInputsPanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
-			} else if(eltName.equalsIgnoreCase("keywords")) {
+			} else if(eltName.equalsIgnoreCase("outputs")) {
+                pushAndVisitChildren(new SMLViewOutputsPanel(elt,getRefreshHandler()), elt.getChildren());
+                return;
+            } else if(eltName.equalsIgnoreCase("parameters")) {
+                pushAndVisitChildren(new SMLViewParametersPanel(elt,getRefreshHandler()), elt.getChildren());
+                return;
+            } else if(eltName.equalsIgnoreCase("keywords")) {
 				pushAndVisitChildren(new SMLViewKeywordsPanel(elt), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("legalConstraints")) {
@@ -200,13 +209,14 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 			} else if(eltName.equalsIgnoreCase("method")) {
 				pushAndVisitChildren(new SMLViewMethodPanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
-			}  else if(eltName.equalsIgnoreCase("outputs")) {
-				pushAndVisitChildren(new SMLViewOutputsPanel(elt,getRefreshHandler()), elt.getChildren());
-				return;
-			} else if(eltName.equalsIgnoreCase("parameters")) {
-				pushAndVisitChildren(new SMLViewParametersPanel(elt,getRefreshHandler()), elt.getChildren());
-				return;
-			} else if(eltName.equalsIgnoreCase("position")) {
+			} else if(eltName.equalsIgnoreCase("input") ||
+			          eltName.equalsIgnoreCase("output") ||
+                      eltName.equalsIgnoreCase("parameter") ||
+                      eltName.equalsIgnoreCase("characteristic") ||
+                      eltName.equalsIgnoreCase("capability")) {
+                pushAndVisitChildren(new ViewSubSectionElementPanel(elt), elt.getChildren());
+                return;
+            } else if(eltName.equalsIgnoreCase("position")) {
 				pushAndVisitChildren(new SMLViewPositionPanel(elt,getRefreshHandler()), elt.getChildren());
 				return;
 			} else if(eltName.equalsIgnoreCase("typeOf")) {
