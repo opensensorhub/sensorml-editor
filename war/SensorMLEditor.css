@@ -152,6 +152,7 @@ html>body .gwt-DecoratedTabBar {
 
 .gwt-TextArea {
   overflow: auto;
+  width: 500px;
 }
 
 .gwt-Label {
@@ -536,7 +537,7 @@ table.sml-mode-nolabel-vertical-panel {
 
 /******** NEW ********/
 .gwt-DisclosurePanel .content {
-	padding: 4px 0px 4px 25px!important;
+	padding: 4px 0px 4px 15px!important;
 	margin-left:10px;
 		
 }
@@ -581,7 +582,11 @@ table.sml-mode-nolabel-vertical-panel {
 
 .section-panel .content {
 	border-left: 2px solid #e7e7e7 !important;
-	margin-bottom: 10px;
+	margin-bottom: 0px;
+}
+
+.section-panel .content > tbody > tr > td {
+  padding-bottom: 4px;
 }
 
 /*** HORIZONTAL PANELS ***/
@@ -639,7 +644,7 @@ table.sml-mode-nolabel-vertical-panel {
 .disclosure-generic .content {
 /*	border-spacing:7px !important;*/
 	margin-left:10px !important;
-	margin-top: 8px;
+	margin-top: 4px;
 }
 
 /** remove disclosure border **/
@@ -667,9 +672,9 @@ table.sml-mode-nolabel-vertical-panel {
 
 .rng-optional-select-label .gwt-HTML{
 	margin-right: 5px;
-    margin-bottom: 5px !important;
-    vertical-align: middle !important;
-    margin-top: 2px;
+  margin-bottom: 5px !important;
+  vertical-align: middle !important;
+  margin-top: 5px;
 }
 
 .rng-optional-select-remove {
@@ -721,7 +726,7 @@ table.sml-mode-nolabel-vertical-panel {
 
 .rng-choice-pattern {
 	margin-bottom:5px;
-	margin-left:22px;
+	margin-left:0px;
 }
 
 .rng-zeroormore-pattern {
@@ -791,7 +796,7 @@ input:focus {
     margin-right: 8px;
 }
 .rng-disclosure .rng-shift-remove {
-	margin-left:0px !important;
+	/*margin-left:0px !important;*/
 	margin-top: 3px !important;
 }
 
@@ -840,20 +845,21 @@ input:focus {
 
 .editor .edit-subsection-element-inner-panel {
 	margin-top:10px;
+	margin-bottom:10px;
 	margin-left:15px;
 }
 
 .editor .edit-subsection-element-panel {
-    margin-bottom: 10px;
+    margin-bottom: 0px;
 }
 
 .viewer .edit-subsection-element-inner-panel {
-	margin-top:10px;
+	margin-top:5px;
 	margin-left:15px;
 }
 
 .viewer  .edit-subsection-element-panel {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .edit-subsection-label-panel {
@@ -995,7 +1001,6 @@ input:focus {
 .gwt-ListBox {
     width: 200px !important;
     height: 23px;
-    font-size: 17px;
     margin-bottom:5px;
     padding: 1px 0 0 0; /** margin top for text **/
 }

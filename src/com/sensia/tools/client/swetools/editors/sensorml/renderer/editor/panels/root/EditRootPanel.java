@@ -74,8 +74,9 @@ public class EditRootPanel extends ViewRootPanel{
 		hPanel.add(new Label("Add section"));
 		hPanel.add(addSectionButton);
 		hPanel.addStyleName("addsection-button");
-		container.add(hPanel);
-		container.add(new HTML("<hr  style=\"width:100%;\" />"));
+		headerDocumentPanel.add(hPanel);
+		headerDocumentPanel.add(new HTML("<hr  style=\"width:100%;\" />"));
+		
 		addSectionButton.addClickHandler(new ClickHandler() {
 			
 			@Override
@@ -97,10 +98,10 @@ public class EditRootPanel extends ViewRootPanel{
 		}
 		RNGTag tag = element.getTag();
 		boolean found = false;
-		if( (tag instanceof RNGOptional && ((RNGOptional)tag).isSelected()) ||
+		/*if( (tag instanceof RNGOptional && ((RNGOptional)tag).isSelected()) ||
 			 (element instanceof RNGZeroOrMorePatternPanel)	) {
 			element.getPanel().addStyleName("rng-shift-remove");
-		}
+		}*/
 		
 		if(tag instanceof RNGZeroOrMore || tag instanceof RNGOptional) {
 			/** look for:
@@ -123,10 +124,10 @@ public class EditRootPanel extends ViewRootPanel{
 				children = ((RNGOptional)tag).getChildren();
 			}
 			
-			// test zeroOrMore pattern to shift to the left
+			/*// test zeroOrMore pattern to shift to the left
 			if(element instanceof RNGZeroOrMorePanel) {
 				((RNGZeroOrMorePanel)element).getPatternPanel().addStyleName("rng-shift-remove");
-			}
+			}*/
 			
 			for(RNGTag child : children ){
 				String name = child.toString();
