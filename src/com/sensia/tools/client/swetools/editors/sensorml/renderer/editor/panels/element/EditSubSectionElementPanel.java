@@ -4,6 +4,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -19,6 +20,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.EditIcon
 import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePatternPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.line.EditGenericLinePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.rng.EditRNGChoicePatternPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -34,16 +36,23 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 	protected IRefreshHandler refreshHandler;
 	protected Panel headerPanel;
 	protected Panel detailsPanel;
+	protected Label advancedButton;
 	
 	protected boolean hasLabel=false;
 	protected boolean hasName=false;
 	protected boolean showDataTypeName=false;
 	
 	protected boolean displayHeader = false;
-	
+
+    public EditSubSectionElementPanel(RNGElement element) {
+        this(element,null);
+    }
+    
 	public EditSubSectionElementPanel(RNGElement element, IRefreshHandler refreshHandler) {
 		super(element,refreshHandler);
+		
 		innerContainer = new VerticalPanel();
+		
 		labelPanel = new SimplePanel();
 		labelPanel.addStyleName("edit-subsection-label-panel");
 		
@@ -65,10 +74,14 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		headerPanel.add(description);
 		headerPanel.add(detailsPanel);
 		
+		advancedButton = buildAdvancedButton(new AdvancedRendererSML());
+		headerPanel.add(advancedButton);
+        
 		headerPanel.setVisible(false);
 		
 		container.add(headerPanel);
 		container.add(innerContainer);
+		
 		container.addStyleName("edit-subsection-element-panel");
 		
 		//innerContainer.addStyleName("edit-subsection-element-inner-panel");
@@ -82,15 +95,10 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		namedLabelPanel.clear();
 		if(show) {
 			namedLabelPanel.add(labelPanel);
-			namedLabelPanel.add(new HTML("("+Utils.toNiceLabel(getTag().getName())+")"));
+			namedLabelPanel.add(new Label(Utils.toNiceLabel(getTag().getName())));
 		} else {
 			namedLabelPanel.add(labelPanel);
 		}
-	}
-	
-	
-	public EditSubSectionElementPanel(RNGElement element) {
-		this(element,null);
 	}
 
 	@Override
@@ -126,16 +134,15 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 			if(!subSection.isInLine()) {
 				if(!hasLabel() && subSection.hasLabel()) {
 					// hide the name 
-					subSection.removeInnerStyle("edit-subsection-element-inner-panel");
+					//subSection.removeInnerStyle("edit-subsection-element-inner-panel");
 					//handleLabel(subSection.getLabelIPanel());
 					labelPanel.clear();
 					labelPanel.add(subSection.getLabelIPanel().getPanel());
 					labelPanel.setVisible(true);
 				} 
 			} 
-			if(subSection.hasNameOrLabel()) {
-				innerContainer.addStyleName("edit-subsection-element-inner-panel");
-			}
+			
+			innerContainer.addStyleName("edit-subsection-element-inner-panel");
 		}
 
 		if(currentElement instanceof AbstractGenericLinePanel && displayHeader) {
@@ -145,7 +152,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		if(displayHeader) {
 			headerPanel.setVisible(true);
 			if(showDataTypeName) {
-				setShowDataType(true);
+			    setDataTypeName(true);
 			}
 		} else {
 			headerPanel.setVisible(false);
@@ -165,7 +172,15 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 			//	innerContainer.addStyleName("edit-subsection-element-inner-panel");
 			//}
 		}
-		innerContainer.add(element.getPanel());
+		
+		if (element instanceof EditGenericLinePanel) {
+    		HorizontalPanel lineWithButton = new HorizontalPanel();
+    		lineWithButton.add(element.getPanel());
+    		lineWithButton.add(advancedButton);
+    		innerContainer.add(lineWithButton);
+		} else {
+		    innerContainer.add(element.getPanel());
+		}
 		
 		// remove inner container style because it becomes a line itself
 		//innerContainer.removeStyleName("edit-subsection-element-inner-panel");

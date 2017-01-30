@@ -26,6 +26,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.EditIcon
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.Renderer;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class EditSectionElementPanel extends DisclosureElementPanel{
@@ -113,7 +114,7 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 			hPanel.add(element.getPanel());
 		} else if(element.getName().equals("label")){
 			//labelPanel.clear();
-			labelPanel.add(new HTML("("));
+			labelPanel.add(new HTML(SMLEditorConstants.HTML_SPACE+"("));
 			labelPanel.add(element.getPanel());
 			labelPanel.add(new HTML(")"));
 			

@@ -11,7 +11,7 @@ public abstract class EditGenericLinePanel<T extends RNGTag> extends AbstractGen
 	protected EditGenericLinePanel(T tag,IRefreshHandler refreshHandler) {
 		super(tag);
 		super.refreshHandler = refreshHandler;
-		Label advancedButton = buildAdvancedButton(new AdvancedRendererSML());
-		line.add(advancedButton);
+		//Label advancedButton = buildAdvancedButton(new AdvancedRendererSML());
+		//line.add(advancedButton);
 	}
 }
