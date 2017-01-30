@@ -286,16 +286,4 @@ public abstract class AdvancedRendererRNG extends Renderer {
 		}
 	}
 	
-	@Override
-	public void reset() {
-		super.reset();
-		//TODO: improve two-way root panels
-		GenericVerticalContainerPanel rootAdvanced = new GenericVerticalContainerPanel();
-		rootAdvanced.getPanel().addStyleName("advanced-dialog");
-		
-		GenericVerticalContainerPanel rootAdvanced2 = new GenericVerticalContainerPanel();
-		rootAdvanced2.getPanel().addStyleName("advanced");
-		rootAdvanced2.getPanel().add(rootAdvanced.getPanel());
-		push(rootAdvanced2);
-	}
 }

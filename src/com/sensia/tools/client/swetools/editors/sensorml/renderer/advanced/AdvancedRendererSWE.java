@@ -79,4 +79,9 @@ public class AdvancedRendererSWE extends AdvancedRendererRNG {
 			super.visit(elt);
 		}
 	}
+	
+	@Override
+	protected String getDefaultStyle() {
+		return "advanced";
+	}
 }
