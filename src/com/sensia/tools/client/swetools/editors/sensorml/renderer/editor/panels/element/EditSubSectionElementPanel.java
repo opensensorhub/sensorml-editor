@@ -78,7 +78,8 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		container.add(headerPanel);
 		container.add(innerContainer);
 		
-		container.addStyleName("edit-subsection-element-panel");
+		headerPanel.addStyleName("subsection-header");
+		container.addStyleName("subsection-panel");
 		
 		//innerContainer.addStyleName("edit-subsection-element-inner-panel");
 	}
@@ -138,11 +139,11 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 				} 
 			} 
 			
-			innerContainer.addStyleName("edit-subsection-element-inner-panel");
+			innerContainer.addStyleName("subsection-inner");
 		}
 
 		if(currentElement instanceof AbstractGenericLinePanel && displayHeader) {
-			innerContainer.addStyleName("edit-subsection-element-inner-panel");
+			innerContainer.addStyleName("subsection-inner");
 		}
 		
 		if(displayHeader) {
