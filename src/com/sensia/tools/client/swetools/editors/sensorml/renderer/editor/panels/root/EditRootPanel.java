@@ -31,6 +31,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 
 /**
  * The Class SensorSectionsWidget is corresponding to the root panel element. It handles the title, 
@@ -59,9 +60,12 @@ public class EditRootPanel extends ViewRootPanel{
 		Label addSectionButton = new Label("");
 		addSectionButton.addStyleName("add-button");
 		
-		SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
+		SMLHorizontalPanel hPanel = new SMLHorizontalPanel(SPACING.RIGHT);
 		hPanel.add(new Label("Add section"));
 		hPanel.add(addSectionButton);
+
+		hPanel.addStyleName("v-align-middle");
+		
 		headerDocumentPanel.add(hPanel);
 		headerDocumentPanel.add(new HTML("<hr  style=\"width:100%;\" />"));
 		
