@@ -6,6 +6,7 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advancedviewer.AdvancedViewerRenderer;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.ViewRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -14,7 +15,7 @@ public abstract class ViewGenericLinePanel<T extends RNGTag> extends AbstractGen
 	protected ViewGenericLinePanel(T tag) {
 		super(tag);
 		
-		Label advancedButton = buildAdvancedButton(new AdvancedViewerRenderer());
+		Label advancedButton = buildAdvancedButton(new ViewRendererSML());
 		line.add(advancedButton);
 	}
 	

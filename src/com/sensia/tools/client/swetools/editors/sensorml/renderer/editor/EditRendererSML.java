@@ -107,7 +107,9 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstant
 public class EditRendererSML extends EditRendererSWE implements RNGTagVisitor {
 
 	public EditRendererSML() {
-		
+		super();
+		rootPanel.getPanel().removeStyleName("advanced");
+		rootPanel.getPanel().addStyleName("editor");
 	}
 	
 	/* (non-Javadoc)

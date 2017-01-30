@@ -14,6 +14,7 @@ import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewAttributeCodePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewAttributeDefinitionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.attribute.ViewAttributeIdPanel;
@@ -90,6 +91,9 @@ public class ViewRendererSML extends ViewRendererSWE implements RNGTagVisitor {
 	 * Instantiates a new RNG renderer sml.
 	 */
 	public ViewRendererSML() {
+		super();
+		rootPanel.getPanel().removeStyleName("editor");
+		rootPanel.getPanel().addStyleName("viewer");
 	}
 
 	/* (non-Javadoc)

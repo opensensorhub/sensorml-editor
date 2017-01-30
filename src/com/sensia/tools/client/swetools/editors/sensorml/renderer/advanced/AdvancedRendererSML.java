@@ -17,6 +17,7 @@ import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributeDefinitionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributePanel;
@@ -81,15 +82,7 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 	/** The root sections list. */
 	protected Set<String> rootSectionsList = new HashSet<String>();
 	
-	
 	public AdvancedRendererSML() {
-		GenericVerticalContainerPanel rootAdvanced = new GenericVerticalContainerPanel();
-		rootAdvanced.getPanel().addStyleName("advanced-dialog");
-		
-		GenericVerticalContainerPanel rootAdvanced2 = new GenericVerticalContainerPanel();
-		rootAdvanced2.getPanel().addStyleName("advanced");
-		rootAdvanced2.getPanel().add(rootAdvanced.getPanel());
-		push(rootAdvanced2);
 		
 		rootSectionsList.add("PhysicalSystem");
 		rootSectionsList.add("ProcessModel");
