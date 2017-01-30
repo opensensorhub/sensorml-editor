@@ -10,10 +10,10 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.panels.generic;
 
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 
 /**
  * The Class SensorGenericVerticalContainerWidget is a vertical generic container.
@@ -29,12 +29,12 @@ public class GenericVerticalContainerPanel extends AbstractPanel<RNGTag>{
 	 */
 	public GenericVerticalContainerPanel(RNGTag tag) {
 		super(tag);
-		container = new VerticalPanel();
+		container = new SMLVerticalPanel();
 		container.addStyleName("vertical-generic-panel");
 	}
 
 	public GenericVerticalContainerPanel() {
-		container = new VerticalPanel();
+		container = new SMLVerticalPanel();
 		container.addStyleName("vertical-generic-panel");
 	}
 	

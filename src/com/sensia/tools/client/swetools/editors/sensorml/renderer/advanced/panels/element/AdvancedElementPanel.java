@@ -19,12 +19,12 @@ import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.event.logical.shared.OpenEvent;
 import com.google.gwt.event.logical.shared.OpenHandler;
 import com.google.gwt.user.client.ui.DisclosurePanel;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 
@@ -36,7 +36,7 @@ public class AdvancedElementPanel extends DisclosureElementPanel
         super(tag,refreshHandler);
         
         Widget currentHeader = sectionPanel.getHeader();
-        HorizontalPanel hPanel = new HorizontalPanel();
+        SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
         hPanel.add(currentHeader);
         hPanel.add(new Label(Utils.toNiceLabel(tag.getName())));        
         sectionPanel.setHeader(hPanel);

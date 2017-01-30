@@ -13,6 +13,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.old;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -23,8 +24,42 @@ import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
-import com.google.gwt.user.client.ui.*;
-import com.sensia.relaxNG.*;
+import com.google.gwt.user.client.ui.InsertPanel;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.TextArea;
+import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.TextBoxBase;
+import com.google.gwt.user.client.ui.Widget;
+import com.sensia.relaxNG.RNGAttribute;
+import com.sensia.relaxNG.RNGChoice;
+import com.sensia.relaxNG.RNGData;
+import com.sensia.relaxNG.RNGDefine;
+import com.sensia.relaxNG.RNGElement;
+import com.sensia.relaxNG.RNGGrammar;
+import com.sensia.relaxNG.RNGGroup;
+import com.sensia.relaxNG.RNGInterleave;
+import com.sensia.relaxNG.RNGList;
+import com.sensia.relaxNG.RNGOneOrMore;
+import com.sensia.relaxNG.RNGOptional;
+import com.sensia.relaxNG.RNGRef;
+import com.sensia.relaxNG.RNGTag;
+import com.sensia.relaxNG.RNGTagList;
+import com.sensia.relaxNG.RNGTagVisitor;
+import com.sensia.relaxNG.RNGText;
+import com.sensia.relaxNG.RNGValue;
+import com.sensia.relaxNG.RNGZeroOrMore;
+import com.sensia.relaxNG.XSDAnyURI;
+import com.sensia.relaxNG.XSDBoolean;
+import com.sensia.relaxNG.XSDDateTime;
+import com.sensia.relaxNG.XSDDecimal;
+import com.sensia.relaxNG.XSDDouble;
+import com.sensia.relaxNG.XSDInteger;
+import com.sensia.relaxNG.XSDString;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 
 
 /**
@@ -102,7 +137,7 @@ public abstract class RNGRenderer implements RNGTagVisitor
     @Override
     public void visit(RNGElement elt)
     {
-        VerticalPanel panel = new VerticalPanel();
+        SMLVerticalPanel panel = new SMLVerticalPanel();
         panel.add(new Label(toNiceLabel(elt.getName())));
         newWidgetList();
         this.visitChildren(elt.getChildren());
@@ -113,8 +148,7 @@ public abstract class RNGRenderer implements RNGTagVisitor
     @Override
     public void visit(RNGAttribute attribute)
     {
-        HorizontalPanel panel = new HorizontalPanel();
-        panel.setSpacing(5);
+        SMLHorizontalPanel panel = new SMLHorizontalPanel();
         panel.add(new Label(toNiceLabel(attribute.getName()) + ":"));
         newWidgetList();
         this.visitChildren(attribute.getChildren());
@@ -142,11 +176,11 @@ public abstract class RNGRenderer implements RNGTagVisitor
         // if an entry has been selected
         if (choice.isSelected())
         {
-            final HorizontalPanel panel = new HorizontalPanel();
+            final SMLHorizontalPanel panel = new SMLHorizontalPanel();
             
             // aggregate content widgets
             // TODO no need for additional panel if only one widget
-            VerticalPanel contentPanel = new VerticalPanel();
+            SMLVerticalPanel contentPanel = new SMLVerticalPanel();
             newWidgetList();
             choice.getSelectedPattern().accept(this);
             for (Widget w: widgets.pop())
@@ -219,7 +253,7 @@ public abstract class RNGRenderer implements RNGTagVisitor
     @Override
     public void visit(final RNGOptional optional)
     {
-        final HorizontalPanel panel = new HorizontalPanel();
+        final SMLHorizontalPanel panel = new SMLHorizontalPanel();
         
         // create add/remove button
         Label b = new Label();
@@ -237,7 +271,7 @@ public abstract class RNGRenderer implements RNGTagVisitor
             if (optional.isSelected())
             {
                 // aggregate content widgets
-                VerticalPanel contentPanel = new VerticalPanel();
+                SMLVerticalPanel contentPanel = new SMLVerticalPanel();
                 newWidgetList();
                 this.visitChildren(optional.getChildren());
                 for (Widget w: widgets.pop())
@@ -276,7 +310,7 @@ public abstract class RNGRenderer implements RNGTagVisitor
     @Override
     public void visit(final RNGZeroOrMore zeroOrMore)
     {
-        final VerticalPanel mainPanel = new VerticalPanel();
+        final SMLVerticalPanel mainPanel = new SMLVerticalPanel();
         
         // get a nice label
         final String label = findLabel(zeroOrMore);
@@ -291,7 +325,7 @@ public abstract class RNGRenderer implements RNGTagVisitor
             i++;
         }
         
-        final HorizontalPanel morePanel = new HorizontalPanel();
+        final SMLHorizontalPanel morePanel = new SMLHorizontalPanel();
         mainPanel.add(morePanel);
         
         // add button on left
@@ -317,14 +351,14 @@ public abstract class RNGRenderer implements RNGTagVisitor
     
     protected Panel renderOccurence(final RNGZeroOrMore zeroOrMore, final List<RNGTag> tags, String label, boolean allowRemove)
     {
-        final HorizontalPanel itemPanel = new HorizontalPanel();
+        final SMLHorizontalPanel itemPanel = new SMLHorizontalPanel();
         
         /*DisclosurePanel hidePanel = new DisclosurePanel();
         hidePanel.setAnimationEnabled(true);
         hidePanel.setHeader(new Label(label));
         itemPanel.add(hidePanel);*/
         
-        VerticalPanel contentPanel = new VerticalPanel();
+        SMLVerticalPanel contentPanel = new SMLVerticalPanel();
         //hidePanel.setContent(contentPanel);
         itemPanel.add(contentPanel);
                     
@@ -487,7 +521,7 @@ public abstract class RNGRenderer implements RNGTagVisitor
     
     /*protected void renderConfirmedValue(final RNGData<?> data)
     {
-        final HorizontalPanel panel = new HorizontalPanel();
+        final SMLHorizontalPanel panel = new SMLHorizontalPanel();
         
         // value as label
         Label l = new Label(data.getValue().toString());

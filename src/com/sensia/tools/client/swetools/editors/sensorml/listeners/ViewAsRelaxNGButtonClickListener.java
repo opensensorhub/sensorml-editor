@@ -13,17 +13,8 @@ package com.sensia.tools.client.swetools.editors.sensorml.listeners;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.ScrollPanel;
-import com.google.gwt.user.client.ui.TextArea;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.xml.client.Document;
-import com.sensia.gwt.relaxNG.RNGInstanceWriter;
 import com.sensia.gwt.relaxNG.RNGWriter;
 import com.sensia.gwt.relaxNG.XMLSerializer;
 import com.sensia.relaxNG.RNGGrammar;
@@ -31,13 +22,10 @@ import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.FileUploadPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.syntaxhighlighter.BrushFactory;
 import com.sensia.tools.client.swetools.editors.sensorml.syntaxhighlighter.SyntaxHighlighter;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
-import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.HTMLPane;
-import com.smartgwt.client.widgets.RichTextEditor;
-import com.smartgwt.client.widgets.layout.HLayout;
 
 /**
  * The listener interface for receiving viewAsXMLButtonClick events.
@@ -88,7 +76,7 @@ public class ViewAsRelaxNGButtonClickListener implements ClickHandler{
 		    //ScrollPanel panel = new ScrollPanel(html);
 			final FileUploadPanel saveFile = new FileUploadPanel();
 			
-			VerticalPanel main = new VerticalPanel();
+			SMLVerticalPanel main = new SMLVerticalPanel();
 			main.add(panel);
 			final SaveCloseWindow dialog = Utils.displaySaveDialogBox(panel, "Sensor ML document","dialog-code");
 			dialog.addSaveHandler(new ClickHandler(){

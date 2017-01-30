@@ -26,7 +26,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewUOMPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewValuesPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.SWEViewVectorPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.swe.dataarray.SWEViewDataArrayPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 

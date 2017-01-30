@@ -10,14 +10,11 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.root;
 
-import java.util.List;
-
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGOptional;
-import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGValue;
 import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.relaxNG.XSDAnyURI;

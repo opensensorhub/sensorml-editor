@@ -13,28 +13,13 @@ package com.sensia.tools.client.swetools.editors.sensorml.ontology.property;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gwt.cell.client.TextCell;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.safehtml.shared.SafeHtml;
-import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.cellview.client.CellTable;
-import com.google.gwt.user.cellview.client.Column;
-import com.google.gwt.user.cellview.client.SafeHtmlHeader;
-import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.ScrollPanel;
-import com.google.gwt.view.client.ListDataProvider;
-import com.google.gwt.view.client.SelectionChangeEvent;
-import com.google.gwt.view.client.SingleSelectionModel;
 import com.google.gwt.xml.client.Document;
 import com.google.gwt.xml.client.Element;
 import com.google.gwt.xml.client.NamedNodeMap;
 import com.google.gwt.xml.client.Node;
 import com.google.gwt.xml.client.NodeList;
 import com.google.gwt.xml.client.XMLParser;
-import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ILoadFileCallback;
-import com.sensia.tools.client.swetools.editors.sensorml.ontology.TableRes;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.BoyerMoore;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**

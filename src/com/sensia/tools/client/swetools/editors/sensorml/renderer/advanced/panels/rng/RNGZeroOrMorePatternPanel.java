@@ -3,10 +3,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.pane
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
@@ -16,7 +13,8 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.element.AdvancedSimpleElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSimpleElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 
 public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 
@@ -26,10 +24,10 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 	
 	public RNGZeroOrMorePatternPanel(final RNGZeroOrMore tag,final int indexPattern,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
-		container = new HorizontalPanel();
+		container = new SMLHorizontalPanel();
         container.addStyleName("rng-zeroormore-pattern");
         
-		patternContainer = new VerticalPanel();
+		patternContainer = new SMLVerticalPanel();
 		patternContainer.addStyleName("rng-zeroormore-pattern");
 		
 		removeButton = new HTML();
@@ -67,7 +65,7 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 			element.getPanel().removeStyleName("disclosure-noborder");
 			element.getPanel().addStyleName("section-panel disclosure-border");
 			/*container.clear();
-			Panel hPanel = new HorizontalPanel();
+			Panel hPanel = new SMLHorizontalPanel();
 			hPanel.add(removeButton);
 			hPanel.add(element.getPanel());
 			
@@ -77,14 +75,14 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 			patternContainer.add(element.getPanel());
 		} else if(element.getName().equalsIgnoreCase("keywords")){
 			container.clear();
-			Panel hPanel = new HorizontalPanel();
+			Panel hPanel = new SMLHorizontalPanel();
 			hPanel.add(removeButton);
 			hPanel.add(element.getPanel());
 			container.add(hPanel);
 		} else if(element instanceof EditSimpleElementPanel || element instanceof AdvancedSimpleElementPanel){
 			// inline the simple edit panel
 			container.clear();
-			container = new HorizontalPanel();
+			container = new SMLHorizontalPanel();
 			//container.addStyleName("rng-optional-pattern");
 			container.add(removeButton);
 			container.add(patternContainer);

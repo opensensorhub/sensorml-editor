@@ -13,9 +13,24 @@ package com.sensia.tools.client.swetools.editors.sensorml.old;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.user.client.ui.*;
-import com.sensia.relaxNG.*;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.user.client.ui.TabLayoutPanel;
+import com.google.gwt.user.client.ui.Widget;
+import com.sensia.relaxNG.RNGAttribute;
+import com.sensia.relaxNG.RNGChoice;
+import com.sensia.relaxNG.RNGElement;
+import com.sensia.relaxNG.RNGGrammar;
+import com.sensia.relaxNG.RNGOptional;
+import com.sensia.relaxNG.RNGRef;
+import com.sensia.relaxNG.RNGTag;
+import com.sensia.relaxNG.RNGTagList;
+import com.sensia.relaxNG.RNGTagVisitor;
+import com.sensia.relaxNG.RNGValue;
+import com.sensia.relaxNG.RNGZeroOrMore;
 
 
 /**

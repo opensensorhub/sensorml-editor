@@ -1,12 +1,12 @@
 package com.sensia.tools.client.swetools.editors.sensorml.panels.line;
 
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 
 public abstract class AbstractGenericLinePanel<T extends RNGTag> extends AbstractPanel<T>{
 
@@ -28,11 +28,11 @@ public abstract class AbstractGenericLinePanel<T extends RNGTag> extends Abstrac
 		labelPanel = new SimplePanel();
 		defPanel = new SimplePanel();
 		
-		beforeDotsPanel = new HorizontalPanel();
-		afterDotsPanel = new HorizontalPanel();
+		beforeDotsPanel = new SMLHorizontalPanel();
+		afterDotsPanel = new SMLHorizontalPanel();
 		dotsPanel = new SimplePanel();
 		
-		HorizontalPanel labelAndDefPanel = new HorizontalPanel();
+		SMLHorizontalPanel labelAndDefPanel = new SMLHorizontalPanel();
 		labelAndDefPanel.add(labelPanel);
 		labelAndDefPanel.add(defPanel);
 		SimplePanel labelAndDefPanelForCorrectDots = new SimplePanel();
@@ -41,7 +41,7 @@ public abstract class AbstractGenericLinePanel<T extends RNGTag> extends Abstrac
 		beforeDotsPanel.add(labelAndDefPanelForCorrectDots);
 		dotsPanel.add(new HTML(getDotsLine()));
 		
-		line = new HorizontalPanel();
+		line = new SMLHorizontalPanel();
 		
 		line.add(beforeDotsPanel);
 		line.add(dotsPanel);

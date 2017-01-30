@@ -20,11 +20,9 @@ import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.SimplePanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.tools.client.swetools.editors.sensorml.IParsingObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
@@ -36,6 +34,8 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.source.ISourcePa
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.LocalFileSourcePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.UrlListSourcePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.UrlSourcePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 
 /**
  * This class is in charge of creating the main Panel. The top elements will 
@@ -48,7 +48,7 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	private static final long serialVersionUID = -7684111574093800909L;
 
 	//the panel in charge of displaying the HTML content
-	private VerticalPanel mainPanel;
+	private SMLVerticalPanel mainPanel;
 	
 	//the checkbox to switch between view and edit mode
 	private CheckBox editCheckbox;
@@ -70,7 +70,7 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		this.smlEditorProcessor.setRefreshHandler(this);
 		final Panel viewXmlPanel = getXMLViewPanel();
 
-		final VerticalPanel verticalPanel = new VerticalPanel();
+		final SMLVerticalPanel verticalPanel = new SMLVerticalPanel();
 		
 		//add View as XML button
 		Button viewAsXML = new Button("View as XML");
@@ -81,11 +81,10 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		
 		//Get the url parameter to load the document where this one is under the form : ?url=DocumentPath
 		String passedFile = com.google.gwt.user.client.Window.Location.getParameter("url");
-		HorizontalPanel panel = new HorizontalPanel();
+		SMLHorizontalPanel panel = new SMLHorizontalPanel();
 		panel.add(viewXmlPanel);
 		panel.add(viewAsXML);
 		panel.add(viewAsRNG);
-		panel.setSpacing(5);
 		
 		verticalPanel.add(panel);
 		
@@ -97,7 +96,7 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 			editCheckbox.setVisible(true);			
 		}
 		
-		mainPanel = new VerticalPanel();
+		mainPanel = new SMLVerticalPanel();
 		mainPanel.addStyleName("viewer");
 		
 		verticalPanel.add(mainPanel);
@@ -107,9 +106,7 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 
 	// Get the top elements panel for the XML part
 	private Panel getXMLViewPanel() {
-		final HorizontalPanel panel = new HorizontalPanel();
-		panel.setSpacing(20);
-		panel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
+		final SMLHorizontalPanel panel = new SMLHorizontalPanel();
 		
 		HTML title = new HTML("<b>SensorML XML/RNG:</b>");
 		final Button load = new Button("Load");
@@ -119,9 +116,9 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		final RadioButton fromUrl = new RadioButton("myRadioGroup", "from url");
 		final RadioButton fromLocal = new RadioButton("myRadioGroup", "from local");
         		
-		HorizontalPanel hPanel = new HorizontalPanel();
+		SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
 		
-		VerticalPanel choicePanel = new VerticalPanel();
+		SMLVerticalPanel choicePanel = new SMLVerticalPanel();
 		choicePanel.add(fromList);
 		choicePanel.add(fromUrl);
 		choicePanel.add(fromLocal);

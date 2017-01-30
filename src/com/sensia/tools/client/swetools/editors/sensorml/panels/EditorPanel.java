@@ -9,12 +9,10 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.ResizeLayoutPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.xml.client.Document;
 import com.sensia.gwt.relaxNG.RNGInstanceWriter;
 import com.sensia.gwt.relaxNG.RNGParser;
@@ -28,6 +26,8 @@ import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.Observable;
 import com.sensia.tools.client.swetools.editors.sensorml.old.RNGRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.ViewerPanel.MODE;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 
 public class EditorPanel  extends Composite  implements IParsingObserver, IObserver{
 
@@ -56,7 +56,7 @@ public class EditorPanel  extends Composite  implements IParsingObserver, IObser
 	public EditorPanel(final RNGProcessorSML sgmlEditorProcessor,IController controller){
 		this.controller = controller;
         
-		final VerticalPanel verticalPanel = new VerticalPanel();
+		final SMLVerticalPanel verticalPanel = new SMLVerticalPanel();
 		rngPanel = new ResizeLayoutPanel();
 		rngPanel.setHeight("99999");
 		final Panel viewXmlPanel = getProfilePanel();
@@ -72,9 +72,7 @@ public class EditorPanel  extends Composite  implements IParsingObserver, IObser
 	}
 	
 	private Panel getProfilePanel() {
-		final HorizontalPanel panel = new HorizontalPanel();
-		panel.setSpacing(20);
-		panel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
+		final SMLHorizontalPanel panel = new SMLHorizontalPanel();
 		
 		profileListBox = new ListBox(false);
 		

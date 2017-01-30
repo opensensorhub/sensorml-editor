@@ -6,7 +6,6 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Panel;
 import com.sensia.relaxNG.RNGAttribute;
@@ -17,9 +16,9 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.map.GenericPointMap;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSubSectionElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.ModelHelper;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -41,10 +40,10 @@ public class SWEEditVectorPanel extends EditSubSectionElementPanel{
 	public SWEEditVectorPanel(RNGElement element, final IRefreshHandler refreshHandler) {
 		super(element,refreshHandler);
 	
-		Panel hPanel = new HorizontalPanel();
-		srsPanel = new HorizontalPanel();
-		coordinatePanel = new HorizontalPanel();
-		iconsPanel = new HorizontalPanel();
+		Panel hPanel = new SMLHorizontalPanel();
+		srsPanel = new SMLHorizontalPanel();
+		coordinatePanel = new SMLHorizontalPanel();
+		iconsPanel = new SMLHorizontalPanel();
 		
 		htmlLabel = new HTML("");
 		hPanel.add(htmlLabel);

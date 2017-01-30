@@ -1,23 +1,13 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.rng;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGTag;
-import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.element.AdvancedSimpleElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePatternPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSectionElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSimpleElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 
 public class EditRNGChoicePatternPanel extends AbstractPanel<RNGChoice>{
 
@@ -27,10 +17,10 @@ public class EditRNGChoicePatternPanel extends AbstractPanel<RNGChoice>{
 	
 	public EditRNGChoicePatternPanel(final RNGChoice tag,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
-		container = new HorizontalPanel();
+		container = new SMLHorizontalPanel();
 		container.addStyleName("edit-rng-choice-pattern");
 		
-		patternContainer = new VerticalPanel();
+		patternContainer = new SMLVerticalPanel();
 		patternContainer.addStyleName("edit-rng-choice-pattern");
 		
 		/*removeButton = new HTML();

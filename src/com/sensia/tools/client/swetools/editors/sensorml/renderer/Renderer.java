@@ -172,7 +172,7 @@ public abstract class Renderer implements IRefreshHandler, RNGTagVisitor{
 	 * @param type the type
 	 * @return the i sensor widget
 	 */
-	protected IPanel<RNGTag> renderVerticalPanel(RNGTag tag) {
+	protected IPanel<RNGTag> renderSMLVerticalPanel(RNGTag tag) {
 		return new GenericVerticalContainerPanel(tag);
 	}
 	

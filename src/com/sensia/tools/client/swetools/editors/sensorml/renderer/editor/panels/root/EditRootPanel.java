@@ -14,33 +14,22 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGOptional;
 import com.sensia.relaxNG.RNGRef;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGZeroOrMore;
-import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePatternPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.root.RootRenderer;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root.ViewRootHeaderPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.root.ViewRootPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**
@@ -70,7 +59,7 @@ public class EditRootPanel extends ViewRootPanel{
 		Label addSectionButton = new Label("");
 		addSectionButton.addStyleName("rng-optional-select-add");
 		
-		HorizontalPanel hPanel = new HorizontalPanel();
+		SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
 		hPanel.add(new Label("Add section"));
 		hPanel.add(addSectionButton);
 		hPanel.addStyleName("addsection-button");
@@ -81,7 +70,7 @@ public class EditRootPanel extends ViewRootPanel{
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				Utils.displaySaveDialogBox(rootTag, refreshHandler, new VerticalPanel(), "Add section", new RootRenderer());
+				Utils.displaySaveDialogBox(rootTag, refreshHandler, new SMLVerticalPanel(), "Add section", new RootRenderer());
 			}
 		});
 	}

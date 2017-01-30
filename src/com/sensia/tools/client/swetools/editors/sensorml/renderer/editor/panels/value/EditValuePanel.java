@@ -1,15 +1,11 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value;
 
-import com.google.gwt.event.dom.client.BlurEvent;
-import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.TextBoxBase;
@@ -18,6 +14,7 @@ import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 
 public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 	protected static final int DEFAULT_TEXBOX_VALUE_SIZE = 20;
@@ -32,7 +29,7 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 	
 	public EditValuePanel(final RNGData<?> data, boolean largeText, final IRefreshHandler refreshHandler) {
 		super(data,refreshHandler);
-		container = new HorizontalPanel();
+		container = new SMLHorizontalPanel();
 		
 		isNiceLabel = true;
 		

@@ -10,23 +10,10 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.listeners;
 
-import org.apache.commons.io.input.ClosedInputStream;
-
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ChangeEvent;
-import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.DialogBox;
-import com.google.gwt.user.client.ui.FileUpload;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.ScrollPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.xml.client.Document;
 import com.sensia.gwt.relaxNG.RNGInstanceWriter;
 import com.sensia.gwt.relaxNG.XMLSerializer;
@@ -35,7 +22,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.FileUploadPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.syntaxhighlighter.BrushFactory;
 import com.sensia.tools.client.swetools.editors.sensorml.syntaxhighlighter.SyntaxHighlighter;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -86,7 +73,7 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 			final FileUploadPanel saveFile = new FileUploadPanel();
 			
 			
-			VerticalPanel main = new VerticalPanel();
+			SMLVerticalPanel main = new SMLVerticalPanel();
 			main.add(panel);
 			final SaveCloseWindow dialog = Utils.displaySaveDialogBox(main, "Sensor ML document");
 			dialog.addSaveHandler(new ClickHandler(){

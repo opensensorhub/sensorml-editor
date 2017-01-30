@@ -1,21 +1,19 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute;
 
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGTag;
-import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class AdvancedAttributePanel extends AbstractPanel<RNGAttribute> {
 
 	public AdvancedAttributePanel(RNGAttribute tag) {
 		super(tag);
-		container = new HorizontalPanel();
+		container = new SMLHorizontalPanel();
 		container.add(new HTML(Utils.findLabel(tag)+":"+SMLEditorConstants.HTML_SPACE));
 		container.addStyleName("attribute-panel-advanced");
 	}

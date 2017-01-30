@@ -1,17 +1,17 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml;
 
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.PanelHelper;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 
 public class SMLEditKeywordsPanel extends AbstractPanel<RNGElement>{
 
 	public SMLEditKeywordsPanel(RNGElement tag) {
 		super(tag);
-		container = new HorizontalPanel();
+		container = new SMLHorizontalPanel();
 	}
 
 	@Override

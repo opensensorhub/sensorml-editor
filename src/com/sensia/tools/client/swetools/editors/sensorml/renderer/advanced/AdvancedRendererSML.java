@@ -12,14 +12,11 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.Stack;
 
 import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
-import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGTagVisitor;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributeDefinitionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributePanel;
@@ -36,7 +33,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditNamePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.root.EditRootPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.NameRefResolver;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 
 /**

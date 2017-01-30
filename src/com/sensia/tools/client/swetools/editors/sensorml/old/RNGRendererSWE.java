@@ -11,8 +11,20 @@
 package com.sensia.tools.client.swetools.editors.sensorml.old;
 
 import java.util.Map;
-import com.google.gwt.user.client.ui.*;
-import com.sensia.relaxNG.*;
+
+import com.google.gwt.user.client.ui.DecoratorPanel;
+import com.google.gwt.user.client.ui.DisclosurePanel;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.Widget;
+import com.sensia.relaxNG.RNGAttribute;
+import com.sensia.relaxNG.RNGElement;
+import com.sensia.relaxNG.RNGTag;
+import com.sensia.relaxNG.RNGTagList;
+import com.sensia.relaxNG.RNGTagVisitor;
+import com.sensia.relaxNG.RNGValue;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 
 
 /**
@@ -125,7 +137,7 @@ public class RNGRendererSWE extends RNGRenderer implements RNGTagVisitor
         decorator.add(hidePanel);
         
         // header section
-        HorizontalPanel header = new HorizontalPanel();
+        SMLHorizontalPanel header = new SMLHorizontalPanel();
         header.addStyleName("swe-section-header");
         hidePanel.setHeader(header);
         
@@ -135,7 +147,7 @@ public class RNGRendererSWE extends RNGRenderer implements RNGTagVisitor
         header.add(label);
         
         // content section
-        //VerticalPanel contentPanel = new VerticalPanel();
+        //SMLVerticalPanel contentPanel = new SMLVerticalPanel();
         FlowPanel contentPanel = new FlowPanel();
         hidePanel.setContent(contentPanel);
         
@@ -158,7 +170,7 @@ public class RNGRendererSWE extends RNGRenderer implements RNGTagVisitor
         DisclosurePanel hidePanel = new DisclosurePanel();
         hidePanel.setAnimationEnabled(true);
         
-        VerticalPanel panel = new VerticalPanel();
+        SMLVerticalPanel panel = new SMLVerticalPanel();
         hidePanel.setContent(panel);
         
         // name attribute
@@ -195,7 +207,7 @@ public class RNGRendererSWE extends RNGRenderer implements RNGTagVisitor
     
     protected void renderLabeledField(RNGTagList tagList, String label)
     {
-        HorizontalPanel panel = new HorizontalPanel();
+        SMLHorizontalPanel panel = new SMLHorizontalPanel();
         panel.addStyleName("swe-simple-field");
         
         String tooltip = tagList.getAnnotation();

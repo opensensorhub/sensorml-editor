@@ -1,11 +1,11 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element;
 
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class EditSimpleElementPanel extends AbstractPanel<RNGElement>{
@@ -13,13 +13,13 @@ public class EditSimpleElementPanel extends AbstractPanel<RNGElement>{
 	
 	public EditSimpleElementPanel(RNGElement element) {
 		super(element);
-		container = new HorizontalPanel();
+		container = new SMLHorizontalPanel();
 	}
 	
 	public EditSimpleElementPanel(RNGElement element,String label) {
 		super(element);
 		
-		container = new HorizontalPanel();
+		container = new SMLHorizontalPanel();
 		container.add(new HTML(Utils.toNiceLabel(label)+":"+SMLEditorConstants.HTML_SPACE));
 	}
 	

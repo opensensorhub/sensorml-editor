@@ -4,18 +4,16 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Panel;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
-import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.map.GenericPointMap;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSimpleElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.CloseWindow;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -31,9 +29,9 @@ public class GMLEditPointPanel extends EditSimpleElementPanel{
 	
 	public GMLEditPointPanel(RNGElement element, final IRefreshHandler refreshHandler) {
 		super(element);
-		container = new HorizontalPanel();
-		srsPanel = new HorizontalPanel();
-		coordinatesPanel = new HorizontalPanel();
+		container = new SMLHorizontalPanel();
+		srsPanel = new SMLHorizontalPanel();
+		coordinatesPanel = new SMLHorizontalPanel();
 		mapIcon = new Image(GWT.getModuleBaseURL()+"images/maps-icon.png");
 		
 		container.addStyleName("Point-panel");

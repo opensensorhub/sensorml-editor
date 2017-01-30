@@ -7,19 +7,19 @@ import java.util.Map;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.ILoadOntologyCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.IOntologyPropertyReader;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.RdfPropertyReader;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.SensorMLPropertyOntology;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 
 public class OntologyPanel {
 	
-	public VerticalPanel ontologyPanel;
+	public SMLVerticalPanel ontologyPanel;
 	private static Map<String,String> sources = new HashMap<String,String>();
 	private GenericTable ontologyTable;
 	
@@ -29,7 +29,7 @@ public class OntologyPanel {
 	}
 	
 	public OntologyPanel(){
-		ontologyPanel = new VerticalPanel();
+		ontologyPanel = new SMLVerticalPanel();
 		ontologyPanel.setStyleName("ontology-panel");
 		//create list of sources url pointing to the ontology server
 		final ListBox sourcesBox = new ListBox();
@@ -49,11 +49,11 @@ public class OntologyPanel {
 		
 		IOntologyPropertyReader rdfPropertyReader = new SensorMLPropertyOntology();
 		
-		final HorizontalPanel hPanel = new HorizontalPanel();
+		final SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
 		hPanel.add(new HTML("Source :"+SensorConstants.HTML_SPACE+SensorConstants.HTML_SPACE));
 		hPanel.add(sourcesBox);
 		
-		final VerticalPanel vPanel = new VerticalPanel();
+		final SMLVerticalPanel vPanel = new SMLVerticalPanel();
 		vPanel.add(hPanel);
 		vPanel.add(panelTable);
 		

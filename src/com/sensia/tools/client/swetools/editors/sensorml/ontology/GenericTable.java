@@ -26,17 +26,16 @@ import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.SafeHtmlHeader;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.view.client.ListDataProvider;
 import com.google.gwt.view.client.SelectionChangeEvent;
 import com.google.gwt.view.client.SingleSelectionModel;
 import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.Property;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.table.ITable;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 
 /**
  * The Class GenericTable allows to create generic table from any Property objects.
@@ -212,10 +211,10 @@ public class GenericTable{
 		    });
 		}
 		
-		VerticalPanel vPanel = new VerticalPanel();
+		SMLVerticalPanel vPanel = new SMLVerticalPanel();
 		final TextBox searchBox = new TextBox();
 		
-		HorizontalPanel hPanel = new HorizontalPanel();
+		SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
 		hPanel.add(new HTML("Search :"+SensorConstants.HTML_SPACE+SensorConstants.HTML_SPACE));
 		hPanel.add(searchBox);
 		

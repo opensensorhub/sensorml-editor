@@ -4,18 +4,13 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.Image;
 import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGValue;
-import com.sensia.tools.client.swetools.editors.sensorml.listeners.IButtonCallback;
-import com.sensia.tools.client.swetools.editors.sensorml.ontology.OntologyPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.viewer.panels.value.ViewValuePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public abstract class AbstractViewAttributeOntologyIconPanel<T extends RNGTag> extends AbstractPanel<T>{
 

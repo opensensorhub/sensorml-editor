@@ -1,15 +1,13 @@
 package com.sensia.tools.client.swetools.editors.sensorml.panels.base.element;
 
-import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 
 public class DisclosureElementPanel extends AbstractPanel<RNGElement>{
 
@@ -22,7 +20,7 @@ public class DisclosureElementPanel extends AbstractPanel<RNGElement>{
 	
 	public DisclosureElementPanel(RNGElement tag,IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
-		innerContent = new VerticalPanel();
+		innerContent = new SMLVerticalPanel();
 		
 		sectionPanel = new DisclosurePanel("");
 		sectionPanel.setAnimationEnabled(true);

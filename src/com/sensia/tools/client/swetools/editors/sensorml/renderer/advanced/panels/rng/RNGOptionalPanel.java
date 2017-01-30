@@ -3,9 +3,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.pane
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sensia.relaxNG.RNGOptional;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
@@ -14,7 +12,8 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.element.AdvancedElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSectionElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSubSectionElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
@@ -25,13 +24,13 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 	
 	public RNGOptionalPanel(final RNGOptional tag,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
-		container = new VerticalPanel();
-		patternContainer = new HorizontalPanel();
+		container = new SMLVerticalPanel();
+		patternContainer = new SMLHorizontalPanel();
 		
 		final String label = Utils.findLabel(tag);
 		
 		addButton = new HTML();
-		headerPanel = new HorizontalPanel();
+		headerPanel = new SMLHorizontalPanel();
 		container.add(headerPanel);
 		container.add(patternContainer);
 

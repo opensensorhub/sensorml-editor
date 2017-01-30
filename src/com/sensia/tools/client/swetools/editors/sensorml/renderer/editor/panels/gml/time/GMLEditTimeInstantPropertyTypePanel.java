@@ -1,21 +1,12 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.time;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.google.gwt.event.dom.client.ChangeEvent;
-import com.google.gwt.event.dom.client.ChangeHandler;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
-import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.element.AdvancedSimpleElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSimpleElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class GMLEditTimeInstantPropertyTypePanel extends EditSimpleElementPanel{
@@ -27,10 +18,10 @@ public class GMLEditTimeInstantPropertyTypePanel extends EditSimpleElementPanel{
 	public GMLEditTimeInstantPropertyTypePanel(final RNGElement element) {
 		super(element,Utils.findLabel(element));
 		
-		container = new HorizontalPanel();
+		container = new SMLHorizontalPanel();
 		nilReason = new SimplePanel();
-		owns = new HorizontalPanel();
-		others = new HorizontalPanel();
+		owns = new SMLHorizontalPanel();
+		others = new SMLHorizontalPanel();
 		
 		nilReason.setVisible(false);
 		owns.setVisible(false);

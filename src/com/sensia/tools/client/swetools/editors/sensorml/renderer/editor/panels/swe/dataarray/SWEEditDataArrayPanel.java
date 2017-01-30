@@ -1,32 +1,14 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.dataarray;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.FocusPanel;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.SimplePanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
-import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.chart.GenericCurveChart;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.chart.GenericTable;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.line.AbstractGenericLinePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.line.EditGenericLinePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEditEncodingPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.ModelHelper;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 
 /**
  * This class is in charge of building the data array line + icons.
@@ -49,7 +31,7 @@ public class SWEEditDataArrayPanel extends AbstractPanel<RNGElement>{
 		super(tag,refreshHandler);
 		linePanel = getLinePanel(tag);
 		
-		beforeLineContentPanel = new VerticalPanel();
+		beforeLineContentPanel = new SMLVerticalPanel();
 		
 		container.add(beforeLineContentPanel);
 		container.add(linePanel.getPanel());

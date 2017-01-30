@@ -10,7 +10,6 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor;
 
-import java.util.List;
 import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
@@ -18,10 +17,8 @@ import com.sensia.relaxNG.RNGOptional;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.relaxNG.RNGZeroOrMore;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGOptionalPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePatternPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedLabelPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.attribute.EditAttributeCodePanel;
@@ -92,9 +89,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditTypeOfPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.SMLEditValidTimePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml.history.SMLEditEventPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.ModelHelper;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**
  * <p>

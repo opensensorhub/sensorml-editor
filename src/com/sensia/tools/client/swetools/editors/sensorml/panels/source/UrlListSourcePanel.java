@@ -12,6 +12,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.panels.source;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Panel;
