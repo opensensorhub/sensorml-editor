@@ -2,12 +2,13 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels
 
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSubSectionElementPanel;
 
 public class SMLEditCharacteristicPanel extends EditSubSectionElementPanel{
 
-	public SMLEditCharacteristicPanel(RNGElement element) {
-		super(element);
+	public SMLEditCharacteristicPanel(RNGElement element, IRefreshHandler refreshHandler) {
+		super(element, refreshHandler);
 	}
 
 	@Override
