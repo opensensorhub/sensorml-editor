@@ -16,10 +16,6 @@
 	font-weight: bold;
 }
 
-.viewer .panel-disclosure-element-section a.header td {
-	vertical-align : middle !important;
-}
-
 .viewer .subsection-inner {
 	padding-top:5px;
 	padding-left:10px;

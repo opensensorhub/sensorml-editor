@@ -35,9 +35,13 @@ public abstract class Renderer implements IRefreshHandler, RNGTagVisitor{
 		resolver = new NameRefResolver();
 		this.observers = new ArrayList<IObserver>();
 		
-		rootPanel = new GenericVerticalContainerPanel(true);
-		rootPanel.getPanel().addStyleName(getDefaultStyle());
-		push(rootPanel);
+		GenericVerticalContainerPanel rootAdvanced = new GenericVerticalContainerPanel(true);
+		rootAdvanced.getPanel().addStyleName("advanced-dialog");
+		
+		GenericVerticalContainerPanel rootAdvanced2 = new GenericVerticalContainerPanel(true);
+		rootAdvanced2.getPanel().addStyleName(getDefaultStyle());
+		rootAdvanced2.getPanel().add(rootAdvanced.getPanel());
+		push(rootAdvanced2);
 	}
 	
 	@Override
@@ -225,7 +229,13 @@ public abstract class Renderer implements IRefreshHandler, RNGTagVisitor{
 	
 	public void reset() {
 		stack = new Stack<IPanel<? extends RNGTag>>();
-		rootPanel.getPanel().clear();
+		GenericVerticalContainerPanel rootAdvanced = new GenericVerticalContainerPanel(true);
+		rootAdvanced.getPanel().addStyleName("advanced-dialog");
+		
+		GenericVerticalContainerPanel rootAdvanced2 = new GenericVerticalContainerPanel(true);
+		rootAdvanced2.getPanel().addStyleName(getDefaultStyle());
+		rootAdvanced2.getPanel().add(rootAdvanced.getPanel());
+		push(rootAdvanced2);
 	}
 	
 	protected abstract String getDefaultStyle();

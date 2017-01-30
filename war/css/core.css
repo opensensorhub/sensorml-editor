@@ -96,10 +96,18 @@ input.file-upload {
 }
 
 /** section header **/
-.panel-disclosure-element-section a.header  .panel-edit-section-element{
+.panel-disclosure-element-section div.gwt-Label{
 	cursor: hand;
   	cursor: pointer;
   	font-weight:bold;
+}
+
+.panel-disclosure-element-section a.header td {
+	vertical-align : middle !important;
+}
+
+.panel-disclosure-element-section a.header div {
+	vertical-align : middle !important;
 }
 
 .panel-disclosure-element-section a.header  .icons-definition{ 
@@ -190,12 +198,25 @@ input.file-upload {
 	height:550px;
 }
 
-.dialog-main .root {
-	width:500px;
-	padding-left:10px;
-}
-
 .v-align-middle {
 	vertical-align: middle;
 }
 
+
+.dialog-main .root {
+	width:660px;
+	padding-left:10px;
+}
+
+.dialog-main .advanced-panel {
+	width:660px;
+	padding-left:10px;
+}
+
+.dialog-main .gwt-HTML {
+	min-width:150px;
+}
+
+.dialog-main .gwt-TextBox{
+	min-width:350px;
+}
