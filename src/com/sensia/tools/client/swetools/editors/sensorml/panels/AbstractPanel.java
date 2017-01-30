@@ -132,7 +132,7 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 		}
 		
 		Label advancedButton= new Label("");
-		advancedButton.addStyleName("rng-advanced-button");
+		advancedButton.addStyleName("icons-advanced");
 		final Panel rootPanel = new SMLVerticalPanel();
 		
 		advancedButton.addClickHandler(new ClickHandler() {
