@@ -258,6 +258,10 @@ div.v-align-top  > div {
 	vertical-align:top ;
 } 
 
-div.rng-disclosure.v-align-top div.shift-remove.remove-button {
+div.rng-disclosure.v-align-top > div > div.shift-remove.remove-button {
 	margin-top:2px;
+}
+
+div.gwt-HTML.remove-button.shift-remove {
+	margin-top:-2px;
 }
