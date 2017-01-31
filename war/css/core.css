@@ -159,7 +159,6 @@ input.file-upload {
 
 .shift-remove {
 	margin-left:-22px;
-	margin-bottom:2px; 
 }
 
 .add-button {
@@ -170,6 +169,7 @@ input.file-upload {
 	background-image: url(../sensormleditor/images/add-icon-new.png);
 	cursor: hand;
 	cursor: pointer;
+	margin-left:5px;
 }
 
 .remove-button {
@@ -202,21 +202,62 @@ input.file-upload {
 	vertical-align: middle;
 }
 
+.v-align-middle > div{
+	vertical-align: middle;
+}
 
 .dialog-main .root {
-	width:660px;
-	padding-left:10px;
+	min-width:500px;
+	padding-left:15px;
+}
+
+.dialog-main .advanced {
+	min-width:500px;
+	padding-left:15px;
+}
+
+.dialog-main .viewer {
+	min-width:500px;
+	padding-left:15px;
+}
+
+.dialog-main .editor {
+	min-width:500px;
+	padding-left:15px;
 }
 
 .dialog-main .advanced-panel {
-	width:660px;
-	padding-left:10px;
+	min-width:500px;
+	padding-left:15px;
 }
 
-.dialog-main .gwt-HTML {
-	min-width:150px;
+/** HACK DIALOG RESIZE 
+** Allows resizing dialog content based on dialog size **/
+.dialog-main > div {
+	width:inherit !important;
 }
+
+.dialog-main > div > div{
+	width:inherit !important;;
+}
+
+
+.dialog-main > div > div > div{ /* 3 divs becauses smartgwt creates 3 embedded canvas */
+	width:inherit !important;;
+}
+
+/** END HACK DIALOG RESIZE */
 
 .dialog-main .gwt-TextBox{
 	min-width:350px;
+	height:19px;
+}
+
+
+div.v-align-top  > div {
+	vertical-align:top ;
+} 
+
+div.rng-disclosure.v-align-top div.shift-remove.remove-button {
+	margin-top:2px;
 }

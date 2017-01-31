@@ -35,7 +35,7 @@ public class EditRNGZeroOrMorePopupPanel extends AbstractPanel<RNGZeroOrMore>{
 		SMLHorizontalPanel headerPanel = new SMLHorizontalPanel();
 		headerPanel.add(new HTML(Utils.toNiceLabel(label)));
 		headerPanel.add(addButton);
-		headerPanel.addStyleName("rng-optional-select-label");
+		headerPanel.addStyleName("v-align-middle");
 		
 		container.add(patternContainer);
 		container.add(headerPanel);

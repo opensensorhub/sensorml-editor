@@ -13,6 +13,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.element.AdvancedSimpleElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSimpleElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSubSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
@@ -25,10 +26,10 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 	
 	public RNGZeroOrMorePatternPanel(final RNGZeroOrMore tag,final int indexPattern,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
-		container = new SMLHorizontalPanel(SPACING.RIGHT);
+		container = new SMLHorizontalPanel();
         container.addStyleName("rng-zeroormore-pattern");
         
-		patternContainer = new SMLVerticalPanel(true);
+		patternContainer = new SMLVerticalPanel();
 		patternContainer.addStyleName("rng-zeroormore-pattern");
 		
 		removeButton = new HTML();
@@ -72,7 +73,7 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 			
 			hPanel.addStyleName("rng-disclosure");
 			container.add(hPanel);*/
-			container.addStyleName("rng-disclosure");
+			container.addStyleName("rng-disclosure v-align-top");
 			patternContainer.add(element.getPanel());
 		} else if(element.getName().equalsIgnoreCase("keywords")){
 			container.clear();

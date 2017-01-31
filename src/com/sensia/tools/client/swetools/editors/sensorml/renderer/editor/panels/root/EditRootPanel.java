@@ -60,7 +60,7 @@ public class EditRootPanel extends ViewRootPanel{
 		Label addSectionButton = new Label("");
 		addSectionButton.addStyleName("add-button");
 		
-		SMLHorizontalPanel hPanel = new SMLHorizontalPanel(SPACING.RIGHT);
+		SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
 		hPanel.add(new Label("Add section"));
 		hPanel.add(addSectionButton);
 

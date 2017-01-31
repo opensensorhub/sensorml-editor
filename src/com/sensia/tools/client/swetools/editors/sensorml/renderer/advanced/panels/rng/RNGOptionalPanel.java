@@ -25,13 +25,13 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 	
 	public RNGOptionalPanel(final RNGOptional tag,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
-		container = new SMLVerticalPanel(true);
-		patternContainer = new SMLHorizontalPanel();
+		container = new SMLVerticalPanel();
+		patternContainer = new SMLHorizontalPanel(SPACING.RIGHT);
 		
 		final String label = Utils.findLabel(tag);
 		
 		addButton = new HTML();
-		headerPanel = new SMLHorizontalPanel(SPACING.RIGHT);
+		headerPanel = new SMLHorizontalPanel();
 		container.add(headerPanel);
 		container.add(patternContainer);
 
@@ -45,9 +45,9 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 			addButton.addStyleName("add-button");
 			headerPanel.add(htmlLabel);
 			headerPanel.add(addButton);
+			headerPanel.addStyleName("v-align-middle");
 		}
 		
-		headerPanel.addStyleName("rng-optional-select-label");
 		addButton.addClickHandler(new ClickHandler() {
 			
 			@Override
@@ -78,7 +78,7 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
 	    if(element instanceof EditSectionElementPanel || element instanceof AdvancedElementPanel || element instanceof RNGChoicePanel ) {
-			headerPanel.addStyleName("rng-disclosure");
+			headerPanel.addStyleName("rng-disclosure v-align-top");
 		}
 		if(!(element instanceof EditElementPanel)){
 			headerPanel.clear();

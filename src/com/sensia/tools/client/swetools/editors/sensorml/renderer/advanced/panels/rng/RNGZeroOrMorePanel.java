@@ -21,17 +21,17 @@ public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 	
 	public RNGZeroOrMorePanel(final RNGZeroOrMore tag,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
-		patternContainer = new SMLVerticalPanel(true);
+		patternContainer = new SMLVerticalPanel();
 		patternContainer.addStyleName("rng-zeroormore-pattern");
 		
 		final String label = Utils.findLabel(tag);
 		HTML addButton = new HTML();
 		addButton.addStyleName("add-button");
 		
-		SMLHorizontalPanel headerPanel = new SMLHorizontalPanel(SPACING.RIGHT);
+		SMLHorizontalPanel headerPanel = new SMLHorizontalPanel();
 		headerPanel.add(new HTML(Utils.toNiceLabel(label)));
 		headerPanel.add(addButton);
-		headerPanel.addStyleName("rng-optional-select-label");
+		headerPanel.addStyleName("v-align-middle");
 		
 		container.add(patternContainer);
 		container.add(headerPanel);

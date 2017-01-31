@@ -1,0 +1,10 @@
+.root div{
+	vertical-align:middle;
+}
+.root .gwt-HTML {
+	min-width:initial;
+}
+
+.root .gwt-Label {
+	min-width:initial;
+}

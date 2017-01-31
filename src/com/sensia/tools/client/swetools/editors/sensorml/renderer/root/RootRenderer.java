@@ -50,11 +50,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 public class RootRenderer extends AdvancedRendererRNG {
 	
 	public RootRenderer() {
-		super();
-		GenericVerticalContainerPanel rootAdvanced = new GenericVerticalContainerPanel();
-		rootAdvanced.getPanel().addStyleName("advanced-dialog");
-		rootAdvanced.getPanel().addStyleName("root");
-		push(rootAdvanced);
 	}
 	/* (non-Javadoc)
 	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGElement)

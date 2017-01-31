@@ -64,7 +64,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		detailsPanel = new SimplePanel();
 		detailsPanel.setVisible(false);
 		
-		headerPanel = new SMLHorizontalPanel();
+		headerPanel = new SMLHorizontalPanel(true);
 		headerPanel.add(namedLabelPanel);
 		headerPanel.add(definition);
 		headerPanel.add(description);
