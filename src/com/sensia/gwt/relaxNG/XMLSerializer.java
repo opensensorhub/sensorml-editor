@@ -21,13 +21,24 @@ import com.google.gwt.xml.client.NodeList;
 public class XMLSerializer
 {
     protected final static String DOC_TYPE = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+    protected final static String PROFILE_TAG = "<?xml-model href=\"URL\"?>\n";
     protected final static String INDENT = "  ";
     
     
     public static String serialize(Node node)
     {
+        return serialize(node, null);
+    }
+    
+    
+    public static String serialize(Node node, String xmlModelUrl)
+    {
         StringBuilder doc = new StringBuilder();
         doc.append(DOC_TYPE);
+        
+        if (xmlModelUrl != null)
+            doc.append(PROFILE_TAG.replaceAll("URL", xmlModelUrl));
+        
         StringBuilder indent = new StringBuilder();
         serialize(node, doc, indent);
         return doc.toString();

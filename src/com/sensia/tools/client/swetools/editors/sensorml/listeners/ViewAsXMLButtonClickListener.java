@@ -63,7 +63,7 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 			RNGInstanceWriter instanceWriter = new RNGInstanceWriter();
 			Document dom = instanceWriter.writeInstance(grammar);
 			
-			final String xml = XMLSerializer.serialize(dom);
+			final String xml = XMLSerializer.serialize(dom, grammar.getId());
 			
 	        //creates main panel
 	        String htmlCode = SyntaxHighlighter.highlight(xml, BrushFactory.newXmlBrush(), false);
