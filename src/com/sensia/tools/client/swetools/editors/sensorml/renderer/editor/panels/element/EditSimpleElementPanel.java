@@ -12,15 +12,14 @@ public class EditSimpleElementPanel extends AbstractPanel<RNGElement>{
 
 	
 	public EditSimpleElementPanel(RNGElement element) {
-		super(element);
-		container = new SMLHorizontalPanel();
+		this(element, null);
 	}
 	
-	public EditSimpleElementPanel(RNGElement element,String label) {
-		super(element);
-		
+	public EditSimpleElementPanel(RNGElement element, String label) {
+		super(element);		
 		container = new SMLHorizontalPanel();
-		container.add(new HTML(Utils.toNiceLabel(label)+":"+SMLEditorConstants.HTML_SPACE));
+		if (label != null && !label.isEmpty())
+		    container.add(new HTML(Utils.toNiceLabel(label)+":"+SMLEditorConstants.HTML_SPACE));
 	}
 	
 	@Override

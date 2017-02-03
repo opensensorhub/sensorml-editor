@@ -24,6 +24,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditFieldPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditIntervalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditLabelPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditQualityPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditQuantityPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditQuantityRangePanel;
@@ -119,7 +120,9 @@ public class EditRendererSWE extends EditRendererRNG implements RNGTagVisitor {
 			widget = new SWEEditTimePanel(elt,getRefreshHandler());
 		} else if(name.equals("TimeRange")) {
 			widget = new SWEEditTimeRangePanel(elt,getRefreshHandler());
-		} else if(name.equals("uom")) {
+		} else if(name.equals("label")) {
+            widget = new SWEEditLabelPanel(elt);
+        } else if(name.equals("uom")) {
 			widget = new SWEEditUOMPanel(elt);
 		} else if(name.equals("quality")) {
 			widget = new SWEEditQualityPanel(elt,getRefreshHandler());

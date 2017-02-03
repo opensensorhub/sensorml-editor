@@ -11,12 +11,21 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class EditAttributePanel extends AbstractPanel<RNGAttribute> {
 
-	public EditAttributePanel(RNGAttribute tag) {
-		super(tag);
-		container = new SMLHorizontalPanel();
-		container.add(new HTML(Utils.findLabel(tag)+":"+SMLEditorConstants.HTML_SPACE));
-		container.addStyleName("attribute-panel-edit");
+    public EditAttributePanel(RNGAttribute attrib) {
+        this(attrib, true);
+    }
+    
+    public EditAttributePanel(RNGAttribute attrib, boolean useAttributeNameAsLabel) {
+        this(attrib, useAttributeNameAsLabel ? Utils.findLabel(attrib) : null);		
 	}
+    
+    public EditAttributePanel(RNGAttribute attrib, String label) {
+        super(attrib);
+        container = new SMLHorizontalPanel();
+        if (label != null && !label.isEmpty())
+            container.add(new HTML(Utils.toNiceLabel(label)+":"+SMLEditorConstants.HTML_SPACE));
+        container.addStyleName("attribute-panel-edit");
+    }
 
 	@Override
 	public String getName() {
@@ -30,7 +39,6 @@ public class EditAttributePanel extends AbstractPanel<RNGAttribute> {
 
 	@Override
 	protected AbstractPanel<RNGAttribute> newInstance() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

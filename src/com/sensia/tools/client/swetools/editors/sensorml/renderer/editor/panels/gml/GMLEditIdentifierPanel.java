@@ -1,5 +1,6 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml;
 
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -8,6 +9,7 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 
 // xsd:string
@@ -24,7 +26,7 @@ public class GMLEditIdentifierPanel extends AbstractPanel<RNGElement>{
 		super(element);
 		
 		container = new SMLHorizontalPanel();		
-		container.add(new Label("Unique ID:"));
+		container.add(new HTML("Unique ID:"+SMLEditorConstants.HTML_SPACE));
         valuePanel = new SimplePanel();
 		container.add(valuePanel);
 	}

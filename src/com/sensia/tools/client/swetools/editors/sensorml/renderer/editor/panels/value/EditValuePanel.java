@@ -47,17 +47,15 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 		// put saved value in text box
         if (data.getStringValue() != null)
             textBox.setText(data.getStringValue().trim());
-
+        
 		textBox.addKeyUpHandler(new KeyUpHandler() {
-
 			@Override
 			public void onKeyUp(KeyUpEvent event) {
 				data.setStringValue(textBox.getText());
 			}
 		});
         
-        textBox.addValueChangeHandler(new ValueChangeHandler<String>() {
-            
+        textBox.addValueChangeHandler(new ValueChangeHandler<String>() {            
             @Override
             public void onValueChange(ValueChangeEvent<String> event) {
                 if(!focusTmpText.equals(textBox.getText()) && refreshHandler != null) {
@@ -105,5 +103,9 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 	
 	public void setEnable(boolean isEnable) {
 		textBox.setEnabled(isEnable);
+	}
+	
+	public void setPlaceholderText(String text) {
+	    textBox.getElement().setPropertyString("placeholder", text);
 	}
 }

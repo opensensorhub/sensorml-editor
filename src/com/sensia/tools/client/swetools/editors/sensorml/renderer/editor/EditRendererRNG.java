@@ -117,11 +117,6 @@ public class EditRendererRNG extends AdvancedRendererSML {
 				this.visitChildren(tags);
 			}
 		}
-		
-		if(label != null && label.equalsIgnoreCase("field")){
-			EditRNGZeroOrMorePopupPanel patternPanel = new EditRNGZeroOrMorePopupPanel(zeroOrMore, getRefreshHandler());
-			push(patternPanel);
-		} 
 	}
 	
 	public String getDefaultStyle() {
