@@ -47,12 +47,9 @@ public class LocalFileSourcePanel extends AbstractSourcePanel{
 			try {
 				//set the default mode for the editor
 				smlEditorProcessor.setMode(MODE.EDIT);
+				
 				//parse the document corresponding to the selected uploaded file
-				if(fileUploadPanel.getFileName().endsWith("xml") || fileUploadPanel.getFileName().endsWith("XML")){
-					smlEditorProcessor.parse(fileUploadPanel.getFileName(), fileContent);
-				} else if(fileUploadPanel.getFileName().endsWith("rng") || fileUploadPanel.getFileName().endsWith("RNG")) {
-					smlEditorProcessor.parseRNG(fileUploadPanel.getFileName(), fileContent);
-				}
+				smlEditorProcessor.parse(fileUploadPanel.getFileName(), fileContent);
 				
 			} catch (Exception e) {
 				Window.alert("An error occured while parsing the file. Check that it is a valid XML file");

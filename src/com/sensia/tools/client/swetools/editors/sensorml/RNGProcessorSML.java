@@ -15,7 +15,6 @@ import java.util.List;
 import com.sensia.gwt.relaxNG.RNGInstanceMergingParser;
 import com.sensia.gwt.relaxNG.RNGParser;
 import com.sensia.gwt.relaxNG.RNGParserCallback;
-import com.sensia.gwt.relaxNG.XMLSensorMLParser;
 import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
@@ -37,6 +36,9 @@ public class RNGProcessorSML {
 	/** The loaded grammar. */
 	private RNGGrammar loadedGrammar;
 	
+	/** URL of loaded XML document **/
+	private String documentUrl;
+	
 	/** The mode. */
 	private MODE mode = MODE.VIEW;
 	
@@ -54,8 +56,8 @@ public class RNGProcessorSML {
 	 * @param url
 	 */
 	public void parse(final String url) {
-		//if the document is a RNG instance
-		if(url.toLowerCase().endsWith(".rng")) {
+		if (url.toLowerCase().endsWith(".rng")) {
+		    // if the document is a RNG instance
 		    RNGParser.clearCache();
 	        final RNGParser parser = new RNGParser();
 			parser.parseFromUrl(url, new RNGParserCallback() {
@@ -65,14 +67,14 @@ public class RNGProcessorSML {
 				}
 			});
 		} else if(url.toLowerCase().endsWith(".xml")) {
-			//if the document is a XML instance
-			//transform XML document into RNG profile
-			//final XMLSensorMLParser parser = new XMLSensorMLParser();
+			// if the document is an XML instance
+			// merge it with associated profile
 		    final RNGInstanceMergingParser parser = new RNGInstanceMergingParser();
 			parser.parseFromUrl(url, new RNGParserCallback() {				
 				@Override
 				public void onParseDone(final RNGGrammar grammar) {
-					displayRNG(grammar);
+					documentUrl = url;
+				    displayRNG(grammar);
 				}
 			});
 		}
@@ -86,44 +88,30 @@ public class RNGProcessorSML {
 	 * @throws Exception the exception
 	 */
 	public void parse(final String fileName, final String xmlContent) throws Exception {
-		// merge XML document into RNG profile
-		//final XMLSensorMLParser parser = new XMLSensorMLParser();
-		final RNGInstanceMergingParser parser = new RNGInstanceMergingParser();
-		parser.parseFromString(fileName, xmlContent, new RNGParserCallback() {              
-            @Override
-            public void onParseDone(final RNGGrammar grammar) {
-                displayRNG(grammar);
-            }
-		});
-	}
-	
-	public void parseRNG(final String fileName, final String xmlContent) throws Exception {
-	    RNGParser.clearCache();
-	    final RNGParser parser = new RNGParser();
-		parser.parseFromString(fileName, xmlContent, new RNGParserCallback() {              
-            @Override
-            public void onParseDone(final RNGGrammar grammar) {
-                displayRNG(grammar);
-            }
-        });
-	}
-	
-	public void parseString(final String xmlContent) {
-		XMLSensorMLParser parser = new XMLSensorMLParser();
-		try {
-			parser.parseFromString("", xmlContent, new RNGParserCallback() {              
+	    if (fileName.toLowerCase().endsWith(".rng")) {
+	        RNGParser.clearCache();
+	        final RNGParser parser = new RNGParser();
+	        parser.parseFromString(fileName, xmlContent, new RNGParserCallback() {              
 	            @Override
 	            public void onParseDone(final RNGGrammar grammar) {
 	                displayRNG(grammar);
 	            }
 	        });
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	    } else if(fileName.toLowerCase().endsWith(".xml")) {
+	        // merge XML document into RNG profile
+	        final RNGInstanceMergingParser parser = new RNGInstanceMergingParser();
+	        parser.parseFromString(fileName, xmlContent, new RNGParserCallback() {              
+	            @Override
+	            public void onParseDone(final RNGGrammar grammar) {
+	                documentUrl = fileName;
+	                displayRNG(grammar);
+	            }
+	        }); 
+	    }
 	}
 	
 	/**
-	 * Displays the RelaxNG grammar.
+	 * Displays the RelaxNG grammar
 	 * @param grammar the grammar
 	 */
 	private void displayRNG(final RNGGrammar grammar) {
@@ -190,7 +178,12 @@ public class RNGProcessorSML {
 		this.loadedGrammar = loadedGrammar;
 	}
 
-	/**
+	public String getDocumentUrl()
+    {
+        return documentUrl;
+    }
+
+    /**
 	 * Gets the mode.
 	 *
 	 * @return the mode

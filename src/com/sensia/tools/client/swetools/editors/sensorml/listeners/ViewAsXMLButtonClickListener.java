@@ -40,8 +40,7 @@ import com.smartgwt.client.widgets.HTMLPane;
  */
 public class ViewAsXMLButtonClickListener implements ClickHandler{
 
-	/** The sgml editor processor. */
-	private RNGProcessorSML sgmlEditorProcessor;
+	private RNGProcessorSML smlEditorProcessor;
 	
 	/**
 	 * Instantiates a new view as xml button click listener.
@@ -49,7 +48,7 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 	 * @param sgmlEditorProcessor the sgml editor processor
 	 */
 	public ViewAsXMLButtonClickListener(final RNGProcessorSML sgmlEditorProcessor) {
-		this.sgmlEditorProcessor = sgmlEditorProcessor;
+		this.smlEditorProcessor = sgmlEditorProcessor;
 	}
 	
 	/* (non-Javadoc)
@@ -57,7 +56,7 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 	 */
 	@Override
 	public void onClick(ClickEvent event) {
-		RNGGrammar grammar = sgmlEditorProcessor.getLoadedGrammar();
+		RNGGrammar grammar = smlEditorProcessor.getLoadedGrammar();
 		if(grammar != null) {		    
 		    // write out instance XML and serialize as string
 			RNGInstanceWriter instanceWriter = new RNGInstanceWriter();
@@ -73,26 +72,24 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 			panel.setHeight100();
 			panel.setOverflow(Overflow.SCROLL);
 			
-			// add to save dialog box
-			final FileUploadPanel saveFile = new FileUploadPanel();
-			final SaveCloseWindow dialog = Utils.displaySaveDialogBox(panel, "Sensor ML document");
+			// display save dialog box
+			final SaveCloseWindow dialog = Utils.displaySaveDialogBox(panel, "SensorML Document");
 			dialog.addSaveHandler(new ClickHandler(){
 				@Override
 				public void onClick(ClickEvent event) {
-					//save(xml);
-					saveFile.onBrowseValidate(new IButtonCallback() {						
-						@Override
-						public void onClick() {
-							saveAs(saveFile.getFileName(),xml);
-						}
-					});
-					//save the result into a file
-					saveAs(saveFile.getFileName(),xml);
-					//saveFile.click();
+					saveAs(getDefaultFileName(),xml);
 				}
 			});
 			dialog.setExitOnSave(false);
 		}
+	}
+	
+	private String getDefaultFileName() {
+	    String docUrl = smlEditorProcessor.getDocumentUrl();
+	    if (docUrl != null)
+	        return docUrl.replaceAll(".*(/|\\\\)", "");
+	    else
+	        return "sensorml_document.xml";
 	}
 	
 	/**
@@ -101,17 +98,8 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 	 * @param path the path
 	 * @param xmlData the xml data
 	 */
-	private void saveAs(String path,String xmlData) {
-		save(xmlData);
-	}
-	
-	/**
-	 * Save the content of xmlData into a file using HTML5 File API.
-	 *
-	 * @param xmlData the xml data
-	 */
-	private void save(String xmlData) {
-		saveFromJs(xmlData);
+	private void saveAs(String defaultFileName, String xmlData) {
+	    saveFromJs(defaultFileName, xmlData);
 	}
 	
 	/**
@@ -149,8 +137,8 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 	 *
 	 * @param xmlData the xml data
 	 */
-	private native void saveFromJs(String xmlData) /*-{
+	private native void saveFromJs(String defaultFileName, String xmlData) /*-{
 		var blob = new Blob([xmlData], {type: "text/xml;charset=utf-8"});
-		$wnd.saveAs(blob, "SensorML_XML_result_document.xml");
+		$wnd.saveAs(blob, defaultFileName);
 	}-*/;
 }

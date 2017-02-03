@@ -75,7 +75,7 @@ public class ViewAsRelaxNGButtonClickListener implements ClickHandler{
 		    //ScrollPanel panel = new ScrollPanel(html);
 			final FileUploadPanel saveFile = new FileUploadPanel();
 			
-			final SaveCloseWindow dialog = Utils.displaySaveDialogBox(panel, "Sensor ML document","dialog-code");
+			final SaveCloseWindow dialog = Utils.displaySaveDialogBox(panel, "RelaxNG Document", "dialog-code");
 			dialog.addSaveHandler(new ClickHandler(){
 				@Override
 				public void onClick(ClickEvent event) {

@@ -19,7 +19,6 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RadioButton;
@@ -221,11 +220,6 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		redraw();
 	}
 	
-	public void parse(String xmlDoc) {
-		// use MVC
-		smlEditorProcessor.parseString(xmlDoc);
-	}
-	
 	/************* TODO **********************/
 	// REMOVE / IMPROVE load grammar, parseRNG etc..
 	// Use MVC or MVP or Singleton
@@ -254,9 +248,7 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	}
 	
 	public void redraw() {
-		// check styles
-		MODE mode = (editCheckbox.getValue()) ? MODE.EDIT : MODE.VIEW;
-		redraw((editCheckbox.getValue())? MODE.EDIT:MODE.VIEW);
+		redraw((editCheckbox.getValue()) ? MODE.EDIT : MODE.VIEW);
 	}
 	
 	public void redraw(MODE mode) {

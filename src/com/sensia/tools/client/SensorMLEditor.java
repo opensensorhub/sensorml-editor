@@ -41,18 +41,6 @@ public class SensorMLEditor implements EntryPoint {
 	}
 
 	public void open(Panel parent) {
-		IController controller = new IController() {
-			
-			@Override
-			public void parse(RNGGrammar grammar) {
-				viewerPanel.parse(grammar);
-			}
-
-			@Override
-			public void parse(String xmlDoc) {
-				viewerPanel.parse(xmlDoc);
-			}
-		};
 		HorizontalSplitPanel p = new HorizontalSplitPanel();
 		p.setLeftWidget(getViewer());
 	    //p.setRightWidget(getEditor(controller));
