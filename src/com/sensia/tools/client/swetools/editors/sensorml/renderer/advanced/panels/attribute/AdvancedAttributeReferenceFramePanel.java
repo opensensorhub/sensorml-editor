@@ -2,7 +2,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.pane
 
 import com.sensia.relaxNG.RNGAttribute;
 
-public class AdvancedAttributeReferenceFramePanel extends AbstractAdvancedAttributeHrefPanel{
+public class AdvancedAttributeReferenceFramePanel extends AbstractAdvancedAttributeUriPanel {
 
 	public AdvancedAttributeReferenceFramePanel(RNGAttribute tag) {
 		super(tag);

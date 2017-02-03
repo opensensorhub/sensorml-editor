@@ -12,10 +12,9 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 
 public class EditIconPanel<T extends RNGTag> extends AbstractPanel<T>{
 
-	/** The def image. */
-	private Image defImage;
-	
+	private Image defImage;	
 	private IPanel<? extends RNGTag> valuePanel;
+	private String linkTarget = "_blank";
 	
 	public EditIconPanel(T tag, Image image, String css) {
 		this(tag,image,css,true);
@@ -45,7 +44,7 @@ public class EditIconPanel<T extends RNGTag> extends AbstractPanel<T>{
 					} else if(valuePanel.getTag() instanceof RNGData<?>) {
 						url = ((RNGData<?>)valuePanel.getTag()).getStringValue();
 					}
-					Window.open(url,"","");
+					Window.open(url,linkTarget,"");
 				}
 			}
 		});
@@ -56,7 +55,11 @@ public class EditIconPanel<T extends RNGTag> extends AbstractPanel<T>{
 		return getTag().toString();
 	}
 	
-	@Override
+	public void setLinkTarget(String linkTarget) {
+        this.linkTarget = linkTarget;
+    }
+
+    @Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
 		if(element.getTag() instanceof RNGValue) {
 			valuePanel =  element;

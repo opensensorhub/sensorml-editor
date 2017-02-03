@@ -23,7 +23,7 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 
 	private String focusTmpText="";
 	
-	public EditValuePanel(final RNGData<?> data,final IRefreshHandler refreshHandler) {
+	public EditValuePanel(final RNGData<?> data, final IRefreshHandler refreshHandler) {
 	    this(data, false, refreshHandler);
 	}
 	
@@ -103,6 +103,11 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 	
 	public void setEnable(boolean isEnable) {
 		textBox.setEnabled(isEnable);
+	}
+	
+	public void setTextBoxSize(int numChars) {
+	    if (textBox instanceof TextBox)
+	        ((TextBox)textBox).setVisibleLength(numChars);
 	}
 	
 	public void setPlaceholderText(String text) {

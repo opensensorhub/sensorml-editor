@@ -2,7 +2,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels
 
 import com.sensia.relaxNG.RNGAttribute;
 
-public class EditAttributeReferenceFramePanel extends AbstractEditAttributeHrefPanel{
+public class EditAttributeReferenceFramePanel extends AbstractEditAttributeUriPanel{
 
 	public EditAttributeReferenceFramePanel(RNGAttribute tag) {
 		super(tag);

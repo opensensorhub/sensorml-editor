@@ -2,7 +2,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels
 
 import com.sensia.relaxNG.RNGAttribute;
 
-public class EditXLinkHrefPanel extends AbstractEditAttributeHrefPanel{
+public class EditXLinkHrefPanel extends AbstractEditAttributeUriPanel{
 
 	public EditXLinkHrefPanel(RNGAttribute att) {
 		super(att);

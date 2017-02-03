@@ -2,7 +2,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.pane
 
 import com.sensia.relaxNG.RNGAttribute;
 
-public class AdvancedXLinkRolePanel  extends AbstractAdvancedAttributeHrefPanel{
+public class AdvancedXLinkRolePanel  extends AbstractAdvancedAttributeUriPanel {
 
 	public AdvancedXLinkRolePanel(RNGAttribute att) {
 		super(att);
