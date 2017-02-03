@@ -73,11 +73,11 @@ public abstract class AbstractAdvancedAttributeOntologyIconPanel<T extends RNGTa
 	
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		 if(element.getTag() instanceof RNGData<?>) {
+		if(element.getTag() instanceof RNGData<?>) {
 			rngData = (RNGData<?>) element.getTag();
-			valuePanel.add(element.getPanel());
 			ontologyImage.setTitle(rngData.getStringValue());
 		}
+		valuePanel.add(element.getPanel());
 	}
 
 	@Override
