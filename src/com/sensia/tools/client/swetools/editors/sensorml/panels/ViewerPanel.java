@@ -20,7 +20,6 @@ import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.sensia.relaxNG.RNGGrammar;
@@ -64,91 +63,105 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		VIEW
 	}
 	
-	protected ViewerPanel(final RNGProcessorSML sgmlEditorProcessor){
-		sgmlEditorProcessor.addObserver(this);
-		this.smlEditorProcessor = sgmlEditorProcessor;
+	protected ViewerPanel(final RNGProcessorSML smlEditorProcessor) {
+		
+		this.smlEditorProcessor = smlEditorProcessor;
+		this.smlEditorProcessor.addObserver(this);
 		this.smlEditorProcessor.setRefreshHandler(this);
-		final Panel viewXmlPanel = getXMLViewPanel();
-
+		
 		final SMLVerticalPanel verticalPanel = new SMLVerticalPanel();
 		
-		//add View as XML button
-		Button viewAsXML = new Button("Save as XML");
-		viewAsXML.addClickHandler(new ViewAsXMLButtonClickListener(sgmlEditorProcessor));
+		// header panel
+		SMLHorizontalPanel header = buildHeader();		
+		verticalPanel.add(header);
 		
-		Button viewAsRNG = new Button("Save as RelaxNG");
-		viewAsRNG.addClickHandler(new ViewAsRelaxNGButtonClickListener(sgmlEditorProcessor));
-		
-		//Get the url parameter to load the document where this one is under the form : ?url=DocumentPath
-		String passedFile = com.google.gwt.user.client.Window.Location.getParameter("url");
-		SMLHorizontalPanel panel = new SMLHorizontalPanel();
-		panel.add(viewXmlPanel);
-		panel.add(viewAsXML);
-		panel.add(viewAsRNG);
-		
-		verticalPanel.add(panel);
-		
-		if(passedFile != null) {
-			//load the file given the url passed as parameter
-			//do not display the edit/view options
-			smlEditorProcessor.setMode(MODE.VIEW);
-			smlEditorProcessor.parse(passedFile);			
-			editCheckbox.setVisible(true);			
-		}
-		
+		// main panel
 		mainPanel = new SMLVerticalPanel();
-		mainPanel.addStyleName("main-content");
-		
+		mainPanel.addStyleName("main-content");		
 		verticalPanel.add(mainPanel);
-		initWidget(verticalPanel);
 		
+		// detect if document URL is given as url parameter (?url=DocumentPath)
+        String passedFile = com.google.gwt.user.client.Window.Location.getParameter("url");
+        if (passedFile != null) {
+            //load the file given the url passed as parameter
+            //do not display the edit/view options
+            smlEditorProcessor.setMode(MODE.VIEW);
+            smlEditorProcessor.parse(passedFile);           
+            editCheckbox.setVisible(true);          
+        }
+        
+		initWidget(verticalPanel);		
+	}
+	
+	private SMLHorizontalPanel buildHeader() {
+	    
+	    SMLHorizontalPanel header = new SMLHorizontalPanel();
+	    header.addStyleName("main-header");
+        
+        // title
+        HTML title = new HTML("<b>SensorML XML/RNG</b>");
+        header.add(title);
+        
+        // input selection panel
+        buildLoadPanel(header);
+        
+        // edit checkbox
+        editCheckbox = new CheckBox("Edit");
+        editCheckbox.setVisible(true);
+        editCheckbox.setValue(true);
+        editCheckbox.addClickHandler(new ClickHandler() {           
+            @Override
+            public void onClick(ClickEvent event) {
+                if(root != null){
+                    MODE mode = (editCheckbox.getValue()) ? MODE.EDIT : MODE.VIEW;
+                    smlEditorProcessor.setMode(mode);
+                    redraw();
+                }
+            }
+        });
+        header.add(editCheckbox);
+        
+        // save as XML button
+        Button viewAsXML = new Button("Save as XML");
+        viewAsXML.addClickHandler(new ViewAsXMLButtonClickListener(smlEditorProcessor));
+        header.add(viewAsXML);
+        
+        // save as RelaxNG button
+        Button viewAsRNG = new Button("Save as RelaxNG");
+        viewAsRNG.addClickHandler(new ViewAsRelaxNGButtonClickListener(smlEditorProcessor));
+        header.add(viewAsRNG);
+        
+        return header;
 	}
 
-	// Get the top elements panel for the XML part
-	private Panel getXMLViewPanel() {
-		final SMLHorizontalPanel panel = new SMLHorizontalPanel();
-		
-		HTML title = new HTML("<b>SensorML XML/RNG:</b>");
-		final Button load = new Button("Load");
-		
-		//init radio buttons choices
-		final RadioButton fromList = new RadioButton("myRadioGroup", "from list");
-		final RadioButton fromUrl = new RadioButton("myRadioGroup", "from url");
-		final RadioButton fromLocal = new RadioButton("myRadioGroup", "from local");
-        		
-		SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
-		
-		SMLVerticalPanel choicePanel = new SMLVerticalPanel();
-		choicePanel.add(fromList);
-		choicePanel.add(fromUrl);
-		choicePanel.add(fromLocal);
-        hPanel.add(choicePanel);
-		
-		editCheckbox = new CheckBox("Edit");
-		editCheckbox.setVisible(true);
-        editCheckbox.setValue(true);
+	private void buildLoadPanel(SMLHorizontalPanel header) {
+	    
+	    HTML text = new HTML("Input:");
+        header.add(text);
         
-		//container for either local file system input panel or url valueBox
+		// radio buttons for choice of input types
+        final RadioButton fromList = new RadioButton("myRadioGroup", "From List");
+        header.add(fromList);
+        final RadioButton fromUrl = new RadioButton("myRadioGroup", "From URL");
+        header.add(fromUrl);
+        final RadioButton fromLocal = new RadioButton("myRadioGroup", "From File");
+        header.add(fromLocal);
+        		
+        // container for different input source selection panels
 		final SimplePanel fromPanel = new SimplePanel();
-		
-		//init file upload panel
 		final ISourcePanel urlListPanel = new UrlListSourcePanel(smlEditorProcessor, editCheckbox);
 		final ISourcePanel urlDownloadPanel = new UrlSourcePanel(smlEditorProcessor, editCheckbox);
 		final ISourcePanel fileUploadPanel = new LocalFileSourcePanel(smlEditorProcessor, editCheckbox);
-        
-		//add to xml panel
-		panel.add(title);
-		panel.add(hPanel);
-		panel.add(fromPanel);
-		panel.add(load);
-		panel.add(editCheckbox);
+		header.add(fromPanel);
 		
-		//set from list panel as default choice
+		// set from list panel as default choice
 		fromList.setValue(true);
-		fromPanel.add(urlListPanel.getPanel());
+		fromPanel.add(urlListPanel.getPanel());		
 				
-		//add listener to handle event
-		load.addClickHandler(new ClickHandler() {			
+		// load button
+		final Button loadBtn = new Button("Load");
+        header.add(loadBtn);
+		loadBtn.addClickHandler(new ClickHandler() {			
 			@Override
 			public void onClick(ClickEvent event) {
 			    showLoadingIndicator();
@@ -158,19 +171,6 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 					fileUploadPanel.parseContent();
 				} else if(fromUrl.getValue()){
 					urlDownloadPanel.parseContent();
-				}
-			}
-		});
-		
-		//after clicking on the checkbox, the mode is sent to the tree hierarchy starting from the Root element
-		editCheckbox.addClickHandler(new ClickHandler() {
-			
-			@Override
-			public void onClick(ClickEvent event) {
-				if(root != null){
-					MODE mode = (editCheckbox.getValue()) ? MODE.EDIT : MODE.VIEW;
-					smlEditorProcessor.setMode(mode);
-					redraw();
 				}
 			}
 		});
@@ -207,8 +207,6 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
                 }
             }
         });
-        
-        return panel;
 	}
 	
 	public void parse(RNGGrammar grammar) {
@@ -220,15 +218,6 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		redraw();
 	}
 	
-	/************* TODO **********************/
-	// REMOVE / IMPROVE load grammar, parseRNG etc..
-	// Use MVC or MVP or Singleton
-	// make the system consistent
-	
-	/*
-	 * (non-Javadoc)
-	 * @see com.sensia.swetools.editors.sensorml.client.IParsingObserver#parseDone(com.sensia.swetools.editors.sensorml.client.panels.model.INodeWidget)
-	 */
 	@Override
 	@SuppressWarnings("rawtypes")
     public void parseDone(final IPanel topElement) {
