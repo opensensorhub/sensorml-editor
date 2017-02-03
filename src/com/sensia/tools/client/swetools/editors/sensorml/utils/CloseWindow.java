@@ -5,6 +5,7 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.HeaderControls;
+import com.smartgwt.client.types.Overflow;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.Window;
@@ -13,8 +14,7 @@ import com.smartgwt.client.widgets.events.CloseClickHandler;
 import com.smartgwt.client.widgets.layout.LayoutSpacer;
 
 public class CloseWindow extends Window {
-	Canvas c = new Canvas();
-	
+		
 	public CloseWindow(String title,boolean autoSize) {
 		this(title,autoSize,"dialog-main");
 	}
@@ -27,19 +27,13 @@ public class CloseWindow extends Window {
         setShowShadow(true);
         setAutoSize(autoSize);
         setShowMaximizeButton(true);
-        //setIsModal(true);  
-        //setShowModalMask(true);  
-        c.addStyleName(customCss);
-        c.setWidth100();
-        c.setHeight100();
-        c.setCanSelectText(true);
-		if(!autoSize) {
+        setIsModal(true);
+        if(!autoSize) {
 			resizeTo(660, 550);
 		} 
 		
 		// ensure the window is destroyed
-		addCloseClickHandler(new CloseClickHandler() {
-			
+		addCloseClickHandler(new CloseClickHandler() {			
 			@Override
 			public void onCloseClick(CloseClickEvent event) {
 				closeDialog();
@@ -50,7 +44,6 @@ public class CloseWindow extends Window {
 	
 	protected void closeDialog() {
 		hide();
-		c.destroy();
 		markForDestroy();
 	}
 	
@@ -69,24 +62,26 @@ public class CloseWindow extends Window {
 	}
 	
 	public void setContent(Panel panel) {
-		c.addChild(panel);
+		panel.setWidth("100%");
+	    Canvas c = new Canvas();
+	    c.addChild(panel);
 		c.adjustForContent(true);
-		addItem(c);
+		c.setWidth100();
+		c.setHeight100();
+		c.setOverflow(Overflow.AUTO);
+	    addItem(c);
 		adjustForContent(true);
 	}
 	
 	public void setContent(Widget panel) {
-		c.addChild(panel);
-		c.adjustForContent(true);
-		addItem(c);
-		adjustForContent(true);
+		addItem(panel);
+        adjustForContent(true);
 	}
 	
 	public void center() {
 	}
 	
 	public void redrawDialog() {
-		c.adjustForContent(true);
-		//c.redraw();
+		redraw();
 	}
 }

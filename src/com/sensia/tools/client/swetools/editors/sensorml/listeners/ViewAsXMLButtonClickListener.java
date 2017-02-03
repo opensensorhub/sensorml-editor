@@ -14,7 +14,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.xml.client.Document;
 import com.sensia.gwt.relaxNG.RNGInstanceWriter;
 import com.sensia.gwt.relaxNG.XMLSerializer;
@@ -23,9 +22,9 @@ import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.FileUploadPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.syntaxhighlighter.BrushFactory;
 import com.sensia.tools.client.swetools.editors.sensorml.syntaxhighlighter.SyntaxHighlighter;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
+import com.smartgwt.client.types.Overflow;
 import com.smartgwt.client.widgets.HTMLPane;
 
 /**
@@ -59,30 +58,29 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 	@Override
 	public void onClick(ClickEvent event) {
 		RNGGrammar grammar = sgmlEditorProcessor.getLoadedGrammar();
-		if(grammar != null) {
+		if(grammar != null) {		    
+		    // write out instance XML and serialize as string
 			RNGInstanceWriter instanceWriter = new RNGInstanceWriter();
-			Document dom = instanceWriter.writeInstance(grammar);
-			
+			Document dom = instanceWriter.writeInstance(grammar);			
 			final String xml = XMLSerializer.serialize(dom, grammar.getId());
 			
-	        //creates main panel
+	        // create HTML panel
 	        String htmlCode = SyntaxHighlighter.highlight(xml, BrushFactory.newXmlBrush(), false);
 	        HTMLPane panel = new HTMLPane();
 			HTML html = new HTML(SafeHtmlUtils.fromTrustedString(htmlCode));
 			panel.setContents(html.getHTML());
 			panel.setWidth100();
 			panel.setHeight100();
+			panel.setOverflow(Overflow.SCROLL);
 			
+			// add to save dialog box
 			final FileUploadPanel saveFile = new FileUploadPanel();
-			
-			
 			final SaveCloseWindow dialog = Utils.displaySaveDialogBox(panel, "Sensor ML document");
 			dialog.addSaveHandler(new ClickHandler(){
 				@Override
 				public void onClick(ClickEvent event) {
 					//save(xml);
-					saveFile.onBrowseValidate(new IButtonCallback() {
-						
+					saveFile.onBrowseValidate(new IButtonCallback() {						
 						@Override
 						public void onClick() {
 							saveAs(saveFile.getFileName(),xml);

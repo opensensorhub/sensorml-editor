@@ -10,7 +10,7 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.panels;
 
-import com.google.gwt.core.shared.GWT;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -20,6 +20,7 @@ import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -73,10 +74,10 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		final SMLVerticalPanel verticalPanel = new SMLVerticalPanel();
 		
 		//add View as XML button
-		Button viewAsXML = new Button("View as XML");
+		Button viewAsXML = new Button("Save as XML");
 		viewAsXML.addClickHandler(new ViewAsXMLButtonClickListener(sgmlEditorProcessor));
 		
-		Button viewAsRNG = new Button("View as RelaxNG");
+		Button viewAsRNG = new Button("Save as RelaxNG");
 		viewAsRNG.addClickHandler(new ViewAsRelaxNGButtonClickListener(sgmlEditorProcessor));
 		
 		//Get the url parameter to load the document where this one is under the form : ?url=DocumentPath
@@ -151,6 +152,7 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		load.addClickHandler(new ClickHandler() {			
 			@Override
 			public void onClick(ClickEvent event) {
+			    showLoadingIndicator();
 			    if (fromList.getValue()) {
                     urlListPanel.parseContent();
                 } else if (fromLocal.getValue()) {
@@ -259,7 +261,7 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	
 	public void redraw(MODE mode) {
 		mainPanel.clear();
-		IPanel<?> newNode = smlEditorProcessor.parseRNG(smlEditorProcessor.getLoadedGrammar());
+		IPanel<?> newNode = smlEditorProcessor.displayRNG(smlEditorProcessor.getLoadedGrammar());
 		mainPanel.add(newNode.getPanel());
 		root = newNode;
 	}
@@ -279,5 +281,11 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	@Override
 	public void refresh() {
 		redraw((editCheckbox.getValue())? MODE.EDIT:MODE.VIEW);
+	}
+	
+	protected void showLoadingIndicator()
+	{
+	    mainPanel.clear();
+	    mainPanel.add(new Image(GWT.getModuleBaseURL()+"images/ajax-loader.gif"));
 	}
 }

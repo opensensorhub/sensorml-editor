@@ -126,13 +126,13 @@ input.file-upload {
   width: 16px;
   height: 16px;
   background-repeat: no-repeat;
-  background-image: url(../sensormleditor/images/advanced.png);
+  background-image: url(../images/advanced.png);
   cursor: hand;
   cursor: pointer;
 }
 
 .link-icon-panel {
-  background: url(../sensormleditor/images/arrow-right.png) no-repeat;
+  background: url(../images/arrow-right.png) no-repeat;
     width: 25px;
     height: 9px;
 }
@@ -142,7 +142,7 @@ input.file-upload {
   width: 16px;
   height: 16px;
   background-repeat: no-repeat;
-  background-image: url(../sensormleditor/images/add-icon-new.png);
+  background-image: url(../images/add-icon-new.png);
   cursor: hand;
   cursor: pointer;
 }
@@ -152,7 +152,7 @@ input.file-upload {
   width: 16px;
   height: 16px;
   background-repeat: no-repeat;
-  background-image: url(../sensormleditor/images/remove-icon-new.png);
+  background-image: url(../images/remove-icon-new.png);
   cursor: hand;
   cursor: pointer;
 }
@@ -166,7 +166,7 @@ input.file-upload {
   width: 16px;
   height: 16px;
   background-repeat: no-repeat;
-  background-image: url(../sensormleditor/images/add-icon-new.png);
+  background-image: url(../images/add-icon-new.png);
   cursor: hand;
   cursor: pointer;
   margin-left:5px;
@@ -206,29 +206,19 @@ input.file-upload {
   vertical-align: middle;
 }
 
-.dialog-main .root {
-  min-width:500px;
-  padding-left:15px;
+.windowBody .advanced {
+	width: 100%;
+  padding-top: 10px;
+  padding-left: 25px;
+  padding-bottom: 25px;
 }
 
-.dialog-main .advanced {
-  min-width:500px;
-  padding-left:15px;
+.windowBody .syntaxhighlighter {
+	overflow: visible !important
 }
 
-.dialog-main .viewer {
-  min-width:500px;
-  padding-left:15px;
-}
-
-.dialog-main .editor {
-  min-width:500px;
-  padding-left:15px;
-}
-
-.dialog-main .advanced-panel {
-  min-width:500px;
-  padding-left:15px;
+.windowHeaderText, .dialogHeaderText {
+	font-size: 13px;
 }
 
 /** HACK DIALOG RESIZE 
