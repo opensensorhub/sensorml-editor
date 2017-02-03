@@ -17,11 +17,14 @@ public class SMLVerticalPanel extends FlowPanel{
 	}
 	@Override
 	public void add(Widget widget) {
-		FlowPanel child = new FlowPanel();
+		/*FlowPanel child = new FlowPanel();
 		child.add(widget);
 		if(isSpacing){
 			child.addStyleName("spacing");
 		}
-		super.add(child);
+		super.add(child);*/
+	    if(isSpacing)
+	        widget.addStyleName("spacing");
+	    super.add(widget);
 	}
 }
