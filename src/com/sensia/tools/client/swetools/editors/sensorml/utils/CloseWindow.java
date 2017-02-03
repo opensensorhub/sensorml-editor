@@ -62,7 +62,7 @@ public class CloseWindow extends Window {
 	}
 	
 	public void setContent(Panel panel) {
-		panel.setWidth("100%");
+		panel.setWidth("96%");
 	    Canvas c = new Canvas();
 	    c.addChild(panel);
 		c.adjustForContent(true);

@@ -206,7 +206,7 @@ input.file-upload {
   vertical-align: middle;
 }
 
-.windowBody .advanced {
+.windowBody .advanced, .root{
 	width: 100%;
   padding-top: 10px;
   padding-left: 25px;
