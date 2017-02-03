@@ -10,6 +10,7 @@ import com.google.gwt.user.client.ui.Panel;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGTag;
+import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
@@ -55,8 +56,12 @@ public class RNGChoicePanel extends AbstractPanel<RNGChoice>{
 		List<RNGTag> children = tag.getItems();
 		if(children != null){
 			for(RNGTag child : children) {
-				String label = Utils.findLabel(child);
-				choices.addItem(label);
+			    if (child instanceof RNGValue) {
+			        choices.addItem(((RNGValue) child).getText());
+			    } else {
+			        String label = Utils.findLabel(child);
+			        choices.addItem(label);
+			    }
 			}
 		}
 		
@@ -99,7 +104,9 @@ public class RNGChoicePanel extends AbstractPanel<RNGChoice>{
 			// gets the child = RNGData/RNGValue panel
 			selectHeader.add(new HTML(SMLEditorConstants.HTML_SPACE+":"+SMLEditorConstants.HTML_SPACE));
 			selectHeader.add(element.getElements().get(0).getPanel());
-		} else {
+		} else if (element.getTag() instanceof RNGValue) {
+            // do nothing since the value was already added to the drop down list
+        } else {
 			patternContainer.setVisible(true);
 			patternContainer.add(element.getPanel());
 		}
