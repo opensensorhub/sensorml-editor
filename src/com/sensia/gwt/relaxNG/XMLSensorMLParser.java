@@ -79,7 +79,7 @@ public class XMLSensorMLParser {
 						if (200 == resp.getStatusCode()) {
 							String text = resp.getText();
 							try {
-								parse(url, text);
+								parseFromString(url, text, callback);
 							} catch(Exception ex) {
 								Window.alert("An error occured while parsing the file. Check that it is a valid XML file");
 							}
@@ -104,11 +104,11 @@ public class XMLSensorMLParser {
 	 * @return the RNG grammar
 	 * @throws Exception the exception
 	 */
-	public RNGGrammar parse(String url, String xml) throws Exception{
+	public void parseFromString(String url, String xml, final RNGParserCallback callback) throws Exception{
 		Document dom = XMLParser.parse(xml);
 		XMLParser.removeWhitespace(dom);
 		createGrammar(url, dom.getDocumentElement());
-		return grammar;
+		callback.onParseDone(grammar);
 	}
 
 	/**

@@ -45,10 +45,12 @@ public class RNGZeroOrMore extends RNGTagList
     }
     
     
-    public void addPatternInstance(List<RNGTag> instance){
+    public void addOccurence(List<RNGTag> instance)
+    {
     	this.patternInstances.add(instance);
     	notifyObservers();
     }
+    
     
     public List<RNGTag> newOccurence()
     {
@@ -64,6 +66,7 @@ public class RNGZeroOrMore extends RNGTagList
         return newChildren;
     }
 
+    
     @Override
     public void accept(RNGTagVisitor visitor)
     {

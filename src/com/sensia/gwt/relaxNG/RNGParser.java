@@ -82,7 +82,7 @@ public class RNGParser
     }
     
     
-    public void parse(final String url, final RNGParserCallback callback)
+    public void parseFromUrl(final String url, final RNGParserCallback callback)
     {
         this.callback = callback;
         
@@ -106,7 +106,7 @@ public class RNGParser
             public void onResponseReceived(Request request, Response resp) {
               if (200 == resp.getStatusCode()) {
                   String text = resp.getText();
-                  parse(url, text);                  
+                  parseFromString(url, text, callback);                  
               } else {
                 // Handle the error.  Can get the status text from response.getStatusText()
               }
@@ -118,12 +118,12 @@ public class RNGParser
     }
     
     
-    public RNGGrammar parse(String url, String xml)
+    public void parseFromString(String url, String xml, final RNGParserCallback callback)
     {
+        this.callback = callback;
         Document dom = XMLParser.parse(xml);
         XMLParser.removeWhitespace(dom);
         parseGrammar(url, dom.getDocumentElement());
-        return grammar;
     }
     
     
@@ -314,7 +314,7 @@ public class RNGParser
         System.out.println("Parsing included grammar: " + cleanUrl);
         
         RNGParser parser = new RNGParser();
-        parser.parse(cleanUrl, new RNGParserCallback() {
+        parser.parseFromUrl(cleanUrl, new RNGParserCallback() {
             @Override
             public void onParseDone(RNGGrammar g)
             {

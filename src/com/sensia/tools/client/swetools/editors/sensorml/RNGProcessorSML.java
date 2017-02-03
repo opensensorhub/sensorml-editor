@@ -12,7 +12,7 @@ package com.sensia.tools.client.swetools.editors.sensorml;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import com.sensia.gwt.relaxNG.RNGInstanceMergingParser;
 import com.sensia.gwt.relaxNG.RNGParser;
 import com.sensia.gwt.relaxNG.RNGParserCallback;
 import com.sensia.gwt.relaxNG.XMLSensorMLParser;
@@ -50,29 +50,29 @@ public class RNGProcessorSML {
 	}
 	
 	/**
-	 * Parses the document from an url.
-	 *
-	 * @param url the url
+	 * Parses the document from a url
+	 * @param url
 	 */
 	public void parse(final String url) {
 		//if the document is a RNG instance
 		if(url.toLowerCase().endsWith(".rng")) {
-			final RNGParser parser = new RNGParser();
-			parser.parse(url, new RNGParserCallback() {
+		    RNGParser.clearCache();
+	        final RNGParser parser = new RNGParser();
+			parser.parseFromUrl(url, new RNGParserCallback() {
 				@Override
 				public void onParseDone(final RNGGrammar grammar) {
-					parseRNG(grammar);
+					displayRNG(grammar);
 				}
 			});
 		} else if(url.toLowerCase().endsWith(".xml")) {
 			//if the document is a XML instance
 			//transform XML document into RNG profile
-			final XMLSensorMLParser parser = new XMLSensorMLParser();
-			parser.parse(url, new RNGParserCallback() {
-				
+			//final XMLSensorMLParser parser = new XMLSensorMLParser();
+		    final RNGInstanceMergingParser parser = new RNGInstanceMergingParser();
+			parser.parseFromUrl(url, new RNGParserCallback() {				
 				@Override
 				public void onParseDone(final RNGGrammar grammar) {
-					parseRNG(grammar);
+					displayRNG(grammar);
 				}
 			});
 		}
@@ -85,36 +85,48 @@ public class RNGProcessorSML {
 	 * @param xmlContent the xml content
 	 * @throws Exception the exception
 	 */
-	public void parse(final String fileName,final String xmlContent) throws Exception {
-		//transform XML document into RNG profile
-		final XMLSensorMLParser parser = new XMLSensorMLParser();
-		final RNGGrammar grammar = parser.parse(fileName, xmlContent);
-		parseRNG(grammar);
+	public void parse(final String fileName, final String xmlContent) throws Exception {
+		// merge XML document into RNG profile
+		//final XMLSensorMLParser parser = new XMLSensorMLParser();
+		final RNGInstanceMergingParser parser = new RNGInstanceMergingParser();
+		parser.parseFromString(fileName, xmlContent, new RNGParserCallback() {              
+            @Override
+            public void onParseDone(final RNGGrammar grammar) {
+                displayRNG(grammar);
+            }
+		});
 	}
 	
-	public void parseRNG(final String fileName,final String xmlContent) throws Exception {
-		final RNGParser parser = new RNGParser();
-		final RNGGrammar grammar = parser.parse(fileName, xmlContent);
-		parseRNG(grammar);
+	public void parseRNG(final String fileName, final String xmlContent) throws Exception {
+	    RNGParser.clearCache();
+	    final RNGParser parser = new RNGParser();
+		parser.parseFromString(fileName, xmlContent, new RNGParserCallback() {              
+            @Override
+            public void onParseDone(final RNGGrammar grammar) {
+                displayRNG(grammar);
+            }
+        });
 	}
 	
 	public void parseString(final String xmlContent) {
-		//transform XML document into RNG profile
-		final XMLSensorMLParser parser = new XMLSensorMLParser();
-		RNGGrammar grammar;
+		XMLSensorMLParser parser = new XMLSensorMLParser();
 		try {
-			grammar = parser.parse("", xmlContent);
-			parseRNG(grammar);
+			parser.parseFromString("", xmlContent, new RNGParserCallback() {              
+	            @Override
+	            public void onParseDone(final RNGGrammar grammar) {
+	                displayRNG(grammar);
+	            }
+	        });
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
 	/**
-	 * Parses the rng grammar.
-	 *
+	 * Displays the RelaxNG grammar.
 	 * @param grammar the grammar
 	 */
-	private void parseRNG(final RNGGrammar grammar) {
+	private void displayRNG(final RNGGrammar grammar) {
 		setLoadedGrammar(grammar);
 		IPanel<?> root  = null;
 		
@@ -138,10 +150,10 @@ public class RNGProcessorSML {
 	}
 	
 	/**
-	 * Parses only a subset of the global document
+	 * Displays only a subset of the global document
 	 * @param url
 	 */
-	public IPanel<?> parseRNG(RNGTag tag) {
+	public IPanel<?> displayRNG(RNGTag tag) {
 		if(mode == MODE.VIEW){
 			ViewRendererSML renderer = new ViewRendererSML();
 			renderer.visit(tag);

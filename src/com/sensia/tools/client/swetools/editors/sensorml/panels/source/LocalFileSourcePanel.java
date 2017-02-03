@@ -46,7 +46,7 @@ public class LocalFileSourcePanel extends AbstractSourcePanel{
 		if(fileContent != null && !fileContent.trim().isEmpty()){
 			try {
 				//set the default mode for the editor
-				smlEditorProcessor.setMode(MODE.VIEW);
+				smlEditorProcessor.setMode(MODE.EDIT);
 				//parse the document corresponding to the selected uploaded file
 				if(fileUploadPanel.getFileName().endsWith("xml") || fileUploadPanel.getFileName().endsWith("XML")){
 					smlEditorProcessor.parse(fileUploadPanel.getFileName(), fileContent);

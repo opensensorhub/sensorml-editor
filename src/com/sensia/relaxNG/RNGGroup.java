@@ -28,6 +28,17 @@ public class RNGGroup extends RNGTagList
     private static final long serialVersionUID = 450744564603521038L;
 
 
+    public RNGGroup()
+    {        
+    }
+    
+    
+    public RNGGroup(RNGTagList tagList)
+    {
+        children.addAll(tagList.getChildren());
+    }
+    
+    
     @Override
     public void accept(RNGTagVisitor visitor)
     {

@@ -49,7 +49,7 @@ public class RNGOneOrMore extends RNGZeroOrMore
     @Override
     public void accept(RNGTagVisitor visitor)
     {
-        visitor.visit(this);        
+        visitor.visit(this);
     }
     
     

@@ -218,7 +218,7 @@ input.file-upload {
 }
 
 .windowHeaderText, .dialogHeaderText {
-	font-size: 13px;
+	font-size: 13px !important;
 }
 
 /** HACK DIALOG RESIZE 

@@ -34,6 +34,7 @@ public abstract class RNGTag extends Observable implements  ITag
     protected RNGTag parent;
     protected boolean disabled;
     protected boolean collapsed;
+    protected String errorMsg;
     
     
     public RNGTag()
@@ -82,6 +83,7 @@ public abstract class RNGTag extends Observable implements  ITag
     {
         return disabled;
     }
+    
 
     public void setDisabled(boolean disabled)
     {
@@ -98,6 +100,18 @@ public abstract class RNGTag extends Observable implements  ITag
     public void setCollapsed(boolean collapsed)
     {
         this.collapsed = collapsed;
+    }
+
+
+    public String getErrorMsg()
+    {
+        return errorMsg;
+    }
+
+
+    public void setErrorMsg(String errorMsg)
+    {
+        this.errorMsg = errorMsg;
     }
 
 
