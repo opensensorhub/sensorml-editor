@@ -48,11 +48,12 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 		// put saved value in text box
         if (data.getStringValue() != null)
             textBox.setText(data.getStringValue().trim());
+        validate();
         
 		textBox.addKeyUpHandler(new KeyUpHandler() {
 			@Override
 			public void onKeyUp(KeyUpEvent event) {
-			    data.setStringValue(textBox.getText());
+			    data.setStringValue(textBox.getText().trim());
 			    validate();
 			}
 		});
