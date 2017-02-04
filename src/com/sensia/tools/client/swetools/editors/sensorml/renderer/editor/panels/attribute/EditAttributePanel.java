@@ -23,8 +23,8 @@ public class EditAttributePanel extends AbstractPanel<RNGAttribute> {
         super(attrib);
         container = new SMLHorizontalPanel();
         if (label != null && !label.isEmpty())
-            container.add(new HTML(Utils.toNiceLabel(label)+":"+SMLEditorConstants.HTML_SPACE));
-        container.addStyleName("attribute-panel-edit");
+            container.add(new HTML(Utils.toNiceLabel(label)+":"));
+        container.addStyleName("attribute-panel");
     }
 
 	@Override

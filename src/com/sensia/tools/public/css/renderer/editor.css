@@ -61,3 +61,7 @@
 	margin-left: 25px;
 }
 
+.editor .attribute-panel .gwt-HTML, .editor .simple-element-panel .gwt-HTML {
+  margin-right: 5px;
+}
+

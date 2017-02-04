@@ -19,7 +19,8 @@ public class EditSimpleElementPanel extends AbstractPanel<RNGElement>{
 		super(element);		
 		container = new SMLHorizontalPanel();
 		if (label != null && !label.isEmpty())
-		    container.add(new HTML(Utils.toNiceLabel(label)+":"+SMLEditorConstants.HTML_SPACE));
+		    container.add(new HTML(Utils.toNiceLabel(label)+":"));
+		container.addStyleName("simple-element-panel");
 	}
 	
 	@Override

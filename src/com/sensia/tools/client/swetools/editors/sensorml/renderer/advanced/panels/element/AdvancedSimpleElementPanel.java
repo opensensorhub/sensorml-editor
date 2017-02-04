@@ -21,7 +21,7 @@ public class AdvancedSimpleElementPanel extends AbstractPanel<RNGElement>{
 		
 		container = new SMLHorizontalPanel();
 		container.add(new HTML(Utils.toNiceLabel(label)+":"));
-		container.addStyleName("advanced-simple-element-panel");
+		container.addStyleName("simple-element-panel");
 	}
 	
 	@Override

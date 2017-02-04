@@ -20,7 +20,7 @@ public class AdvancedAttributePanel extends AbstractPanel<RNGAttribute> {
         super(tag);
         container = new SMLHorizontalPanel();
         container.add(new HTML(Utils.toNiceLabel(label)+":"));
-        container.addStyleName("attribute-panel-advanced");
+        container.addStyleName("attribute-panel");
     }
 
 	@Override
