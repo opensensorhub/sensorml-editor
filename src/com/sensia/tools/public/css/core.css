@@ -21,6 +21,10 @@
   padding-bottom: 15px;
 }
 
+.gwt-TextBox {
+  padding: 1px 2px 1px 2px !important;
+}
+
 input:focus { 
   border-color: rgba(38, 155, 201, 0.8);
   outline: 0;
@@ -30,20 +34,21 @@ input:focus {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(38, 155, 201, 0.6);
 }
 
-.gwt-TextBox {
-    padding: 0px 2px 0px 2px !important;
+input.error {
+  border-color: rgba(255, 38, 38, 0.8) !important;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(255, 38, 38, 0.6) !important;
 }
 
 .gwt-HTML {
-    font-family: Arial Unicode MS, Arial, sans-serif;
-    font-size: small; 
+  font-family: Arial Unicode MS, Arial, sans-serif;
+  font-size: small; 
 }
 
 /** Indent and put some margins for disclosure **/
 .gwt-DisclosurePanel .content {
-    border-left: 1px solid #e7e7e7 !important;
-    padding: 10px 0px 10px 22px !important;
-    margin-left: 11px !important;
+  border-left: 1px solid #e7e7e7 !important;
+  padding: 0px 0px 6px 22px !important;
+  margin-left: 11px !important;
 }
 
 .file-download {
@@ -53,18 +58,15 @@ input:focus {
 
 input.file-upload {
   width: 300px;
-    border-radius: 0px 10px 10px 0px;
-    -moz-border-radius: 0px 10px 10px 0px;
-    -webkit-border-radius: 0px 10px 10px 0px;
-    border: 1px solid #c4b29d;
+  border: 1px solid #c4b29d;
 }
 
 /** Vertical and Horizontal generic panels */
 /** Custom horizontal panel using flowLayout **/
 
-.spacing {
+/*.spacing {
   padding:2px;
-}
+}*/
 
 .spacing-top {
   padding-top:5px;
@@ -87,10 +89,11 @@ input.file-upload {
 
 .panel-smlhorizontal-child {
   display: inline-block;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .panel-smlvertical {
+	white-space: nowrap;
 }
 
 /*** SECTION ***/
@@ -177,6 +180,10 @@ input.file-upload {
 
 .remove-button {
   
+}
+
+.ontology-icon {
+	margin-left: 5px;
 }
 
 /* smartgwt status bar*/

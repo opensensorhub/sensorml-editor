@@ -1,3 +1,15 @@
 .advanced div {
     vertical-align: middle;
 }
+
+.advanced .panel-smlvertical {
+  line-height: 25px;
+}
+
+.advanced .rng-disclosure {
+	margin-top: 4px;
+}
+
+.advanced .rng-choice-pattern {
+	margin-top: 4px;
+}
