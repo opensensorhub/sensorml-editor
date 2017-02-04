@@ -2,34 +2,16 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.pane
 
 import com.sensia.relaxNG.XSDInteger;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
 
-public class XSDIntegerPanel extends XSDPanel<XSDInteger>{
+public class XSDIntegerPanel extends EditValuePanel{
 
-	/** The Constant ALLOWED_CHARS. */
-	private static final String ALLOWED_CHARS = "-+0123456789";
+    private static final int VISIBLE_LENGTH = 15;
+    private static final String INTEGER_NUMBER_REGEX = "^[-+]?[0-9]+$";
 	
-	/**
-	 * Instantiates a new sensor xsd integer widget.
-	 *
-	 * @param data the data
-	 */
 	public XSDIntegerPanel(final XSDInteger data, IRefreshHandler refreshHandler) {
-		super(data,getLength(data),ALLOWED_CHARS,refreshHandler);
-	}
-	
-	/**
-	 * Gets the length.
-	 *
-	 * @param data the data
-	 * @return the length
-	 */
-	private static int getLength(XSDInteger data){
-		 int length = 10;
-	        
-	        int fixedLength = data.getTotalDigits();
-	        if (fixedLength > 0)
-	            length = fixedLength + 1;
-        
-        return length;
+	    super(data,refreshHandler);
+        setTextBoxSize(VISIBLE_LENGTH);
+        setValidationRegex(INTEGER_NUMBER_REGEX);
 	}
 }

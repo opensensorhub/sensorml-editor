@@ -2,34 +2,16 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.pane
 
 import com.sensia.relaxNG.XSDDecimal;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
 
-public class XSDDecimalPanel extends XSDPanel<XSDDecimal>{
-	/** The Constant ALLOWED_CHARS. */
-	private static final String ALLOWED_CHARS = "-+0123456789";
-	
-	
-	/**
-	 * Instantiates a new sensor xsd integer widget.
-	 *
-	 * @param data the data
-	 */
+public class XSDDecimalPanel extends EditValuePanel{
+	    
+    private static final int VISIBLE_LENGTH = 15;
+    private static final String DECIMAL_NUMBER_REGEX = "^[-+]?[0-9]*\\.?[0-9]+$";
+    
 	public XSDDecimalPanel(final XSDDecimal data, IRefreshHandler refreshHandler) {
-		super(data,getLength(data),ALLOWED_CHARS,refreshHandler);
-	}
-	
-	/**
-	 * Gets the length.
-	 *
-	 * @param data the data
-	 * @return the length
-	 */
-	private static int getLength(XSDDecimal data){
-		 int length = 10;
-	        
-	        int fixedLength = data.getTotalDigits();
-	        if (fixedLength > 0)
-	            length = fixedLength + 1;
-        
-        return length;
+		super(data,refreshHandler);
+		setTextBoxSize(VISIBLE_LENGTH);
+		setValidationRegex(DECIMAL_NUMBER_REGEX);
 	}
 }

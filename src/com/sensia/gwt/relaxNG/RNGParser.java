@@ -414,7 +414,7 @@ public class RNGParser
         // instantiate the right class
         if (dataType.equals("boolean"))
             data = new XSDBoolean();
-        else if (dataType.equals("dateTime"))
+        else if (dataType.equals("dateTime") || dataType.equals("date"))
             data = new XSDDateTime();
         else if (dataType.equals("decimal"))
             data = new XSDDecimal();

@@ -2,10 +2,13 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels
 
 import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
+import com.google.gwt.event.dom.client.KeyPressEvent;
+import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.regexp.shared.RegExp;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.TextBoxBase;
@@ -20,7 +23,6 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 	protected static final int DEFAULT_TEXBOX_VALUE_SIZE = 20;
 	
 	protected TextBoxBase textBox;
-
 	private String focusTmpText="";
 	
 	public EditValuePanel(final RNGData<?> data, final IRefreshHandler refreshHandler) {
@@ -64,23 +66,13 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
             }
         });
 		
-		/*textBox.addBlurHandler(new BlurHandler() {
-			
-			@Override
-			public void onBlur(BlurEvent event) {
-				if(!focusTmpText.equals(textBox.getText()) && refreshHandler != null) {
-					refreshHandler.refresh();
-				}
-			}
-		});*/
-		
-		textBox.addFocusHandler(new FocusHandler() {
-			
+		textBox.addFocusHandler(new FocusHandler() {			
 			@Override
 			public void onFocus(FocusEvent event) {
 				focusTmpText = textBox.getText();
 			}
 		});
+		
 		// add into the main container
 		container.add(textBox);
 	}
@@ -98,7 +90,11 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 
 	@Override
 	public String getName() {
-		return "value";
+	    if(getTag().getAnnotation() != null) {
+            return getTag().getAnnotation();
+        } else {
+            return "value";
+        }
 	}
 	
 	public void setEnable(boolean isEnable) {
@@ -112,5 +108,24 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 	
 	public void setPlaceholderText(String text) {
 	    textBox.getElement().setPropertyString("placeholder", text);
+	}
+	
+	public void setValidationRegex(final String regex) {
+	    final RegExp pattern = RegExp.compile(regex);
+	    textBox.addKeyUpHandler(new KeyUpHandler() {
+            @Override
+            public void onKeyUp(KeyUpEvent event) {
+                validate(pattern);
+            }
+        });
+	    validate(pattern);
+	}
+	
+	private void validate(RegExp pattern) {
+	    String input = textBox.getText();
+        if (!pattern.test(input))
+            textBox.addStyleName("error");
+        else
+            textBox.removeStyleName("error");
 	}
 }

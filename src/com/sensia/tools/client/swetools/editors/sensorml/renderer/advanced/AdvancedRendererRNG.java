@@ -11,7 +11,6 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced;
 
 import java.util.List;
-
 import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGChoice;
@@ -35,7 +34,6 @@ import com.sensia.relaxNG.XSDDecimal;
 import com.sensia.relaxNG.XSDDouble;
 import com.sensia.relaxNG.XSDInteger;
 import com.sensia.relaxNG.XSDString;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.Renderer;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.element.AdvancedElementPanel;
@@ -43,6 +41,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGOptionalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd.XSDAnyURIPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd.XSDBooleanPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd.XSDDateTimePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd.XSDDecimalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd.XSDDoublePanel;
@@ -165,7 +164,7 @@ public abstract class AdvancedRendererRNG extends Renderer {
 	 */
 	@Override
 	public void visit(XSDBoolean data) {
-		GWT.log("into XSDBoolean");
+	    push(new XSDBooleanPanel(data,getRefreshHandler()));
 	}
 
 	/* (non-Javadoc)

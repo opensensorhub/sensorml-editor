@@ -2,21 +2,16 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.pane
 
 import com.sensia.relaxNG.XSDDouble;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
 
-public class XSDDoublePanel extends XSDPanel<XSDDouble>{
+public class XSDDoublePanel extends EditValuePanel{
 
-	/** The Constant LENGTH. */
-	private static final int LENGTH = 10;
+    private static final int VISIBLE_LENGTH = 15;
+    private static final String DOUBLE_NUMBER_REGEX = "^(([-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?)|NaN|\\+?INF|-INF)$";
 	
-	/** The Constant ALLOWED_CHARS. */
-	private static final String ALLOWED_CHARS = ".-+e0123456789";
-	
-	/**
-	 * Instantiates a new sensor xsd double widget.
-	 *
-	 * @param data the data
-	 */
 	public XSDDoublePanel(XSDDouble data, IRefreshHandler refreshHandler) {
-		super(data,LENGTH,ALLOWED_CHARS,refreshHandler);
+	    super(data,refreshHandler);
+        setTextBoxSize(VISIBLE_LENGTH);
+        setValidationRegex(DOUBLE_NUMBER_REGEX);
 	}
 }
