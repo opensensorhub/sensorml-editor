@@ -2,8 +2,6 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels
 
 import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
-import com.google.gwt.event.dom.client.KeyPressEvent;
-import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -24,6 +22,7 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 	
 	protected TextBoxBase textBox;
 	private String focusTmpText="";
+	private RegExp pattern;
 	
 	public EditValuePanel(final RNGData<?> data, final IRefreshHandler refreshHandler) {
 	    this(data, false, refreshHandler);
@@ -53,7 +52,8 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 		textBox.addKeyUpHandler(new KeyUpHandler() {
 			@Override
 			public void onKeyUp(KeyUpEvent event) {
-				data.setStringValue(textBox.getText());
+			    data.setStringValue(textBox.getText());
+			    validate();
 			}
 		});
         
@@ -111,19 +111,21 @@ public class EditValuePanel extends AbstractPanel<RNGData<?>>{
 	}
 	
 	public void setValidationRegex(final String regex) {
-	    final RegExp pattern = RegExp.compile(regex);
-	    textBox.addKeyUpHandler(new KeyUpHandler() {
-            @Override
-            public void onKeyUp(KeyUpEvent event) {
-                validate(pattern);
-            }
-        });
-	    validate(pattern);
+	    this.pattern = RegExp.compile(regex);
+	    validate();
 	}
 	
-	private void validate(RegExp pattern) {
-	    String input = textBox.getText();
-        if (!pattern.test(input))
+	private void validate() {
+	    String input = tag.getStringValue();
+	    boolean error = !tag.isValid(input);
+	    if (pattern != null) {
+	        error |= !pattern.test(input);
+	    }
+	    setErrorStyle(error);                  
+	}
+	
+	private void setErrorStyle(boolean hasError) {
+	    if (hasError)
             textBox.addStyleName("error");
         else
             textBox.removeStyleName("error");

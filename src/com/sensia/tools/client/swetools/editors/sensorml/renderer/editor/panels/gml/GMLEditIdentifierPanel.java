@@ -1,25 +1,18 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml;
 
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
-import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGElement;
-import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 
-// xsd:string
-// http://www.datypic.com/sc/niem21/e-gml32_identifier.html
 public class GMLEditIdentifierPanel extends AbstractPanel<RNGElement>{
 
-	protected static final String CODE_SPACE_LABEL = "codeSpace";
-	
-	// codeSpace attribute xsd:anyURI, 	[1..1]
-	
+	protected static final String CODE_SPACE_LABEL = "codeSpace";	
 	private Panel valuePanel;
 	
 	public GMLEditIdentifierPanel(RNGElement element) {
@@ -33,18 +26,14 @@ public class GMLEditIdentifierPanel extends AbstractPanel<RNGElement>{
 	
 	@Override
 	public void addInnerElement(IPanel element) {
-		if(element.getTag() instanceof RNGValue || element.getTag() instanceof RNGData<?>){
+		if (element instanceof EditValuePanel) {
+		    ((EditValuePanel) element).setPlaceholderText("Enter URI");
 		    valuePanel.add(element.getPanel());
-		} /*else if(element.getTag() instanceof RNGAttribute){
-			GWT.log(element.getClass()+"");
-			codeSpacePanel.add(element.getPanel());
-			codeSpacePanel.add(new HTML(":&nbsp"));
-		} */
+		}
 	}
 
 	@Override
 	protected AbstractPanel<RNGElement> newInstance() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

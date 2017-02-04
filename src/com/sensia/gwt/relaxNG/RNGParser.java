@@ -426,7 +426,7 @@ public class RNGParser
             data = new XSDString();
         else if (dataType.equals("anyURI"))
             data = new XSDAnyURI();
-        else if (dataType.equals("token"))
+        else if (dataType.equals("token") || dataType.equals("ID"))
             data = new XSDToken();
         else
             data = new RNGData<String>();

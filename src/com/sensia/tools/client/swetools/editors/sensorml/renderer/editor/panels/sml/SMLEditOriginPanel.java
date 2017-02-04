@@ -6,6 +6,7 @@ import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.line.EditGenericLinePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
 
 public class SMLEditOriginPanel extends EditGenericLinePanel<RNGElement>{
 
@@ -16,11 +17,10 @@ public class SMLEditOriginPanel extends EditGenericLinePanel<RNGElement>{
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		if(element.getName().equals("definition")) {
-			defPanel.add(element.getPanel());
-		} else {
-			afterDotsPanel.add(element.getPanel());
-		} 
+	    if (element instanceof EditValuePanel){
+            ((EditValuePanel) element).setTextBoxSize(50);            
+        }
+	    afterDotsPanel.add(element.getPanel());
 	}
 
 }

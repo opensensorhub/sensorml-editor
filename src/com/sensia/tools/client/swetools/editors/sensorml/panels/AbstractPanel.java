@@ -32,7 +32,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
  */
 public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 
-	private T tag;
+    protected T tag;
 	protected Panel container;
 	
 	protected List<IPanel<? extends RNGTag>> children;

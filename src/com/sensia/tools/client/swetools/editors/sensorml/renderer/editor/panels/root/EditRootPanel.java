@@ -48,8 +48,6 @@ public class EditRootPanel extends ViewRootPanel{
 		this.rootTag = rootTag;
 		skipList = new HashSet<String>();
 		skipList.add("definition");
-		skipList.add("id");
-		skipList.add("gml.id");
 	}
 
 	@Override
@@ -69,8 +67,7 @@ public class EditRootPanel extends ViewRootPanel{
 		headerDocumentPanel.add(hPanel);
 		headerDocumentPanel.add(new HTML("<hr  style=\"width:100%;\" />"));
 		
-		addSectionButton.addClickHandler(new ClickHandler() {
-			
+		addSectionButton.addClickHandler(new ClickHandler() {			
 			@Override
 			public void onClick(ClickEvent event) {
 				Utils.displaySaveDialogBox(rootTag, refreshHandler, new SMLVerticalPanel(), "Add section", new RootRenderer());
@@ -79,7 +76,6 @@ public class EditRootPanel extends ViewRootPanel{
 	}
 	@Override
 	protected AbstractPanel newInstance() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -90,24 +86,8 @@ public class EditRootPanel extends ViewRootPanel{
 		}
 		RNGTag tag = element.getTag();
 		boolean found = false;
-		/*if( (tag instanceof RNGOptional && ((RNGOptional)tag).isSelected()) ||
-			 (element instanceof RNGZeroOrMorePatternPanel)	) {
-			element.getPanel().addStyleName("rng-shift-remove");
-		}*/
-		
+				
 		if(tag instanceof RNGZeroOrMore || tag instanceof RNGOptional) {
-			/** look for:
-			 * <gml:description>
-			        // some description
-			    </gml:description>
-			  <gml:identifier codeSpace="uniqueID">// some identifier</gml:identifier>
-			  <gml:name>//some name</gml:name>
-			  <sml:keywords>
-			    <sml:KeywordList>
-			      <sml:keyword>// some keyword</sml:keyword>
-			    </sml:KeywordList>
-			  </sml:keywords>
-			 **/
 			
 			List<RNGTag> children = null;
 			if(tag instanceof RNGZeroOrMore) {
@@ -115,11 +95,6 @@ public class EditRootPanel extends ViewRootPanel{
 			} else {
 				children = ((RNGOptional)tag).getChildren();
 			}
-			
-			/*// test zeroOrMore pattern to shift to the left
-			if(element instanceof RNGZeroOrMorePanel) {
-				((RNGZeroOrMorePanel)element).getPatternPanel().addStyleName("rng-shift-remove");
-			}*/
 			
 			for(RNGTag child : children ){
 				String name = child.toString();
@@ -150,7 +125,10 @@ public class EditRootPanel extends ViewRootPanel{
 	private boolean handleElement(String name,IPanel element) {
 		boolean found = false;
 		
-		if(name.equals("description")) {
+		if (name.equals("id")) {
+            headerDocumentPanel.addIdentifier(element.getPanel());
+            found = true;
+        } else if(name.equals("description")) {
 			headerDocumentPanel.setDescription(element.getPanel());
 			found = true;
 		} else if(name.equals("identifier")) {

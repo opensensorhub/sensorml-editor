@@ -44,7 +44,7 @@ public class ViewRootHeaderPanel extends SMLVerticalPanel {
 		keywordsLabel.addStyleName("keyword-label");
 		
 		// 1..~
-		identifiersPanel = new SMLVerticalPanel();
+		identifiersPanel = new SMLVerticalPanel(true);
 		
 		add(titlesPanel);
 		add(new HTML("<hr  style=\"width:100%;\" />"));
