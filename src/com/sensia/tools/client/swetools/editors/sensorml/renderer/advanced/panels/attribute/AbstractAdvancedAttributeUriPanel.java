@@ -3,12 +3,13 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.pane
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
 
 public abstract class AbstractAdvancedAttributeUriPanel extends AdvancedAttributePanel {
 
-	public AbstractAdvancedAttributeUriPanel(RNGAttribute tag) {
-		super(tag);
+	public AbstractAdvancedAttributeUriPanel(RNGAttribute tag,final IRefreshHandler refreshHandler) {
+		super(tag,refreshHandler);
 	}
     
     @Override

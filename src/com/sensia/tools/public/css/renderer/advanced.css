@@ -13,3 +13,7 @@
 .advanced .rng-choice-pattern {
 	margin-top: 4px;
 }
+
+.attribute-panel-advanced .gwt-HTML, .advanced-simple-element-panel .gwt-HTML {
+  margin-right: 5px;
+}

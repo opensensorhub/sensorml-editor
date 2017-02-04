@@ -97,7 +97,7 @@ public abstract class AdvancedRendererRNG extends Renderer {
 	 */
 	@Override
 	public void visit(RNGAttribute attribute) {
-		pushAndVisitChildren(new AdvancedAttributePanel(attribute), attribute.getChildren());
+		pushAndVisitChildren(new AdvancedAttributePanel(attribute,getRefreshHandler()), attribute.getChildren());
 	}
 	
 	/* (non-Javadoc)

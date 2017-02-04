@@ -3,7 +3,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.pane
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 
-public class AdvancedAttributeDefinitionPanel extends AbstractAdvancedAttributeOntologyIconPanel<RNGAttribute>{
+public class AdvancedAttributeDefinitionPanel extends AbstractAdvancedAttributeOntologyIconPanel{
 
 	public AdvancedAttributeDefinitionPanel(RNGAttribute tag,IRefreshHandler refreshHandler) {
 		super(tag,"definition",refreshHandler);

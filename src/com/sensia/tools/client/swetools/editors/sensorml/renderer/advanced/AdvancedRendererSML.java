@@ -12,13 +12,11 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AbstractAdvancedAttributeOntologyIconPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributeDefinitionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributeReferenceFramePanel;
@@ -210,31 +208,29 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 		String name = att.getName();
 		if (nsUri != null && nsUri.equalsIgnoreCase(XLINK)) {
 			if(name.equals("role")){
-				pushAndVisitChildren(new AdvancedXLinkRolePanel(att),att.getChildren());
+				pushAndVisitChildren(new AdvancedXLinkRolePanel(att,getRefreshHandler()),att.getChildren());
 			} else if(name.equals("arcrole")) {
-				pushAndVisitChildren(new AdvancedXLinkArcrolePanel(att),att.getChildren());
+				pushAndVisitChildren(new AdvancedXLinkArcrolePanel(att,getRefreshHandler()),att.getChildren());
 			} else if(name.equals("href")) {
-				pushAndVisitChildren(new AdvancedXLinkHrefPanel(att),att.getChildren());
+				pushAndVisitChildren(new AdvancedXLinkHrefPanel(att,getRefreshHandler()),att.getChildren());
 			} else if(name.equals("title")) {
-				pushAndVisitChildren(new AdvancedXLinkTitlePanel(att),att.getChildren());
+				pushAndVisitChildren(new AdvancedXLinkTitlePanel(att,getRefreshHandler()),att.getChildren());
 			} else {
 				GWT.log("[WARN] Unsupported XLink element: "+name+". Skipped.");
 				super.visit(att);
 			}
 		} else if(name.equals("referenceFrame")) {
-			pushAndVisitChildren(new AdvancedAttributeReferenceFramePanel(att),att.getChildren());
+			pushAndVisitChildren(new AdvancedAttributeReferenceFramePanel(att,getRefreshHandler()),att.getChildren());
 		} else if(name.equals("localFrame")) {
-            pushAndVisitChildren(new AdvancedAttributePanel(att),att.getChildren());
+            pushAndVisitChildren(new AdvancedAttributePanel(att,getRefreshHandler()),att.getChildren());
         } else if(name.equals("definition")) {
 			pushAndVisitChildren(new AdvancedAttributeDefinitionPanel(att,getRefreshHandler()),att.getChildren());
-		} else if(name.equals("codeSpace")) {
-			pushAndVisitChildren(new AdvancedAttributePanel(att),att.getChildren());
-		} else if(name.equals("definition")) {
-			pushAndVisitChildren(new AdvancedAttributePanel(att),att.getChildren());
+		} else if(name.equals("reason")) {
+			pushAndVisitChildren(new AbstractAdvancedAttributeOntologyIconPanel(att,getRefreshHandler()),att.getChildren());
 		} else if(name.equals("id")) {
-			pushAndVisitChildren(new AdvancedAttributePanel(att),att.getChildren());
+			pushAndVisitChildren(new AdvancedAttributePanel(att,getRefreshHandler()),att.getChildren());
 		} else if(name.equals("name")) {
-			pushAndVisitChildren(new AdvancedAttributePanel(att),att.getChildren());
+			pushAndVisitChildren(new AdvancedAttributePanel(att,getRefreshHandler()),att.getChildren());
 		} else {
 			super.visit(att);
 		}

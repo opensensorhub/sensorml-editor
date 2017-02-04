@@ -2,12 +2,13 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.pane
 
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
 
 public class AdvancedXLinkHrefPanel extends AbstractAdvancedAttributeUriPanel {
 
-	public AdvancedXLinkHrefPanel(RNGAttribute att) {
-		super(att);
+	public AdvancedXLinkHrefPanel(RNGAttribute att,final IRefreshHandler refreshHandler) {
+		super(att,refreshHandler);
 	}
 
 	public String getName() {

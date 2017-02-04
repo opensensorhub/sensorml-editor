@@ -4,31 +4,33 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Anchor;
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Panel;
+import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGData;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.OntologyPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
-public abstract class AbstractAdvancedAttributeOntologyIconPanel<T extends RNGTag> extends AbstractPanel<T>{
+public class AbstractAdvancedAttributeOntologyIconPanel extends AdvancedAttributePanel{
 
 	public final static String ONTOLOGY_TAB_NAME = "sml.ontology";
     private Panel valuePanel;
 	protected Image ontologyImage;
 	private RNGData<?> rngData;
 	
-	public AbstractAdvancedAttributeOntologyIconPanel(T tag,String name,final IRefreshHandler refreshHandler) {
-		super(tag,refreshHandler);
+	public AbstractAdvancedAttributeOntologyIconPanel(RNGAttribute tag,final IRefreshHandler refreshHandler) {
+	    this(tag,Utils.findLabel(tag),refreshHandler);
+	}	
+	
+	public AbstractAdvancedAttributeOntologyIconPanel(RNGAttribute tag,String label,final IRefreshHandler refreshHandler) {
+		super(tag,label,refreshHandler);
 		
 		//creates an ontology icon
 		ontologyImage = new Image(GWT.getModuleBaseURL()+"images/ontology.png");
@@ -56,15 +58,10 @@ public abstract class AbstractAdvancedAttributeOntologyIconPanel<T extends RNGTa
 				});
 			}
 		});
+		
 		valuePanel = new SMLHorizontalPanel();
-		
-		container = new SMLHorizontalPanel();
-		
-		container.add(new HTML(Utils.toNiceLabel(name)+":"+SMLEditorConstants.HTML_SPACE));
 		container.add(valuePanel);
 		container.add(ontologyImage);
-		
-		container.addStyleName("attribute-panel-advanced");
 	}
 	
 	@Override
@@ -86,10 +83,5 @@ public abstract class AbstractAdvancedAttributeOntologyIconPanel<T extends RNGTa
 		    return;
 		}
 		valuePanel.add(element.getPanel());
-	}
-
-	@Override
-	protected AbstractPanel<T> newInstance() {
-		return null;
 	}
 }
