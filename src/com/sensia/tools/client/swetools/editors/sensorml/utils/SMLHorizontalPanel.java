@@ -30,7 +30,7 @@ public class SMLHorizontalPanel extends FlowPanel{
 	
 	@Override
 	public void add(Widget widget) {
-		FlowPanel child = new FlowPanel();
+		/*FlowPanel child = new FlowPanel();
 		child.add(widget);
 		child.addStyleName("panel-smlhorizontal-child");
 		if(isSpacing){
@@ -41,7 +41,23 @@ public class SMLHorizontalPanel extends FlowPanel{
 				child.addStyleName("spacing-"+currentSpacing.name().toLowerCase());
 			}
 		}
-		super.add(child);
+		super.add(child);*/
+	    
+	    widget.addStyleName("panel-smlhorizontal-child");
+        if(isSpacing){
+            widget.addStyleName("spacing");
+        }
+        if(spacing != null) {
+            for(SPACING currentSpacing:spacing){
+                widget.addStyleName("spacing-"+currentSpacing.name().toLowerCase());
+            }
+        }
+        super.add(widget);
+	}
+	
+	public void addNoSpacing(Widget widget) {
+	    widget.addStyleName("panel-smlhorizontal-child");
+	    super.add(widget);
 	}
 	
 }

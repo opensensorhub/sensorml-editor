@@ -3,12 +3,12 @@
 }
 
 .viewer  div{
-  vertical-align:middle;
+  vertical-align: middle;
 }
 
 .viewer .document-title div{
   font-weight: bold;
-  font-size:25px;
+  font-size: 25px;
 }
 
 .viewer .section-panel .header {
@@ -16,11 +16,13 @@
 }
 
 .viewer .subsection-inner {
-  padding-top:5px;
   padding-left:10px;
-  padding-bottom:5px;
 }
 
 .viewer .subsection-header {
   font-weight: bold;
+}
+
+.viewer .panel-smlvertical {
+    line-height: 25px;
 }

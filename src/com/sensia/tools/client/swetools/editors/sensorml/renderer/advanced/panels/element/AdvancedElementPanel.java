@@ -20,6 +20,7 @@ import com.google.gwt.event.logical.shared.OpenEvent;
 import com.google.gwt.event.logical.shared.OpenHandler;
 import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
@@ -35,9 +36,13 @@ public class AdvancedElementPanel extends DisclosureElementPanel
     {
         super(tag,refreshHandler);
         
+        // need to wrap old header because it's a table and it doesn't style well
         Widget currentHeader = sectionPanel.getHeader();
+        SimplePanel oldHeader = new SimplePanel();
+        oldHeader.add(currentHeader);
+        
         SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
-        hPanel.add(currentHeader);
+        hPanel.addNoSpacing(oldHeader);
         hPanel.add(new Label(Utils.toNiceLabel(tag.getName())));        
         sectionPanel.setHeader(hPanel);
         

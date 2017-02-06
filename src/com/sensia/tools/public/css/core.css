@@ -9,7 +9,7 @@
   width: 100%;
 }
 
-.main-header > div {
+.main-header > .panel-smlhorizontal-child {
 	margin-left: 5px; 
 }
 
@@ -35,8 +35,8 @@ input:focus {
 }
 
 input.error {
-  border-color: rgba(255, 38, 38, 0.8) !important;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(255, 38, 38, 0.6) !important;
+  border-color: rgba(165, 0, 0, 0.8) !important;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(165, 0, 0, 0.6) !important;
 }
 
 .gwt-HTML {
@@ -65,23 +65,23 @@ input.file-upload {
 /** Custom horizontal panel using flowLayout **/
 
 /*.spacing {
-  padding:2px;
+  margin:2px;
 }*/
 
 .spacing-top {
-  padding-top:5px;
+  margin-top:5px;
 }
 
 .spacing-left {
-  padding-left:5px;
+  margin-left:5px;
 }
 
 .spacing-right {
-  padding-right:5px;
+  margin-right:5px;
 }
 
 .spacing-bottom {
-  padding-bottom:5px;
+  margin-bottom:5px;
 }
 
 .panel-smlhorizontal {
@@ -114,6 +114,7 @@ input.file-upload {
 
 .panel-disclosure-element-section a.header div {
   vertical-align : middle !important;
+  margin-top: -1px;
 }
 
 .panel-disclosure-element-section a.header  .icons-definition{ 
@@ -263,5 +264,5 @@ div.rng-disclosure.v-align-top > div > div.shift-remove.remove-button {
 }
 
 div.gwt-HTML.remove-button.shift-remove {
-  margin-top:-2px;
+  margin-right:5px;
 }

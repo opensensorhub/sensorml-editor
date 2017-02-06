@@ -2,6 +2,10 @@
   vertical-align: middle;
 }
 
+.editor .panel-smlvertical {
+  line-height: 25px;
+}
+
 /** override .editor div if v-align-middle is applied **/
 .editor div .v-align-middle div{
   vertical-align: middle;
@@ -11,12 +15,13 @@
   vertical-align : bottom !important;
 }
 
-.editor .subsection-inner {
-  padding: 10px;
+.editor .panel-disclosure-element-section {
+    margin-bottom: 10px;
 }
 
-.editor .spacing {
-  padding: 4px;
+.editor .subsection-inner {
+  padding-left: 20px;
+  padding-bottom: 10px;
 }
 
 .editor .default-value {
