@@ -17,6 +17,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.line.EditGenericLinePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.rng.EditRNGChoicePatternPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -64,7 +65,7 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		detailsPanel = new SimplePanel();
 		detailsPanel.setVisible(false);
 		
-		headerPanel = new SMLHorizontalPanel(true);
+		headerPanel = new SMLHorizontalPanel(SPACING.RIGHT);
 		headerPanel.add(namedLabelPanel);
 		headerPanel.add(definition);
 		headerPanel.add(description);
@@ -89,13 +90,15 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 	}
 	
 	public void setDataTypeName(boolean show) {
-		namedLabelPanel.clear();
+		/*namedLabelPanel.clear();
 		if(show) {
 			namedLabelPanel.add(labelPanel);
 			namedLabelPanel.add(new Label(Utils.toNiceLabel(getTag().getName())));
 		} else {
 			namedLabelPanel.add(labelPanel);
-		}
+		}*/
+	    detailsPanel.clear();
+	    detailsPanel.add(new Label(Utils.toNiceLabel(getTag().getName())));
 	}
 
 	@Override
@@ -129,17 +132,21 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 		if(currentElement instanceof EditSubSectionElementPanel) {
 			EditSubSectionElementPanel subSection = (EditSubSectionElementPanel) currentElement;
 			if(!subSection.isInLine()) {
-				if(!hasLabel() && subSection.hasLabel()) {
+			    // case of property panel
+				if (hasName) {
 					// hide the name 
 					//subSection.removeInnerStyle("edit-subsection-element-inner-panel");
 					//handleLabel(subSection.getLabelIPanel());
-					labelPanel.clear();
+					/*labelPanel.clear();
 					labelPanel.add(subSection.getLabelIPanel().getPanel());
-					labelPanel.setVisible(true);
-				} 
-			} 
-			
-			innerContainer.addStyleName("subsection-inner");
+					labelPanel.setVisible(true);*/
+				    if (subSection.hasLabel())
+				        namedLabelPanel.clear();
+	                subSection.advancedButton.setVisible(false);
+	                namedLabelPanel.add(subSection.headerPanel);
+	                innerContainer.addStyleName("subsection-inner");
+				}
+			}
 		}
 
 		if(currentElement instanceof AbstractGenericLinePanel && displayHeader) {
