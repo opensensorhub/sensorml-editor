@@ -23,6 +23,7 @@ public class SMLVerticalPanel extends FlowPanel{
 			child.addStyleName("spacing");
 		}
 		super.add(child);*/
+	    widget.addStyleName("panel-smlvertical-child");
 	    if(isSpacing)
 	        widget.addStyleName("spacing");
 	    super.add(widget);

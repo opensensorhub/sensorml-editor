@@ -34,7 +34,7 @@ public class Utils {
 	private Utils(){}
 	
 	public static final CloseWindow displayDialogBox(final Panel panel,final String title){
-		final CloseWindow dialogBox = new CloseWindow(title,true);
+		final CloseWindow dialogBox = new CloseWindow(title,false);
 		dialogBox.setContent(panel);
 
 		dialogBox.draw();

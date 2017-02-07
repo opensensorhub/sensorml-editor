@@ -1,17 +1,12 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml;
 
 import com.sensia.relaxNG.RNGElement;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSubSectionElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSectionElementPanel;
 
-public class SMLEditSpatialFramePanel extends EditSubSectionElementPanel{
+public class SMLEditSpatialFramePanel extends EditSectionElementPanel{
 
-	public SMLEditSpatialFramePanel(RNGElement element) {
-		super(element);
-	}
-
-	@Override
-	protected AbstractPanel<RNGElement> newInstance() {
-		return null;
+	public SMLEditSpatialFramePanel(RNGElement element, final IRefreshHandler refreshHandler) {
+		super(element,refreshHandler);
 	}
 }

@@ -10,19 +10,15 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.element.AdvancedElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.element.AdvancedSimpleElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSectionElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSimpleElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSubSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 
 public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 
 	private Panel patternContainer;
 	private HTML removeButton;
-	protected IPanel pattern;
+	protected IPanel<?> pattern;
 	
 	public RNGZeroOrMorePatternPanel(final RNGZeroOrMore tag,final int indexPattern,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
@@ -62,26 +58,12 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		if(element instanceof EditSectionElementPanel || element instanceof AdvancedElementPanel) {
-			
+		if(element instanceof EditSectionElementPanel || element instanceof AdvancedElementPanel) {			
 			element.getPanel().removeStyleName("disclosure-noborder");
 			element.getPanel().addStyleName("section-panel disclosure-border");
-			/*container.clear();
-			Panel hPanel = new SMLHorizontalPanel();
-			hPanel.add(removeButton);
-			hPanel.add(element.getPanel());
-			
-			hPanel.addStyleName("rng-disclosure");
-			container.add(hPanel);*/
 			container.addStyleName("rng-disclosure v-align-top");
 			patternContainer.add(element.getPanel());
-		} else if(element.getName().equalsIgnoreCase("keywords")){
-			container.clear();
-			Panel hPanel = new SMLHorizontalPanel();
-			hPanel.add(removeButton);
-			hPanel.add(element.getPanel());
-			container.add(hPanel);
-		} else if(element instanceof EditSimpleElementPanel || element instanceof AdvancedSimpleElementPanel){
+		} /*else if(element instanceof EditSimpleElementPanel || element instanceof AdvancedSimpleElementPanel){
 			// inline the simple edit panel
 			container.clear();
 			container = new SMLHorizontalPanel();
@@ -93,7 +75,7 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 			patternContainer.removeStyleName("rng-optional-pattern");
 			patternContainer.addStyleName("rng-optional-pattern-single");
 			patternContainer.add(element.getPanel());
-		} else {
+		} */else {
 			patternContainer.add(element.getPanel());
 		}
 		pattern = element;
@@ -101,12 +83,11 @@ public class RNGZeroOrMorePatternPanel extends AbstractPanel<RNGZeroOrMore>{
 
 	@Override
 	protected AbstractPanel<RNGZeroOrMore> newInstance() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	
 
-	public IPanel getIPanelPattern() {
+	public IPanel<?> getIPanelPattern() {
 		return pattern;
 	}
 	

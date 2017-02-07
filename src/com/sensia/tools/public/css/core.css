@@ -45,9 +45,9 @@ input.error:focus {
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(165, 0, 0, 0.6) !important;
 }
 
-.gwt-HTML {
+.gwt-HTML, .gwt-Anchor {
   font-family: Arial Unicode MS, Arial, sans-serif;
-  font-size: small; 
+  font-size: 13px; 
 }
 
 /** Indent and put some margins for disclosure **/
@@ -120,7 +120,7 @@ input.file-upload {
 
 .panel-disclosure-element-section a.header div {
   vertical-align : middle !important;
-  margin-top: -1px;
+  margin-top: -1.3px;
 }
 
 .panel-disclosure-element-section a.header  .icons-definition{ 

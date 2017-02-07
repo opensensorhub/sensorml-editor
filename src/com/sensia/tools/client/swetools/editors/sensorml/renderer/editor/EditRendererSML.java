@@ -166,7 +166,9 @@ public class EditRendererSML extends EditRendererRNG implements RNGTagVisitor {
             
 		    // main sections
 		    if(eltName.equalsIgnoreCase("keywords")) {
+		        skipTags = true;
                 pushAndVisitChildren(new SMLEditKeywordsPanel(elt,getRefreshHandler()), elt.getChildren());
+                skipTags = false;
                 return;
             } else if(eltName.equalsIgnoreCase("identification")) {
                 skipTags = true;

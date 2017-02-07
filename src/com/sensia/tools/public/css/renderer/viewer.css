@@ -30,3 +30,7 @@
 .viewer .panel-disclosure-element-section {
     margin-bottom: 10px;
 }
+
+.viewer .panel-abstract-generic-line .before {
+  min-width: 370px;
+}

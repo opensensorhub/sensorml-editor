@@ -24,15 +24,12 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkHrefPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkRolePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkTitlePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.element.AdvancedElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.element.AdvancedSimpleElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.gco.GCOAdvancedCharacterStringPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.gmd.GMDAdvancedObjectPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedLabelPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedLinkPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedValuePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSimpleElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditNamePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.root.EditRootPanel;
@@ -218,7 +215,9 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 				pushAndVisitChildren(new SMLAdvancedDescriptionPanel(elt), elt.getChildren());
 			} else if(eltName.equalsIgnoreCase("label")) {
 				pushAndVisitChildren(new SMLAdvancedLabelPanel(elt), elt.getChildren());
-			} else if(eltName.equalsIgnoreCase("value")) {
+			} else if(eltName.equalsIgnoreCase("keyword")) {
+                pushAndVisitChildren(new AdvancedSimpleElementPanel(elt), elt.getChildren());
+            } else if(eltName.equalsIgnoreCase("value")) {
 				pushAndVisitChildren(new SMLAdvancedValuePanel(elt), elt.getChildren());
 			} else if(eltName.equalsIgnoreCase("Link")) {
 				pushAndVisitChildren(new SMLAdvancedLinkPanel(elt), elt.getChildren());

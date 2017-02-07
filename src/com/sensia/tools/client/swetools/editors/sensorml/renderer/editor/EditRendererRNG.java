@@ -80,16 +80,20 @@ public class EditRendererRNG extends AdvancedRendererSML {
 
 	@Override
 	public void visit(RNGZeroOrMore zeroOrMore) {
-		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();		
-		int nbPattern = 0;
-		for(List<RNGTag> tags : patternInstances) {
-			if(!skipTags) {
-				RNGZeroOrMorePatternPanel patternPanel = new RNGZeroOrMorePatternPanel(zeroOrMore, nbPattern++,getRefreshHandler());
-				pushAndVisitChildren(patternPanel, tags);
-			} else {
-				this.visitChildren(tags);
-			}
-		}
+		
+	    List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
+	    
+	    if(!skipTags) {
+            int nbPattern = 0;
+            for(List<RNGTag> tags : patternInstances) {
+                RNGZeroOrMorePatternPanel patternPanel = new RNGZeroOrMorePatternPanel(zeroOrMore, nbPattern++,getRefreshHandler());
+                pushAndVisitChildren(patternPanel, tags);
+            }
+        } else {
+            for(List<RNGTag> tags : patternInstances) {
+                this.visitChildren(tags);
+            }
+        }		
 	}
 	
 	public String getDefaultStyle() {

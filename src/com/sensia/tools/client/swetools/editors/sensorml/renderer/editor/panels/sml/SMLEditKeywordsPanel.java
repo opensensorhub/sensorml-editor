@@ -1,18 +1,33 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.sml;
 
+import com.google.gwt.user.client.ui.HTML;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.PanelHelper;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 
 public class SMLEditKeywordsPanel extends AbstractPanel<RNGElement>{
 
-	public SMLEditKeywordsPanel(RNGElement tag) {
-		super(tag);
-		container = new SMLHorizontalPanel(SPACING.RIGHT);
+    SMLHorizontalPanel keywordsPanel;
+        
+    public SMLEditKeywordsPanel(RNGElement element,final IRefreshHandler refreshHandler) {
+        super(element,refreshHandler);     
+        
+        container = new SMLHorizontalPanel();
+        container.addStyleName("keywords-panel");
+        
+        HTML html = new HTML("Keywords:");
+        html.addStyleName("label");
+        container.add(html);
+        
+        keywordsPanel = new SMLHorizontalPanel(SPACING.RIGHT);
+        container.add(keywordsPanel);
+        
+        container.add(buildAdvancedButton(new AdvancedRendererSML()));
 	}
 
 	@Override
@@ -22,11 +37,8 @@ public class SMLEditKeywordsPanel extends AbstractPanel<RNGElement>{
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		IPanel keywordPanel = PanelHelper.findPanel(element, "keyword");
-		IPanel keywordValuePanel = PanelHelper.findPanel(keywordPanel, "value");
-		if(keywordValuePanel != null) {
-			container.add(keywordValuePanel.getPanel());
-		}
+		if ("value".equals(element.getName()))
+	        keywordsPanel.add(element.getPanel());
 	}
 
 	@Override

@@ -15,7 +15,7 @@ public abstract class ViewGenericLinePanel<T extends RNGTag> extends AbstractGen
 		super(tag);
 		
 		Label advancedButton = buildAdvancedButton(new AdvancedViewerRenderer());
-		line.add(advancedButton);
+		container.add(advancedButton);
 	}
 	
 	@Override

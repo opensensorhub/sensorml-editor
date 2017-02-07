@@ -3,16 +3,17 @@
 }
 
 .editor > div > div {
-  margin-bottom: 15px;
+  margin-top: 15px;
 }
 
-.editor .panel-smlvertical {
-  line-height: 25px;
+.editor .panel-smlvertical-child {
+  line-height: 22px;
+  margin-bottom: 3px;
 }
 
-.editor .panel-smlhorizontal {
+/*.editor .panel-smlhorizontal {
   line-height: 25px;
-}
+}*/
 
 /** override .editor div if v-align-middle is applied **/
 .editor div .v-align-middle div{
@@ -63,10 +64,6 @@
 .editor .document-description .gwt-TextArea {
   width: 600px;
   height: 50px;
-}
-
-.editor .keywords-panel .rng-zeroormore-pattern {
-	margin-left: 25px;
 }
 
 .editor .label {

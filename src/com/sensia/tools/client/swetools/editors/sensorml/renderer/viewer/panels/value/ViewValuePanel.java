@@ -5,6 +5,8 @@ import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGValue;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class ViewValuePanel extends AbstractPanel<RNGValue>{
@@ -18,6 +20,7 @@ public class ViewValuePanel extends AbstractPanel<RNGValue>{
 		super(data);
 		isNiceLabel = false;
 		
+		container = new SMLHorizontalPanel();
 		htmlTextBox = new HTML();
 		
 		computeName();

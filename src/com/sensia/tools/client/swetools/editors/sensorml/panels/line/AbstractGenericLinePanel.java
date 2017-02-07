@@ -18,8 +18,6 @@ public abstract class AbstractGenericLinePanel<T extends RNGTag> extends Abstrac
 	protected Panel afterDotsPanel;
 	protected Panel dotsPanel;
 	
-	protected Panel line;
-	
 	/** The Constant NORMALIZE_DOT_SEPARATOR_SIZE. */
 	private static final int NORMALIZE_DOT_SEPARATOR_SIZE = 50;
 	
@@ -42,15 +40,11 @@ public abstract class AbstractGenericLinePanel<T extends RNGTag> extends Abstrac
 		beforeDotsPanel.add(labelAndDefPanelForCorrectDots);
 		dotsPanel.add(new HTML(getDotsLine()));
 		
-		line = new SMLHorizontalPanel(SPACING.RIGHT);
+		container = new SMLHorizontalPanel(SPACING.RIGHT);		
+		container.add(beforeDotsPanel);
+		container.add(dotsPanel);
+		container.add(afterDotsPanel);
 		
-		line.add(beforeDotsPanel);
-		line.add(dotsPanel);
-		line.add(afterDotsPanel);
-		
-		container.add(line);
-		
-		// add styles
 		// add styles
 		beforeDotsPanel.addStyleName("panel-abstract-generic-line before");
 		labelPanel.addStyleName("panel-abstract-generic-line label");
@@ -67,7 +61,6 @@ public abstract class AbstractGenericLinePanel<T extends RNGTag> extends Abstrac
 
 	@Override
 	protected AbstractPanel<T> newInstance() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

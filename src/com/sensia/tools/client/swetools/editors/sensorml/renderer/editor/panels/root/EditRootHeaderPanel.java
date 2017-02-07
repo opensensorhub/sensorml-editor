@@ -15,15 +15,15 @@ public class EditRootHeaderPanel extends ViewRootHeaderPanel{
 	public EditRootHeaderPanel() {
 		super();
 		keywordsPanel.clear();
-		lineKeywords = new SMLHorizontalPanel();
+		/*lineKeywords = new SMLHorizontalPanel();
 		lineKeywords.addStyleName("keywords-panel");
 		lineKeywords.add(new HTML("Keywords:"+SMLEditorConstants.HTML_SPACE));
-		keywordsPanel.add(lineKeywords);
+		keywordsPanel.add(lineKeywords);*/
 	}
 	
 	@Override
 	public void addKeywords(IPanel keywordsPanel) {
-		this.lineKeywords.add(keywordsPanel.getPanel());
+		/*this.lineKeywords.add(keywordsPanel.getPanel());
 		this.keywordsPanel.setVisible(true);
 		nbKeywords++;
 		// display only 3 elements/line
@@ -31,7 +31,9 @@ public class EditRootHeaderPanel extends ViewRootHeaderPanel{
 			lineKeywords = new SMLHorizontalPanel();
 			this.keywordsPanel.add(lineKeywords);
 			nbKeywords = 0;
-		}
+		}*/
+	    this.keywordsPanel.add(keywordsPanel.getPanel());
+	    this.keywordsPanel.setVisible(true);
 	}
 	
 }
