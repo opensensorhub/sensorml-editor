@@ -366,7 +366,7 @@ public class RNGInstanceMergingParser
             rngElt.setErrorMsg(INVALID + domElt.getNodeName());
             return MergeResult.ERROR;
         }
-        GWT.log(domElt.getNodeName());
+        //GWT.log(domElt.getNodeName());
         
         // if element is valid, merge its content using a new context
         MergeContext newContext = new MergeContext(domElt);
@@ -393,7 +393,7 @@ public class RNGInstanceMergingParser
             if (rngAttrib.getName().equals(localName) &&
                 (rngAttrib.getNamespace() == null || rngAttrib.getNamespace().equals(attr.getNamespaceURI())))
             {
-                GWT.log(attr.getNodeName());
+                //GWT.log(attr.getNodeName());
                 
                 // if element is valid, merge its content using a new context
                 MergeContext newContext = new MergeContext(attr);
