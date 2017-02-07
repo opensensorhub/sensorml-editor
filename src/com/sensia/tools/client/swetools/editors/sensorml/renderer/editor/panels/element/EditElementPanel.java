@@ -1,90 +1,60 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element;
 
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Panel;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.ElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
-public class EditElementPanel extends ElementPanel{
+public class EditElementPanel extends AbstractPanel<RNGElement>{
 
 	protected Panel innerContent;
 	
 	public EditElementPanel(RNGElement element,final IRefreshHandler refreshHandler) {
-		super(element,refreshHandler);
+		this(element,Utils.toNiceLabel(element.getName()),refreshHandler);
 	}
 
-	/*
-	 * NOT WORKING YET
-	 */
-	/*public EditElementPanel(final RNGElement element, final IRefreshHandler refreshHandler) {
-		super(element,refreshHandler);
-		
-		final Label label = new Label("");
-		label.addStyleName("rng-advanced-button");
-		
-		label.addClickHandler(new ClickHandler() {
-			
-			@Override
-			public void onClick(ClickEvent event) {
-				// create a new Renderer
-				final AdvancedRendererSML renderer = new AdvancedRendererSML();
-				final Panel rootPanel = new SMLVerticalPanel();
-				
-				renderer.setRefreshHandler(new IRefreshHandler() {
-					
-					@Override
-					public void refresh() {
-						renderer.reset();
-						rootPanel.clear();
-						renderer.visitChildren(element.getChildren());
-						rootPanel.add(renderer.getRoot().getPanel());
-						
-						if(refreshHandler != null) {
-							refreshHandler.refresh();
-						}
-					}
-				});
-
-				renderer.visitChildren(element.getChildren());
-				rootPanel.add(renderer.getRoot().getPanel());
-				
-				CloseDialog dialogBox = Utils.displayDialogBox(rootPanel, "Edit "+element.getName());
-				dialogBox.addSaveHandler(new ClickHandler(){
-					@Override
-					public void onClick(ClickEvent event) {
-						if(refreshHandler != null) {
-							refreshHandler.refresh();
-						}
-					}
-				});
-			}
-		});
-
-		String panelName = Utils.toNiceLabel(element.getName());
-		
-		SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
-		hPanel.add(new HTML(panelName));
-		hPanel.add(label);
-		
-		innerContent = new SMLVerticalPanel();
-		
-		container.add(hPanel);
-		container.add(innerContent);
-		
-		label.addStyleName("rng-advanced-button-section");
-		
-		container.addStyleName("section-panel");
-	}*/
-	
+	public EditElementPanel(RNGElement element,String label,final IRefreshHandler refreshHandler) {
+        super(element,refreshHandler);
+        
+        container = new SMLVerticalPanel();
+        container.addStyleName("element-panel");
+        
+        // header
+        if (label != null && !label.isEmpty()) {
+            Panel header = new SMLHorizontalPanel(SPACING.RIGHT);
+            HTML html = new HTML(Utils.toNiceLabel(label));
+            html.addStyleName("label");
+            header.add(html);
+            header.add(buildAdvancedButton(new AdvancedRendererSML()));
+            container.add(header);
+        }
+        
+        // content
+        innerContent = new SMLVerticalPanel(); 
+        innerContent.addStyleName("subsection-inner");        
+        container.add(innerContent);
+    }
 	
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		if(innerContent != null) {
-			innerContent.add(element.getPanel());
-		} else {
-			container.add(element.getPanel());
-		}
+		innerContent.add(element.getPanel());
 	}
+
+    @Override
+    public String getName() {
+        return getTag().getName();
+    }
+
+    @Override
+    protected AbstractPanel<RNGElement> newInstance() {
+        return null;
+    }
 }

@@ -45,9 +45,6 @@ public class AdvancedRendererSWE extends AdvancedRendererRNG {
 	 */
 	public AdvancedRendererSWE() {}
 
-	/* (non-Javadoc)
-	 * @see com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRenderer#visit(com.sensia.relaxNG.RNGElement)
-	 */
 	@Override
 	public void visit(RNGElement elt) {
 		IPanel<RNGElement> widget = null;

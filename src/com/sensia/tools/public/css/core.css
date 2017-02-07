@@ -35,8 +35,14 @@ input:focus {
 }
 
 input.error {
-  border-color: rgba(165, 0, 0, 0.8) !important;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(165, 0, 0, 0.6) !important;
+  /*border-color: rgba(165, 0, 0, 0.8) !important;*/
+  /*box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(165, 0, 0, 0.6) !important;*/
+  background-color: rgba(185,0,0,0.05);
+}
+
+input.error:focus {
+	border-color: rgba(165, 0, 0, 0.8) !important;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(165, 0, 0, 0.6) !important;
 }
 
 .gwt-HTML {
@@ -122,11 +128,6 @@ input.file-upload {
   margin-right:10px;
 }
 
-/** Abstract line **/
-.panel-abstract-generic-line .before{
-  min-width: 370px;
-}
-
 /** dots dots dots button to open a popup **/
 .icons-advanced {
   vertical-align: middle;
@@ -144,22 +145,13 @@ input.file-upload {
     height: 9px;
 }
 
-.add-section-button {
-  vertical-align: middle;
-  width: 16px;
-  height: 16px;
-  background-repeat: no-repeat;
-  background-image: url(../images/add-icon-new.png);
-  cursor: hand;
-  cursor: pointer;
-}
-
 .remove-button {
   vertical-align: middle;
   width: 16px;
   height: 16px;
   background-repeat: no-repeat;
-  background-image: url(../images/remove-icon-new.png);
+  /*background-image: url(../images/remove-icon-new.png);*/
+  background-image: url(../images/remove.gif);
   cursor: hand;
   cursor: pointer;
 }
@@ -173,7 +165,8 @@ input.file-upload {
   width: 16px;
   height: 16px;
   background-repeat: no-repeat;
-  background-image: url(../images/add-icon-new.png);
+  /*background-image: url(../images/add-icon-new.png);*/
+  background-image: url(../images/add.gif);
   cursor: hand;
   cursor: pointer;
   margin-left:5px;

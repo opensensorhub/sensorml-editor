@@ -8,6 +8,7 @@ import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTag;
+import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.EditIconPanel;
@@ -21,7 +22,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPane
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
-public class EditSubSectionElementPanel extends EditElementPanel{
+public class EditSubSectionElementPanel extends AbstractPanel<RNGElement>{
 
 	protected IPanel<?> nameIPanel;
 	protected Panel labelPanel;
@@ -264,4 +265,17 @@ public class EditSubSectionElementPanel extends EditElementPanel{
 	public boolean hasNameOrLabel() {
 		return (hasName || hasLabel) && displayHeader;
 	}
+
+    @Override
+    public String getName()
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    protected AbstractPanel<RNGElement> newInstance()
+    {
+        return null;
+    }
 }

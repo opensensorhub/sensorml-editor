@@ -6,7 +6,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 public class SMLViewLabelPanel extends AdvancedSimpleElementPanel{
 
 	public SMLViewLabelPanel(RNGElement element) {
-		super(element);
+		super(element,null);
 	}
 
 }

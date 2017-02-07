@@ -11,7 +11,6 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor;
 
 import java.util.List;
-
 import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGOneOrMore;
 import com.sensia.relaxNG.RNGOptional;
@@ -21,9 +20,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.Advan
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGChoicePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGOptionalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePatternPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.rng.EditRNGChoicePatternPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.rng.EditRNGZeroOrMorePopupPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**
  * <p>
@@ -50,21 +46,12 @@ public class EditRendererRNG extends AdvancedRendererSML {
 	public EditRendererRNG() {
 	}
 
-
-	/* (non-Javadoc)
-	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGChoice)
-	 */
 	@Override
 	public void visit(RNGChoice choice) {
 		RNGTag selectedPattern = choice.getSelectedPattern();
 		
 		if(selectedPattern != null ) {
-			String label = Utils.findLabel(selectedPattern);
-			if((label != null && label.equalsIgnoreCase("Data Record"))){
-				
-				EditRNGChoicePatternPanel patternPanel = new EditRNGChoicePatternPanel(choice,getRefreshHandler());
-				pushAndVisitChildren(patternPanel, selectedPattern);
-			} else if(!skipTags) {
+			if(!skipTags) {
 				pushAndVisitChildren(new RNGChoicePanel(choice,getRefreshHandler()), selectedPattern);
 			} else {
 				selectedPattern.accept(this);
@@ -74,9 +61,6 @@ public class EditRendererRNG extends AdvancedRendererSML {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGOptional)
-	 */
 	@Override
 	public void visit(RNGOptional optional) {
 		if(!skipTags) {
@@ -85,32 +69,21 @@ public class EditRendererRNG extends AdvancedRendererSML {
 				this.visitChildren(optional.getChildren());
 			}
 		} else if(optional.isSelected()){
-				this.visitChildren(optional.getChildren());
+			this.visitChildren(optional.getChildren());
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGOneOrMore)
-	 */
 	@Override
 	public void visit(RNGOneOrMore oneOrMore) {
 		this.visit((RNGZeroOrMore) oneOrMore);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.sensia.relaxNG.RNGTagVisitor#visit(com.sensia.relaxNG.RNGZeroOrMore)
-	 */
 	@Override
 	public void visit(RNGZeroOrMore zeroOrMore) {
-		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
-		String label = Utils.findLabel(zeroOrMore);
-		
+		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();		
 		int nbPattern = 0;
 		for(List<RNGTag> tags : patternInstances) {
-			/*if((label != null && label.equalsIgnoreCase("Data Record"))){
-				EditRNGZeroOrMorePatternPanel patternPanel = new EditRNGZeroOrMorePatternPanel(zeroOrMore, nbPattern++,getRefreshHandler());
-				pushAndVisitChildren(patternPanel, tags);
-			} else*/ if(!skipTags) {
+			if(!skipTags) {
 				RNGZeroOrMorePatternPanel patternPanel = new RNGZeroOrMorePatternPanel(zeroOrMore, nbPattern++,getRefreshHandler());
 				pushAndVisitChildren(patternPanel, tags);
 			} else {

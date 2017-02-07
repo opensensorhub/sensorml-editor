@@ -5,7 +5,7 @@ import com.sensia.relaxNG.RNGAttribute;
 public class EditAttributeCodePanel extends EditAttributePanel{
 
 	public EditAttributeCodePanel(RNGAttribute tag) {
-		super(tag);
+		super(tag, false);
 		isNiceLabel = false;
 	}
 

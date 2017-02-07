@@ -2,14 +2,13 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels
 
 import com.google.gwt.user.client.ui.HTML;
 import com.sensia.relaxNG.RNGElement;
+import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class EditSimpleElementPanel extends AbstractPanel<RNGElement>{
-
 	
 	public EditSimpleElementPanel(RNGElement element) {
 		this(element, null);
@@ -17,20 +16,24 @@ public class EditSimpleElementPanel extends AbstractPanel<RNGElement>{
 	
 	public EditSimpleElementPanel(RNGElement element, String label) {
 		super(element);		
+		
 		container = new SMLHorizontalPanel();
-		if (label != null && !label.isEmpty())
-		    container.add(new HTML(Utils.toNiceLabel(label)+":"));
 		container.addStyleName("simple-element-panel");
+		
+		if (label != null && !label.isEmpty()) {
+		    HTML html = new HTML(Utils.toNiceLabel(label)+":");
+	        html.addStyleName("label");
+		    container.add(html);
+		}		
 	}
 	
 	@Override
-	public void addInnerElement(IPanel element) {
+	protected void addInnerElement(IPanel<? extends RNGTag> element) {
 		container.add(element.getPanel());
 	}
 
 	@Override
 	protected AbstractPanel<RNGElement> newInstance() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

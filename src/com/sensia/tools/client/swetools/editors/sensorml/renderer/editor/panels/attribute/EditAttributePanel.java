@@ -5,7 +5,6 @@ import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -22,8 +21,11 @@ public class EditAttributePanel extends AbstractPanel<RNGAttribute> {
     public EditAttributePanel(RNGAttribute attrib, String label) {
         super(attrib);
         container = new SMLHorizontalPanel();
-        if (label != null && !label.isEmpty())
-            container.add(new HTML(Utils.toNiceLabel(label)+":"));
+        if (label != null && !label.isEmpty()) {
+            HTML html = new HTML(Utils.toNiceLabel(label)+":");
+            html.addStyleName("label");
+            container.add(html);
+        }
         container.addStyleName("attribute-panel");
     }
 

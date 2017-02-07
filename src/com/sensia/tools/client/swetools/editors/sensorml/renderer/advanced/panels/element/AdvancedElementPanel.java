@@ -34,6 +34,12 @@ public class AdvancedElementPanel extends DisclosureElementPanel
 
     public AdvancedElementPanel(final RNGElement tag, final IRefreshHandler refreshHandler)
     {
+        this(tag, Utils.toNiceLabel(tag.getName()), refreshHandler);
+    }
+    
+    
+    public AdvancedElementPanel(final RNGElement tag, final String label, final IRefreshHandler refreshHandler)
+    {
         super(tag,refreshHandler);
         
         // need to wrap old header because it's a table and it doesn't style well
@@ -43,7 +49,7 @@ public class AdvancedElementPanel extends DisclosureElementPanel
         
         SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
         hPanel.addNoSpacing(oldHeader);
-        hPanel.add(new Label(Utils.toNiceLabel(tag.getName())));        
+        hPanel.add(new Label(Utils.toNiceLabel(label)));        
         sectionPanel.setHeader(hPanel);
         
         // save and restore collapsed state

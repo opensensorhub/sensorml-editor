@@ -87,9 +87,7 @@ public abstract class AdvancedRendererRNG extends Renderer {
 	 */
 	@Override
 	public void visit(RNGElement elt) {
-		//pushAndVisitChildren(new DisclosureElementPanel(elt,getRefreshHandler()), elt.getChildren());
-		//pushAndVisitChildren(new EditElementPanel(elt,getRefreshHandler()), elt.getChildren());
-	    pushAndVisitChildren(new AdvancedElementPanel(elt,getRefreshHandler()), elt.getChildren());
+		pushAndVisitChildren(new AdvancedElementPanel(elt,getRefreshHandler()), elt.getChildren());
 	}
 	
 	/* (non-Javadoc)
@@ -277,7 +275,7 @@ public abstract class AdvancedRendererRNG extends Renderer {
 			push(new RNGZeroOrMorePanel(zeroOrMore,getRefreshHandler()));
 		}
 		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
-		int nbPattern = 0;
+		//int nbPattern = 0;
 		for(List<RNGTag> tags : patternInstances) {
 			//RNGZeroOrMorePatternPanel patternPanel = new RNGZeroOrMorePatternPanel(zeroOrMore, nbPattern++,getRefreshHandler());
 			//pushAndVisitChildren(patternPanel, tags);

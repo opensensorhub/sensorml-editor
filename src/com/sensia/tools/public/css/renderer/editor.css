@@ -2,7 +2,15 @@
   vertical-align: middle;
 }
 
+.editor > div > div {
+  margin-bottom: 15px;
+}
+
 .editor .panel-smlvertical {
+  line-height: 25px;
+}
+
+.editor .panel-smlhorizontal {
   line-height: 25px;
 }
 
@@ -15,13 +23,8 @@
   vertical-align : bottom !important;
 }
 
-.editor .panel-disclosure-element-section {
-    margin-bottom: 10px;
-}
-
 .editor .subsection-inner {
   padding-left: 20px;
-  padding-bottom: 10px;
 }
 
 .editor .default-value {
@@ -66,7 +69,22 @@
 	margin-left: 25px;
 }
 
-.editor .attribute-panel .gwt-HTML, .editor .simple-element-panel .gwt-HTML {
+.editor .label {
   margin-right: 5px;
 }
 
+.editor .contact .simple-element-panel > .label {
+	min-width: 370px;
+}
+
+.editor .panel-abstract-generic-line .label {
+	min-width: inherit;
+}
+
+.editor .element-panel > div > .label {
+  font-weight: bold;
+}
+
+.editor .panel-abstract-generic-line .before {
+  min-width: 370px;
+}

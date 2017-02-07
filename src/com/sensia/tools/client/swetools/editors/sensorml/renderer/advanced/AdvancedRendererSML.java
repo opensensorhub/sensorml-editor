@@ -24,11 +24,15 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkHrefPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkRolePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkTitlePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.element.AdvancedElementPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.element.AdvancedSimpleElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.gco.GCOAdvancedCharacterStringPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.gmd.GMDAdvancedObjectPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedLabelPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedLinkPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedValuePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSimpleElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditNamePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.root.EditRootPanel;
@@ -106,15 +110,20 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 		skipList.add("ConnectionList");
 		skipList.add("CharacteristicList");
 		skipList.add("CapabilityList");
-		skipList.add("KeywordList");
-		
+		skipList.add("KeywordList");		
 		skipList.add("ContactList");
 		skipList.add("DocumentList");
 		skipList.add("ContactList");
 		skipList.add("EventList");
+		skipList.add("FeatureList");
+		skipList.add("SpatialFrame");
 		
-		//skip sml:documents tags
-		skipList.add("CI_OnlineResource");
+		skipList.add("member");
+        skipList.add("CI_OnlineResource");
+		skipList.add("CI_RoleCode");
+		skipList.add("CI_Contact");
+        skipList.add("CI_Address");
+        skipList.add("CI_Telephone");
 		skipList.add("linkage");
 		
 		//skip sml:mode
@@ -149,8 +158,8 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 			return;
 		}
 		
-		// handle GML elements
-		if (nsUri.equalsIgnoreCase(GML_NS_1) || nsUri.equalsIgnoreCase(GML_NS_2)) {
+		// GML namespace
+		else if (nsUri.equalsIgnoreCase(GML_NS_1) || nsUri.equalsIgnoreCase(GML_NS_2)) {
 			if(eltName.equalsIgnoreCase("description")) {
 				pushAndVisitChildren(new GMLEditDescriptionPanel(elt), elt.getChildren());
 			} else if(eltName.equalsIgnoreCase("name")) {
@@ -162,11 +171,37 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 				super.visit(elt);
 			}
 			return;
-		} else if (nsUri.equalsIgnoreCase(GMD)) {
+		} 
+		
+		// GMD namespace
+		else if (nsUri.equalsIgnoreCase(GMD)) {
+		    // simple properties
+            if (eltName.equals("individualName") ||
+                eltName.equals("organisationName") ||
+                eltName.equals("positionName") ||
+                eltName.equals("voice") ||
+                eltName.equals("facsimile") ||
+                eltName.equals("deliveryPoint") ||
+                eltName.equals("city") ||
+                eltName.equals("administrativeArea") ||
+                eltName.equals("postalCode") ||
+                eltName.equals("country") ||
+                eltName.equals("electronicMailAddress") ||
+                eltName.equals("hoursOfService") ||
+                eltName.equals("contactInstructions")) {
+                pushAndVisitChildren(new AdvancedSimpleElementPanel(elt), elt.getChildren());
+                return;
+            }
+            
+            else if (eltName.startsWith("CI_")) {
+                pushAndVisitChildren(new GMDAdvancedObjectPanel(elt), elt.getChildren());
+                return;
+		    }
+            
 			super.visit(elt);
 			return;
 		} else if (nsUri.equalsIgnoreCase(GCO)) {
-			pushAndVisitChildren(new GCOAdvancedCharacterStringPanel(elt), elt.getChildren());
+			visitChildren(elt.getChildren());
 			return;
 		} else if (nsUri.equalsIgnoreCase(SMLEditorConstants.SWE_NS_1) || nsUri.equalsIgnoreCase(SMLEditorConstants.SWE_NS_2)) {
 			super.visit(elt);
@@ -231,7 +266,9 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 			pushAndVisitChildren(new AdvancedAttributePanel(att,getRefreshHandler()),att.getChildren());
 		} else if(name.equals("name")) {
 			pushAndVisitChildren(new AdvancedAttributePanel(att,getRefreshHandler()),att.getChildren());
-		} else {
+		} else if (name.equals("code")) {
+	        pushAndVisitChildren(new AdvancedAttributePanel(att,"Unit",null), att.getChildren());
+	    } else {
 			super.visit(att);
 		}
 	}
