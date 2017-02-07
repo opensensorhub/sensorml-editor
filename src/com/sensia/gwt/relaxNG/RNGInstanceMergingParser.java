@@ -187,7 +187,6 @@ public class RNGInstanceMergingParser
     
     protected void parseRelaxNg(String schemaUrl, final RNGParserCallback callback)
     {
-        RNGParser.clearCache();
         RNGParser parser = new RNGParser();
         parser.parseFromUrl(schemaUrl, new RNGParserCallback() {
             @Override

@@ -23,8 +23,6 @@ public class SensorMLEditor implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
-		RNGParser.clearCache();
-		
 		RootLayoutPanel root = RootLayoutPanel.get();
 		if (root != null) {
 			SensorMLEditor editor = new SensorMLEditor();

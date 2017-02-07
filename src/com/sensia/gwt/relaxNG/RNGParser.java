@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
@@ -71,28 +71,49 @@ public class RNGParser
 {
     protected final static String RNG_NS_URI = "http://relaxng.org/ns/structure/1.0";
     protected final static String ANNOT_NS_URI = "http://relaxng.org/ns/compatibility/annotations/1.0";
-    protected static Map<String, RNGGrammar> grammarCache = new HashMap<String, RNGGrammar>();
+    protected RNGParserContext context;
     protected RNGParserCallback callback;
     protected RNGGrammar grammar;
     protected int numIncludes;
     
-    public static void clearCache()
+    
+    static class RNGParserContext
     {
-        grammarCache.clear();
+        public Map<String, RNGGrammar> cachedGrammars = new HashMap<String, RNGGrammar>();
+        public Map<String, List<RNGParserCallback>> loadingGrammars = new HashMap<String, List<RNGParserCallback>>();
     }
     
     
     public void parseFromUrl(final String url, final RNGParserCallback callback)
     {
+        parseFromUrl(url, new RNGParserContext(), callback);
+    }
+    
+    
+    protected void parseFromUrl(final String url, final RNGParserContext context, final RNGParserCallback callback)
+    {
+        this.context = context;
         this.callback = callback;
         
-        // if grammar has already been parsed
-        grammar = grammarCache.get(url);
+        // get it directly if grammar is in cache
+        grammar = context.cachedGrammars.get(url);
         if (grammar != null)
         {
+            GWT.log("Using cached grammar: " + url);
             callback.onParseDone(grammar);
             return;
         }
+        
+        // wait if grammar is already loading
+        if (context.loadingGrammars.containsKey(url))
+        {
+            GWT.log("Waiting for grammar: " + url);
+            context.loadingGrammars.get(url).add(callback);
+            return;
+        }
+        
+        GWT.log("Parsing grammar: " + url);
+        context.loadingGrammars.put(url, new ArrayList<RNGParserCallback>());
         
         // otherwise load included grammar and parse it asynchronously
         RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, URL.encode(url));
@@ -129,6 +150,7 @@ public class RNGParser
     
     protected void parseChildren(RNGTag parent, Element parentElt)
     {
+        int eltCount = 0;
         NodeList children = parentElt.getChildNodes();
         for (int i = 0; i < children.getLength(); i++)
         {
@@ -140,15 +162,19 @@ public class RNGParser
             String nsUri = node.getNamespaceURI();
             
             // annotation
-            if (nsUri != null && nsUri.equals(ANNOT_NS_URI) &&
-                eltName.equals("documentation"))
+            if (nsUri != null && nsUri.equals(ANNOT_NS_URI) && eltName.equals("documentation"))
                 parent.setAnnotation(getTextValue(node));
-                        
+            
             // parse nested relaxNG tags
             if (parent instanceof RNGTagList)
             {
                 if (!nsUri.equals(RNG_NS_URI))
                     continue;
+                
+                // selected item
+                if (parent instanceof RNGChoice && "true".equalsIgnoreCase(elt.getAttribute("selected")))
+                    ((RNGChoice)parent).setSelectedIndex(eltCount);
+                eltCount++;
                 
                 RNGTag tag = null;
                 if (eltName.equals("ref"))
@@ -184,6 +210,8 @@ public class RNGParser
                 {
                     tag = new RNGOptional();
                     parseChildren(tag, elt);
+                    if ("true".equalsIgnoreCase(elt.getAttribute("selected")))
+                        ((RNGOptional)tag).setSelected(true);
                 }
                 
                 else if (eltName.equals("choice"))
@@ -196,6 +224,8 @@ public class RNGParser
                 {
                     tag = new RNGZeroOrMore();
                     parseChildren(tag, elt);
+                    if ("true".equalsIgnoreCase(elt.getAttribute("selected")))
+                        ((RNGZeroOrMore)tag).newOccurence();
                 }
                 
                 else if (eltName.equals("oneOrMore"))
@@ -311,21 +341,28 @@ public class RNGParser
         String url = includeElt.getAttribute("href");
         final String cleanUrl = canonicalizeUrl(baseUrl, url);
         
-        System.out.println("Parsing included grammar: " + cleanUrl);
+        // add an entry so order of include is preserved
+        grammar.getIncludedGrammars().put(cleanUrl, null);
         
         RNGParser parser = new RNGParser();
-        parser.parseFromUrl(cleanUrl, new RNGParserCallback() {
+        parser.parseFromUrl(cleanUrl, context, new RNGParserCallback() {
             @Override
             public void onParseDone(RNGGrammar g)
             {
-                System.out.println("Done parsing: " + g.getId());
+                GWT.log("Included grammar: " + cleanUrl);
                 
                 // parse embedded patterns (start, defines)
                 parsePatternsAndAddToGrammar(g, includeElt);
                 grammar.setStartPattern(g.getStartPattern());
                 
                 grammar.getIncludedGrammars().put(cleanUrl, g);
-                if (grammar.getIncludedGrammars().size() == numIncludes)
+                
+                // finish when all included grammars are actually loaded
+                int count = 0;
+                for (RNGGrammar inc: grammar.getIncludedGrammars().values())
+                    if (inc != null)
+                        count++;                
+                if (count == numIncludes)
                     finishParsing((Element)includeElt.getParentNode());
             }
         });      
@@ -335,8 +372,21 @@ public class RNGParser
     protected void finishParsing(Element grammarElt)
     {
         parsePatternsAndAddToGrammar(grammar, grammarElt);
-        grammarCache.put(grammar.getId(), grammar);
+        
+        // add grammar to cache
+        context.cachedGrammars.put(grammar.getId(), grammar);
+        
+        // call main callback
+        GWT.log("Done parsing: " + grammar.getId());
         callback.onParseDone(grammar);
+        
+        // also call all callbacks registered while grammar was loading
+        List<RNGParserCallback> callbacks = context.loadingGrammars.remove(grammar.getId());
+        if (callbacks != null) 
+        {
+            for (RNGParserCallback callback: callbacks)
+                callback.onParseDone(grammar);
+        }
     }
     
     

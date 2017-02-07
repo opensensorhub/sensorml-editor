@@ -58,8 +58,7 @@ public class RNGProcessorSML {
 	public void parse(final String url) {
 		if (url.toLowerCase().endsWith(".rng")) {
 		    // if the document is a RNG instance
-		    RNGParser.clearCache();
-	        final RNGParser parser = new RNGParser();
+		    final RNGParser parser = new RNGParser();
 			parser.parseFromUrl(url, new RNGParserCallback() {
 				@Override
 				public void onParseDone(final RNGGrammar grammar) {
@@ -89,7 +88,6 @@ public class RNGProcessorSML {
 	 */
 	public void parse(final String fileName, final String xmlContent) throws Exception {
 	    if (fileName.toLowerCase().endsWith(".rng")) {
-	        RNGParser.clearCache();
 	        final RNGParser parser = new RNGParser();
 	        parser.parseFromString(fileName, xmlContent, new RNGParserCallback() {              
 	            @Override

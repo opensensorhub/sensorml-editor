@@ -110,6 +110,7 @@ public class RNGGrammar extends RNGTag
         {
             for (RNGGrammar grammar: includedGrammars.values())
             {
+                //GWT.log("Looking up " + name + " from " + grammar.getId());
                 def = grammar.findPattern(name, true);
                 if (def != null)
                     return def;

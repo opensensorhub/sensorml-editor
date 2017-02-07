@@ -140,8 +140,7 @@ public class EditorPanel  extends Composite  implements IParsingObserver, IObser
 		
 		if(key != null && !key.isEmpty()){
 			RNGParser parser = new RNGParser();
-			parser.clearCache();
-	        parser.parseFromUrl(profiles.get(key), new RNGParserCallback() {
+			parser.parseFromUrl(profiles.get(key), new RNGParserCallback() {
 	            @Override
 	            public void onParseDone(RNGGrammar grammar)
 	            {
