@@ -123,7 +123,7 @@ public abstract class Renderer implements IRefreshHandler, RNGTagVisitor{
 		if (tag != null) {
 			tag.accept(this);
 		}
-		if(stackSize < getStackSize()){
+		while(stackSize < getStackSize()){
 			IPanel<? extends RNGTag> child = pop();
 			//child.setParent(widget);
 			widget.addElement(child);
@@ -143,7 +143,7 @@ public abstract class Renderer implements IRefreshHandler, RNGTagVisitor{
 				tag.accept(this);
 			}
 			if(peek != null){
-				if(stackSize < getStackSize()){
+			    while(stackSize < getStackSize()){
 					IPanel<? extends RNGTag> child = pop();
 					//child.setParent(peek);
 					peek.addElement(child);
@@ -166,7 +166,7 @@ public abstract class Renderer implements IRefreshHandler, RNGTagVisitor{
 			if (tag != null) {
 				tag.accept(this);
 			}
-			if(stackSize < getStackSize()){
+			while(stackSize < getStackSize()){
 				IPanel<? extends RNGTag> child = pop();
 				//child.setParent(widget);
 				widget.addElement(child);
