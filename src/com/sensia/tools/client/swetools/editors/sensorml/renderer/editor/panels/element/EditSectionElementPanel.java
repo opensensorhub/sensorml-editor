@@ -6,7 +6,6 @@ import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.event.logical.shared.OpenEvent;
 import com.google.gwt.event.logical.shared.OpenHandler;
 import com.google.gwt.user.client.ui.DisclosurePanel;
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
@@ -24,7 +23,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.Renderer;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class EditSectionElementPanel extends DisclosureElementPanel{
@@ -52,8 +50,9 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 		SimplePanel oldHeader = new SimplePanel();
 		oldHeader.add(currentHeader);
 		        
-		SMLHorizontalPanel hPanel = new SMLHorizontalPanel(SPACING.RIGHT);
-		hPanel.addNoSpacing(oldHeader);
+		SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
+		//hPanel.addNoSpacing(oldHeader);
+		hPanel.add(oldHeader);
 		hPanel.add(labelPanel);
 		hPanel.add(definitionPanel);
 		hPanel.add(descriptionPanel);

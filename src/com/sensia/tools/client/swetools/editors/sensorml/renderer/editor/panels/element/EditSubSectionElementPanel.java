@@ -18,7 +18,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.line.EditGenericLinePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.rng.EditRNGChoicePatternPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -49,7 +48,7 @@ public class EditSubSectionElementPanel extends AbstractPanel<RNGElement>{
 	public EditSubSectionElementPanel(RNGElement element, IRefreshHandler refreshHandler) {
 		super(element,refreshHandler);
 		
-		innerContainer = new SMLVerticalPanel(true);
+		innerContainer = new SMLVerticalPanel();
 		
 		labelPanel = new SimplePanel();
 		labelPanel.addStyleName("edit-subsection-label-panel");
@@ -66,7 +65,7 @@ public class EditSubSectionElementPanel extends AbstractPanel<RNGElement>{
 		detailsPanel = new SimplePanel();
 		detailsPanel.setVisible(false);
 		
-		headerPanel = new SMLHorizontalPanel(SPACING.RIGHT);
+		headerPanel = new SMLHorizontalPanel();
 		headerPanel.add(namedLabelPanel);
 		headerPanel.add(definition);
 		headerPanel.add(description);
@@ -104,7 +103,7 @@ public class EditSubSectionElementPanel extends AbstractPanel<RNGElement>{
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-		IPanel currentElement = element;
+		IPanel<?> currentElement = element;
 		if(element instanceof RNGZeroOrMorePatternPanel) {
 			currentElement = ((RNGZeroOrMorePatternPanel)element).getIPanelPattern();
 		} else if(element instanceof EditRNGChoicePatternPanel) {
@@ -164,10 +163,10 @@ public class EditSubSectionElementPanel extends AbstractPanel<RNGElement>{
 		}
 	}
 	
-	protected boolean handleLine(IPanel element) {
+	protected boolean handleLine(IPanel<?> element) {
 		boolean displayHeader = this.displayHeader;
 		
-		AbstractGenericLinePanel eltPanel = (AbstractGenericLinePanel) element;
+		AbstractGenericLinePanel<?> eltPanel = (AbstractGenericLinePanel<?>) element;
 		
 		// replace the line label/name by this name/label
 		if(!eltPanel.isLabeled() && nameIPanel != null) {
@@ -196,7 +195,7 @@ public class EditSubSectionElementPanel extends AbstractPanel<RNGElement>{
 		return displayHeader;
 	}
 	
-	protected boolean handleName(IPanel element) {
+	protected boolean handleName(IPanel<?> element) {
 		nameIPanel = element;
 		labelPanel.add(element.getPanel());
 		labelPanel.setVisible(true);
@@ -205,7 +204,7 @@ public class EditSubSectionElementPanel extends AbstractPanel<RNGElement>{
 		return true;
 	}
 	
-	protected boolean handleDefinition(IPanel element) {
+	protected boolean handleDefinition(IPanel<?> element) {
 		definition.setVisible(true);
 		definition.add(element.getPanel());
 		
@@ -216,7 +215,7 @@ public class EditSubSectionElementPanel extends AbstractPanel<RNGElement>{
 		RNGElement tag = (RNGElement) element.getTag();
 		EditIconPanel<RNGElement> iconPanel = new EditIconPanel<RNGElement>(tag, 
 				new Image(GWT.getModuleBaseURL()+"images/icon_question.png"), "description-icon",false);
-		for(IPanel child : element.getElements()) {
+		for(IPanel<?> child : element.getElements()) {
 			iconPanel.addElement(child);
 		}
 		description.setVisible(true);
@@ -225,7 +224,7 @@ public class EditSubSectionElementPanel extends AbstractPanel<RNGElement>{
 		return true;
 	}
 	
-	protected boolean handleLabel(IPanel element) {
+	protected boolean handleLabel(IPanel<?> element) {
 		nameIPanel = element;
 		// label comes after name if any
 		labelPanel.clear();
@@ -254,7 +253,7 @@ public class EditSubSectionElementPanel extends AbstractPanel<RNGElement>{
 		return hasLabel;
 	}
 	
-	public IPanel getLabelIPanel() {
+	public IPanel<?> getLabelIPanel() {
 		return nameIPanel;
 	}
 	

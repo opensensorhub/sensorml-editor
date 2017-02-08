@@ -8,7 +8,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 
 public class SMLEditKeywordsPanel extends AbstractPanel<RNGElement>{
 
@@ -24,7 +23,7 @@ public class SMLEditKeywordsPanel extends AbstractPanel<RNGElement>{
         html.addStyleName("label");
         container.add(html);
         
-        keywordsPanel = new SMLHorizontalPanel(SPACING.RIGHT);
+        keywordsPanel = new SMLHorizontalPanel();
         container.add(keywordsPanel);
         
         container.add(buildAdvancedButton(new AdvancedRendererSML()));

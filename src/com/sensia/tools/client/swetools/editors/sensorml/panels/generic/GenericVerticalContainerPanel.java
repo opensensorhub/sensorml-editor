@@ -36,10 +36,6 @@ public class GenericVerticalContainerPanel extends AbstractPanel<RNGTag>{
 		container = new SMLVerticalPanel();
 	}
 	
-	public GenericVerticalContainerPanel(boolean spacing) {
-		container = new SMLVerticalPanel(spacing);
-	}
-	
 	/* (non-Javadoc)
 	 * @see com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.AbstractSensorElementWidget#addSensorWidget(com.sensia.tools.client.swetools.editors.sensorml.panels.widgets.ISensorWidget)
 	 */

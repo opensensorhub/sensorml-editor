@@ -11,12 +11,11 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 
 public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 
-	private Panel patternContainer;
-	private HTML addRemoveButton;
+	protected Panel patternContainer;
+	protected HTML addRemoveButton;
 	
 	public RNGOptionalPanel(final RNGOptional tag,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
@@ -31,7 +30,7 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 			addRemoveButton.addStyleName("remove-button");
 			container.add(addRemoveButton);
 			
-			patternContainer = new SMLHorizontalPanel(SPACING.RIGHT);
+			patternContainer = new SMLHorizontalPanel();
 			patternContainer.addStyleName("rng-optional-pattern");
 			container.add(patternContainer);
 		} 
@@ -65,21 +64,7 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-	    /*if(element instanceof EditSectionElementPanel || element instanceof AdvancedElementPanel || element instanceof RNGChoicePanel ) {
-			headerPanel.addStyleName("rng-disclosure v-align-top");
-		}
-		if(!(element instanceof EditElementPanel)){
-			headerPanel.clear();
-			headerPanel.add(addRemoveButton);
-			headerPanel.add(element.getPanel());
-		} else {
-		    headerPanel.addStyleName("rng-disclosure");
-		    patternContainer.setVisible(true);
-			patternContainer.add(element.getPanel());
-		}
-		//patternContainer.add(element.getPanel());*/
-	    
-		if (tag.isSelected()) {
+	    if (tag.isSelected()) {
 		    patternContainer.add(element.getPanel());
 		}
 	}

@@ -9,7 +9,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.AdvancedRendererSML;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
@@ -29,7 +28,7 @@ public class EditElementPanel extends AbstractPanel<RNGElement>{
         
         // header
         if (label != null && !label.isEmpty()) {
-            Panel header = new SMLHorizontalPanel(SPACING.RIGHT);
+            Panel header = new SMLHorizontalPanel();
             HTML html = new HTML(Utils.toNiceLabel(label));
             html.addStyleName("label");
             header.add(html);

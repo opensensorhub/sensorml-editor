@@ -1,4 +1,4 @@
-.editor div{
+.editor div {
   vertical-align: middle;
 }
 
@@ -6,13 +6,8 @@
   margin-top: 15px;
 }
 
-.editor .panel-smlvertical-child {
-  line-height: 22px;
-  margin-bottom: 3px;
-}
-
 /** override .editor div if v-align-middle is applied **/
-.editor div .v-align-middle div{
+.editor div .v-align-middle div {
   vertical-align: middle;
 }
 
@@ -62,10 +57,6 @@
 .editor .document-description .gwt-TextArea {
   width: 600px;
   height: 50px;
-}
-
-.editor .label {
-  margin-right: 5px;
 }
 
 .editor .contact .simple-element-panel > .label {

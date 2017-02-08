@@ -48,7 +48,8 @@ public class AdvancedElementPanel extends DisclosureElementPanel
         oldHeader.add(currentHeader);
         
         SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
-        hPanel.addNoSpacing(oldHeader);
+        //hPanel.addNoSpacing(oldHeader);
+        hPanel.add(oldHeader);
         hPanel.add(new Label(Utils.toNiceLabel(label)));        
         sectionPanel.setHeader(hPanel);
         

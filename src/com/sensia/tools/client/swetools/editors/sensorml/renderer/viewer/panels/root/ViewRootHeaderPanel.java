@@ -29,7 +29,6 @@ public class ViewRootHeaderPanel extends SMLVerticalPanel {
 	protected Label keywordsLabel;
 	
 	public ViewRootHeaderPanel() {
-		super(true);
 		// 1..~
 		titlesPanel = new SMLVerticalPanel();
 		
@@ -44,7 +43,7 @@ public class ViewRootHeaderPanel extends SMLVerticalPanel {
 		keywordsLabel.addStyleName("keyword-label");
 		
 		// 1..~
-		identifiersPanel = new SMLVerticalPanel(true);
+		identifiersPanel = new SMLVerticalPanel();
 		
 		add(titlesPanel);
 		add(new HTML("<hr  style=\"width:100%;\" />"));

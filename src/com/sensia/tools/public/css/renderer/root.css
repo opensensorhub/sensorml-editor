@@ -1,17 +1,12 @@
-.root{
+.root {
   width: 100%;
   padding-top: 10px;
   padding-left: 25px;
   padding-bottom: 10px;
 }
 
-.root div{
+.root div {
 	vertical-align: middle;
-}
-
-.root .panel-smlvertical-child {
-  line-height: 22px;
-  margin-bottom: 3px;
 }
 
 .root .gwt-HTML {

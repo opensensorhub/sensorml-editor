@@ -7,17 +7,8 @@
 
 .advanced div {
   vertical-align: middle;
-}
-
-.advanced .panel-smlvertical-child {
-  line-height: 22px;
-  margin-bottom: 3px;
-}
+} 
 
 .advanced .rng-choice-pattern {
 	margin-top: 4px;
-}
-
-.advanced .attribute-panel .gwt-HTML, .advanced .simple-element-panel .gwt-HTML {
-  margin-right: 5px;
 }

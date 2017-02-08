@@ -20,7 +20,7 @@ public class DisclosureElementPanel extends AbstractPanel<RNGElement>{
 	
 	public DisclosureElementPanel(RNGElement tag,IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
-		innerContent = new SMLVerticalPanel(true);
+		innerContent = new SMLVerticalPanel();
 		
 		sectionPanel = new DisclosurePanel("");
 		sectionPanel.setAnimationEnabled(true);

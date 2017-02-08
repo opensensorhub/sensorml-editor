@@ -12,7 +12,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 
 public class EditRNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 
@@ -28,7 +27,7 @@ public class EditRNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 		HTML addButton = new HTML();
 		addButton.addStyleName("rng-optional-select");
 		
-		SMLHorizontalPanel headerPanel = new SMLHorizontalPanel(SPACING.RIGHT);
+		SMLHorizontalPanel headerPanel = new SMLHorizontalPanel();
 		headerPanel.add(new HTML(Utils.toNiceLabel(label)));
 		headerPanel.add(addButton);
 		headerPanel.addStyleName("v-align-middle");

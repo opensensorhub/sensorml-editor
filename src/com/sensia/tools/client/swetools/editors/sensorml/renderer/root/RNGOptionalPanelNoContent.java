@@ -16,6 +16,7 @@ public class RNGOptionalPanelNoContent extends RNGOptionalPanel{
 		if(tag.isSelected()) {
             String label = Utils.findLabel(tag);
             HTML htmlLabel = new HTML(Utils.toNiceLabel(label));
+            container.remove(patternContainer);
             container.add(htmlLabel);
         }		
 	}
