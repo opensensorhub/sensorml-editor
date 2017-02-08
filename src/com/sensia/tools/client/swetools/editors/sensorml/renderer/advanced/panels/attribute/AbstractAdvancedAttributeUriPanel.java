@@ -16,7 +16,7 @@ public abstract class AbstractAdvancedAttributeUriPanel extends AdvancedAttribut
     public void addInnerElement(IPanel element) {
         super.addInnerElement(element);
         if (element instanceof EditValuePanel) {
-            ((EditValuePanel) element).setTextBoxSize(50);
+            ((EditValuePanel) element).setTextBoxSize(40);
             ((EditValuePanel) element).setPlaceholderText("Enter URI");
         }
     }

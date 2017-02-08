@@ -363,8 +363,6 @@ public class EditRendererSML extends EditRendererRNG implements RNGTagVisitor {
 		        visitChildren(elt.getChildren());
 		        return;
             }
-		    
-		    super.visit(elt);
         } 
 		
 		// GML namespace
@@ -398,6 +396,8 @@ public class EditRendererSML extends EditRendererRNG implements RNGTagVisitor {
 			
 			if(panel != null)
 	            pushAndVisitChildren(panel, elt.getChildren());
+			
+			// skip everything else
 			return;
 		}
 		
@@ -470,10 +470,10 @@ public class EditRendererSML extends EditRendererRNG implements RNGTagVisitor {
                 panel = new SWEEditIntervalPanel(elt);
             }
 		    
-		    // TODO encoding
-		    
 		    if(panel != null)
                 pushAndVisitChildren(panel, elt.getChildren());
+		    
+		    // skip everything else
             return;
 		}
 		

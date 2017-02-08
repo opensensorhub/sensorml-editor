@@ -18,7 +18,8 @@ public class AdvancedXLinkHrefPanel extends AbstractAdvancedAttributeUriPanel {
     @Override
     public void addInnerElement(IPanel element) {
         super.addInnerElement(element);
-        if (element instanceof EditValuePanel)
-            ((EditValuePanel) element).setTextBoxSize(50);
+        if (element instanceof EditValuePanel) {
+            ((EditValuePanel) element).setPlaceholderText("Enter URL");
+        }
     }
 }
