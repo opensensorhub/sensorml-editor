@@ -470,7 +470,7 @@ public class RNGParser
             data = new XSDDecimal();
         else if (dataType.equals("double"))
             data = new XSDDouble();
-        else if (dataType.equals("integer"))
+        else if (dataType.equals("integer") || dataType.equals("positiveInteger"))
             data = new XSDInteger();
         else if (dataType.equals("string"))
             data = new XSDString();

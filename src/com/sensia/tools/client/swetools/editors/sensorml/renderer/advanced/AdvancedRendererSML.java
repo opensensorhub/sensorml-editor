@@ -91,12 +91,10 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 		rootAdvanced2.getPanel().add(rootAdvanced.getPanel());
 		push(rootAdvanced2);*/
 		
-		rootSectionsList.add("PhysicalSystem");
-		rootSectionsList.add("ProcessModel");
-		rootSectionsList.add("AggregateProcess");
-		rootSectionsList.add("SimpleProcess");
+	    rootSectionsList.add("SimpleProcess");
+        rootSectionsList.add("AggregateProcess");
 		rootSectionsList.add("PhysicalComponent");
-		rootSectionsList.add("Component");
+		rootSectionsList.add("PhysicalSystem");        
 		
 		skipList.add("OutputList");
 		skipList.add("EventList");

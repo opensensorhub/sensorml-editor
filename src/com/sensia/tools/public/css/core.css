@@ -21,6 +21,10 @@
   padding: 1px 2px 1px 2px !important;
 }
 
+.gwt-TextArea {
+  width: 500px;
+}
+
 input:focus { 
   border-color: rgba(38, 155, 201, 0.8);
   outline: 0;
@@ -46,13 +50,6 @@ input.error:focus {
   font-size: 13px; 
 }
 
-/** Indent and put some margins for disclosure **/
-.gwt-DisclosurePanel .content {
-  border-left: 1px solid #e7e7e7 !important;
-  padding: 0px 0px 6px 22px !important;
-  margin-left: 11px !important;
-}
-
 .file-download {
   width:300px;  
   border: 1px solid #c4b29d;
@@ -62,6 +59,20 @@ input.file-upload {
   width: 300px;
   border: 1px solid #c4b29d;
 }
+
+
+/* disclosure panels */
+
+.gwt-DisclosurePanel .content {
+  border-left: 1px solid #e7e7e7 !important;
+  padding: 0px 0px 0px 22px !important;
+  margin-left: 11px !important;
+}
+
+.gwt-DisclosurePanel .header > div > div:first-child {
+  margin: 0;
+}
+
 
 /* default panel styling */
 

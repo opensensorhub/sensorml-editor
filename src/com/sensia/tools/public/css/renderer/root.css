@@ -9,6 +9,10 @@
 	vertical-align: middle;
 }
 
+.root > * {
+  line-height: 20px;
+}
+
 .root .gwt-HTML {
 	min-width: initial;
 }

@@ -10,6 +10,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
@@ -30,7 +31,7 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 			addRemoveButton.addStyleName("remove-button");
 			container.add(addRemoveButton);
 			
-			patternContainer = new SMLHorizontalPanel();
+			patternContainer = new SMLVerticalPanel();
 			patternContainer.addStyleName("rng-optional-pattern");
 			container.add(patternContainer);
 		} 
