@@ -407,8 +407,8 @@ public abstract class RNGRenderer implements RNGTagVisitor
         TextBox textBox = new TextBox();
         textBox.setVisibleLength(30);
 
-        if (text.getText() != null)
-            textBox.setText(text.getText());
+        if (text.getValue() != null)
+            textBox.setText(text.getValue());
         
         widgets.peek().add(textBox);
     }

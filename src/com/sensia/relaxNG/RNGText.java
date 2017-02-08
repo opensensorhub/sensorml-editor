@@ -11,24 +11,11 @@
 package com.sensia.relaxNG;
 
 
-public class RNGText extends RNGValue
+public class RNGText extends XSDString
 {
     private static final long serialVersionUID = 5994833804497952034L;
-    protected String text;
     
     
-    public String getText()
-    {
-        return text;
-    }
-
-
-    public void setText(String text)
-    {
-        this.text = text;
-    }
-
-
     @Override
     public void accept(RNGTagVisitor visitor)
     {
@@ -40,7 +27,7 @@ public class RNGText extends RNGValue
     public RNGText clone()
     {
         RNGText newTag = (RNGText)super.clone();
-        newTag.text = this.text;
+        newTag.value = this.value;
         return newTag;
     }
 

@@ -119,10 +119,7 @@ public abstract class AdvancedRendererRNG extends Renderer {
 	 */
 	@Override
 	public void visit(RNGText text) {
-		// TODO Auto-generated method stub
-		//push(new ValuePanel(text));
-		GWT.log("into RNGText");
-		//text.accept(this);
+	    push(new EditValuePanel(text,true,getRefreshHandler()));
 	}
 
 	/* (non-Javadoc)

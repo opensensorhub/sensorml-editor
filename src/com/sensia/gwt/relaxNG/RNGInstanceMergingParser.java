@@ -355,6 +355,7 @@ public class RNGInstanceMergingParser
         if (domElt == null)
         {
             rngElt.setErrorMsg(MISSING);
+            GWT.log(MISSING + " " + rngElt.getName());
             return MergeResult.ERROR;
         }
         

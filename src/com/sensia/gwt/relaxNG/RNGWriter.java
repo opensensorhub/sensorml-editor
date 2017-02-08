@@ -278,7 +278,7 @@ public class RNGWriter
         {
             RNGText text = ((RNGText)tag);
             Element newElt = dom.createElement("text");
-            newElt.appendChild(dom.createTextNode(text.getText()));
+            newElt.appendChild(dom.createTextNode(text.getValue()));
             parentNode.appendChild(newElt);
         }
         else if (tag instanceof RNGValue)

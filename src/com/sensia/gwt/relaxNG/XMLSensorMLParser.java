@@ -32,7 +32,6 @@ import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.relaxNG.RNGGroup;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGTagList;
-import com.sensia.relaxNG.RNGText;
 import com.sensia.relaxNG.XSDString;
 
 /**
@@ -203,18 +202,18 @@ public class XMLSensorMLParser {
 				}
                 ((RNGTagList)parent).add(rngElt);
                 parseChildren(rngElt, elt);
-            } else if(node.getNodeType() == Node.COMMENT_NODE) {
+            } /*else if(node.getNodeType() == Node.COMMENT_NODE) {
             	String text = "\n<!--"+node.getNodeValue()+"-->";
             	
             	if(((RNGTagList)parent).getLastChild() instanceof RNGText) {
             		RNGText rngComment = (RNGText) ((RNGTagList)parent).getLastChild();
-            		rngComment.setText(rngComment.getText()+text);
+            		rngComment.setValue(rngComment.getValue()+text);
             	} else {
             		RNGText rngComment = new RNGText();
-            		rngComment.setText(text);
+            		rngComment.setValue(text);
             		((RNGTagList)parent).add(rngComment);
             	}
-            }
+            }*/
 		}
 	}
 	

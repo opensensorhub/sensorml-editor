@@ -183,7 +183,7 @@ public class RNGInstanceWriter
         
         else if (tag instanceof RNGText)
         {
-           text = ((RNGText)tag).getText();
+           text = ((RNGText)tag).getValue();
            if (text == null)
                error = NO_VALUE;
         }
@@ -288,12 +288,6 @@ public class RNGInstanceWriter
         else if (tag instanceof RNGData)
         {
             if (((RNGData<?>)tag).getValue() == null)
-                tagList.add(tag);
-        }
-        
-        else if (tag instanceof RNGText)
-        {
-            if (((RNGText)tag).getText() == null)
                 tagList.add(tag);
         }
     }
