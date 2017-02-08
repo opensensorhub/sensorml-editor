@@ -1,10 +1,27 @@
-.root div{
-	vertical-align:middle;
+.root{
+  width: 100%;
+  padding-top: 10px;
+  padding-left: 25px;
+  padding-bottom: 10px;
 }
+
+.root div{
+	vertical-align: middle;
+}
+
+.root .panel-smlvertical-child {
+  line-height: 22px;
+  margin-bottom: 3px;
+}
+
 .root .gwt-HTML {
-	min-width:initial;
+	min-width: initial;
 }
 
 .root .gwt-Label {
-	min-width:initial;
+	min-width: initial;
+}
+
+.root > div {
+	margin-bottom: 5px;
 }

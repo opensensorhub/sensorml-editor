@@ -11,10 +11,6 @@
   margin-bottom: 3px;
 }
 
-/*.editor .panel-smlhorizontal {
-  line-height: 25px;
-}*/
-
 /** override .editor div if v-align-middle is applied **/
 .editor div .v-align-middle div{
   vertical-align: middle;
@@ -39,7 +35,9 @@
   margin-bottom: 5px; 
 }
 
-.editor .section-panel .header .icons-advanced {
+.editor .section-panel .header .icons-advanced,
+.editor .subsection-header .icons-advanced,
+.element-panel .icons-advanced {
   margin-bottom: 3px;
 }
 

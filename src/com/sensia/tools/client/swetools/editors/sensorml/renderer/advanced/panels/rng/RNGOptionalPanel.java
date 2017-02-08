@@ -9,93 +9,83 @@ import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.element.AdvancedElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditElementPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element.EditSectionElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 
 public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 
 	private Panel patternContainer;
-	private Panel headerPanel;
-	private HTML addButton;
+	private HTML addRemoveButton;
 	
 	public RNGOptionalPanel(final RNGOptional tag,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
-		container = new SMLVerticalPanel();
-		patternContainer = new SMLHorizontalPanel(SPACING.RIGHT);
 		
-		final String label = Utils.findLabel(tag);
+		container = new SMLHorizontalPanel();
+		container.addStyleName("rng-optional");
 		
-		addButton = new HTML();
-		headerPanel = new SMLHorizontalPanel();
-		container.add(headerPanel);
-		container.add(patternContainer);
-
-		HTML htmlLabel = new HTML(Utils.toNiceLabel(label));
+		addRemoveButton = new HTML();
+		
+		// if selected we show remove button and the selected pattern
 		if(tag.isSelected()) {
-			addButton.addStyleName("remove-button");
-			addButton.addStyleName("shift-remove");
-			headerPanel.add(addButton);
-			headerPanel.add(htmlLabel);
-		} else {
-			addButton.addStyleName("add-button");
-			headerPanel.add(htmlLabel);
-			headerPanel.add(addButton);
-			headerPanel.addStyleName("v-align-middle");
+			addRemoveButton.addStyleName("remove-button");
+			container.add(addRemoveButton);
+			
+			patternContainer = new SMLHorizontalPanel(SPACING.RIGHT);
+			patternContainer.addStyleName("rng-optional-pattern");
+			container.add(patternContainer);
+		} 
+		
+		// if not selected, show label and add button
+		else {
+		    String label = Utils.findLabel(tag);
+		    HTML htmlLabel = new HTML(Utils.toNiceLabel(label));
+			container.add(htmlLabel);
+			
+			addRemoveButton.addStyleName("add-button");
+			container.add(addRemoveButton);
 		}
 		
-		addButton.addClickHandler(new ClickHandler() {
-			
+		addRemoveButton.addClickHandler(new ClickHandler() {			
 			@Override
 			public void onClick(ClickEvent event) {
-				if(addButton.getStyleName().contains("add-button")){
-					tag.setSelected(true);
-				} else {
-					tag.setSelected(false);
-					//TODO: clear previous input
-				}
-				
+			    // toggle selection
+				tag.setSelected(!tag.isSelected());				
 				if(refreshHandler != null) {
 					refreshHandler.refresh();
-				}
-				
+				}				
 			}
 		});
-		
-		patternContainer.addStyleName("rng-optional-pattern");
-		patternContainer.setVisible(false);
 	}
 	
 	@Override
 	public String getName() {
-		return "";
+		return "optional";
 	}
 
 	@Override
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
-	    if(element instanceof EditSectionElementPanel || element instanceof AdvancedElementPanel || element instanceof RNGChoicePanel ) {
+	    /*if(element instanceof EditSectionElementPanel || element instanceof AdvancedElementPanel || element instanceof RNGChoicePanel ) {
 			headerPanel.addStyleName("rng-disclosure v-align-top");
 		}
 		if(!(element instanceof EditElementPanel)){
 			headerPanel.clear();
-			headerPanel.add(addButton);
+			headerPanel.add(addRemoveButton);
 			headerPanel.add(element.getPanel());
 		} else {
 		    headerPanel.addStyleName("rng-disclosure");
 		    patternContainer.setVisible(true);
 			patternContainer.add(element.getPanel());
 		}
-		//patternContainer.add(element.getPanel());
-		
+		//patternContainer.add(element.getPanel());*/
+	    
+		if (tag.isSelected()) {
+		    patternContainer.add(element.getPanel());
+		}
 	}
 
 	@Override
 	protected AbstractPanel<RNGOptional> newInstance() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

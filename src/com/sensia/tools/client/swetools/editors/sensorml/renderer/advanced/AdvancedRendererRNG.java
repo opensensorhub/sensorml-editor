@@ -11,7 +11,6 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced;
 
 import java.util.List;
-import com.google.gwt.core.shared.GWT;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGData;
@@ -271,11 +270,9 @@ public abstract class AdvancedRendererRNG extends Renderer {
 		if(!skipTags) {
 			push(new RNGZeroOrMorePanel(zeroOrMore,getRefreshHandler()));
 		}
+		
 		List<List<RNGTag>> patternInstances = zeroOrMore.getPatternInstances();
-		//int nbPattern = 0;
 		for(List<RNGTag> tags : patternInstances) {
-			//RNGZeroOrMorePatternPanel patternPanel = new RNGZeroOrMorePatternPanel(zeroOrMore, nbPattern++,getRefreshHandler());
-			//pushAndVisitChildren(patternPanel, tags);
 			this.visitChildren(tags);
 		}
 	}

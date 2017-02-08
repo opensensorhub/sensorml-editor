@@ -67,8 +67,7 @@ input.file-upload {
   border: 1px solid #c4b29d;
 }
 
-/** Vertical and Horizontal generic panels */
-/** Custom horizontal panel using flowLayout **/
+/* default panel styling */
 
 /*.spacing {
   margin:2px;
@@ -88,9 +87,6 @@ input.file-upload {
 
 .spacing-bottom {
   margin-bottom:5px;
-}
-
-.panel-smlhorizontal {
 }
 
 .panel-smlhorizontal-child {
@@ -120,12 +116,24 @@ input.file-upload {
 
 .panel-disclosure-element-section a.header div {
   vertical-align : middle !important;
-  margin-top: -1.3px;
+  /*margin-top: -1.3px;*/
 }
 
 .panel-disclosure-element-section a.header  .icons-definition{ 
   margin-left:10px;
   margin-right:10px;
+}
+
+div.v-align-top  > div {
+  vertical-align:top ;
+} 
+
+.rng-disclosure > .remove-button {
+    margin-top: 2px;
+}
+
+div.gwt-HTML.remove-button.shift-remove {
+  margin-right:5px;
 }
 
 /** dots dots dots button to open a popup **/
@@ -156,10 +164,6 @@ input.file-upload {
   cursor: pointer;
 }
 
-.shift-remove {
-  margin-left:-22px;
-}
-
 .add-button {
   vertical-align: middle;
   width: 16px;
@@ -172,17 +176,35 @@ input.file-upload {
   margin-left:5px;
 }
 
-.remove-button {
-  
-}
-
 .ontology-icon {
 	margin-left: 5px;
 }
 
-/* smartgwt status bar*/
-.windowStatusBar {
-  display:none;
+.simple-element-panel * {
+  vertical-align: top !important;
+}
+
+.rng-optional > .remove-button, .rng-zeroormore-pattern > .remove-button {
+    margin-left: -22px;
+    vertical-align: top;
+    margin-right: 5px;
+    margin-top: 2px;
+}
+
+
+/* popup dialogs */
+
+.dialog-main {
+  overflow:auto;
+  margin-left: 10px;
+  margin-top: 10px;
+  width:660px;
+  height:550px;
+}
+
+.dialog-main .gwt-TextBox{
+  min-width:350px;
+  height:19px;
 }
 
 .smartgwt-dialog-save-button {
@@ -194,27 +216,8 @@ input.file-upload {
   font-size:13px;
 }
 
-.dialog-main {
-  overflow:auto;
-  margin-left: 10px;
-  margin-top: 10px;
-  width:660px;
-  height:550px;
-}
-
-.v-align-middle {
-  vertical-align: middle;
-}
-
-.v-align-middle > div{
-  vertical-align: middle;
-}
-
-.windowBody .advanced, .root{
-	width: 100%;
-  padding-top: 10px;
-  padding-left: 25px;
-  padding-bottom: 25px;
+.windowStatusBar {
+  display:none;
 }
 
 .windowBody .syntaxhighlighter {
@@ -235,27 +238,8 @@ input.file-upload {
   width:inherit !important;;
 }
 
-
 .dialog-main > div > div > div{ /* 3 divs becauses smartgwt creates 3 embedded canvas */
   width:inherit !important;;
 }
 
 /** END HACK DIALOG RESIZE */
-
-.dialog-main .gwt-TextBox{
-  min-width:350px;
-  height:19px;
-}
-
-
-div.v-align-top  > div {
-  vertical-align:top ;
-} 
-
-div.rng-disclosure.v-align-top > div > div.shift-remove.remove-button {
-  margin-top:2px;
-}
-
-div.gwt-HTML.remove-button.shift-remove {
-  margin-right:5px;
-}

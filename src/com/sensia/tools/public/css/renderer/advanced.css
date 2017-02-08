@@ -1,13 +1,17 @@
+.advanced {
+  width: 100%;
+  padding-top: 10px;
+  padding-left: 25px;
+  padding-bottom: 10px;
+}
+
 .advanced div {
   vertical-align: middle;
 }
 
-.advanced .panel-smlvertical {
-  line-height: 25px;
-}
-
-.advanced .rng-disclosure {
-	margin-top: 4px;
+.advanced .panel-smlvertical-child {
+  line-height: 22px;
+  margin-bottom: 3px;
 }
 
 .advanced .rng-choice-pattern {

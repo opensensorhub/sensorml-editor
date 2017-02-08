@@ -3,7 +3,6 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.pane
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.Panel;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGZeroOrMore;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.AbstractPanel;
@@ -12,36 +11,35 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel.SPACING;
 
 public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 
-	private SMLVerticalPanel patternContainer;
+	private SMLVerticalPanel patternsContainer;
 	private int nbPattern = 0;
 	
 	public RNGZeroOrMorePanel(final RNGZeroOrMore tag,final IRefreshHandler refreshHandler) {
 		super(tag,refreshHandler);
-		patternContainer = new SMLVerticalPanel();
-		patternContainer.addStyleName("rng-zeroormore-pattern");
 		
+        container.addStyleName("rng-zeroormore");
+        
+        // occurence patterns container
+		patternsContainer = new SMLVerticalPanel();
+		container.add(patternsContainer);
+		
+		// add more button + label
+		SMLHorizontalPanel AddMorePanel = new SMLHorizontalPanel();
 		final String label = Utils.findLabel(tag);
+		AddMorePanel.add(new HTML(Utils.toNiceLabel(label)));
 		HTML addButton = new HTML();
-		addButton.addStyleName("add-button");
+        addButton.addStyleName("add-button");
+        AddMorePanel.add(addButton);		
+		container.add(AddMorePanel);
 		
-		SMLHorizontalPanel headerPanel = new SMLHorizontalPanel();
-		headerPanel.add(new HTML(Utils.toNiceLabel(label)));
-		headerPanel.add(addButton);
-		headerPanel.addStyleName("v-align-middle");
-		
-		container.add(patternContainer);
-		container.add(headerPanel);
-		
-		addButton.addClickHandler(new ClickHandler() {
-			
+		addButton.addClickHandler(new ClickHandler() {			
 			@Override
 			public void onClick(ClickEvent event) {
-				tag.newOccurence();
-				
+			    // add new pattern instance
+				tag.newOccurence();				
 				if(refreshHandler != null) {
 					refreshHandler.refresh();
 				}
@@ -58,16 +56,11 @@ public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 	protected void addInnerElement(IPanel<? extends RNGTag> element) {
 		RNGZeroOrMorePatternPanel patternPanel = new RNGZeroOrMorePatternPanel(getTag(), nbPattern++,refreshHandler);
 		patternPanel.addElement(element);
-		patternContainer.add(patternPanel.getPanel());
+		patternsContainer.add(patternPanel.getPanel());
 	}
 
 	@Override
 	protected AbstractPanel<RNGZeroOrMore> newInstance() {
-		// TODO Auto-generated method stub
 		return null;
-	}
-	
-	public Panel getPatternPanel() {
-		return patternContainer;
 	}
 }
