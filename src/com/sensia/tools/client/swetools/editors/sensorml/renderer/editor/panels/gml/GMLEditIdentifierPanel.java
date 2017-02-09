@@ -19,7 +19,7 @@ public class GMLEditIdentifierPanel extends AbstractPanel<RNGElement>{
 		super(element);
 		
 		container = new SMLHorizontalPanel();		
-		container.add(new HTML("Unique ID:"+SMLEditorConstants.HTML_SPACE));
+		container.add(new HTML("Unique ID:"));
         valuePanel = new SimplePanel();
 		container.add(valuePanel);
 	}

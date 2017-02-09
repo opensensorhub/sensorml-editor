@@ -113,6 +113,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEditElementTypePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEditEncodingPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.dataarray.SWEEditDataArrayPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.value.EditValuePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 
 /**
@@ -432,7 +433,7 @@ public class EditRendererSML extends EditRendererRNG implements RNGTagVisitor {
 	        } else if(eltName.equals("DataChoice")) {
 	            panel = new SWEEditDataRecordPanel(elt,getRefreshHandler());
 	        } else if(eltName.equals("Vector")) {
-                //panel = new SWEEditVectorPanel(elt,getRefreshHandler(),elt.getChildren());
+                //panel = new SWEEditVectorPanel(elt,getRefreshHandler());
                 panel = new SWEEditDataRecordPanel(elt,getRefreshHandler());
             } else if(eltName.equals("DataArray")) {
 	            panel = new SWEEditDataArrayPanel(elt,getRefreshHandler());
@@ -459,7 +460,9 @@ public class EditRendererSML extends EditRendererRNG implements RNGTagVisitor {
 	            panel = new SWEditElementTypePanel(elt);
 	        } else if(eltName.equals("encoding")) {
 	            panel = new SWEditEncodingPanel(elt);
-	        }
+	        } else if(eltName.equalsIgnoreCase("value")) {
+                panel = new EditSimpleElementPanel(elt,null);
+            } 
 		    
 		    // constraints objects
 	        else if(eltName.equals("AllowedValues")) {
@@ -470,11 +473,10 @@ public class EditRendererSML extends EditRendererRNG implements RNGTagVisitor {
                 panel = new SWEEditIntervalPanel(elt);
             }
 		    
-		    if(panel != null)
+		    if(panel != null) {
                 pushAndVisitChildren(panel, elt.getChildren());
-		    
-		    // skip everything else
-            return;
+                return;
+		    }
 		}
 		
         // GMD namespace (contacts, documentation, etc.)
