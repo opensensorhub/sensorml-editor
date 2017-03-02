@@ -8,6 +8,6 @@ public class SWEEditDataRecordPanel extends EditSubSectionElementPanel {
 
 	public SWEEditDataRecordPanel(RNGElement element,IRefreshHandler refreshHandler) {
 		super(element,refreshHandler);
-		setShowDataType(true);
+		setDataTypeName(true);
 	}
 }

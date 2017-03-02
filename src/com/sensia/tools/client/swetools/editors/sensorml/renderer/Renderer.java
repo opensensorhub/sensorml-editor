@@ -3,9 +3,10 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-
+import com.google.gwt.xml.client.Element;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGGrammar;
+import com.sensia.relaxNG.RNGInvalidContent;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.relaxNG.RNGTagVisitor;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
@@ -114,7 +115,13 @@ public abstract class Renderer implements IRefreshHandler, RNGTagVisitor{
 		this.grammar = grammar;
 		resolver.setCurrentGrammar(this.grammar);
 		grammar.getStartPattern().accept(this);
+	}	
+
+	@Override
+    public void visit(RNGInvalidContent tag) {
+	    // skip it by default
 	}
+    
 	
 	protected void pushAndVisitChildren(IPanel<? extends RNGTag> widget, RNGTag tag) {
 		push(widget);

@@ -1,6 +1,8 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.element;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.ComplexPanel;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
@@ -48,41 +50,39 @@ public class EditSubSectionElementPanel extends AbstractPanel<RNGElement>{
 	public EditSubSectionElementPanel(RNGElement element, IRefreshHandler refreshHandler) {
 		super(element,refreshHandler);
 		
-		innerContainer = new SMLVerticalPanel();
-		
+        container.addStyleName("subsection-panel");
+        
+		// header
+        headerPanel = new SMLHorizontalPanel();
+        headerPanel.addStyleName("subsection-header");
+        
 		labelPanel = new SimplePanel();
-		labelPanel.addStyleName("edit-subsection-label-panel");
-		
+		labelPanel.addStyleName("label");		
 		namedLabelPanel = new SMLHorizontalPanel();
 		namedLabelPanel.add(labelPanel);
+		headerPanel.add(namedLabelPanel);
 		
 		definition = new SimplePanel();
 		definition.setVisible(false);
+		headerPanel.add(definition);
 		
 		description = new SimplePanel();
 		description.setVisible(false);
+		headerPanel.add(description);
 		
 		detailsPanel = new SimplePanel();
 		detailsPanel.setVisible(false);
-		
-		headerPanel = new SMLHorizontalPanel();
-		headerPanel.add(namedLabelPanel);
-		headerPanel.add(definition);
-		headerPanel.add(description);
 		headerPanel.add(detailsPanel);
 		
 		advancedButton = buildAdvancedButton(new AdvancedRendererSML());
 		headerPanel.add(advancedButton);
         
-		headerPanel.setVisible(false);
-		
+		headerPanel.setVisible(false);		
 		container.add(headerPanel);
+		
+		// subsection content
+		innerContainer = new SMLVerticalPanel();
 		container.add(innerContainer);
-		
-		headerPanel.addStyleName("subsection-header");
-		container.addStyleName("subsection-panel");
-		
-		//innerContainer.addStyleName("edit-subsection-element-inner-panel");
 	}
 	
 	public void setShowDataType(boolean show) {
@@ -97,8 +97,10 @@ public class EditSubSectionElementPanel extends AbstractPanel<RNGElement>{
 		} else {
 			namedLabelPanel.add(labelPanel);
 		}*/
-	    detailsPanel.clear();
+	    /*detailsPanel.clear();
 	    detailsPanel.add(new Label(Utils.toNiceLabel(getTag().getName())));
+	    detailsPanel.setVisible(true);*/
+	    ((FlowPanel)container).insert(new Label(Utils.toNiceLabel(getTag().getName())), 0);
 	}
 
 	@Override
@@ -155,9 +157,6 @@ public class EditSubSectionElementPanel extends AbstractPanel<RNGElement>{
 		
 		if(displayHeader) {
 			headerPanel.setVisible(true);
-			if(showDataTypeName) {
-			    setDataTypeName(true);
-			}
 		} else {
 			headerPanel.setVisible(false);
 		}
@@ -266,10 +265,8 @@ public class EditSubSectionElementPanel extends AbstractPanel<RNGElement>{
 	}
 
     @Override
-    public String getName()
-    {
-        // TODO Auto-generated method stub
-        return null;
+    public String getName() {
+        return tag.getName();
     }
 
     @Override

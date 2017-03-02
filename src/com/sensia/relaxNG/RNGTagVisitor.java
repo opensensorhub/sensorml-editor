@@ -54,5 +54,7 @@ public interface RNGTagVisitor
     
     public void visit(XSDAnyURI data);
                         
-    public void visit(XSDDateTime data);                    
+    public void visit(XSDDateTime data);
+
+    public void visit(RNGInvalidContent invalid);                    
 }

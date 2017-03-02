@@ -76,6 +76,13 @@ input.file-upload {
 
 /* default panel styling */
 
+.rng-error-panel {
+  border-color: rgba(165, 0, 0, 0.8) !important;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(165, 0, 0, 0.6) !important;
+  font-color: red;
+  font-weight: bold;
+}
+
 .panel-smlhorizontal > * {
   display: inline-block;
   box-sizing: border-box;

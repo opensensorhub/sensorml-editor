@@ -17,6 +17,7 @@
 
 .editor .subsection-inner {
   padding-left: 20px;
+  padding-bottom: 10px;
 }
 
 .editor .default-value {
@@ -71,6 +72,6 @@
   font-weight: bold;
 }
 
-.editor .panel-abstract-generic-line .before {
+.editor .generic-line-panel > .before {
   min-width: 370px;
 }

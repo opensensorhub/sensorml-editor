@@ -85,8 +85,7 @@ public class SWEEditDataArrayLinePanel extends EditGenericLinePanel<RNGElement> 
 		if((computeAcceptance % COMPUTE_ACCEPTANCE) == 0) {
 			handleEncoding(encodingPanel);
 			handleValues(valuesPanel);
-			handleElementType(elementTypePanel);
-			
+			handleElementType(elementTypePanel);			
 			buildTable();
 			buildGraph();
 			container.setVisible(true);
@@ -94,21 +93,24 @@ public class SWEEditDataArrayLinePanel extends EditGenericLinePanel<RNGElement> 
 	}
 	
 	protected void handleValues(IPanel<RNGElement> valuesPanel) {
-		String valuesStr = ((RNGElement)valuesPanel.getTag()).getChildValueText().trim().replaceAll("\\s+", " ");
-		String [] blocks = valuesStr.split(blockSeparator);
-		
-		if(blocks.length > 0) {
-			int nbElementInBlock  = blocks[0].split(tokenSeparator).length;
-			values = new String[blocks.length] [nbElementInBlock];
-			
-			int i=0;
-			for(final String block : blocks) {
-				final String[] valuesInBlock = block.split(tokenSeparator);
-				for(int j=0;j < valuesInBlock.length;j++) {
-					values[i][j] = valuesInBlock[j].trim();
-				}
-				i++;
-			}
+		String valuesText = ((RNGElement)valuesPanel.getTag()).getChildValueText();
+		if (valuesText != null) {
+    	    String valuesStr = valuesText.trim().replaceAll("\\s+", " ");
+    		String [] blocks = valuesStr.split(blockSeparator);
+    		
+    		if(blocks.length > 0) {
+    			int nbElementInBlock  = blocks[0].split(tokenSeparator).length;
+    			values = new String[blocks.length] [nbElementInBlock];
+    			
+    			int i=0;
+    			for(final String block : blocks) {
+    				final String[] valuesInBlock = block.split(tokenSeparator);
+    				for(int j=0;j < valuesInBlock.length;j++) {
+    					values[i][j] = valuesInBlock[j].trim();
+    				}
+    				i++;
+    			}
+    		}
 		}
 	}
 

@@ -18,6 +18,7 @@ import com.sensia.relaxNG.RNGDefine;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGGroup;
 import com.sensia.relaxNG.RNGInterleave;
+import com.sensia.relaxNG.RNGInvalidContent;
 import com.sensia.relaxNG.RNGList;
 import com.sensia.relaxNG.RNGOneOrMore;
 import com.sensia.relaxNG.RNGOptional;
@@ -37,6 +38,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.Renderer;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.element.AdvancedElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGChoicePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGErrorPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGOptionalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.rng.RNGZeroOrMorePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.xsd.XSDAnyURIPanel;
@@ -275,6 +277,11 @@ public abstract class AdvancedRendererRNG extends Renderer {
 		for(List<RNGTag> tags : patternInstances) {
 			this.visitChildren(tags);
 		}
-	}
+	} 
+
+    @Override
+    public void visit(RNGInvalidContent tag) {
+        push(new RNGErrorPanel(tag,getRefreshHandler()));
+    }
 	
 }

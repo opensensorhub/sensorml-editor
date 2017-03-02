@@ -20,7 +20,7 @@ public class SMLEditPositionPanel extends EditSectionElementPanel{
 
 	@Override
 	public void addInnerElement(IPanel element) {
-		if(element.getName().equals("DataArray")) {
+		/*if(element.getName().equals("DataArray")) {
 			SMLEditPositionByTrajectoryPanel positionPanel =
 					new SMLEditPositionByTrajectoryPanel((RNGElement) element.getTag(), refreshHandler);
 			positionPanel.addElement(element);
@@ -35,7 +35,7 @@ public class SMLEditPositionPanel extends EditSectionElementPanel{
 					new SMLEditPositionByPositionPanel((RNGElement) element.getTag(), refreshHandler);
 			positionPanel.addElement(element);
 			super.addInnerElement(positionPanel);
-		} else {
+		} else*/ {
 			super.addInnerElement(element);
 		}
 	}

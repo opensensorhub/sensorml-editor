@@ -51,7 +51,6 @@ public class EditSectionElementPanel extends DisclosureElementPanel{
 		oldHeader.add(currentHeader);
 		        
 		SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
-		//hPanel.addNoSpacing(oldHeader);
 		hPanel.add(oldHeader);
 		hPanel.add(labelPanel);
 		hPanel.add(definitionPanel);

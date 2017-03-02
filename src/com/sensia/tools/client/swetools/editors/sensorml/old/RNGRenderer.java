@@ -33,6 +33,7 @@ import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.TextBoxBase;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.xml.client.Element;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGData;
@@ -41,6 +42,7 @@ import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.relaxNG.RNGGroup;
 import com.sensia.relaxNG.RNGInterleave;
+import com.sensia.relaxNG.RNGInvalidContent;
 import com.sensia.relaxNG.RNGList;
 import com.sensia.relaxNG.RNGOneOrMore;
 import com.sensia.relaxNG.RNGOptional;
@@ -516,6 +518,12 @@ public abstract class RNGRenderer implements RNGTagVisitor
     {
         int length = 28;
         renderTextInput(data, length, null);
+    }
+    
+
+    @Override
+    public void visit(RNGInvalidContent tag) {
+        // skip
     }
     
     

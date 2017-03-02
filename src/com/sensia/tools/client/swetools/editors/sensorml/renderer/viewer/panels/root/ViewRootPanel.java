@@ -75,10 +75,12 @@ public class ViewRootPanel extends AbstractPanel<RNGElement>{
 						element.getTag() instanceof RNGChoice ||
 						element.getTag() instanceof RNGOptional){
 					container.add(element.getPanel());
-				} else {
+				} else if (element.getTag() instanceof RNGElement){
 					ViewSectionElementPanel section = new ViewSectionElementPanel((RNGElement) element.getTag(),refreshHandler);
 					section.addElement(element);
 					container.add(section.getPanel());
+				} else {
+				    container.add(element.getPanel());
 				}
 				
 				break;
