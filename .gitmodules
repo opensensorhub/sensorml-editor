@@ -1,3 +1,0 @@
-[submodule "src/com/sensia/tools/public/sensorml-relaxng"]
-	path = src/com/sensia/tools/public/sensorml-relaxng
-	url = https://github.com/opensensorhub/sensorml-relaxng.git
