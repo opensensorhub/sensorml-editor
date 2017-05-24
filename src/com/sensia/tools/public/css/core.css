@@ -175,6 +175,11 @@ div.v-align-top  > div {
 	margin-left: 5px;
 }
 
+.ontology-panel {
+	padding: 10px;
+  box-sizing: border-box;
+}
+
 .simple-element-panel * {
   vertical-align: top !important;
 }

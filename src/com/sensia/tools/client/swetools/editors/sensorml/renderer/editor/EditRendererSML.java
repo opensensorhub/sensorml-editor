@@ -325,10 +325,10 @@ public class EditRendererSML extends EditRendererRNG implements RNGTagVisitor {
                 pushAndVisitChildren(new SMLEditTermPanel(elt,getRefreshHandler()), elt.getChildren());
                 return;
             } else if(eltName.equalsIgnoreCase("identifier")) {
-                pushAndVisitChildren(new SMLEditIdentifierPanel(elt), elt.getChildren());
+                pushAndVisitChildren(new SMLEditIdentifierPanel(elt,getRefreshHandler()), elt.getChildren());
                 return;
             } else if(eltName.equalsIgnoreCase("classifier")) {
-                pushAndVisitChildren(new SMLEditClassifierPanel(elt), elt.getChildren());
+                pushAndVisitChildren(new SMLEditClassifierPanel(elt,getRefreshHandler()), elt.getChildren());
                 return;
             } else if(eltName.equalsIgnoreCase("Document")) {
                 pushAndVisitChildren(new SMLEditDocument(elt), elt.getChildren());

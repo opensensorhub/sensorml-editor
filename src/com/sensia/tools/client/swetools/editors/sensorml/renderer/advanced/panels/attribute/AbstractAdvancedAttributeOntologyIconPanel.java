@@ -43,7 +43,9 @@ public class AbstractAdvancedAttributeOntologyIconPanel extends AdvancedAttribut
 			@Override
 			public void onClick(ClickEvent event) {
 				final OntologyPanel ontologyPanel = new OntologyPanel();
-				SaveCloseWindow dialogBox = Utils.displaySaveDialogBox(ontologyPanel.getPanel(),"SWE Ontology");				
+				SaveCloseWindow dialogBox = Utils.displaySaveDialogBox(ontologyPanel.getPanel(),"SWE Ontology");
+				dialogBox.setWidth(1024);
+				dialogBox.setHeight(800);
 				dialogBox.addSaveHandler(new ClickHandler(){
 					@Override
 					public void onClick(ClickEvent event) {

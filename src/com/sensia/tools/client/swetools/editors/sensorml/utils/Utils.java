@@ -37,7 +37,7 @@ public class Utils {
 		final CloseWindow dialogBox = new CloseWindow(title,false);
 		dialogBox.setContent(panel);
 
-		dialogBox.draw();
+		dialogBox.show();
 		return dialogBox;
 	}
 	
@@ -45,7 +45,7 @@ public class Utils {
 		final CloseWindow dialogBox = new CloseWindow(title,false,css);
 		dialogBox.setContent(panel);
 
-		dialogBox.draw();
+		dialogBox.show();
 		return dialogBox;
 	}
 	
@@ -53,7 +53,7 @@ public class Utils {
 		final SaveCloseWindow dialogBox = new SaveCloseWindow(title,false,css);
 		
 		dialogBox.setContent(panel);
-		dialogBox.draw();
+		dialogBox.show();
 		
 		return dialogBox;
 	}
@@ -62,7 +62,7 @@ public class Utils {
 		final SaveCloseWindow dialogBox = new SaveCloseWindow(title,false,css);
 		
 		dialogBox.setContent(panel);
-		dialogBox.draw();
+		dialogBox.show();
 		
 		return dialogBox;
 	}
@@ -71,16 +71,17 @@ public class Utils {
 		final SaveCloseWindow dialogBox = new SaveCloseWindow(title,false);
 		
 		dialogBox.setContent(panel);
-		dialogBox.draw();
+		dialogBox.show();
 		
 		return dialogBox;
 	}
 	
-	public static final SaveCloseWindow displaySaveDialogBox(final Widget panel,final String title){
+	public static final SaveCloseWindow displaySaveDialogBox(final Widget panel,final String title, boolean allowUpload){
 		final SaveCloseWindow dialogBox = new SaveCloseWindow(title,false);
 		
+		dialogBox.setAllowUpload(allowUpload);
 		dialogBox.setContent(panel);
-		dialogBox.draw();
+		dialogBox.show();
 		
 		return dialogBox;
 	}
@@ -119,7 +120,7 @@ public class Utils {
 		});
 		
 		dialogBox.setContent(rootPanel);
-		dialogBox.draw();
+		dialogBox.show();
 		
 		return dialogBox;
 	}
@@ -158,7 +159,7 @@ public class Utils {
 		});
 		
 		dialogBox.setContent(rootPanel);
-		dialogBox.draw();
+		dialogBox.show();
 		
 		return dialogBox;
 	}

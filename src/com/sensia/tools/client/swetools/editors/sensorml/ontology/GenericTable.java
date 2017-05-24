@@ -18,6 +18,7 @@ import com.google.gwt.cell.client.ButtonCell;
 import com.google.gwt.cell.client.FieldUpdater;
 import com.google.gwt.cell.client.TextCell;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.safehtml.shared.SafeHtml;
@@ -90,7 +91,7 @@ public class GenericTable{
 	 * @param headers the headers to display
 	 * @param values the values to set
 	 */
-	public void poupulateTable(final List<String> headers,final Object[][] values) {
+	public void populateTable(final List<String> headers,final Object[][] values) {
 		//clears/creates the list
 		init();
 		this.originalData = getPropertiesFromValues(values);
@@ -104,8 +105,7 @@ public class GenericTable{
 			for(int i=0;i< nbColumn;i++) {
 				table.removeColumn(i);
 			}
-		}
-		
+		}		
 		
 		int position = 0;
 		//add every column based on header list
@@ -197,6 +197,8 @@ public class GenericTable{
 		    table.setSkipRowHoverFloatElementCheck(true);
 			table.setSkipRowHoverStyleUpdate(true);
 			table.setVisibleRange(0, 100000);
+			table.setWidth("100%", true);
+			table.setColumnWidth(2, 60.0, Unit.PX);
 			
 			// Add a selection model to handle user selection.
 		    final SingleSelectionModel<Property> selectionModel = new SingleSelectionModel<Property>();
@@ -212,28 +214,26 @@ public class GenericTable{
 		}
 		
 		SMLVerticalPanel vPanel = new SMLVerticalPanel();
-		final TextBox searchBox = new TextBox();
 		
-		SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
+		/*SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
+		vPanel.add(hPanel);		
+		final TextBox searchBox = new TextBox();
 		hPanel.add(new HTML("Search :"+SensorConstants.HTML_SPACE+SensorConstants.HTML_SPACE));
 		hPanel.add(searchBox);
+        searchBox.addKeyUpHandler(new KeyUpHandler() {
+            
+            @Override
+            public void onKeyUp(KeyUpEvent event) {
+                setFilter(searchBox.getText());
+            }
+        });*/
 		
-		ScrollPanel sPanel = new ScrollPanel();
+		/*ScrollPanel sPanel = new ScrollPanel();
 		sPanel.setStyleName("ontology-table-panel");
 		sPanel.add(table);
+		vPanel.add(sPanel);*/
+		vPanel.add(table);
 		
-		vPanel.add(hPanel);
-		vPanel.add(sPanel);
-		
-		//add key listener on searchBox
-		searchBox.addKeyUpHandler(new KeyUpHandler() {
-			
-			@Override
-			public void onKeyUp(KeyUpEvent event) {
-				setFilter(searchBox.getText());
-			}
-		});
-				
 		return vPanel;
 	}
 	

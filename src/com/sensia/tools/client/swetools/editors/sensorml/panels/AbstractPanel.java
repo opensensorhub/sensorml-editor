@@ -164,7 +164,7 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 				if(refreshHandler != null) {
 					refreshHandler.refresh();
 				}
-				dialogBox.redrawDialog();
+				dialogBox.redraw();
 			}
 		});
 
@@ -172,7 +172,7 @@ public abstract class AbstractPanel<T extends RNGTag> implements IPanel<T>{
 		rootPanel.add(renderer.getRoot().getPanel());
 		
 		renderer.getRoot().getPanel().addStyleName("advanced-panel");
-		dialogBox.redrawDialog();
+		dialogBox.redraw();
 		
 		
 	}
