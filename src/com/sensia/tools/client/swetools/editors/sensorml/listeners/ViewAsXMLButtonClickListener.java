@@ -10,18 +10,26 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.listeners;
 
+import java.util.Date;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.http.client.Request;
+import com.google.gwt.http.client.RequestBuilder;
+import com.google.gwt.http.client.RequestCallback;
+import com.google.gwt.http.client.RequestException;
+import com.google.gwt.http.client.Response;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.xml.client.Document;
 import com.sensia.gwt.relaxNG.RNGInstanceWriter;
 import com.sensia.gwt.relaxNG.XMLSerializer;
 import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
-import com.sensia.tools.client.swetools.editors.sensorml.panels.source.FileUploadPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.syntaxhighlighter.BrushFactory;
 import com.sensia.tools.client.swetools.editors.sensorml.syntaxhighlighter.SyntaxHighlighter;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.LoginWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 import com.smartgwt.client.types.Overflow;
@@ -73,13 +81,19 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 			panel.setOverflow(Overflow.SCROLL);
 			
 			// display save dialog box
-			final SaveCloseWindow dialog = Utils.displaySaveDialogBox(panel, "SensorML Document");
+			final SaveCloseWindow dialog = Utils.displaySaveDialogBox(panel, "SensorML Document", true);
 			dialog.addSaveHandler(new ClickHandler(){
 				@Override
 				public void onClick(ClickEvent event) {
 					saveAs(getDefaultFileName(),xml);
 				}
 			});
+			dialog.addUploadHandler(new ClickHandler(){
+                @Override
+                public void onClick(ClickEvent event) {
+                    uploadToXDomesRegistry(xml);
+                }
+            });
 			dialog.setExitOnSave(false);
 		}
 	}
@@ -101,6 +115,99 @@ public class ViewAsXMLButtonClickListener implements ClickHandler{
 	private void saveAs(String defaultFileName, String xmlData) {
 	    saveFromJs(defaultFileName, xmlData);
 	}
+	
+	
+	/*
+	 * Upload the generated SensorML file to XDomes registry
+	 */
+	private void uploadToXDomesRegistry(final String xmlData) {
+	    
+	    final LoginWindow loginPopup = new LoginWindow("Please login to registry");
+	    loginPopup.setConfirmHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event)
+            {
+                String user = loginPopup.getUser();
+                String pwd = loginPopup.getPassword();
+                if (user != null)
+                    uploadToXDomesRegistry(xmlData, user, pwd); 
+            }
+	    });
+	    loginPopup.show();
+	}
+	
+	
+	private void uploadToXDomesRegistry(String xmlData, final String user, final String password) {
+	    
+	    String rootUrl = "http://sensiasoft.net/sml-upload";
+	    String filename = "sml-" + DateTimeFormat.getFormat(DateTimeFormat.PredefinedFormat.ISO_8601).format(new Date()) + ".xml";
+        final String uploadUrl = rootUrl + '/' + filename;
+        
+	    RequestBuilder builder = new RequestBuilder(RequestBuilder.PUT, uploadUrl);
+	    String basicAuth = user + ':' + password;
+	    builder.setIncludeCredentials(false);
+	    builder.setHeader("Authorization", "Basic " + encodeBase64(basicAuth));
+	    
+	    try
+        {
+            builder.sendRequest(xmlData, new RequestCallback() {
+                @Override
+                public void onResponseReceived(Request request, Response response)
+                {
+                    if (response.getStatusCode() != 201)
+                        showError("Error " + response.getStatusCode() + ": " + response.getStatusText(), true);
+                    
+                    String projectId = "xdomes";
+                    String registerUrl = "https://xdomes.org/srr/sensorML.php?register=sensorml&registrant=" + user +
+                                         "&project=" + projectId + "&url=" + uploadUrl;
+                    
+                    RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, registerUrl);
+                    try
+                    {
+                        builder.sendRequest(null, new RequestCallback() {
+                            @Override
+                            public void onResponseReceived(Request request, Response response)
+                            {
+                                if (response.getStatusCode() != 200)
+                                    showError("Error " + response.getStatusCode() + ": " + response.getStatusText(), true);
+                            }
+
+                            @Override
+                            public void onError(Request request, Throwable e)
+                            {
+                                showError(e.getMessage(), false);
+                            }                            
+                        });
+                    }
+                    catch (RequestException e)
+                    {
+                        showError(e.getMessage(), false);
+                    }                    
+                }
+
+                @Override
+                public void onError(Request request, Throwable e)
+                {
+                    showError(e.getMessage(), true);
+                }	        
+            });
+        }
+        catch (RequestException e)
+        {
+            showError(e.getMessage(), true);
+        }
+	}
+	
+	private void showError(String msg, boolean duringUpload) {
+	    if (duringUpload)
+	        Window.alert("Error uploading SensorML document\n" + msg);
+	    else
+	        Window.alert("Error registering SensorML document\n" + msg);
+	}
+	
+	private static native String encodeBase64(String a) /*-{
+	  return window.btoa(a);
+	}-*/;
 	
 	/**
 	 * Validate.
