@@ -103,7 +103,7 @@ public class XMLSensorMLParser {
 	 * @return the RNG grammar
 	 * @throws Exception the exception
 	 */
-	public void parseFromString(String url, String xml, final RNGParserCallback callback) throws Exception{
+	public void parseFromString(String url, String xml, final RNGParserCallback callback) {
 		Document dom = XMLParser.parse(xml);
 		XMLParser.removeWhitespace(dom);
 		createGrammar(url, dom.getDocumentElement());

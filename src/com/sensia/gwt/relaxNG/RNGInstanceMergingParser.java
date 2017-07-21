@@ -157,6 +157,14 @@ public class RNGInstanceMergingParser
         String schemaUrl = profileUrl;
         if (profileUrl == null)
             schemaUrl = getSchemaUrl();
+        
+        // if no schema was found, use generic XML instance parser
+        if (profileUrl == null)
+        {
+            new XMLSensorMLParser().parseFromString(documentUrl, xml, callback);
+            return;
+        }
+        
         parseRelaxNg(schemaUrl, callback);
     }
     
