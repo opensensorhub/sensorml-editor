@@ -1,4 +1,4 @@
 /war/WEB-INF/classes
-/war/WEB-INF/deploy
+/war/WEB-INF/deploy/**
 /war/sensormleditor
 /gwt-unitCache/
