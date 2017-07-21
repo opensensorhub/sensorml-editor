@@ -29,9 +29,9 @@ public class UrlListSourcePanel extends AbstractSourcePanel {
     // default RNG profiles shown in drop down list
     private static Map<String,String> profiles = new HashMap<String,String>();
     static {
-        profiles.put("Simple Deployment (Local)", "http://127.0.0.1:8888/sensormleditor/sensorml-relaxng/profiles/Simple_Deployment.rng");
+        profiles.put("XDomes OEM Description", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/profiles/XDomes_OEM.rng");
+        profiles.put("OEM Description", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/profiles/PhysicalSystem_OEM.rng");
         profiles.put("Simple Deployment", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/profiles/Simple_Deployment.rng");
-        profiles.put("Frame Sensor Model (CSM)", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/profiles/RemoteSensing/frame-sensor-model.rng");
         profiles.put("Basic Physical Process", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/basic_sml/Basic_PhysicalProcess.rng");
         profiles.put("Basic Process", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/basic_sml/Basic_Process.rng");
         profiles.put("Basic Simple Process", "https://raw.githubusercontent.com/opensensorhub/sensorml-relaxng/master/basic_sml/Basic_SimpleProcess.rng");

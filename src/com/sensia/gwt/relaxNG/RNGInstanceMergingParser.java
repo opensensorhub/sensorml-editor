@@ -155,11 +155,11 @@ public class RNGInstanceMergingParser
         
         // extract schema URL
         String schemaUrl = profileUrl;
-        if (profileUrl == null)
+        if (schemaUrl == null)
             schemaUrl = getSchemaUrl();
         
         // if no schema was found, use generic XML instance parser
-        if (profileUrl == null)
+        if (schemaUrl == null)
         {
             new XMLSensorMLParser().parseFromString(documentUrl, xml, callback);
             return;

@@ -6,8 +6,6 @@ import com.google.gwt.user.client.ui.HorizontalSplitPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.sensia.gwt.relaxNG.RNGParser;
-import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IController;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.EditorPanel;
@@ -25,8 +23,8 @@ public class SensorMLEditor implements EntryPoint {
 	public void onModuleLoad() {
 		RootLayoutPanel root = RootLayoutPanel.get();
 		if (root != null) {
-			SensorMLEditor editor = new SensorMLEditor();
-			editor.open(root);
+		    root.addStyleName("gwt-root");
+			open(root);
 		}
 	}
 	
