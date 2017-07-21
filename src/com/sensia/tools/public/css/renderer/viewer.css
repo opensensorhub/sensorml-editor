@@ -31,6 +31,6 @@
     margin-bottom: 10px;
 }
 
-.viewer .panel-abstract-generic-line .before {
+.viewer .generic-line-panel > .before {
   min-width: 370px;
 }

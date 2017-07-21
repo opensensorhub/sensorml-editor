@@ -13,17 +13,8 @@ package com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced;
 import java.util.HashSet;
 import java.util.Set;
 import com.google.gwt.core.shared.GWT;
-import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGTagVisitor;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AbstractAdvancedAttributeOntologyIconPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributeDefinitionPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedAttributeReferenceFramePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkArcrolePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkHrefPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkRolePanel;
-import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.attribute.AdvancedXLinkTitlePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.element.AdvancedSimpleElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.gmd.GMDAdvancedObjectPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panels.sml.SMLAdvancedDescriptionPanel;
@@ -33,7 +24,6 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.advanced.panel
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditDescriptionPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.gml.GMLEditNamePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.root.EditRootPanel;
-import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLEditorConstants;
 
 /**
  * <p>
@@ -70,10 +60,7 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 	protected final static String GMD = "http://www.isotc211.org/2005/gmd";
 	
 	/** The Constant GCO. */
-	protected final static String GCO = "http://www.isotc211.org/2005/gco";
-	
-	/** The Xlink constant. */
-	protected final static String XLINK = "http://www.w3.org/1999/xlink";
+	protected final static String GCO = "http://www.isotc211.org/2005/gco";	
 	
 	/** The skip list. */
 	protected Set<String> skipList = new HashSet<String>();
@@ -128,26 +115,23 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 		skipList.add("event");
 	}
 	
-	/* (non-Javadoc)
-	 * @see com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRendererSWE#visit(com.sensia.relaxNG.RNGElement)
-	 */
 	@Override
 	public void visit(RNGElement elt) {
 		String eltName = elt.getName();
 		String nsUri = elt.getNamespace();
 		
-		//skip the element and visit children
+		// skip element and visit children
 		if(skipList.contains(eltName)) {
 			visitChildren(elt.getChildren());
 			return;
 		}
 				
-		if(rootSectionsList.contains(eltName)) {
+		if (rootSectionsList.contains(eltName)) {
 			pushAndVisitChildren(new EditRootPanel(elt,getRefreshHandler()),elt.getChildren());
 			return;
 		}
 		
-		if(nsUri == null) {
+		if (nsUri == null) {
 			GWT.log("NameSpace for element "+elt.getName()+" does not exist");
 			super.visit(elt);
 			return;
@@ -195,14 +179,16 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
             
 			super.visit(elt);
 			return;
-		} else if (nsUri.equalsIgnoreCase(GCO)) {
+		} 
+		
+		// GCO namespace
+		else if (nsUri.equalsIgnoreCase(GCO)) {
 			visitChildren(elt.getChildren());
 			return;
-		} else if (nsUri.equalsIgnoreCase(SMLEditorConstants.SWE_NS_1) || nsUri.equalsIgnoreCase(SMLEditorConstants.SWE_NS_2)) {
-			super.visit(elt);
-			return;
-		} else if (nsUri.equalsIgnoreCase(SML_NS_1) || nsUri.equalsIgnoreCase(SML_NS_2)) {
-			// handle SML element
+		} 
+		
+		// SML namespace
+		else if (nsUri.equalsIgnoreCase(SML_NS_1) || nsUri.equalsIgnoreCase(SML_NS_2)) {
 			if(eltName.equalsIgnoreCase("ObservableProperty")) {
 				visitChildren(elt.getChildren());
 			} else if(eltName.equalsIgnoreCase("identifier")) {
@@ -223,50 +209,12 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 				super.visit(elt);
 			}
 			return;
-		} else {
-			// handle others
+		} 
+		
+		// let superclass handle other namespaces
+		else {
 			super.visit(elt);
 			return;
-		}
-	}
-	
-	/* (non-Javadoc)
-	 * @see com.sensia.tools.client.swetools.editors.sensorml.renderer.RNGRenderer#visit(com.sensia.relaxNG.RNGAttribute)
-	 */
-	@Override
-	public void visit(RNGAttribute att) {
-		// handle xlink
-		String nsUri = att.getNamespace();
-		String name = att.getName();
-		if (nsUri != null && nsUri.equalsIgnoreCase(XLINK)) {
-			if(name.equals("role")){
-				pushAndVisitChildren(new AdvancedXLinkRolePanel(att,getRefreshHandler()),att.getChildren());
-			} else if(name.equals("arcrole")) {
-				pushAndVisitChildren(new AdvancedXLinkArcrolePanel(att,getRefreshHandler()),att.getChildren());
-			} else if(name.equals("href")) {
-				pushAndVisitChildren(new AdvancedXLinkHrefPanel(att,getRefreshHandler()),att.getChildren());
-			} else if(name.equals("title")) {
-				pushAndVisitChildren(new AdvancedXLinkTitlePanel(att,getRefreshHandler()),att.getChildren());
-			} else {
-				GWT.log("[WARN] Unsupported XLink element: "+name+". Skipped.");
-				super.visit(att);
-			}
-		} else if(name.equals("referenceFrame")) {
-			pushAndVisitChildren(new AdvancedAttributeReferenceFramePanel(att,getRefreshHandler()),att.getChildren());
-		} else if(name.equals("localFrame")) {
-            pushAndVisitChildren(new AdvancedAttributePanel(att,getRefreshHandler()),att.getChildren());
-        } else if(name.equals("definition")) {
-			pushAndVisitChildren(new AdvancedAttributeDefinitionPanel(att,getRefreshHandler()),att.getChildren());
-		} else if(name.equals("reason")) {
-			pushAndVisitChildren(new AbstractAdvancedAttributeOntologyIconPanel(att,getRefreshHandler()),att.getChildren());
-		} else if(name.equals("id")) {
-			pushAndVisitChildren(new AdvancedAttributePanel(att,getRefreshHandler()),att.getChildren());
-		} else if(name.equals("name")) {
-			pushAndVisitChildren(new AdvancedAttributePanel(att,getRefreshHandler()),att.getChildren());
-		} else if (name.equals("code")) {
-	        pushAndVisitChildren(new AdvancedAttributePanel(att,"Unit",null), att.getChildren());
-	    } else {
-			super.visit(att);
 		}
 	}
 }

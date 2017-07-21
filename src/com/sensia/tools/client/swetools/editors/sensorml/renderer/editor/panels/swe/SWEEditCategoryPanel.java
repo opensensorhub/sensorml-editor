@@ -20,10 +20,8 @@ public class SWEEditCategoryPanel extends EditValueGenericLinePanel{
 	protected Panel codeSpace;
 	
 	public SWEEditCategoryPanel(RNGElement element,IRefreshHandler refreshHandler) {
-		super(element,refreshHandler);
-		
-		codeSpace = new SimplePanel();
-		
+		super(element,refreshHandler);		
+		codeSpace = new SimplePanel();		
 		afterDotsPanel.add(codeSpace);
 	}
 

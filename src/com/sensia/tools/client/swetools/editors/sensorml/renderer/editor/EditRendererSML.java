@@ -95,6 +95,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditAllowedValuesPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditBooleanPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditCategoryPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditCodespacePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditConstraintPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditCoordinatePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.renderer.editor.panels.swe.SWEEditCountPanel;
@@ -450,6 +451,8 @@ public class EditRendererSML extends EditRendererRNG implements RNGTagVisitor {
                 panel = new SWEEditQualityPanel(elt,getRefreshHandler());
             } else if(eltName.equals("uom")) {
                 panel = new SWEEditUOMPanel(elt);
+            } else if(eltName.equals("codeSpace")) {
+                panel = new SWEEditCodespacePanel(elt);
             } else if(eltName.equals("field")) {
                 panel = new SWEEditFieldPanel(elt,getRefreshHandler());
             } else if(eltName.equals("coordinate")) {
