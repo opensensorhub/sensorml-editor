@@ -12,6 +12,8 @@ package com.sensia.tools.client.swetools.editors.sensorml;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.google.gwt.core.shared.GWT;
 import com.sensia.gwt.relaxNG.RNGInstanceMergingParser;
 import com.sensia.gwt.relaxNG.RNGParser;
 import com.sensia.gwt.relaxNG.RNGParserCallback;

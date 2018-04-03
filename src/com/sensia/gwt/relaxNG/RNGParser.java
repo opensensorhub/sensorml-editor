@@ -318,7 +318,7 @@ public class RNGParser
             Element child = (Element)children.item(i);
             String childName = child.getNodeName();
             
-            if (childName.equals("include"))
+            if (childName.equals("include") && child.hasAttributes())
                 includeElts.add(child);
         }
         numIncludes = includeElts.size();
@@ -368,20 +368,26 @@ public class RNGParser
         });      
     }
     
-    
+    private RNGParserContext getContext() {
+        if(context == null) {
+            context = new RNGParserContext();
+        }
+        return context;
+    }
+
     protected void finishParsing(Element grammarElt)
     {
         parsePatternsAndAddToGrammar(grammar, grammarElt);
         
         // add grammar to cache
-        context.cachedGrammars.put(grammar.getId(), grammar);
+        getContext().cachedGrammars.put(grammar.getId(), grammar);
         
         // call main callback
         GWT.log("Done parsing: " + grammar.getId());
         callback.onParseDone(grammar);
         
         // also call all callbacks registered while grammar was loading
-        List<RNGParserCallback> callbacks = context.loadingGrammars.remove(grammar.getId());
+        List<RNGParserCallback> callbacks = getContext().loadingGrammars.remove(grammar.getId());
         if (callbacks != null) 
         {
             for (RNGParserCallback callback: callbacks)
@@ -490,7 +496,12 @@ public class RNGParser
             String value = getTextValue(paramElt);
             data.getParams().put(name, value);
         }
-        
+
+        // check for value
+        if(elt.hasChildNodes() && elt.getFirstChild().getNodeName().equalsIgnoreCase("value")) {
+            String value = getTextValue(elt.getFirstChild());
+            data.setStringValue(value);
+        }
         data.setType(dataType);
         return data;
     }
@@ -553,9 +564,9 @@ public class RNGParser
     {
         if (!node.hasChildNodes() || node.getFirstChild().getNodeType() != Node.TEXT_NODE)
             return null;
-            
+
         String textValue = node.getFirstChild().getNodeValue();
-        
+
         if (textValue != null)
             return textValue.replace("\\s+", " ");
         else

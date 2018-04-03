@@ -161,7 +161,8 @@ public class RNGInstanceMergingParser
         // if no schema was found, use generic XML instance parser
         if (profileUrl == null)
         {
-            new XMLSensorMLParser().parseFromString(documentUrl, xml, callback);
+            //new XMLSensorMLParser().parseFromString(documentUrl, xml, callback);
+            new RNGParser().parseFromString(documentUrl, xml, callback);
             return;
         }
         

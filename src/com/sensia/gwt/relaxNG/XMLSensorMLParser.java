@@ -13,6 +13,7 @@ package com.sensia.gwt.relaxNG;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
@@ -172,10 +173,10 @@ public class XMLSensorMLParser {
             } else if(node.getNodeType() == Node.ELEMENT_NODE) {
             	Element elt = (Element)node;
             	RNGElement rngElt = new RNGElement();
-            	QName qName= parseName(elt.getNodeName());
-            	
-                rngElt.setName(qName.localName);
-                rngElt.setNamespace(qName.namespaceURI);
+            	GWT.log(elt.getNodeName()+ " --> "+elt.getNodeValue());
+
+                rngElt.setName(getLocalName(elt));
+                rngElt.setNamespace(getNamespaceURI(elt));
                 
                 //add attributes if any
                 if (elt.hasAttributes()) {
@@ -184,10 +185,9 @@ public class XMLSensorMLParser {
 					for (int j = 0; j < attributes.getLength(); j++) {
 						Node attr = attributes.item(j);
 						RNGAttribute rngAtt = new RNGAttribute();
-						qName = parseName(attr.getNodeName());
-						
-						rngAtt.setName(qName.localName);
-						rngAtt.setNamespace(qName.namespaceURI);
+
+						rngAtt.setName(getLocalName(attr));
+						rngAtt.setNamespace(getNamespaceURI(attr));
 						
 						//RNGValue rngValue = new RNGValue();
 						XSDString	rngData = new XSDString();
@@ -226,6 +226,17 @@ public class XMLSensorMLParser {
 	protected String getLocalName(Node node) {
 		QName qname = parseName(node.getNodeName());
 		return qname.localName;
+	}
+
+	/**
+	 * Gets the uri name.
+	 *
+	 * @param node the node
+	 * @return the local name
+	 */
+	protected String getNamespaceURI(Node node) {
+		QName qname = parseName(node.getNodeName());
+		return qname.namespaceURI;
 	}
 
 	/**
