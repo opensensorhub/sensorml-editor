@@ -1,3 +1,5 @@
 /war/WEB-INF/classes
 /war/sensormleditor
 /gwt-unitCache/
+.idea
+out
