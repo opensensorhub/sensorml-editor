@@ -29,7 +29,9 @@ public class DisclosureElementPanel extends AbstractPanel<RNGElement>{
 		sectionPanel.addStyleName("panel-disclosure-element-section");
 		
 		container.add(sectionPanel);
-		
+
+		sectionPanel.addCloseHandler((CloseHandler) -> this.onclose());
+		sectionPanel.addOpenHandler((OpenHandler) -> this.onOpen());
 	}
 	
 	@Override
@@ -48,4 +50,11 @@ public class DisclosureElementPanel extends AbstractPanel<RNGElement>{
 		return null;
 	}
 
+	public void onclose() {
+
+	}
+
+	public void onOpen() {
+
+	}
 }

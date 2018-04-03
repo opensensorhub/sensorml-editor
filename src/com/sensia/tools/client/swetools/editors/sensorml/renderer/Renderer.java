@@ -1,8 +1,7 @@
 package com.sensia.tools.client.swetools.editors.sensorml.renderer;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
+
 import com.google.gwt.xml.client.Element;
 import com.sensia.relaxNG.RNGElement;
 import com.sensia.relaxNG.RNGGrammar;
@@ -14,6 +13,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.IPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.IRefreshHandler;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.base.element.DisclosureElementPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.generic.GenericVerticalContainerPanel;
+import com.sensia.tools.client.swetools.editors.sensorml.state.State;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.NameRefResolver;
 
 public abstract class Renderer implements IRefreshHandler, RNGTagVisitor{
@@ -30,11 +30,13 @@ public abstract class Renderer implements IRefreshHandler, RNGTagVisitor{
 	protected NameRefResolver resolver;
 	
 	protected IPanel rootPanel;
-	
+
+	public static State state = new State();
+
 	public Renderer() {
-		stack = new Stack<IPanel<? extends RNGTag>>();
+		stack = new Stack<>();
 		resolver = new NameRefResolver();
-		this.observers = new ArrayList<IObserver>();
+		this.observers = new ArrayList<>();
 		
 		GenericVerticalContainerPanel rootAdvanced = new GenericVerticalContainerPanel();
 		rootAdvanced.getPanel().addStyleName("advanced-dialog");
