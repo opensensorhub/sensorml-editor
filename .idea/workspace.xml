@@ -1,0 +1,1373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0e5206c5-414e-444c-92dd-a7c7c55ea0c2" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.classpath" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.lock" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.mylyn/.taskListIndex/segments.gen" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.mylyn/.taskListIndex/segments_1" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.mylyn/.tasks.xml.zip" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.mylyn/repositories.xml.zip" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.mylyn/tasks.xml.zip" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/com.google.appengine.eclipse.core/appengine-sdk-proxy.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/com.google.gwt.eclipse.core/uiBinderReferences" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/history.version" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.version" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/_0.fdt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/_0.fdx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/_0.fnm" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/_0.frq" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/_0.nrm" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/_0.tii" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/_0.tis" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/segments.gen" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/segments_1" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/write.lock" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/remote-history/_0.fdt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/remote-history/_0.fdx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/remote-history/_0.fnm" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/remote-history/_0.frq" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/remote-history/_0.nrm" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/remote-history/_0.tii" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/remote-history/_0.tis" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/remote-history/segments.gen" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/remote-history/segments_1" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/server-config.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ui/history/_0.fdt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ui/history/_0.fdx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ui/history/_0.fnm" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ui/history/_0.frq" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ui/history/_0.nrm" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ui/history/_0.tii" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ui/history/_0.tis" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ui/history/segments.gen" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ui/history/segments_1" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ui/remote-index/_0.fdt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ui/remote-index/_0.fdx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ui/remote-index/_0.fnm" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ui/remote-index/_0.frq" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ui/remote-index/_0.nrm" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ui/remote-index/_0.tii" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ui/remote-index/_0.tis" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ui/remote-index/segments.gen" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.epp.logging.aeri.ui/remote-index/segments_1" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.equinox.p2.ui/dialog_settings.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/assumedExternalFilesCache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/externalFilesCache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/invalidArchivesCache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/nonChainingJarsCache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.ui/OpenTypeHistory.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.ui/QualifiedTypeNameHistory.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.m2e.logback.configuration/0.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.m2e.logback.configuration/logback.1.6.0.20150526-2032.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.m2e.logback.configuration/logback.1.6.1.20150625-2338.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.oomph.setup/workspace.setup" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.pde.core/.cache/clean-cache.properties" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.rse.core/.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.rse.core/initializerMarks/org.eclipse.rse.internal.core.RSELocalConnectionInitializer.mark" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.ui.ide/dialog_settings.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.ui.workbench/dialog_settings.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.ui.workbench/workingsets.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.metadata/version.ini" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.project" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.settings/com.google.gwt.eclipse.core.prefs" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.settings/com.gwtplugins.gwt.eclipse.core.prefs" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/SensorMLEditor.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/SensorMLEditor.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/appengine-web.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/META-INF/jdoconfig.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/META-INF/persistence.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/RelaxNG.gwt.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/gwt/relaxNG/QName.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/gwt/relaxNG/RNGInstanceWriter.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/gwt/relaxNG/RNGParser$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/gwt/relaxNG/RNGParser$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/gwt/relaxNG/RNGParser.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/gwt/relaxNG/RNGParserCallback.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/gwt/relaxNG/RNGWriter.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/gwt/relaxNG/RelaxNGModule.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/gwt/relaxNG/XMLSensorMLParser$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/gwt/relaxNG/XMLSensorMLParser.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/gwt/relaxNG/XMLSerializer.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/RNGAttribute.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/RNGChoice.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/RNGData.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/RNGDefine.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/RNGElement.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/RNGGrammar.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/RNGGroup.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/RNGInterleave.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/RNGList.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/RNGOneOrMore.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/RNGOptional.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/RNGRef.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/RNGTag.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/RNGTagList.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/RNGTagVisitor.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/RNGText.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/RNGValue.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/RNGZeroOrMore.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/XSDAnyURI.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/XSDBoolean.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/XSDDateTime$IDateTimeFormat.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/XSDDateTime.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/XSDDecimal.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/XSDDouble.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/XSDInteger.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/XSDString.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/relaxNG/XSDToken.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/SensorMLEditor.gwt.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/SensorMLEditor.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/IParsingObserver.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/RNGProcessorSML$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/RNGProcessorSML$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/RNGProcessorSML.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/SensorConstants.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/controller/IObserver.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/controller/Observable.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/listeners/FileUploadSubmitCompleteHandler.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/listeners/FileUploadSubmitHandler.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/listeners/IButtonCallback.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/listeners/ICallback.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/listeners/IClickListener.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/listeners/ILoadFileCallback.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/listeners/LoadProfileButtonClickListener.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/listeners/ViewAsXMLButtonClickListener$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/listeners/ViewAsXMLButtonClickListener$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/listeners/ViewAsXMLButtonClickListener$3$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/listeners/ViewAsXMLButtonClickListener$3.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/listeners/ViewAsXMLButtonClickListener.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/ontology/OntologyPanel$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/ontology/OntologyPanel$2$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/ontology/OntologyPanel$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/ontology/OntologyPanel.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/ontology/TableRes$TableStyle.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/ontology/TableRes.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/ontology/ontology-table.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/ontology/property/ILoadOntologyCallback.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/ontology/property/IOntologyPropertyReader.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/ontology/property/Property.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/ontology/property/RdfPropertyReader$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/ontology/property/RdfPropertyReader.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/ontology/property/SensorMLPropertyOntology$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/ontology/property/SensorMLPropertyOntology$Property.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/ontology/property/SensorMLPropertyOntology.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/CenterPanel$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/CenterPanel$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/CenterPanel$3.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/CenterPanel$4.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/CenterPanel.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/source/AbstractSourcePanel.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/source/FileUploadPanel$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/source/FileUploadPanel$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/source/FileUploadPanel.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/source/ISourcePanel.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/source/LocalFileSourcePanel.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/source/UrlSourcePanel.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/AbstractSensorElementWidget$1$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/AbstractSensorElementWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/AbstractSensorElementWidget$2$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/AbstractSensorElementWidget$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/AbstractSensorElementWidget$3$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/AbstractSensorElementWidget$3.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/AbstractSensorElementWidget$4$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/AbstractSensorElementWidget$4.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/AbstractSensorElementWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/ISensorWidget$APPENDER.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/ISensorWidget$MODE.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/ISensorWidget$TAG_DEF.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/ISensorWidget$TAG_TYPE.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/ISensorWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/SensorAttributeRefWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/SensorAttributeRefWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/SensorAttributeWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/SensorChoiceWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/SensorChoiceWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/SensorGenericHorizontalContainerWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/SensorGenericVerticalContainerWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/SensorGenericXLinkWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/SensorOptionalWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/SensorOptionalWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/SensorValueWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/SensorZeroOrMoreWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/SensorZeroOrMoreWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/line/SensorGenericLineWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/line/SensorGenericLineWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/xsd/SensorXSDAnyURIWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/xsd/SensorXSDDateTimeWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/xsd/SensorXSDDecimalWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/xsd/SensorXSDDoubleWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/xsd/SensorXSDIntegerWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/xsd/SensorXSDStringWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/xsd/SensorXSDWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/xsd/SensorXSDWidget$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/xsd/SensorXSDWidget$3.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/xsd/SensorXSDWidget$4.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/base/xsd/SensorXSDWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/gml/GMLSensorWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLComponentWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLComponentWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLContactWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLContactWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLDocumentWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLDocumentWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLKeywordsWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLKeywordsWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLLinkWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLSensorAttributeWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLSensorAttributeWidget$2$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLSensorAttributeWidget$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLSensorAttributeWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLSensorEventWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLSensorEventWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLSensorModeChoiceWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLSensorModeWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLSensorSetValueWidget$1$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLSensorSetValueWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLSensorSetValueWidget$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLSensorSetValueWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SMLSensorSpatialFrame.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SensorSectionWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SensorSectionWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SensorSectionsWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SensorSectionsWidget$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SensorSectionsWidget$3.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/SensorSectionsWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/component/SMLSensorXLinkComponentWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/sml/component/SMLSensorXLinkComponentWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/SWESensorAllowedValuesWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/SWESensorCategoryWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/SWESensorConditionWidget$ConditionImageWrapperHandler.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/SWESensorConditionWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/SWESensorCurveWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/SWESensorDataRecordWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/SWESensorDataRecordWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/SWESensorElementTypeWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/SWESensorFieldWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/SWESensorPositionWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/SWESensorQuantityRangeWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/SWESensorQuantityWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/SWESensorTimeRangeWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/SWESensorTimeWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/SWESensorVectorWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/dataarray/GenericCurveChart.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/dataarray/GenericTable$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/dataarray/GenericTable$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/dataarray/GenericTable$3.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/dataarray/GenericTable$4.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/dataarray/GenericTable$5.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/dataarray/GenericTable$6.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/dataarray/GenericTable$7.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/dataarray/GenericTable.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/dataarray/SWESensorDataArrayHelper.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/dataarray/SWESensorDataArrayWidget$GraphicImageWrapperHandler.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/dataarray/SWESensorDataArrayWidget$TableImageWrapperHandler$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/dataarray/SWESensorDataArrayWidget$TableImageWrapperHandler.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/dataarray/SWESensorDataArrayWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/position/AbstractSWESensorPositionByWidget$Coordinate.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/position/AbstractSWESensorPositionByWidget$Coordinates.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/position/AbstractSWESensorPositionByWidget$MapIconImageWrapperHandler$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/position/AbstractSWESensorPositionByWidget$MapIconImageWrapperHandler$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/position/AbstractSWESensorPositionByWidget$MapIconImageWrapperHandler.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/position/AbstractSWESensorPositionByWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/position/SWESensorCoordinateWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/position/SWESensorPositionByDataRecordWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/position/SWESensorPositionByDataRecordWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/position/SWESensorPositionByDescriptionWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/position/SWESensorPositionByPointWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/position/SWESensorPositionByPointWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/position/SWESensorPositionByTrajectoryWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/position/SWESensorPositionByTrajectoryWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/position/SWESensorPositionByVectorWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/position/map/SensorMapLineStringWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/position/map/SensorMapPointWidget$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/position/map/SensorMapPointWidget.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/panels/widgets/swe/position/map/geojson/GeoJsonBuilder.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/renderer/RNGRenderer.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/renderer/RNGRendererSML$RENDER_ELEMENT_TYPE.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/renderer/RNGRendererSML.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/renderer/RNGRendererSWE.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/utils/BoyerMoore.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/utils/Mapping.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/utils/NameRefResolver$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/utils/NameRefResolver.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/utils/Utils$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/utils/Utils$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/utils/Utils$3.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/utils/Utils$4.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/utils/Utils$5.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/utils/Utils$6.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/utils/Utils.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/client/swetools/editors/sensorml/utils/UtilsNative.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/add.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/advanced.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/arrow-direction.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/arrow-right.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/arrow_down.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/arrow_right.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/arrow_up.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/blue-dot.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/bullet.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/bullet_toggle_minus.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/bullet_toggle_plus.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/change.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/condition.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/correct.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/data_array.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/direction.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/drawing.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/hide_section.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/icon_info.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/link_add.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/link_delete.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/maps-icon.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/obj.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/ontology.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/path4.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/question_white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/remove.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/show_section.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/images/table.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/Blob.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/FileSaver.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/FileSaver.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/adapters/standalone-framework.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/adapters/standalone-framework.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/highcharts-3d.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/highcharts-3d.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/highcharts-more.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/highcharts-more.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/highcharts.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/highcharts.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/jquery-2.1.4.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/modules/broken-axis.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/modules/broken-axis.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/modules/canvas-tools.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/modules/canvas-tools.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/modules/data.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/modules/data.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/modules/drilldown.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/modules/drilldown.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/modules/exporting.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/modules/exporting.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/modules/funnel.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/modules/funnel.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/modules/heatmap.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/modules/heatmap.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/modules/no-data-to-display.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/modules/no-data-to-display.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/modules/solid-gauge.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/modules/solid-gauge.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/modules/treemap.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/modules/treemap.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/themes/dark-blue.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/themes/dark-green.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/themes/dark-unica.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/themes/gray.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/themes/grid-light.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/themes/grid.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/themes/sand-signika.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/themes/skies.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/js/xmllint.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/ontologies/mmi.mvco.ont" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/ontologies/ont.swe" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/ontologies/sensorml.ont.csm.property" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/ontologies/sensorml.ont.ogceo.common" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/ontologies/sensorml.ont.swe.property" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/gml/gml4swe.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/ic/ic-ism-v2.0.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/profiles/CSM/anemometer.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/profiles/CSM/csm-common.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/profiles/CSM/frame-sensor-model.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/profiles/CSM/gamma.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/profiles/CSM/geopositioning-models.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/profiles/CSM/optical-sensor-parameters.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/profiles/CSM/pushbroom-sensor-model.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/profiles/CSM/scanner-sensor-parameters.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/profiles/CSM/sensorML.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/profiles/CSM/thermometer-minimal-edit.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/profiles/CSM/thermometer-minimal-view.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/profiles/CSM/whiskbroom-sensor-model.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/profiles/Common_Structures/coverage-test.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/profiles/Common_Structures/coverage.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/profiles/Common_Structures/geometry-test.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/profiles/Common_Structures/geometry.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/sml/base.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/sml/process.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/sml/sensorML.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/sml/system.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/swe/aggregateTypes.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/swe/data.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/swe/encoding.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/rng1.0/swe/simpleTypes.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/ADCP_System.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/Davis_7817_complete.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/Davis_7817_min.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/MVCO_ObservingSystem.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/MVCO_Workhorse_1200.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/RDI_Workhorse_1200.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/characteristics.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/csmFrame.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/description.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/disparateNetwork.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/extSensor.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/friendlyProcess.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/gamma2070.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/identifiers.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/iotSimple.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/locDescription.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/locDynamic.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/locGML.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/locOrientation.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/locOutput.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/locStatic.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/metadata.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/my_gamma.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/outputsParameters.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/outputsPosition.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/schema/aggregate_process.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/schema/configuration.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/schema/core.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/schema/flatten/gco.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/schema/flatten/gmd.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/schema/flatten/gml.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/schema/flatten/gsr.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/schema/flatten/gss.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/schema/flatten/gts.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/schema/flatten/sensorML_flat.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/schema/flatten/sensorML_flat2.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/schema/flatten/swe.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/schema/flatten/xlink.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/schema/flatten/xml.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/schema/physical_component.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/schema/physical_system.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/schema/sensorML.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/schema/simple_process.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/sensorML2.0.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/simpleMultiplex.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/simpleNetwork.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/simpleProcess.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/streamRTP.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/streamSimple.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/streamingCBRNE.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/streamingNav.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/test.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorML/weatherStation.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorml-relaxng/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorml-relaxng/gml/gml4swe.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorml-relaxng/sml/PhysicalProcess.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorml-relaxng/sml/Process.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorml-relaxng/sml/core.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorml-relaxng/swe/aggregateTypes.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorml-relaxng/swe/data.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorml-relaxng/swe/encoding.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/com/sensia/tools/public/sensorml-relaxng/swe/simpleTypes.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/classes/log4j.properties" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/deploy/sensormleditor/rpcPolicyManifest/manifest.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/deploy/sensormleditor/symbolMaps/0B66901B7C36D93427E8B4CC921B603F.symbolMap" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/deploy/sensormleditor/symbolMaps/3953582BA84F2A231219E2E075DFC355.symbolMap" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/deploy/sensormleditor/symbolMaps/7D88A916208019CB63DB973EAA4DA6EE.symbolMap" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/deploy/sensormleditor/symbolMaps/802FC28A990358F802F2C346F3165C4C.symbolMap" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/deploy/sensormleditor/symbolMaps/FBD4EA05422F0EE9939BD0CAEB076911.symbolMap" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/lib/appengine-api-1.0-sdk-1.9.34.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/lib/appengine-api-labs.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/lib/appengine-endpoints-deps.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/lib/appengine-endpoints.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/lib/appengine-jsr107cache-1.9.34.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/lib/asm-4.0.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/lib/datanucleus-api-jdo-3.1.3.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/lib/datanucleus-api-jpa-3.1.3.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/lib/datanucleus-appengine-2.1.2.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/lib/datanucleus-core-3.1.3.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/lib/geronimo-jpa_2.0_spec-1.0.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/lib/gwt-servlet.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/lib/jdo-api-3.0.1.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/lib/jsr107cache-1.1.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/lib/jta-1.1.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/logging.properties" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/WEB-INF/web.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/favicon.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/0B66901B7C36D93427E8B4CC921B603F.cache.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/3953582BA84F2A231219E2E075DFC355.cache.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/7D88A916208019CB63DB973EAA4DA6EE.cache.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/802FC28A990358F802F2C346F3165C4C.cache.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/FBD4EA05422F0EE9939BD0CAEB076911.cache.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/clear.cache.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/compilation-mappings.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/gwt/clean/clean.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/gwt/clean/clean_rtl.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/gwt/clean/images/circles.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/gwt/clean/images/corner.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/gwt/clean/images/hborder.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/gwt/clean/images/thumb_horz.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/gwt/clean/images/thumb_vertical.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/gwt/clean/images/vborder.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/add.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/advanced.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/arrow-direction.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/arrow-right.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/arrow_down.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/arrow_right.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/arrow_up.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/blue-dot.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/bullet.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/bullet_toggle_minus.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/bullet_toggle_plus.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/change.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/condition.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/correct.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/data_array.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/direction.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/drawing.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/hide_section.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/icon_info.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/link_add.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/link_delete.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/maps-icon.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/obj.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/ontology.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/path4.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/question_white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/remove.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/show_section.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/images/table.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/Blob.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/FileSaver.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/FileSaver.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/adapters/standalone-framework.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/adapters/standalone-framework.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/highcharts-3d.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/highcharts-3d.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/highcharts-more.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/highcharts-more.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/highcharts.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/highcharts.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/jquery-2.1.4.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/modules/broken-axis.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/modules/broken-axis.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/modules/canvas-tools.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/modules/canvas-tools.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/modules/data.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/modules/data.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/modules/drilldown.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/modules/drilldown.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/modules/exporting.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/modules/exporting.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/modules/funnel.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/modules/funnel.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/modules/heatmap.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/modules/heatmap.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/modules/no-data-to-display.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/modules/no-data-to-display.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/modules/solid-gauge.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/modules/solid-gauge.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/modules/treemap.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/modules/treemap.src.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/themes/dark-blue.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/themes/dark-green.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/themes/dark-unica.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/themes/gray.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/themes/grid-light.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/themes/grid.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/themes/sand-signika.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/themes/skies.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/js/xmllint.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/ontologies/mmi.mvco.ont" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/ontologies/ont.swe" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/ontologies/sensorml.ont.csm.property" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/ontologies/sensorml.ont.ogceo.common" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/ontologies/sensorml.ont.swe.property" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/gml/gml4swe.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/ic/ic-ism-v2.0.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/profiles/CSM/anemometer.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/profiles/CSM/csm-common.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/profiles/CSM/frame-sensor-model.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/profiles/CSM/gamma.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/profiles/CSM/geopositioning-models.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/profiles/CSM/optical-sensor-parameters.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/profiles/CSM/pushbroom-sensor-model.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/profiles/CSM/scanner-sensor-parameters.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/profiles/CSM/sensorML.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/profiles/CSM/thermometer-minimal-edit.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/profiles/CSM/thermometer-minimal-view.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/profiles/CSM/whiskbroom-sensor-model.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/profiles/Common_Structures/coverage-test.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/profiles/Common_Structures/coverage.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/profiles/Common_Structures/geometry-test.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/profiles/Common_Structures/geometry.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/sml/base.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/sml/process.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/sml/sensorML.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/sml/system.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/swe/aggregateTypes.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/swe/data.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/swe/encoding.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/rng1.0/swe/simpleTypes.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/ADCP_System.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/Davis_7817_complete.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/Davis_7817_min.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/MVCO_ObservingSystem.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/MVCO_Workhorse_1200.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/RDI_Workhorse_1200.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/characteristics.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/csmFrame.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/description.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/disparateNetwork.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/extSensor.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/friendlyProcess.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/gamma2070.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/identifiers.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/iotSimple.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/locDescription.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/locDynamic.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/locGML.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/locOrientation.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/locOutput.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/locStatic.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/metadata.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/my_gamma.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/outputsParameters.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/outputsPosition.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/schema/aggregate_process.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/schema/configuration.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/schema/core.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/schema/flatten/gco.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/schema/flatten/gmd.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/schema/flatten/gml.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/schema/flatten/gsr.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/schema/flatten/gss.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/schema/flatten/gts.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/schema/flatten/sensorML_flat.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/schema/flatten/sensorML_flat2.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/schema/flatten/swe.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/schema/flatten/xlink.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/schema/flatten/xml.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/schema/physical_component.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/schema/physical_system.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/schema/sensorML.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/schema/simple_process.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/sensorML2.0.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/simpleMultiplex.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/simpleNetwork.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/simpleProcess.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/streamRTP.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/streamSimple.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/streamingCBRNE.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/streamingNav.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/test.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorML/weatherStation.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorml-relaxng/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorml-relaxng/gml/gml4swe.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorml-relaxng/sml/PhysicalProcess.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorml-relaxng/sml/Process.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorml-relaxng/sml/core.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorml-relaxng/swe/aggregateTypes.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorml-relaxng/swe/data.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorml-relaxng/swe/encoding.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensorml-relaxng/swe/simpleTypes.rng" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensormleditor.devmode.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dev/sensormleditor/sensormleditor.nocache.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/jdoconfig.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/persistence.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/war/SensorMLEditor.html" afterPath="$PROJECT_DIR$/war/SensorMLEditor.html" />
+      <change beforePath="$PROJECT_DIR$/war/WEB-INF/deploy/sensormleditor/rpcPolicyManifest/manifest.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/war/WEB-INF/deploy/sensormleditor/symbolMaps/0D5BCED64A34468962DDDE1CA7AAB0FC.symbolMap" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/war/WEB-INF/deploy/sensormleditor/symbolMaps/3A677A00DBD400CE7397228973C87805.symbolMap" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/war/WEB-INF/deploy/sensormleditor/symbolMaps/701999F58F84B8F4C08D9441ECF04E0A.symbolMap" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/war/WEB-INF/deploy/sensormleditor/symbolMaps/F0C685795A39BBE72EB214B9B01D2F89.symbolMap" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/war/WEB-INF/deploy/sensormleditor/symbolMaps/FD49B01D04182744076CDAC51F04E3D2.symbolMap" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/war/WEB-INF/lib/gwt-servlet.jar" afterPath="" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="SensorMLEditor.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/client/SensorMLEditor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="45" column="20" lean-forward="true" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/com/sensia/tools/SensorMLEditor.gwt.xml" />
+        <option value="$PROJECT_DIR$/war/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/war/SensorMLEditor.html" />
+        <option value="$PROJECT_DIR$/src/com/sensia/tools/client/SensorMLEditor.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="254" />
+    <option name="y" value="55" />
+    <option name="width" value="1402" />
+    <option name="height" value="995" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SensorMLEditor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sensorml-editor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SensorMLEditor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sensorml-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SensorMLEditor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sensorml-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sensia" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SensorMLEditor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sensorml-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sensia" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SensorMLEditor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sensorml-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sensia" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SensorMLEditor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sensorml-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="war" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SensorMLEditor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sensorml-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="war" type="462c0819:PsiDirectoryNode" />
+              <item name="isomorphic" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/smartgwt.jar!/" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="GWT Configuration.SensorMLEditor">
+    <configuration name="All in sensorml-editor" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="sensorml-editor" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration name="SensorMLEditor" type="GWT.ConfigurationType" factoryName="GWT Configuration">
+      <module name="sensorml-editor" />
+      <option name="VM_PARAMETERS" value="-Xmx4096m -Xms2048m" />
+      <option name="RUN_PAGE" value="SensorMLEditor.html" />
+      <option name="BROWSER" value="b1b2ec2c-20bd-4ee2-89c4-616db004bcd4" />
+      <option name="USE_SUPER_DEV_MODE" value="true" />
+      <option name="WORKING_DIRECTORY" value="" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="GWT Configuration.SensorMLEditor" />
+      <item index="1" class="java.lang.String" itemvalue="Android JUnit.All in sensorml-editor" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Android JUnit.All in sensorml-editor" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0e5206c5-414e-444c-92dd-a7c7c55ea0c2" name="Default" comment="" />
+      <created>1522699274060</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1522699274060</updated>
+      <workItem from="1522699277084" duration="4798000" />
+      <workItem from="1522747441069" duration="754000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="All_in_sensorml-editor - 2018.04.03 at 11h 27m 52s.xml">
+      <configuration name="All in sensorml-editor" configurationId="AndroidJUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="5552000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-6" y="31" width="1932" height="1055" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19270833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/panels/ViewerPanel.java</url>
+          <line>166</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="5" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/SensorMLEditor.gwt.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="59" lean-forward="false" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/client/SensorMLEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/SensorMLEditor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="47" lean-forward="false" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/dataarray/SWEEditDataArrayLinePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="41" lean-forward="false" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/SensorMLEditor.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8806">
+          <caret line="518" column="0" lean-forward="true" selection-start-line="518" selection-start-column="0" selection-end-line="518" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/public/css/core.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3451">
+          <caret line="203" column="0" lean-forward="true" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/dataarray/SWEEditDataArrayLinePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="41" lean-forward="false" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/SensorMLEditor.gwt.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="59" lean-forward="false" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/SensorMLEditor.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8806">
+          <caret line="518" column="0" lean-forward="false" selection-start-line="518" selection-start-column="0" selection-end-line="518" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/SensorMLEditor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="47" lean-forward="false" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/public/css/core.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="200" column="0" lean-forward="false" selection-start-line="199" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/panels/ViewerPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="165" column="0" lean-forward="false" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/softs/gwt-2.8.2/gwt-user.jar!/com/google/gwt/event/dom/client/ClickEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding>
+            <element signature="e#1556#1557#0" expanded="true" />
+            <element signature="e#1587#1588#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/softs/gwt-2.8.2/gwt-user.jar!/com/google/gwt/event/dom/client/ClickHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/softs/gwt-2.8.2/gwt-user.jar!/com/google/web/bindery/event/shared/EventBus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding>
+            <element signature="e#1513#1514#0" expanded="true" />
+            <element signature="e#1546#1547#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/softs/gwt-2.8.2/gwt-user.jar!/com/google/web/bindery/event/shared/SimpleEventBus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+          <folding>
+            <element signature="e#2530#2531#0" expanded="true" />
+            <element signature="e#2559#2560#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/softs/gwt-2.8.2/gwt-user.jar!/com/google/gwt/event/shared/HandlerManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/softs/gwt-2.8.2/gwt-user.jar!/com/google/gwt/event/dom/client/DomEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="55">
+          <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/softs/gwt-2.8.2/gwt-user.jar!/com/google/gwt/user/client/ui/Widget.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="162" column="0" lean-forward="false" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/softs/gwt-2.8.2/gwt-user.jar!/com/google/gwt/user/client/DOM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="55">
+          <caret line="1414" column="0" lean-forward="false" selection-start-line="1414" selection-start-column="0" selection-end-line="1414" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/softs/gwt-2.8.2/gwt-user.jar!/com/google/gwt/user/client/impl/DOMImplStandard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="311" column="0" lean-forward="false" selection-start-line="311" selection-start-column="0" selection-end-line="311" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/softs/gwt-2.8.2/gwt-user.jar!/com/google/gwt/core/client/impl/Impl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="86" column="6" lean-forward="true" selection-start-line="86" selection-start-column="6" selection-end-line="86" selection-end-column="6" />
+          <folding>
+            <marker date="1508316562000" expanded="true" signature="2838:3212" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="2862:3207" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="2921:2992" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="2998:3201" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="3086:3175" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="3272:3721" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="3779:4042" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="3785:3903" ph="//..." />
+            <marker date="1508316562000" expanded="true" signature="4114:4143" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="4198:4227" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="5339:5368" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="6782:7843" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="6841:7231" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="6924:7118" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="7045:7088" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="7276:7591" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="7361:7386" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="7425:7584" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="7497:7554" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="7597:7779" ph="//..." />
+            <marker date="1508316562000" expanded="true" signature="9549:9614" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="9583:9605" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="10067:10321" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="10124:10215" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="10221:10317" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="10421:10727" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="10478:10531" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="10537:10723" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="10607:10701" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="13311:13371" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="13447:13484" ph="{...}" />
+            <marker date="1508316562000" expanded="true" signature="13876:13945" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/client/SensorMLEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="45" column="20" lean-forward="true" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>sensorml-editor:war exploded</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Web (sensorml-editor)|Web</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>sensorml-editor</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>9.0</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>gwt-elemental-2.7.0</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

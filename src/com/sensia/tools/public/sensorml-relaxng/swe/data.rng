@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar
+   xmlns="http://relaxng.org/ns/structure/1.0"
+   xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+   xmlns:swe="http://www.opengis.net/swe/2.0"
+   datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+   <!-- -->
+   <include href="./aggregateTypes.rng"/>
+   <!-- -->
+   <define name="swe.DataStream">
+      <element name="swe:DataStream">
+         <ref name="swe.AbstractSWEIdentifiable"/>
+         <element name="swe:elementType">
+            <ref name="swe.dataComponentPropertyWithName"/>
+         </element>
+         <ref name="swe.EncodedValuesGroup"/>
+      </element>
+   </define>
+</grammar>

@@ -1,0 +1,27 @@
+.root {
+  width: 100%;
+  padding-top: 10px;
+  padding-left: 25px;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.root div {
+	vertical-align: middle;
+}
+
+.root > * {
+  line-height: 20px;
+}
+
+.root .gwt-HTML {
+	min-width: initial;
+}
+
+.root .gwt-Label {
+	min-width: initial;
+}
+
+.root > div {
+	margin-bottom: 5px;
+}
