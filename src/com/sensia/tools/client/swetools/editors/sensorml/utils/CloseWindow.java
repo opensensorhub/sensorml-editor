@@ -4,6 +4,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.HeaderControls;
@@ -30,6 +31,7 @@ public class CloseWindow extends Window {
         setAutoSize(autoSize);
         setShowMaximizeButton(true);
         setIsModal(true);
+		setKeepInParentRect(true);
         if(!autoSize) {
 			resizeTo(660, 550);
 		} 
@@ -41,7 +43,7 @@ public class CloseWindow extends Window {
 				closeDialog();
 			}
 		});
-		
+
 	}
 	
 	protected void closeDialog() {

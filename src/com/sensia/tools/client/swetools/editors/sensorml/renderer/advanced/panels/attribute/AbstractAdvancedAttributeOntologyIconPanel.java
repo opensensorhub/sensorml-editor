@@ -44,8 +44,8 @@ public class AbstractAdvancedAttributeOntologyIconPanel extends AdvancedAttribut
 			public void onClick(ClickEvent event) {
 				final OntologyPanel ontologyPanel = new OntologyPanel();
 				SaveCloseWindow dialogBox = Utils.displaySaveDialogBox(ontologyPanel.getPanel(),"SWE Ontology");
-				dialogBox.setWidth(1024);
-				dialogBox.setHeight(800);
+				dialogBox.setWidth(800);
+				dialogBox.setHeight(600);
 				dialogBox.addSaveHandler(new ClickHandler(){
 					@Override
 					public void onClick(ClickEvent event) {
@@ -60,7 +60,7 @@ public class AbstractAdvancedAttributeOntologyIconPanel extends AdvancedAttribut
 				});
 			}
 		});
-		
+
 		valuePanel = new SMLHorizontalPanel();
 		container.add(valuePanel);
 		container.add(ontologyImage);
