@@ -24,13 +24,13 @@ public class SensorMLEditor implements EntryPoint {
 	 */
 	public void onModuleLoad() {
 		RootLayoutPanel root = RootLayoutPanel.get();
+		root.addStyleName("root-app");
 		if (root != null) {
 			SensorMLEditor editor = new SensorMLEditor();
 			editor.open(root);
 		}
 	}
 	
-	private ViewerPanel viewerPanel;
 	private RNGProcessorSML sgmlEditorProcessor;
 	
 	public SensorMLEditor() {
@@ -43,22 +43,7 @@ public class SensorMLEditor implements EntryPoint {
 	}
 
 	private Widget getViewer(){
-		//viewerPanel = new ViewerPanel(sgmlEditorProcessor);
-		viewerPanel = ViewerPanel.getInstance(sgmlEditorProcessor);
-		sgmlEditorProcessor.setRefreshHandler(viewerPanel);
-		// Create a Dock Panel
-	    DockPanel dock = new DockPanel();
-	    dock.setStyleName("cw-DockPanel");
-	    dock.setSpacing(4);
-	    dock.setHorizontalAlignment(DockPanel.ALIGN_LEFT);
-	    // Add text all around
-	    
-	    //dock.add(navigationPanel, DockPanel.WEST);
-	    dock.add(viewerPanel, DockPanel.CENTER);
-
-	    // Return the content
-	    dock.ensureDebugId("cwDockPanel");
-	    return dock;
+		return ViewerPanel.getInstance(sgmlEditorProcessor);
 	}
 	
 

@@ -15,13 +15,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.CheckBox;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.RadioButton;
-import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.*;
 import com.sensia.relaxNG.RNGGrammar;
 import com.sensia.tools.client.swetools.editors.sensorml.IParsingObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
@@ -77,9 +71,10 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		
 		// main panel
 		mainPanel = new SMLVerticalPanel();
-		mainPanel.addStyleName("main-content");		
-		verticalPanel.add(mainPanel);
-		
+		mainPanel.addStyleName("main-content");
+
+		verticalPanel.add(new ScrollPanel(mainPanel));
+
 		// detect if document URL is given as url parameter (?url=DocumentPath)
         String passedFile = com.google.gwt.user.client.Window.Location.getParameter("url");
         if (passedFile != null) {
@@ -90,7 +85,8 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
             editCheckbox.setVisible(true);          
         }
         
-		initWidget(verticalPanel);		
+		initWidget(verticalPanel);
+        addStyleName("viewer-panel");
 	}
 	
 	private SMLHorizontalPanel buildHeader() {
