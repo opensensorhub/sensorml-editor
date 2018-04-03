@@ -39,11 +39,7 @@ public class SensorMLEditor implements EntryPoint {
 	}
 
 	public void open(Panel parent) {
-		HorizontalSplitPanel p = new HorizontalSplitPanel();
-		p.setLeftWidget(getViewer());
-	    //p.setRightWidget(getEditor(controller));
-	    p.setSplitPosition("1200px");
-		parent.add(p);
+		parent.add(getViewer());
 	}
 
 	private Widget getViewer(){
