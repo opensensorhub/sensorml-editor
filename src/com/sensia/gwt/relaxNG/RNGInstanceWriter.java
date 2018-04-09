@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.xml.client.Comment;
 import com.google.gwt.xml.client.Document;
 import com.google.gwt.xml.client.Element;
@@ -82,7 +83,7 @@ public class RNGInstanceWriter
     {
         String text = null;
         String error = null;
-        
+
         if (tag instanceof RNGElement)
         {
             RNGElement elt = (RNGElement)tag;
@@ -195,6 +196,8 @@ public class RNGInstanceWriter
                 text = val.toString();
             else
                 error = NO_VALUE;
+        } else {
+            GWT.log(""+tag.getClass());
         }
         
         // deal with text nodes or attribute values

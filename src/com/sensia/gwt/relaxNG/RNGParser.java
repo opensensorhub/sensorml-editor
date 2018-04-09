@@ -2,10 +2,10 @@
 
  The contents of this file are Copyright (C) 2011 Sensia Software LLC.
  All Rights Reserved.
- 
+
  Contributor(s): 
     Alexandre Robin <alex.robin@sensiasoftware.com>
- 
+
 ******************************* END LICENSE BLOCK ***************************/
 
 package com.sensia.gwt.relaxNG;
@@ -75,26 +75,26 @@ public class RNGParser
     protected RNGParserCallback callback;
     protected RNGGrammar grammar;
     protected int numIncludes;
-    
-    
+
+
     static class RNGParserContext
     {
         public Map<String, RNGGrammar> cachedGrammars = new HashMap<String, RNGGrammar>();
         public Map<String, List<RNGParserCallback>> loadingGrammars = new HashMap<String, List<RNGParserCallback>>();
     }
-    
-    
+
+
     public void parseFromUrl(final String url, final RNGParserCallback callback)
     {
         parseFromUrl(url, new RNGParserContext(), callback);
     }
-    
-    
+
+
     protected void parseFromUrl(final String url, final RNGParserContext context, final RNGParserCallback callback)
     {
         this.context = context;
         this.callback = callback;
-        
+
         // get it directly if grammar is in cache
         grammar = context.cachedGrammars.get(url);
         if (grammar != null)
@@ -103,7 +103,7 @@ public class RNGParser
             callback.onParseDone(grammar);
             return;
         }
-        
+
         // wait if grammar is already loading
         if (context.loadingGrammars.containsKey(url))
         {
@@ -111,14 +111,14 @@ public class RNGParser
             context.loadingGrammars.get(url).add(callback);
             return;
         }
-        
+
         GWT.log("Parsing grammar: " + url);
         context.loadingGrammars.put(url, new ArrayList<RNGParserCallback>());
-        
+
         // otherwise load included grammar and parse it asynchronously
         RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, URL.encode(url));
         try {
-            
+
           builder.sendRequest(null, new RequestCallback() {
             public void onError(Request request, Throwable exception) {
                // Couldn't connect to server (could be timeout, SOP violation, etc.)
@@ -127,7 +127,7 @@ public class RNGParser
             public void onResponseReceived(Request request, Response resp) {
               if (200 == resp.getStatusCode()) {
                   String text = resp.getText();
-                  parseFromString(url, text, callback);                  
+                  parseFromString(url, text, callback);
               } else {
                 // Handle the error.  Can get the status text from response.getStatusText()
               }
@@ -135,10 +135,10 @@ public class RNGParser
           });
         } catch (RequestException e) {
           e.printStackTrace();
-        }        
+        }
     }
-    
-    
+
+
     public void parseFromString(String url, String xml, final RNGParserCallback callback)
     {
         this.callback = callback;
@@ -146,8 +146,8 @@ public class RNGParser
         XMLParser.removeWhitespace(dom);
         parseGrammar(url, dom.getDocumentElement());
     }
-    
-    
+
+
     protected void parseChildren(RNGTag parent, Element parentElt)
     {
         int eltCount = 0;
@@ -160,22 +160,22 @@ public class RNGParser
             Element elt = (Element)node;
             String eltName = getLocalName(elt);
             String nsUri = node.getNamespaceURI();
-            
+
             // annotation
             if (nsUri != null && nsUri.equals(ANNOT_NS_URI) && eltName.equals("documentation"))
                 parent.setAnnotation(getTextValue(node));
-            
+
             // parse nested relaxNG tags
             if (parent instanceof RNGTagList)
             {
                 if (!nsUri.equals(RNG_NS_URI))
                     continue;
-                
+
                 // selected item
                 if (parent instanceof RNGChoice && "true".equalsIgnoreCase(elt.getAttribute("selected")))
                     ((RNGChoice)parent).setSelectedIndex(eltCount);
                 eltCount++;
-                
+
                 RNGTag tag = null;
                 if (eltName.equals("ref"))
                 {
@@ -185,7 +185,7 @@ public class RNGParser
                     parseChildren(ref, elt);
                     tag = ref;
                 }
-                
+
                 else if (eltName.equals("element"))
                 {
                     RNGElement rngElt = new RNGElement();
@@ -195,7 +195,7 @@ public class RNGParser
                     parseChildren(rngElt, elt);
                     tag = rngElt;
                 }
-                
+
                 else if (eltName.equals("attribute"))
                 {
                     RNGAttribute rngAtt = new RNGAttribute();
@@ -205,7 +205,7 @@ public class RNGParser
                     parseChildren(rngAtt, elt);
                     tag = rngAtt;
                 }
-                
+
                 else if (eltName.equals("optional"))
                 {
                     tag = new RNGOptional();
@@ -213,13 +213,13 @@ public class RNGParser
                     if ("true".equalsIgnoreCase(elt.getAttribute("selected")))
                         ((RNGOptional)tag).setSelected(true);
                 }
-                
+
                 else if (eltName.equals("choice"))
                 {
                     tag = new RNGChoice();
                     parseChildren(tag, elt);
                 }
-                
+
                 else if (eltName.equals("zeroOrMore"))
                 {
                     tag = new RNGZeroOrMore();
@@ -227,37 +227,37 @@ public class RNGParser
                     if ("true".equalsIgnoreCase(elt.getAttribute("selected")))
                         ((RNGZeroOrMore)tag).newOccurence();
                 }
-                
+
                 else if (eltName.equals("oneOrMore"))
                 {
                     tag = new RNGOneOrMore();
                     parseChildren(tag, elt);
                 }
-                
+
                 else if (eltName.equals("group"))
                 {
                     tag = new RNGGroup();
                     parseChildren(tag, elt);
                 }
-                
+
                 else if (eltName.equals("list"))
                 {
                     tag = new RNGList();
                     parseChildren(tag, elt);
                 }
-                
+
                 else if (eltName.equals("text"))
                 {
                     tag = new RNGText();
                     parseChildren(tag, elt);
                 }
-                
+
                 else if (eltName.equals("data"))
                 {
                     tag = parseDataType(elt);
                     parseChildren(tag, elt);
                 }
-                
+
                 else if (eltName.equals("value"))
                 {
                     RNGValue val = new RNGValue();
@@ -272,23 +272,23 @@ public class RNGParser
                     parseChildren(val, elt);
                     tag = val;
                 }
-                
+
                 if (tag != null)
                     ((RNGTagList)parent).add(tag);
             }
         }
     }
-    
-    
+
+
     protected RNGGrammar parseGrammar(String url, Element grammarElt)
     {
         grammar = new RNGGrammar();
         grammar.setId(url);
-        
+
         // figure out base URL
         int lastSlash = url.lastIndexOf('/');
         String baseUrl = (lastSlash > 0) ? url.substring(0, lastSlash+1) : "";
-        
+
         // namespaces
         NamedNodeMap atts = grammarElt.getAttributes();
         for (int i = 0; i < atts.getLength(); i++)
@@ -298,15 +298,15 @@ public class RNGParser
             {
                 String prefix = node.getNodeName().substring(node.getNodeName().indexOf(':')+1);
                 String uri = node.getNodeValue();
-                
+
                 if (uri.equals(RNGParser.RNG_NS_URI) ||
                     uri.equals(RNGParser.ANNOT_NS_URI))
                     continue;
-                
+
                 grammar.addNamespace(prefix, uri);
             }
         }
-        
+
         // get included grammars
         List<Element> includeElts = new ArrayList<Element>();
         NodeList children = grammarElt.getChildNodes();
@@ -314,60 +314,60 @@ public class RNGParser
         {
             if (children.item(i).getNodeType() != Node.ELEMENT_NODE)
                 continue;
-            
+
             Element child = (Element)children.item(i);
             String childName = child.getNodeName();
-            
+
             if (childName.equals("include") && child.hasAttributes())
                 includeElts.add(child);
         }
         numIncludes = includeElts.size();
-        
+
         // finish parsing now if no includes
         if (numIncludes == 0)
             finishParsing(grammarElt);
-        
+
         // else parse all included grammar asynchronously
         // we will finish parsing on callback when all includes are loaded
         else for (Element includeElt: includeElts)
             parseIncludedGrammar(baseUrl, includeElt);
-                    
+
         return grammar;
     }
-    
-    
+
+
     protected void parseIncludedGrammar(String baseUrl, final Element includeElt)
     {
         String url = includeElt.getAttribute("href");
         final String cleanUrl = canonicalizeUrl(baseUrl, url);
-        
+
         // add an entry so order of include is preserved
         grammar.getIncludedGrammars().put(cleanUrl, null);
-        
+
         RNGParser parser = new RNGParser();
         parser.parseFromUrl(cleanUrl, context, new RNGParserCallback() {
             @Override
             public void onParseDone(RNGGrammar g)
             {
                 GWT.log("Included grammar: " + cleanUrl);
-                
+
                 // parse embedded patterns (start, defines)
                 parsePatternsAndAddToGrammar(g, includeElt);
                 grammar.setStartPattern(g.getStartPattern());
-                
+
                 grammar.getIncludedGrammars().put(cleanUrl, g);
-                
+
                 // finish when all included grammars are actually loaded
                 int count = 0;
                 for (RNGGrammar inc: grammar.getIncludedGrammars().values())
                     if (inc != null)
-                        count++;                
+                        count++;
                 if (count == numIncludes)
                     finishParsing((Element)includeElt.getParentNode());
             }
-        });      
+        });
     }
-    
+
     private RNGParserContext getContext() {
         if(context == null) {
             context = new RNGParserContext();
@@ -378,24 +378,24 @@ public class RNGParser
     protected void finishParsing(Element grammarElt)
     {
         parsePatternsAndAddToGrammar(grammar, grammarElt);
-        
+
         // add grammar to cache
         getContext().cachedGrammars.put(grammar.getId(), grammar);
-        
+
         // call main callback
         GWT.log("Done parsing: " + grammar.getId());
         callback.onParseDone(grammar);
-        
+
         // also call all callbacks registered while grammar was loading
         List<RNGParserCallback> callbacks = getContext().loadingGrammars.remove(grammar.getId());
-        if (callbacks != null) 
+        if (callbacks != null)
         {
             for (RNGParserCallback callback: callbacks)
                 callback.onParseDone(grammar);
         }
     }
-    
-    
+
+
     protected void parsePatternsAndAddToGrammar(RNGGrammar grammar, Element parentElt)
     {
         NodeList children = parentElt.getChildNodes();
@@ -404,14 +404,14 @@ public class RNGParser
             Node node = children.item(i);
             if (!(node instanceof Element))
                 continue;
-            
+
             Element elt = (Element)node;
             String eltName = getLocalName(elt);
-            
+
             String nsUri = node.getNamespaceURI();
             if (!nsUri.equals(RNG_NS_URI))
                 continue;
-            
+
             if (eltName.equals("define"))
             {
                 RNGDefine pattern = new RNGDefine();
@@ -419,7 +419,7 @@ public class RNGParser
                 parseChildren(pattern, elt);
                 grammar.getPatterns().put(pattern.getId(), pattern);
             }
-            
+
             else if (eltName.equals("start"))
             {
                 RNGGroup startPattern = new RNGGroup();
@@ -428,13 +428,13 @@ public class RNGParser
             }
         }
     }
-    
-    
+
+
     protected String canonicalizeUrl(String baseUrl, String url)
     {
         if (!url.startsWith("http"))
             url = baseUrl + url;
-        
+
         // remove all . and ..
         String[] path = url.split("/");
         List<String> newPath = new ArrayList<String>();
@@ -442,13 +442,13 @@ public class RNGParser
         {
             if (path[i].equals("."))
                continue;
-            
+
             if (path[i].equals("..") && newPath.size() > 0)
                 newPath.remove(newPath.get(newPath.size()-1));
             else
                 newPath.add(path[i]);
         }
-        
+
         // rebuild URL
         StringBuilder cleanUrl = new StringBuilder();
         for (String part: newPath)
@@ -457,16 +457,16 @@ public class RNGParser
             cleanUrl.append('/');
         }
         cleanUrl.deleteCharAt(cleanUrl.length()-1);
-        
+
         return cleanUrl.toString();
     }
-    
-    
+
+
     protected RNGData<?> parseDataType(Element elt)
     {
         RNGData<?> data = null;
         String dataType = elt.getAttribute("type");
-       
+
         // instantiate the right class
         if (dataType.equals("boolean"))
             data = new XSDBoolean();
@@ -486,7 +486,7 @@ public class RNGParser
             data = new XSDToken();
         else
             data = new RNGData<String>();
-         
+
         // read params
         NodeList paramElts = elt.getElementsByTagName("param");
         for (int i = 0; i < paramElts.getLength(); i++)
@@ -505,8 +505,8 @@ public class RNGParser
         data.setType(dataType);
         return data;
     }
-    
-    
+
+
     protected QName parseRNGObjectName(Element elt)
     {
         String qname = elt.getAttribute("name");
@@ -528,16 +528,16 @@ public class RNGParser
                 }
             }
         }
-        
+
         return null;
     }
-    
-    
+
+
     protected QName parseName(String qname)
     {
         String[] tokens = qname.split(":");
         String localName = null, nsUri = null;
-        
+
         if (tokens.length == 1)
         {
             nsUri = null;
@@ -548,18 +548,18 @@ public class RNGParser
             nsUri = grammar.getNsPrefixToUri().get(tokens[0]);
             localName = tokens[1];
         }
-        
+
         return new QName(nsUri, localName);
     }
-    
-    
+
+
     protected String getLocalName(Node node)
     {
         QName qname = parseName(node.getNodeName());
         return qname.localName;
     }
-    
-    
+
+
     protected String getTextValue(Node node)
     {
         if (!node.hasChildNodes() || node.getFirstChild().getNodeType() != Node.TEXT_NODE)

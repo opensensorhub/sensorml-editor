@@ -10,6 +10,7 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.renderer.root;
 
+import com.google.gwt.core.client.GWT;
 import com.sensia.relaxNG.RNGAttribute;
 import com.sensia.relaxNG.RNGChoice;
 import com.sensia.relaxNG.RNGData;

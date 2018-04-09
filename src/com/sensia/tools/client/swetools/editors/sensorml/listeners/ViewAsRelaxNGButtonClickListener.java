@@ -152,6 +152,6 @@ public class ViewAsRelaxNGButtonClickListener implements ClickHandler{
 	 */
 	private native void saveFromJs(String xmlData) /*-{
 		var blob = new Blob([xmlData], {type: "text/xml;charset=utf-8"});
-		$wnd.saveAs(blob, "SensorML_XML_result_document.xml");
+		$wnd.saveAs(blob, "SensorML_XML_result_document.rng");
 	}-*/;
 }
