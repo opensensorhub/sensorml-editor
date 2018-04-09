@@ -1,0 +1,8 @@
+/* Root Part **/
+.root-app {
+    overflow:auto;
+}
+
+.root-app > div {
+    overflow: auto !important;
+}
