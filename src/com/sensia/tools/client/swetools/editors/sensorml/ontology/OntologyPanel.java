@@ -1,15 +1,11 @@
 package com.sensia.tools.client.swetools.editors.sensorml.ontology;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ChangeEvent;
-import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.event.dom.client.*;
 import com.google.gwt.event.logical.shared.ResizeEvent;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.ListBox;
-import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.*;
 import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.ILoadOntologyCallback;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.IOntologySearch;
@@ -44,30 +40,56 @@ public class OntologyPanel {
 		final TextBox searchBox = new TextBox();
 		searchPanel.add(new HTML("Search:"+SensorConstants.HTML_SPACE));
 		searchPanel.add(searchBox);
-        searchBox.addChangeHandler(new ChangeHandler() {            
+
+		// add hard coded filter
+        CheckBox uriCheckbox = new CheckBox("URI");
+        CheckBox descriptionCheckbox = new CheckBox("Description");
+
+        uriCheckbox.setValue(true);
+        descriptionCheckbox.setValue(true);
+
+        searchPanel.add(uriCheckbox);
+        searchPanel.add(descriptionCheckbox);
+
+        searchBox.addKeyPressHandler(new KeyPressHandler() {
             @Override
-            public void onChange(ChangeEvent event) {
-                String source = sourcesBox.getSelectedValue();
-                String searchTerm = searchBox.getValue();
-                
-                // show loading indicator
-                searchPanel.add(new Image(GWT.getModuleBaseURL()+"images/ajax-loader-small.gif"));
-                
-                // execute search query
-                IOntologySearch onto = new MMIRegistry(source);
-                onto.search(searchTerm, new ILoadOntologyCallback() {                    
-                    @Override
-                    public void onLoad(List<String> headers, Object[][] data) {
-                        ontologyTable = new GenericTable();
-                        ontologyTable.setEditable(false);
-                        Panel panelTable = ontologyTable.createTable();
-                        ontologyTable.populateTable(headers, data);
-                        ontologyPanel.remove(2); // remove old table
-                        searchPanel.remove(2); // remove loading indicator
-                        ontologyPanel.add(panelTable);
-                        ontologyPanel.fireEvent(new ResizeEvent(0,0) {});
+            public void onKeyPress(KeyPressEvent event) {
+                if(event.getNativeEvent().getKeyCode()  == KeyCodes.KEY_ENTER) {
+
+                    String source = sourcesBox.getSelectedValue();
+                    String searchTerm = searchBox.getValue();
+
+                    // show loading indicator
+                    searchPanel.add(new Image(GWT.getModuleBaseURL() + "images/ajax-loader-small.gif"));
+
+
+                    // compute filter
+                    List<IOntologySearch.ONTOLOGY_FILTER> filters = new ArrayList<>();
+                    if (uriCheckbox.getValue()) {
+                        filters.add(IOntologySearch.ONTOLOGY_FILTER.URI);
                     }
-                });             
+
+                    if (descriptionCheckbox.getValue()) {
+                        filters.add(IOntologySearch.ONTOLOGY_FILTER.DESCRIPTION);
+                    }
+
+                    // execute search query
+                    IOntologySearch onto = new MMIRegistry(source);
+                    onto.search(searchTerm, new ILoadOntologyCallback() {
+                        @Override
+                        public void onLoad(List<String> headers, Object[][] data) {
+                            ontologyTable = new GenericTable();
+                            ontologyTable.setEditable(false);
+                            Panel panelTable = ontologyTable.createTable();
+                            ontologyTable.populateTable(headers, data);
+                            ontologyPanel.remove(2); // remove old table
+                            searchPanel.remove(4); // remove loading indicator
+                            ontologyPanel.add(panelTable);
+                            ontologyPanel.fireEvent(new ResizeEvent(0, 0) {
+                            });
+                        }
+                    }, filters);
+                }
             }
         });
         

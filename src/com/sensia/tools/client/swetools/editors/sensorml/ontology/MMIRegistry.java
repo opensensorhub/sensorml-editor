@@ -14,10 +14,9 @@ Copyright (C) 2012-2017 Sensia Software LLC. All Rights Reserved.
 
 package com.sensia.tools.client.swetools.editors.sensorml.ontology;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
@@ -44,51 +43,68 @@ public class MMIRegistry implements IOntologySearch
     {
         this.endpoint = endpoint;
     }
-    
-    
-    public void search(final String searchTerm, final ILoadOntologyCallback callback)
-    {
-        String searchUrl = endpoint + "?query=select+distinct+%3Fsubject+%3Fpredicate+%3Fobject%0Awhere+%7B%0A+%3Fsubject+%3Fpredicate+%3Fobject.%0A+" + 
-                                      "filter+(regex(str(%3Fsubject),+%22" + searchTerm + "%5B%5E%2F%23%5D*$%22,+%22i%22)%0A+++%7C%7C+regex(str(%3Fobject),+" + 
-                                      "%22" + searchTerm + "%22,+%22i%22))%0A%7D%0Aorder+by+%3Fsubject";
-        
-        RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, searchUrl);
-        builder.setHeader("Accept", "application/json");
-        
-        try
-        {
-            builder.sendRequest(null, new RequestCallback() {
-                @Override
-                public void onResponseReceived(Request request, Response response)
-                {
-                    if (response.getStatusCode() != 200)
-                        showError("Error " + response.getStatusCode() + ": " + response.getStatusText());
-                    else
-                        parseJson(response.getText(), callback);
+
+
+    public void search(final String searchTerm, final ILoadOntologyCallback callback,List<ONTOLOGY_FILTER> filters) {
+
+        if(filters == null || filters.size() == 0) {
+            callback.onLoad(Arrays.asList(new String[]{"URI","Description","UNIT"}),new Object[0][0]);
+        } else {
+            String filter = "";
+            filter = "filter (";
+            for (int i = 0; i < filters.size(); i++) {
+                if (i != 0) {
+                    filter += "%0A+++%7C%7C+";
                 }
 
-                @Override
-                public void onError(Request request, Throwable e)
-                {
-                    showError(e.getMessage());
-                }           
-            });
+                if (filters.get(i) == ONTOLOGY_FILTER.URI) {
+                    filter += "regex(str(%3Fsubject),+%22" + searchTerm + "%5B%5E%2F%23%5D*$%22,+%22i%22)";
+                } else if (filters.get(i) == ONTOLOGY_FILTER.DESCRIPTION) {
+                    filter += "regex(str(%3Fobject),+" +
+                            "%22" + searchTerm + "%22,+%22i%22)";
+                }
+            }
+            filter += ")%0A%7D%0Aorder+by+%3Fsubject";
+            String searchUrl = endpoint + "?query=select+distinct+%3Fsubject+%3Fpredicate+%3Fobject%0Awhere+%7B%0A+%3Fsubject+%3Fpredicate+%3Fobject.%0A+" + filter;
+
+            RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, searchUrl);
+            builder.setHeader("Accept", "application/json");
+
+            try {
+                builder.sendRequest(null, new RequestCallback() {
+                    @Override
+                    public void onResponseReceived(Request request, Response response) {
+                        if (response.getStatusCode() != 200)
+                            showError("Error " + response.getStatusCode() + ": " + response.getStatusText());
+                        else
+                            parseJson(response.getText(), callback);
+                    }
+
+                    @Override
+                    public void onError(Request request, Throwable e) {
+                        showError(e.getMessage());
+                    }
+                });
+            } catch (RequestException e) {
+                showError(e.getMessage());
+            }
         }
-        catch (RequestException e)
-        {
-            showError(e.getMessage());
-        }
+    }
+
+    public void search(final String searchTerm, final ILoadOntologyCallback callback)
+    {
+        search(searchTerm,callback,null);
     }
     
     private void parseJson(String data, ILoadOntologyCallback callback)
     {
         JSONObject json = (JSONObject)JSONParser.parseStrict(data);        
         JSONArray triples = (JSONArray)json.get("values");
-        
+
+
         // create one row per distinct subject with definition and unit
         Map<String, Object[]> results = new HashMap<>();
-        for (int i=0; i<triples.size();i++)
-        {
+        for (int i=0; i<triples.size();i++) {
             JSONArray item = (JSONArray)triples.get(i);
             String subject = getStringValue(item.get(0));
             String predicate = getStringValue(item.get(1));

@@ -15,8 +15,17 @@ Copyright (C) 2012-2017 Sensia Software LLC. All Rights Reserved.
 package com.sensia.tools.client.swetools.editors.sensorml.ontology.property;
 
 
+import java.util.List;
+
 public interface IOntologySearch
 {
 
-    public void search(String searchTerm, ILoadOntologyCallback callback);
+    void search(String searchTerm, ILoadOntologyCallback callback);
+
+    void search(String searchTerm, ILoadOntologyCallback callback, List<ONTOLOGY_FILTER> filters);
+
+    enum ONTOLOGY_FILTER {
+        DESCRIPTION,
+        URI
+    }
 }
