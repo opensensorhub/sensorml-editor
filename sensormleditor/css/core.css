@@ -243,3 +243,20 @@ div.v-align-top  > div {
 }
 
 /** END HACK DIALOG RESIZE */
+.save-storage-panel {
+  margin-top:30px;
+}
+
+.save-storage-panel .panel-smlhorizontal{
+  margin-top:15px;
+}
+.save-storage-panel .gwt-TextBox{
+  width: 280px;
+  margin-left: 20px;
+}
+
+.save-storage-panel .gwt-HTML {
+  font-size: 14px;
+  margin-left: 10px;
+  width: 150px;
+}
