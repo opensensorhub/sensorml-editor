@@ -9,7 +9,6 @@ import com.sensia.relaxNG.RNGTag;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 public class Storage {
@@ -59,6 +58,7 @@ public class Storage {
                     StorageItem item = new StorageItem();
                     item.setId(split[2]);
                     item.setDate(split[3]);
+                    item.name = split[4];
                     try {
                         RNGTag tag = localStorage.get(new StorageKey<>(key,RNGTag.class));
                         item.content = tag;
@@ -79,9 +79,15 @@ public class Storage {
         return items;
     }
 
+    public void remove(String key) {
+        if(localStorage != null) {
+            localStorage.remove(new StorageKey<>(Storage.STORAGE_PREFIX+"$"+key,RNGTag.class));
+        }
+    }
+
     public void remove(StorageItem item) {
         if(localStorage != null) {
-            localStorage.remove(new StorageKey<>(Storage.STORAGE_PREFIX+"$"+item.getId()+"$"+item.getDate(),RNGTag.class));
+            localStorage.remove(new StorageKey<>(Storage.STORAGE_PREFIX+"$"+item.getId()+"$"+item.getDate()+"$"+item.name,RNGTag.class));
         }
     }
 }

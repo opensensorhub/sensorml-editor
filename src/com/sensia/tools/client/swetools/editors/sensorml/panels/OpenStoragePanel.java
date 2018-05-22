@@ -1,6 +1,5 @@
 package com.sensia.tools.client.swetools.editors.sensorml.panels;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Panel;
 import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.listeners.ICallback;
@@ -10,14 +9,14 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import java.util.Arrays;
 import java.util.List;
 
-public class StoragePanel extends SMLVerticalPanel {
+public class OpenStoragePanel extends SMLVerticalPanel {
 
     private GenericTable storageTable;
     private Storage storage;
 
     private List<StorageItem> dataFromStorage;
 
-    public StoragePanel(Storage storage) {
+    public OpenStoragePanel(Storage storage) {
         this.storage = storage;
         storageTable = new GenericTable();
         storageTable.setEditable(true);
@@ -29,7 +28,6 @@ public class StoragePanel extends SMLVerticalPanel {
             @Override
             public void callback(Integer[] result) {
                 for(Integer r:result) {
-                    //storage.remove(dataFromStorage.get(r).getId()+"$"+dataFromStorage.get(r).getId());
                     storage.remove(dataFromStorage.get(r));
                     dataFromStorage.remove(r);
                 }
@@ -47,11 +45,11 @@ public class StoragePanel extends SMLVerticalPanel {
                 StorageItem item = dataFromStorage.get(i);
                 data[i][0] = item.getId();
                 data[i][1] = item.getDate();
-                data[i][2] = item.content;
+                data[i][2] = item.name;
             }
         }
         Panel panelTable = storageTable.createTable();
-        storageTable.populateTable(Arrays.asList("Id","Creation Date","Content"), data);
+        storageTable.populateTable(Arrays.asList("Id","Creation Date","Name"), data);
 
         add(panelTable);
     }
@@ -63,7 +61,7 @@ public class StoragePanel extends SMLVerticalPanel {
         if(dataFromStorage != null) {
             for(StorageItem item : dataFromStorage) {
                 if(item.getId().equals(selectedValue)) {
-                    id = item.getId()+"$"+item.getDate();
+                    id = item.getId()+"$"+item.getDate()+"$"+item.name;
                     break;
                 }
             }

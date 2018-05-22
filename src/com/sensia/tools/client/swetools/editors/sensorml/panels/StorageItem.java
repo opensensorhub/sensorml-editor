@@ -9,6 +9,7 @@ public class StorageItem implements Serializable, IsSerializable {
     private String id;
     private String date;
     public RNGTag content;
+    public String name;
 
     public StorageItem() {
     }

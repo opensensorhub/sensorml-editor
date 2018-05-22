@@ -140,20 +140,43 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		header.add(viewAsRNG);
 
 		// save as RelaxNG button
-		Button loadPrevious = new Button("Recent");
-		loadPrevious.addClickHandler(new ClickHandler() {
+		Button save = new Button("Save..");
+		save.addClickHandler(new ClickHandler() {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				final StoragePanel storagePanel = new StoragePanel(storage);
-				SaveCloseWindow dialog = Utils.displaySaveDialogBox(storagePanel,"Local  storage content");
-				dialog.setButtonTitle("Load");
+				final SaveStoragePanel saveStoragePanel = new SaveStoragePanel(CURRENT_STORAGE_ID);
+				SaveCloseWindow dialog = Utils.displaySaveDialogBox(saveStoragePanel,"Local  storage content");
+				dialog.setButtonTitle("Save");
 
 				dialog.addSaveHandler(new ClickHandler() {
 					@Override
 					public void onClick(ClickEvent event) {
-						RNGTag grammar = storagePanel.getSelectedTag();
-						CURRENT_STORAGE_ID = storagePanel.getSelectedId();
+						storage.remove(CURRENT_STORAGE_ID);
+
+						CURRENT_STORAGE_ID = saveStoragePanel.getId()+"$"+saveStoragePanel.getDate()+"$"+saveStoragePanel.getCustomName();
+						storage.writeData(CURRENT_STORAGE_ID,smlEditorProcessor.getLoadedGrammar());
+					}
+				});
+			}
+		});
+		header.add(save);
+
+		// save as RelaxNG button
+		Button open = new Button("Open..");
+		open.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				final OpenStoragePanel openStoragePanel = new OpenStoragePanel(storage);
+				SaveCloseWindow dialog = Utils.displaySaveDialogBox(openStoragePanel,"Local storage content");
+				dialog.setButtonTitle("Open");
+
+				dialog.addSaveHandler(new ClickHandler() {
+					@Override
+					public void onClick(ClickEvent event) {
+						RNGTag grammar = openStoragePanel.getSelectedTag();
+						CURRENT_STORAGE_ID = openStoragePanel.getSelectedId();
 						cancelCurrentTimer();
 						redraw(smlEditorProcessor.getMode(), (RNGGrammar) grammar);
 						startTimerStorage();
@@ -161,7 +184,7 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 				});
 			}
 		});
-		header.add(loadPrevious);
+		header.add(open);
 
 		return header;
 	}
@@ -316,7 +339,8 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	public void createNewStorageUUID() {
 		CURRENT_STORAGE_ID = Utils.generateUUIDString();
 		DateTimeFormat fmt = DateTimeFormat.getFormat("yyyy-MM-dd'T'HH:mm:ss");
-		CURRENT_STORAGE_ID +="$"+fmt.format(new Date());
+		CURRENT_STORAGE_ID +="$"+fmt.format(new Date()); // add current date
+		CURRENT_STORAGE_ID +="$Unnamed"; // add default name
 	}
 
 
