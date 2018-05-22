@@ -14,7 +14,9 @@ public class SaveCloseWindow extends CloseWindow {
 	private ClickHandler uploadHandler;
 	private boolean exitOnSave = true;
 	private boolean allowUpload = false;
-	
+
+	private com.smartgwt.client.widgets.Button saveButton;
+
 	public SaveCloseWindow(String title,boolean autoSize) {
 		this(title, autoSize,"dialog-main");
 	}
@@ -51,7 +53,7 @@ public class SaveCloseWindow extends CloseWindow {
 		buttonsPanel.addStyleName("smartgwt-dialog-save-button");
 		buttonsPanel.setMembersMargin(10);
 		
-		final com.smartgwt.client.widgets.Button saveButton = new com.smartgwt.client.widgets.Button("Save");
+		saveButton = new com.smartgwt.client.widgets.Button("Save");
 		saveButton.setHeight(30);
 		saveButton.setWidth(60);
 		saveButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {            
@@ -114,4 +116,8 @@ public class SaveCloseWindow extends CloseWindow {
     public void addUploadHandler(ClickHandler handler) {
         this.uploadHandler = handler;
     }
+
+    public void setButtonTitle(String buttonTitle) {
+		saveButton.setTitle(buttonTitle);
+	}
 }

@@ -67,7 +67,9 @@ public class GenericTable{
 	
 	/** The is editable. */
 	private boolean isEditable = false;
-	
+
+	private boolean isSortable = false;
+
 	/**
 	 * Instantiates a new generic table.
 	 */
@@ -118,7 +120,7 @@ public class GenericTable{
 					return object.properties.get(currentPosition);
 				}
 			};
-			column.setSortable(false);
+			column.setSortable(isSortable);
 
 			SafeHtmlHeader colHeader = new SafeHtmlHeader(new SafeHtml() {
 
@@ -236,7 +238,11 @@ public class GenericTable{
 		
 		return vPanel;
 	}
-	
+
+	public void setSortable(boolean sortable) {
+		isSortable = sortable;
+	}
+
 	/**
 	 * Sets the filter.
 	 *

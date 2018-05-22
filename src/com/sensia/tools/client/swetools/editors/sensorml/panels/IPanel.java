@@ -10,8 +10,10 @@
 
 package com.sensia.tools.client.swetools.editors.sensorml.panels;
 
+import java.io.Serializable;
 import java.util.List;
 
+import com.google.gwt.user.client.rpc.IsSerializable;
 import com.google.gwt.user.client.ui.Panel;
 import com.sensia.relaxNG.RNGTag;
 
@@ -21,7 +23,7 @@ import com.sensia.relaxNG.RNGTag;
  * to get and change the value of the element or one of the sub element.
  *
  */
-public interface IPanel<T extends RNGTag> {
+public interface IPanel<T extends RNGTag> extends IsSerializable {
 
 	/**
 	 * 
