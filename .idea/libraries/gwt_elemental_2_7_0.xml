@@ -11,8 +11,6 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/libs/gwt-jackson-0.15.2.jar!/" />
-      <root url="jar://$PROJECT_DIR$/libs/gwt-jackson-0.15.2.jar!/com/github/nmorel/gwtjackson/super" />
       <root url="jar://$PROJECT_DIR$/libs/gwt-storage-1.4.0.jar!/" />
     </SOURCES>
   </library>
