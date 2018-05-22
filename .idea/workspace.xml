@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5216af8-02fb-473e-aea0-9665d089049c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/gwt_elemental_2_7_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/gwt_elemental_2_7_0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/RelaxNG.gwt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/RelaxNG.gwt.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/gwt/relaxNG/RNGInstanceWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/gwt/relaxNG/RNGInstanceWriter.class" afterDir="false" />
@@ -55,13 +54,6 @@
       <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/SaveCloseWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/SaveCloseWindow.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/Utils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/css/renderer/advanced.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/css/renderer/advanced.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sensia/RelaxNG.gwt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sensia/RelaxNG.gwt.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sensia/tools/SensorMLEditor.gwt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sensia/tools/SensorMLEditor.gwt.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/ontology/GenericTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/ontology/GenericTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/panels/IPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/panels/IPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/panels/ViewerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/panels/ViewerPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/utils/SaveCloseWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/utils/SaveCloseWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/utils/Utils.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/war/WEB-INF/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -421,7 +413,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -513,7 +505,7 @@
       <workItem from="1526820424055" duration="1937000" />
       <workItem from="1526845780504" duration="1106000" />
       <workItem from="1526846912386" duration="709000" />
-      <workItem from="1526915972650" duration="24044000" />
+      <workItem from="1526915972650" duration="24251000" />
     </task>
     <task id="LOCAL-00001" summary="#37 Provide more filtering in Ontology Search window">
       <created>1526929865310</created>
@@ -522,11 +514,18 @@
       <option name="project" value="LOCAL" />
       <updated>1526929865311</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="#17 Save state of editing (everything lost): add support for localStorage and grammar serialization/deserialization">
+      <created>1526948314533</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1526948314533</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28307000" />
+    <option name="totallyTimeSpent" value="28514000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="20" y="32" width="1906" height="1054" extended-state="6" />
@@ -568,7 +567,8 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="#37 Provide more filtering in Ontology Search window" />
-    <option name="LAST_COMMIT_MESSAGE" value="#37 Provide more filtering in Ontology Search window" />
+    <MESSAGE value="#17 Save state of editing (everything lost): add support for localStorage and grammar serialization/deserialization" />
+    <option name="LAST_COMMIT_MESSAGE" value="#17 Save state of editing (everything lost): add support for localStorage and grammar serialization/deserialization" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
