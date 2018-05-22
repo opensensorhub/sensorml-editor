@@ -34,6 +34,7 @@ import com.google.gwt.view.client.ListDataProvider;
 import com.google.gwt.view.client.SelectionChangeEvent;
 import com.google.gwt.view.client.SingleSelectionModel;
 import com.sensia.tools.client.swetools.editors.sensorml.SensorConstants;
+import com.sensia.tools.client.swetools.editors.sensorml.listeners.ICallback;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.property.Property;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
@@ -76,7 +77,9 @@ public class GenericTable{
 	public GenericTable() {
 		init();
 	}
-	
+
+	private ICallback<Integer> removeHandlerCallback;
+
 	/**
 	 * Inits the.
 	 */
@@ -169,6 +172,10 @@ public class GenericTable{
 				    dataProvider.refresh();
 				    
 				    deselect();
+
+				    if(removeHandlerCallback != null) {
+						removeHandlerCallback.callback(new Integer(index));
+					}
 				    }
 			});
 			
@@ -349,7 +356,7 @@ public class GenericTable{
 			//find def property
 			//we supposed that it exists at least one
 			value = selectedProperty.properties.get(0);
-			
+
 		}
 		return value;
 	}
@@ -422,5 +429,9 @@ public class GenericTable{
 	 */
 	public void setEditable(boolean isEditable) {
 		this.isEditable = isEditable;
+	}
+
+	public void onRemoveHandler(ICallback<Integer> callback) {
+		this.removeHandlerCallback = callback;
 	}
 }

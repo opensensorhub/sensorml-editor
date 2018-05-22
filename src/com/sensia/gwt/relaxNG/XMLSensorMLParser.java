@@ -173,7 +173,6 @@ public class XMLSensorMLParser {
             } else if(node.getNodeType() == Node.ELEMENT_NODE) {
             	Element elt = (Element)node;
             	RNGElement rngElt = new RNGElement();
-            	GWT.log(elt.getNodeName()+ " --> "+elt.getNodeValue());
 
                 rngElt.setName(getLocalName(elt));
                 rngElt.setNamespace(getNamespaceURI(elt));

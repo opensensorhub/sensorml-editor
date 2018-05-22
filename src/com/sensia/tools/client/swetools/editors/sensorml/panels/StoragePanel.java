@@ -1,7 +1,9 @@
 package com.sensia.tools.client.swetools.editors.sensorml.panels;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Panel;
 import com.sensia.relaxNG.RNGTag;
+import com.sensia.tools.client.swetools.editors.sensorml.listeners.ICallback;
 import com.sensia.tools.client.swetools.editors.sensorml.ontology.GenericTable;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 
@@ -18,9 +20,21 @@ public class StoragePanel extends SMLVerticalPanel {
     public StoragePanel(Storage storage) {
         this.storage = storage;
         storageTable = new GenericTable();
-        storageTable.setEditable(false);
+        storageTable.setEditable(true);
 
         populateFromStorage();
+
+        storageTable.onRemoveHandler(new ICallback<Integer>() {
+
+            @Override
+            public void callback(Integer[] result) {
+                for(Integer r:result) {
+                    //storage.remove(dataFromStorage.get(r).getId()+"$"+dataFromStorage.get(r).getId());
+                    storage.remove(dataFromStorage.get(r));
+                    dataFromStorage.remove(r);
+                }
+            }
+        });
     }
 
     private void populateFromStorage() {

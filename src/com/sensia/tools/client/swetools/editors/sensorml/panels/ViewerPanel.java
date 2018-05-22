@@ -140,7 +140,7 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		header.add(viewAsRNG);
 
 		// save as RelaxNG button
-		Button loadPrevious = new Button("Load previous");
+		Button loadPrevious = new Button("Recent");
 		loadPrevious.addClickHandler(new ClickHandler() {
 
 			@Override
@@ -330,8 +330,9 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 				}
 			};
 
+			t.run();
 			// Schedule the timer to run once in 5 seconds.
-			t.scheduleRepeating(1000);
+			t.scheduleRepeating(60000);
 		}
 	}
 

@@ -78,4 +78,10 @@ public class Storage {
         }
         return items;
     }
+
+    public void remove(StorageItem item) {
+        if(localStorage != null) {
+            localStorage.remove(new StorageKey<>(Storage.STORAGE_PREFIX+"$"+item.getId()+"$"+item.getDate(),RNGTag.class));
+        }
+    }
 }
