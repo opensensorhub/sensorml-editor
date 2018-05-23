@@ -2,6 +2,7 @@ package com.sensia.tools.client.swetools.editors.sensorml.panels;
 
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.TextBox;
+import com.sensia.tools.client.swetools.editors.sensorml.serialization.StorageItem;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 
@@ -11,12 +12,11 @@ public class SaveStoragePanel extends SMLVerticalPanel {
     private TextBox idBox;
     private TextBox dateBox;
 
-    public SaveStoragePanel(String key) {
+    public SaveStoragePanel(StorageItem item) {
 
-        String[] split = key.split("\\$");
-        addIdField(split[0]);
-        addDateField(split[1]);
-        addCustomName(split[2]);
+        addIdField(item.getId());
+        addDateField(item.getDate());
+        addCustomName(item.name);
         setStyleName("save-storage-panel");
     }
 

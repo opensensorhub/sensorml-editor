@@ -28,7 +28,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.controller.Observable;
  */
 public abstract class RNGTag extends Observable implements  ITag
 {
-    private static final long serialVersionUID = 984732656936240060L;
+    private static final long serialVersionUID = 984732656936241060L;
     protected String id;
     protected String annotation;
     protected RNGTag parent;

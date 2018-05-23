@@ -45,31 +45,31 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 public class GenericTable{
 
 	/** The data provider. */
-	private ListDataProvider<Property> dataProvider;
+	protected ListDataProvider<Property> dataProvider;
 	
 	/** The table res. */
-	private CellTable.Resources tableRes = GWT.create(TableRes.class);
+	protected CellTable.Resources tableRes = GWT.create(TableRes.class);
 	
 	/** The table. */
 	@UiField(provided=true)
-	private CellTable<Property> table;
+	protected CellTable<Property> table;
 	
 	/** The selected property. */
-	private Property selectedProperty;
+	protected Property selectedProperty;
 	
 	/** The original data. */
-	private List<Property> originalData;
+	protected List<Property> originalData;
 	
 	/** The filtered data. */
-	private List<Property> filteredData;
+	protected List<Property> filteredData;
 	
 	/** The lentgh pattern. */
-	private int lentghPattern = 0;
+	protected int lentghPattern = 0;
 	
 	/** The is editable. */
-	private boolean isEditable = false;
+	protected boolean isEditable = false;
 
-	private boolean isSortable = false;
+	protected boolean isSortable = false;
 
 	/**
 	 * Instantiates a new generic table.
@@ -78,7 +78,7 @@ public class GenericTable{
 		init();
 	}
 
-	private ICallback<Integer> removeHandlerCallback;
+	protected ICallback<Integer> removeHandlerCallback;
 
 	/**
 	 * Inits the.

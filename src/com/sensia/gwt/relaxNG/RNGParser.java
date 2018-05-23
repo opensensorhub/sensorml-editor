@@ -349,8 +349,6 @@ public class RNGParser
             @Override
             public void onParseDone(RNGGrammar g)
             {
-                GWT.log("Included grammar: " + cleanUrl);
-
                 // parse embedded patterns (start, defines)
                 parsePatternsAndAddToGrammar(g, includeElt);
                 grammar.setStartPattern(g.getStartPattern());

@@ -29,7 +29,6 @@ import java.util.Map;
  */
 public class RNGGrammar extends RNGTag
 {
-    private static final long serialVersionUID = -5964644764981084093L;
     protected Map<String, RNGGrammar> includedGrammars;
     protected RNGGrammar parentGrammar;    
     protected Map<String, String> nsPrefixToUri;

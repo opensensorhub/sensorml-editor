@@ -19,7 +19,6 @@ import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.*;
 import com.sensia.relaxNG.RNGGrammar;
-import com.sensia.relaxNG.RNGTag;
 import com.sensia.tools.client.swetools.editors.sensorml.IParsingObserver;
 import com.sensia.tools.client.swetools.editors.sensorml.RNGProcessorSML;
 import com.sensia.tools.client.swetools.editors.sensorml.controller.IObserver;
@@ -30,6 +29,8 @@ import com.sensia.tools.client.swetools.editors.sensorml.panels.source.ISourcePa
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.LocalFileSourcePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.UrlListSourcePanel;
 import com.sensia.tools.client.swetools.editors.sensorml.panels.source.UrlSourcePanel;
+import com.sensia.tools.client.swetools.editors.sensorml.serialization.StorageItem;
+import com.sensia.tools.client.swetools.editors.sensorml.serialization.StorageManager;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLHorizontalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SMLVerticalPanel;
 import com.sensia.tools.client.swetools.editors.sensorml.utils.SaveCloseWindow;
@@ -65,8 +66,9 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 		VIEW
 	}
 
-	protected static String CURRENT_STORAGE_ID;
-	protected static Storage storage=new Storage();
+	protected StorageItem currentStorageItem;
+	DateTimeFormat fmt = DateTimeFormat.getFormat("yyyy-MM-dd'T'HH:mm:ss");
+	protected static StorageManager storage=new StorageManager();
 	protected static Timer t;
 
 	protected ViewerPanel(final RNGProcessorSML smlEditorProcessor) {
@@ -145,17 +147,16 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 
 			@Override
 			public void onClick(ClickEvent event) {
-				final SaveStoragePanel saveStoragePanel = new SaveStoragePanel(CURRENT_STORAGE_ID);
+				final SaveStoragePanel saveStoragePanel = new SaveStoragePanel(currentStorageItem);
 				SaveCloseWindow dialog = Utils.displaySaveDialogBox(saveStoragePanel,"Local  storage content");
 				dialog.setButtonTitle("Save");
 
 				dialog.addSaveHandler(new ClickHandler() {
 					@Override
 					public void onClick(ClickEvent event) {
-						storage.remove(CURRENT_STORAGE_ID);
-
-						CURRENT_STORAGE_ID = saveStoragePanel.getId()+"$"+saveStoragePanel.getDate()+"$"+saveStoragePanel.getCustomName();
-						storage.writeData(CURRENT_STORAGE_ID,smlEditorProcessor.getLoadedGrammar());
+						currentStorageItem.name = saveStoragePanel.getCustomName();
+						updateStorageItem();
+						storage.writeData(currentStorageItem);
 					}
 				});
 			}
@@ -175,10 +176,9 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 				dialog.addSaveHandler(new ClickHandler() {
 					@Override
 					public void onClick(ClickEvent event) {
-						RNGTag grammar = openStoragePanel.getSelectedTag();
-						CURRENT_STORAGE_ID = openStoragePanel.getSelectedId();
+						currentStorageItem = openStoragePanel.getSelectedItem();
 						cancelCurrentTimer();
-						redraw(smlEditorProcessor.getMode(), (RNGGrammar) grammar);
+						redraw(smlEditorProcessor.getMode(), (RNGGrammar) currentStorageItem.content);
 						startTimerStorage();
 					}
 				});
@@ -337,10 +337,9 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	}
 
 	public void createNewStorageUUID() {
-		CURRENT_STORAGE_ID = Utils.generateUUIDString();
-		DateTimeFormat fmt = DateTimeFormat.getFormat("yyyy-MM-dd'T'HH:mm:ss");
-		CURRENT_STORAGE_ID +="$"+fmt.format(new Date()); // add current date
-		CURRENT_STORAGE_ID +="$Unnamed"; // add default name
+		currentStorageItem = new StorageItem();
+		currentStorageItem.setId(Utils.generateUUIDString());
+		updateStorageItem();
 	}
 
 
@@ -350,7 +349,8 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 			t = new Timer() {
 				@Override
 				public void run() {
-					storage.writeData(CURRENT_STORAGE_ID,smlEditorProcessor.getLoadedGrammar());
+					updateStorageItem();
+					storage.writeData(currentStorageItem);
 				}
 			};
 
@@ -365,5 +365,10 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 			t.cancel();
 			t = null;
 		}
+	}
+
+	private void updateStorageItem() {
+		currentStorageItem.setDate(fmt.format(new Date()));
+		currentStorageItem.content = smlEditorProcessor.getLoadedGrammar();
 	}
 }

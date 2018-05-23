@@ -1,15 +1,15 @@
-package com.sensia.tools.client.swetools.editors.sensorml.panels;
+package com.sensia.tools.client.swetools.editors.sensorml.serialization;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
 import com.sensia.relaxNG.RNGTag;
 
 import java.io.Serializable;
 
-public class StorageItem implements Serializable, IsSerializable {
+public class StorageItem implements Serializable {
+
     private String id;
     private String date;
     public RNGTag content;
-    public String name;
+    public String name= "Unnamed";
 
     public StorageItem() {
     }

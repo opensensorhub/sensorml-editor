@@ -21,13 +21,6 @@
 	<inherits name="com.smartclient.theme.enterprise.Enterprise" />
 	<inherits name="com.seanchenxi.gwt.storage.Storage" />
 
-	<!--
-      By default, a simple memory cache is enabled
-      for avoiding long time serialization/deserialization,
-      you can disable it, by adding the following line
-    -->
-	<set-property name="storage.cache" value="false" />
-
 	<source path='client' />
 	<source path='shared' />
 

@@ -132,7 +132,6 @@ public class AdvancedRendererSML extends AdvancedRendererSWE implements RNGTagVi
 		}
 		
 		if (nsUri == null) {
-			GWT.log("NameSpace for element "+elt.getName()+" does not exist");
 			super.visit(elt);
 			return;
 		}
