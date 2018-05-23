@@ -23,6 +23,14 @@ public class OpenStoragePanel extends SMLVerticalPanel {
 
     public OpenStoragePanel(StorageManager storage) {
         this.storage = storage;
+        initTable();
+    }
+
+    private void initTable() {
+        if(storageTable != null) {
+            remove(0);
+        }
+
         storageTable = new StorageItemTable();
         storageTable.setEditable(true);
 
@@ -34,12 +42,11 @@ public class OpenStoragePanel extends SMLVerticalPanel {
             public void callback(Integer[] result) {
                 for(Integer r:result) {
                     storage.remove(dataFromStorage.get(r));
-                    dataFromStorage.remove(r);
+                    initTable();
                 }
             }
         });
     }
-
     private void populateFromStorage() {
       Object[][] data = new Object[0][0];
         if (storage != null){

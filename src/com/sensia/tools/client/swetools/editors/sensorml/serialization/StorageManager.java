@@ -23,8 +23,6 @@ public class StorageManager {
         /*localStorage.clear();*/
     }
 
-
-
     public void writeData(StorageItem item) {
 
         if(!localStorage.containsKey(KEY_PROVIDER.valuesMapKey())) {
