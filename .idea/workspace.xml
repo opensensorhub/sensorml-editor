@@ -7,753 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5216af8-02fb-473e-aea0-9665d089049c" name="Default" comment="#17 Save state of editing (everything lost): add support for localStorage and grammar serialization/deserialization">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/gwt_elemental_2_7_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/gwt_elemental_2_7_0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/RelaxNG.gwt.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/gwt/relaxNG/QName.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/gwt/relaxNG/RNGInstanceMergingParser$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/gwt/relaxNG/RNGInstanceMergingParser$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/gwt/relaxNG/RNGInstanceMergingParser$MergeContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/gwt/relaxNG/RNGInstanceMergingParser$MergeResult.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/gwt/relaxNG/RNGInstanceMergingParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/gwt/relaxNG/RNGInstanceWriter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/gwt/relaxNG/RNGParser$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/gwt/relaxNG/RNGParser$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/gwt/relaxNG/RNGParser$RNGParserContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/gwt/relaxNG/RNGParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/gwt/relaxNG/RNGParserCallback.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/gwt/relaxNG/RNGWriter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/gwt/relaxNG/RelaxNGModule.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/gwt/relaxNG/XMLSensorMLParser$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/gwt/relaxNG/XMLSensorMLParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/gwt/relaxNG/XMLSerializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/ITag.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/RNGAttribute.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/RNGChoice.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/RNGData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/RNGDefine.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/RNGElement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/RNGGrammar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/RNGGroup.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/RNGInterleave.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/RNGInvalidContent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/RNGList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/RNGOneOrMore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/RNGOptional.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/RNGRef.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/RNGTag.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/RNGTagList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/RNGTagVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/RNGText.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/RNGValue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/RNGZeroOrMore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/XSDAnyURI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/XSDBoolean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/XSDDateTime$IDateTimeFormat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/XSDDateTime.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/XSDDecimal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/XSDDouble.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/XSDInteger.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/XSDString.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/relaxNG/XSDToken.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/SensorMLEditor.gwt.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/SensorMLEditor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/IParsingObserver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/RNGProcessorSML$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/RNGProcessorSML$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/RNGProcessorSML$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/RNGProcessorSML$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/RNGProcessorSML.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/SensorConstants.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/controller/IController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/controller/IObserver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/controller/Observable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/listeners/FileUploadSubmitCompleteHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/listeners/FileUploadSubmitHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/listeners/IButtonCallback.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/listeners/ICallback.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/listeners/IClickListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/listeners/ILoadFileCallback.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/listeners/ViewAsRelaxNGButtonClickListener$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/listeners/ViewAsRelaxNGButtonClickListener$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/listeners/ViewAsRelaxNGButtonClickListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/listeners/ViewAsXMLButtonClickListener$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/listeners/ViewAsXMLButtonClickListener$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/listeners/ViewAsXMLButtonClickListener$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/listeners/ViewAsXMLButtonClickListener$4$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/listeners/ViewAsXMLButtonClickListener$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/listeners/ViewAsXMLButtonClickListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/old/RNGRenderer$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/old/RNGRenderer$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/old/RNGRenderer$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/old/RNGRenderer$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/old/RNGRenderer$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/old/RNGRenderer$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/old/RNGRenderer$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/old/RNGRenderer$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/old/RNGRenderer$9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/old/RNGRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/old/RNGRendererSML$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/old/RNGRendererSML$RenderType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/old/RNGRendererSML.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/old/RNGRendererSWE.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/GenericTable$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/GenericTable$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/GenericTable$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/GenericTable$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/GenericTable$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/GenericTable$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/GenericTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/MMIRegistry$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/MMIRegistry.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/OntologyPanel$1$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/OntologyPanel$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/OntologyPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/OntologyPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/TableRes$TableStyle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/TableRes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/ontology-table.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/property/ILoadOntologyCallback.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/property/IOntologyPropertyReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/property/IOntologySearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/property/Property.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/property/RdfPropertyReader$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/property/RdfPropertyReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/property/SensorMLPropertyOntology$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/property/SensorMLPropertyOntology$Property.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/ontology/property/SensorMLPropertyOntology.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/AbstractPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/AbstractPanel$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/AbstractPanel$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/AbstractPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/EditorPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/EditorPanel$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/EditorPanel$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/EditorPanel$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/EditorPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/IPanel$APPENDER.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/IPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/IRefreshHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/ViewerPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/ViewerPanel$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/ViewerPanel$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/ViewerPanel$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/ViewerPanel$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/ViewerPanel$MODE.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/ViewerPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/base/element/DisclosureElementPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/chart/GenericCurveChart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/chart/GenericTable$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/chart/GenericTable$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/chart/GenericTable$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/chart/GenericTable$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/chart/GenericTable$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/chart/GenericTable$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/chart/GenericTable$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/chart/GenericTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/chart/SmartGWTGenericCurveChart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/generic/EditIconPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/generic/EditIconPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/generic/GenericIconPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/generic/GenericIconPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/generic/GenericVerticalContainerPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/line/AbstractGenericLinePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/line/ValueGenericLinePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/map/GenericLineMap.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/map/GenericPointMap$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/map/GenericPointMap.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/source/AbstractSourcePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/source/FileUploadPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/source/FileUploadPanel$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/source/FileUploadPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/source/ISourcePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/source/LocalFileSourcePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/source/UrlListSourcePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/source/UrlSourcePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/table/IDataChangeHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/table/ITable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/table/SmartGWTGenericTable$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/table/SmartGWTGenericTable$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/table/SmartGWTGenericTable$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/panels/table/SmartGWTGenericTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/Renderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/AdvancedRendererRNG.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/AdvancedRendererSML.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/AdvancedRendererSWE.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/attribute/AbstractAdvancedAttributeOntologyIconPanel$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/attribute/AbstractAdvancedAttributeOntologyIconPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/attribute/AbstractAdvancedAttributeOntologyIconPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/attribute/AbstractAdvancedAttributeUriPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/attribute/AdvancedAttributeDefinitionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/attribute/AdvancedAttributePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/attribute/AdvancedAttributeReferenceFramePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/attribute/AdvancedXLinkArcrolePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/attribute/AdvancedXLinkHrefPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/attribute/AdvancedXLinkRolePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/attribute/AdvancedXLinkTitlePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/element/AdvancedElementPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/element/AdvancedElementPanel$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/element/AdvancedElementPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/element/AdvancedSimpleElementPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/gco/GCOAdvancedCharacterStringPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/gmd/GMDAdvancedObjectPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/gml/GMLAdvancedCoordinatesPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/rng/RNGChoicePanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/rng/RNGChoicePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/rng/RNGErrorPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/rng/RNGErrorPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/rng/RNGOptionalPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/rng/RNGOptionalPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/rng/RNGZeroOrMorePanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/rng/RNGZeroOrMorePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/rng/RNGZeroOrMorePatternPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/rng/RNGZeroOrMorePatternPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/sml/SMLAdvancedDescriptionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/sml/SMLAdvancedLabelPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/sml/SMLAdvancedLinkPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/sml/SMLAdvancedValuePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/swe/SWEAdvancedDescriptionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/swe/SWEAdvancedIdentifierPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/swe/SWEAdvancedIntervalPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/swe/SWEAdvancedLabelPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/swe/SWEAdvancedSignificanFiguresPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/swe/SWEAdvancedValuePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/swe/SWEAdvancedValuesPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/xsd/XSDAnyURIPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/xsd/XSDBooleanPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/xsd/XSDBooleanPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/xsd/XSDDateTimePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/xsd/XSDDecimalPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/xsd/XSDDoublePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/xsd/XSDIntegerPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advanced/panels/xsd/XSDStringPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advancedviewer/AdvancedViewerRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/advancedviewer/attribute/AdvancedViewerAttributeDefinitionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/EditRendererRNG.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/EditRendererSML.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/attribute/AbstractEditAttributeUriPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/attribute/EditAttributeCodePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/attribute/EditAttributeDefinitionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/attribute/EditAttributeIdPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/attribute/EditAttributeNamePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/attribute/EditAttributePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/attribute/EditAttributeRefPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/attribute/EditAttributeReferenceFramePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/attribute/EditXLinkArcrolePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/attribute/EditXLinkHrefPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/attribute/EditXLinkRolePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/attribute/EditXLinkTitlePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/element/EditElementPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/element/EditSectionElementPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/element/EditSectionElementPanel$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/element/EditSectionElementPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/element/EditSimpleElementPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/element/EditSubSectionElementPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/gmd/GMDEditDescriptionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/gmd/GMDEditObjectPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/gmd/GMDEditUrl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/gml/GMLEditCoordinatesPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/gml/GMLEditDescriptionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/gml/GMLEditEnvelopePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/gml/GMLEditIdPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/gml/GMLEditIdentifierPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/gml/GMLEditNamePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/gml/GMLEditPointPanel$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/gml/GMLEditPointPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/gml/GMLEditPointPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/gml/time/GMLEditBeginPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/gml/time/GMLEditEndPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/gml/time/GMLEditTimeInstantPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/gml/time/GMLEditTimeInstantPropertyTypePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/gml/time/GMLEditTimePeriodPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/gml/time/GMLEditTimePositionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/gml/time/GMLEditTimePositionTypePanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/gml/time/GMLEditTimePositionTypePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/line/EditGenericLinePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/line/EditValueGenericLinePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/rng/EditRNGChoicePatternPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/rng/EditRNGZeroOrMorePanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/rng/EditRNGZeroOrMorePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/rng/EditRNGZeroOrMorePatternPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/rng/EditRNGZeroOrMorePatternPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/rng/EditRNGZeroOrMorePopupPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/rng/EditRNGZeroOrMorePopupPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/root/EditRootHeaderPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/root/EditRootPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/root/EditRootPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditAxisPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditCapabilitiesPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditCapabilityPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditCharacteristicPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditCharacteristicsPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditClassificationPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditClassifierPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditComponentPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditComponentsPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditConfigurationPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditConnectionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditConnectionsPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditContactsPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditDescriptionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditDocument.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditDocumentationPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditFeatureOfInterestPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditHistoryPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditIdentificationPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditIdentifierPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditInputPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditInputsPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditKeywordsPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditLabelPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditLegalConstraintsPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditLinkPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditLocalReferenceFramePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditMethodPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditModePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditModesPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditObservablePropertyPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditOriginPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditOutputPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditOutputsPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditParameterPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditParametersPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditPositionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditPropertyPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditSetModePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditSetValuePanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditSetValuePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditSpatialFramePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditTermPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditTypeOfPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SMLEditValidTimePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/SWEEditFieldPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/history/SMLEditEventPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/position/SMLEditPositionByLocationPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/position/SMLEditPositionByPositionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/position/SMLEditPositionByTrajectoryPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/position/SMLEditPositionByTrajectoryPanel$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/sml/position/SMLEditPositionByTrajectoryPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditAllowedTokensPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditAllowedValuesPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditBooleanPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditCategoryPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditCodespacePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditConstraintPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditCoordinatePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditCountPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditDataRecordPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditDescriptionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditFieldPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditIdentifierPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditIntervalPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditLabelPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditQualityPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditQuantityPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditQuantityRangePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditTextPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditTimePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditTimeRangePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditUOMPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditVectorPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditVectorPanel$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEEditVectorPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEditElementTypePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/SWEditEncodingPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/dataarray/SWEEditDataArrayLinePanel$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/dataarray/SWEEditDataArrayLinePanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/dataarray/SWEEditDataArrayLinePanel$2$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/dataarray/SWEEditDataArrayLinePanel$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/dataarray/SWEEditDataArrayLinePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/swe/dataarray/SWEEditDataArrayPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/value/EditValuePanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/value/EditValuePanel$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/value/EditValuePanel$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/editor/panels/value/EditValuePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/root/RNGOptionalPanelNoContent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/root/RootRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/simpledatatype/DataRecordSimpleAdvancedRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/simpledatatype/SimpleDataTypeRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/test.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/ViewRendererRNG.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/ViewRendererSML.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/ViewRendererSWE.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/attribute/AbstractViewAttributeHrefPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/attribute/AbstractViewAttributeOntologyIconPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/attribute/AbstractViewAttributeOntologyIconPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/attribute/ViewAttributeCodePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/attribute/ViewAttributeDefinitionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/attribute/ViewAttributeIdPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/attribute/ViewAttributeNamePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/attribute/ViewAttributePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/attribute/ViewAttributeRefPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/attribute/ViewAttributeReferenceFramePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/attribute/ViewXLinkArcrolePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/attribute/ViewXLinkHrefPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/attribute/ViewXLinkRolePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/attribute/ViewXLinkTitlePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/element/ViewSectionElementPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/element/ViewSubSectionElementPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/gmd/GMDViewDescriptionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/gml/GMLViewCoordinatesPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/gml/GMLViewDescriptionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/gml/GMLViewIdentifierPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/gml/GMLViewNamePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/gml/GMLViewPointPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/gml/GMLViewPointPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/gml/GMLViewTimePositionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/line/ViewGenericLinePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/line/ViewValueGenericLinePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/root/ViewRootHeaderPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/root/ViewRootPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewAxisPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewCapabilitiesPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewCharacteristicsPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewClassificationPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewComponentPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewComponentsPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewConfigurationPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewConnectionsPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewContactsPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewDescriptionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewDocumentationPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewEventPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewHistoryPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewIdentificationPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewInputsPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewKeywordsPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewLabelPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewLegalConstraintsPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewLocalReferenceFramePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewMethodPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewModePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewModesPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewObservablePropertyPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewOriginPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewOutputsPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewParametersPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewPositionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewSetValuePanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewSetValuePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewTermPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewTypeOfPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewValidTimePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/sml/SMLViewValuePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/swe/SWEViewCategoryPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/swe/SWEViewCountPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/swe/SWEViewDataRecordPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/swe/SWEViewDescriptionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/swe/SWEViewFieldPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/swe/SWEViewIdentifierPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/swe/SWEViewIntervalPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/swe/SWEViewLabelPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/swe/SWEViewQuantityPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/swe/SWEViewQuantityRangePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/swe/SWEViewTimePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/swe/SWEViewTimeRangePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/swe/SWEViewUOMPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/swe/SWEViewValuePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/swe/SWEViewValuesPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/swe/SWEViewVectorPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/swe/dataarray/SWEViewDataArrayLinePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/swe/dataarray/SWEViewDataArrayPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/swe/position/SMLViewPositionByTrajectoryPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/value/ViewValuePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/xsd/ViewXSDAnyURIPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/xsd/ViewXSDDateTimePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/xsd/ViewXSDDecimalPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/xsd/ViewXSDDoublePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/xsd/ViewXSDIntegerPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/renderer/viewer/panels/xsd/ViewXSDStringPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/syntaxhighlighter/BrushFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/syntaxhighlighter/SyntaxHighlighter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/BoyerMoore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/CloseWindow$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/CloseWindow$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/CloseWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/LoginWindow$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/LoginWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/Mapping.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/ModelHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/NameRefResolver$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/NameRefResolver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/PanelHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/SMLEditorConstants.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/SMLHorizontalPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/SMLVerticalPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/SaveCloseWindow$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/SaveCloseWindow$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/SaveCloseWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/Utils$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/Utils$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/Utils$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/Utils$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/Utils$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/Utils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/client/swetools/editors/sensorml/utils/UtilsNative.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/css/core.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/css/renderer/advanced.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/css/renderer/editor.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/css/renderer/root.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/css/renderer/viewer.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/add-icon-new.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/add-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/add.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/advanced.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/ajax-loader-small.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/ajax-loader.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/arrow-direction.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/arrow-right.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/arrow_down.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/arrow_right.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/arrow_up.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/blue-dot.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/bullet.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/bullet_toggle_minus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/bullet_toggle_plus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/change.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/condition.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/correct.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/data_array.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/direction.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/drawing.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/hide_section.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/icon_info.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/icon_question.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/link_add.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/link_delete.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/maps-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/obj.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/ontology.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/path4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/question_white.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/remove-icon-new.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/remove-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/remove.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/show_section.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/images/table.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/Blob.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/FileSaver.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/FileSaver.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/adapters/standalone-framework.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/adapters/standalone-framework.src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/highcharts-3d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/highcharts-3d.src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/highcharts-more.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/highcharts-more.src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/highcharts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/highcharts.src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/jquery-2.1.4.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/modules/broken-axis.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/modules/broken-axis.src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/modules/canvas-tools.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/modules/canvas-tools.src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/modules/data.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/modules/data.src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/modules/drilldown.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/modules/drilldown.src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/modules/exporting.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/modules/exporting.src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/modules/funnel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/modules/funnel.src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/modules/heatmap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/modules/heatmap.src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/modules/no-data-to-display.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/modules/no-data-to-display.src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/modules/solid-gauge.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/modules/solid-gauge.src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/modules/treemap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/modules/treemap.src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/themes/dark-blue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/themes/dark-green.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/themes/dark-unica.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/themes/gray.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/themes/grid-light.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/themes/grid.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/themes/sand-signika.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/themes/skies.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/js/xmllint.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/loadScriptTagFiles.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/ontologies/mmi.mvco.ont" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/ontologies/ont.swe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/ontologies/sensorml.ont.csm.property" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/ontologies/sensorml.ont.ogceo.common" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/ontologies/sensorml.ont.swe.property" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/gml/gml4swe.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/ic/ic-ism-v2.0.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/profiles/CSM/anemometer.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/profiles/CSM/csm-common.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/profiles/CSM/frame-sensor-model.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/profiles/CSM/gamma.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/profiles/CSM/geopositioning-models.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/profiles/CSM/optical-sensor-parameters.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/profiles/CSM/pushbroom-sensor-model.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/profiles/CSM/scanner-sensor-parameters.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/profiles/CSM/sensorML.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/profiles/CSM/thermometer-minimal-edit.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/profiles/CSM/thermometer-minimal-view.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/profiles/CSM/whiskbroom-sensor-model.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/profiles/Common_Structures/coverage-test.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/profiles/Common_Structures/coverage.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/profiles/Common_Structures/geometry-test.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/profiles/Common_Structures/geometry.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/sml/base.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/sml/process.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/sml/sensorML.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/sml/system.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/swe/aggregateTypes.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/swe/data.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/swe/encoding.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/rng1.0/swe/simpleTypes.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shAutoloader.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushAS3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushAppleScript.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushBash.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushCSharp.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushColdFusion.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushCpp.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushCss.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushDelphi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushDiff.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushErlang.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushGroovy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushJScript.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushJava.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushJavaFX.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushPerl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushPhp.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushPlain.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushPowerShell.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushPython.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushRuby.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushSass.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushScala.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushSql.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushVb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shBrushXml.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shCore.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/scripts/shLegacy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/ADCP_System.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/Davis_7817_complete.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/Davis_7817_min.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/MVCO_ObservingSystem.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/MVCO_Workhorse_1200.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/RDI_Workhorse_1200.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/characteristics.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/csmFrame.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/description.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/disparateNetwork.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/extSensor.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/friendlyProcess.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/gamma2070.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/identifiers.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/iotSimple.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/locDescription.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/locDynamic.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/locGML.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/locOrientation.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/locOutput.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/locStatic.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/metadata.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/my_gamma.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/outputsParameters.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/outputsPosition.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/schema/aggregate_process.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/schema/configuration.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/schema/core.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/schema/flatten/gco.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/schema/flatten/gmd.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/schema/flatten/gml.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/schema/flatten/gsr.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/schema/flatten/gss.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/schema/flatten/gts.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/schema/flatten/sensorML_flat.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/schema/flatten/sensorML_flat2.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/schema/flatten/swe.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/schema/flatten/xlink.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/schema/flatten/xml.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/schema/physical_component.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/schema/physical_system.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/schema/sensorML.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/schema/simple_process.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/sensorML2.0.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/simpleMultiplex.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/simpleNetwork.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/simpleProcess.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/streamRTP.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/streamSimple.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/streamingCBRNE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/streamingNav.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/test.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/test/positions.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorML/weatherStation.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/XDomes/Teledyne Profile.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/XDomes/sensorInstance.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/basic_sml/Basic_Core.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/basic_sml/Basic_PhysicalProcess.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/basic_sml/Basic_Process.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/basic_sml/Basic_SensorML.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/basic_sml/Basic_SimpleProcess.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/extensions/Capabilities.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/extensions/Characteristics.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/extensions/Classifiers.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/extensions/ConditionalData.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/extensions/Identifiers.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/extensions/Measurement.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/extensions/Position.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/extensions/Simple_Contact.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/extensions/Time.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/extensions/XDomesObservables.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/gml/gml4swe.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/profiles/PhysicalSystem_OEM.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/profiles/RemoteSensing/csm-common.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/profiles/RemoteSensing/frame-sensor-model.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/profiles/RemoteSensing/geopositioning-models.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/profiles/RemoteSensing/optical-sensor-parameters.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/profiles/RemoteSensing/pushbroom-sensor-model.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/profiles/RemoteSensing/scanner-sensor-parameters.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/profiles/RemoteSensing/whiskbroom-sensor-model.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/profiles/Simple_Deployment.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/profiles/Simple_Deployment_Janet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/profiles/XDomes_OEM.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/profiles/ic/ic-ism-v2.0.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/sml/PhysicalProcess.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/sml/Process.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/sml/SensorML.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/sml/SimpleProcess.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/sml/core.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/swe/aggregateTypes.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/swe/data.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/swe/encoding.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/sensorml-relaxng/swe/simpleTypes.rng" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/styles/shCore.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/styles/shCoreDefault.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/styles/shCoreDjango.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/styles/shCoreEclipse.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/styles/shCoreEmacs.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/styles/shCoreFadeToGrey.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/styles/shCoreMDUltra.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/styles/shCoreMidnight.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/styles/shCoreRDark.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/styles/shThemeDefault.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/styles/shThemeDjango.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/styles/shThemeEclipse.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/styles/shThemeEmacs.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/styles/shThemeFadeToGrey.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/styles/shThemeMDUltra.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/styles/shThemeMidnight.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/com/sensia/tools/public/styles/shThemeRDark.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/gwt-elemental-2.7.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/gwt-filesystem-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/gwt-openlayers-client-1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/gwt.highcharts-1.7.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/gwtext.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/log4j.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/smartgwt-skins.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/sensorml-editor/smartgwt.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/panels/ViewerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/panels/ViewerPanel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/war/WEB-INF/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -768,11 +22,10 @@
       <file leaf-file-name="OpenStoragePanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/panels/OpenStoragePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-375">
+            <state relative-caret-position="255">
               <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3488#3498#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -781,7 +34,7 @@
       <file leaf-file-name="StorageItem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/serialization/StorageItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
+            <state relative-caret-position="165">
               <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -795,10 +48,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
               <caret line="25" selection-start-line="25" selection-end-line="25" />
-              <folding>
-                <element signature="e#2243#2244#0" expanded="true" />
-                <element signature="e#2325#2326#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -806,7 +55,7 @@
       <file leaf-file-name="MyStorageKeyProvider.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/serialization/MyStorageKeyProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="105">
               <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -818,7 +67,7 @@
       <file leaf-file-name="SaveStoragePanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/panels/SaveStoragePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
+            <state relative-caret-position="150">
               <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -839,14 +88,10 @@
       <file leaf-file-name="ViewerPanel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/panels/ViewerPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="180" column="53" selection-start-line="180" selection-start-column="53" selection-end-line="180" selection-end-column="53" />
+            <state relative-caret-position="300">
+              <caret line="196" column="39" lean-forward="true" selection-start-line="196" selection-start-column="39" selection-end-line="196" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#10098#10099#0" expanded="true" />
-                <element signature="e#10162#10163#0" expanded="true" />
-                <element signature="e#10916#10917#0" expanded="true" />
-                <element signature="e#10977#10978#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -978,83 +223,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="SensorMLEditor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sensorml-editor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SensorMLEditor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sensorml-editor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SensorMLEditor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sensorml-editor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sensia" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SensorMLEditor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sensorml-editor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sensia" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SensorMLEditor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sensorml-editor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sensia" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SensorMLEditor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sensorml-editor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sensia" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="sensorml" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SensorMLEditor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sensorml-editor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sensia" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="sensorml" type="462c0819:PsiDirectoryNode" />
-              <item name="ontology" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SensorMLEditor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sensorml-editor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sensia" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="sensorml" type="462c0819:PsiDirectoryNode" />
-              <item name="panels" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SensorMLEditor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sensorml-editor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sensia" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="sensorml" type="462c0819:PsiDirectoryNode" />
-              <item name="serialization" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -1101,6 +269,23 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SensorMLEditor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sensorml-editor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SensorMLEditor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sensorml-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1214,6 +399,7 @@
       <workItem from="1527003598922" duration="791000" />
       <workItem from="1527004401593" duration="4128000" />
       <workItem from="1527025036260" duration="8958000" />
+      <workItem from="1528181490959" duration="549000" />
     </task>
     <task id="LOCAL-00001" summary="#37 Provide more filtering in Ontology Search window">
       <created>1526929865310</created>
@@ -1278,11 +464,18 @@
       <option name="project" value="LOCAL" />
       <updated>1527081529595</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="#17 Save state of editing (everything lost): add support for localStorage and grammar serialization/deserialization">
+      <created>1528181572043</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1528181572043</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61892000" />
+    <option name="totallyTimeSpent" value="62441000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="20" y="32" width="1906" height="1054" extended-state="6" />
@@ -1291,14 +484,14 @@
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32938644" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32983193" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50054055" side_tool="true" weight="0.32938644" />
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="10" visible="true" weight="0.32938644" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32938644" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="10" sideWeight="0.49945945" visible="true" weight="0.32938644" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49945945" weight="0.32938644" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49919742" visible="true" weight="0.18486486" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49919742" visible="true" weight="0.18702702" />
       <window_info id="Web" order="4" sideWeight="0.50053823" side_tool="true" weight="0.25567567" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" sideWeight="0.5008026" side_tool="true" weight="0.19675675" />
@@ -1359,14 +552,14 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="#37 Provide more filtering in Ontology Search window" />
-    <MESSAGE value="#17 Save state of editing (everything lost): add support for localStorage and grammar serialization/deserialization" />
     <MESSAGE value="#17 Save state of editing (everything lost): add remove button to clear storage" />
     <MESSAGE value="#17 Save state of editing (everything lost): add support for saving manually and add a name" />
     <MESSAGE value="update gitignore" />
     <MESSAGE value="Update workspace" />
     <MESSAGE value="#17 Save state of editing (everything lost): fix problem + improve using HashMap" />
     <MESSAGE value="#17 Save state of editing (everything lost): Fix bug after removing row" />
-    <option name="LAST_COMMIT_MESSAGE" value="#17 Save state of editing (everything lost): Fix bug after removing row" />
+    <MESSAGE value="#17 Save state of editing (everything lost): add support for localStorage and grammar serialization/deserialization" />
+    <option name="LAST_COMMIT_MESSAGE" value="#17 Save state of editing (everything lost): add support for localStorage and grammar serialization/deserialization" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1595,19 +788,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/serialization/StorageItemMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-          <folding>
-            <element signature="e#370#371#0" expanded="true" />
-            <element signature="e#398#399#0" expanded="true" />
-            <element signature="e#463#464#0" expanded="true" />
-            <element signature="e#497#498#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/serialization/StorageItemMap.java" />
     <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/SensorMLEditor.gwt.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1617,7 +798,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/serialization/MyStorageKeyProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="105">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1627,7 +808,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/serialization/StorageItem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
+        <state relative-caret-position="165">
           <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1639,27 +820,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#2243#2244#0" expanded="true" />
-            <element signature="e#2325#2326#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/panels/OpenStoragePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-375">
+        <state relative-caret-position="255">
           <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3488#3498#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/panels/SaveStoragePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
+        <state relative-caret-position="150">
           <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1669,14 +845,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sensia/tools/client/swetools/editors/sensorml/panels/ViewerPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="180" column="53" selection-start-line="180" selection-start-column="53" selection-end-line="180" selection-end-column="53" />
+        <state relative-caret-position="300">
+          <caret line="196" column="39" lean-forward="true" selection-start-line="196" selection-start-column="39" selection-end-line="196" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#10098#10099#0" expanded="true" />
-            <element signature="e#10162#10163#0" expanded="true" />
-            <element signature="e#10916#10917#0" expanded="true" />
-            <element signature="e#10977#10978#0" expanded="true" />
           </folding>
         </state>
       </provider>
