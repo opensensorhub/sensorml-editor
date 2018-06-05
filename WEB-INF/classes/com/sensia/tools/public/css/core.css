@@ -1,6 +1,5 @@
-#editor-area {
-  margin-left: -10px;
-    margin-top: -10px;
+.gwt-root {
+  margin-top: 120px;
 }
 
 .viewer-header {
