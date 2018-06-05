@@ -1,7 +1,6 @@
 <component name="libraryTable">
   <library name="gwt-elemental-2.7.0">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/libs/gwt-elemental-2.7.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/libs/gwt-filesystem-1.0-SNAPSHOT.jar!/" />
       <root url="jar://$PROJECT_DIR$/libs/gwt-openlayers-client-1.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/libs/gwt.highcharts-1.7.0.jar!/" />
@@ -10,8 +9,6 @@
       <root url="jar://$PROJECT_DIR$/libs/gwt-storage-1.4.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://$PROJECT_DIR$/libs/gwt-storage-1.4.0.jar!/" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>

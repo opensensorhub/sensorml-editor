@@ -176,8 +176,9 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 				dialog.addSaveHandler(new ClickHandler() {
 					@Override
 					public void onClick(ClickEvent event) {
-						currentStorageItem = openStoragePanel.getSelectedItem();
-						if(currentStorageItem != null) {
+						StorageItem item = openStoragePanel.getSelectedItem();
+						if(item != null) {
+                            currentStorageItem = item;
 							cancelCurrentTimer();
 							redraw(smlEditorProcessor.getMode(), (RNGGrammar) currentStorageItem.content);
 							startTimerStorage();

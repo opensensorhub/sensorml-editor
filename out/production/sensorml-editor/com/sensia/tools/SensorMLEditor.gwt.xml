@@ -14,11 +14,11 @@
 	<inherits name='com.google.gwt.user.theme.clean.Clean' />
 	<inherits name="org.moxieapps.gwt.highcharts.Highcharts" />
 	<inherits name='org.gwtopenmaps.openlayers.OpenLayers' />
-	<inherits name="elemental.Elemental" />
 	<inherits name="com.google.gwt.resources.Resources" />
 	<entry-point class='com.sensia.tools.client.SensorMLEditor' />
 	<inherits name="com.smartgwt.SmartGwt" />
 	<inherits name="com.smartclient.theme.enterprise.Enterprise" />
+	<inherits name="com.seanchenxi.gwt.storage.Storage" />
 
 	<source path='client' />
 	<source path='shared' />
