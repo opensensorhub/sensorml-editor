@@ -12,7 +12,7 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 public class GMLEditDescriptionPanel extends EditSimpleElementPanel{
 
 	public GMLEditDescriptionPanel(RNGElement element) {
-		super(element,Utils.findLabel(element.getParent()));
+		super(element, "Description");
 	}
 	
 	@Override
