@@ -38,12 +38,12 @@ public class RNGOptionalPanel extends AbstractPanel<RNGOptional>{
 		
 		// if not selected, show label and add button
 		else {
+		    addRemoveButton.addStyleName("add-button");
+            container.add(addRemoveButton);
+            
 		    String label = Utils.findLabel(tag);
 		    HTML htmlLabel = new HTML(Utils.toNiceLabel(label));
 			container.add(htmlLabel);
-			
-			addRemoveButton.addStyleName("add-button");
-			container.add(addRemoveButton);
 		}
 		
 		addRemoveButton.addClickHandler(new ClickHandler() {			

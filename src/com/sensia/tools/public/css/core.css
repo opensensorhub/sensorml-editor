@@ -160,14 +160,14 @@ div.v-align-top  > div {
 
 .add-button {
   vertical-align: middle;
-  width: 16px;
+  width: 18px;
   height: 16px;
   background-repeat: no-repeat;
   /*background-image: url(../images/add-icon-new.png);*/
   background-image: url(../images/add.gif);
   cursor: hand;
   cursor: pointer;
-  margin-left:5px;
+  margin-left: -2px;
 }
 
 .ontology-icon {
