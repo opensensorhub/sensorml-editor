@@ -65,7 +65,7 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
 	
 	protected ViewerPanel(final RNGProcessorSML smlEditorProcessor) {
 		
-		this.smlEditorProcessor = smlEditorProcessor;
+	    this.smlEditorProcessor = smlEditorProcessor;
 		this.smlEditorProcessor.addObserver(this);
 		this.smlEditorProcessor.setRefreshHandler(this);
 		
@@ -87,10 +87,11 @@ public class ViewerPanel extends Composite implements IParsingObserver, IObserve
             //do not display the edit/view options
             smlEditorProcessor.setMode(MODE.VIEW);
             smlEditorProcessor.parse(passedFile);           
-            editCheckbox.setVisible(true);          
+            editCheckbox.setVisible(true);
         }
         
-		initWidget(verticalPanel);		
+		initWidget(verticalPanel);
+		getElement().getStyle().setProperty("overflow", "auto");
 	}
 	
 	private SMLHorizontalPanel buildHeader() {

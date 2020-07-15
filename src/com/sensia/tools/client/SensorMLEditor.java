@@ -37,18 +37,19 @@ public class SensorMLEditor implements EntryPoint {
 	}
 
 	public void open(Panel parent) {
-		HorizontalSplitPanel p = new HorizontalSplitPanel();
+		/*HorizontalSplitPanel p = new HorizontalSplitPanel();
 		p.setLeftWidget(getViewer());
 	    //p.setRightWidget(getEditor(controller));
 	    p.setSplitPosition("1200px");
-		parent.add(p);
+		parent.add(p);*/
+	    parent.add(getViewer());
 	}
 
 	private Widget getViewer(){
 		//viewerPanel = new ViewerPanel(sgmlEditorProcessor);
 		viewerPanel = ViewerPanel.getInstance(sgmlEditorProcessor);
 		sgmlEditorProcessor.setRefreshHandler(viewerPanel);
-		// Create a Dock Panel
+		/*// Create a Dock Panel
 	    DockPanel dock = new DockPanel();
 	    dock.setStyleName("cw-DockPanel");
 	    dock.setSpacing(4);
@@ -60,7 +61,8 @@ public class SensorMLEditor implements EntryPoint {
 
 	    // Return the content
 	    dock.ensureDebugId("cwDockPanel");
-	    return dock;
+	    return dock;*/
+		return viewerPanel;
 	}
 	
 
