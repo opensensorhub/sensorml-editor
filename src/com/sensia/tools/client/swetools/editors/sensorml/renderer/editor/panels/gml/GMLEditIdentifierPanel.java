@@ -28,6 +28,7 @@ public class GMLEditIdentifierPanel extends AbstractPanel<RNGElement>{
 	public void addInnerElement(IPanel element) {
 		if (element instanceof EditValuePanel) {
 		    ((EditValuePanel) element).setPlaceholderText("Enter URI");
+            ((EditValuePanel) element).setTextBoxSize(50);
 		    valuePanel.add(element.getPanel());
 		}
 	}
