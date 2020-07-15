@@ -44,12 +44,12 @@ public class RootRenderer extends AdvancedRendererRNG {
 	
 	@Override
 	public void visit(RNGElement elt) {
-		visitChildren(elt.getChildren());
+		//visitChildren(elt.getChildren());
 	}
 	
 	@Override
 	public void visit(RNGAttribute attribute) {
-		visitChildren(attribute.getChildren());
+		//visitChildren(attribute.getChildren());
 	}
 	
 	@Override
