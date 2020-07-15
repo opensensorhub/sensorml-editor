@@ -21,6 +21,7 @@ public class SMLEditComponentPanel extends EditSectionElementPanel{
 	public SMLEditComponentPanel(RNGElement tag) {
 		super(tag,null);
 		container.addStyleName("component");
+		innerContent.addStyleName("component-content");
 	}
 	
 	

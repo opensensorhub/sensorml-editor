@@ -55,6 +55,10 @@
   font-weight: bold;
 }
 
+.editor .section-panel.component .component-content {
+  margin-top: 10px;
+}
+
 .editor .document-description .gwt-TextArea {
   width: 600px;
   height: 50px;
