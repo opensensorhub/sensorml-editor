@@ -141,7 +141,9 @@ public class RNGParser
     
     public void parseFromString(String url, String xml, final RNGParserCallback callback)
     {
+        this.context = new RNGParserContext();
         this.callback = callback;
+        
         Document dom = XMLParser.parse(xml);
         XMLParser.removeWhitespace(dom);
         parseGrammar(url, dom.getDocumentElement());
@@ -431,6 +433,7 @@ public class RNGParser
         
         // remove all . and ..
         String[] path = url.split("/");
+        
         List<String> newPath = new ArrayList<String>();
         for (int i = 0; i < path.length; i++)
         {
@@ -438,7 +441,7 @@ public class RNGParser
                continue;
             
             if (path[i].equals("..") && newPath.size() > 0)
-                newPath.remove(newPath.get(newPath.size()-1));
+                newPath.remove(newPath.size()-1);
             else
                 newPath.add(path[i]);
         }
@@ -452,7 +455,7 @@ public class RNGParser
         }
         cleanUrl.deleteCharAt(cleanUrl.length()-1);
         
-        return cleanUrl.toString();
+        return cleanUrl.toString();        
     }
     
     
@@ -489,6 +492,15 @@ public class RNGParser
             String name = paramElt.getAttribute("name");
             String value = getTextValue(paramElt);
             data.getParams().put(name, value);
+        }
+        
+        // read value
+        NodeList valueElts = elt.getElementsByTagName("value");
+        if (valueElts.getLength() > 0)
+        {
+            Element valueElt = (Element)valueElts.item(0);
+            String value = getTextValue(valueElt);
+            data.setStringValue(value);
         }
         
         data.setType(dataType);
