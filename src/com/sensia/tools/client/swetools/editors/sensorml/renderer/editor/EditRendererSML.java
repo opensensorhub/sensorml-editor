@@ -530,7 +530,7 @@ public class EditRendererSML extends EditRendererRNG implements RNGTagVisitor {
     		
     		// GML namespace
     		else if (nsUri.equalsIgnoreCase(GML_NS_1) || nsUri.equalsIgnoreCase(GML_NS_2)) {
-    		    if(name.equals("id")) {
+    		    if (name.equals("id") && att.getChildValue() == null) { // hide ID if hard coded
     		        pushAndVisitChildren(new GMLEditIdPanel(att),att.getChildren());
     		    }
     		}
