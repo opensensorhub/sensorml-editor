@@ -39,12 +39,9 @@ import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 public class EditRootPanel extends ViewRootPanel{
 
 	private Set<String> skipList;
-	private RNGElement rootTag;
 	
 	public EditRootPanel(RNGElement rootTag,IRefreshHandler refreshHandler) {
 		super(rootTag,refreshHandler);
-		
-		this.rootTag = rootTag;
 		skipList = new HashSet<String>();
 		skipList.add("definition");
 	}
@@ -54,25 +51,32 @@ public class EditRootPanel extends ViewRootPanel{
 		headerDocumentPanel = new EditRootHeaderPanel();
 		container.add(headerDocumentPanel);
 		
-		Label addSectionButton = new Label("");
-		addSectionButton.addStyleName("add-button");
-		
-		SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
-		hPanel.add(new Label("Add section"));
-		hPanel.add(addSectionButton);
-
-		hPanel.addStyleName("v-align-middle");
-		
-		headerDocumentPanel.add(hPanel);
-		headerDocumentPanel.add(new HTML("<hr  style=\"width:100%;\" />"));
-		
-		addSectionButton.addClickHandler(new ClickHandler() {			
-			@Override
-			public void onClick(ClickEvent event) {
-				Utils.displaySaveDialogBox(rootTag, refreshHandler, new SMLVerticalPanel(), "Add section", new RootRenderer());
-			}
-		});
+		if (hasOptionalSections()) {
+    		Label addSectionButton = new Label("");
+    		addSectionButton.addStyleName("add-button");
+    		addSectionButton.addClickHandler(new ClickHandler() {         
+                @Override
+                public void onClick(ClickEvent event) {
+                    Utils.displaySaveDialogBox(tag, refreshHandler, new SMLVerticalPanel(), "Add section", new RootRenderer());
+                }
+            });
+    		
+    		SMLHorizontalPanel hPanel = new SMLHorizontalPanel();
+    		hPanel.addStyleName("v-align-middle");
+    		hPanel.add(new Label("Add section"));
+            hPanel.add(addSectionButton);            
+            
+            headerDocumentPanel.add(hPanel);
+            headerDocumentPanel.add(new HTML("<hr  style=\"width:100%;\" />"));
+		}
 	}
+	
+	protected boolean hasOptionalSections() {
+	    RootRenderer renderer = new RootRenderer();
+	    renderer.visitChildren(tag.getChildren());
+	    return !renderer.getRoot().getElements().isEmpty();
+	}
+	
 	@Override
 	protected AbstractPanel newInstance() {
 		return null;
