@@ -66,4 +66,11 @@ public class ViewValuePanel extends AbstractPanel<RNGValue>{
 			htmlTextBox.setText(niceLabel);
 		}
 	}
+	
+	public void prettifyUomSymbols() {
+	    if (niceLabel != null) {
+	        niceLabel = Utils.getUOMSymbol(niceLabel);
+	        htmlTextBox.setText(niceLabel);
+	    }
+	}
 }
