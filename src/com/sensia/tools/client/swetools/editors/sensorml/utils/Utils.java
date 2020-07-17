@@ -163,16 +163,16 @@ public class Utils {
 		
 		return dialogBox;
 	}
-	private static final String DEGREE  = "\u00b0";
-	private static final String OHM = "\u2126";
+	public static final String DEGREE_SYMBOL  = "\u00b0";
+	public static final String OHM_SYMBOL = "\u2126";
 	
 	public static String getUOMSymbol(String uom) {
 		if(uom.equals("deg")) {
-			return DEGREE;
-		} else if(uom.equals("cel")) {
-			return DEGREE+"C";
-		} else if(uom.equals("kohm")) {
-			return "k"+OHM;
+			return DEGREE_SYMBOL;
+		} else if(uom.equals("Cel")) {
+			return DEGREE_SYMBOL+"C";
+		} else if(uom.contains("ohm")) {
+			return uom.replace("ohm", OHM_SYMBOL);
 		} else {
 			return uom;
 		}
