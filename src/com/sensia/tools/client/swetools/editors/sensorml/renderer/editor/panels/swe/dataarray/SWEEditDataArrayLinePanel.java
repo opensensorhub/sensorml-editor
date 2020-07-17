@@ -35,7 +35,7 @@ public class SWEEditDataArrayLinePanel extends EditGenericLinePanel<RNGElement> 
 
 	private String [][] values;
 	private String title;
-	private List<String> axis;
+	private List<String> axisNames;
 	private String tokenSeparator;
 	private String blockSeparator;
 	private String decimalSeparator;
@@ -125,16 +125,20 @@ public class SWEEditDataArrayLinePanel extends EditGenericLinePanel<RNGElement> 
 	protected void handleElementType(IPanel<RNGElement> element) {
 		List<RNGElement> fields = ModelHelper.findTags(SMLEditorConstants.SWE_NS_2, "field", element.getTag());
 		
-		axis = new ArrayList<String>();
+		axisNames = new ArrayList<String>();
 		//looking for name/label
 		title = "";
 		int codeIdx = 0;
 		
 		for(int i=0; i < fields.size();i++) {
 			RNGElement currentField = fields.get(i);
+			
 			// looking for label
 			String niceLabel = Utils.toNiceLabel(ModelHelper.findLabel(currentField));
-			
+			List<RNGElement> labels = ModelHelper.findTags(SMLEditorConstants.SWE_NS_2, "label", currentField);
+			if (!labels.isEmpty())
+			    niceLabel = labels.get(0).getChildValueText();
+			    
 			// looking for uom
 			List<RNGElement> uoms = ModelHelper.findTags(SMLEditorConstants.SWE_NS_2, "uom", currentField);
 			if(uoms.size() > 0) {
@@ -153,24 +157,24 @@ public class SWEEditDataArrayLinePanel extends EditGenericLinePanel<RNGElement> 
 						RNGElement parent = (RNGElement) uomElt.getParent();
 						RNGAttribute axisID = parent.getChildAttribute("axisID");
 						if(axisID != null) {
-							axisValue = axisID.getChildValueText() + "("+axisValue+")";
+							axisValue = axisID.getChildValueText() + " ("+axisValue+")";
 						} else if(!axisValue.isEmpty()){
 							// otherwise takes the field name
-							axisValue = niceLabel + "("+axisValue+")";
+							axisValue = niceLabel + " ("+axisValue+")";
 						} else {
 							axisValue = niceLabel;
 						}
 					}
-					axis.add(axisValue);
+					axisNames.add(axisValue);
 				}
 			} else {
 				codeIdx++;
 			}
 			// build title
-			if(i == fields.size() -1 ) {
-				title += niceLabel;
+			if (i == 0) {
+				title = niceLabel;
 			} else {
-				title += niceLabel + " vs ";
+				title = niceLabel + " vs " + title;
 			}
 		}
 		
@@ -204,7 +208,7 @@ public class SWEEditDataArrayLinePanel extends EditGenericLinePanel<RNGElement> 
 				//Get headers
 				//populates the table with the headers + data
 				//headers are corresponding to the label/name of the field
-				table.poupulateTable(axis, values);
+				table.poupulateTable(axisNames, values);
 				
 				Utils.displayDialogBox(tablePanel,title,"dialog-datatable");
 				
@@ -253,8 +257,8 @@ public class SWEEditDataArrayLinePanel extends EditGenericLinePanel<RNGElement> 
 			@Override
 			public void onClick(ClickEvent event) {
 				final GenericCurveChart chart = new GenericCurveChart();
-				Widget chartPanel = chart.createChart(title);
-				chart.populateTable(title, axis, values);
+				Widget chartPanel = chart.createChart(title, axisNames);
+				chart.populateTable(title, axisNames, values);
 				CloseWindow dialog = Utils.displayDialogBox(chartPanel,title,"dialog-chart");
 				dialog.addResizedHandler(new ResizedHandler() {
 					
