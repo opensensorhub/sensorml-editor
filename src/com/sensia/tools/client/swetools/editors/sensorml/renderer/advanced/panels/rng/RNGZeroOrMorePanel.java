@@ -27,14 +27,16 @@ public class RNGZeroOrMorePanel extends AbstractPanel<RNGZeroOrMore>{
 		container.add(patternsContainer);
 		
 		// add more button + label
-		SMLHorizontalPanel AddMorePanel = new SMLHorizontalPanel();
-		final String label = Utils.findLabel(tag);
-		AddMorePanel.add(new HTML(Utils.toNiceLabel(label)));
+		SMLHorizontalPanel addMorePanel = new SMLHorizontalPanel();
+		container.add(addMorePanel);
+		
 		HTML addButton = new HTML();
         addButton.addStyleName("add-button");
-        AddMorePanel.add(addButton);		
-		container.add(AddMorePanel);
+        addMorePanel.add(addButton);		
 		
+        final String label = Utils.findLabel(tag);
+        addMorePanel.add(new HTML(Utils.toNiceLabel(label)));
+        
 		addButton.addClickHandler(new ClickHandler() {			
 			@Override
 			public void onClick(ClickEvent event) {
