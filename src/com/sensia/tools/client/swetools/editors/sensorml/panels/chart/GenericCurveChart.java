@@ -17,14 +17,15 @@ import org.moxieapps.gwt.highcharts.client.Chart;
 import org.moxieapps.gwt.highcharts.client.ChartTitle;
 import org.moxieapps.gwt.highcharts.client.Credits;
 import org.moxieapps.gwt.highcharts.client.Legend;
+import org.moxieapps.gwt.highcharts.client.Pane;
 import org.moxieapps.gwt.highcharts.client.Series;
 import org.moxieapps.gwt.highcharts.client.ToolTip;
 import org.moxieapps.gwt.highcharts.client.plotOptions.LinePlotOptions;
 import org.moxieapps.gwt.highcharts.client.plotOptions.Marker;
 import org.moxieapps.gwt.highcharts.client.plotOptions.PlotOptions;
 import org.moxieapps.gwt.highcharts.client.plotOptions.SeriesPlotOptions;
-
 import com.google.gwt.user.client.ui.Widget;
+import com.sensia.tools.client.swetools.editors.sensorml.utils.Utils;
 
 /**
  * The Class GenericCurveChart.
@@ -55,13 +56,26 @@ public class GenericCurveChart{
 	 * @param axis the axis
 	 * @param values the values
 	 */
-	public void populateTable(final String title,final List<String> axis,final Object[][] values) {
+	public void populateTable(final String title,final List<String> axes,final Object[][] values) {
 		init();
 		if(chart == null) {
-			createChart(title);
+			createChart(title, axes);
 		} else {
 			chart.removeAllSeries();
 		}
+        
+        // use polar chart if x axis is angular
+        if (axes.get(0).contains(Utils.DEGREE_SYMBOL)) {
+            chart.setPolar(true);
+            chart.setPane(new Pane()  
+                .setStartAngle(0.)  
+                .setEndAngle(360.)  
+            );
+            chart.getXAxis()
+                .setMin(0.)
+                .setMax(360.)
+                .setTickInterval(30.);
+        }
 		
 		//create X
 		String [] xValues = new String[values.length];
@@ -71,23 +85,24 @@ public class GenericCurveChart{
 		
 		//set X title axis
 		chart.getXAxis() 
-        	.setCategories(xValues)
-        	.setAxisTitle(
+        	//.setCategories(xValues)
+		    .setAxisTitle(
 			     new AxisTitle()
-			       .setText(axis.get(0))
+			       .setText(axes.get(0))
 			       .setAlign(AxisTitle.Align.MIDDLE)
 			       .setMargin(20)
 			 );
 		
-		//creates series
+		// creates series
 		for(int i=1;i < values[0].length;i++) {
-			Number [] axeValues = new Number[values.length];
+			Number[][] axeValues = new Number[values.length][2];
 			for(int j=0;j < values.length;j++) {
-				axeValues[j] = Double.parseDouble(values[j][i].toString());
+			    axeValues[j][0] = Double.parseDouble(values[j][0].toString());
+				axeValues[j][1] = Double.parseDouble(values[j][i].toString());
 			}
 			//adds series
 			//handles Series
-			String serieTitle = axis.get(i);
+			String serieTitle = axes.get(i);
 			chart.addSeries(chart.createSeries()  
 		        .setName(serieTitle)
 		        .setPlotOptions(new LinePlotOptions()  
@@ -113,7 +128,7 @@ public class GenericCurveChart{
 	 * @param title the title
 	 * @return the panel
 	 */
-	public Widget createChart(final String title) {
+	public Widget createChart(final String title,final List<String> axes) {
 		chart = new Chart()  
         .setType(Series.Type.LINE)  
         .setChartTitle(new ChartTitle()  
@@ -127,7 +142,7 @@ public class GenericCurveChart{
         .setCursor(PlotOptions.Cursor.POINTER)  
         .setMarker(new Marker()  
             .setLineWidth(1)  
-        )); 
+        ));
 		
 		Credits credits = new Credits();
 		credits.setText("");
@@ -145,6 +160,56 @@ public class GenericCurveChart{
 		chart.setWidth100();
 		chart.setHeight100();
 		return chart;
+	    
+	 /*// test sample polar chart
+        chart = new Chart()  
+                .setPolar(true)  
+                .setChartTitleText("GWT Highcharts Polar Chart")  
+                .setPane(new Pane()  
+                    .setStartAngle(0)  
+                    .setEndAngle(360)  
+                )  
+                .setSeriesPlotOptions(new SeriesPlotOptions()  
+                    .setPointStart(0)  
+                    .setPointInterval(45)  
+                )  
+                .setColumnPlotOptions(new ColumnPlotOptions()  
+                    .setPointPadding(0)  
+                    .setGroupPadding(0)  
+                );  
+      
+            chart.getXAxis()  
+                .setTickInterval(45)  
+                .setMin(0)  
+                .setMax(360)  
+                .setLabels(new XAxisLabels()  
+                    .setFormatter(new AxisLabelsFormatter() {  
+                        public String format(AxisLabelsData axisLabelsData) {  
+                            return axisLabelsData.getValueAsLong() + "°";  
+                        }  
+                    })  
+                );  
+      
+            chart.getYAxis()  
+                .setMin(0);  
+      
+            chart.addSeries(chart.createSeries()  
+                .setType(Series.Type.COLUMN)  
+                .setName("Column")  
+                .setPoints(new Number[]{8, 7, 6, 5, 4, 3, 2, 1})  
+                .setOption("pointPointPlacement", "between")  
+            );  
+            chart.addSeries(chart.createSeries()  
+                .setType(Series.Type.LINE)  
+                .setName("Line")  
+                .setPoints(new Number[]{1, 2, 3, 4, 5, 6, 7, 8})  
+            );  
+            chart.addSeries(chart.createSeries()  
+                .setType(Series.Type.AREA)  
+                .setName("Area")  
+                .setPoints(new Number[]{1, 8, 2, 7, 3, 6, 4, 5})  
+            );
+            return chart;*/
 	}
 	
 	public void redraw() {
